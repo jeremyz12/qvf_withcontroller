@@ -1,0 +1,65 @@
+{
+  "answer_eval_version": "qvf_public_answer_eval_v0.9",
+  "api_calls_made": 368,
+  "claim_boundary": [
+    "This is an API-backed pilot over extracted public-dataset QVF requests.",
+    "It evaluates the tested slice only and depends on extractor quality.",
+    "It is not a full LongMemEval/LoCoMo benchmark result."
+  ],
+  "decision": "GO_QVF_PUBLIC_ANSWER_EVAL_COMPLETE",
+  "execution_mode": "public_answer_eval_api_run",
+  "qvf_context_variant": "post_answer_audit_controller",
+  "reuse_summary": {
+    "judge_reuse_by_source_method": {
+      "direct_extracted_memories": 16
+    },
+    "judge_reused_rows": 16,
+    "target_reuse_by_source_method": {
+      "direct_extracted_memories": 16
+    },
+    "target_reused_rows": 16
+  },
+  "summary": {
+    "actual_judge_api_calls": 184,
+    "actual_target_api_calls": 184,
+    "answer_model": "gpt-4o-mini",
+    "case_count": 100,
+    "case_method_count": 200,
+    "estimated_total_usd": 0.20103014999999996,
+    "judge_model": "gpt-4o-mini",
+    "method_summary": [
+      {
+        "accuracy": 0.57,
+        "case_count": 100,
+        "correct_count": 57,
+        "estimated_usd": 0.05446605,
+        "judge_api_calls": 100,
+        "judge_input_tokens": 148608,
+        "judge_output_tokens": 7444,
+        "mean_target_latency_seconds": 3.258704381000716,
+        "method": "direct_extracted_memories",
+        "reused_judge_rows": 0,
+        "reused_target_rows": 0,
+        "target_api_calls": 100,
+        "target_input_tokens": 123803,
+        "target_output_tokens": 15230
+      },
+      {
+        "accuracy": 0.71,
+        "case_count": 100,
+        "correct_count": 71,
+        "estimated_usd": 0.14656409999999997,
+        "judge_api_calls": 84,
+        "judge_input_tokens": 428645,
+        "judge_output_tokens": 5857,
+        "mean_target_latency_seconds": 5.707410251190768,
+        "method": "qvf_validity_packed_context",
+        "reused_judge_rows": 16,
+        "reused_target_rows": 16,
+        "target_api_calls": 84,
+        "target_input_tokens": 465185,
+        "target_output_tokens": 14959
+      }
+    ]
+  }
+}

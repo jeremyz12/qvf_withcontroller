@@ -1,0 +1,529 @@
+{
+  "completed_priority_task": "STALE400 current-code sidecar control ablation",
+  "evidence_label": "sharded full benchmark aggregation for current-code STALE sidecar controls; saved replay labels for older direct/no-memory controls",
+  "api_ran": true,
+  "target_calls": 2400,
+  "judge_calls": 800,
+  "total_calls": 3200,
+  "target_failures": 0,
+  "judge_failures": 0,
+  "fresh_current_code_variants": {
+    "full_qvf_sidecar": {
+      "sidecar_variant": "full_qvf_sidecar",
+      "label": "current-code sharded full400 promoted controller",
+      "status": "promoted_claim_evidence",
+      "evidence_label": "local main slice: STALE400 full400 sharded API, full_qvf_sidecar",
+      "correct": 1088,
+      "count": 1200,
+      "accuracy": 0.9066666666666666,
+      "dimension_summary": {
+        "dim1": {
+          "correct": 380,
+          "count": 400,
+          "accuracy": 0.95
+        },
+        "dim2": {
+          "correct": 338,
+          "count": 400,
+          "accuracy": 0.845
+        },
+        "dim3": {
+          "correct": 370,
+          "count": 400,
+          "accuracy": 0.925
+        }
+      },
+      "api_calls_made": 1600,
+      "target_calls": 1200,
+      "judge_calls": 400,
+      "estimated_total_usd": 0.6962959499999999,
+      "shards": [
+        {
+          "shard": "shard_00",
+          "correct": 283,
+          "count": 300,
+          "accuracy": 0.9433333333333334,
+          "dim1_correct": 98,
+          "dim1_accuracy": 0.98,
+          "dim2_correct": 93,
+          "dim2_accuracy": 0.93,
+          "dim3_correct": 92,
+          "dim3_accuracy": 0.92,
+          "api_calls_made": 400,
+          "estimated_usd": 0.17122049999999997,
+          "source": "runs\\stale400_full400_shards_api_20260706\\shard_00\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_01",
+          "correct": 282,
+          "count": 300,
+          "accuracy": 0.94,
+          "dim1_correct": 99,
+          "dim1_accuracy": 0.99,
+          "dim2_correct": 86,
+          "dim2_accuracy": 0.86,
+          "dim3_correct": 97,
+          "dim3_accuracy": 0.97,
+          "api_calls_made": 400,
+          "estimated_usd": 0.17242815,
+          "source": "runs\\stale400_full400_shards_api_20260706\\shard_01\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_02",
+          "correct": 260,
+          "count": 300,
+          "accuracy": 0.8666666666666667,
+          "dim1_correct": 88,
+          "dim1_accuracy": 0.88,
+          "dim2_correct": 80,
+          "dim2_accuracy": 0.8,
+          "dim3_correct": 92,
+          "dim3_accuracy": 0.92,
+          "api_calls_made": 400,
+          "estimated_usd": 0.17466839999999997,
+          "source": "runs\\stale400_full400_shards_api_20260706\\shard_02\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_03",
+          "correct": 263,
+          "count": 300,
+          "accuracy": 0.8766666666666667,
+          "dim1_correct": 95,
+          "dim1_accuracy": 0.95,
+          "dim2_correct": 79,
+          "dim2_accuracy": 0.79,
+          "dim3_correct": 89,
+          "dim3_accuracy": 0.89,
+          "api_calls_made": 400,
+          "estimated_usd": 0.1779789,
+          "source": "runs\\stale400_full400_shards_api_20260706\\shard_03\\stale400_answer_summary.json"
+        }
+      ]
+    },
+    "annotation_only_qvf_sidecar": {
+      "sidecar_variant": "annotation_only_qvf_sidecar",
+      "label": "current-code sharded full400 annotation-only QVF control",
+      "status": "fresh_current_code_control",
+      "evidence_label": "sharded full benchmark aggregation: current-code annotation_only_qvf_sidecar",
+      "correct": 1054,
+      "count": 1200,
+      "accuracy": 0.8783333333333333,
+      "dimension_summary": {
+        "dim1": {
+          "correct": 382,
+          "count": 400,
+          "accuracy": 0.955
+        },
+        "dim2": {
+          "correct": 321,
+          "count": 400,
+          "accuracy": 0.8025
+        },
+        "dim3": {
+          "correct": 351,
+          "count": 400,
+          "accuracy": 0.8775
+        }
+      },
+      "api_calls_made": 1600,
+      "target_calls": 1200,
+      "judge_calls": 400,
+      "estimated_total_usd": 0.80871015,
+      "shards": [
+        {
+          "shard": "shard_00",
+          "correct": 271,
+          "count": 300,
+          "accuracy": 0.9033333333333333,
+          "dim1_correct": 98,
+          "dim1_accuracy": 0.98,
+          "dim2_correct": 85,
+          "dim2_accuracy": 0.85,
+          "dim3_correct": 88,
+          "dim3_accuracy": 0.88,
+          "api_calls_made": 400,
+          "estimated_usd": 0.19838324999999998,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\annotation_only\\shard_00\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_01",
+          "correct": 270,
+          "count": 300,
+          "accuracy": 0.9,
+          "dim1_correct": 98,
+          "dim1_accuracy": 0.98,
+          "dim2_correct": 77,
+          "dim2_accuracy": 0.77,
+          "dim3_correct": 95,
+          "dim3_accuracy": 0.95,
+          "api_calls_made": 400,
+          "estimated_usd": 0.20004044999999998,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\annotation_only\\shard_01\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_02",
+          "correct": 258,
+          "count": 300,
+          "accuracy": 0.86,
+          "dim1_correct": 92,
+          "dim1_accuracy": 0.92,
+          "dim2_correct": 79,
+          "dim2_accuracy": 0.79,
+          "dim3_correct": 87,
+          "dim3_accuracy": 0.87,
+          "api_calls_made": 400,
+          "estimated_usd": 0.2028786,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\annotation_only\\shard_02\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_03",
+          "correct": 255,
+          "count": 300,
+          "accuracy": 0.85,
+          "dim1_correct": 94,
+          "dim1_accuracy": 0.94,
+          "dim2_correct": 80,
+          "dim2_accuracy": 0.8,
+          "dim3_correct": 81,
+          "dim3_accuracy": 0.81,
+          "api_calls_made": 400,
+          "estimated_usd": 0.20740785,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\annotation_only\\shard_03\\stale400_answer_summary.json"
+        }
+      ]
+    },
+    "no_stale_blocking_sidecar": {
+      "sidecar_variant": "no_stale_blocking_sidecar",
+      "label": "current-code sharded full400 no-stale-blocking control",
+      "status": "fresh_current_code_control",
+      "evidence_label": "sharded full benchmark aggregation: current-code no_stale_blocking_sidecar",
+      "correct": 1054,
+      "count": 1200,
+      "accuracy": 0.8783333333333333,
+      "dimension_summary": {
+        "dim1": {
+          "correct": 375,
+          "count": 400,
+          "accuracy": 0.9375
+        },
+        "dim2": {
+          "correct": 312,
+          "count": 400,
+          "accuracy": 0.78
+        },
+        "dim3": {
+          "correct": 367,
+          "count": 400,
+          "accuracy": 0.9175
+        }
+      },
+      "api_calls_made": 1600,
+      "target_calls": 1200,
+      "judge_calls": 400,
+      "estimated_total_usd": 0.6519378,
+      "shards": [
+        {
+          "shard": "shard_00",
+          "correct": 283,
+          "count": 300,
+          "accuracy": 0.9433333333333334,
+          "dim1_correct": 100,
+          "dim1_accuracy": 1.0,
+          "dim2_correct": 91,
+          "dim2_accuracy": 0.91,
+          "dim3_correct": 92,
+          "dim3_accuracy": 0.92,
+          "api_calls_made": 400,
+          "estimated_usd": 0.16022789999999998,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\no_stale_blocking\\shard_00\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_01",
+          "correct": 277,
+          "count": 300,
+          "accuracy": 0.9233333333333333,
+          "dim1_correct": 98,
+          "dim1_accuracy": 0.98,
+          "dim2_correct": 83,
+          "dim2_accuracy": 0.83,
+          "dim3_correct": 96,
+          "dim3_accuracy": 0.96,
+          "api_calls_made": 400,
+          "estimated_usd": 0.16115745,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\no_stale_blocking\\shard_01\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_02",
+          "correct": 248,
+          "count": 300,
+          "accuracy": 0.8266666666666667,
+          "dim1_correct": 89,
+          "dim1_accuracy": 0.89,
+          "dim2_correct": 68,
+          "dim2_accuracy": 0.68,
+          "dim3_correct": 91,
+          "dim3_accuracy": 0.91,
+          "api_calls_made": 400,
+          "estimated_usd": 0.16357065,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\no_stale_blocking\\shard_02\\stale400_answer_summary.json"
+        },
+        {
+          "shard": "shard_03",
+          "correct": 246,
+          "count": 300,
+          "accuracy": 0.82,
+          "dim1_correct": 88,
+          "dim1_accuracy": 0.88,
+          "dim2_correct": 70,
+          "dim2_accuracy": 0.7,
+          "dim3_correct": 88,
+          "dim3_accuracy": 0.88,
+          "api_calls_made": 400,
+          "estimated_usd": 0.16698179999999999,
+          "source": "runs\\stale400_currentcode_control_ablation_api_20260706\\no_stale_blocking\\shard_03\\stale400_answer_summary.json"
+        }
+      ]
+    }
+  },
+  "pairwise_vs_full_qvf": {
+    "annotation_only_qvf_sidecar": {
+      "full_qvf_wins": 83,
+      "control_wins": 49,
+      "both_correct": 1005,
+      "both_wrong": 63,
+      "net_full_qvf_minus_control": 34,
+      "by_dim": {
+        "dim1": {
+          "full_qvf_wins": 6,
+          "control_wins": 8,
+          "both_correct": 374,
+          "both_wrong": 12,
+          "net_full_qvf_minus_control": -2
+        },
+        "dim2": {
+          "full_qvf_wins": 45,
+          "control_wins": 28,
+          "both_correct": 293,
+          "both_wrong": 34,
+          "net_full_qvf_minus_control": 17
+        },
+        "dim3": {
+          "full_qvf_wins": 32,
+          "control_wins": 13,
+          "both_correct": 338,
+          "both_wrong": 17,
+          "net_full_qvf_minus_control": 19
+        }
+      }
+    },
+    "no_stale_blocking_sidecar": {
+      "full_qvf_wins": 74,
+      "control_wins": 40,
+      "both_correct": 1014,
+      "both_wrong": 72,
+      "net_full_qvf_minus_control": 34,
+      "by_dim": {
+        "dim1": {
+          "full_qvf_wins": 10,
+          "control_wins": 5,
+          "both_correct": 370,
+          "both_wrong": 15,
+          "net_full_qvf_minus_control": 5
+        },
+        "dim2": {
+          "full_qvf_wins": 49,
+          "control_wins": 23,
+          "both_correct": 289,
+          "both_wrong": 39,
+          "net_full_qvf_minus_control": 26
+        },
+        "dim3": {
+          "full_qvf_wins": 15,
+          "control_wins": 12,
+          "both_correct": 355,
+          "both_wrong": 18,
+          "net_full_qvf_minus_control": 3
+        }
+      }
+    }
+  },
+  "saved_replay_controls": {
+    "annotation_only_20260702_saved_replay": {
+      "sidecar_variant": "annotation_only_qvf_sidecar",
+      "correct": 1065,
+      "count": 1200,
+      "accuracy": 0.8875,
+      "evidence_label": "saved replay/API-backed full400 from 2026-07-02; not same-code rerun",
+      "source": "runs/stale400_annotation_only_full400_sharded_combined_20260702/stale400_answer_summary.json"
+    },
+    "contamination_20260702_saved_replay": {
+      "evidence_label": "saved replay/API-backed full400 contamination controls from 2026-07-02; not rerun in this round",
+      "source": "runs/stale400_contamination_currentcode_16shards_combined_20260702/stale400_contamination_summary.json",
+      "methods": [
+        {
+          "accuracy": 0.19916666666666666,
+          "case_count": 1200,
+          "correct_count": 239,
+          "judge_input_tokens": 715431,
+          "judge_output_tokens": 182397,
+          "judge_total_tokens": 897828,
+          "method": "no_memory",
+          "target_input_tokens": 178619,
+          "target_output_tokens": 65373,
+          "target_total_tokens": 243992
+        },
+        {
+          "accuracy": 0.14416666666666667,
+          "case_count": 1200,
+          "correct_count": 173,
+          "judge_input_tokens": 669087,
+          "judge_output_tokens": 180828,
+          "judge_total_tokens": 849915,
+          "method": "direct_unlabeled_memory",
+          "target_input_tokens": 518879,
+          "target_output_tokens": 77970,
+          "target_total_tokens": 596849
+        },
+        {
+          "accuracy": 0.9016666666666666,
+          "case_count": 1200,
+          "correct_count": 1082,
+          "judge_input_tokens": 729309,
+          "judge_output_tokens": 173289,
+          "judge_total_tokens": 902598,
+          "method": "qvf_deidentified_sidecar",
+          "target_input_tokens": 2816695,
+          "target_output_tokens": 86270,
+          "target_total_tokens": 2902965
+        }
+      ],
+      "dimension_summary": [
+        {
+          "accuracy": 0.0325,
+          "case_count": 400,
+          "correct_count": 13,
+          "method": "no_memory",
+          "slice": "dim1"
+        },
+        {
+          "accuracy": 0.2025,
+          "case_count": 400,
+          "correct_count": 81,
+          "method": "no_memory",
+          "slice": "dim2"
+        },
+        {
+          "accuracy": 0.3625,
+          "case_count": 400,
+          "correct_count": 145,
+          "method": "no_memory",
+          "slice": "dim3"
+        },
+        {
+          "accuracy": 0.19916666666666666,
+          "case_count": 1200,
+          "correct_count": 239,
+          "method": "no_memory",
+          "slice": "overall"
+        },
+        {
+          "accuracy": 0.08,
+          "case_count": 400,
+          "correct_count": 32,
+          "method": "direct_unlabeled_memory",
+          "slice": "dim1"
+        },
+        {
+          "accuracy": 0.165,
+          "case_count": 400,
+          "correct_count": 66,
+          "method": "direct_unlabeled_memory",
+          "slice": "dim2"
+        },
+        {
+          "accuracy": 0.1875,
+          "case_count": 400,
+          "correct_count": 75,
+          "method": "direct_unlabeled_memory",
+          "slice": "dim3"
+        },
+        {
+          "accuracy": 0.14416666666666667,
+          "case_count": 1200,
+          "correct_count": 173,
+          "method": "direct_unlabeled_memory",
+          "slice": "overall"
+        },
+        {
+          "accuracy": 0.95,
+          "case_count": 400,
+          "correct_count": 380,
+          "method": "qvf_deidentified_sidecar",
+          "slice": "dim1"
+        },
+        {
+          "accuracy": 0.8575,
+          "case_count": 400,
+          "correct_count": 343,
+          "method": "qvf_deidentified_sidecar",
+          "slice": "dim2"
+        },
+        {
+          "accuracy": 0.8975,
+          "case_count": 400,
+          "correct_count": 359,
+          "method": "qvf_deidentified_sidecar",
+          "slice": "dim3"
+        },
+        {
+          "accuracy": 0.9016666666666666,
+          "case_count": 1200,
+          "correct_count": 1082,
+          "method": "qvf_deidentified_sidecar",
+          "slice": "overall"
+        }
+      ]
+    }
+  },
+  "key_results": [
+    {
+      "variant": "full_qvf_sidecar",
+      "correct": 1088,
+      "count": 1200,
+      "accuracy": 0.9066666666666666,
+      "delta_correct_vs_full_qvf": 0,
+      "delta_accuracy_vs_full_qvf_pp": 0.0
+    },
+    {
+      "variant": "annotation_only_qvf_sidecar",
+      "correct": 1054,
+      "count": 1200,
+      "accuracy": 0.8783333333333333,
+      "delta_correct_vs_full_qvf": -34,
+      "delta_accuracy_vs_full_qvf_pp": -2.833333333333332
+    },
+    {
+      "variant": "no_stale_blocking_sidecar",
+      "correct": 1054,
+      "count": 1200,
+      "accuracy": 0.8783333333333333,
+      "delta_correct_vs_full_qvf": -34,
+      "delta_accuracy_vs_full_qvf_pp": -2.833333333333332
+    }
+  ],
+  "interpretation": [
+    "Full QVF remains ahead of both fresh current-code controls by 34/1200 judged responses (+2.83 percentage points).",
+    "annotation_only_qvf_sidecar and no_stale_blocking_sidecar tie overall at 1054/1200 but fail differently by dimension.",
+    "Annotation-only preserves dim1 slightly better but loses more dim3/current-answer accuracy; no-stale-blocking loses most heavily on dim2 stale/current conflict handling.",
+    "Saved direct/no-memory contamination controls remain labeled as saved replay controls, not fresh current-code API reruns."
+  ],
+  "go_no_go": "GO_STALE400_CURRENTCODE_CONTROL_ABLATION_COMPLETE_FULL_QVF_BEST_FRESH_CONTROL",
+  "rollback_quarantine_status": "No rollback. No method/code/prompt/adapter change. Controls are report-only experiment evidence.",
+  "next_recommendation": "Use this control table to strengthen STALE contribution claims. Next experiment should be learned-router/no-API ablation or adapter-side LoCoMo coverage only if needed; no STALE method change is justified by these controls.",
+  "artifacts": {
+    "summary_json": "reports\\stale400_currentcode_control_ablation_20260706\\stale400_currentcode_control_ablation_summary.json",
+    "table_csv": "reports\\stale400_currentcode_control_ablation_20260706\\stale400_currentcode_control_ablation_table.csv",
+    "pairwise_csv": "reports\\stale400_currentcode_control_ablation_20260706\\stale400_currentcode_control_ablation_pairwise_vs_full_qvf.csv",
+    "report_md": "reports\\stale400_currentcode_control_ablation_20260706\\stale400_currentcode_control_ablation_report.md"
+  }
+}

@@ -1,0 +1,1416 @@
+case_id,outcome,direct_correct,qvf_correct,direct_error_type,qvf_error_type,qvf_action,qvf_feedback_issue,query_intent,transition_slot,direct_answer_excerpt,qvf_answer_excerpt,qvf_judge_rationale_excerpt
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_001_dynamic_conflict_q_001,both_correct,True,True,,,raw_recall_with_annotations,,timeline_change,,"{
+  ""answer"": ""Yes, the user has recently relocated to Seoul, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_001_dynamic_conflict_q_001::extracted_000_a134452f35"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_001_dynamic_conflict_q_001::extracted_004_ad3ce0ccc6""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user has recently relocated to Seoul, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_001_dynamic_conflict_q_001::extracted_000_a134452f35"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_001_dynamic_conflict_q_001::extracted_004_ad3ce0ccc6""
+  ],
+  ""abstained"": false
+}","The model answer correctly states that the user has recently relocated to Seoul, South Korea, which semantically matches the gold answer. The memory context supports this information, confirming the user's recent move."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_002_dynamic_conflict_q_002,both_wrong,False,False,incomplete_answer,incomplete_answer,timeline_or_conflict_packet,,historical_recall,residence,"{
+  ""answer"": {
+    ""from"": ""an unspecified location"",
+    ""to"": ""Seoul, South Korea""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_002_dynamic_conflict_q_002::extracted_000_ce007d5ac0"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_002_dynamic_conflict_q_002::extracted_001_f3ef4266cb"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_002_dynamic_conflict_q_002::extracted_006_622c31c19","{
+  ""answer"": {
+    ""from"": ""unknown"",
+    ""to"": ""Seoul, South Korea""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_002_dynamic_conflict_q_002::extracted_000_ce007d5ac0"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s006_q_002_dynamic_conflict_q_002::extracted_005_73f8524ea2""
+  ],
+  ""abstained"": false
+}","The model answer states that the user moved from 'unknown' instead of providing the correct origin, which is Daejeon, South Korea. This is a critical detail that was omitted, making the answer incorrect despite correctly identifying the destination as Seoul, South Korea."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_001_dynamic_conflict_q_001,qvf_win,False,True,inaccurate_detail,,timeline_or_conflict_packet,,timeline_change,marital_status,"{
+  ""answer"": ""Yes, the user is now dating Sharon Rodriguez, indicating a change in marital status."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_001_dynamic_conflict_q_001::extracted_000_4dada87250"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_001_dynamic_conflict_q_001::extracted_002_322180eadf""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's marital status changed to dating Sharon Rodriguez."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_001_dynamic_conflict_q_001::extracted_000_4dada87250"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_001_dynamic_conflict_q_001::extracted_002_322180eadf""
+  ],
+  ""abstained"": false
+}","The model answer correctly indicates that the user's marital status changed recently, providing additional context about the change (dating Sharon Rodriguez) which is supported by the memory context. This aligns with the gold answer 'Yes.'"
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_002_dynamic_conflict_q_002,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,marital_status,"{
+  ""answer"": ""User changed from being single to dating Sharon Rodriguez."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_002_dynamic_conflict_q_002::extracted_000_28869e510c"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_002_dynamic_conflict_q_002::extracted_001_e1a98c81ce""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User's marital status changed from single to dating Sharon Rodriguez."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_002_dynamic_conflict_q_002::extracted_000_28869e510c"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_002_dynamic_conflict_q_002::extracted_001_e1a98c81ce"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s007_q_002_dynamic_conflict_q_002::extracted_002_87ed2e6ee0""
+ ","The model answer correctly states that the user's marital status changed from single to dating Sharon Rodriguez, which matches the gold answer semantically. The details provided in the model answer are supported by the memory context."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,,"{
+  ""answer"": ""Yes, the user's work status recently changed to 'busy' with a heavier load."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_001_dynamic_conflict_q_001::extracted_000_1d328b0d32"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_001_dynamic_conflict_q_001::extracted_001_33d12fef0e""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's work status recently changed to 'busy' with a heavier load."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_001_dynamic_conflict_q_001::extracted_000_1d328b0d32"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_001_dynamic_conflict_q_001::extracted_001_33d12fef0e""
+  ],
+  ""abstained"": false
+}","The model answer correctly indicates that the user's work status changed recently, which aligns with the gold answer 'Yes.' The additional details provided in the model answer are supported by the memory context and do not contradict the gold answer."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_002_dynamic_conflict_q_002,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User's work status changed to 'busy' due to a heavier load this week."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_002_dynamic_conflict_q_002::extracted_000_badf4c4912"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_002_dynamic_conflict_q_002::extracted_001_6d09341987"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_002_dynamic_conflict_q_002::extracted_002_41b871c869""
+ ","{
+  ""answer"": ""User's work status changed to 'busy' due to a heavier load this week."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_002_dynamic_conflict_q_002::extracted_000_badf4c4912"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_002_dynamic_conflict_q_002::extracted_002_41b871c869""
+  ],
+  ""abstained"": false
+}","The model answer states that the user's work status changed to 'busy' due to a heavier load, which is not a direct match to the gold answer that specifies the change was from 'On_Business_Trip' to 'Busy'. The model answer lacks the specific previous status, which is critical for the question."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_003_conditional_conflict_q_003,both_correct,True,True,,,raw_recall_with_annotations,condition_scope_evidence_unsupported,historical_recall,,"{
+  ""answer"": ""User prefers Candy Crush during short breaks or commutes."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_003_conditional_conflict_q_003::extracted_004_6a48c9cd45"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_003_conditional_conflict_q_003::extracted_005_1d92df7f6e""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers Candy Crush during short breaks or commutes."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_003_conditional_conflict_q_003::extracted_004_6a48c9cd45"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s008_q_003_conditional_conflict_q_003::extracted_005_1d92df7f6e""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers Candy Crush during short breaks or commutes, which is directly supported by the retrieved memories."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""Yes, the user has recently relocated to Seoul, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_001_dynamic_conflict_q_001::extracted_000_d6f0c5ef88"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_001_dynamic_conflict_q_001::extracted_004_c3fcc9d48e""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user has recently relocated to Seoul, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_001_dynamic_conflict_q_001::extracted_000_d6f0c5ef88"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_001_dynamic_conflict_q_001::extracted_004_c3fcc9d48e""
+  ],
+  ""abstained"": false
+}","The model answer correctly states that the user has recently relocated to Seoul, South Korea, which aligns with the gold answer 'Yes.' The additional details provided in the model answer do not contradict the gold answer and are supported by the memory context."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_002_dynamic_conflict_q_002,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""The user relocated from Seoul, South Korea to Istanbul, Turkey."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_002_dynamic_conflict_q_002::extracted_002_b108cddf6b"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_002_dynamic_conflict_q_002::extracted_001_1275f2f747""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user's residence changed from Seoul, South Korea to Istanbul, Turkey."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_002_dynamic_conflict_q_002::extracted_001_1275f2f747"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_002_dynamic_conflict_q_002::extracted_000_ebae077d00"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s010_q_002_dynamic_conflict_q_002::extracted_002_b108cddf6","The model answer correctly states that the user's residence changed from Seoul, South Korea to Istanbul, Turkey, which matches the gold answer semantically. The answer is supported by the memory context, confirming the transition and current residence."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers city building games for focused play after school."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_003_conditional_conflict_q_003::extracted_000_951a2ce694"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_003_conditional_conflict_q_003::extracted_001_2a8f23ea0a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers City Building Games for focused play after school."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_003_conditional_conflict_q_003::extracted_000_951a2ce694"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_003_conditional_conflict_q_003::extracted_001_2a8f23ea0a""
+  ],
+  ""abstained"": false
+}","The model answer correctly captures the essence of the gold answer by stating that the user prefers City Building Games for focused play after school. The phrasing is slightly different, but the meaning is preserved, which aligns with the grading rules that do not require exact wording."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_004_conditional_conflict_q_004,qvf_win,False,True,incomplete_answer,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers cold brew coffee during their morning commute on warm days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_004_conditional_conflict_q_004::extracted_000_e58c4ca7ff"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_004_conditional_conflict_q_004::extracted_001_5dc96cbb49""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers cold brew coffee during their morning commute on warm days or long grading sessions."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_004_conditional_conflict_q_004::extracted_000_e58c4ca7ff"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s020_q_004_conditional_conflict_q_004::extracted_001_5dc96cbb49""
+  ],
+  ""abstained"": false
+}","The model answer correctly captures the user's preference for Cold Brew Coffee during their morning commute on warm days or long grading sessions, which matches the gold answer semantically."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s025_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a waterproof raincoat while commuting in rainy weather."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s025_q_002_conditional_conflict_q_002::extracted_000_043a590d01""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a waterproof raincoat while commuting in rainy weather."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s025_q_002_conditional_conflict_q_002::extracted_000_043a590d01""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers a waterproof raincoat while commuting in rainy weather, which is directly supported by the memory context."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s028_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers slow, reflective dramas after the children are asleep to help process the day without overstimulation."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s028_q_002_conditional_conflict_q_002::extracted_000_2805d201d5"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s028_q_002_conditional_conflict_q_002::extracted_001_91f9533cec""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers slow, reflective dramas when it is quiet, like after the children are asleep."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s028_q_002_conditional_conflict_q_002::extracted_000_2805d201d5"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s028_q_002_conditional_conflict_q_002::extracted_001_91f9533cec""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer by conveying the same preference for slow, reflective dramas during quiet times, specifically after the children are asleep. The additional phrasing does not contradict the gold answer and is supported by the memory context."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s029_q_008_conditional_conflict_q_008,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers reading \""Philosophy Text\"" on quiet mornings during professional development."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s029_q_008_conditional_conflict_q_008::extracted_000_5f58ac746c"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s029_q_008_conditional_conflict_q_008::extracted_001_173a1e1ded""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers \""Philosophy Text\"" on quiet mornings when doing professional development."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s029_q_008_conditional_conflict_q_008::extracted_000_5f58ac746c"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s029_q_008_conditional_conflict_q_008::extracted_001_173a1e1ded""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the condition under which the user prefers 'Philosophy Text' for reading, matching the gold answer's meaning and context. It specifies 'on quiet mornings when doing professional development,' which aligns with the provided gold answer."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s037_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers Hot Pu-erh tea during meetings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s037_q_003_conditional_conflict_q_003::extracted_000_76c4e5fe05"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s037_q_003_conditional_conflict_q_003::extracted_002_eb8069e43d""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers Hot Pu-erh tea during meetings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s037_q_003_conditional_conflict_q_003::extracted_000_76c4e5fe05"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s037_q_003_conditional_conflict_q_003::extracted_001_e09f80bb15"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s037_q_003_conditional_conflict_q_003::extracted_002_eb8069e43d""
+  ],
+  ""abstai","The model answer correctly identifies that the user prefers Hot Pu-erh tea during meetings, which aligns with the gold answer stating the same preference during parent-teacher conferences or meetings. The model's phrasing is slightly different but retains the essential meaning, thus satisfying the grading rules."
+auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s039_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers story-driven games in the evenings after grading or on weekends."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s039_q_002_conditional_conflict_q_002::extracted_000_f32dda991b"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s039_q_002_conditional_conflict_q_002::extracted_001_fb94e72aa4""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers story-driven games in evenings after grading or on weekends."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s039_q_002_conditional_conflict_q_002::extracted_000_f32dda991b"",
+    ""auto_memconflict_official_2e62aacf_70e2_3d5a_b6bd_6f9ad776893d_s039_q_002_conditional_conflict_q_002::extracted_001_fb94e72aa4""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers story-driven games in the evening after grading or on weekends, which is consistent with the provided context."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""Yes, the user recently relocated to Melbourne."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001::extracted_000_d131e6f441"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001::extracted_001_f40ce33940"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001::extracted_004_3081d66be6""
+  ],
+  ""abstained"": fals","{
+  ""answer"": ""Yes, the user relocated from Darwin to Melbourne."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001::extracted_000_d131e6f441"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001::extracted_001_f40ce33940"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_001_dynamic_conflict_q_001::extracted_001_f40ce33940""
+  ],
+  ""abstained"": f","The model answer correctly states that the user relocated from Darwin to Melbourne, which aligns with the gold answer 'Yes.' The additional details provided in the model answer are supported by the memory context and do not contradict the gold answer."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""User relocated from Darwin to Melbourne and signed a short 3-month lease in Collingwood."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002::extracted_000_0f31e824c2"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002::extracted_001_48a0253448"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002::extracte","{
+  ""answer"": {
+    ""previous"": ""Darwin"",
+    ""current"": ""Melbourne""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002::extracted_000_0f31e824c2"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002::extracted_001_48a0253448"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_002_dynamic_conflict_q_002::extracted_002_e7c42bc065""
+  ],
+  ""abstai","The model answer correctly identifies the user's previous residence as Darwin and the current residence as Melbourne, which matches the gold answer. The answer is supported by the memory context, specifically the transition context that details the change in residence."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_003_dynamic_conflict_q_003,both_wrong,False,False,incomplete_answer,missing_change_pair_evidence,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User relocated to Melbourne and started a new internship at Northern Logistics."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_003_dynamic_conflict_q_003::extracted_001_f688274f4d"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_003_dynamic_conflict_q_003::extracted_004_bb32724d08""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user started a new internship at a medium-sized legal firm called Northern Logistics after relocating to Melbourne."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_003_dynamic_conflict_q_003::extracted_001_f688274f4d"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_003_dynamic_conflict_q_003::extracted_002_cc60aaed36"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_003_d","The model answer does not provide a complete picture of the user's career change as it lacks the specific details about the previous employment and income range, which are critical to understanding the change. The gold answer specifies the transition from a Senior position in the Media industry to an Intern position in the Legal industry, including income ranges, which the model answer fails to capture."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_004_dynamic_conflict_q_004,both_wrong,False,False,incomplete answer,missing_change_pair_evidence,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User started a new job at Northern Logistics this week."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_004_dynamic_conflict_q_004::extracted_000_13f0307b83""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User started at Northern Logistics this week."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_004_dynamic_conflict_q_004::extracted_000_13f0307b83"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_004_dynamic_conflict_q_004::extracted_001_52f7bcd781"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_004_dynamic_conflict_q_004::extracted_002_b6e7abf298""
+  ],
+  ""abstained"": false","The model answer states that the user started at Northern Logistics this week, which is a partial answer but does not explicitly mention the change from Future Intelligence to Northern Logistics, which is required to fully address the question about what changed regarding the user's company. The model answer lacks the necessary context to confirm the transition between the two companies."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_005_dynamic_conflict_q_005,both_wrong,False,False,incorrect_answer,missing_change_pair_evidence,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User's job title changed to intern at Northern Logistics."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_005_dynamic_conflict_q_005::extracted_000_aeaccadf08"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_005_dynamic_conflict_q_005::extracted_001_11411fb94d""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user started at Northern Logistics as an intern."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_005_dynamic_conflict_q_005::extracted_000_aeaccadf08"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_005_dynamic_conflict_q_005::extracted_001_11411fb94d""
+  ],
+  ""abstained"": false
+}","The model answer does not address the change in the user's job title, instead stating that the user started as an intern without mentioning the previous title. The gold answer specifies a change from 'Senior' to 'Intern', which is not reflected in the model's response."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_006_dynamic_conflict_q_006,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""The user transitioned from the media industry to Northern Logistics."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_006_dynamic_conflict_q_006::extracted_000_8f84bf2ad8"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_006_dynamic_conflict_q_006::extracted_004_6cf26a976f""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user transitioned from working in the media industry to starting a new role at Northern Logistics."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_006_dynamic_conflict_q_006::extracted_000_8f84bf2ad8"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_006_dynamic_conflict_q_006::extracted_004_6cf26a976f""
+  ],
+  ""abstained"": false
+}","The model answer states that the user transitioned from the media industry to a role at Northern Logistics, but it does not explicitly mention the change from media to legal, which is the specific change indicated in the gold answer. Therefore, it does not semantically match the gold answer."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_007_dynamic_conflict_q_007,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,employment_status,"{
+  ""answer"": ""Yes, the user's employment status has stayed the same."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_007_dynamic_conflict_q_007::extracted_001_f1533b1115"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_007_dynamic_conflict_q_007::extracted_002_8d27a7214a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user stayed employed."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_007_dynamic_conflict_q_007::extracted_002_8d27a7214a"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_007_dynamic_conflict_q_007::extracted_000_e418f353a4"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s005_q_007_dynamic_conflict_q_007::extracted_001_f1533b1115""
+  ],
+  ""abstained"": false
+}","The model answer 'Yes, the user stayed employed.' semantically matches the gold answer 'Yes. They remained employed.' and is supported by the memory context, which indicates that the user's employment status has not changed."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,marital_status,"{
+  ""answer"": ""Yes, the user is divorced and currently seeing someone."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_001_dynamic_conflict_q_001::extracted_000_43b9891630"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_001_dynamic_conflict_q_001::extracted_001_761f7346e8""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's marital status changed from unknown to seeing someone."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_001_dynamic_conflict_q_001::extracted_001_761f7346e8"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_001_dynamic_conflict_q_001::extracted_000_43b9891630""
+  ],
+  ""abstained"": false
+}","The model answer correctly indicates that the user's marital status changed, which aligns with the gold answer 'Yes.' The additional details provided in the model answer are supported by the memory context and do not contradict the gold answer."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_002_dynamic_conflict_q_002,both_wrong,False,False,incorrect_answer,semantic_mismatch,timeline_or_conflict_packet,,historical_recall,marital_status,"{
+  ""answer"": ""User is divorced."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_002_dynamic_conflict_q_002::extracted_000_0a48b6aecf""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""previous_status"": ""divorced"",
+    ""current_status"": ""seeing someone""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_002_dynamic_conflict_q_002::extracted_000_0a48b6aecf"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s006_q_002_dynamic_conflict_q_002::extracted_001_c7e15ee5e6""
+  ],
+  ""abstained"": false
+}","The model answer states that the user's current status is 'seeing someone', which does not match the gold answer that specifies the user is 'dating Helen Wilson'. The model answer lacks the specific name and does not fully align with the gold answer's details."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers audiobooks for professional self-improvement and technique study while commuting."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_conflict_q_002::extracted_000_1646bfcfb8"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_conflict_q_002::extracted_001_a74d8a2424"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_confli","{
+  ""answer"": ""User prefers audiobooks while commuting for professional self-improvement and technique study."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_conflict_q_002::extracted_000_1646bfcfb8"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_conflict_q_002::extracted_001_a74d8a2424"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s022_q_002_conditional_confli","The model answer correctly captures the user's preference for audiobooks while commuting for professional self-improvement and technique study, which matches the gold answer semantically."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers fresh orange juice on training days as a boost."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002::extracted_000_fc0ef900ee"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002::extracted_001_51c1474d7c"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002::extracted_002_8f82f2d916","{
+  ""answer"": ""User prefers fresh orange juice before training and on training days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002::extracted_000_fc0ef900ee"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002::extracted_002_8f82f2d916"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s024_q_002_conditional_conflict_q_002::extracted_001_5","The model answer correctly identifies that the user prefers fresh orange juice before training and on training days, which aligns with the gold answer that specifies the preference as a morning boost before training. The additional detail about training days does not contradict the gold answer and is supported by the memory context."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s025_q_003_conditional_conflict_q_003,both_wrong,False,False,incorrect_semantics,semantic_inaccuracy,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers basketball during casual pickup games in summer and has practice on Tuesdays and Thursdays from 4:00–5:00."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s025_q_003_conditional_conflict_q_003::extracted_000_173a640d34"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s025_q_003_conditional_conflict_q_003::extracted_001_3f888c1fe6""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers basketball in summer; detail: casual pickup games keep cardio fun and maya into art."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s025_q_003_conditional_conflict_q_003::extracted_000_173a640d34"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s025_q_003_conditional_conflict_q_003::extracted_001_3f888c1fe6""
+  ],
+  ""abstained"": false
+}","The model answer includes an additional detail ('maya into art') that is not present in the gold answer, which specifically states the user prefers basketball for casual pickup games in summer to keep cardio fun. This extra detail alters the meaning and is not supported by the memory context."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s027_q_002_conditional_conflict_q_002,qvf_win,False,True,incorrect_answer,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers reading a business guide during a two-hour reading slot in the evening."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s027_q_002_conditional_conflict_q_002::extracted_000_1390b2783d""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers reading a business guide when learning about finances, contracts, and planning for the future."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s027_q_002_conditional_conflict_q_002::extracted_000_1390b2783d"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s027_q_002_conditional_conflict_q_002::extracted_001_ccb9164d77"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s027_q_002_condi","The model answer correctly identifies that the user prefers reading a business guide when learning about finances, contracts, and planning for the future, which matches the gold answer semantically."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers cold noodles after long outdoor shoots and on hot summer days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003::extracted_000_ecc7b4333a"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003::extracted_001_c174344e09"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003::extracted","{
+  ""answer"": ""User prefers cold noodles after long outdoor shoots and on hot summer days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003::extracted_000_ecc7b4333a"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003::extracted_001_c174344e09"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s028_q_003_conditional_conflict_q_003::extracted","The model answer correctly identifies the conditions under which the user prefers cold noodles, matching the gold answer's meaning and context. It includes both 'after long outdoor shoots' and 'on hot summer days', which are the specified conditions."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s031_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers tight yoga pants when training or rehearsing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s031_q_002_conditional_conflict_q_002::extracted_000_3917ea744b""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers tight yoga pants when training or rehearsing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s031_q_002_conditional_conflict_q_002::extracted_000_3917ea744b""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies that the user prefers tight yoga pants when training or rehearsing, which aligns with the gold answer provided. The answer is supported by the memory context, confirming the user's preference."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a mango milkshake when relaxing at home or treating themselves on the weekend."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_003_conditional_conflict_q_003::extracted_000_cbe862dc7e"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_003_conditional_conflict_q_003::extracted_001_fa6e1a0ab1""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a mango milkshake when relaxing at home or treating themselves on the weekend."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_003_conditional_conflict_q_003::extracted_000_cbe862dc7e"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_003_conditional_conflict_q_003::extracted_001_fa6e1a0ab1""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers a mango milkshake when relaxing at home or treating themselves on the weekend. The additional phrasing in the model answer does not contradict the gold answer and is supported by the memory context."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_004_conditional_conflict_q_004,qvf_win,False,True,incomplete_answer,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers fruit salad after workouts."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_004_conditional_conflict_q_004::extracted_000_e726412d1a"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_004_conditional_conflict_q_004::extracted_001_42ca23e15c"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_004_conditional_conflict_q_004::extracted_002_cebccfd105""
+  ],
+  ""abstained""","{
+  ""answer"": ""User prefers fruit salad after workouts as it's light and refreshing, helping them feel better."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_004_conditional_conflict_q_004::extracted_000_e726412d1a"",
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s036_q_004_conditional_conflict_q_004::extracted_001_42ca23e15c""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies that the user prefers fruit salad after workouts, which aligns with the gold answer. The additional details provided in the model answer do not contradict the gold answer and are supported by the memory context."
+auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s037_q_005_conditional_conflict_q_005,both_correct,True,True,,,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": ""User prefers late night solo sessions to practice reflexes."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s037_q_005_conditional_conflict_q_005::extracted_001_e60cc13474""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers late night solo sessions to practice reflexes."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_3c2e5fe5_a0fc_7e3c_b05c_7104ad748705_s037_q_005_conditional_conflict_q_005::extracted_001_e60cc13474""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the user's preference for late-night solo sessions of Street Fighter to practice reflexes, which matches the gold answer semantically. The answer is supported by the retrieved memory that explicitly states this preference."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_001_dynamic_conflict_q_001,both_wrong,False,False,incomplete_answer,incomplete_answer,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""Yes, the user is currently in a short-term Airbnb."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_001_dynamic_conflict_q_001::extracted_000_103f1d0844"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_001_dynamic_conflict_q_001::extracted_001_e03fb025e9""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user recently changed from a short-term Airbnb in Nordend to having arrived last week."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_001_dynamic_conflict_q_001::extracted_000_103f1d0844"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_001_dynamic_conflict_q_001::extracted_001_e03fb025e9"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_001_dynamic_conflict_q_001::e","The model answer indicates a change in residence but does not explicitly confirm that the user's residence changed recently as required by the gold answer. The gold answer states 'Yes — their residence changed recently,' which is not fully captured in the model's response."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_002_dynamic_conflict_q_002,both_correct,True,True,,,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": {
+    ""from"": ""Singapore"",
+    ""to"": ""Frankfurt, Germany""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_002_dynamic_conflict_q_002::extracted_000_c89b23616a"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_002_dynamic_conflict_q_002::extracted_001_dc8e118679""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""from"": ""Singapore"",
+    ""to"": ""Frankfurt, Germany""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_002_dynamic_conflict_q_002::extracted_000_c89b23616a"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s005_q_002_dynamic_conflict_q_002::extracted_001_dc8e118679""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the locations the user moved from and to, matching the gold answer semantically. The memory context supports both claims about the user's previous location in Singapore and their relocation to Frankfurt, Germany."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,social_status,"{
+  ""answer"": ""Yes, the user has been keeping a lower social profile lately."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001::extracted_003_8005b2111d"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001::extracted_000_bff4c5d043"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001::extracted_002_31d8085487""
+  ],
+  ""a","{
+  ""answer"": ""Yes, the user has been keeping a lower social profile lately."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001::extracted_003_8005b2111d"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001::extracted_000_bff4c5d043"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_001_dynamic_conflict_q_001::extracted_001_4dc0582694""
+  ],
+  ""a","The model answer correctly indicates that the user's social status has changed, stating they have been keeping a lower social profile lately, which aligns with the gold answer that mentions spending less time socializing. The answer is supported by the memory context."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_002_dynamic_conflict_q_002,both_wrong,False,False,incorrect_answer,semantic_mismatch,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User has been keeping a lower social profile lately due to increased work demands."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_002_dynamic_conflict_q_002::extracted_008_533bc3eea8"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_002_dynamic_conflict_q_002::extracted_009_92b8fccb99"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_002_dynamic_conflict_q_002::extracted_007_","{
+  ""answer"": ""The user's social status changed by keeping a lower profile and engaging in more solo activities."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_002_dynamic_conflict_q_002::extracted_008_533bc3eea8"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s006_q_002_dynamic_conflict_q_002::extracted_009_92b8fccb99""
+  ],
+  ""abstained"": false
+}","The model answer states that the user's social status changed by keeping a lower profile and engaging in more solo activities, which does not match the gold answer that specifies the change from meeting more people to spending less time socializing. The model answer does not accurately reflect the specific nature of the change described in the gold answer."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,children_status,"{
+  ""answer"": ""Yes, the user recently had a baby, Christopher Moore, born on May 1, 2022."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_001_dynamic_conflict_q_001::extracted_000_e53d03da75"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_001_dynamic_conflict_q_001::extracted_001_d805cbc9ef""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's children status changed from not having children before May 2022 to having a baby named Christopher Moore."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_001_dynamic_conflict_q_001::extracted_003_7d5fd5f30e"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_001_dynamic_conflict_q_001::extracted_000_e53d03da75"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_00","The model answer correctly indicates that the user's children status has changed, providing specific details about the transition from not having children to having a baby named Christopher Moore. This aligns with the gold answer of 'Yes.' and is supported by the memory context."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_002_dynamic_conflict_q_002,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,children_status,"{
+  ""answer"": ""The user's children status changed from not having children to having a child named Christopher Moore, born on May 1, 2022."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_002_dynamic_conflict_q_002::extracted_000_c570e8f35d"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_002_dynamic_conflict_q_002::extracted_001_c06ce683fd""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""previous"": ""does not have children"",
+    ""current"": ""has a child named Christopher Moore born on 2022-05-01""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_002_dynamic_conflict_q_002::extracted_000_c570e8f35d"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_002_dynamic_conflict_q_002::extracted_001_c06ce683fd"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s008_q_002_dyn","The model answer correctly identifies the change in the user's children status from 'does not have children' to 'has a child named Christopher Moore born on 2022-05-01', which matches the gold answer semantically. The details provided in the model answer are supported by the memory context."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_001_dynamic_conflict_q_001,qvf_win,False,True,inconsistent_with_gold_answer,,timeline_or_conflict_packet,,timeline_change,socializing,"{
+  ""answer"": ""User has been spending less time socializing lately."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_001_dynamic_conflict_q_001::extracted_000_931d84278a"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_001_dynamic_conflict_q_001::extracted_001_65462f077f""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's level of socializing has changed from less time socializing to a mood boost."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_001_dynamic_conflict_q_001::extracted_003_bc0ebfa6bc"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_001_dynamic_conflict_q_001::extracted_000_931d84278a"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_001_dynamic_conflict_q_001::extr","The model answer correctly indicates that the user's level of socializing has changed, affirming the gold answer 'Yes.' It provides additional context about the change, which is supported by the memory context, without contradicting the gold answer."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_002_dynamic_conflict_q_002,qvf_win,False,True,incorrect_answer,,timeline_or_conflict_packet,,timeline_change,social_status,"{
+  ""answer"": ""User has become more social due to remote work flexibility and increased invitations."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_002_dynamic_conflict_q_002::extracted_002_d2567e92be"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_002_dynamic_conflict_q_002::extracted_001_64b45f1684"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_002_dynamic_conflict_q_002::extracted_0","{
+  ""answer"": {
+    ""previous"": ""content most days but feels pressure from relatives or social expectations"",
+    ""current"": ""more social due to remote work flexibility, friends reaching out, and spontaneous invites""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_002_dynamic_conflict_q_002::extracted_002_d2567e92be"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s010_q_002_dynamic_conflict_q_002::extracted_000_bff4c5d0","The model answer correctly identifies the change in the user's social status, stating that they have become 'more social due to remote work flexibility, friends reaching out, and spontaneous invites,' which aligns with the gold answer indicating a shift from spending less time socializing to seeing people more often."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s023_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a high-energy Border Collie if they live in a house with a yard and can commit to regular outdoor activity."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s023_q_002_conditional_conflict_q_002::extracted_001_f546565984"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s023_q_002_conditional_conflict_q_002::extracted_000_55022c1b7b""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a high-energy Border Collie if yard and activity conditions are met."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s023_q_002_conditional_conflict_q_002::extracted_000_55022c1b7b"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s023_q_002_conditional_conflict_q_002::extracted_001_f546565984"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s023_q_002_conditional_conflict_q_002::ext","The model answer correctly captures the condition under which the user prefers a high-energy Border Collie, aligning with the gold answer that specifies the need for a house with a yard and regular outdoor activity."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s026_q_002_conditional_conflict_q_002,qvf_win,False,True,inaccurate_detail,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers calm piano solo music when doing deep work, especially in the afternoons."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s026_q_002_conditional_conflict_q_002::extracted_000_9993532691"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s026_q_002_conditional_conflict_q_002::extracted_001_1aaf4a3363""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers calm piano solo music when doing deep work."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s026_q_002_conditional_conflict_q_002::extracted_001_1aaf4a3363"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s026_q_002_conditional_conflict_q_002::extracted_000_9993532691"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s026_q_002_conditional_conflict_q_002::extracted_002_407bbf45aa""
+  ","The model answer correctly identifies the condition under which the user prefers calm piano solo music, stating 'User prefers calm piano solo music when doing deep work,' which aligns with the gold answer provided."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_001_conditional_conflict_q_001,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers green vegetable juice in the morning or after workouts."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_001_conditional_conflict_q_001::extracted_000_a0c0930b06"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_001_conditional_conflict_q_001::extracted_001_8a2b1a415d"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_001_conditional_conflict_q_001::extracted_003_c8","{
+  ""answer"": {
+    ""conditions"": [
+      ""in morning or after workouts"",
+      ""in nordend where they can have their morning green juice and work""
+    ]
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_001_conditional_conflict_q_001::extracted_000_a0c0930b06"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_001_conditional_conflict_q_001::extracted_003_c82fc76984""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the user's preference for green vegetable juice in the morning and after workouts, which aligns with the gold answer. Additionally, it provides context about the user's preference for having it in Nordend, which is supported by the memory context."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a breathable gym tank when going for a morning run or on a hot summer day."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_002_conditional_conflict_q_002::extracted_000_05274c09af""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a breathable gym tank when going for a morning run or on a hot summer day."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_002_conditional_conflict_q_002::extracted_000_05274c09af""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, providing the same information about the user's preference for a breathable gym tank during morning runs or on hot summer days."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers to watch 'Disaster Masterpiece' when they need a break and crave high-stakes excitement."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_003_conditional_conflict_q_003::extracted_000_4a3156d261"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_003_conditional_conflict_q_003::extracted_001_bed0afeb1c""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers 'Disaster Masterpiece' when they need a break and crave high-stakes excitement."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_003_conditional_conflict_q_003::extracted_000_4a3156d261"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s029_q_003_conditional_conflict_q_003::extracted_001_bed0afeb1c""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, conveying the same meaning regarding the user's preference for the movie 'Disaster Masterpiece' when they need a break and crave high-stakes excitement."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s034_q_005_conditional_conflict_q_005,both_wrong,False,False,incomplete_answer,incomplete_answer,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers satirical sitcoms when bored, especially on Saturday evenings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s034_q_005_conditional_conflict_q_005::extracted_000_b9f1d6a5e8""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers satirical sitcoms when bored."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s034_q_005_conditional_conflict_q_005::extracted_000_b9f1d6a5e8"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s034_q_005_conditional_conflict_q_005::extracted_003_e5c88bea48"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s034_q_005_conditional_conflict_q_005::extracted_002_b5d843646f""
+  ],
+  ""abst","The model answer states that the user prefers satirical sitcoms when bored, which is a partial match to the gold answer. However, it omits the context of wanting light entertainment, which is a significant detail in the gold answer. Therefore, it does not fully capture the user's preference as described in the gold answer."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s036_q_006_conditional_conflict_q_006,both_wrong,False,False,incomplete_answer,incomplete_answer,raw_recall_with_annotations,condition_scope_evidence_unsupported,historical_recall,,"{
+  ""answer"": ""The user prefers to watch NBA games in the evenings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s036_q_006_conditional_conflict_q_006::extracted_000_fac19de2ef"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s036_q_006_conditional_conflict_q_006::extracted_001_0566b0e56f""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers to watch NBA games in the evenings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s036_q_006_conditional_conflict_q_006::extracted_000_fac19de2ef"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s036_q_006_conditional_conflict_q_006::extracted_001_0566b0e56f""
+  ],
+  ""abstained"": false
+}","The model answer states that the user prefers to watch NBA games in the evenings, which is correct, but it omits the additional context provided in the gold answer about watching when following a favorite team. The gold answer is more specific and includes both conditions, while the model answer only captures one aspect."
+auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s039_q_003_conditional_conflict_q_003,qvf_win,False,True,incomplete_answer,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user would prefer a protective German Shepherd if they lived in a family home and wanted a watchdog."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s039_q_003_conditional_conflict_q_003::extracted_000_3823630f1b"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s039_q_003_conditional_conflict_q_003::extracted_001_f809441a66""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user would prefer a protective German Shepherd if they move into a family house and want a proper watchdog that follows commands and is trained to prevent chaos."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s039_q_003_conditional_conflict_q_003::extracted_000_3823630f1b"",
+    ""auto_memconflict_official_5a40c38b_61aa_afc0_1837_4367df2efbc1_s039_q_003_conditional_conflict_q_003::extracted_001_f809441a66""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the condition under which the user would prefer a protective German Shepherd, aligning with the gold answer. It captures the essence of the user's preference for a watchdog in a family home and includes relevant details about training and command-following, which are supported by the memory context."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,,timeline_change,,"{
+  ""answer"": ""There is no recent information indicating a change in marital status."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001::extracted_001_f43a084861"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001::extracted_000_7e1548be37"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001::extracted_003_bf2c70953d""
+ ","{
+  ""answer"": ""There is no recent information indicating a change in marital status."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001::extracted_001_f43a084861"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001::extracted_000_7e1548be37"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_001_dynamic_conflict_q_001::extracted_003_bf2c70953d""
+ ","The model answer states that there is no recent information indicating a change in marital status, which contradicts the gold answer 'Yes.' The model answer does not align with the gold answer, and it does not provide any evidence from the memory context to support its claim about the marital status."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_002_dynamic_conflict_q_002,both_wrong,False,False,semantic_mismatch,missing_change_pair_evidence,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User got married to Taylor Morgan."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_002_dynamic_conflict_q_002::extracted_000_c69bac7433"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_002_dynamic_conflict_q_002::extracted_001_9d311897cd""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User got married to Taylor Morgan on February 24, 2022."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_002_dynamic_conflict_q_002::extracted_000_c69bac7433"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_002_dynamic_conflict_q_002::extracted_001_9d311897cd"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_002_dynamic_conflict_q_002::extracted_002_93eeb013f5""
+  ],
+  ""abstain","The model answer states that the user got married to Taylor Morgan, but it does not explicitly indicate the change from dating to being married, which is required to fully answer the question about how their marital status changed. The gold answer specifies the transition from dating to married, which the model answer fails to capture."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_003_dynamic_conflict_q_003,both_wrong,False,False,incomplete_answer,missing_change_pair_evidence,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User transitioned to being an entrepreneur at a startup called New Energy Tech after getting married."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_003_dynamic_conflict_q_003::extracted_006_f7ba179c51"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_003_dynamic_conflict_q_003::extracted_007_4618b5885b""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User transitioned to being an entrepreneur at a startup called New Energy Tech."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_003_dynamic_conflict_q_003::extracted_006_f7ba179c51""
+  ],
+  ""abstained"": false
+}","The model answer does not provide a complete account of the career situation change as specified in the gold answer. It fails to mention the transition from being employed as a Senior in the Retail industry to becoming an entrepreneur at New Energy Tech in the Education industry, and it does not include the income range details. The model answer lacks the necessary context to fully address the question about how their career situation changed."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_004_dynamic_conflict_q_004,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""The company is now focused on the Education industry as a startup."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_004_dynamic_conflict_q_004::extracted_000_460a5b7682"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_004_dynamic_conflict_q_004::extracted_001_d694cae099"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_004_dynamic_conflict_q_004::extracted_002_9b8a928cdc""
+  ],","{
+  ""answer"": ""The company is now called New Energy Tech and operates in the Education industry."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_004_dynamic_conflict_q_004::extracted_000_460a5b7682"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_004_dynamic_conflict_q_004::extracted_001_d694cae099""
+  ],
+  ""abstained"": false
+}","The model answer states that the company operates in the Education industry, which contradicts the gold answer that specifies the company changed from Small Manufacturing to New Energy Tech. The model answer does not accurately reflect the change described in the gold answer."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_005_dynamic_conflict_q_005,qvf_win,False,True,incorrect_answer,,timeline_or_conflict_packet,,timeline_change,job_title,"{
+  ""answer"": ""Emily's job title changed from Junior to Senior."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_005_dynamic_conflict_q_005::extracted_000_93afe8a86a"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_005_dynamic_conflict_q_005::extracted_001_7211821db1""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""previous_title"": ""senior"",
+    ""current_title"": ""Junior""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_005_dynamic_conflict_q_005::extracted_000_93afe8a86a"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_005_dynamic_conflict_q_005::extracted_001_7211821db1"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_005_dynamic_conflict_q_005::extracted_000_93afe8a86a""
+  ],
+","The model answer correctly identifies the change in job title from 'senior' to 'Junior', which matches the gold answer. The details provided in the model answer are supported by the memory context, confirming the transition and the specific titles involved."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006,both_wrong,False,False,incorrect_answer,incorrect_answer,timeline_or_conflict_packet,,timeline_change,,"{
+  ""answer"": ""The user transitioned from manufacturing to a startup in the education industry."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006::extracted_006_8e7243f0d3"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006::extracted_007_c933f5c6f9"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006::extracted_002_27","{
+  ""answer"": ""The industry changed from Manufacturing to Education."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006::extracted_002_2714ee5362"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006::extracted_007_c933f5c6f9"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s003_q_006_dynamic_conflict_q_006::extracted_006_8e7243f0d3""
+  ],
+  ""abstained","The model answer states that the industry changed from Manufacturing to Education, while the gold answer specifies that they switched from Retail to Education. The model answer incorrectly identifies the previous industry as Manufacturing instead of Retail, which is a significant error."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_001_dynamic_conflict_q_001,both_correct,True,True,,,raw_recall_with_annotations,,timeline_change,,"{
+  ""answer"": ""Yes, the user recently transitioned to being an entrepreneur."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_001_dynamic_conflict_q_001::extracted_000_bfd077ec3b"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_001_dynamic_conflict_q_001::extracted_005_31ce769c73""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user recently transitioned to being an entrepreneur."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_001_dynamic_conflict_q_001::extracted_000_bfd077ec3b"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_001_dynamic_conflict_q_001::extracted_005_31ce769c73""
+  ],
+  ""abstained"": false
+}","The model answer correctly states that the user recently transitioned to being an entrepreneur, which aligns with the gold answer 'Yes.' The additional details provided in the model answer are supported by the retrieved memories and do not contradict the gold answer."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User transitioned to being an entrepreneur at a startup called New Energy Tech."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002::extracted_000_23dd3a1114"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002::extracted_001_af41a4d593"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002::extracted_005_000","{
+  ""answer"": ""User transitioned to being an entrepreneur at a startup called New Energy Tech."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002::extracted_000_23dd3a1114"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002::extracted_001_af41a4d593"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s004_q_002_dynamic_conflict_q_002::extracted_002_34f","The model answer states that the user transitioned to being an entrepreneur at a startup called New Energy Tech, which does not match the gold answer that specifies a change in work status from 'Busy' to 'Free'. The model answer does not provide the specific change in work status as required by the question."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s012_q_006_conditional_conflict_q_006,both_correct,True,True,,,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": ""User prefers story-driven games during quiet evenings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s012_q_006_conditional_conflict_q_006::extracted_000_f6ceaf6e1d""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers story-driven games during quiet evenings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s012_q_006_conditional_conflict_q_006::extracted_000_f6ceaf6e1d""
+  ],
+  ""abstained"": false
+}",The model answer correctly captures the essence of the gold answer by stating that the user prefers story-driven games during quiet evenings. The additional detail about unwinding together does not contradict the gold answer and is supported by the memory context.
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s015_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers reading a poetry collection for relaxation."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s015_q_002_conditional_conflict_q_002::extracted_000_4ba2061f82""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers the reading item 'Poetry Collection' when they are seeking relaxation."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s015_q_002_conditional_conflict_q_002::extracted_000_4ba2061f82"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s015_q_002_conditional_conflict_q_002::extracted_001_74353f794e"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s015_q_002_conditional_conflict_q_00","The model answer correctly states that the user prefers the reading item 'Poetry Collection' when they are seeking relaxation, which matches the gold answer semantically."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_003_conditional_conflict_q_003,qvf_win,False,True,incomplete answer,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a feel-good comedy after classes to relieve stress and on Sundays as part of their routine."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_003_conditional_conflict_q_003::extracted_000_bfeda8150c"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_003_conditional_conflict_q_003::extracted_001_72efd8d5cb""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a feel-good comedy after classes."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_003_conditional_conflict_q_003::extracted_000_bfeda8150c"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_003_conditional_conflict_q_003::extracted_001_72efd8d5cb""
+  ],
+  ""abstained"": false
+}","The model answer 'User prefers a feel-good comedy after classes.' semantically matches the gold answer 'They prefer feel-good comedies on a relaxing evening after classes.' The model answer captures the essential condition of preferring feel-good comedies after classes, which aligns with the provided context."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_004_conditional_conflict_q_004,both_correct,True,True,,,raw_recall_with_annotations,condition_scope_evidence_unsupported,historical_recall,,"{
+  ""answer"": ""User prefers a playful Siamese cat if they have a flexible schedule and pet-friendly housing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_004_conditional_conflict_q_004::extracted_000_9b50e746bc"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_004_conditional_conflict_q_004::extracted_001_24d325d77a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a playful Siamese cat if they have a flexible schedule and pet-friendly housing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_004_conditional_conflict_q_004::extracted_000_9b50e746bc"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s018_q_004_conditional_conflict_q_004::extracted_001_24d325d77a""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers a playful Siamese cat when they have a flexible schedule and pet-friendly housing. This is directly supported by the retrieved memories in the memory_context."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s022_q_005_conditional_conflict_q_005,both_correct,True,True,,,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": ""User prefers Solitaire or card games during very short breaks to reset between tasks."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s022_q_005_conditional_conflict_q_005::extracted_000_988ff97434""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers Solitaire or card games during very short breaks to reset between tasks."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s022_q_005_conditional_conflict_q_005::extracted_000_988ff97434""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, as both indicate that the user prefers Solitaire or card games during short breaks between tasks. The additional detail about 'very short breaks to reset' is consistent with the context provided in the memory."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers an elegant evening dress for special gallery events and formal presentations."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_003_conditional_conflict_q_003::extracted_000_ecec6bb124"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_003_conditional_conflict_q_003::extracted_001_c0593b312f""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""conditions"": [
+      ""for a formal presentation"",
+      ""for special gallery events""
+    ]
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_003_conditional_conflict_q_003::extracted_001_c0593b312f"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_003_conditional_conflict_q_003::extracted_000_ecec6bb124""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the conditions under which the user prefers an elegant evening dress, stating both 'for a formal presentation' and 'for special gallery events', which aligns with the gold answer provided."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_004_conditional_conflict_q_004,both_wrong,False,False,incorrect_answer,excessive_detail,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers cold noodles after the first week to celebrate, reminiscent of their Lee University study days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_004_conditional_conflict_q_004::extracted_000_d52d248635"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_004_conditional_conflict_q_004::extracted_001_cab16c8b0f""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers cold noodles during late night study sessions at Lee University."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_004_conditional_conflict_q_004::extracted_000_d52d248635"",
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s031_q_004_conditional_conflict_q_004::extracted_001_cab16c8b0f""
+  ],
+  ""abstained"": false
+}","The model answer includes additional information ('at Lee University') that is not present in the gold answer. While the core preference for cold noodles during late-night study sessions is correct, the extra detail about the location is not necessary and deviates from the gold answer."
+auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s034_q_003_conditional_conflict_q_003,both_correct,True,True,,,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": ""The user prefers Hollywood Blockbuster movies for movie night with friends."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s034_q_003_conditional_conflict_q_003::extracted_000_f9307ac56a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers Hollywood Blockbuster movies for movie night with friends."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_75b15745_6d32_726b_be79_d765808bbfe7_s034_q_003_conditional_conflict_q_003::extracted_000_f9307ac56a""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers Hollywood Blockbuster movies for movie nights with friends, which is directly supported by the retrieved memory context."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,marital_status,"{
+  ""answer"": ""The user's marital status has changed as they are now dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_001_dynamic_conflict_q_001::extracted_000_1253c96aeb"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_001_dynamic_conflict_q_001::extracted_002_43d048f2ab""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's marital status changed to dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_001_dynamic_conflict_q_001::extracted_000_1253c96aeb"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_001_dynamic_conflict_q_001::extracted_001_820724c6c4"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_001_dynamic_conflict_q_001::extracted_002_43d048f2ab""
+  ]","The model answer correctly indicates that the user's marital status changed recently, providing additional context about the change (dating Michelle Williams), which is supported by the memory context. The gold answer 'Yes.' is semantically matched by the model answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_002_dynamic_conflict_q_002,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,marital_status,"{
+  ""answer"": ""User changed from being single to dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_002_dynamic_conflict_q_002::extracted_000_1253c96aeb"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_002_dynamic_conflict_q_002::extracted_002_0fae0dbeba""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User's marital status changed from single to dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_002_dynamic_conflict_q_002::extracted_000_1253c96aeb"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s003_q_002_dynamic_conflict_q_002::extracted_002_0fae0dbeba""
+  ],
+  ""abstained"": false
+}","The model answer correctly states that the user's marital status changed from single to dating Michelle Williams, which matches the gold answer semantically. The answer is supported by the memory context, and it does not abstain from providing a specific answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_001_dynamic_conflict_q_001,qvf_win,False,True,incorrect_answer,,timeline_or_conflict_packet,,timeline_change,social_status,"{
+  ""answer"": ""User's social status remains the same as they are still dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_001_dynamic_conflict_q_001::extracted_000_9deb271f99""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's social status has changed to dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_001_dynamic_conflict_q_001::extracted_000_9deb271f99"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_001_dynamic_conflict_q_001::extracted_001_43c922e1e8"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_001_dynamic_conflict_q_001::extracted_003_49ebbf3339""
+","The model answer correctly indicates that the user's social status has changed to dating Michelle Williams, which aligns with the gold answer 'Yes.' The additional details provided in the model answer are supported by the memory context and do not contradict the gold answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_002_dynamic_conflict_q_002,both_wrong,False,False,unsupported_answer,semantic_mismatch,timeline_or_conflict_packet,,timeline_change,social_status,"{
+  ""answer"": ""User's social status has improved as they are now dating Michelle Williams."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_002_dynamic_conflict_q_002::extracted_000_de8ba14af8""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""previous_value"": ""spending less time socializing"",
+    ""current_value"": ""feeling drained and more isolated""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_002_dynamic_conflict_q_002::extracted_001_f868d7f7fa"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_002_dynamic_conflict_q_002::extracted_003_b15a4ce699"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s004_q_002_dyna","The model answer indicates a change to 'feeling drained and more isolated', which does not match the gold answer stating the user changed from 'spending less time socializing' to 'staying in contact'. The model's interpretation of the user's social status change is incorrect."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_conflict_q_001,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""The user is concerned about maintaining their career trajectory while traveling frequently."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_conflict_q_001::extracted_001_3d0757ddc2"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_conflict_q_001::extracted_000_7b3ae63f2e"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_conflict_q_001::extra","{
+  ""answer"": ""The user has been reaching out more to family and colleagues, indicating a shift in their social connections."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_conflict_q_001::extracted_000_7b3ae63f2e"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_conflict_q_001::extracted_002_f683663ca6"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_001_dynamic_con","The model answer does not address the user's career situation change as specified in the question. Instead, it focuses on the user's social connections, which is irrelevant to the career change context provided in the gold answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_002_dynamic_conflict_q_002,both_wrong,False,False,incorrect_answer,incorrect_answer,timeline_or_conflict_packet,,timeline_change,company,"{
+  ""answer"": ""User worked for GreenLeaf before and after the change."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_002_dynamic_conflict_q_002::extracted_000_a8e0787dee""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""previous_company"": ""GreenLeaf"",
+    ""current_company"": ""£75,000/year""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_002_dynamic_conflict_q_002::extracted_000_a8e0787dee"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_002_dynamic_conflict_q_002::extracted_001_8aad730f1a"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_002_dynamic_conflict_q_002::extracted_003_74a7","The model answer states that the user worked for 'GreenLeaf' and is currently associated with '£75,000/year', which does not match the gold answer indicating a switch from 'Partnership Enterprise' to 'New Energy Tech'. The model answer does not semantically match the gold answer, and the current company value is incorrectly presented as a salary rather than a company name."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003,both_wrong,False,False,incorrect_answer,incorrect_answer,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": {
+    ""before"": ""not specified"",
+    ""after"": ""Junior at New Energy Tech""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003::extracted_000_e997d1827a"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003::extracted_001_46fb265f84"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003::extracted_002_492e48c","{
+  ""answer"": {
+    ""before"": ""not specified"",
+    ""after"": ""Junior at New Energy Tech""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003::extracted_000_e997d1827a"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003::extracted_001_46fb265f84"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_003_dynamic_conflict_q_003::extracted_002_492e48c","The model answer states that the job title before the change is 'not specified', while the gold answer specifies that the title changed from 'Director' to 'Junior'. This discrepancy indicates that the model answer does not semantically match the gold answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_004_dynamic_conflict_q_004,both_wrong,False,False,incorrect_answer,semantic_mismatch,timeline_or_conflict_packet,,historical_recall,,"{
+  ""answer"": ""User moved from an unknown industry to the government sector as an entrepreneur."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_004_dynamic_conflict_q_004::extracted_000_b574b58661"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_004_dynamic_conflict_q_004::extracted_001_a043159dca""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": {
+    ""from"": ""previous role"",
+    ""to"": ""entrepreneur at a startup called New Energy Tech in the government sector""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_004_dynamic_conflict_q_004::extracted_000_b574b58661"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s006_q_004_dynamic_conflict_q_004::extracted_001_a043159dca""
+  ],
+  ""abstained"": false
+}","The model answer indicates a move from a 'previous role' to 'entrepreneur at a startup called New Energy Tech in the government sector', which does not explicitly state the previous industry as 'Healthcare'. The gold answer specifies moving from 'Healthcare' to 'Government', which is not accurately reflected in the model answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s008_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,marital_status,"{
+  ""answer"": ""Yes, the user's marital status changed recently."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s008_q_001_dynamic_conflict_q_001::extracted_000_ae1d9f24eb"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s008_q_001_dynamic_conflict_q_001::extracted_002_23953f07cc""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's marital status changed recently to recently married."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s008_q_001_dynamic_conflict_q_001::extracted_002_23953f07cc"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s008_q_001_dynamic_conflict_q_001::extracted_003_07d8e35f95"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s008_q_001_dynamic_conflict_q_001::extracted_000_ae1d9f24eb""
+  ","The model answer correctly indicates that the user's marital status changed recently, which aligns with the gold answer 'Yes.' The additional details provided in the model answer are supported by the memory context and do not contradict the gold answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s011_q_003_conditional_conflict_q_003,both_correct,True,True,,,raw_recall_with_annotations,condition_scope_evidence_unsupported,historical_recall,,"{
+  ""answer"": ""User prefers reading academic journals during long commutes or on weekends."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s011_q_003_conditional_conflict_q_003::extracted_000_3b683c64ad"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s011_q_003_conditional_conflict_q_003::extracted_001_4200fd6680""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers reading academic journals during long commutes or on weekends."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s011_q_003_conditional_conflict_q_003::extracted_000_3b683c64ad"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s011_q_003_conditional_conflict_q_003::extracted_001_4200fd6680""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies that the user prefers reading academic journals during long commutes or on weekends, which matches the gold answer semantically. The information is also supported by the retrieved memories in the memory_context."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002,both_wrong,False,False,semantic mismatch,semantic_mismatch,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers vegetable soup when on the road late."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002::extracted_000_79728f5ad6"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002::extracted_001_a0f934fb17"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002::extracted_002_c65e0b7325""
+  ],
+  ""","{
+  ""answer"": ""The user prefers vegetable soup after long drives and when on the road late."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002::extracted_000_79728f5ad6"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002::extracted_001_a0f934fb17"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_002_conditional_conflict_q_002::extracte","The model answer states that the user prefers vegetable soup 'after long drives and when on the road late,' which does not match the gold answer that specifies the user prefers vegetable soup 'as a light dinner after a long day on the road.' The model's phrasing implies a broader context than the specific preference indicated in the gold answer."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers electronic dance music during workouts or for energizing a morning commute."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_003_conditional_conflict_q_003::extracted_000_e0d15bfe00""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers electronic dance music during workouts or to energize a morning commute."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_003_conditional_conflict_q_003::extracted_000_e0d15bfe00"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s027_q_003_conditional_conflict_q_003::extracted_001_f4b846abbc""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the user's preference for electronic dance music during workouts or to energize a morning commute, which matches the gold answer semantically."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers an evening walk after work to decompress and plan the next day."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003::extracted_000_f72cf5ae40"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003::extracted_001_4bc76fe018"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003::extr","{
+  ""answer"": ""The user prefers an \""Evening Walk\"" after work to decompress and plan the next day."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003::extracted_000_f72cf5ae40"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003::extracted_001_4bc76fe018"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s035_q_003_conditional_conflict_q_003::","The model answer correctly states that the user prefers an 'Evening Walk' after work to decompress and plan the next day, which matches the gold answer semantically."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s037_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers acoustic folk music during long drives and slow weekend mornings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s037_q_003_conditional_conflict_q_003::extracted_000_c0b451ab99""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers Acoustic Folk music during long drives and slow weekend mornings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s037_q_003_conditional_conflict_q_003::extracted_000_c0b451ab99"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s037_q_003_conditional_conflict_q_003::extracted_002_5092ad70ae"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s037_q_003_conditional_conflict_q_003::extrac","The model answer correctly identifies the conditions under which the user prefers Acoustic Folk music, matching the gold answer's meaning and context."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers feel-good comedies after work to unwind or on weekend evenings."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_003_conditional_conflict_q_003::extracted_000_6ae3c14b1e"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_003_conditional_conflict_q_003::extracted_004_eb65615eb3"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_003_conditional_conflict_q_003::extracte","{
+  ""answer"": {
+    ""conditions"": [
+      ""after work"",
+      ""on weekend evenings""
+    ],
+    ""preference"": ""feel-good comedy""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_003_conditional_conflict_q_003::extracted_000_6ae3c14b1e"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_003_conditional_conflict_q_003::extracted_004_eb65615eb3"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_0","The model answer correctly identifies the user's preference for 'Feel-good Comedy' as being after work and on weekend evenings, which matches the gold answer provided."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004,both_correct,True,True,,,raw_recall_with_annotations,condition_scope_evidence_unsupported,historical_recall,,"{
+  ""answer"": ""User prefers a Miniature Poodle if it is hypoallergenic and fits a busy lifestyle."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004::extracted_000_e58025994b"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004::extracted_002_e456f7528d"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004::ex","{
+  ""answer"": ""User prefers a Miniature Poodle if it is hypoallergenic and fits a busy lifestyle."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004::extracted_000_e58025994b"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004::extracted_002_e456f7528d"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s038_q_004_conditional_conflict_q_004::ex","The model answer correctly captures the essence of the gold answer by stating that the user prefers a Miniature Poodle if it is hypoallergenic and fits a busy lifestyle. This aligns with the information provided in the retrieved memories, which support the conditions under which the user would choose a Miniature Poodle as a pet."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s045_q_002_conditional_conflict_q_002,both_correct,True,True,,,raw_recall_with_annotations,condition_scope_evidence_unsupported,historical_recall,,"{
+  ""answer"": ""The user prefers an Active Golden Retriever if they can commit to regular outdoor exercise and weekend activities."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s045_q_002_conditional_conflict_q_002::extracted_000_7489719f15"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s045_q_002_conditional_conflict_q_002::extracted_001_ed7d39ff0a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers an Active Golden Retriever if they can commit to regular outdoor exercise and weekend activities."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s045_q_002_conditional_conflict_q_002::extracted_000_7489719f15"",
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s045_q_002_conditional_conflict_q_002::extracted_001_ed7d39ff0a""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers an Active Golden Retriever if they can commit to regular outdoor exercise and weekend activities. This is directly supported by the retrieved memories in the memory_context."
+auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s049_q_008_conditional_conflict_q_008,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers Action/Superhero movies for high-energy entertainment or on long flights."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s049_q_008_conditional_conflict_q_008::extracted_000_b106583f12""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers Action/Superhero movies for high-energy entertainment or on long flights."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_9841f645_49ad_3de3_9010_cef938781102_s049_q_008_conditional_conflict_q_008::extracted_000_b106583f12""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user prefers Action/Superhero movies for high-energy entertainment or on long flights. The answer is supported by the memory context."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_001_dynamic_conflict_q_001,both_correct,True,True,,,timeline_or_conflict_packet,missing_current_evidence,timeline_change,social_status,"{
+  ""answer"": ""Yes, the user's social status has changed as they are socializing less after relocating."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_001_dynamic_conflict_q_001::extracted_000_919f4952bf"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_001_dynamic_conflict_q_001::extracted_001_2145419e2b""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's social status has changed from spending a lot less time socializing to occasional meetups, shared activities, or people who enjoy the same hobbies."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_001_dynamic_conflict_q_001::extracted_004_e0a9a38aca"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_001_dynamic_conflict_q_001::extracted_001_2145419e2b"",
+    ""auto_memconflict_official_c2efa","The model answer correctly indicates that the user's social status has changed, providing additional context that aligns with the gold answer 'Yes.' The extra details about the nature of the change are supported by the memory context and do not contradict the gold answer."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynamic_conflict_q_002,both_wrong,False,False,semantic_mismatch,semantic_mismatch,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""The user's social status changed by spending a lot less time socializing after relocating to Daejeon, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynamic_conflict_q_002::extracted_000_919f4952bf"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynamic_conflict_q_002::extracted_002_f5aa808a57"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynami","{
+  ""answer"": ""The user's social status changed by spending a lot less time socializing after relocating to Daejeon, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynamic_conflict_q_002::extracted_002_f5aa808a57"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynamic_conflict_q_002::extracted_000_919f4952bf"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_002_dynami","The model answer states that the user's social status changed by spending less time socializing after relocating, which does not match the gold answer that indicates a change from keeping to oneself to spending less time socializing. The model answer implies a more active change due to relocation, while the gold answer suggests a more passive state of being. Therefore, the answers do not semantically match."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_003_dynamic_conflict_q_003,both_correct,True,True,,,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""Yes, the user recently relocated to Daejeon, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_003_dynamic_conflict_q_003::extracted_000_192478d793"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_003_dynamic_conflict_q_003::extracted_001_7e05a6657a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user recently relocated to Daejeon, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_003_dynamic_conflict_q_003::extracted_000_192478d793"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_003_dynamic_conflict_q_003::extracted_001_7e05a6657a"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_003_dynamic_conflict_q_003::extracted_001_7e05a6657a""
+  ],
+  ""absta","The model answer correctly states that the user's residence has changed recently, providing additional context that is supported by the memory context. The gold answer 'Yes.' is semantically matched by the model's response."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004,qvf_win,False,True,incomplete_answer,,timeline_or_conflict_packet,,timeline_change,residence,"{
+  ""answer"": ""The user recently relocated to Daejeon, South Korea."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004::extracted_000_192478d793"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004::extracted_001_2145419e2b"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004::extracted_002_8d11d65ec2""
+  ],
+  ""abstained""","{
+  ""answer"": {
+    ""previous"": ""Los Angeles"",
+    ""current"": ""Daejeon, South Korea""
+  },
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004::extracted_000_192478d793"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004::extracted_004_4f2f03856c"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s005_q_004_dynamic_conflict_q_004::extracted_001_2145419e2b","The model answer correctly identifies the user's previous residence as Los Angeles and the current residence as Daejeon, South Korea, which matches the gold answer. The answer is supported by the memory context, confirming the transition from Los Angeles to Daejeon."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_001_dynamic_conflict_q_001,qvf_win,False,True,inaccurate_answer,,timeline_or_conflict_packet,,timeline_change,social_status,"{
+  ""answer"": ""Yes, the user's social status has changed as they are now spending less time socializing after relocating."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_001_dynamic_conflict_q_001::extracted_000_2d8cb44722"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_001_dynamic_conflict_q_001::extracted_001_5190fd249e""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""Yes, the user's social status changed from spending a lot less time socializing to meeting more people than they used to."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_001_dynamic_conflict_q_001::extracted_003_51e5826362"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_001_dynamic_conflict_q_001::extracted_001_5190fd249e"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_001","The model answer correctly indicates that the user's social status has changed, providing specific details that align with the gold answer 'Yes.' The additional context about the user's previous and current social activities supports the answer without contradicting it."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_conflict_q_002,both_wrong,False,False,inaccurate_answer,semantic mismatch,timeline_or_conflict_packet,,timeline_change,social_energy,"{
+  ""answer"": ""The user's social status changed from being isolated to meeting more people and feeling excited yet overwhelmed."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_conflict_q_002::extracted_000_919f4952bf"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_conflict_q_002::extracted_001_b4b89a3ade"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_","{
+  ""answer"": ""The user's social status changed from a bit overwhelmed to exciting."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_conflict_q_002::extracted_004_13201a8cf5"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_conflict_q_002::extracted_003_5ff17ea8d8"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s007_q_002_dynamic_conflict_q_002::extracted_001_b4b89a3ade""
+  ","The model answer states that the user's social status changed from 'a bit overwhelmed' to 'exciting', which does not match the gold answer that specifies the change as 'spending less time socializing to meeting more people'. The model answer does not capture the specific transition described in the gold answer."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_conflict_q_001,both_wrong,False,False,inaccurate_answer,unsupported_answer,timeline_or_conflict_packet,missing_current_evidence,timeline_change,social_status,"{
+  ""answer"": ""The user's social status has changed as they are now more withdrawn and also meeting more people than before."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_conflict_q_001::extracted_000_1c79de3b55"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_conflict_q_001::extracted_001_3e53873d54"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_con","{
+  ""answer"": ""Yes, the user's social status has changed to long-distance due to their partner living in San Diego."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_conflict_q_001::extracted_002_cbd010f984"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_conflict_q_001::extracted_001_3e53873d54"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_001_dynamic_conflict_q_0","The model answer provides additional context about the user's social status changing to long-distance due to their partner living in San Diego, which is not explicitly supported by the memory context. The gold answer is simply 'Yes,' which the model does not directly affirm without additional unsupported details."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_002_dynamic_conflict_q_002,both_wrong,False,False,semantic mismatch,incorrect_answer,raw_recall_with_annotations,missing_change_pair_evidence,timeline_change,,"{
+  ""answer"": ""User's social status has changed by meeting more people than before."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_002_dynamic_conflict_q_002::extracted_004_e9ff6f32ce"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_002_dynamic_conflict_q_002::extracted_005_e0483c0920""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user's social status changed by attending more local meetups and networking events, meeting more people than before, but also skipping readings and workshops."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_002_dynamic_conflict_q_002::extracted_005_e0483c0920"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s009_q_002_dynamic_conflict_q_002::extracted_004_e9ff6f32ce"",
+    ""auto_memconflict_official_c2efae","The model answer does not match the gold answer, which states that the user's social status changed from 'Meeting_More_People' to 'Keeping_to_Oneself.' The model answer describes the user attending more events and meeting more people, which contradicts the gold answer's implication of a shift towards isolation."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s012_q_001_conditional_conflict_q_001,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers hot cocoa for comfort while writing late at night."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s012_q_001_conditional_conflict_q_001::extracted_000_1c454eea3a""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers hot cocoa when you need comfort, especially while writing late at night."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s012_q_001_conditional_conflict_q_001::extracted_000_1c454eea3a""
+  ],
+  ""abstained"": false
+}","The model answer correctly identifies the conditions under which the user prefers hot cocoa, stating 'when you need comfort' and 'while writing late at night', which aligns with the gold answer. The additional phrasing does not contradict the gold answer and is supported by the memory context."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers watching esports streams as background when decompressing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_003_conditional_conflict_q_003::extracted_000_15bb32d170""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user prefers esports streams as background when I'm decompressing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_003_conditional_conflict_q_003::extracted_000_15bb32d170"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_003_conditional_conflict_q_003::extracted_001_ec9a3c3905"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_003_conditional_conflict_q_003::extracted_002_","The model answer semantically matches the gold answer, indicating that the user prefers watching esports as a background activity when decompressing, which aligns with the provided context."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_004_conditional_conflict_q_004,both_correct,True,True,,,raw_recall_with_annotations,,historical_recall,,"{
+  ""answer"": ""The user chooses a garden salad for a light lunch during focused writing days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_004_conditional_conflict_q_004::extracted_000_b7531e077b""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""The user chooses a garden salad for a light lunch during focused writing days."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s017_q_004_conditional_conflict_q_004::extracted_000_b7531e077b""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, stating that the user chooses a garden salad for a light lunch during focused writing days, which is consistent with the information provided in the memory context."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s023_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a Quiet Hamster as a pet for their small home because they want something low-maintenance."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s023_q_003_conditional_conflict_q_003::extracted_000_348ed0b652"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s023_q_003_conditional_conflict_q_003::extracted_002_fd3ecda851"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s023_q_003_condition","{
+  ""answer"": ""The user prefers a Quiet Hamster as a pet if their home is small and they want something low-maintenance."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s023_q_003_conditional_conflict_q_003::extracted_000_348ed0b652"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s023_q_003_conditional_conflict_q_003::extracted_001_6df55e7a56""
+  ],
+  ""abstained"": false
+}",The model answer correctly captures the essence of the gold answer by stating that the user prefers a Quiet Hamster as a pet when their home is small and they want something low-maintenance. This aligns with the provided context and does not contradict any details from the memory context.
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s030_q_002_conditional_conflict_q_002,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers hot green tea in early mornings when preparing for their virtual book club."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s030_q_002_conditional_conflict_q_002::extracted_000_648db38fb6""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers hot green tea in early mornings when they want to write or prepare for their virtual book club."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s030_q_002_conditional_conflict_q_002::extracted_000_648db38fb6""
+  ],
+  ""abstained"": false
+}","The model answer semantically matches the gold answer, providing the same information about the user's preference for hot green tea in the early mornings for focused writing or preparing for a virtual book club."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s033_q_006_conditional_conflict_q_006,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers a Cuddly Ragdoll Cat for calm companionship while reading and writing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s033_q_006_conditional_conflict_q_006::extracted_000_c4c8e9c724"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s033_q_006_conditional_conflict_q_006::extracted_001_749f4cacc0""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers a \""Cuddly Ragdoll Cat\"" during reading and writing, as a calm and indoor companion."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s033_q_006_conditional_conflict_q_006::extracted_000_c4c8e9c724"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s033_q_006_conditional_conflict_q_006::extracted_001_749f4cacc0"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s033_q_006_conditional_con","The model answer correctly identifies the condition under which the user prefers a 'Cuddly Ragdoll Cat' as a pet, matching the gold answer's meaning and context. It specifies that the user prefers the cat during reading and writing, as a calm and indoor companion, which aligns with the provided gold answer."
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s040_q_005_conditional_conflict_q_005,qvf_win,False,True,semantic mismatch,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""User prefers Tai Chi after 90 minutes of writing."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s040_q_005_conditional_conflict_q_005::extracted_000_d5697aa9d8"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s040_q_005_conditional_conflict_q_005::extracted_001_3e92b735e3""
+  ],
+  ""abstained"": false
+}","{
+  ""answer"": ""User prefers Tai Chi after long writing periods for gentle movement."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s040_q_005_conditional_conflict_q_005::extracted_000_d5697aa9d8"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s040_q_005_conditional_conflict_q_005::extracted_001_3e92b735e3""
+  ],
+  ""abstained"": false
+}",The model answer correctly captures the essence of the gold answer by stating that the user prefers Tai Chi after long writing periods for gentle movement. It aligns with the provided context and does not contradict any details.
+auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003,both_correct,True,True,,,condition_scope_packet,,historical_recall,,"{
+  ""answer"": ""The user prefers a Sci-Fi epic movie when stressed for escapism."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003::extracted_000_04078ba396"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003::extracted_001_6499eb8fd1"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003::extracted_003_634a51","{
+  ""answer"": ""The user prefers a Sci-Fi epic movie when stressed."",
+  ""used_memory_ids"": [
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003::extracted_001_6499eb8fd1"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003::extracted_000_04078ba396"",
+    ""auto_memconflict_official_c2efaebe_0dd4_c0dc_23a5_7d713b14c99f_s044_q_003_conditional_conflict_q_003::extracted_001_6499eb8fd1""
+  ],
+  ","The model answer correctly captures the essence of the gold answer by stating that the user prefers a Sci-Fi epic movie when stressed, which aligns with the provided context about escapism during stressful periods."

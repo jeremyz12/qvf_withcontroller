@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qvf-validity-admission"
+version = "0.2.0"
+description = "QVF query-conditioned memory validity controller sidecar."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE.md" }
+authors = [
+  { name = "QVF project contributors" }
+]
+keywords = [
+  "memory",
+  "retrieval",
+  "validity-admission",
+  "stale-memory",
+  "llm",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = []
+
+[project.scripts]
+qvf-va = "qvf_validity_admission.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["qvf_validity_admission*"]
