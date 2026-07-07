@@ -38,6 +38,128 @@ HISTORY_SELECTION_METHODS = (
 )
 DEFAULT_QUERY_BM25_WINDOW_RADIUS = 1
 TOKEN_PATTERN = re.compile(r"[A-Za-z0-9_]+|[\u4e00-\u9fff]+")
+MUTABLE_STATE_DOMAINS: tuple[dict[str, tuple[str, ...]], ...] = (
+    {
+        "triggers": ("career", "job", "work", "employment", "employed", "company", "income"),
+        "terms": (
+            "career",
+            "job",
+            "role",
+            "position",
+            "occupation",
+            "profession",
+            "employed",
+            "employment",
+            "work",
+            "works",
+            "working",
+            "employer",
+            "company",
+            "income",
+            "salary",
+            "pay",
+            "wage",
+        ),
+        "phrases": (
+            "employed as",
+            "works as",
+            "working as",
+            "started as",
+            "started a role",
+            "started a job",
+            "new role",
+            "new position",
+            "new job",
+            "joined",
+            "hired as",
+            "income",
+            "salary",
+            "pay",
+        ),
+    },
+    {
+        "triggers": ("relationship", "marital", "dating", "divorced", "married", "partner", "spouse"),
+        "terms": (
+            "relationship",
+            "marital",
+            "dating",
+            "divorced",
+            "married",
+            "partner",
+            "spouse",
+            "engaged",
+            "single",
+        ),
+        "phrases": (
+            "started dating",
+            "began dating",
+            "got married",
+            "married",
+            "divorced",
+            "separated",
+            "broke up",
+            "partner",
+            "spouse",
+            "engaged",
+            "single",
+        ),
+    },
+    {
+        "triggers": ("live", "lives", "residence", "moved", "relocated", "location", "city", "address", "home"),
+        "terms": (
+            "live",
+            "lives",
+            "living",
+            "moved",
+            "relocated",
+            "city",
+            "home",
+            "address",
+            "residence",
+            "location",
+        ),
+        "phrases": (
+            "moved to",
+            "relocated to",
+            "living in",
+            "live in",
+            "lives in",
+            "new address",
+            "new home",
+            "based in",
+            "staying in",
+        ),
+    },
+    {
+        "triggers": ("change", "changed", "current", "currently", "now", "status", "update", "updated"),
+        "terms": (
+            "change",
+            "changed",
+            "current",
+            "currently",
+            "now",
+            "new",
+            "started",
+            "became",
+            "update",
+            "updated",
+            "status",
+        ),
+        "phrases": (
+            "quick update",
+            "i just started",
+            "started a new",
+            "i am now",
+            "i m now",
+            "became",
+            "currently",
+            "current",
+            "as of",
+            "no longer",
+            "recently",
+        ),
+    },
+)
 
 QUESTION_FIELDS = (
     "question",
@@ -753,77 +875,21 @@ def _score_turns_by_query_change_update_domain(
 
 def _expanded_change_update_terms(question: str) -> set[str]:
     normalized = _normalized_selection_text(question)
+    question_tokens = set(normalized.split())
     terms: set[str] = set()
-    if any(term in normalized for term in ("career", "job", "work", "employment", "employed", "company", "income")):
-        terms.update(
-            {
-                "career",
-                "job",
-                "employed",
-                "employment",
-                "work",
-                "company",
-                "consulting",
-                "director",
-                "intern",
-                "internship",
-                "industry",
-                "income",
-                "salary",
-                "payroll",
-                "legal",
-                "education",
-                "logistics",
-                "firm",
-            }
-        )
-    if any(term in normalized for term in ("relationship", "marital", "dating", "divorced", "married")):
-        terms.update({"relationship", "marital", "dating", "divorced", "married", "partner", "spouse"})
-    if any(term in normalized for term in ("live", "residence", "moved", "location", "city")):
-        terms.update({"live", "lives", "moved", "relocated", "city", "home", "address", "residence"})
-    if any(term in normalized for term in ("change", "changed", "current", "now", "status", "update")):
-        terms.update({"change", "changed", "current", "now", "new", "started", "became", "update", "status"})
+    for domain in MUTABLE_STATE_DOMAINS:
+        if question_tokens & set(domain["triggers"]):
+            terms.update(domain["terms"])
     return terms
 
 
 def _change_update_phrase_score(question: str, normalized_text: str) -> float:
     normalized_question = _normalized_selection_text(question)
+    question_tokens = set(normalized_question.split())
     score = 0.0
-    if any(term in normalized_question for term in ("change", "changed", "current", "now", "status", "update")):
-        score += float(
-            sum(
-                1
-                for cue in (
-                    "quick update",
-                    "i just started",
-                    "started a new",
-                    "new job",
-                    "now employed",
-                    "i am now",
-                    "i m now",
-                    "became",
-                    "current",
-                    "as of",
-                )
-                if cue in normalized_text
-            )
-        )
-    if any(term in normalized_question for term in ("career", "job", "employment", "company", "income")):
-        score += float(
-            sum(
-                1
-                for cue in (
-                    "employed as",
-                    "director at",
-                    "internship at",
-                    "company in the",
-                    "education industry",
-                    "legal firm",
-                    "monthly income",
-                )
-                if cue in normalized_text
-            )
-        )
+    for domain in MUTABLE_STATE_DOMAINS:
+        if question_tokens & set(domain["triggers"]):
+            score += float(sum(1 for cue in domain["phrases"] if cue in normalized_text))
     return score
 
 
