@@ -1,0 +1,25 @@
+{
+  "release_date": "2026-07-16",
+  "release_status": "engineering_candidate",
+  "api_ran_for_packaging": false,
+  "runtime_core_modules": 14,
+  "runtime_core_hash_match": "14/14",
+  "release_smoke_test": {
+    "passed": 1,
+    "failed": 0
+  },
+  "focused_research_regression": {
+    "passed": 305,
+    "subtests_passed": 152,
+    "failed": 0
+  },
+  "secret_private_key_absolute_path_scan": "PASS",
+  "raw_api_outputs_included": false,
+  "case_level_benchmark_outputs_included": false,
+  "claim_boundary": [
+    "Protected historical benchmark results are not rescored exact-current-tree results.",
+    "STALE400 177/1200 versus 1088/1200 is non-contemporaneous and not pure-core attribution.",
+    "Cross-provider results do not support a universal accuracy-gain claim.",
+    "Adaptive or learned Router candidates remain quarantined."
+  ]
+}

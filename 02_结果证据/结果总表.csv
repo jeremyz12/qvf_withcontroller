@@ -1,0 +1,11 @@
+experiment,model,retriever,evidence_label,direct_correct,direct_total,qvf_correct,qvf_total,wins,losses,effect_pp,claim_boundary
+MemConflict100,GPT-4o-mini,original context,historical local main strict-contract slice,58,100,67,100,9,0,9.00,"protected historical contribution-line evidence; exact current tree unscored"
+LongMemEval-S500,GPT-4o-mini,benchmark context,historical official full benchmark,195,500,195,500,0,0,0.00,"ordinary-memory non-degradation gate"
+LoCoMo79,GPT-4o-mini,adapter-ready subset,supporting pilot evidence,40,79,43,79,3,0,3.80,"pilot only; adapter-coverage dependent"
+STALE400,GPT-4o-mini,oracle old-new pair,non-contemporaneous full descriptions,177,1200,1088,1200,,,75.92,"joint adapter + sidecar + reader-contract mechanism; not pure-core attribution"
+STALE400 ablation,GPT-4o-mini,fixed oracle pair,historical component ablation,1054,1200,1088,1200,,,2.83,"full policy versus annotation-only/no-stale-blocking"
+MemConflict100 BM25,GPT-4o-mini,frozen BM25,historical frozen-retrieval paired control,58,100,62,100,4,0,4.00,"retriever composability evidence"
+MemConflict100 dense,GPT-4o-mini,frozen embedding,historical frozen-retrieval paired control,58,100,61,100,4,1,3.00,"retriever composability evidence"
+MemConflict100 hybrid,GPT-4o-mini,frozen hybrid,historical frozen-retrieval paired control,62,100,65,100,3,0,3.00,"retriever composability evidence"
+MemConflict100 BM25,Claude Haiku 4.5,frozen BM25,cross-provider paired control,73,100,69,100,2,6,-4.00,"McNemar p=0.2891; paired bootstrap 95% CI [-10,+1]pp"
+MemConflict100 BM25,Gemini 3.1 Flash-Lite,frozen BM25,cross-provider paired control,61,100,61,100,5,5,0.00,"paired bootstrap 95% CI [-6,+6]pp"

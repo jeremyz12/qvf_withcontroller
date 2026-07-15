@@ -3,15 +3,29 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import Any
 
+from .answerability import (
+    ARCHIVE_AWARE_QUERY_INTENTS,
+    RELATION_GATED_QUERY_INTENTS,
+    attested_response_dimension_evidence,
+    archive_answer_dimension_authorized,
+    build_answerability_boundary,
+    build_response_dimension_authorizations,
+    normalize_requested_response_dimensions,
+    validate_answerability_boundary,
+)
 from .retrieval import validate_packet_batch, validate_packet_payload
 
-ROUTER_VERSION = "qvf_read_time_router_v0.2_no_api"
+ROUTER_VERSION = "qvf_read_time_router_v0.3_no_api"
 VALIDITY_CONTROLLER_VERSION = "qvf_memory_validity_controller_v0.1_no_api"
+FACTORIZED_VALIDITY_CONTROLLER_VERSION = (
+    "qvf_factorized_memory_validity_controller_v0.2_no_api"
+)
 READER_VERSION = "qvf_structured_reader_renderer_v0.2_no_api"
 READ_DECISION_VALUES = {"ADMIT_CURRENT", "ADMIT_ARCHIVE", "REJECT_STALE_PREMISE", "UNKNOWN_CURRENT"}
 READ_ROUTES = {
     "current_support_reader",
     "archive_aware_reader",
+    "relation_evidence_insufficient",
     "unknown_current_router",
     "weak_conservative_gate",
 }
@@ -21,6 +35,7 @@ ANSWER_POLICIES = {
     "correct_then_answer_from_current",
     "correct_premise_only",
     "insufficient_current_state",
+    "insufficient_relation_evidence",
 }
 READ_DECISION_ID_FIELDS = (
     "answer_evidence_ids",
@@ -43,7 +58,12 @@ def _controller_query_rewrite(
     temporal_focus: str,
 ) -> str:
     entity = str(query.get("entity") or "").strip()
-    slot = str(query.get("slot") or "").strip()
+    slots = [
+        str(slot).strip()
+        for slot in [query.get("slot"), *query.get("coordinated_slots", [])]
+        if str(slot or "").strip()
+    ]
+    slot = ", ".join(dict.fromkeys(slots))
     if not entity and not slot:
         return ""
     target = " ".join(part for part in [entity, slot] if part)
@@ -108,6 +128,15 @@ def _build_validity_controller_decision(
     stale = compact_packet.get("stale_or_blocked_evidence", [])
     excluded = compact_packet.get("excluded_memory_summary", [])
     supporting = compact_packet.get("supporting_evidence", [])
+    requested_dimensions = normalize_requested_response_dimensions(
+        query.get("requested_response_dimensions")
+    )
+    dimension_evidence = attested_response_dimension_evidence(
+        current_evidence=current,
+        historical_evidence=historical,
+        stale_or_blocked_evidence=stale,
+        supporting_evidence=supporting,
+    )
 
     answer_policy = decision.get("answer_policy", "")
     query_intent = str(query.get("query_intent", "current_state"))
@@ -124,6 +153,7 @@ def _build_validity_controller_decision(
     next_action = "retrieve_current_entity_slot"
     reason = "No admitted current answer evidence is available."
     allowed_as_history_ids: list[str] = []
+    boundary_answer_policy = answer_policy
 
     if answer_policy == "answer_from_current":
         evidence_sufficiency = "sufficient_current_evidence"
@@ -156,6 +186,20 @@ def _build_validity_controller_decision(
         )
         allowed_as_history_ids = stale_ids
         premise_blocker_ids = blocked_ids
+    elif query_intent in RELATION_GATED_QUERY_INTENTS:
+        evidence_sufficiency = "insufficient_relation_evidence"
+        next_action = "retrieve_entity_slot_timeline"
+        temporal_focus = "timeline"
+        include_archive = True
+        include_source_history = True
+        reason = (
+            "The query asks for a historical or relational answer dimension, but "
+            "the visible evidence does not establish the required timeline, conflict, "
+            "or validity relation."
+        )
+        allowed_as_history_ids = list(
+            dict.fromkeys(_memory_ids(historical) + stale_ids)
+        )
     elif historical or stale:
         evidence_sufficiency = "archive_or_stale_only_for_current_query"
         next_action = "retrieve_current_entity_slot"
@@ -180,6 +224,56 @@ def _build_validity_controller_decision(
         include_source_history = True
         reason = "No visible answer evidence is available; retrieve a bounded timeline."
 
+    premise_dimension_ids = list(dict.fromkeys([*blocked_ids, *stale_ids]))
+    if requested_dimensions:
+        dimension_preview = build_response_dimension_authorizations(
+            requested_response_dimensions=requested_dimensions,
+            next_action=next_action,
+            visible_evidence_ids=dimension_evidence["visible_evidence_ids"],
+            current_value_evidence_ids=(
+                answer_ids
+                if answer_policy
+                in {"answer_from_current", "correct_then_answer_from_current"}
+                else []
+            ),
+            historical_value_evidence_ids=(
+                answer_ids
+                if answer_policy == "answer_from_archive"
+                else dimension_evidence["historical_value_evidence_ids"]
+            ),
+            change_relation_evidence_ids=dimension_evidence[
+                "change_relation_evidence_ids"
+            ],
+            transition_endpoint_evidence_ids=dimension_evidence[
+                "transition_endpoint_evidence_ids"
+            ],
+            premise_correction_evidence_ids=premise_dimension_ids,
+            conflict_evidence_ids=dimension_evidence["conflict_evidence_ids"],
+        )
+        if dimension_preview["can_answer_all_requested_dimensions"]:
+            boundary_answer_policy = "answer_from_authorized_dimensions"
+            evidence_sufficiency = "sufficient_requested_response_dimensions"
+            next_action = "answer_from_authorized_dimensions"
+            reason = (
+                "Every explicitly requested response dimension has visible, "
+                "source-backed evidence; answer only those dimensions."
+            )
+            if set(requested_dimensions) & {
+                "historical_value",
+                "change_existence",
+                "transition_endpoints",
+                "premise_validity",
+                "conflict_presence",
+            }:
+                temporal_focus = "historical_or_query_scoped"
+                include_archive = True
+                include_source_history = True
+                allowed_as_history_ids = list(
+                    dict.fromkeys(
+                        _memory_ids(historical) + stale_ids
+                    )
+                )
+
     if next_action in {"retrieve_entity_slot_timeline", "query_rewrite_and_retrieve"}:
         temporal_focus = "timeline" if next_action == "retrieve_entity_slot_timeline" else temporal_focus
         include_archive = True
@@ -192,9 +286,58 @@ def _build_validity_controller_decision(
             memory_id for memory_id in blocked_ids if memory_id not in current_id_set
         ]
 
+    suggested_retrieval_scope = {
+        "entity": str(query.get("entity", "")),
+        "slot": str(query.get("slot", "")),
+        "temporal_focus": temporal_focus,
+        "include_current": include_current,
+        "include_archive": include_archive,
+        "include_source_history": include_source_history,
+    }
+    if query.get("coordinated_slots"):
+        suggested_retrieval_scope["coordinated_slots"] = list(
+            query["coordinated_slots"]
+        )
+
+    answerability_boundary = validate_answerability_boundary(
+        build_answerability_boundary(
+            answer_policy=boundary_answer_policy,
+            evidence_sufficiency=evidence_sufficiency,
+            next_action=next_action,
+            answer_evidence_ids=answer_ids,
+            premise_correction_evidence_ids=premise_dimension_ids,
+            requested_response_dimensions=requested_dimensions,
+            visible_evidence_ids=dimension_evidence["visible_evidence_ids"],
+            current_value_evidence_ids=(
+                answer_ids
+                if answer_policy
+                in {"answer_from_current", "correct_then_answer_from_current"}
+                else []
+            ),
+            historical_value_evidence_ids=(
+                answer_ids
+                if answer_policy == "answer_from_archive"
+                else dimension_evidence["historical_value_evidence_ids"]
+            ),
+            change_relation_evidence_ids=dimension_evidence[
+                "change_relation_evidence_ids"
+            ],
+            transition_endpoint_evidence_ids=dimension_evidence[
+                "transition_endpoint_evidence_ids"
+            ],
+            conflict_evidence_ids=dimension_evidence["conflict_evidence_ids"],
+        )
+    )
+
     return {
-        "controller_version": VALIDITY_CONTROLLER_VERSION,
+        "controller_version": (
+            FACTORIZED_VALIDITY_CONTROLLER_VERSION
+            if requested_dimensions
+            else VALIDITY_CONTROLLER_VERSION
+        ),
         "evidence_sufficiency": evidence_sufficiency,
+        "answerability_state": answerability_boundary["answerability_state"],
+        "answerability_boundary": answerability_boundary,
         "next_action": next_action,
         "reason": reason,
         "query_rewrite": _controller_query_rewrite(
@@ -203,14 +346,7 @@ def _build_validity_controller_decision(
         )
         if next_action.startswith("retrieve") or next_action == "query_rewrite_and_retrieve"
         else "",
-        "suggested_retrieval_scope": {
-            "entity": str(query.get("entity", "")),
-            "slot": str(query.get("slot", "")),
-            "temporal_focus": temporal_focus,
-            "include_current": include_current,
-            "include_archive": include_archive,
-            "include_source_history": include_source_history,
-        },
+        "suggested_retrieval_scope": suggested_retrieval_scope,
         "blocked_as_current_ids": list(dict.fromkeys(blocked_as_current_ids + stale_ids)),
         "allowed_as_history_ids": allowed_as_history_ids,
         "premise_blocker_ids": premise_blocker_ids,
@@ -969,23 +1105,27 @@ def route_read_time_packet(packet: dict[str, Any]) -> dict[str, Any]:
     query = packet["query"]
     compact_packet = packet.get("compact_validity_packet", {})
     weak_gate_card = packet.get("weak_conservative_gate_card")
+    query_intent = query.get("query_intent", "current_state")
+    archive_aware_intents = ARCHIVE_AWARE_QUERY_INTENTS
     embedded_premise = None
     if weak_gate_card:
         embedded_premise = weak_gate_card.get("query", {}).get("embedded_premise_value")
 
-    if weak_gate_card and embedded_premise:
-        return _route_weak_gate(packet, weak_gate_card)
-
     current = compact_packet.get("current_evidence", [])
     historical = compact_packet.get("historical_evidence", [])
+    archive_dimension_authorized = archive_answer_dimension_authorized(
+        query_intent=query_intent,
+        query_slot=query.get("slot"),
+        embedded_premise=embedded_premise,
+        current_evidence=current,
+        historical_evidence=historical,
+    )
+
+    if weak_gate_card and embedded_premise and not archive_dimension_authorized:
+        return _route_weak_gate(packet, weak_gate_card)
+
     excluded = compact_packet.get("excluded_memory_summary", [])
-    query_intent = query.get("query_intent", "current_state")
-    if query_intent in {
-        "historical_recall",
-        "timeline_change",
-        "conflict_audit",
-        "validity_audit",
-    } and (historical or current):
+    if query_intent in archive_aware_intents and archive_dimension_authorized:
         answer_evidence = historical + current
         decision = {
             "router_version": ROUTER_VERSION,
@@ -1003,6 +1143,26 @@ def route_read_time_packet(packet: dict[str, Any]) -> dict[str, Any]:
                 "Use historical_evidence for historical, timeline, or audit questions. "
                 "Do not reinterpret historical evidence as the current state unless it "
                 "also appears in current_evidence."
+            ),
+        }
+        return _attach_validity_controller_decision(packet, decision)
+    if query_intent in RELATION_GATED_QUERY_INTENTS:
+        decision = {
+            "router_version": ROUTER_VERSION,
+            "query_id": query["query_id"],
+            "route": "relation_evidence_insufficient",
+            "decision": "UNKNOWN_CURRENT",
+            "answer_policy": "insufficient_relation_evidence",
+            "answer_evidence_ids": [],
+            "blocking_evidence_ids": [],
+            "stale_evidence_ids": [
+                row["memory_id"]
+                for row in compact_packet.get("stale_or_blocked_evidence", [])
+            ],
+            "final_answer_hint": "",
+            "reader_contract": (
+                "Do not infer a timeline, transition, conflict, or validity relation "
+                "without source-backed relation evidence; retrieve a bounded timeline."
             ),
         }
         return _attach_validity_controller_decision(packet, decision)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from copy import deepcopy
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
@@ -30,6 +31,23 @@ from ._pipeline_core import (
     validate_memory_payload,
     validate_query_payload,
     validate_retrieval_budget,
+)
+from .query_risk_router import (
+    _memory_declares_set_cardinality,
+    _memory_has_replacement_relation,
+    _values_semantically_equivalent,
+)
+from .semantic_relations import (
+    strict_semantic_relation,
+    strict_semantic_relation_target_ids,
+)
+from .temporal_validity import (
+    DIRECTED_REPLACEMENT_RELATIONS,
+    is_strict_temporal_payload,
+    strict_relation_target_ids,
+    strict_slot_cardinality,
+    strict_temporal_relation,
+    strict_temporal_status,
 )
 
 
@@ -126,14 +144,59 @@ class MemoryRecord:
 
     @property
     def valid_from(self) -> datetime:
-        parsed = parse_dt(self.payload.get("valid_from") or self.payload["observed_at"])
+        parsed = parse_dt(
+            self.payload.get("effective_from")
+            or self.payload.get("valid_from")
+            or self.payload["observed_at"]
+        )
         if parsed is None:
-            raise ValueError(f"Missing valid_from/observed_at for {self.memory_id}")
+            raise ValueError(
+                f"Missing effective_from/valid_from/observed_at for {self.memory_id}"
+            )
         return parsed
 
     @property
     def valid_until(self) -> datetime | None:
-        return parse_dt(self.payload.get("valid_until"))
+        return parse_dt(
+            self.payload.get("effective_until") or self.payload.get("valid_until")
+        )
+
+    @property
+    def uses_strict_temporal_policy(self) -> bool:
+        return is_strict_temporal_payload(self.payload)
+
+    @property
+    def strict_slot_cardinality(self) -> str:
+        return strict_slot_cardinality(self.payload)
+
+    @property
+    def strict_temporal_relation(self) -> str:
+        return strict_temporal_relation(self.payload)
+
+    @property
+    def strict_temporal_status(self) -> str:
+        return strict_temporal_status(self.payload)
+
+    @property
+    def strict_relation_target_ids(self) -> tuple[str, ...]:
+        return strict_relation_target_ids(self.payload)
+
+    @property
+    def strict_semantic_relation(self) -> str:
+        return strict_semantic_relation(self.payload)
+
+    @property
+    def strict_semantic_relation_target_ids(self) -> tuple[str, ...]:
+        return strict_semantic_relation_target_ids(self.payload)
+
+    @property
+    def is_future_at_observation(self) -> bool:
+        if not self.uses_strict_temporal_policy:
+            return False
+        if self.strict_temporal_status in {"planned", "future"}:
+            return True
+        effective_from = parse_dt(self.payload.get("effective_from"))
+        return effective_from is not None and effective_from > self.observed_at
 
     @property
     def source_confidence(self) -> float:
@@ -171,6 +234,25 @@ class MemoryRecord:
             self.key[1],
         )
 
+    @property
+    def is_additive_set_member(self) -> bool:
+        if self.uses_strict_temporal_policy:
+            return (
+                self.strict_slot_cardinality == "set"
+                and self.strict_semantic_relation == "additive_coexistence"
+                and self.strict_temporal_relation
+                not in DIRECTED_REPLACEMENT_RELATIONS | {"revocation"}
+            )
+        return _memory_declares_set_cardinality(
+            self.payload
+        ) and not _memory_has_replacement_relation(self.payload)
+
+    @property
+    def current_index_key(self) -> tuple[str, ...]:
+        if self.is_additive_set_member:
+            return self.scoped_key + (norm(self.value),)
+        return self.scoped_key
+
     def to_public_dict(self) -> dict[str, Any]:
         out = deepcopy(self.payload)
         out["admission_status"] = self.admission_status
@@ -194,7 +276,7 @@ class ValidityAwareMemoryStore:
             low_confidence_threshold
         )
         self.records: dict[str, MemoryRecord] = {}
-        self.current_by_key: dict[tuple[str, str, str, str, str], str] = {}
+        self.current_by_key: dict[tuple[str, ...], str] = {}
         self.admission_log: list[dict[str, Any]] = []
 
     @classmethod
@@ -215,11 +297,12 @@ class ValidityAwareMemoryStore:
         for record in store.records.values():
             if record.current_status != "current":
                 continue
-            existing_id = store.current_by_key.get(record.scoped_key)
+            index_key = record.current_index_key
+            existing_id = store.current_by_key.get(index_key)
             if existing_id is None:
-                store.current_by_key[record.scoped_key] = record.memory_id
+                store.current_by_key[index_key] = record.memory_id
                 continue
-            normalized_key = "::".join(record.scoped_key)
+            normalized_key = "::".join(index_key)
             raise ValueError(
                 "Multiple current records for scoped key "
                 f"{normalized_key}: {existing_id}, {record.memory_id}"
@@ -231,27 +314,51 @@ class ValidityAwareMemoryStore:
         self._validate_link_targets()
         self._validate_reciprocal_links()
 
-        current_records_by_key: dict[tuple[str, str, str, str, str], str] = {}
+        current_records_by_key: dict[tuple[str, ...], str] = {}
+        current_records_by_scope: dict[
+            tuple[str, str, str, str, str], list[MemoryRecord]
+        ] = {}
         link_edge_count = 0
         for record in self.records.values():
             link_edge_count += sum(len(targets) for targets in record.links.values())
             if record.current_status != "current":
                 continue
-            existing_id = current_records_by_key.get(record.scoped_key)
+            index_key = record.current_index_key
+            existing_id = current_records_by_key.get(index_key)
             if existing_id is not None and existing_id != record.memory_id:
-                normalized_key = "::".join(record.scoped_key)
+                normalized_key = "::".join(index_key)
                 raise ValueError(
                     "Multiple current records for scoped key "
                     f"{normalized_key}: {existing_id}, {record.memory_id}"
                 )
-            current_records_by_key[record.scoped_key] = record.memory_id
-            indexed_id = self.current_by_key.get(record.scoped_key)
+            current_records_by_key[index_key] = record.memory_id
+            current_records_by_scope.setdefault(record.scoped_key, []).append(record)
+            indexed_id = self.current_by_key.get(index_key)
             if indexed_id != record.memory_id:
-                normalized_key = "::".join(record.scoped_key)
+                normalized_key = "::".join(index_key)
                 raise ValueError(
                     "Current memory missing from current_by_key for scoped key "
                     f"{normalized_key}: expected {record.memory_id}, found {indexed_id}"
                 )
+
+        for scoped_key, records in current_records_by_scope.items():
+            if len(records) <= 1:
+                continue
+            normalized_key = "::".join(scoped_key)
+            if not all(record.is_additive_set_member for record in records):
+                raise ValueError(
+                    "Multiple current records for scoped key require additive set cardinality "
+                    f"{normalized_key}: {', '.join(record.memory_id for record in records)}"
+                )
+            for index, record in enumerate(records):
+                if any(
+                    _values_semantically_equivalent(record.value, other.value)
+                    for other in records[index + 1 :]
+                ):
+                    raise ValueError(
+                        "Semantically equivalent set members cannot both be current for scoped key "
+                        f"{normalized_key}"
+                    )
 
         for scoped_key, memory_id in self.current_by_key.items():
             record = self.records.get(memory_id)
@@ -261,10 +368,10 @@ class ValidityAwareMemoryStore:
                     "current_by_key points to missing memory for scoped key "
                     f"{normalized_key}: {memory_id}"
                 )
-            if record.scoped_key != scoped_key:
+            if record.current_index_key != scoped_key:
                 raise ValueError(
                     "current_by_key scoped key mismatch for "
-                    f"{memory_id}: indexed {normalized_key}, actual {'::'.join(record.scoped_key)}"
+                    f"{memory_id}: indexed {normalized_key}, actual {'::'.join(record.current_index_key)}"
                 )
             if record.current_status != "current":
                 raise ValueError(
@@ -314,8 +421,6 @@ class ValidityAwareMemoryStore:
             self._log(record)
             return record
 
-        key = record.scoped_key
-
         if record.source_confidence < self.low_confidence_threshold:
             record.admission_status = "reject_low_confidence"
             record.current_status = "rejected"
@@ -330,55 +435,612 @@ class ValidityAwareMemoryStore:
 
         validity_action = norm(str(record.payload.get("validity_action", "")))
         if validity_action in {"revoke_current", "invalidate_current", "invalidate"}:
-            return self._admit_validity_marker(record, key)
+            return self._admit_validity_marker(record)
 
-        previous_current_id = self.current_by_key.get(key)
-        if previous_current_id is None:
-            record.admission_status = "admit_current"
-            record.current_status = "current"
-            record.evidence_role = "current_support"
-            record.admission_reason = "first admitted current evidence for entity-slot key"
-            self.current_by_key[key] = record.memory_id
-            self.records[record.memory_id] = record
-            self._log(record)
-            return record
-
-        previous = self.records[previous_current_id]
-
-        if norm(previous.value) == norm(record.value):
-            record.admission_status = "admit_supporting_evidence"
-            record.current_status = "supporting"
-            record.evidence_role = "supporting_duplicate"
-            record.links["supports"].append(previous.memory_id)
-            previous.links["supports"].append(record.memory_id)
-            record.admission_reason = "same value as existing current memory; stored as support"
-            self.records[record.memory_id] = record
-            self._log(record)
-            return record
-
-        if record.observed_at >= previous.observed_at:
-            record.admission_status = "admit_current"
-            record.current_status = "current"
-            record.evidence_role = "current_support"
-            record.links["supersedes"].append(previous.memory_id)
-            record.links["contradicts"].append(previous.memory_id)
-            record.admission_reason = "newer conflicting evidence supersedes previous current memory"
-
-            previous.admission_status = "admit_as_stale_contrast"
-            previous.current_status = "superseded"
-            previous.evidence_role = "stale_contrast"
-            previous.links["superseded_by"].append(record.memory_id)
-            previous.links["contradicts"].append(record.memory_id)
-            previous.admission_reason = (
-                "superseded by newer conflicting evidence; retained as stale contrast"
+        current_records = self._current_records_for_scope(record.scoped_key)
+        if norm(str(record.payload.get("operation", ""))) == "activate_condition":
+            return self._admit_condition_activation(record, current_records)
+        strict_competitors = self._strict_competing_records_for_scope(
+            record.scoped_key
+        )
+        if record.uses_strict_temporal_policy or any(
+            candidate.uses_strict_temporal_policy
+            for candidate in strict_competitors
+        ):
+            return self._admit_strict_temporal_record(record, strict_competitors)
+        if record.is_additive_set_member and all(
+            current.is_additive_set_member for current in current_records
+        ):
+            equivalent = next(
+                (
+                    current
+                    for current in current_records
+                    if _values_semantically_equivalent(current.value, record.value)
+                ),
+                None,
+            )
+            if equivalent is not None:
+                return self._admit_supporting_record(
+                    record,
+                    equivalent,
+                    reason=(
+                        "semantically equivalent value for an additive set member; "
+                        "stored as supporting evidence"
+                    ),
+                )
+            return self._admit_current_record(
+                record,
+                reason=(
+                    "additive set-valued evidence admitted as a coexisting current member"
+                    if current_records
+                    else "first admitted current evidence for additive set-valued entity-slot key"
+                ),
             )
 
-            self.current_by_key[key] = record.memory_id
-            self.records[record.memory_id] = record
-            self._log(record)
-            self._log(previous)
-            return record
+        return self._admit_single_value_record(
+            record,
+            self._legacy_competing_records_for_scope(record.scoped_key),
+        )
 
+    def _admit_condition_activation(
+        self,
+        record: MemoryRecord,
+        current_records: list[MemoryRecord],
+    ) -> MemoryRecord:
+        """Promote an exact-source condition instance to effective current state."""
+
+        activation = record.payload["condition_activation"]
+        template_id = str(
+            activation.get("condition_template_memory_id", "")
+        ).strip()
+        for current in current_records:
+            same_value = norm(current.value) == norm(record.value)
+            record.links["supersedes"].append(current.memory_id)
+            current.admission_status = "admit_as_stale_contrast"
+            current.current_status = "superseded"
+            current.evidence_role = "stale_contrast"
+            current.links["superseded_by"].append(record.memory_id)
+            if not same_value:
+                record.links["contradicts"].append(current.memory_id)
+                current.links["contradicts"].append(record.memory_id)
+            current.admission_reason = (
+                "superseded by exact-source condition activation"
+                if current.memory_id == template_id or same_value
+                else "superseded by state change produced by exact-source condition activation"
+            )
+            self.current_by_key.pop(current.current_index_key, None)
+        admitted = self._admit_current_record(
+            record,
+            reason="exact-source condition dependency activated at the trigger event time",
+        )
+        for current in current_records:
+            self._log(current)
+        return admitted
+
+    def _current_records_for_scope(
+        self, scoped_key: tuple[str, str, str, str, str]
+    ) -> list[MemoryRecord]:
+        return [
+            record
+            for record in self.records.values()
+            if record.scoped_key == scoped_key and record.current_status == "current"
+        ]
+
+    def _strict_competing_records_for_scope(
+        self, scoped_key: tuple[str, str, str, str, str]
+    ) -> list[MemoryRecord]:
+        return [
+            record
+            for record in self.records.values()
+            if record.scoped_key == scoped_key
+            and record.current_status in {"current", "conflict", "future"}
+        ]
+
+    def _legacy_competing_records_for_scope(
+        self, scoped_key: tuple[str, str, str, str, str]
+    ) -> list[MemoryRecord]:
+        return [
+            record
+            for record in self.records.values()
+            if record.scoped_key == scoped_key
+            and record.current_status in {"current", "conflict"}
+        ]
+
+    def _admit_current_record(
+        self,
+        record: MemoryRecord,
+        *,
+        reason: str,
+    ) -> MemoryRecord:
+        record.admission_status = "admit_current"
+        record.current_status = "current"
+        record.evidence_role = "current_support"
+        record.admission_reason = reason
+        self.current_by_key[record.current_index_key] = record.memory_id
+        self.records[record.memory_id] = record
+        self._log(record)
+        return record
+
+    def _admit_supporting_record(
+        self,
+        record: MemoryRecord,
+        current: MemoryRecord,
+        *,
+        reason: str,
+    ) -> MemoryRecord:
+        record.admission_status = "admit_supporting_evidence"
+        record.current_status = "supporting"
+        record.evidence_role = "supporting_duplicate"
+        record.links["supports"].append(current.memory_id)
+        current.links["supports"].append(record.memory_id)
+        record.admission_reason = reason
+        self.records[record.memory_id] = record
+        self._log(record)
+        return record
+
+    def _admit_strict_temporal_record(
+        self,
+        record: MemoryRecord,
+        competitors: list[MemoryRecord],
+    ) -> MemoryRecord:
+        """Admit explicit temporal relations without treating recency as replacement."""
+
+        if record.strict_temporal_relation == "revocation":
+            record.payload["validity_action"] = "revoke_current"
+            record.payload["invalidates_memory_ids"] = list(
+                record.strict_relation_target_ids
+            )
+            return self._admit_validity_marker(record)
+
+        if record.strict_semantic_relation == "equivalent":
+            return self._admit_strict_equivalent(record)
+
+        if not competitors:
+            if record.is_future_at_observation:
+                return self._admit_future_record(
+                    record,
+                    reason=(
+                        "planned/future evidence retained until its explicit effective time; "
+                        "not admitted as write-time current"
+                    ),
+                )
+            if (
+                record.strict_temporal_relation
+                in DIRECTED_REPLACEMENT_RELATIONS
+                and record.strict_relation_target_ids
+            ):
+                return self._admit_strict_conflict(
+                    record,
+                    [],
+                    reason=(
+                        "directed temporal relation target is not yet present; "
+                        "record retained as unresolved conflict candidate"
+                    ),
+                )
+            return self._admit_current_record(
+                record,
+                reason=(
+                    "only provenance-valid candidate for this scoped entity-slot; "
+                    "no replacement inference was required"
+                ),
+            )
+
+        exact_matches = [
+            candidate
+            for candidate in competitors
+            if norm(candidate.value) == norm(record.value)
+        ]
+        exact_current = next(
+            (
+                candidate
+                for candidate in exact_matches
+                if candidate.current_status == "current"
+            ),
+            None,
+        )
+        if exact_current is not None:
+            return self._admit_supporting_record(
+                record,
+                exact_current,
+                reason=(
+                    "exact normalized value matches current evidence; stored as support "
+                    "without semantic-paraphrase inference"
+                ),
+            )
+
+        if (
+            record.is_additive_set_member
+            and competitors
+            and all(
+                candidate.is_additive_set_member
+                and candidate.current_status == "current"
+                for candidate in competitors
+            )
+        ):
+            return self._admit_current_record(
+                record,
+                reason=(
+                    "explicit set cardinality admits a distinct coexisting current member"
+                ),
+            )
+
+        incoming_targets = set(record.strict_relation_target_ids)
+        incoming_directional = (
+            record.strict_temporal_relation in DIRECTED_REPLACEMENT_RELATIONS
+            and record.strict_slot_cardinality == "single"
+        )
+        reverse_replacers = [
+            candidate
+            for candidate in competitors
+            if candidate.strict_temporal_relation
+            in DIRECTED_REPLACEMENT_RELATIONS
+            and candidate.strict_slot_cardinality == "single"
+            and record.memory_id in candidate.strict_relation_target_ids
+        ]
+        if incoming_directional and reverse_replacers:
+            return self._admit_strict_conflict(
+                record,
+                competitors,
+                reason=(
+                    "cyclic or bidirectional replacement evidence is unresolved"
+                ),
+            )
+        if len(reverse_replacers) > 1:
+            return self._admit_strict_conflict(
+                record,
+                competitors,
+                reason="multiple records claim to replace the same predecessor",
+            )
+
+        non_equivalent_ids = {
+            candidate.memory_id
+            for candidate in competitors
+            if norm(candidate.value) != norm(record.value)
+        }
+        if incoming_directional:
+            if non_equivalent_ids and non_equivalent_ids <= incoming_targets:
+                return self._admit_strict_replacement(record, competitors)
+            return self._admit_strict_conflict(
+                record,
+                competitors,
+                reason=(
+                    "directed replacement does not cover every competing value in scope"
+                ),
+            )
+
+        if reverse_replacers:
+            replacer = reverse_replacers[0]
+            unrelated = [
+                candidate
+                for candidate in competitors
+                if candidate.memory_id != replacer.memory_id
+                and norm(candidate.value) != norm(record.value)
+            ]
+            if unrelated:
+                return self._admit_strict_conflict(
+                    record,
+                    competitors,
+                    reason=(
+                        "inverse replacement leaves additional competing values unresolved"
+                    ),
+                )
+            return self._admit_strict_predecessor(record, replacer)
+
+        if (
+            not record.is_future_at_observation
+            and competitors
+            and all(candidate.current_status == "future" for candidate in competitors)
+        ):
+            return self._admit_current_record(
+                record,
+                reason=(
+                    "effective evidence remains current while unresolved future candidates "
+                    "wait for a query-time validity boundary"
+                ),
+            )
+        if record.is_future_at_observation:
+            return self._admit_future_record(
+                record,
+                reason=(
+                    "future evidence has no proven replacement direction; retained as "
+                    "a non-current candidate"
+                ),
+            )
+        return self._admit_strict_conflict(
+            record,
+            competitors,
+            reason=(
+                "distinct values lack explicit equivalence, set coexistence, or a "
+                "directed scalar replacement relation"
+            ),
+        )
+
+    def _admit_strict_equivalent(self, record: MemoryRecord) -> MemoryRecord:
+        """Attach one source-backed equivalent expression to its exact target."""
+
+        target_ids = record.strict_semantic_relation_target_ids
+        target = self.records.get(target_ids[0]) if len(target_ids) == 1 else None
+        if target is None:
+            return self._admit_strict_conflict(
+                record,
+                [],
+                reason=(
+                    "explicit semantic equivalence target is unavailable; "
+                    "record retained as unresolved conflict candidate"
+                ),
+            )
+        if target.scoped_key != record.scoped_key:
+            return self._admit_strict_conflict(
+                record,
+                [],
+                reason=(
+                    "explicit semantic equivalence target has a different scoped "
+                    "entity-slot"
+                ),
+            )
+        return self._admit_supporting_record(
+            record,
+            target,
+            reason=(
+                "source-backed semantic equivalence references one exact scoped "
+                "memory target; retained as supporting evidence without value rewriting"
+            ),
+        )
+
+    def _admit_future_record(
+        self,
+        record: MemoryRecord,
+        *,
+        reason: str,
+    ) -> MemoryRecord:
+        record.admission_status = "admit_as_future_candidate"
+        record.current_status = "future"
+        record.evidence_role = "future_candidate"
+        record.admission_reason = reason
+        self.records[record.memory_id] = record
+        self._log(record)
+        return record
+
+    def _admit_strict_replacement(
+        self,
+        record: MemoryRecord,
+        competitors: list[MemoryRecord],
+    ) -> MemoryRecord:
+        relation = record.strict_temporal_relation
+        is_future = record.is_future_at_observation
+        for previous in competitors:
+            self._link_strict_replacement(record, previous)
+            self._derive_predecessor_effective_until(previous, record)
+            if is_future:
+                previous.admission_reason = (
+                    "current until the explicit replacement/correction effective boundary"
+                )
+            else:
+                previous.admission_status = "admit_as_stale_contrast"
+                previous.current_status = "superseded"
+                previous.evidence_role = "stale_contrast"
+                previous.admission_reason = (
+                    f"explicit {relation} target retained as historical predecessor"
+                )
+                self.current_by_key.pop(previous.current_index_key, None)
+            self._log(previous)
+
+        if is_future:
+            return self._admit_future_record(
+                record,
+                reason=(
+                    f"explicit {relation} relation is planned for its effective time; "
+                    "not admitted as write-time current"
+                ),
+            )
+        return self._admit_current_record(
+            record,
+            reason=(
+                f"explicit scalar {relation} relation targets every competing value"
+            ),
+        )
+
+    def _admit_strict_predecessor(
+        self,
+        record: MemoryRecord,
+        replacer: MemoryRecord,
+    ) -> MemoryRecord:
+        self._link_strict_replacement(replacer, record)
+        self._derive_predecessor_effective_until(record, replacer)
+        relation = replacer.strict_temporal_relation
+        if replacer.current_status == "future":
+            replacer.admission_reason = (
+                f"explicit {relation} relation is planned for its effective time; "
+                "not admitted as write-time current"
+            )
+            self._log(replacer)
+            return self._admit_current_record(
+                record,
+                reason=(
+                    "current until the explicit replacement/correction effective boundary"
+                ),
+            )
+        if replacer.current_status == "conflict":
+            replacer.admission_status = "admit_current"
+            replacer.current_status = "current"
+            replacer.evidence_role = "current_support"
+            self.current_by_key[replacer.current_index_key] = replacer.memory_id
+        replacer.admission_reason = (
+            f"explicit scalar {relation} relation targets every competing value"
+        )
+        self._log(replacer)
+
+        record.admission_status = "admit_as_stale_contrast"
+        record.current_status = "superseded"
+        record.evidence_role = "stale_contrast"
+        record.admission_reason = (
+            f"explicit {relation} target retained as historical predecessor"
+        )
+        self.records[record.memory_id] = record
+        self._log(record)
+        return record
+
+    def _admit_strict_conflict(
+        self,
+        record: MemoryRecord,
+        competitors: list[MemoryRecord],
+        *,
+        reason: str,
+    ) -> MemoryRecord:
+        for candidate in competitors:
+            if candidate.memory_id not in record.links["contradicts"]:
+                record.links["contradicts"].append(candidate.memory_id)
+            if record.memory_id not in candidate.links["contradicts"]:
+                candidate.links["contradicts"].append(record.memory_id)
+            if candidate.current_status == "current":
+                self.current_by_key.pop(candidate.current_index_key, None)
+            candidate.admission_status = "admit_as_conflict_candidate"
+            candidate.current_status = "conflict"
+            candidate.evidence_role = "conflict_candidate"
+            candidate.admission_reason = reason
+            self._log(candidate)
+        record.admission_status = "admit_as_conflict_candidate"
+        record.current_status = "conflict"
+        record.evidence_role = "conflict_candidate"
+        record.admission_reason = reason
+        self.records[record.memory_id] = record
+        self._log(record)
+        return record
+
+    def _link_strict_replacement(
+        self,
+        replacer: MemoryRecord,
+        predecessor: MemoryRecord,
+    ) -> None:
+        for edge_type, source, target in (
+            ("supersedes", replacer, predecessor),
+            ("superseded_by", predecessor, replacer),
+            ("contradicts", replacer, predecessor),
+            ("contradicts", predecessor, replacer),
+        ):
+            if target.memory_id not in source.links[edge_type]:
+                source.links[edge_type].append(target.memory_id)
+
+    def _derive_predecessor_effective_until(
+        self,
+        predecessor: MemoryRecord,
+        replacer: MemoryRecord,
+    ) -> None:
+        boundary = replacer.payload.get("effective_from")
+        if not boundary or predecessor.payload.get("effective_until"):
+            return
+        predecessor.payload["effective_until"] = boundary
+        states = predecessor.payload.setdefault("temporal_field_states", {})
+        if isinstance(states, dict):
+            states["effective_until"] = {
+                "status": "derived",
+                "value": boundary,
+                "origin": "explicit_directed_relation",
+                "relation_memory_id": replacer.memory_id,
+            }
+        derivations = predecessor.payload.setdefault("temporal_derivations", [])
+        if isinstance(derivations, list):
+            derivations.append(
+                {
+                    "field": "effective_until",
+                    "value": boundary,
+                    "origin": "explicit_directed_relation",
+                    "relation_memory_id": replacer.memory_id,
+                }
+            )
+
+    def _admit_single_value_record(
+        self,
+        record: MemoryRecord,
+        competitors: list[MemoryRecord],
+    ) -> MemoryRecord:
+        if not competitors:
+            return self._admit_current_record(
+                record,
+                reason="first admitted current evidence for entity-slot key",
+            )
+
+        equivalent = next(
+            (
+                candidate
+                for candidate in competitors
+                if norm(candidate.value) == norm(record.value)
+            ),
+            None,
+        )
+        if equivalent is not None:
+            return self._admit_supporting_record(
+                record,
+                equivalent,
+                reason="same value as existing scoped memory; stored as support",
+            )
+
+        previous = max(
+            competitors,
+            key=lambda current: (
+                current.observed_at,
+                current.source_confidence,
+                current.memory_id,
+            ),
+        )
+        if record.observed_at < previous.observed_at:
+            return self._admit_stale_record(record, previous)
+
+        structured_operation = norm(
+            str(record.payload.get("operation") or record.payload.get("update_type") or "")
+        )
+        has_explicit_replacement_operation = structured_operation in {
+            "remove",
+            "removed",
+            "delete",
+            "deleted",
+            "replace",
+            "replaced",
+            "revoke",
+            "revoked",
+        }
+        if (
+            record.observed_at == previous.observed_at
+            and not has_explicit_replacement_operation
+        ):
+            return self._admit_strict_conflict(
+                record,
+                competitors,
+                reason=(
+                    "equal observed times do not establish a replacement direction; "
+                    "distinct values retained as unresolved conflict candidates"
+                ),
+            )
+
+        for current in competitors:
+            record.links["supersedes"].append(current.memory_id)
+            record.links["contradicts"].append(current.memory_id)
+            current.admission_status = "admit_as_stale_contrast"
+            current.current_status = "superseded"
+            current.evidence_role = "stale_contrast"
+            current.links["superseded_by"].append(record.memory_id)
+            current.links["contradicts"].append(record.memory_id)
+            current.admission_reason = (
+                "superseded by newer conflicting evidence; retained as stale contrast"
+            )
+            self.current_by_key.pop(current.current_index_key, None)
+        admitted = self._admit_current_record(
+            record,
+            reason=(
+                "explicit structured replacement supersedes scoped competitors"
+                if has_explicit_replacement_operation
+                else "newer conflicting evidence supersedes previous current memory"
+            ),
+        )
+        for current in competitors:
+            self._log(current)
+        return admitted
+
+    def _admit_stale_record(
+        self,
+        record: MemoryRecord,
+        previous: MemoryRecord,
+    ) -> MemoryRecord:
         record.admission_status = "admit_as_stale_contrast"
         record.current_status = "superseded"
         record.evidence_role = "stale_contrast"
@@ -393,10 +1055,61 @@ class ValidityAwareMemoryStore:
 
     def admit_records(self, records: list[dict[str, Any]]) -> list[MemoryRecord]:
         validated_records = validate_memory_batch(records)
-        return [self.admit(record) for record in validated_records]
+        memory_ids = [str(record["memory_id"]) for record in validated_records]
+        if len(memory_ids) != len(set(memory_ids)):
+            return [self.admit(record) for record in validated_records]
+        ordered_records = self._strict_dependency_order(validated_records)
+        admitted_by_id = {
+            str(record["memory_id"]): self.admit(record)
+            for record in ordered_records
+        }
+        return [admitted_by_id[memory_id] for memory_id in memory_ids]
+
+    def _strict_dependency_order(
+        self,
+        records: list[dict[str, Any]],
+    ) -> list[dict[str, Any]]:
+        """Place explicit relation targets before dependants without using timestamps."""
+
+        by_id = {str(record["memory_id"]): record for record in records}
+        original_order = {
+            str(record["memory_id"]): index for index, record in enumerate(records)
+        }
+        visiting: set[str] = set()
+        visited: set[str] = set()
+        ordered: list[dict[str, Any]] = []
+
+        def visit(memory_id: str) -> None:
+            if memory_id in visited:
+                return
+            if memory_id in visiting:
+                return
+            visiting.add(memory_id)
+            record = by_id[memory_id]
+            if is_strict_temporal_payload(record):
+                targets = sorted(
+                    {
+                        target_id
+                        for target_id in (
+                            *strict_relation_target_ids(record),
+                            *strict_semantic_relation_target_ids(record),
+                        )
+                        if target_id in by_id
+                    },
+                    key=lambda target_id: original_order[target_id],
+                )
+                for target_id in targets:
+                    visit(target_id)
+            visiting.remove(memory_id)
+            visited.add(memory_id)
+            ordered.append(record)
+
+        for record in records:
+            visit(str(record["memory_id"]))
+        return ordered
 
     def _admit_validity_marker(
-        self, record: MemoryRecord, key: tuple[str, str, str, str, str]
+        self, record: MemoryRecord
     ) -> MemoryRecord:
         requested_target_ids = [
             str(memory_id)
@@ -414,7 +1127,10 @@ class ValidityAwareMemoryStore:
             explicit_targets.append(memory_id)
         if scope_mismatch_count:
             record.payload["invalidates_scope_mismatch_count"] = scope_mismatch_count
-        current_id = self.current_by_key.get(key)
+        current_records = self._current_records_for_scope(record.scoped_key)
+        current_id = self.current_by_key.get(record.scoped_key)
+        if current_id is None and len(current_records) == 1:
+            current_id = current_records[0].memory_id
         if requested_target_ids:
             target_ids = explicit_targets
         else:
@@ -426,14 +1142,14 @@ class ValidityAwareMemoryStore:
         record.admission_reason = (
             "write-time validity marker; invalidates current evidence for entity-slot key"
         )
+        deferred_until_effective = (
+            record.uses_strict_temporal_policy and record.is_future_at_observation
+        )
 
         for target_id in target_ids:
             if not target_id:
                 continue
             target = self.records[target_id]
-            target.admission_status = "revoked_by_validity_marker"
-            target.current_status = "revoked"
-            target.evidence_role = "stale_contrast"
             if record.memory_id not in target.links["invalidated_by"]:
                 target.links["invalidated_by"].append(record.memory_id)
             if record.memory_id not in target.links["contradicts"]:
@@ -442,12 +1158,26 @@ class ValidityAwareMemoryStore:
                 record.links["invalidates"].append(target.memory_id)
             if target.memory_id not in record.links["contradicts"]:
                 record.links["contradicts"].append(target.memory_id)
-            target.admission_reason = (
-                "revoked by write-time validity marker; retained as stale contrast"
-            )
-            if self.current_by_key.get(target.scoped_key) == target.memory_id:
-                del self.current_by_key[target.scoped_key]
+            if deferred_until_effective:
+                target.admission_reason = (
+                    "current until the explicit revocation effective boundary"
+                )
+            else:
+                target.admission_status = "revoked_by_validity_marker"
+                target.current_status = "revoked"
+                target.evidence_role = "stale_contrast"
+                target.admission_reason = (
+                    "revoked by write-time validity marker; retained as stale contrast"
+                )
+                if self.current_by_key.get(target.current_index_key) == target.memory_id:
+                    del self.current_by_key[target.current_index_key]
             self._log(target)
+
+        if deferred_until_effective and target_ids:
+            record.admission_reason = (
+                "strict revocation marker retained for its explicit effective boundary; "
+                "current evidence is not revoked early"
+            )
 
         if not target_ids:
             if scope_mismatch_count:
@@ -493,7 +1223,12 @@ class ValidityAwareMemoryStore:
         max_excluded = budget["max_excluded"]
         max_packet_chars = validate_max_packet_chars(max_packet_chars)
 
-        key = norm(query["entity"]), norm(query["slot"])
+        query_entity = norm(query["entity"])
+        query_slots = {
+            norm(slot)
+            for slot in [query["slot"], *query.get("coordinated_slots", [])]
+            if str(slot).strip()
+        }
         as_of = parse_dt(query.get("as_of"))
         risk_profile = self._query_risk_profile(query)
         reader_profile = self._query_reader_profile(query)
@@ -503,7 +1238,19 @@ class ValidityAwareMemoryStore:
         min_supporting_count = self._query_min_supporting_count(query, risk_profile)
         source_policy = self._query_source_policy(query)
         query_scope = self._query_scope(query)
-        key_related = [record for record in self.records.values() if record.key == key]
+        required_evidence_qualifiers = self._normalized_query_set(
+            query.get("required_evidence_qualifiers")
+        )
+        key_related = [
+            record
+            for record in self.records.values()
+            if record.key[0] == query_entity
+            and self._slot_matches_query(
+                record.key[1],
+                query_slots=query_slots,
+                query_intent=query_intent,
+            )
+        ]
         scope_mismatch_ids = {
             record.memory_id
             for record in key_related
@@ -547,7 +1294,15 @@ class ValidityAwareMemoryStore:
             for record in related
             if not self._condition_matches_query(record, query)
         }
-        base_blocked_ids = (
+        evidence_qualifier_mismatch_ids = {
+            record.memory_id
+            for record in related
+            if not self._evidence_qualifiers_match_query(
+                record,
+                required_evidence_qualifiers,
+            )
+        }
+        pre_conflict_blocked_ids = (
             not_yet_valid_ids
             | expired_ids
             | revoked_ids
@@ -555,12 +1310,40 @@ class ValidityAwareMemoryStore:
             | below_query_confidence_ids
             | source_policy_mismatch_ids
             | condition_mismatch_ids
+            | evidence_qualifier_mismatch_ids
         )
+        stored_conflict_candidate_ids = {
+            record.memory_id
+            for record in related
+            if record.evidence_role == "conflict_candidate"
+            or record.current_status == "conflict"
+        }
+        temporal_conflict_candidate_ids = (
+            self._strict_unresolved_conflict_ids_for_query(
+                related=related,
+                blocked_ids=pre_conflict_blocked_ids,
+            )
+        )
+        conflict_candidate_ids = (
+            stored_conflict_candidate_ids | temporal_conflict_candidate_ids
+        )
+        base_blocked_ids = pre_conflict_blocked_ids | conflict_candidate_ids
         base_current_candidates = self._current_candidates_for_query(
             related=related,
             blocked_ids=base_blocked_ids,
             as_of=as_of,
         )
+        if query_intent in {
+            "historical_recall",
+            "timeline_change",
+            "conflict_audit",
+            "validity_audit",
+        }:
+            base_current_candidates = [
+                record
+                for record in base_current_candidates
+                if self._slot_temporal_role(record.key[1])[1] != "prior"
+            ]
         insufficient_support_ids = {
             record.memory_id
             for record in base_current_candidates
@@ -580,14 +1363,21 @@ class ValidityAwareMemoryStore:
             record
             for record in related
             if record.memory_id in blocked_ids
-            and record.current_status in {"current", "supporting", "superseded", "revoked"}
+            and record.current_status
+            in {"current", "supporting", "superseded", "revoked", "conflict", "future"}
         ]
         stale = self._select_records(
             self._dedupe_records(
                 [
                     record
                     for record in related
-                    if record.evidence_role in {"stale_contrast", "validity_marker"}
+                    if record.evidence_role
+                    in {
+                        "stale_contrast",
+                        "validity_marker",
+                        "conflict_candidate",
+                        "future_candidate",
+                    }
                     and record.memory_id not in current_ids
                 ]
                 + dynamically_blocked
@@ -612,6 +1402,22 @@ class ValidityAwareMemoryStore:
             max_excluded,
         )
         historical = self._historical_evidence_for_query(query_intent, stale)
+        if query_intent in {
+            "historical_recall",
+            "timeline_change",
+            "conflict_audit",
+            "validity_audit",
+        }:
+            structural_prior = [
+                record
+                for record in related
+                if self._slot_temporal_role(record.key[1])[1] == "prior"
+                and record.memory_id not in current_ids
+            ]
+            historical = self._select_records(
+                self._dedupe_records([*historical, *structural_prior]),
+                max_stale,
+            )
 
         selected_records = current + supporting + stale + excluded
         selected_ids = {record.memory_id for record in selected_records}
@@ -636,6 +1442,8 @@ class ValidityAwareMemoryStore:
             source_policy_mismatch_ids=source_policy_mismatch_ids,
             scope_mismatch_ids=scope_mismatch_ids,
             condition_mismatch_ids=condition_mismatch_ids,
+            evidence_qualifier_mismatch_ids=evidence_qualifier_mismatch_ids,
+            conflict_candidate_ids=conflict_candidate_ids,
             blocked_ids=blocked_ids,
         )
         retrieval_diagnostics["selected_counts"]["historical_evidence"] = len(historical)
@@ -657,6 +1465,7 @@ class ValidityAwareMemoryStore:
                 "text": query["query"],
                 "entity": query["entity"],
                 "slot": query["slot"],
+                "coordinated_slots": list(query.get("coordinated_slots", [])),
                 "needs_current": bool(query.get("needs_current", True)),
                 "query_intent": query_intent,
                 "as_of": query.get("as_of"),
@@ -672,6 +1481,7 @@ class ValidityAwareMemoryStore:
                     if values
                 },
                 "condition": query.get("condition") or query.get("required_condition"),
+                "required_evidence_qualifiers": sorted(required_evidence_qualifiers),
             },
             "context_control_policy": context_policy,
             "compact_validity_packet": {
@@ -707,6 +1517,8 @@ class ValidityAwareMemoryStore:
                             insufficient_support_ids,
                             source_policy_mismatch_ids,
                             condition_mismatch_ids,
+                            evidence_qualifier_mismatch_ids,
+                            conflict_candidate_ids,
                         ),
                         retrieval_reason=self._blocked_retrieval_reason(
                             record,
@@ -718,6 +1530,8 @@ class ValidityAwareMemoryStore:
                             insufficient_support_ids,
                             source_policy_mismatch_ids,
                             condition_mismatch_ids,
+                            evidence_qualifier_mismatch_ids,
+                            conflict_candidate_ids,
                         ),
                     )
                     for record in stale
@@ -728,6 +1542,13 @@ class ValidityAwareMemoryStore:
             "retrieval_diagnostics": retrieval_diagnostics,
             "expected_read_time_decision": self._expected_decision(current, excluded),
         }
+        if query.get("requested_response_dimensions"):
+            packet["query"]["requested_response_dimensions"] = list(
+                query["requested_response_dimensions"]
+            )
+            packet["query"]["response_dimension_state"] = deepcopy(
+                query["response_dimension_state"]
+            )
         if include_weak_gate_card:
             packet["weak_conservative_gate_card"] = self._weak_gate_card(
                 query=query,
@@ -781,9 +1602,11 @@ class ValidityAwareMemoryStore:
         source_policy_mismatch_ids: set[str],
         scope_mismatch_ids: set[str],
         condition_mismatch_ids: set[str],
+        evidence_qualifier_mismatch_ids: set[str],
+        conflict_candidate_ids: set[str],
         blocked_ids: set[str],
     ) -> dict[str, Any]:
-        return {
+        diagnostics = {
             "related_records_total": len(related),
             "scope_mismatch_records_total": len(scope_mismatch_ids),
             "eligible_current_candidates_total": len(current_candidates),
@@ -803,6 +1626,9 @@ class ValidityAwareMemoryStore:
                 "source_policy_mismatch": len(source_policy_mismatch_ids),
                 "scope_mismatch": len(scope_mismatch_ids),
                 "condition_mismatch": len(condition_mismatch_ids),
+                "evidence_qualifier_mismatch": len(
+                    evidence_qualifier_mismatch_ids
+                ),
                 "blocked_total_unique": len(blocked_ids),
             },
             "related_current_status_counts": self._count_by(related, "current_status"),
@@ -814,6 +1640,16 @@ class ValidityAwareMemoryStore:
                 1 for record in related if record.current_status == "revoked"
             ),
         }
+        if conflict_candidate_ids or any(
+            record.uses_strict_temporal_policy for record in related
+        ):
+            diagnostics["blocked_counts"]["conflict_candidate"] = len(
+                conflict_candidate_ids
+            )
+            diagnostics["conflict_candidate_records_total"] = len(
+                conflict_candidate_ids
+            )
+        return diagnostics
 
     def _count_by(self, records: list[MemoryRecord], attribute: str) -> dict[str, int]:
         counts: dict[str, int] = {}
@@ -836,14 +1672,58 @@ class ValidityAwareMemoryStore:
             and (
                 record.current_status == "current"
                 if as_of is None
-                else record.evidence_role in {"current_support", "stale_contrast"}
+                else record.evidence_role
+                in {"current_support", "stale_contrast", "future_candidate"}
             )
         ]
 
     def _is_expired_for_query(
         self, record: MemoryRecord, as_of: datetime | None
     ) -> bool:
-        return as_of is not None and record.valid_until is not None and as_of > record.valid_until
+        if as_of is None or record.valid_until is None:
+            return False
+        if record.uses_strict_temporal_policy:
+            return as_of >= record.valid_until
+        return as_of > record.valid_until
+
+    def _strict_unresolved_conflict_ids_for_query(
+        self,
+        *,
+        related: list[MemoryRecord],
+        blocked_ids: set[str],
+    ) -> set[str]:
+        groups: dict[tuple[str, str, str, str, str], list[MemoryRecord]] = {}
+        for record in related:
+            if record.memory_id in blocked_ids:
+                continue
+            if not record.uses_strict_temporal_policy:
+                continue
+            if record.current_status not in {"current", "future", "conflict"}:
+                continue
+            groups.setdefault(record.scoped_key, []).append(record)
+
+        conflict_ids: set[str] = set()
+        for records in groups.values():
+            distinct_values = {norm(record.value) for record in records}
+            if len(distinct_values) < 2:
+                continue
+            if all(record.is_additive_set_member for record in records):
+                continue
+            resolved_by_direction = False
+            record_ids = {record.memory_id for record in records}
+            for record in records:
+                if (
+                    record.strict_temporal_relation
+                    in DIRECTED_REPLACEMENT_RELATIONS
+                    and record.strict_slot_cardinality == "single"
+                    and record_ids - {record.memory_id}
+                    <= set(record.strict_relation_target_ids)
+                ):
+                    resolved_by_direction = True
+                    break
+            if not resolved_by_direction:
+                conflict_ids.update(record_ids)
+        return conflict_ids
 
     def _is_revoked_for_query(
         self, record: MemoryRecord, as_of: datetime | None
@@ -855,7 +1735,14 @@ class ValidityAwareMemoryStore:
             return record.current_status == "revoked"
         for marker_id in marker_ids:
             marker = self.records.get(marker_id)
-            if marker is not None and marker.observed_at <= as_of:
+            if marker is None:
+                continue
+            marker_boundary = (
+                marker.valid_from
+                if marker.uses_strict_temporal_policy
+                else marker.observed_at
+            )
+            if marker_boundary <= as_of:
                 return True
         return False
 
@@ -909,6 +1796,8 @@ class ValidityAwareMemoryStore:
             return norm(str(raw_intent))
         if query.get("as_of"):
             return "current_state"
+        if query.get("needs_current") is False:
+            return "historical_recall"
 
         text = norm(str(query.get("query", "")))
         timeline_cues = [
@@ -971,9 +1860,41 @@ class ValidityAwareMemoryStore:
             return "historical_recall"
         if any(cue in text for cue in current_cues):
             return "current_state"
-        if query.get("needs_current") is False:
-            return "historical_recall"
         return "current_state"
+
+    @staticmethod
+    def _slot_temporal_role(value: Any) -> tuple[str, str]:
+        normalized = re.sub(
+            r"\s+",
+            " ",
+            re.sub(r"[^a-z0-9]+", " ", str(value or "").lower()),
+        ).strip()
+        for prefix in ("previous ", "prior ", "former "):
+            if normalized.startswith(prefix):
+                return normalized[len(prefix) :].strip(), "prior"
+        return normalized, "current"
+
+    def _slot_matches_query(
+        self,
+        record_slot: Any,
+        *,
+        query_slots: set[str],
+        query_intent: str,
+    ) -> bool:
+        if norm(str(record_slot)) in query_slots:
+            return True
+        if query_intent not in {
+            "historical_recall",
+            "timeline_change",
+            "conflict_audit",
+            "validity_audit",
+        }:
+            return False
+        record_base, record_role = self._slot_temporal_role(record_slot)
+        if record_role != "prior":
+            return False
+        query_bases = {self._slot_temporal_role(slot)[0] for slot in query_slots}
+        return bool(record_base and record_base in query_bases)
 
     def _historical_evidence_for_query(
         self, query_intent: str, stale: list[MemoryRecord]
@@ -990,6 +1911,7 @@ class ValidityAwareMemoryStore:
             for record in stale
             if record.evidence_role == "stale_contrast"
             or record.current_status in {"superseded", "revoked"}
+            or bool(record.links.get("invalidated_by"))
         ]
 
     def _context_control_policy_for_intent(
@@ -1218,7 +2140,12 @@ class ValidityAwareMemoryStore:
     def _is_not_yet_valid_for_query(
         self, record: MemoryRecord, as_of: datetime | None
     ) -> bool:
-        return as_of is not None and as_of < record.valid_from
+        if as_of is not None:
+            return as_of < record.valid_from
+        return (
+            record.uses_strict_temporal_policy
+            and record.is_future_at_observation
+        )
 
     def _condition_matches_query(
         self, record: MemoryRecord, query: dict[str, Any]
@@ -1237,6 +2164,19 @@ class ValidityAwareMemoryStore:
             )
         return normalized_condition in norm(str(query.get("query", "")))
 
+    def _evidence_qualifiers_match_query(
+        self,
+        record: MemoryRecord,
+        required_qualifiers: set[str],
+    ) -> bool:
+        if not required_qualifiers:
+            return True
+        relation = norm(str(record.payload.get("query_scope_relation") or ""))
+        supported = self._normalized_query_set(
+            record.payload.get("supported_query_qualifiers")
+        )
+        return relation == "supported" and required_qualifiers <= supported
+
     def _blocked_retrieval_role(
         self,
         record: MemoryRecord,
@@ -1248,7 +2188,11 @@ class ValidityAwareMemoryStore:
         insufficient_support_ids: set[str],
         source_policy_mismatch_ids: set[str],
         condition_mismatch_ids: set[str],
+        evidence_qualifier_mismatch_ids: set[str],
+        conflict_candidate_ids: set[str],
     ) -> str:
+        if record.memory_id in conflict_candidate_ids:
+            return "conflict_candidate"
         if record.memory_id in not_yet_valid_ids:
             return "future_evidence"
         if record.memory_id in expired_ids:
@@ -1267,6 +2211,8 @@ class ValidityAwareMemoryStore:
             return "validity_marker"
         if record.memory_id in condition_mismatch_ids:
             return "condition_mismatch"
+        if record.memory_id in evidence_qualifier_mismatch_ids:
+            return "evidence_qualifier_mismatch"
         return "stale_contrast"
 
     def _blocked_retrieval_reason(
@@ -1280,9 +2226,16 @@ class ValidityAwareMemoryStore:
         insufficient_support_ids: set[str],
         source_policy_mismatch_ids: set[str],
         condition_mismatch_ids: set[str],
+        evidence_qualifier_mismatch_ids: set[str],
+        conflict_candidate_ids: set[str],
     ) -> str:
+        if record.memory_id in conflict_candidate_ids:
+            return (
+                "distinct values remain unresolved because equivalence, set coexistence, "
+                "or a directed scalar replacement relation is not proven"
+            )
         if record.memory_id in not_yet_valid_ids:
-            return "valid_from is after query as_of"
+            return "effective_from/valid_from is after query as_of, or evidence is still planned"
         if record.memory_id in expired_ids:
             return "valid_until is before query as_of"
         if record.memory_id in revoked_ids:
@@ -1299,6 +2252,10 @@ class ValidityAwareMemoryStore:
             return record.admission_reason
         if record.memory_id in condition_mismatch_ids:
             return "memory condition does not match query condition"
+        if record.memory_id in evidence_qualifier_mismatch_ids:
+            return (
+                "memory does not explicitly support every required query evidence qualifier"
+            )
         return record.admission_reason
 
     def _validity_edges(
@@ -1394,9 +2351,15 @@ class ValidityAwareMemoryStore:
                 "text": query["query"],
                 "entity": query["entity"],
                 "slot": query["slot"],
+                "coordinated_slots": list(query.get("coordinated_slots", [])),
                 "needs_current": bool(query.get("needs_current", True)),
                 "embedded_premise_value": premise_value,
                 "reader_profile": reader_profile,
+                "required_evidence_qualifiers": sorted(
+                    self._normalized_query_set(
+                        query.get("required_evidence_qualifiers")
+                    )
+                ),
             },
             "decision_rules": decision_rules,
             "current_candidate_evidence": [
@@ -1424,13 +2387,17 @@ class ValidityAwareMemoryStore:
         retrieval_role: str | None = None,
         retrieval_reason: str | None = None,
     ) -> dict[str, Any]:
-        return {
+        out = {
             "memory_id": record.memory_id,
             "claim": record.payload["claim"],
             "value": record.value,
             "observed_at": record.payload["observed_at"],
             "valid_until": record.payload.get("valid_until"),
             "condition": record.payload.get("condition"),
+            "query_scope_relation": record.payload.get("query_scope_relation"),
+            "supported_query_qualifiers": record.payload.get(
+                "supported_query_qualifiers", []
+            ),
             "scope": record.scope,
             "source_id": record.source_id,
             "source_type": record.source_type,
@@ -1444,9 +2411,53 @@ class ValidityAwareMemoryStore:
             "retrieval_reason": retrieval_reason or record.admission_reason,
             "reason": record.admission_reason,
         }
+        if "slot_cardinality" in record.payload:
+            out["slot_cardinality"] = record.payload.get("slot_cardinality")
+        canonical_slot, temporal_role = self._slot_temporal_role(record.slot)
+        if temporal_role == "prior":
+            out["structural_temporal_role"] = "prior"
+            out["canonical_slot"] = canonical_slot
+        if record.uses_strict_temporal_policy:
+            out.update(
+                {
+                    "source_time": record.payload.get("source_time"),
+                    "event_time": record.payload.get("event_time"),
+                    "effective_from": record.payload.get("effective_from"),
+                    "effective_until": record.payload.get("effective_until"),
+                    "temporal_status": record.payload.get("temporal_status"),
+                    "slot_cardinality": record.payload.get("slot_cardinality"),
+                    "temporal_relation": record.payload.get("temporal_relation"),
+                    "relation_target_memory_ids": list(
+                        record.payload.get("relation_target_memory_ids") or []
+                    ),
+                    "validity_policy": record.payload.get("validity_policy"),
+                    "temporal_field_states": deepcopy(
+                        record.payload.get("temporal_field_states", {})
+                    ),
+                    "temporal_semantic_states": deepcopy(
+                        record.payload.get("temporal_semantic_states", {})
+                    ),
+                    "temporal_derivations": deepcopy(
+                        record.payload.get("temporal_derivations", [])
+                    ),
+                }
+            )
+            if record.strict_semantic_relation != "unresolved":
+                out.update(
+                    {
+                        "semantic_relation": record.strict_semantic_relation,
+                        "semantic_relation_target_memory_ids": list(
+                            record.strict_semantic_relation_target_ids
+                        ),
+                        "semantic_relation_state": deepcopy(
+                            record.payload.get("semantic_relation_state", {})
+                        ),
+                    }
+                )
+        return out
 
     def _gate_evidence_view(self, record: MemoryRecord) -> dict[str, Any]:
-        return {
+        out = {
             "memory_id": record.memory_id,
             "value": record.value,
             "claim": record.payload["claim"],
@@ -1458,6 +2469,32 @@ class ValidityAwareMemoryStore:
             "evidence_role": record.evidence_role,
             "current_status": record.current_status,
         }
+        if "slot_cardinality" in record.payload:
+            out["slot_cardinality"] = record.payload.get("slot_cardinality")
+        canonical_slot, temporal_role = self._slot_temporal_role(record.slot)
+        if temporal_role == "prior":
+            out["structural_temporal_role"] = "prior"
+            out["canonical_slot"] = canonical_slot
+        if record.uses_strict_temporal_policy:
+            out.update(
+                {
+                    "effective_from": record.payload.get("effective_from"),
+                    "effective_until": record.payload.get("effective_until"),
+                    "temporal_status": record.payload.get("temporal_status"),
+                    "slot_cardinality": record.payload.get("slot_cardinality"),
+                    "temporal_relation": record.payload.get("temporal_relation"),
+                }
+            )
+            if record.strict_semantic_relation != "unresolved":
+                out.update(
+                    {
+                        "semantic_relation": record.strict_semantic_relation,
+                        "semantic_relation_target_memory_ids": list(
+                            record.strict_semantic_relation_target_ids
+                        ),
+                    }
+                )
+        return out
 
     def _log(self, record: MemoryRecord) -> None:
         self.admission_log.append(

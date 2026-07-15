@@ -10,6 +10,18 @@ from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+from .answerability import (
+    ARCHIVE_AWARE_QUERY_INTENTS,
+    RELATION_GATED_QUERY_INTENTS,
+    archive_answer_dimension_authorized,
+    build_answerability_boundary,
+    normalize_requested_response_dimensions,
+    validate_answerability_boundary,
+    validate_response_dimension_state,
+)
+from .semantic_relations import validate_semantic_relation_payload
+from .temporal_validity import validate_strict_temporal_payload
+
 
 ROOT = Path(__file__).resolve().parent
 RECORDS_PATH = ROOT / "validity_admission_demo_records.jsonl"
@@ -52,7 +64,7 @@ WEAK_GATE_ANALYSIS_FIELDS = [
 ]
 
 POLICY_VERSION = "qvf_validity_admission_write_retrieve_v0.26_no_api"
-ROUTER_VERSION = "qvf_read_time_router_v0.2_no_api"
+ROUTER_VERSION = "qvf_read_time_router_v0.3_no_api"
 VALIDITY_CONTROLLER_VERSION = "qvf_memory_validity_controller_v0.1_no_api"
 READER_VERSION = "qvf_structured_reader_renderer_v0.2_no_api"
 LOW_CONFIDENCE_THRESHOLD = 0.5
@@ -114,7 +126,10 @@ QUERY_STRING_OR_LIST_FIELDS = (
     "required_source_ids",
     "blocked_source_ids",
     "excluded_source_ids",
+    "required_evidence_qualifiers",
 )
+QUERY_SLOT_LIST_FIELD = "coordinated_slots"
+QUERY_SCOPE_RELATIONS = {"supported", "unsupported", "uncertain"}
 MEMORY_EVENT_TIME_FIELDS = ("observed_at", "timestamp", "created_at")
 MEMORY_EVENT_ACTION_ALIASES = {
     "invalidate": "invalidate",
@@ -159,6 +174,8 @@ ADMISSION_STATUSES = {
     "reject_duplicate_memory_id",
     "reject_low_confidence",
     "revoked_by_validity_marker",
+    "admit_as_conflict_candidate",
+    "admit_as_future_candidate",
 }
 CURRENT_STATUSES = {
     "candidate",
@@ -168,6 +185,8 @@ CURRENT_STATUSES = {
     "revoked",
     "rejected",
     "validity_marker",
+    "conflict",
+    "future",
 }
 EVIDENCE_ROLES = {
     "current_support",
@@ -176,6 +195,8 @@ EVIDENCE_ROLES = {
     "validity_marker",
     "excluded_duplicate_memory_id",
     "excluded_low_confidence",
+    "conflict_candidate",
+    "future_candidate",
 }
 EXPORTED_STATUS_TRIPLES = {
     "candidate": {("candidate", "current_support")},
@@ -186,11 +207,14 @@ EXPORTED_STATUS_TRIPLES = {
     "reject_duplicate_memory_id": {("rejected", "excluded_duplicate_memory_id")},
     "reject_low_confidence": {("rejected", "excluded_low_confidence")},
     "revoked_by_validity_marker": {("revoked", "stale_contrast")},
+    "admit_as_conflict_candidate": {("conflict", "conflict_candidate")},
+    "admit_as_future_candidate": {("future", "future_candidate")},
 }
 READ_DECISION_VALUES = {"ADMIT_CURRENT", "ADMIT_ARCHIVE", "REJECT_STALE_PREMISE", "UNKNOWN_CURRENT"}
 READ_ROUTES = {
     "current_support_reader",
     "archive_aware_reader",
+    "relation_evidence_insufficient",
     "unknown_current_router",
     "weak_conservative_gate",
 }
@@ -200,6 +224,7 @@ ANSWER_POLICIES = {
     "correct_then_answer_from_current",
     "correct_premise_only",
     "insufficient_current_state",
+    "insufficient_relation_evidence",
 }
 READ_DECISION_ID_FIELDS = (
     "answer_evidence_ids",
@@ -551,6 +576,10 @@ def validate_memory_payload(payload: dict[str, Any]) -> dict[str, Any]:
 
     _validate_memory_scope(validated, memory_id)
     _validate_validity_marker_fields(validated, memory_id)
+    _validate_query_scope_evidence_fields(validated, memory_id)
+    _validate_condition_activation_fields(validated, memory_id)
+    validate_strict_temporal_payload(validated, memory_id=memory_id)
+    validate_semantic_relation_payload(validated, memory_id=memory_id)
     return validated
 
 
@@ -751,6 +780,8 @@ def normalize_query_request_payload(request: dict[str, Any]) -> dict[str, Any]:
         ("timestamp", "as_of"),
         ("condition", "condition"),
         ("required_condition", "required_condition"),
+        ("query_intent", "query_intent"),
+        ("memory_query_intent", "query_intent"),
         ("embedded_premise_value", "embedded_premise_value"),
         ("premise_value", "embedded_premise_value"),
         ("risk_profile", "risk_profile"),
@@ -769,6 +800,16 @@ def normalize_query_request_payload(request: dict[str, Any]) -> dict[str, Any]:
     for field_name in QUERY_STRING_OR_LIST_FIELDS:
         if field_name in request:
             query[field_name] = _query_request_string_or_list(request, field_name)
+    if QUERY_SLOT_LIST_FIELD in request:
+        coordinated_slots = _query_request_string_or_list(
+            request,
+            QUERY_SLOT_LIST_FIELD,
+        )
+        query[QUERY_SLOT_LIST_FIELD] = (
+            [coordinated_slots]
+            if isinstance(coordinated_slots, str)
+            else coordinated_slots
+        )
     scope = _query_request_scope(request)
     if scope:
         query["scope"] = scope
@@ -789,13 +830,20 @@ def build_query_request_adapter_summary(
     risk_profile_counts: dict[str, int] = {}
     premise_count = 0
     source_policy_request_count = 0
+    evidence_qualifier_request_count = 0
     for query in queries:
         profile = str(query.get("risk_profile") or query.get("validity_profile") or "default")
         risk_profile_counts[profile] = risk_profile_counts.get(profile, 0) + 1
         if query.get("embedded_premise_value"):
             premise_count += 1
-        if any(query.get(field_name) is not None for field_name in QUERY_STRING_OR_LIST_FIELDS):
+        if any(
+            query.get(field_name) is not None
+            for field_name in QUERY_STRING_OR_LIST_FIELDS
+            if field_name != "required_evidence_qualifiers"
+        ):
             source_policy_request_count += 1
+        if query.get("required_evidence_qualifiers"):
+            evidence_qualifier_request_count += 1
     return {
         "decision": "GO_QVF_QUERY_REQUEST_ADAPTER_READY_NO_API",
         "execution_mode": "query_request_adapter",
@@ -810,6 +858,7 @@ def build_query_request_adapter_summary(
         "generated_query_ids": generated_ids,
         "embedded_premise_request_count": premise_count,
         "source_policy_request_count": source_policy_request_count,
+        "evidence_qualifier_request_count": evidence_qualifier_request_count,
         "risk_profile_counts": dict(sorted(risk_profile_counts.items())),
         "api_calls_made": 0,
         "claim_boundary": [
@@ -1130,6 +1179,98 @@ def _validate_validity_marker_fields(payload: dict[str, Any], memory_id: str) ->
             raise ValueError(f"memory.invalidates_scope_mismatch_count must be >= 0 for {memory_id}")
 
 
+def _validate_query_scope_evidence_fields(
+    payload: dict[str, Any], memory_id: str
+) -> None:
+    relation = payload.get("query_scope_relation")
+    if relation is not None:
+        if not isinstance(relation, str) or not relation.strip():
+            raise ValueError(
+                f"memory.query_scope_relation must be a non-empty string for {memory_id}"
+            )
+        normalized_relation = norm(relation)
+        if normalized_relation not in QUERY_SCOPE_RELATIONS:
+            known = ", ".join(sorted(QUERY_SCOPE_RELATIONS))
+            raise ValueError(
+                f"memory.query_scope_relation must be one of: {known} for {memory_id}"
+            )
+        payload["query_scope_relation"] = normalized_relation
+
+    qualifiers = payload.get("supported_query_qualifiers")
+    if qualifiers is None:
+        return
+    if not isinstance(qualifiers, list):
+        raise ValueError(
+            f"memory.supported_query_qualifiers must be a list for {memory_id}"
+        )
+    normalized: list[str] = []
+    seen: set[str] = set()
+    for qualifier in qualifiers:
+        if not isinstance(qualifier, str) or not qualifier.strip():
+            raise ValueError(
+                "memory.supported_query_qualifiers must contain non-empty strings "
+                f"for {memory_id}"
+            )
+        cleaned = norm(qualifier)
+        if cleaned not in seen:
+            seen.add(cleaned)
+            normalized.append(cleaned)
+    payload["supported_query_qualifiers"] = normalized
+
+
+def _validate_condition_activation_fields(
+    payload: dict[str, Any], memory_id: str
+) -> None:
+    activation = payload.get("condition_activation")
+    operation = norm(str(payload.get("operation", "")))
+    if activation is None:
+        if operation == "activate_condition":
+            raise ValueError(
+                f"memory.condition_activation is required for activate_condition operation: {memory_id}"
+            )
+        return
+    if operation != "activate_condition":
+        raise ValueError(
+            f"memory.operation must be activate_condition when condition_activation is present: {memory_id}"
+        )
+    if not isinstance(activation, dict):
+        raise ValueError(f"memory.condition_activation must be an object for {memory_id}")
+    for field_name in ["trigger_slot", "dependent_slot"]:
+        value = activation.get(field_name)
+        if not isinstance(value, str) or not value.strip():
+            raise ValueError(
+                f"memory.condition_activation.{field_name} must be a non-empty string for {memory_id}"
+            )
+    depth = activation.get("activation_depth")
+    if isinstance(depth, bool) or not isinstance(depth, int) or depth < 1:
+        raise ValueError(
+            f"memory.condition_activation.activation_depth must be an integer >= 1 for {memory_id}"
+        )
+    for field_name in [
+        "rule_source_turn_ids",
+        "root_trigger_source_turn_ids",
+        "parent_trigger_source_turn_ids",
+        "activation_path",
+    ]:
+        values = activation.get(field_name)
+        if not isinstance(values, list) or not values:
+            raise ValueError(
+                f"memory.condition_activation.{field_name} must be a non-empty list for {memory_id}"
+            )
+        if any(not isinstance(value, str) or not value.strip() for value in values):
+            raise ValueError(
+                f"memory.condition_activation.{field_name} must contain non-empty strings for {memory_id}"
+            )
+    template_id = activation.get("condition_template_memory_id")
+    if template_id is not None and (
+        not isinstance(template_id, str) or not template_id.strip()
+    ):
+        raise ValueError(
+            "memory.condition_activation.condition_template_memory_id must be a "
+            f"non-empty string when present for {memory_id}"
+        )
+
+
 def _validate_exported_link_targets(
     raw_targets: Any, *, edge_type: str, memory_id: str
 ) -> list[str]:
@@ -1195,11 +1336,23 @@ def validate_query_payload(query: dict[str, Any]) -> dict[str, Any]:
             raise ValueError(f"query.{field_name} must be a string")
     for field_name in QUERY_STRING_OR_LIST_FIELDS:
         _validate_query_string_or_list(validated, field_name)
+    _validate_query_coordinated_slots(validated)
     for field_name in ["condition", "required_condition", "embedded_premise_value"]:
         value = validated.get(field_name)
         if value is not None and not isinstance(value, str):
             raise ValueError(f"query.{field_name} must be a string")
     _validate_query_intent(validated)
+    requested_dimensions = normalize_requested_response_dimensions(
+        validated.get("requested_response_dimensions")
+    )
+    response_dimension_state = validate_response_dimension_state(
+        validated.get("response_dimension_state"),
+        requested_response_dimensions=requested_dimensions,
+        query_text=validated.get("query"),
+    )
+    if requested_dimensions:
+        validated["requested_response_dimensions"] = requested_dimensions
+        validated["response_dimension_state"] = response_dimension_state
     _validate_query_profile_fields(validated)
     _validate_query_reader_profile(validated)
     return validated
@@ -1346,6 +1499,29 @@ def _validate_query_string_or_list(query: dict[str, Any], field_name: str) -> No
     for item in values:
         if not isinstance(item, str) or not item.strip():
             raise ValueError(f"query.{field_name} must contain non-empty strings")
+
+
+def _validate_query_coordinated_slots(query: dict[str, Any]) -> None:
+    value = query.get(QUERY_SLOT_LIST_FIELD)
+    if value is None:
+        return
+    if not isinstance(value, list):
+        raise ValueError(f"query.{QUERY_SLOT_LIST_FIELD} must be a list of strings")
+    primary_slot = norm(str(query.get("slot") or ""))
+    normalized: list[str] = []
+    seen: set[str] = {primary_slot}
+    for item in value:
+        if not isinstance(item, str) or not item.strip():
+            raise ValueError(
+                f"query.{QUERY_SLOT_LIST_FIELD} must contain non-empty strings"
+            )
+        stripped = item.strip()
+        normalized_item = norm(stripped)
+        if normalized_item in seen:
+            continue
+        seen.add(normalized_item)
+        normalized.append(stripped)
+    query[QUERY_SLOT_LIST_FIELD] = normalized
 
 
 def _validate_exported_status_field(
@@ -2259,6 +2435,8 @@ class ValidityAwareMemoryStore:
             return norm(str(raw_intent))
         if query.get("as_of"):
             return "current_state"
+        if query.get("needs_current") is False:
+            return "historical_recall"
 
         text = norm(str(query.get("query", "")))
         timeline_cues = [
@@ -2321,8 +2499,6 @@ class ValidityAwareMemoryStore:
             return "historical_recall"
         if any(cue in text for cue in current_cues):
             return "current_state"
-        if query.get("needs_current") is False:
-            return "historical_recall"
         return "current_state"
 
     def _historical_evidence_for_query(
@@ -4228,6 +4404,20 @@ def _build_validity_controller_decision(
         )
         allowed_as_history_ids = stale_ids
         premise_blocker_ids = blocked_ids
+    elif query_intent in RELATION_GATED_QUERY_INTENTS:
+        evidence_sufficiency = "insufficient_relation_evidence"
+        next_action = "retrieve_entity_slot_timeline"
+        temporal_focus = "timeline"
+        include_archive = True
+        include_source_history = True
+        reason = (
+            "The query asks for a historical or relational answer dimension, but "
+            "the visible evidence does not establish the required timeline, conflict, "
+            "or validity relation."
+        )
+        allowed_as_history_ids = list(
+            dict.fromkeys(_memory_ids(historical) + stale_ids)
+        )
     elif historical or stale:
         evidence_sufficiency = "archive_or_stale_only_for_current_query"
         next_action = "retrieve_current_entity_slot"
@@ -4264,9 +4454,21 @@ def _build_validity_controller_decision(
             memory_id for memory_id in blocked_ids if memory_id not in current_id_set
         ]
 
+    answerability_boundary = validate_answerability_boundary(
+        build_answerability_boundary(
+            answer_policy=answer_policy,
+            evidence_sufficiency=evidence_sufficiency,
+            next_action=next_action,
+            answer_evidence_ids=answer_ids,
+            premise_correction_evidence_ids=[*blocked_ids, *stale_ids],
+        )
+    )
+
     return {
         "controller_version": VALIDITY_CONTROLLER_VERSION,
         "evidence_sufficiency": evidence_sufficiency,
+        "answerability_state": answerability_boundary["answerability_state"],
+        "answerability_boundary": answerability_boundary,
         "next_action": next_action,
         "reason": reason,
         "query_rewrite": _controller_query_rewrite(
@@ -4315,23 +4517,27 @@ def route_read_time_packet(packet: dict[str, Any]) -> dict[str, Any]:
     query = packet["query"]
     compact_packet = packet.get("compact_validity_packet", {})
     weak_gate_card = packet.get("weak_conservative_gate_card")
+    query_intent = query.get("query_intent", "current_state")
+    archive_aware_intents = ARCHIVE_AWARE_QUERY_INTENTS
     embedded_premise = None
     if weak_gate_card:
         embedded_premise = weak_gate_card.get("query", {}).get("embedded_premise_value")
 
-    if weak_gate_card and embedded_premise:
-        return _route_weak_gate(packet, weak_gate_card)
-
     current = compact_packet.get("current_evidence", [])
     historical = compact_packet.get("historical_evidence", [])
+    archive_dimension_authorized = archive_answer_dimension_authorized(
+        query_intent=query_intent,
+        query_slot=query.get("slot"),
+        embedded_premise=embedded_premise,
+        current_evidence=current,
+        historical_evidence=historical,
+    )
+
+    if weak_gate_card and embedded_premise and not archive_dimension_authorized:
+        return _route_weak_gate(packet, weak_gate_card)
+
     excluded = compact_packet.get("excluded_memory_summary", [])
-    query_intent = query.get("query_intent", "current_state")
-    if query_intent in {
-        "historical_recall",
-        "timeline_change",
-        "conflict_audit",
-        "validity_audit",
-    } and (historical or current):
+    if query_intent in archive_aware_intents and archive_dimension_authorized:
         answer_evidence = historical + current
         decision = {
             "router_version": ROUTER_VERSION,
@@ -4349,6 +4555,26 @@ def route_read_time_packet(packet: dict[str, Any]) -> dict[str, Any]:
                 "Use historical_evidence for historical, timeline, or audit questions. "
                 "Do not reinterpret historical evidence as the current state unless it "
                 "also appears in current_evidence."
+            ),
+        }
+        return _attach_validity_controller_decision(packet, decision)
+    if query_intent in RELATION_GATED_QUERY_INTENTS:
+        decision = {
+            "router_version": ROUTER_VERSION,
+            "query_id": query["query_id"],
+            "route": "relation_evidence_insufficient",
+            "decision": "UNKNOWN_CURRENT",
+            "answer_policy": "insufficient_relation_evidence",
+            "answer_evidence_ids": [],
+            "blocking_evidence_ids": [],
+            "stale_evidence_ids": [
+                row["memory_id"]
+                for row in compact_packet.get("stale_or_blocked_evidence", [])
+            ],
+            "final_answer_hint": "",
+            "reader_contract": (
+                "Do not infer a timeline, transition, conflict, or validity relation "
+                "without source-backed relation evidence; retrieve a bounded timeline."
             ),
         }
         return _attach_validity_controller_decision(packet, decision)
@@ -5508,9 +5734,9 @@ def build_summary(
         "api_calls_made": 0,
         "claim_boundary": [
             "This is a no-API architecture readiness check, not new model-accuracy evidence.",
-            "It extends QVF from read-time checking toward write-time admission and retrieval-time context control.",
+            "Write-time lifecycle scaffolding is outside the promoted post-retrieval QVF controller claim.",
             "Weak-gate cards are routing/gating scaffolds for weaker readers, not standalone full-answer readers.",
-            "It does not replace the official STALE400 graph-lite or dim3-actionable results.",
+            "Benchmark accuracy evidence must come from separate frozen evaluation artifacts.",
         ],
     }
 

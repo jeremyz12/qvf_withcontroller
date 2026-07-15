@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from copy import deepcopy
 from pathlib import Path
 from typing import Any
 
@@ -54,7 +55,9 @@ QUERY_STRING_OR_LIST_FIELDS = (
     "required_source_ids",
     "blocked_source_ids",
     "excluded_source_ids",
+    "required_evidence_qualifiers",
 )
+QUERY_SLOT_LIST_FIELD = "coordinated_slots"
 
 
 def load_memory_events(path: Path) -> list[dict[str, Any]]:
@@ -248,6 +251,8 @@ def normalize_query_request_payload(request: dict[str, Any]) -> dict[str, Any]:
         ("timestamp", "as_of"),
         ("condition", "condition"),
         ("required_condition", "required_condition"),
+        ("query_intent", "query_intent"),
+        ("memory_query_intent", "query_intent"),
         ("embedded_premise_value", "embedded_premise_value"),
         ("premise_value", "embedded_premise_value"),
         ("risk_profile", "risk_profile"),
@@ -266,6 +271,24 @@ def normalize_query_request_payload(request: dict[str, Any]) -> dict[str, Any]:
     for field_name in QUERY_STRING_OR_LIST_FIELDS:
         if field_name in request:
             query[field_name] = _query_request_string_or_list(request, field_name)
+    if QUERY_SLOT_LIST_FIELD in request:
+        coordinated_slots = _query_request_string_or_list(
+            request,
+            QUERY_SLOT_LIST_FIELD,
+        )
+        query[QUERY_SLOT_LIST_FIELD] = (
+            [coordinated_slots]
+            if isinstance(coordinated_slots, str)
+            else coordinated_slots
+        )
+    if "requested_response_dimensions" in request:
+        query["requested_response_dimensions"] = deepcopy(
+            request["requested_response_dimensions"]
+        )
+    if "response_dimension_state" in request:
+        query["response_dimension_state"] = deepcopy(
+            request["response_dimension_state"]
+        )
     scope = _query_request_scope(request)
     if scope:
         query["scope"] = scope
@@ -286,13 +309,23 @@ def build_query_request_adapter_summary(
     risk_profile_counts: dict[str, int] = {}
     premise_count = 0
     source_policy_request_count = 0
+    evidence_qualifier_request_count = 0
+    coordinated_slot_request_count = 0
     for query in queries:
         profile = str(query.get("risk_profile") or query.get("validity_profile") or "default")
         risk_profile_counts[profile] = risk_profile_counts.get(profile, 0) + 1
         if query.get("embedded_premise_value"):
             premise_count += 1
-        if any(query.get(field_name) is not None for field_name in QUERY_STRING_OR_LIST_FIELDS):
+        if any(
+            query.get(field_name) is not None
+            for field_name in QUERY_STRING_OR_LIST_FIELDS
+            if field_name != "required_evidence_qualifiers"
+        ):
             source_policy_request_count += 1
+        if query.get("required_evidence_qualifiers"):
+            evidence_qualifier_request_count += 1
+        if query.get(QUERY_SLOT_LIST_FIELD):
+            coordinated_slot_request_count += 1
     return {
         "decision": "GO_QVF_QUERY_REQUEST_ADAPTER_READY_NO_API",
         "execution_mode": "query_request_adapter",
@@ -307,6 +340,8 @@ def build_query_request_adapter_summary(
         "generated_query_ids": generated_ids,
         "embedded_premise_request_count": premise_count,
         "source_policy_request_count": source_policy_request_count,
+        "evidence_qualifier_request_count": evidence_qualifier_request_count,
+        "coordinated_slot_request_count": coordinated_slot_request_count,
         "risk_profile_counts": dict(sorted(risk_profile_counts.items())),
         "api_calls_made": 0,
         "claim_boundary": [
