@@ -86,7 +86,10 @@ class OpenAISlotExtractor:
         memories: List[MemoryItem],
         query_date: Optional[str] = None,
         scoped: bool = False,
+        contract: str = "v5",
     ) -> tuple[SlotExtraction, int, int]:
+        if contract == "v7":
+            raise NotImplementedError("v7 recall contract: Anthropic extractor only")
         schema_cls = ScopedSlotExtraction if scoped else SlotExtraction
         base_prompt = (EXTRACTION_SYSTEM_PROMPT_SCOPED if scoped
                        else EXTRACTION_SYSTEM_PROMPT)

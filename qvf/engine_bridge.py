@@ -116,6 +116,29 @@ class ScopedSlotExtraction(SlotExtraction):
     query_focus: ScopedQueryFocus
 
 
+class MemoryTriage(BaseModel):
+    memory_id: str
+    mentions_query_slot: Literal["yes", "maybe", "no"] = Field(
+        description="'yes' = this memory states a value for the query's "
+        "entity+slot; 'maybe' = it implies one obliquely; 'no' = unrelated."
+    )
+
+
+class TriagedScopedSlotExtraction(ScopedSlotExtraction):
+    """v7 recall contract: a forced per-memory triage decision precedes record
+    extraction, so a competing value cannot be silently skipped (the measured
+    admit-route failure mode: extraction found only one of two values in
+    25/54 fresh-slice failures)."""
+
+    memory_triage: List[MemoryTriage] = Field(
+        description="EXACTLY one entry per retrieved memory, in input order."
+    )
+    records: List[ExtractedRecord] = Field(
+        description="One record for EVERY memory triaged 'yes' or 'maybe'. "
+        "Do not skip oblique phrasings - map them onto the query slot."
+    )
+
+
 EXTRACTION_SYSTEM_PROMPT = """\
 You extract slot-level structured records from retrieved conversation memories,
 for consumption by a downstream deterministic validity engine.
@@ -150,6 +173,20 @@ EXTRACTION_SYSTEM_PROMPT_SCOPED = EXTRACTION_SYSTEM_PROMPT + """
    how a value changed over time. For such queries OLD states are the evidence
    the reader needs — they must not be treated as stale noise.
    'unclear' = anything else.
+"""
+
+
+EXTRACTION_SYSTEM_PROMPT_V7 = EXTRACTION_SYSTEM_PROMPT_SCOPED + """
+8. RECALL CONTRACT: fill memory_triage with EXACTLY one entry per retrieved
+   memory, in input order — does the memory state or imply a value for the
+   query's entity+slot? 'yes' = states one; 'maybe' = implies one obliquely
+   (e.g. "signed a lease in Austin" implies location = Austin); 'no' =
+   unrelated.
+9. Every memory triaged 'yes' or 'maybe' MUST yield a record carrying its
+   value, even when the phrasing is oblique. The caution in rules 3-5 governs
+   only the temporal_relation LABEL (prefer 'unresolved' when explicit change
+   language is absent); it never justifies omitting a record. Omitting one of
+   two competing values is the worst possible failure.
 """
 
 
@@ -369,14 +406,32 @@ class LLMSlotExtractor:
         memories: List[MemoryItem],
         query_date: Optional[str] = None,
         scoped: bool = False,
+        contract: str = "v5",
     ) -> tuple[SlotExtraction, int, int]:
         """Returns (extraction, input_tokens, output_tokens).
 
         scoped=True uses the v5 schema/prompt that additionally classifies the
-        query's temporal scope. Default False keeps the pre-v5 contract
+        query's temporal scope. contract="v7" selects the recall-contract
+        variant (scoped semantics implied): forced per-memory triage plus the
+        include-then-label amendment. Defaults keep the pre-v5 contract
         byte-identical (existing arms and re-runs are unaffected).
         """
+        if contract == "v7":
+            scoped = True
         if self.mock:
+            if contract == "v7":
+                return (
+                    TriagedScopedSlotExtraction(
+                        query_focus=ScopedQueryFocus(
+                            entity="user", slot="unknown", needs_current=True,
+                            query_temporal_scope="current",
+                        ),
+                        records=[],
+                        memory_triage=[],
+                    ),
+                    0,
+                    0,
+                )
             if scoped:
                 return (
                     ScopedSlotExtraction(
@@ -410,19 +465,27 @@ class LLMSlotExtractor:
         # Deterministic extraction on models that still accept temperature
         # (haiku-4-5); Opus 4.7+ rejects the param, so gate on model id.
         extra = {"temperature": 0.0} if "haiku" in self.model else {}
+        if contract == "v7":
+            sys_prompt = EXTRACTION_SYSTEM_PROMPT_V7
+            out_schema = TriagedScopedSlotExtraction
+        elif scoped:
+            sys_prompt = EXTRACTION_SYSTEM_PROMPT_SCOPED
+            out_schema = ScopedSlotExtraction
+        else:
+            sys_prompt = EXTRACTION_SYSTEM_PROMPT
+            out_schema = SlotExtraction
         response = self._client.messages.parse(
             model=self.model,
             max_tokens=config.ADAPTER_MAX_TOKENS,
             system=[
                 {
                     "type": "text",
-                    "text": (EXTRACTION_SYSTEM_PROMPT_SCOPED if scoped
-                             else EXTRACTION_SYSTEM_PROMPT),
+                    "text": sys_prompt,
                     "cache_control": {"type": "ephemeral"},
                 }
             ],
             messages=[{"role": "user", "content": user_input}],
-            output_format=ScopedSlotExtraction if scoped else SlotExtraction,
+            output_format=out_schema,
             **extra,
         )
         if response.stop_reason == "refusal" or response.parsed_output is None:
@@ -463,7 +526,10 @@ class LocalSlotExtractor:
         memories: List[MemoryItem],
         query_date: Optional[str] = None,
         scoped: bool = False,
+        contract: str = "v5",
     ) -> tuple[SlotExtraction, int, int]:
+        if contract == "v7":
+            raise NotImplementedError("v7 recall contract: Anthropic extractor only")
         schema_cls = ScopedSlotExtraction if scoped else SlotExtraction
         base_prompt = (EXTRACTION_SYSTEM_PROMPT_SCOPED if scoped
                        else EXTRACTION_SYSTEM_PROMPT)

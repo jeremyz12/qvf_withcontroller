@@ -118,7 +118,8 @@ def run_extraction_only(instance, extractor, fallback_generator) -> dict:
 
 
 def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
-                      fallback_generator, scope_gate: bool = False) -> dict:
+                      fallback_generator, scope_gate: bool = False,
+                      contract: str = "v5", agg_guard: bool = False) -> dict:
     """Engine-ablation: identical retrieval/repair/extraction to qvf_v4, but
     adjudication is ~30 lines of plain Python instead of the symbolic engine.
     Measures the engine's net contribution.
@@ -130,8 +131,27 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
     temporal-reasoning losses where surgery removed rounds the reader needed."""
     retriever = _dense_retriever_cls()(instance.memories)
     retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
+    if agg_guard and _AGG_QUERY_RE.search(instance.question):
+        # Aggregation questions (how many/total/since) are history
+        # aggregations: pass through BEFORE paying for extraction.
+        gen = fallback_generator.generate(
+            instance.question, retrieved, instance.question_date
+        )
+        return {
+            "usage_input_tokens": gen.usage_input_tokens,
+            "usage_output_tokens": gen.usage_output_tokens,
+            "repair_triggered": False,
+            "repair_added_ids": [],
+            "extracted_record_count": 0,
+            "filter_strategy": "scope_pass_aggregation",
+            "filtered_memory_ids": [m.memory_id for m in retrieved],
+            "retrieved_memory_ids": [m.memory_id for m in retrieved],
+            "fallback_used": False,
+            "answer": gen.answer,
+        }
     extraction, ein, eout = extractor.extract(
-        instance.question, retrieved, instance.question_date, scoped=scope_gate
+        instance.question, retrieved, instance.question_date,
+        scoped=scope_gate, contract=contract,
     )
     record = {
         "usage_input_tokens": ein,
@@ -139,6 +159,12 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         "repair_triggered": False,
         "repair_added_ids": [],
     }
+    triage = getattr(extraction, "memory_triage", None)
+    if triage is not None:
+        record["triage_counts"] = {
+            k: sum(1 for t in triage if t.mentions_query_slot == k)
+            for k in ("yes", "maybe", "no")
+        }
 
     if scope_gate:
         scope = getattr(extraction.query_focus, "query_temporal_scope", "unclear")
@@ -178,11 +204,12 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         record["repair_added_ids"] = [m.memory_id for m in added]
         if added:
             merged = retrieved + added
-            # scoped must match the first extraction: switching prompt/schema
-            # mid-pipeline was an uncontrolled confound (fixed 2026-08-02).
+            # scoped/contract must match the first extraction: switching
+            # prompt/schema mid-pipeline was an uncontrolled confound
+            # (fixed 2026-08-02).
             extraction, ein2, eout2 = extractor.extract(
                 instance.question, merged, instance.question_date,
-                scoped=scope_gate,
+                scoped=scope_gate, contract=contract,
             )
             record["usage_input_tokens"] += ein2
             record["usage_output_tokens"] += eout2
@@ -733,6 +760,12 @@ def main() -> int:
         help="Randomly sample N queries from the loaded pool (pilot mode). "
         "Applied after all other filters; deterministic given --sample-seed.",
     )
+    parser.add_argument(
+        "--sample-items", type=int, default=0,
+        help="STALE: randomly sample N ITEMS (keeping all their query "
+        "variants) from the loaded pool — preserves the case structure, "
+        "unlike --sample-n. Deterministic given --sample-seed.",
+    )
     parser.add_argument("--sample-seed", type=int, default=20260802)
     args = parser.parse_args()
 
@@ -774,6 +807,26 @@ def main() -> int:
         print(
             f"Loaded {len(instances)} queries from {args.items} STALE items "
             f"(offset {args.item_offset})"
+        )
+    if args.sample_items:
+        import random as _random
+
+        def _item_uid(inst):
+            return inst.question_id.rsplit("_", 2)[0]
+
+        uids = []
+        for inst in instances:
+            u = _item_uid(inst)
+            if u not in uids:
+                uids.append(u)
+        if len(uids) > args.sample_items:
+            keep = set(_random.Random(args.sample_seed).sample(
+                uids, args.sample_items
+            ))
+            instances = [i for i in instances if _item_uid(i) in keep]
+        print(
+            f"Randomly sampled {args.sample_items} items -> "
+            f"{len(instances)} queries (seed {args.sample_seed})"
         )
     if args.sample_n and len(instances) > args.sample_n:
         import random as _random
@@ -934,6 +987,14 @@ def main() -> int:
         ),
         "minimal_rules_v6": lambda inst: run_minimal_rules_v6(
             inst, extractor, validated_gen, conflict_gen, direct_gen
+        ),
+        "minimal_rules_v7": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, contract="v7",
+        ),
+        "minimal_rules_v5agg": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, agg_guard=True,
         ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen
