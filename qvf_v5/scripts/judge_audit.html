@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QVF 判分人工审计</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #ffffff; --ink: #1a1d21; --sub: #6b7280;
+    --line: #e5e7eb; --blue: #2563eb; --green: #16a34a; --red: #dc2626;
+    --amber: #d97706; --chip: #eef2f7;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+         background: var(--bg); color: var(--ink); }
+  header { position: sticky; top: 0; z-index: 10; background: var(--card);
+           border-bottom: 1px solid var(--line); padding: 10px 20px;
+           display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  header h1 { font-size: 16px; margin: 0; }
+  .bar { flex: 1; min-width: 200px; height: 10px; background: var(--chip);
+         border-radius: 5px; overflow: hidden; }
+  .bar > div { height: 100%; background: var(--blue); width: 0; transition: width .2s; }
+  .count { font-variant-numeric: tabular-nums; color: var(--sub); font-size: 14px; }
+  .tabs { display: flex; gap: 6px; }
+  .tabs button { border: 1px solid var(--line); background: var(--card);
+                 border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 13px; }
+  .tabs button.on { background: var(--blue); color: #fff; border-color: var(--blue); }
+  main { max-width: 880px; margin: 0 auto; padding: 16px 16px 80px; }
+  .hint { color: var(--sub); font-size: 13px; margin: 8px 0 16px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+          padding: 16px 18px; margin-bottom: 14px; }
+  .card.done { border-left: 4px solid var(--green); }
+  .card.done.disagree { border-left-color: var(--amber); }
+  .meta { color: var(--sub); font-size: 12px; margin-bottom: 8px; display: flex;
+          gap: 10px; flex-wrap: wrap; }
+  .meta span { background: var(--chip); border-radius: 4px; padding: 1px 7px; }
+  .q { font-weight: 600; margin-bottom: 10px; white-space: pre-wrap; }
+  .lbl { font-size: 12px; color: var(--sub); margin-top: 10px; }
+  .txt { background: #fafbfc; border: 1px solid var(--line); border-radius: 6px;
+         padding: 8px 10px; white-space: pre-wrap; font-size: 14px; max-height: 220px;
+         overflow-y: auto; }
+  .btns { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; align-items: center; }
+  .btns button { border: 1px solid var(--line); background: var(--card); padding: 7px 16px;
+                 border-radius: 7px; cursor: pointer; font-size: 14px; }
+  .btns button.v1.sel { background: var(--green); color: #fff; border-color: var(--green); }
+  .btns button.v0.sel { background: var(--red); color: #fff; border-color: var(--red); }
+  .btns button.vu.sel { background: var(--amber); color: #fff; border-color: var(--amber); }
+  .notes { flex: 1; min-width: 160px; border: 1px solid var(--line); border-radius: 7px;
+           padding: 7px 10px; font-size: 13px; }
+  .judge { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 10px;
+           font-size: 13px; }
+  .judge .tag { font-weight: 700; }
+  .judge .agree { color: var(--green); }
+  .judge .disagree { color: var(--amber); font-weight: 700; }
+  .doneBanner { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46;
+                border-radius: 10px; padding: 14px 18px; margin: 10px 0 18px;
+                font-size: 14px; display: none; }
+  .savefail { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+              background: var(--red); color: #fff; border-radius: 8px; padding: 8px 16px;
+              font-size: 13px; display: none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>QVF 判分人工审计</h1>
+  <div class="bar"><div id="prog"></div></div>
+  <div class="count" id="count">0 / 0</div>
+  <div class="tabs">
+    <button id="tabAll" class="on">全部</button>
+    <button id="tabTodo">未填</button>
+    <button id="tabDone">已填</button>
+  </div>
+</header>
+<main>
+  <p class="hint">对每一条:先读问题、金标准答案和模型答案,判断模型答案是否正确
+    (<b>对</b> / <b>错</b> / <b>不确定</b>),再看系统判官的意见(盲审:判官意见在你选择之前是隐藏的)。
+    每次点击立即保存到本地文件,可随时关页面,下次打开续填。快捷键:1=对,0=错,U=不确定,↑↓ 或 J/K 换题。</p>
+  <div class="doneBanner" id="doneBanner">✅ 100 条全部完成,数据已保存到 results/judge_audit_human.json。回到对话告诉 Claude 一声即可,他会计算判官与你的一致率(Cohen's kappa)。</div>
+  <div id="cards"></div>
+</main>
+<div class="savefail" id="savefail">保存失败——请确认本地服务还在运行,然后重试点击</div>
+<script>
+let rows = [], filter = "all", cur = -1;
+
+const V_LABEL = { "1": "对", "0": "错", "unsure": "不确定" };
+
+async function boot() {
+  const r = await fetch("/data");
+  rows = await r.json();
+  render();
+}
+
+function doneCount() { return rows.filter(x => x.human_verdict).length; }
+
+function state() {
+  const out = {};
+  for (const x of rows) {
+    if (x.human_verdict || x.notes) {
+      out[x.key] = { verdict: x.human_verdict, notes: x.notes || "" };
+    }
+  }
+  return out;
+}
+
+let saveTimer = null;
+function save() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    try {
+      const r = await fetch("/save", { method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(state()) });
+      if (!r.ok) throw new Error("bad status");
+      document.getElementById("savefail").style.display = "none";
+    } catch (e) {
+      document.getElementById("savefail").style.display = "block";
+    }
+  }, 250);
+}
+
+function visible() {
+  if (filter === "todo") return rows.filter(x => !x.human_verdict);
+  if (filter === "done") return rows.filter(x => x.human_verdict);
+  return rows;
+}
+
+function judgeBlock(x) {
+  if (!x.human_verdict) {
+    return '<div class="judge" style="color:#9ca3af">🔒 先做出你的判断,再显示判官意见</div>';
+  }
+  const jv = (x.judge_correct === "True" || x.judge_correct === true) ? "1" : "0";
+  const agree = (x.human_verdict === jv);
+  const cls = x.human_verdict === "unsure" ? "" : (agree ? "agree" : "disagree");
+  const word = x.human_verdict === "unsure" ? "(你选了不确定)" : (agree ? "一致" : "不一致 ⚠");
+  return `<div class="judge">判官判定:<span class="tag">${jv === "1" ? "对" : "错"}</span>
+    <span class="${cls}">${word}</span><br>
+    <span style="color:#6b7280">判官理由:${esc(x.judge_reason || "(无)")}</span></div>`;
+}
+
+function esc(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function card(x) {
+  const jv = (x.judge_correct === "True" || x.judge_correct === true) ? "1" : "0";
+  const disagree = x.human_verdict && x.human_verdict !== "unsure" && x.human_verdict !== jv;
+  return `<div class="card ${x.human_verdict ? "done" : ""} ${disagree ? "disagree" : ""}"
+       id="card${x.idx}" data-idx="${x.idx}">
+    <div class="meta"><span>#${x.idx + 1}</span><span>${esc(x.file)}</span>
+      <span>${esc(x.mode)}</span><span>${esc(x.question_id)}</span></div>
+    <div class="q">${esc(x.question)}</div>
+    <div class="lbl">金标准答案</div><div class="txt">${esc(x.gold_answer)}</div>
+    <div class="lbl">模型答案</div><div class="txt">${esc(x.model_answer)}</div>
+    <div class="btns">
+      <button class="v1 ${x.human_verdict === "1" ? "sel" : ""}" onclick="vote(${x.idx}, '1')">对 (1)</button>
+      <button class="v0 ${x.human_verdict === "0" ? "sel" : ""}" onclick="vote(${x.idx}, '0')">错 (0)</button>
+      <button class="vu ${x.human_verdict === "unsure" ? "sel" : ""}" onclick="vote(${x.idx}, 'unsure')">不确定 (U)</button>
+      <input class="notes" placeholder="备注(选填)" value="${esc(x.notes || "")}"
+             onchange="note(${x.idx}, this.value)">
+    </div>
+    ${judgeBlock(x)}
+  </div>`;
+}
+
+function render() {
+  const vis = visible();
+  document.getElementById("cards").innerHTML = vis.map(card).join("");
+  const d = doneCount();
+  document.getElementById("count").textContent = `${d} / ${rows.length}`;
+  document.getElementById("prog").style.width = (rows.length ? 100 * d / rows.length : 0) + "%";
+  document.getElementById("doneBanner").style.display =
+    (d === rows.length && rows.length > 0) ? "block" : "none";
+}
+
+function rerenderOne(idx) {
+  const el = document.getElementById("card" + idx);
+  if (el) el.outerHTML = card(rows[idx]);
+  const d = doneCount();
+  document.getElementById("count").textContent = `${d} / ${rows.length}`;
+  document.getElementById("prog").style.width = (100 * d / rows.length) + "%";
+  document.getElementById("doneBanner").style.display =
+    (d === rows.length && rows.length > 0) ? "block" : "none";
+}
+
+function vote(idx, v) {
+  rows[idx].human_verdict = v;
+  cur = idx;
+  rerenderOne(idx);
+  save();
+  const next = rows.find(x => !x.human_verdict);
+  if (filter === "todo") render();
+}
+
+function note(idx, v) { rows[idx].notes = v; save(); }
+
+function setFilter(f, btn) {
+  filter = f;
+  for (const id of ["tabAll", "tabTodo", "tabDone"])
+    document.getElementById(id).classList.remove("on");
+  btn.classList.add("on");
+  render();
+}
+document.getElementById("tabAll").onclick = e => setFilter("all", e.target);
+document.getElementById("tabTodo").onclick = e => setFilter("todo", e.target);
+document.getElementById("tabDone").onclick = e => setFilter("done", e.target);
+
+function centerCard(idx) {
+  const el = document.getElementById("card" + idx);
+  if (el) el.scrollIntoView({ block: "center", behavior: "smooth" });
+}
+
+document.addEventListener("keydown", e => {
+  if (e.target.tagName === "INPUT") return;
+  const vis = visible();
+  if (!vis.length) return;
+  let pos = vis.findIndex(x => x.idx === cur);
+  if (e.key === "1" || e.key === "0") {
+    if (pos < 0) pos = 0;
+    vote(vis[pos].idx, e.key);
+    if (pos + 1 < vis.length) { cur = vis[pos + 1].idx; centerCard(cur); }
+  } else if (e.key === "u" || e.key === "U") {
+    if (pos < 0) pos = 0;
+    vote(vis[pos].idx, "unsure");
+    if (pos + 1 < vis.length) { cur = vis[pos + 1].idx; centerCard(cur); }
+  } else if (e.key === "ArrowDown" || e.key === "j") {
+    cur = vis[Math.min(vis.length - 1, Math.max(0, pos + 1))].idx;
+    centerCard(cur); e.preventDefault();
+  } else if (e.key === "ArrowUp" || e.key === "k") {
+    cur = vis[Math.max(0, pos - 1)].idx;
+    centerCard(cur); e.preventDefault();
+  }
+});
+
+boot();
+</script>
+</body>
+</html>

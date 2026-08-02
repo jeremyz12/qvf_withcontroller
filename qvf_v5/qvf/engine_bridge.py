@@ -1,0 +1,721 @@
+"""Bridge between LLM extraction and the legacy deterministic validity engine.
+
+Implements the three conditions of the decisive experiment:
+- prompted: Claude extracts slot-level records (span-grounded) from retrieved
+  rounds -> engine adjudicates -> sidecar -> small reader answers.
+- oracle: records built programmatically from STALE's M_old/M_new/explanation
+  fields (faithful to the historical "adapter provided exact pairs" setup;
+  bypasses retrieval, serving as the mechanism ceiling).
+- (direct condition lives in qvf.pipeline.BaselinePipeline.)
+
+Design notes:
+- Evidence fields are set to the full source_span (legal per the engine's
+  substring rule). The LLM's task is getting the span itself right; span
+  verbatimness is enforced by the engine, and rejections are counted via
+  extraction_report -> this is the coverage metric.
+- allow_partial=True so imperfect extraction degrades record-by-record instead
+  of killing the whole request.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import re
+import sys
+from dataclasses import dataclass, field
+from pathlib import Path
+from typing import List, Literal, Optional
+
+import anthropic
+from pydantic import BaseModel, Field
+
+from qvf import config
+from qvf.retrieval import MemoryItem
+
+# Make the legacy validity engine importable. Inside the qvf_withcontroller
+# repo the engine lives at <repo>/01_核心代码/src (two levels above this
+# package); the original development tree kept it under
+# external/qvf_withcontroller/. An explicit QVF_ENGINE_SRC env var wins.
+_ENGINE_CANDIDATES = [
+    os.environ.get("QVF_ENGINE_SRC"),
+    str(Path(__file__).resolve().parents[2] / "01_核心代码" / "src"),
+    str(Path(__file__).resolve().parents[1] / "external" / "qvf_withcontroller"
+        / "01_核心代码" / "src"),
+]
+for _p in _ENGINE_CANDIDATES:
+    if _p and Path(_p).exists():
+        if _p not in sys.path:
+            sys.path.insert(0, _p)
+        break
+
+from qvf_validity_admission import run_raw_memory_validity_controller  # noqa: E402
+
+
+# ---------------------------------------------------------------------------
+# Extraction contract (LLM-facing schema)
+# ---------------------------------------------------------------------------
+
+class ExtractedQueryFocus(BaseModel):
+    entity: str = Field(description="The entity the query asks about, e.g. 'user'.")
+    slot: str = Field(
+        description="The attribute/slot the query asks about, e.g. 'residence city'. "
+        "Must EXACTLY match the slot string used in the relevant records."
+    )
+    needs_current: bool = Field(
+        description="True if the query asks about the current state."
+    )
+
+
+class ExtractedRecord(BaseModel):
+    record_id: str = Field(description="Unique id for this record, e.g. 'r1'.")
+    source_memory_id: str = Field(
+        description="memory_id of the retrieved memory this record comes from."
+    )
+    source_span: str = Field(
+        description="VERBATIM contiguous substring of that memory's text stating the fact. "
+        "Copy exactly — any paraphrase invalidates the record."
+    )
+    entity: str = Field(description="Entity of the fact, e.g. 'user'.")
+    slot: str = Field(description="Slot name; use the same string as query_focus.slot for relevant records.")
+    value: str = Field(description="The slot value stated by this span.")
+    claim: str = Field(description="One-sentence normalized statement of the fact.")
+    slot_cardinality: Literal["single", "set", "unknown"] = Field(
+        description="'single' if the slot can hold one value at a time (e.g. home city); "
+        "'set' if multiple values coexist (e.g. hobbies); 'unknown' if unclear."
+    )
+    temporal_relation: Literal[
+        "replacement", "correction", "equivalent", "additive", "unresolved"
+    ] = Field(
+        description="Relation of this record to OTHER extracted records for the same "
+        "entity+slot: 'replacement' only if this memory explicitly establishes a NEW "
+        "state replacing an older record's state; 'unresolved' when in doubt. "
+        "A later timestamp alone is NOT replacement."
+    )
+    relation_target_record_ids: List[str] = Field(
+        default_factory=list,
+        description="record_ids of the records this replaces/corrects (required for "
+        "replacement/correction; must cover every competing record).",
+    )
+
+
+class SlotExtraction(BaseModel):
+    query_focus: ExtractedQueryFocus
+    records: List[ExtractedRecord] = Field(
+        description="Records RELEVANT to the query focus only. Skip unrelated memories."
+    )
+
+
+class ScopedQueryFocus(ExtractedQueryFocus):
+    """v5: adds the query's temporal scope so the controller can leave
+    history-seeking queries untouched (old states are their evidence)."""
+
+    query_temporal_scope: Literal["current", "past_or_change", "unclear"] = Field(
+        description="'current' if the query asks what the state IS now; "
+        "'past_or_change' if it asks about a past state, when something "
+        "happened, a duration or date computation, which of two events came "
+        "first, or how a value changed over time (trajectory); "
+        "'unclear' otherwise."
+    )
+
+
+class ScopedSlotExtraction(SlotExtraction):
+    query_focus: ScopedQueryFocus
+
+
+EXTRACTION_SYSTEM_PROMPT = """\
+You extract slot-level structured records from retrieved conversation memories,
+for consumption by a downstream deterministic validity engine.
+
+Rules:
+1. First identify the query focus: entity + slot + whether it needs the current
+   state. Use a short stable slot name and reuse it verbatim in the records.
+2. Extract ONLY records relevant to the query focus. For each record copy an
+   EXACT verbatim contiguous span from the memory text (the engine mechanically
+   verifies the span; paraphrasing gets the record rejected).
+3. Mark temporal_relation='replacement' ONLY when the text explicitly
+   establishes a new state for the same entity+slot (moved, changed, updated,
+   no longer, now ...). A later timestamp alone is NOT evidence of replacement.
+   When you mark replacement/correction, relation_target_record_ids must list
+   every competing record.
+4. Prefer 'unresolved' over guessing. Missing evidence must stay missing —
+   never invent values, spans, or relations.
+5. When two records give DIFFERENT values for the same entity+slot, you must
+   surface the competition: mark the later one 'replacement'/'correction' with
+   targets if its text has state-change language, otherwise extract BOTH with
+   'unresolved' so the downstream engine sees the conflict. Never extract only
+   one of two competing values.
+6. You are not answering the question. Do not include an answer anywhere.
+"""
+
+
+EXTRACTION_SYSTEM_PROMPT_SCOPED = EXTRACTION_SYSTEM_PROMPT + """
+7. Classify the query's temporal scope (query_focus.query_temporal_scope):
+   'current' = the query asks what the state IS now.
+   'past_or_change' = the query asks about a past state, when something
+   happened, how long between two events, which of two events came first, or
+   how a value changed over time. For such queries OLD states are the evidence
+   the reader needs — they must not be treated as stale noise.
+   'unclear' = anything else.
+"""
+
+
+RECENCY_READER_PROMPT = """\
+You are a question answering assistant with access to retrieved memories from
+past conversations with the user. The memories are listed NEWEST FIRST.
+
+When memories conflict about the same fact, prefer the most recent one — the
+user's situation may have changed over time. Answer the question using only
+the retrieved memories. If the memories do not contain the needed information,
+say you don't have that information.
+
+Answer concisely and directly.
+"""
+
+
+CONFLICT_LATEST_KNOWN_READER_PROMPT = """\
+You are a question answering assistant. The memories provided contain
+CONFLICTING claims about the state the question asks about: an earlier claim
+and a later claim (their dates are in the metadata). The upstream validity
+controller verified they compete for the same attribute but found no explicit
+update language to order them.
+
+Rules:
+1. In personal-memory settings, the later-dated claim usually reflects the
+   current state. Base your answer on the LATER claim.
+2. Briefly note that this changed from the earlier state (one clause, e.g.
+   "— previously X").
+3. Do not decline to answer; the relevant facts are in front of you.
+Answer concisely and directly.
+"""
+
+
+VALIDATED_CONTEXT_READER_PROMPT = """\
+You are a question answering assistant. The memories provided to you have been
+pre-validated by an upstream validity controller: they represent the user's
+CURRENT, up-to-date state relevant to this question (stale or superseded
+information has already been removed).
+
+Rules:
+1. Treat the provided memories as authoritative current facts and base your
+   answer on them.
+2. Do NOT decline for lack of information when a provided memory states the
+   relevant fact — connect it to the question even if the memory is brief or
+   from a different conversation topic.
+3. Only say you don't have the information if the memories genuinely contain
+   nothing relevant.
+Answer concisely and directly.
+"""
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def _iso(ts: Optional[str]) -> Optional[str]:
+    """Normalize timestamps to ISO-8601 with UTC.
+
+    Handles 'YYYY-MM-DD HH:MM' (STALE) and 'YYYY/MM/DD (Www) HH:MM'
+    (LongMemEval) styles.
+    """
+    if not ts:
+        return None
+    t = str(ts).strip()
+    # LongMemEval style: 2023/05/20 (Mon) 02:21
+    m = re.match(r"^(\d{4})/(\d{1,2})/(\d{1,2})\s*(?:\([^)]*\))?\s*(\d{1,2}):(\d{2})", t)
+    if m:
+        y, mo, d, h, mi = m.groups()
+        return f"{y}-{int(mo):02d}-{int(d):02d}T{int(h):02d}:{mi}:00+00:00"
+    t = t.replace(" ", "T")
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", t):
+        t += "T00:00:00"
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}", t):
+        t += ":00"
+    if not re.search(r"[+-]\d{2}:\d{2}$|Z$", t):
+        t += "+00:00"
+    return t
+
+
+def _engine_memory_row(
+    m: MemoryItem, rank: int, records: List[dict]
+) -> dict:
+    row = {
+        "memory_id": m.memory_id,
+        "text": m.content,
+        "source_type": "conversation_round",
+        "source_confidence": 0.9,
+        "retrieval_rank": rank,
+    }
+    observed = _iso(m.metadata.get("session_date"))
+    if observed:
+        row["observed_at"] = observed
+    if records:
+        row["structured_records"] = records
+    return row
+
+
+def _record_to_engine(rec: ExtractedRecord, observed_at: Optional[str]) -> dict:
+    span = rec.source_span
+    out = {
+        "memory_id": rec.record_id,
+        "entity": rec.entity,
+        "slot": rec.slot,
+        "value": rec.value,
+        "claim": rec.claim,
+        "source_span": span,
+        "slot_cardinality": rec.slot_cardinality,
+        "slot_cardinality_evidence": span,
+    }
+    if rec.temporal_relation in ("replacement", "correction"):
+        out["temporal_relation"] = rec.temporal_relation
+        out["temporal_relation_evidence"] = span
+        out["relation_target_memory_ids"] = list(rec.relation_target_record_ids)
+        if observed_at:
+            out["effective_from"] = observed_at
+            out["effective_from_evidence"] = span
+    elif rec.temporal_relation in ("equivalent", "additive"):
+        out["temporal_relation"] = rec.temporal_relation
+        out["temporal_relation_evidence"] = span
+        if rec.relation_target_record_ids:
+            out["relation_target_memory_ids"] = list(rec.relation_target_record_ids)
+    return out
+
+
+def build_engine_request(
+    request_id: str,
+    query_text: str,
+    focus: ExtractedQueryFocus,
+    memories: List[MemoryItem],
+    extracted: List[ExtractedRecord],
+    as_of: Optional[str] = None,
+) -> dict:
+    by_memory: dict = {}
+    for rec in extracted:
+        by_memory.setdefault(rec.source_memory_id, []).append(rec)
+    rows = []
+    for i, m in enumerate(memories):
+        recs = [
+            _record_to_engine(r, _iso(m.metadata.get("session_date")))
+            for r in by_memory.get(m.memory_id, [])
+        ]
+        rows.append(_engine_memory_row(m, i + 1, recs))
+    query = {
+        "query_id": f"{request_id}_q",
+        "text": query_text,
+        "entity": focus.entity,
+        "slot": focus.slot,
+        "needs_current": bool(focus.needs_current),
+    }
+    as_of_iso = _iso(as_of)
+    if as_of_iso:
+        query["as_of"] = as_of_iso
+    return {
+        "request_id": request_id,
+        "query": query,
+        "retrieved_memories": rows,
+    }
+
+
+@dataclass
+class EngineRunResult:
+    ok: bool
+    sidecar: Optional[dict] = None
+    decision: Optional[dict] = None
+    accepted_records: int = 0
+    rejected_records: int = 0
+    rejection_reasons: List[str] = field(default_factory=list)
+    blocking_reasons: List[str] = field(default_factory=list)
+    error: Optional[str] = None
+
+
+def run_engine(request: dict) -> EngineRunResult:
+    try:
+        output = run_raw_memory_validity_controller(
+            request, selective=False, allow_partial=True
+        )
+    except Exception as e:  # noqa: BLE001 — contract errors are data, not crashes
+        return EngineRunResult(ok=False, error=f"{type(e).__name__}: {e}")
+    report = output.get("extraction_report", {})
+    rejected = report.get("rejected_records", []) or []
+    result = EngineRunResult(
+        ok=bool(output.get("controller_executed")),
+        accepted_records=report.get("accepted_record_count", 0),
+        rejected_records=report.get("rejected_record_count", 0),
+        rejection_reasons=[str(r.get("reason", r)) for r in rejected][:20],
+        blocking_reasons=[str(b) for b in (report.get("blocking_reasons") or [])],
+    )
+    sidecars = output.get("model_facing_sidecar_payloads") or []
+    decisions = output.get("controller_decisions") or []
+    if sidecars:
+        result.sidecar = sidecars[0]
+    if decisions:
+        result.decision = decisions[0]
+    return result
+
+
+# ---------------------------------------------------------------------------
+# LLM extractor (prompted condition)
+# ---------------------------------------------------------------------------
+
+class LLMSlotExtractor:
+    def __init__(
+        self,
+        model: Optional[str] = None,
+        client: Optional[anthropic.Anthropic] = None,
+        mock: Optional[bool] = None,
+    ):
+        self.model = model or config.DEFAULT_ADAPTER_MODEL
+        self.mock = config.mock_mode() if mock is None else mock
+        self._client = client
+        if not self.mock and self._client is None:
+            self._client = anthropic.Anthropic()
+
+    def extract(
+        self,
+        query: str,
+        memories: List[MemoryItem],
+        query_date: Optional[str] = None,
+        scoped: bool = False,
+    ) -> tuple[SlotExtraction, int, int]:
+        """Returns (extraction, input_tokens, output_tokens).
+
+        scoped=True uses the v5 schema/prompt that additionally classifies the
+        query's temporal scope. Default False keeps the pre-v5 contract
+        byte-identical (existing arms and re-runs are unaffected).
+        """
+        if self.mock:
+            if scoped:
+                return (
+                    ScopedSlotExtraction(
+                        query_focus=ScopedQueryFocus(
+                            entity="user", slot="unknown", needs_current=True,
+                            query_temporal_scope="current",
+                        ),
+                        records=[],
+                    ),
+                    0,
+                    0,
+                )
+            return (
+                SlotExtraction(
+                    query_focus=ExtractedQueryFocus(
+                        entity="user", slot="unknown", needs_current=True
+                    ),
+                    records=[],
+                ),
+                0,
+                0,
+            )
+        mem_payload = [
+            {"memory_id": m.memory_id, "text": m.content, "metadata": m.metadata}
+            for m in memories
+        ]
+        user_input = (
+            f"QUERY: {query}\n\nQUERY DATE: {query_date or 'UNKNOWN'}\n\n"
+            f"RETRIEVED MEMORIES (JSON):\n{json.dumps(mem_payload, ensure_ascii=False, indent=2)}"
+        )
+        response = self._client.messages.parse(
+            model=self.model,
+            max_tokens=config.ADAPTER_MAX_TOKENS,
+            system=[
+                {
+                    "type": "text",
+                    "text": (EXTRACTION_SYSTEM_PROMPT_SCOPED if scoped
+                             else EXTRACTION_SYSTEM_PROMPT),
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=[{"role": "user", "content": user_input}],
+            output_format=ScopedSlotExtraction if scoped else SlotExtraction,
+        )
+        if response.stop_reason == "refusal" or response.parsed_output is None:
+            raise RuntimeError("extraction failed or refused")
+        return (
+            response.parsed_output,
+            response.usage.input_tokens,
+            response.usage.output_tokens,
+        )
+
+
+# ---------------------------------------------------------------------------
+# Oracle extraction from STALE fields (mechanism ceiling)
+# ---------------------------------------------------------------------------
+
+def oracle_pair_for_stale(item_extra: dict, timestamps_old: Optional[str], timestamps_new: Optional[str]):
+    """Build (memories, focus, records) from M_old/M_new/explanation.
+
+    Mirrors the historical setup where the hand-written adapter supplied exact
+    old/new pairs directly (no retrieval).
+    """
+    m_old = str(item_extra.get("M_old") or "")
+    m_new = str(item_extra.get("M_new") or "")
+    explanation = str(item_extra.get("explanation") or "")
+    # "Spatiotemporal_Context.location(city) is now Austin." -> slot / new value
+    slot, new_value = explanation, m_new
+    m = re.match(r"^(.*?)\s+is now\s+(.*?)\.?$", explanation)
+    if m:
+        slot = m.group(1).strip()
+        new_value = m.group(2).strip()
+
+    memories = [
+        MemoryItem(
+            memory_id="mem_old",
+            content=m_old,
+            metadata={"session_date": timestamps_old, "session_id": "oracle_old"},
+        ),
+        MemoryItem(
+            memory_id="mem_new",
+            content=m_new,
+            metadata={"session_date": timestamps_new, "session_id": "oracle_new"},
+        ),
+    ]
+    focus = ExtractedQueryFocus(entity="user", slot=slot, needs_current=True)
+    records = [
+        ExtractedRecord(
+            record_id="oracle_old",
+            source_memory_id="mem_old",
+            source_span=m_old,
+            entity="user",
+            slot=slot,
+            value=f"OLD: {m_old}",
+            claim=m_old,
+            slot_cardinality="single",
+            temporal_relation="unresolved",
+        ),
+        ExtractedRecord(
+            record_id="oracle_new",
+            source_memory_id="mem_new",
+            source_span=m_new,
+            entity="user",
+            slot=slot,
+            value=new_value,
+            claim=m_new,
+            slot_cardinality="single",
+            temporal_relation="replacement",
+            relation_target_record_ids=["oracle_old"],
+        ),
+    ]
+    return memories, focus, records
+
+
+# ---------------------------------------------------------------------------
+# Validity-triggered retrieval repair
+# ---------------------------------------------------------------------------
+# Why: a current-state query usually mentions the OLD value ("does the user
+# still live in Seattle?"), so lexical retrieval returns old-state rounds; the
+# NEW state ("Austin") shares no surface overlap and gets missed. Worse, with
+# only the old state in context the engine sees no competitor and admits the
+# stale state as current. The repair pass drops the old value and searches by
+# slot terms + state-change language instead.
+
+UPDATE_EXPANSION_TERMS = (
+    "moved changed switched updated update new now recently no longer anymore "
+    "replaced started stopped quit joined bought sold current latest just"
+)
+
+
+def build_repair_query(focus: ExtractedQueryFocus) -> str:
+    slot_tokens = re.sub(r"[_.()\[\]]+", " ", focus.slot)
+    return f"{focus.entity} {slot_tokens} {UPDATE_EXPANSION_TERMS}"
+
+
+def build_repair_query_dense(focus: ExtractedQueryFocus) -> str:
+    """Natural-sentence phrasing embeds better than keyword soup."""
+    slot_tokens = re.sub(r"[_.()\[\]]+", " ", focus.slot).strip()
+    return (
+        f"The user's {slot_tokens} recently changed: they moved, switched, "
+        f"updated, quit, started, or got something new. "
+        f"What is the user's current {slot_tokens} now?"
+    )
+
+
+def has_state_change_record(extraction: SlotExtraction) -> bool:
+    return any(
+        r.temporal_relation in ("replacement", "correction")
+        for r in extraction.records
+    )
+
+
+def needs_repair(engine: EngineRunResult, extraction: SlotExtraction) -> bool:
+    """Trigger the repair pass when validity analysis suggests the current
+    state may be missing from the retrieved set."""
+    if not engine.ok:
+        return True
+    decision = engine.decision or {}
+    action = str(decision.get("next_action") or "")
+    if action.startswith("retrieve") or action.startswith("query_rewrite"):
+        return True
+    if decision.get("read_decision") == "UNKNOWN_CURRENT":
+        return True
+    if extraction.query_focus.needs_current and not has_state_change_record(extraction):
+        # Current-state query but no evidence of any state change extracted:
+        # the update round may simply not have been retrieved.
+        return True
+    return False
+
+
+# ---------------------------------------------------------------------------
+# Sidecar reader (small answer model consuming the engine's packet)
+# ---------------------------------------------------------------------------
+
+class LocalChatModel:
+    """Minimal client for a local Ollama server's OpenAI-compatible endpoint.
+
+    Used for weak-reader conditions: the reader must be strictly weaker than
+    API models, runs free on the local GPU, and adds cross-family evidence.
+    Qwen3 thinking is disabled (weak-reader regime measures direct compliance),
+    and any leaked <think> blocks are stripped defensively.
+    """
+
+    def __init__(self, model: str = "qwen3:4b", base_url: str = "http://localhost:11434",
+                 num_ctx: int = 16384):
+        self.model = model
+        self.base_url = base_url.rstrip("/")
+        # Explicit context window. Ollama's runtime default (~2048) silently
+        # truncates long prompts — discovered 2026-08-01 via prompt_eval_count;
+        # all local-reader results before this fix ran under truncation.
+        self.num_ctx = num_ctx
+        self.last_prompt_eval: int | None = None
+
+    def _chat_once(self, system: str, user: str, max_tokens: int,
+                   num_ctx: int) -> str:
+        import requests
+
+        # Default (thinking-enabled) mode: Ollama separates reasoning into
+        # message.thinking and puts the clean answer in message.content.
+        # (Passing think=false inverts this and dumps reasoning into content.)
+        payload = {
+            "model": self.model,
+            "messages": [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            "stream": False,
+            "options": {
+                "num_predict": max_tokens,
+                "temperature": 0.0,
+                "num_ctx": num_ctx,
+            },
+        }
+        r = requests.post(f"{self.base_url}/api/chat", json=payload, timeout=600)
+        r.raise_for_status()
+        data = r.json()
+        self.last_prompt_eval = data.get("prompt_eval_count")
+        text = (data.get("message") or {}).get("content", "")
+        text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
+        return text.strip()
+
+    def chat(self, system: str, user: str, max_tokens: int = 4096) -> str:
+        # Empty-answer retry ladder. num_predict counts thinking tokens, so a
+        # long chain of thought (e.g. date arithmetic) can exhaust the budget
+        # before any answer text is emitted, returning empty content. Applied
+        # identically on every call path so no experimental arm is favored:
+        #   1. normal call;
+        #   2. retry with a 4x generation budget and a wider context window;
+        #   3. retry with Qwen3's /no_think soft switch (no thinking, direct
+        #      answer) — think=false via the API is NOT equivalent (it dumps
+        #      reasoning prose into content).
+        self.last_empty_retries = 0
+        text = self._chat_once(system, user, max_tokens, self.num_ctx)
+        if text:
+            return text
+        self.last_empty_retries = 1
+        text = self._chat_once(system, user, max_tokens * 4,
+                               max(self.num_ctx, 24576))
+        if text:
+            return text
+        self.last_empty_retries = 2
+        return self._chat_once(system, user + "\n/no_think", max_tokens,
+                               max(self.num_ctx, 24576))
+
+
+SIDECAR_READER_SYSTEM_PROMPT = """\
+You answer a user's question using a validity-controlled memory packet produced
+by an upstream controller.
+
+The packet tells you which evidence is admitted as CURRENT, which is allowed
+only as HISTORY, and which is blocked as stale for current-state use. Rules:
+1. Follow the packet's context_control_policy and reader contract strictly:
+   answer current-state questions only from current-admitted evidence.
+2. Blocked/stale items may be mentioned only as past history, never as the
+   current state. If the question's premise relies on a stale state, correct it.
+3. If the packet indicates the evidence is insufficient, say you don't have
+   that information rather than guessing.
+Answer concisely and directly.
+"""
+
+
+class SidecarReader:
+    def __init__(
+        self,
+        model: str = "claude-haiku-4-5",
+        client: Optional[anthropic.Anthropic] = None,
+        mock: Optional[bool] = None,
+    ):
+        self.model = model
+        self.mock = config.mock_mode() if mock is None else mock
+        self._client = client
+        if not self.mock and self._client is None:
+            self._client = anthropic.Anthropic()
+
+    def answer(self, question: str, sidecar: dict) -> tuple[str, int, int]:
+        if self.mock:
+            return "[mock answer]", 0, 0
+        user_input = (
+            f"VALIDITY PACKET (JSON):\n{json.dumps(sidecar, ensure_ascii=False, indent=1)}\n\n"
+            f"QUESTION: {question}"
+        )
+        response = self._client.messages.create(
+            model=self.model,
+            max_tokens=4096,
+            system=[
+                {
+                    "type": "text",
+                    "text": SIDECAR_READER_SYSTEM_PROMPT,
+                    "cache_control": {"type": "ephemeral"},
+                }
+            ],
+            messages=[{"role": "user", "content": user_input}],
+        )
+        text = "\n".join(b.text for b in response.content if b.type == "text").strip()
+        return text, response.usage.input_tokens, response.usage.output_tokens
+
+
+class LocalSidecarReader:
+    """SidecarReader backed by a local Ollama model (free, weak-reader regime)."""
+
+    def __init__(self, local: LocalChatModel):
+        self.local = local
+        self.model = f"local:{local.model}"
+
+    def answer(self, question: str, sidecar: dict) -> tuple[str, int, int]:
+        user_input = (
+            f"VALIDITY PACKET (JSON):\n{json.dumps(sidecar, ensure_ascii=False, indent=1)}\n\n"
+            f"QUESTION: {question}"
+        )
+        return self.local.chat(SIDECAR_READER_SYSTEM_PROMPT, user_input), 0, 0
+
+
+class LocalDirectGenerator:
+    """Baseline (direct) generation backed by a local Ollama model.
+
+    Pass system_prompt=VALIDATED_CONTEXT_READER_PROMPT for the post-surgery
+    read, where memories are pre-validated and abstention-by-default backfires.
+    """
+
+    def __init__(self, local: LocalChatModel, system_prompt: Optional[str] = None):
+        from qvf.prompts import BASELINE_GENERATOR_SYSTEM_PROMPT
+
+        self.local = local
+        self.model = f"local:{local.model}"
+        self.system_prompt = system_prompt or BASELINE_GENERATOR_SYSTEM_PROMPT
+
+    def generate(self, query: str, memories: List[MemoryItem], query_date: Optional[str] = None):
+        from qvf.generator import GenerationResult
+        from qvf.prompts import format_baseline_generator_input
+
+        text = self.local.chat(
+            self.system_prompt,
+            format_baseline_generator_input(query, memories, query_date),
+        )
+        return GenerationResult(answer=text)
