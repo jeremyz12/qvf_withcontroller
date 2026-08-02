@@ -39,9 +39,8 @@ from qvf.retrieval import MemoryItem
 # external/qvf_withcontroller/. An explicit QVF_ENGINE_SRC env var wins.
 _ENGINE_CANDIDATES = [
     os.environ.get("QVF_ENGINE_SRC"),
-    str(Path(__file__).resolve().parents[2] / "01_核心代码" / "src"),
-    str(Path(__file__).resolve().parents[1] / "external" / "qvf_withcontroller"
-        / "01_核心代码" / "src"),
+    str(Path(__file__).resolve().parents[1] / "legacy_engine" / "src"),
+    str(Path(__file__).resolve().parents[1] / "01_核心代码" / "src"),
 ]
 for _p in _ENGINE_CANDIDATES:
     if _p and Path(_p).exists():

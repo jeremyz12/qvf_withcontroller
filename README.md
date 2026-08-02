@@ -1,6 +1,6 @@
 # QVF v5 — 查询条件化的记忆有效性守卫(零训练)
 
-本目录是 QVF 的当前版本(2026-08 战役),与仓库根目录的旧版符号引擎(`01_核心代码/`)的关系:旧引擎保留为语义参考实现与契约校验器;v5 的发布配置用约 30 行可读规则替代了它(held-out 上反而高 4.3 个百分点),并新增了查询时间范围门控。
+本仓库是 QVF 的当前版本(2026-08 战役)。旧版符号引擎保留在 `legacy_engine/` 作为语义参考实现与契约校验器;v5 的发布配置用约 30 行可读规则替代了它(held-out 上反而高 4.3 个百分点),并新增了查询时间范围门控。更早版本的完整代码与文档见 git 历史(提交 441103c 及之前)。
 
 ## 它解决什么问题
 
@@ -73,5 +73,6 @@ python scripts/judge_audit_server.py   # → http://127.0.0.1:8765
 - `scripts/run_decisive_stale.py` — 全部实验条件的运行器(direct/dense_direct/dense_recency/minimal_rules/minimal_rules_v5/extraction_only/oracle 等)
 - `scripts/rejudge_fallback.py` — 降级判分的重判工具
 - `scripts/judge_audit_server.py` + `judge_audit.html` — 人工判分盲审网页
+- `legacy_engine/` — 旧版确定性有效性引擎(参考实现;engine_bridge 自动发现,或用 QVF_ENGINE_SRC 指定)
 
 研究代码,冻结于 2026-08-02 战役;逐行结果带 extractor/reader 模型 ID 以保证复现链。
