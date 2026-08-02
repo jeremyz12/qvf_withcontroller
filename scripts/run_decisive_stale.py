@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 import traceback
@@ -579,6 +580,12 @@ def main() -> int:
         help="Reader model: an Anthropic model id, or 'local:<ollama-model>' "
         "(e.g. local:qwen3:4b) for a free local weak reader",
     )
+    parser.add_argument(
+        "--sample-n", type=int, default=0,
+        help="Randomly sample N queries from the loaded pool (pilot mode). "
+        "Applied after all other filters; deterministic given --sample-seed.",
+    )
+    parser.add_argument("--sample-seed", type=int, default=20260802)
     args = parser.parse_args()
 
     if args.benchmark in ("longmemeval", "locomo", "memconflict"):
@@ -620,9 +627,28 @@ def main() -> int:
             f"Loaded {len(instances)} queries from {args.items} STALE items "
             f"(offset {args.item_offset})"
         )
+    if args.sample_n and len(instances) > args.sample_n:
+        import random as _random
+
+        instances = _random.Random(args.sample_seed).sample(
+            instances, args.sample_n
+        )
+        print(
+            f"Randomly sampled {len(instances)} queries "
+            f"(seed {args.sample_seed})"
+        )
     conditions = [c.strip() for c in args.conditions.split(",") if c.strip()]
 
-    extractor = LLMSlotExtractor()  # model from QVF_ADAPTER_MODEL (default opus)
+    # Extractor: QVF_LOCAL_EXTRACTOR=<ollama-model> selects the fully-local
+    # zero-API extractor; otherwise the Anthropic extractor with
+    # QVF_ADAPTER_MODEL (default opus).
+    _local_ext = os.environ.get("QVF_LOCAL_EXTRACTOR")
+    if _local_ext:
+        from qvf.engine_bridge import LocalSlotExtractor
+
+        extractor = LocalSlotExtractor(_local_ext)
+    else:
+        extractor = LLMSlotExtractor()
     if args.reader.startswith("local:"):
         from qvf.engine_bridge import (
             VALIDATED_CONTEXT_READER_PROMPT,
@@ -651,8 +677,17 @@ def main() -> int:
     else:
         reader = SidecarReader(model=args.reader)
         direct_gen = BaselineGenerator(model=args.reader)
-        validated_gen = direct_gen
-        conflict_gen = None
+        # API readers get the same specialized system prompts as the local
+        # path, so the QVF arm is not handicapped relative to the qwen runs.
+        from qvf.engine_bridge import (
+            CONFLICT_LATEST_KNOWN_READER_PROMPT,
+            VALIDATED_CONTEXT_READER_PROMPT,
+        )
+
+        validated_gen = BaselineGenerator(model=args.reader)
+        validated_gen.system_prompt = VALIDATED_CONTEXT_READER_PROMPT
+        conflict_gen = BaselineGenerator(model=args.reader)
+        conflict_gen.system_prompt = CONFLICT_LATEST_KNOWN_READER_PROMPT
         recency_gen = direct_gen
     haiku_gen = BaselineGenerator(model="claude-haiku-4-5")
     print(f"Reader: {args.reader}")
