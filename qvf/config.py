@@ -18,7 +18,9 @@ from dotenv import load_dotenv
 # Pick up ANTHROPIC_API_KEY etc. from the project-local .env file.
 load_dotenv()
 
-DEFAULT_ADAPTER_MODEL = os.environ.get("QVF_ADAPTER_MODEL", "claude-opus-5")
+# Default to the cheapest tier so a forgotten env var cannot silently burn
+# 5x the budget; opus runs must be requested explicitly.
+DEFAULT_ADAPTER_MODEL = os.environ.get("QVF_ADAPTER_MODEL", "claude-haiku-4-5")
 DEFAULT_GENERATOR_MODEL = os.environ.get("QVF_GENERATOR_MODEL", "claude-opus-5")
 DEFAULT_JUDGE_MODEL = os.environ.get("QVF_JUDGE_MODEL", "claude-opus-5")
 

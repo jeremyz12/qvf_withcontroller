@@ -28,24 +28,36 @@
 
 ## 当前结果(pilot)
 
-每个数据集随机抽 20 题(seed 20260802,固定可复现),配对两臂:直读 vs +QVF。读者与抽取器均为 claude-haiku-4-5(最便宜 API 档),判官 claude-opus。
+协议:STALE 取从未使用过的条目 225-274(50 个 case × 3 种问法 = 150 问,保留条目结构);其余基准各随机抽 50 题(seed 20260802,固定可复现)。配对两臂:直读 vs +QVF,读者与抽取器同档,判官统一 claude-opus(判分经人工盲审 100 条,kappa 0.979);抽取与 haiku 读者 temperature=0。两张表答的是**同一批题**,可逐题对照。
+
+### 表一:claude-haiku-4-5(读者 + 抽取器)
 
 | 数据集 | 直读 | +QVF | 配对 | token 比 | $/题 | 秒/题 |
 |---|---|---|---|---|---|---|
-| STALE 陷阱场景 | 35% | **45%** | 3胜1负16平 | ×2.9 | 0.006→0.019 | 16.0→15.0 |
-| LongMemEval 知识更新 | 75% | 65% | 1胜3负16平 | ×2.2 | 0.006→0.015 | 14.0→8.3 |
-| LongMemEval 时间推理 | 50% | 45% | 1胜2负17平 | ×2.4 | 0.007→0.016 | 14.1→8.4 |
-| LoCoMo temporal | 55% | 50% | 0胜1负19平 | ×3.2 | 0.002→0.007 | 9.1→7.4 |
-| MemConflict | 57% | 57% | 1胜1负18平 | ×3.0 | 0.002→0.008 | **49.1→10.2** |
+| STALE 陷阱(150) | 12.0% | **18.0%** | **12胜3负**135平(p≈0.035) | ×3.3 | 0.006→0.021 | 9.9→15.8 |
+| LongMemEval 知识更新(50) | 80% | 74% | 2胜5负43平 | ×2.3 | 0.007→0.016 | 14.0→**9.4** |
+| LongMemEval 时间推理(50) | 56% | 58% | 1胜0负49平 | ×2.3 | 0.007→0.016 | 14.0→**8.4** |
+| LoCoMo temporal(50) | 64% | 68% | 3胜1负46平 | ×3.1 | 0.002→0.007 | 6.3→7.3 |
+| MemConflict(50) | 56% | 54% | 0胜1负49平 | ×3.6 | 0.002→0.009 | **51.8→10.1** |
 
-判读(n=20 为方向性 pilot,扩样验证中):
+### 表二:gpt-5-mini(读者 + 抽取器,判官不变)
 
-- **陷阱场景 +10pp**(3胜1负),与既往切片方向一致;
-- **泛化基准净中性**:败例解剖显示多数为 API 默认 temperature=1 的采样噪声(两例上下文与直读逐字节相同),一例为聚合类问题被误手术(已定位为规则缺口,见 vNext);
-- **token ×2.5,但端到端延迟平均降约 40%**——手术缩短了交付给读者的上下文(MemConflict 49→10 秒/题),延迟是部署侧的真实收益维度;
-- LoCoMo 20/20 走门控直通(全部为问历史的题):无伤害符合设计,但为"不干预"付出的抽取开销是决策税,见 vNext 门控前置。
+| 数据集 | 直读 | +QVF | 配对 | token 比 | $/题 | 秒/题 |
+|---|---|---|---|---|---|---|
+| STALE 陷阱(150) | 13.3% | **23.3%** | **19胜4负**127平(p≈0.003) | ×3.6 | 0.003→0.016 | 18.0→74.1 |
+| LongMemEval 知识更新(50) | 84% | 86% | 3胜2负45平 | ×2.7 | 0.002→0.011 | 17.2→48.6 |
+| LongMemEval 时间推理(50) | 64% | 64% | 1胜1负48平 | ×2.6 | 0.002→0.010 | 17.9→40.5 |
+| LoCoMo temporal(50) | 70% | 70% | 1胜1负48平 | ×3.2 | 0.001→0.006 | 9.9→29.0 |
+| MemConflict(50) | 54% | 52% | 2胜3负45平 | ×4.6 | 0.001→0.010 | 56.2→55.3 |
 
-vNext(均需未使用切片冻结验证):冲突路改执行 latest-wins 删除;admit 路单值疑罪直通;聚合类问题(how many/total/since)直通;门控前置微型分类省决策税;API 读者 temperature=0;历史题时间线摘要。
+判读:
+
+- **陷阱场景的增益在两个提供商上同时统计显著**(haiku +6.0pp,gpt-5-mini +10.0pp,符号检验均 p<0.05)——机制跨提供商、跨读者架构(非推理/推理)成立;
+- **四个泛化基准全部统计中性**;haiku 的知识更新 2胜5负与聚合类问题误手术的已知规则缺口一致,修复在验证队列;
+- **成本与延迟不跨提供商**:输入 token 两家一致 ×2.3~3.6(抽取要重读检索上下文);输出端推理模型的思考 token 计入计费,gpt 的 +QVF 输出是 haiku 的 8 倍。延迟上,非推理读者常因交付上下文变短而**变快**(MemConflict 52→10 秒),推理读者则 ×2~4 变慢——部署建议因此分叉:非推理读者可常开,推理读者应配条件化调用;
+- 早期 n=20 pilot 的数字(git 历史 316025f)已被本轮取代:小样本曾双向误导(高估 haiku 增益、误判 gpt 无效),本仓库结论以 n≥50 为准。
+
+vNext(均需未使用切片冻结验证):聚合类问题(how many/total/since)直通;门控前置微型分类省决策税;抽取契约召回修复(逐条 memory 强制判定);repair 增量抽取;条件化调用全案。
 
 ## 运行
 
@@ -56,13 +68,15 @@ ollama pull nomic-embed-text
 # 环境变量:ANTHROPIC_API_KEY 必需;QVF_ADAPTER_MODEL=claude-haiku-4-5(抽取器);
 # 可选 QVF_JUDGE_MODEL、QVF_ENGINE_SRC
 
-# pilot(每数据集随机 20 题,两臂配对):
+# STALE 50 case × 3 问(两臂配对):
 QVF_ADAPTER_MODEL=claude-haiku-4-5 python scripts/run_decisive_stale.py \
-  --benchmark stale --items 55 --item-offset 145 --sample-n 20 \
+  --benchmark stale --items 50 --item-offset 225 \
   --conditions dense_direct,minimal_rules_v5 --reader claude-haiku-4-5 \
-  --out results/pilot_stale.jsonl --resume
+  --out results/stale_n50.jsonl --resume
 
-# 其余基准:--benchmark longmemeval|locomo|memconflict(配 --qtype,见 --help)
+# gpt-5-mini 版(需 OPENAI_API_KEY;判官仍为 claude-opus):
+# QVF_ADAPTER_MODEL=openai:gpt-5-mini ... --reader openai:gpt-5-mini
+# 其余基准:--benchmark longmemeval|locomo|memconflict 配 --qtype 与 --sample-n 50
 # 聚类 bootstrap 置信区间:
 python scripts/bootstrap_ci.py
 # 检索可达性微基准(免费预检):

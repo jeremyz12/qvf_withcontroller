@@ -20,7 +20,6 @@ Design notes:
 from __future__ import annotations
 
 import json
-import os
 import re
 import sys
 from dataclasses import dataclass, field
@@ -33,19 +32,14 @@ from pydantic import BaseModel, Field
 from qvf import config
 from qvf.retrieval import MemoryItem
 
-# Make the legacy validity engine importable. Inside the qvf_withcontroller
-# repo the engine lives at <repo>/01_核心代码/src (two levels above this
-# package); the original development tree kept it under
-# external/qvf_withcontroller/. An explicit QVF_ENGINE_SRC env var wins.
-_ENGINE_CANDIDATES = [
-    os.environ.get("QVF_ENGINE_SRC"),
-    str(Path(__file__).resolve().parents[1] / "legacy_engine" / "src"),
-    str(Path(__file__).resolve().parents[1] / "01_核心代码" / "src"),
-]
-for _p in _ENGINE_CANDIDATES:
-    if _p and Path(_p).exists():
-        if _p not in sys.path:
-            sys.path.insert(0, _p)
+# Make the legacy engine importable. The upstream repo moved the engine from
+# 01_核心代码/src to legacy_engine/src (2026-08-02 restructure); try both.
+_ENGINE_BASE = Path(__file__).resolve().parent.parent / "external" / "qvf_withcontroller"
+for _cand in (_ENGINE_BASE / "legacy_engine" / "src",
+              _ENGINE_BASE / "01_核心代码" / "src"):
+    if _cand.exists():
+        if str(_cand) not in sys.path:
+            sys.path.insert(0, str(_cand))
         break
 
 from qvf_validity_admission import run_raw_memory_validity_controller  # noqa: E402
@@ -413,6 +407,9 @@ class LLMSlotExtractor:
             f"QUERY: {query}\n\nQUERY DATE: {query_date or 'UNKNOWN'}\n\n"
             f"RETRIEVED MEMORIES (JSON):\n{json.dumps(mem_payload, ensure_ascii=False, indent=2)}"
         )
+        # Deterministic extraction on models that still accept temperature
+        # (haiku-4-5); Opus 4.7+ rejects the param, so gate on model id.
+        extra = {"temperature": 0.0} if "haiku" in self.model else {}
         response = self._client.messages.parse(
             model=self.model,
             max_tokens=config.ADAPTER_MAX_TOKENS,
@@ -426,6 +423,7 @@ class LLMSlotExtractor:
             ],
             messages=[{"role": "user", "content": user_input}],
             output_format=ScopedSlotExtraction if scoped else SlotExtraction,
+            **extra,
         )
         if response.stop_reason == "refusal" or response.parsed_output is None:
             raise RuntimeError("extraction failed or refused")
@@ -434,6 +432,88 @@ class LLMSlotExtractor:
             response.usage.input_tokens,
             response.usage.output_tokens,
         )
+
+
+class LocalSlotExtractor:
+    """Fully-local extraction via an Ollama chat model (zero API cost).
+
+    Prompts the model to emit the SlotExtraction JSON directly. Invalid JSON
+    gets one repair retry with the validation error appended; a second failure
+    falls back to an empty extraction (runner then takes the direct-fallback
+    path). Interface-compatible with LLMSlotExtractor.
+    """
+
+    _EXAMPLE = (
+        '{"query_focus": {"entity": "user", "slot": "<slot name>", '
+        '"needs_current": true, "query_temporal_scope": "current"}, '
+        '"records": [{"record_id": "r1", "source_memory_id": "<memory_id>", '
+        '"source_span": "<verbatim substring>", "entity": "user", '
+        '"slot": "<slot name>", "value": "<value>", "claim": "<one sentence>", '
+        '"slot_cardinality": "single", "temporal_relation": "unresolved", '
+        '"relation_target_record_ids": []}]}'
+    )
+
+    def __init__(self, model: str = "qwen3:4b"):
+        self.model = f"local:{model}"
+        self._chat = LocalChatModel(model=model)
+
+    def extract(
+        self,
+        query: str,
+        memories: List[MemoryItem],
+        query_date: Optional[str] = None,
+        scoped: bool = False,
+    ) -> tuple[SlotExtraction, int, int]:
+        schema_cls = ScopedSlotExtraction if scoped else SlotExtraction
+        base_prompt = (EXTRACTION_SYSTEM_PROMPT_SCOPED if scoped
+                       else EXTRACTION_SYSTEM_PROMPT)
+        system = (
+            base_prompt
+            + "\n\nOutput format: return ONLY one JSON object, no prose and no "
+            "markdown fences, shaped exactly like this example (field names "
+            "and enum values must match):\n" + self._EXAMPLE
+            + ("\nquery_temporal_scope must be one of: current, "
+               "past_or_change, unclear." if scoped else "")
+        )
+        mem_payload = [
+            {"memory_id": m.memory_id, "text": m.content, "metadata": m.metadata}
+            for m in memories
+        ]
+        user_input = (
+            f"QUERY: {query}\n\nQUERY DATE: {query_date or 'UNKNOWN'}\n\n"
+            f"RETRIEVED MEMORIES (JSON):\n"
+            f"{json.dumps(mem_payload, ensure_ascii=False, indent=2)}"
+        )
+        attempt_input = user_input
+        for _ in range(2):
+            text = self._chat.chat(system, attempt_input, max_tokens=4096)
+            try:
+                start = text.index("{")
+                end = text.rindex("}") + 1
+                return schema_cls.model_validate_json(text[start:end]), 0, 0
+            except Exception as exc:  # noqa: BLE001 — retry once with the error
+                attempt_input = (
+                    user_input
+                    + "\n\nYour previous output was not valid JSON for the "
+                    f"required schema ({exc}). Return ONLY the corrected JSON "
+                    "object."
+                )
+        if scoped:
+            empty = ScopedSlotExtraction(
+                query_focus=ScopedQueryFocus(
+                    entity="user", slot="unknown", needs_current=True,
+                    query_temporal_scope="unclear",
+                ),
+                records=[],
+            )
+        else:
+            empty = SlotExtraction(
+                query_focus=ExtractedQueryFocus(
+                    entity="user", slot="unknown", needs_current=True
+                ),
+                records=[],
+            )
+        return empty, 0, 0
 
 
 # ---------------------------------------------------------------------------

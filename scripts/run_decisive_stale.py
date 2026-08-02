@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 import time
 import traceback
@@ -177,8 +178,11 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         record["repair_added_ids"] = [m.memory_id for m in added]
         if added:
             merged = retrieved + added
+            # scoped must match the first extraction: switching prompt/schema
+            # mid-pipeline was an uncontrolled confound (fixed 2026-08-02).
             extraction, ein2, eout2 = extractor.extract(
-                instance.question, merged, instance.question_date
+                instance.question, merged, instance.question_date,
+                scoped=scope_gate,
             )
             record["usage_input_tokens"] += ein2
             record["usage_output_tokens"] += eout2
@@ -200,6 +204,150 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         reader = conflict_reader or validated_reader
         strategy = "rules_conflict_latest"
     elif rel:
+        keep = {r.source_memory_id for r in rel}
+        filtered = [m for m in retrieved if m.memory_id in keep]
+        strategy = "rules_admit"
+    else:
+        filtered = []
+        strategy = "rules_no_records"
+
+    record.update(
+        {
+            "extracted_record_count": len(rel),
+            "filter_strategy": strategy,
+            "filtered_memory_ids": [m.memory_id for m in filtered],
+            "retrieved_memory_ids": [m.memory_id for m in retrieved],
+        }
+    )
+    if filtered:
+        gen = reader.generate(instance.question, filtered, instance.question_date)
+        record["fallback_used"] = False
+    else:
+        gen = fallback_generator.generate(
+            instance.question, retrieved, instance.question_date
+        )
+        record["fallback_used"] = True
+    record["answer"] = gen.answer
+    record["usage_input_tokens"] += gen.usage_input_tokens
+    record["usage_output_tokens"] += gen.usage_output_tokens
+    return record
+
+
+_AGG_QUERY_RE = re.compile(
+    r"\bhow (?:many|much|often|long)\b|\bin total\b|\bso far\b",
+    re.IGNORECASE,
+)
+
+
+def _mem_date_key(mem):
+    """Sortable (y, m, d) from a memory's session_date; None if unparseable."""
+    raw = str((mem.metadata or {}).get("session_date") or "")
+    m = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", raw)
+    return tuple(int(g) for g in m.groups()) if m else None
+
+
+def run_minimal_rules_v6(instance, extractor, validated_reader, conflict_reader,
+                         fallback_generator) -> dict:
+    """v6 = v5 + three route fixes, each aimed at a measured dead route:
+    (1) aggregation guard: how-many/total/since questions are history
+        aggregations -> pass-through (a KU pilot loss came from surgering one);
+    (2) conflict-route surgery: extraction-confirmed same-slot competition ->
+        keep only the latest-dated record's rounds instead of keep-both+prompt
+        (conflict route measured 33% vs surgery route 74-76%);
+    (3) admit suspicion: a single-valued record set on a needs-current query
+        means the competitor was likely missed by extraction -> full
+        pass-through instead of keeping possibly-stale record rounds
+        (admit route measured 0% across all slices).
+    v5 is left untouched for protocol comparability."""
+    retriever = _dense_retriever_cls()(instance.memories)
+    retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
+    extraction, ein, eout = extractor.extract(
+        instance.question, retrieved, instance.question_date, scoped=True
+    )
+    record = {
+        "usage_input_tokens": ein,
+        "usage_output_tokens": eout,
+        "repair_triggered": False,
+        "repair_added_ids": [],
+    }
+
+    def _pass_through(strategy):
+        record.update(
+            {
+                "extracted_record_count": len(extraction.records),
+                "filter_strategy": strategy,
+                "filtered_memory_ids": [m.memory_id for m in retrieved],
+                "retrieved_memory_ids": [m.memory_id for m in retrieved],
+                "fallback_used": False,
+            }
+        )
+        gen = fallback_generator.generate(
+            instance.question, retrieved, instance.question_date
+        )
+        record["answer"] = gen.answer
+        record["usage_input_tokens"] += gen.usage_input_tokens
+        record["usage_output_tokens"] += gen.usage_output_tokens
+        return record
+
+    scope = getattr(extraction.query_focus, "query_temporal_scope", "unclear")
+    record["query_temporal_scope"] = scope
+    if _AGG_QUERY_RE.search(instance.question):
+        return _pass_through("scope_pass_aggregation")
+    if scope == "past_or_change":
+        return _pass_through("scope_pass_history")
+
+    def has_repl(extr):
+        return any(
+            r.temporal_relation in ("replacement", "correction") for r in extr.records
+        )
+
+    if extraction.query_focus.needs_current and not has_repl(extraction):
+        record["repair_triggered"] = True
+        from qvf.engine_bridge import build_repair_query_dense
+
+        second = retriever.retrieve(
+            build_repair_query_dense(extraction.query_focus), top_k=TOP_K
+        )
+        have = {m.memory_id for m in retrieved}
+        added = [m for m in second if m.memory_id not in have][:5]
+        record["repair_added_ids"] = [m.memory_id for m in added]
+        if added:
+            merged = retrieved + added
+            extraction, ein2, eout2 = extractor.extract(
+                instance.question, merged, instance.question_date, scoped=True
+            )
+            record["usage_input_tokens"] += ein2
+            record["usage_output_tokens"] += eout2
+            retrieved = merged
+
+    rel = extraction.records
+    repl = [r for r in rel if r.temporal_relation in ("replacement", "correction")]
+    by_id = {m.memory_id: m for m in retrieved}
+    reader = validated_reader
+    if repl:
+        keep = {r.source_memory_id for r in repl}
+        filtered = [m for m in retrieved if m.memory_id in keep]
+        strategy = "rules_replacement"
+    elif rel and len({_norm_val(r.value) for r in rel}) > 1:
+        # v6 fix (2): execute latest-wins instead of annotating it.
+        dated = [
+            (key, r) for r in rel
+            if (key := _mem_date_key(by_id.get(r.source_memory_id))) is not None
+        ] if rel else []
+        if len(dated) >= 2:
+            latest = max(k for k, _ in dated)
+            keep = {r.source_memory_id for k, r in dated if k == latest}
+            filtered = [m for m in retrieved if m.memory_id in keep]
+            strategy = "rules_conflict_surgery"
+        else:
+            keep = {r.source_memory_id for r in rel}
+            filtered = [m for m in retrieved if m.memory_id in keep]
+            reader = conflict_reader or validated_reader
+            strategy = "rules_conflict_latest"
+    elif rel:
+        if extraction.query_focus.needs_current:
+            # v6 fix (3): single value + needs-current = suspect recall miss.
+            return _pass_through("rules_admit_suspicious_pass")
         keep = {r.source_memory_id for r in rel}
         filtered = [m for m in retrieved if m.memory_id in keep]
         strategy = "rules_admit"
@@ -643,10 +791,15 @@ def main() -> int:
     # zero-API extractor; otherwise the Anthropic extractor with
     # QVF_ADAPTER_MODEL (default opus).
     _local_ext = os.environ.get("QVF_LOCAL_EXTRACTOR")
+    _adapter = os.environ.get("QVF_ADAPTER_MODEL", "")
     if _local_ext:
         from qvf.engine_bridge import LocalSlotExtractor
 
         extractor = LocalSlotExtractor(_local_ext)
+    elif _adapter.startswith("openai:"):
+        from qvf.openai_bridge import OpenAISlotExtractor
+
+        extractor = OpenAISlotExtractor(_adapter.split(":", 1)[1])
     else:
         extractor = LLMSlotExtractor()
     if args.reader.startswith("local:"):
@@ -674,6 +827,23 @@ def main() -> int:
         recency_gen = LocalDirectGenerator(
             local, system_prompt=RECENCY_READER_PROMPT
         )
+    elif args.reader.startswith("openai:"):
+        from qvf.engine_bridge import (
+            CONFLICT_LATEST_KNOWN_READER_PROMPT,
+            VALIDATED_CONTEXT_READER_PROMPT,
+        )
+        from qvf.openai_bridge import OpenAIGenerator
+
+        _om = args.reader.split(":", 1)[1]
+        reader = None  # SidecarReader paths (prompted/oracle/qvf_v4) unsupported
+        direct_gen = OpenAIGenerator(_om)
+        validated_gen = OpenAIGenerator(
+            _om, system_prompt=VALIDATED_CONTEXT_READER_PROMPT
+        )
+        conflict_gen = OpenAIGenerator(
+            _om, system_prompt=CONFLICT_LATEST_KNOWN_READER_PROMPT
+        )
+        recency_gen = direct_gen
     else:
         reader = SidecarReader(model=args.reader)
         direct_gen = BaselineGenerator(model=args.reader)
@@ -689,6 +859,11 @@ def main() -> int:
         conflict_gen = BaselineGenerator(model=args.reader)
         conflict_gen.system_prompt = CONFLICT_LATEST_KNOWN_READER_PROMPT
         recency_gen = direct_gen
+        if "haiku" in args.reader:
+            # Deterministic reads on models that accept temperature —
+            # aligns the API protocol with the local temp-0 runs.
+            for _g in (direct_gen, validated_gen, conflict_gen):
+                _g.temperature = 0.0
     haiku_gen = BaselineGenerator(model="claude-haiku-4-5")
     print(f"Reader: {args.reader}")
     judge = None if args.no_judge else ClaudeJudge()
@@ -756,6 +931,9 @@ def main() -> int:
         "minimal_rules_v5": lambda inst: run_minimal_rules(
             inst, extractor, validated_gen, conflict_gen, direct_gen,
             scope_gate=True,
+        ),
+        "minimal_rules_v6": lambda inst: run_minimal_rules_v6(
+            inst, extractor, validated_gen, conflict_gen, direct_gen
         ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen

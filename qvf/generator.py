@@ -59,9 +59,16 @@ class _ClaudeGenerator:
     def _call(self, user_input: str) -> GenerationResult:
         if self.mock:
             return GenerationResult(answer="[mock answer]")
+        # Optional deterministic sampling (set by runners on models that still
+        # accept temperature, e.g. haiku-4-5; Opus 4.7+ rejects the param).
+        extra = {}
+        t = getattr(self, "temperature", None)
+        if t is not None:
+            extra["temperature"] = t
         response = self._client.messages.create(
             model=self.model,
             max_tokens=config.GENERATOR_MAX_TOKENS,
+            **extra,
             system=[
                 {
                     "type": "text",
