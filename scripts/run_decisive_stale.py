@@ -103,6 +103,11 @@ invoke=false -> the question asks about history or the past (when something
 """
 
 _GATE_CLIENT = None
+_CONTRA_READER = None
+
+
+def _contradiction_reader():
+    return _CONTRA_READER
 
 
 def query_gate(question: str) -> tuple[bool, int, int]:
@@ -146,23 +151,28 @@ def _expand_siblings(retrieved, memories, radius: int = 2):
     return [memories[j] for j in sorted(keep)]
 
 
-_ESCALATE_ROUTES = ("rules_conflict_latest", "rules_admit", "rules_no_records")
+_ESCALATE_ROUTES = ("rules_conflict_latest", "rules_admit", "rules_no_records",
+                    "rules_admit_noop")
 
 
 def run_minimal_rules_escalated(instance, extractor, strong_extractor,
                                 validated_reader, conflict_reader,
-                                fallback_generator) -> dict:
+                                fallback_generator,
+                                subtractive: bool = False,
+                                premise_note: bool = False) -> dict:
     """Targeted escalation: run v5 with the cheap extractor; if the case lands
     on a measured dead route (conflict/admit/no_records), redo it with a
     stronger extractor. Pays the big-model price only on hard cases."""
     rec = run_minimal_rules(
         instance, extractor, validated_reader, conflict_reader,
         fallback_generator, scope_gate=True,
+        subtractive=subtractive, premise_note=premise_note,
     )
     if rec.get("filter_strategy") in _ESCALATE_ROUTES:
         rec2 = run_minimal_rules(
             instance, strong_extractor, validated_reader, conflict_reader,
             fallback_generator, scope_gate=True,
+            subtractive=subtractive, premise_note=premise_note,
         )
         rec2["escalated"] = True
         rec2["usage_input_tokens"] += rec.get("usage_input_tokens", 0)
@@ -269,6 +279,81 @@ def run_ledger_v8(instance, ledger_store, validated_reader,
     return _deliver(keep, "ledger_surgery")
 
 
+def run_qvf_final(instance, extractor, strong_extractor, validated_reader,
+                  conflict_reader, fallback_generator) -> dict:
+    """Release config: risk gate -> base pipeline with subtractive delivery
+    (generalization-safe) -> dead-route cases escalate to the strong extractor
+    with selective delivery (trap-sharp). Composition follows the measured
+    interaction: subtractive helps the base branch, hurts the escalated one."""
+    invoke, gin, gout = query_gate(instance.question)
+    if not invoke:
+        rec = run_direct(
+            instance, fallback_generator, retriever_cls=_dense_retriever_cls()
+        )
+        rec["filter_strategy"] = "gate_direct"
+        rec["fallback_used"] = False
+        rec["gate_invoked"] = False
+    else:
+        rec = run_minimal_rules(
+            instance, extractor, validated_reader, conflict_reader,
+            fallback_generator, scope_gate=True, subtractive=True,
+        )
+        rec["gate_invoked"] = True
+        if rec.get("filter_strategy") in _ESCALATE_ROUTES:
+            rec2 = run_minimal_rules(
+                instance, strong_extractor, validated_reader, conflict_reader,
+                fallback_generator, scope_gate=True, subtractive=False,
+            )
+            rec2["gate_invoked"] = True
+            rec2["escalated"] = True
+            rec2["usage_input_tokens"] += rec.get("usage_input_tokens", 0)
+            rec2["usage_output_tokens"] += rec.get("usage_output_tokens", 0)
+            rec2["pre_escalation_strategy"] = rec.get("filter_strategy")
+            rec = rec2
+        else:
+            rec["escalated"] = False
+    rec["usage_input_tokens"] = rec.get("usage_input_tokens", 0) + gin
+    rec["usage_output_tokens"] = rec.get("usage_output_tokens", 0) + gout
+    return rec
+
+
+def run_qvf_final_routed(instance, extractor, strong_extractor,
+                         validated_reader, conflict_reader,
+                         fallback_generator, reasoning_conflict_reader) -> dict:
+    """Release config + residual routing, each choice backed by measured
+    route accuracies: post-escalation conflict residues (53% w/ haiku) go to a
+    reasoning reader (exploits conflict annotations); post-escalation admit
+    residues (11% selective) fall back to full pass-through (~direct level)."""
+    rec = run_qvf_final(
+        instance, extractor, strong_extractor, validated_reader,
+        conflict_reader, fallback_generator,
+    )
+    if not rec.get("escalated"):
+        return rec
+    strategy = rec.get("filter_strategy")
+    by_id = {m.memory_id: m for m in instance.memories}
+    if strategy == "rules_conflict_latest":
+        mems = [by_id[i] for i in rec.get("filtered_memory_ids", []) if i in by_id]
+        gen = reasoning_conflict_reader.generate(
+            instance.question, mems, instance.question_date
+        )
+        rec["answer"] = gen.answer
+        rec["usage_input_tokens"] += gen.usage_input_tokens
+        rec["usage_output_tokens"] += gen.usage_output_tokens
+        rec["residual_route"] = "conflict->reasoning_reader"
+    elif strategy in ("rules_admit", "rules_no_records"):
+        mems = [by_id[i] for i in rec.get("retrieved_memory_ids", []) if i in by_id]
+        if mems:
+            gen = fallback_generator.generate(
+                instance.question, mems, instance.question_date
+            )
+            rec["answer"] = gen.answer
+            rec["usage_input_tokens"] += gen.usage_input_tokens
+            rec["usage_output_tokens"] += gen.usage_output_tokens
+            rec["residual_route"] = "admit->pass_through"
+    return rec
+
+
 def run_conditional_v5(instance, extractor, validated_reader, conflict_reader,
                        fallback_generator) -> dict:
     """Conditional invocation: a query-only gate decides per query whether to
@@ -338,7 +423,10 @@ def run_extraction_only(instance, extractor, fallback_generator) -> dict:
 def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                       fallback_generator, scope_gate: bool = False,
                       contract: str = "v5", agg_guard: bool = False,
-                      sibling_expand: bool = False) -> dict:
+                      sibling_expand: bool = False,
+                      subtractive: bool = False,
+                      premise_note: bool = False,
+                      repair_slotted: bool = False) -> dict:
     """Engine-ablation: identical retrieval/repair/extraction to qvf_v4, but
     adjudication is ~30 lines of plain Python instead of the symbolic engine.
     Measures the engine's net contribution.
@@ -417,9 +505,19 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         record["repair_triggered"] = True
         from qvf.engine_bridge import build_repair_query_dense
 
-        second = retriever.retrieve(
-            build_repair_query_dense(extraction.query_focus), top_k=TOP_K
-        )
+        if repair_slotted:
+            # Slot-aware repair query: anchor on the entity/slot and contrast
+            # against the already-known (possibly stale) values. The generic
+            # template yielded decisive retrievals in only 7/202 firings.
+            known = "; ".join(sorted({
+                _norm_val(r.value) for r in extraction.records if r.value
+            }))[:200]
+            rq = (f"{extraction.query_focus.entity} "
+                  f"{extraction.query_focus.slot} updated changed new current "
+                  f"value, different from: {known or 'the old state'}")
+        else:
+            rq = build_repair_query_dense(extraction.query_focus)
+        second = retriever.retrieve(rq, top_k=TOP_K)
         have = {m.memory_id for m in retrieved}
         added = [m for m in second if m.memory_id not in have][:5]
         record["repair_added_ids"] = [m.memory_id for m in added]
@@ -439,22 +537,116 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
     rel = extraction.records
     repl = [r for r in rel if r.temporal_relation in ("replacement", "correction")]
     reader = validated_reader
+
+    if contract == "species":
+        # Species adjudication, in precedence order. Each branch is the
+        # minimal deterministic policy for one validity species.
+        cess = [r for r in rel if r.temporal_relation == "cessation"]
+        contra = [r for r in rel if r.temporal_relation == "contradiction"]
+        by_rid_all = {r.record_id: r for r in rel}
+        if cess and not repl:
+            # State ended: remove the ended state's rounds, keep the
+            # cessation statement (it IS the current answer: "no longer X").
+            stale = {
+                by_rid_all[t].source_memory_id
+                for r in cess for t in r.relation_target_record_ids
+                if t in by_rid_all
+            }
+            filtered = [m for m in retrieved if m.memory_id not in stale]
+            record.update({
+                "extracted_record_count": len(rel),
+                "filter_strategy": "rules_cessation",
+                "filtered_memory_ids": [m.memory_id for m in filtered],
+                "retrieved_memory_ids": [m.memory_id for m in retrieved],
+                "fallback_used": False,
+            })
+            gen = validated_reader.generate(
+                instance.question, filtered, instance.question_date
+            )
+            record["answer"] = gen.answer
+            record["usage_input_tokens"] += gen.usage_input_tokens
+            record["usage_output_tokens"] += gen.usage_output_tokens
+            return record
+        if not repl and rel and extraction.query_focus.needs_current:
+            # Conditional applicability: if exactly one record's condition
+            # matches the query wording, prefer its rounds.
+            conded = [r for r in rel if (r.condition or "").strip()]
+            if conded:
+                qn = _norm_val(instance.question)
+                hits = [r for r in conded
+                        if any(w in qn for w in _norm_val(r.condition).split()
+                               if len(w) > 3)]
+                if len({r.source_memory_id for r in hits}) >= 1 and hits:
+                    keep = {r.source_memory_id for r in hits}
+                    filtered = [m for m in retrieved if m.memory_id in keep]
+                    record.update({
+                        "extracted_record_count": len(rel),
+                        "filter_strategy": "rules_conditional",
+                        "filtered_memory_ids": [m.memory_id for m in filtered],
+                        "retrieved_memory_ids": [m.memory_id for m in retrieved],
+                        "fallback_used": False,
+                    })
+                    gen = validated_reader.generate(
+                        instance.question, filtered, instance.question_date
+                    )
+                    record["answer"] = gen.answer
+                    record["usage_input_tokens"] += gen.usage_input_tokens
+                    record["usage_output_tokens"] += gen.usage_output_tokens
+                    return record
+        if contra and not repl:
+            # Factual disagreement: keep both sides, use the contradiction
+            # prompt (recency is NOT evidence here).
+            keep = {r.source_memory_id for r in contra}
+            filtered = [m for m in retrieved if m.memory_id in keep]
+            record.update({
+                "extracted_record_count": len(rel),
+                "filter_strategy": "rules_contradiction",
+                "filtered_memory_ids": [m.memory_id for m in filtered],
+                "retrieved_memory_ids": [m.memory_id for m in retrieved],
+                "fallback_used": False,
+            })
+            gen = _contradiction_reader().generate(
+                instance.question, filtered, instance.question_date
+            )
+            record["answer"] = gen.answer
+            record["usage_input_tokens"] += gen.usage_input_tokens
+            record["usage_output_tokens"] += gen.usage_output_tokens
+            return record
+
     if repl:
         targets = set()
         for r in repl:
             targets.update(r.relation_target_record_ids)
-        keep = {r.source_memory_id for r in repl}
-        filtered = [m for m in retrieved if m.memory_id in keep]
-        strategy = "rules_replacement"
+        if subtractive:
+            # v5.1 subtractive delivery: remove ONLY the superseded rounds,
+            # keep everything else. If the old state was never retrieved
+            # (benign update), nothing is removed and delivery == direct —
+            # structurally incapable of harming already-solved cases.
+            by_rid = {r.record_id: r for r in rel}
+            stale = {by_rid[t].source_memory_id for t in targets if t in by_rid}
+            filtered = [m for m in retrieved if m.memory_id not in stale]
+            strategy = ("rules_replacement_subtract" if stale
+                        else "rules_replacement_noop")
+        else:
+            keep = {r.source_memory_id for r in repl}
+            filtered = [m for m in retrieved if m.memory_id in keep]
+            strategy = "rules_replacement"
     elif rel and len({_norm_val(r.value) for r in rel}) > 1:
-        keep = {r.source_memory_id for r in rel}
-        filtered = [m for m in retrieved if m.memory_id in keep]
+        if subtractive:
+            filtered = list(retrieved)  # keep all, flag the conflict
+        else:
+            keep = {r.source_memory_id for r in rel}
+            filtered = [m for m in retrieved if m.memory_id in keep]
         reader = conflict_reader or validated_reader
         strategy = "rules_conflict_latest"
     elif rel:
-        keep = {r.source_memory_id for r in rel}
-        filtered = [m for m in retrieved if m.memory_id in keep]
-        strategy = "rules_admit"
+        if subtractive:
+            filtered = list(retrieved)  # nothing superseded -> touch nothing
+            strategy = "rules_admit_noop"
+        else:
+            keep = {r.source_memory_id for r in rel}
+            filtered = [m for m in retrieved if m.memory_id in keep]
+            strategy = "rules_admit"
     else:
         filtered = []
         strategy = "rules_no_records"
@@ -611,12 +803,33 @@ def run_minimal_rules_v6(instance, extractor, validated_reader, conflict_reader,
             "retrieved_memory_ids": [m.memory_id for m in retrieved],
         }
     )
+    question = instance.question
+    if premise_note and repl:
+        # dim2 fix: when the question itself presupposes a superseded value,
+        # say so explicitly — readers of every tier fail to contradict a
+        # question's premise unprompted (3-5/55 across haiku/sonnet/gpt-5).
+        by_rid = {r.record_id: r for r in rel}
+        old_vals = [
+            by_rid[t].value
+            for r in repl for t in r.relation_target_record_ids
+            if t in by_rid and by_rid[t].value
+        ]
+        q_norm = _norm_val(question)
+        if any(len(str(v)) > 2 and _norm_val(v) in q_norm for v in old_vals):
+            latest = repl[0]
+            question = (
+                f"{question}\n\n[Validity note: this question may presuppose "
+                f"an outdated state. According to the memories, the current "
+                f"{latest.slot} is: {latest.value}.]"
+            )
+            record["premise_note_fired"] = True
+
     if filtered:
-        gen = reader.generate(instance.question, filtered, instance.question_date)
+        gen = reader.generate(question, filtered, instance.question_date)
         record["fallback_used"] = False
     else:
         gen = fallback_generator.generate(
-            instance.question, retrieved, instance.question_date
+            question, retrieved, instance.question_date
         )
         record["fallback_used"] = True
     record["answer"] = gen.answer
@@ -1154,6 +1367,38 @@ def main() -> int:
             _lazy["ledger"] = WriteTimeLedger(model="claude-haiku-4-5")
         return _lazy["ledger"]
 
+    def _reasoning_conflict_reader():
+        if "rcr" not in _lazy:
+            from qvf.engine_bridge import CONFLICT_LATEST_KNOWN_READER_PROMPT
+            from qvf.openai_bridge import OpenAIGenerator
+
+            _lazy["rcr"] = OpenAIGenerator(
+                "gpt-5-mini",
+                system_prompt=CONFLICT_LATEST_KNOWN_READER_PROMPT,
+            )
+        return _lazy["rcr"]
+
+    # Contradiction reader mirrors the arm's reader family.
+    global _CONTRA_READER
+    from qvf.engine_bridge import CONTRADICTION_READER_PROMPT as _CRP
+
+    if args.reader.startswith("local:"):
+        from qvf.engine_bridge import LocalChatModel as _LCM
+        from qvf.engine_bridge import LocalDirectGenerator as _LDG
+
+        _CONTRA_READER = _LDG(
+            _LCM(model=args.reader.split(":", 1)[1]), system_prompt=_CRP
+        )
+    elif args.reader.startswith("openai:"):
+        from qvf.openai_bridge import OpenAIGenerator as _OG
+
+        _CONTRA_READER = _OG(args.reader.split(":", 1)[1], system_prompt=_CRP)
+    else:
+        _CONTRA_READER = BaselineGenerator(model=args.reader)
+        _CONTRA_READER.system_prompt = _CRP
+        if "haiku" in args.reader:
+            _CONTRA_READER.temperature = 0.0
+
     print(f"Reader: {args.reader}")
     judge = None if args.no_judge else ClaudeJudge()
 
@@ -1245,6 +1490,34 @@ def main() -> int:
         ),
         "ledger_v8": lambda inst: run_ledger_v8(
             inst, _ledger_store(), validated_gen, direct_gen
+        ),
+        "minimal_rules_v51": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, subtractive=True,
+        ),
+        "minimal_rules_pnote": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, premise_note=True,
+        ),
+        "minimal_rules_srepair": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, repair_slotted=True,
+        ),
+        "minimal_rules_esc_sub": lambda inst: run_minimal_rules_escalated(
+            inst, extractor, _strong_extractor(), validated_gen, conflict_gen,
+            direct_gen, subtractive=True,
+        ),
+        "qvf_final": lambda inst: run_qvf_final(
+            inst, extractor, _strong_extractor(), validated_gen, conflict_gen,
+            direct_gen
+        ),
+        "qvf_final_routed": lambda inst: run_qvf_final_routed(
+            inst, extractor, _strong_extractor(), validated_gen, conflict_gen,
+            direct_gen, _reasoning_conflict_reader()
+        ),
+        "minimal_rules_species": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, contract="species", subtractive=True,
         ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen

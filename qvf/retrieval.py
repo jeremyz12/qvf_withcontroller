@@ -127,6 +127,51 @@ class OllamaDenseRetriever:
         return [self.memories[i] for i in sorted(top)]
 
 
+class OpenAIDenseRetriever(OllamaDenseRetriever):
+    """Dense retrieval via the OpenAI embeddings API — removes the local
+    Ollama dependency for a pure-API stack. Same interface and scoring as
+    OllamaDenseRetriever; only the embedding backend differs, so switching
+    backends changes the retrieval protocol and must not happen mid-campaign.
+
+    Select with QVF_EMBED_BACKEND=openai[:<model>] (default model
+    text-embedding-3-small, ~$0.02/M tokens).
+    """
+
+    _cache: dict = {}
+
+    def __init__(
+        self,
+        memories: List[MemoryItem],
+        model: str = "text-embedding-3-small",
+    ):
+        import numpy as np
+
+        from openai import OpenAI
+
+        self.memories = memories
+        self.model = model
+        self._client = OpenAI()
+        cache_key = (model, memories[0].memory_id if memories else "", len(memories))
+        if cache_key in self._cache:
+            self._embs = self._cache[cache_key]
+        else:
+            self._embs = self._embed([m.content for m in memories])
+            self._cache[cache_key] = self._embs
+        norms = np.linalg.norm(self._embs, axis=1, keepdims=True)
+        norms[norms == 0] = 1.0
+        self._embs = self._embs / norms
+
+    def _embed(self, texts: List[str]):
+        import numpy as np
+
+        out = []
+        for i in range(0, len(texts), 256):
+            batch = [t if t.strip() else " " for t in texts[i : i + 256]]
+            r = self._client.embeddings.create(model=self.model, input=batch)
+            out.extend(d.embedding for d in r.data)
+        return np.asarray(out, dtype="float32")
+
+
 def deduplicate_memories(memories: List[MemoryItem]) -> List[MemoryItem]:
     """Drop exact duplicate contents, keeping the first occurrence."""
     seen: set = set()

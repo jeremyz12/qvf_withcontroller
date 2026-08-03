@@ -78,17 +78,35 @@ class ExtractedRecord(BaseModel):
         "'set' if multiple values coexist (e.g. hobbies); 'unknown' if unclear."
     )
     temporal_relation: Literal[
-        "replacement", "correction", "equivalent", "additive", "unresolved"
+        "replacement", "correction", "equivalent", "additive", "unresolved",
+        "contradiction", "cessation"
     ] = Field(
         description="Relation of this record to OTHER extracted records for the same "
         "entity+slot: 'replacement' only if this memory explicitly establishes a NEW "
-        "state replacing an older record's state; 'unresolved' when in doubt. "
-        "A later timestamp alone is NOT replacement."
+        "state replacing an older record's state; 'cessation' if it explicitly ENDS "
+        "the state without a new value (quit, canceled, no longer, stopped); "
+        "'contradiction' if two records assert incompatible values with NO change "
+        "language and no clear temporal ordering (a factual disagreement, not an "
+        "update); 'unresolved' when in doubt. A later timestamp alone is NOT "
+        "replacement."
     )
     relation_target_record_ids: List[str] = Field(
         default_factory=list,
-        description="record_ids of the records this replaces/corrects (required for "
-        "replacement/correction; must cover every competing record).",
+        description="record_ids of the records this replaces/corrects/ends/"
+        "contradicts (required for replacement/correction/cessation/"
+        "contradiction; must cover every competing record).",
+    )
+    condition: str = Field(
+        default="",
+        description="If this value applies only under an explicit condition or "
+        "context (at work, on weekends, when traveling ...), state it briefly; "
+        "empty string otherwise.",
+    )
+    implies_stale_slots: List[str] = Field(
+        default_factory=list,
+        description="Slot names of OTHER attributes this update makes stale via "
+        "a common-sense dependency (e.g. registering car+license in a new state "
+        "implies 'residence_state' changed). Empty if none.",
     )
 
 
@@ -173,6 +191,42 @@ EXTRACTION_SYSTEM_PROMPT_SCOPED = EXTRACTION_SYSTEM_PROMPT + """
    how a value changed over time. For such queries OLD states are the evidence
    the reader needs — they must not be treated as stale noise.
    'unclear' = anything else.
+"""
+
+
+EXTRACTION_SYSTEM_PROMPT_SPECIES = EXTRACTION_SYSTEM_PROMPT_SCOPED + """
+8. VALIDITY SPECIES (beyond temporal replacement):
+   - 'cessation': the text explicitly ENDS a state with no new value ("I quit
+     the gym", "canceled that subscription", "no longer ..."). Target the
+     ended state's record(s).
+   - 'contradiction': two records give incompatible values for the same
+     entity+slot with NO change language and NO clear temporal ordering — a
+     factual disagreement, not an update. Label BOTH records 'contradiction'
+     and cross-target each other. Never resolve it yourself.
+   - condition field: when a value explicitly holds only in a context ("my
+     work address", "on weekends I stay at ..."), record that context.
+   - implies_stale_slots: when an update to THIS slot makes ANOTHER slot's
+     older values stale through common sense (car registration + license
+     moved to a new state -> residence state changed), list those slot names.
+9. Precedence when labeling: replacement/correction/cessation (explicit
+   language) > contradiction (incompatible, unordered) > unresolved.
+"""
+
+
+CONTRADICTION_READER_PROMPT = """\
+You are a question answering assistant. The memories provided contain
+FACTUALLY INCOMPATIBLE claims about the thing the question asks about. The
+upstream validity controller verified they conflict without any update
+language and without a clear temporal order — this is a disagreement between
+sources, NOT an update.
+
+Rules:
+1. Do NOT resolve the conflict by recency — no evidence supports that here.
+2. Prefer the claim with more specific, first-hand, or repeated support in
+   the memories; say briefly that the records disagree if it matters.
+3. If the disagreement cannot be resolved from the memories, answer with the
+   better-supported value and note the uncertainty in one clause.
+Answer concisely and directly.
 """
 
 
@@ -517,11 +571,11 @@ class LLMSlotExtractor:
 
         scoped=True uses the v5 schema/prompt that additionally classifies the
         query's temporal scope. contract="v7" selects the recall-contract
-        variant (scoped semantics implied): forced per-memory triage plus the
-        include-then-label amendment. Defaults keep the pre-v5 contract
-        byte-identical (existing arms and re-runs are unaffected).
+        variant; contract="species" adds the extended validity vocabulary
+        (contradiction/cessation/condition/dependency). Defaults keep the
+        pre-v5 contract byte-identical (existing arms are unaffected).
         """
-        if contract == "v7":
+        if contract in ("v7", "species"):
             scoped = True
         if self.mock:
             if contract == "v7":
@@ -570,7 +624,10 @@ class LLMSlotExtractor:
         # Deterministic extraction on models that still accept temperature
         # (haiku-4-5); Opus 4.7+ rejects the param, so gate on model id.
         extra = {"temperature": 0.0} if "haiku" in self.model else {}
-        if contract == "v7":
+        if contract == "species":
+            sys_prompt = EXTRACTION_SYSTEM_PROMPT_SPECIES
+            out_schema = ScopedSlotExtraction
+        elif contract == "v7":
             sys_prompt = EXTRACTION_SYSTEM_PROMPT_V7
             out_schema = TriagedScopedSlotExtraction
         elif scoped:
