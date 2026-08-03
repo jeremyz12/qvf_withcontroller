@@ -479,17 +479,47 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         scope = getattr(extraction.query_focus, "query_temporal_scope", "unclear")
         record["query_temporal_scope"] = scope
         if scope == "past_or_change":
+            question = instance.question
+            strategy = "scope_pass_history"
+            if contract == "species2":
+                # Trajectory route: change/history questions need the ordered
+                # state chain assembled, not deleted and not raw. Append a
+                # dated chain note when extraction found >=2 values for the
+                # query slot (MC dynamic questions literally ask "how did X
+                # change" and direct readers fail the assembly, 56%).
+                qslot = _norm_val(extraction.query_focus.slot)
+                by_mem = {m.memory_id: m for m in retrieved}
+
+                def _datekey(r):
+                    src = by_mem.get(r.source_memory_id)
+                    raw = str((src.metadata or {}).get("session_date") or "") if src else ""
+                    mm = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", raw)
+                    return (tuple(int(g) for g in mm.groups()) if mm else (0, 0, 0), raw)
+
+                chain = [r for r in extraction.records
+                         if _norm_val(r.slot) == qslot and r.value]
+                vals = {_norm_val(r.value) for r in chain}
+                if len(vals) >= 2:
+                    chain.sort(key=lambda r: _datekey(r)[0])
+                    steps = " -> ".join(
+                        f"{r.value} ({_datekey(r)[1] or 'undated'})" for r in chain
+                    )
+                    question = (
+                        f"{instance.question}\n\n[Memory chain for "
+                        f"{extraction.query_focus.slot}: {steps}]"
+                    )
+                    strategy = "scope_pass_trajectory"
             record.update(
                 {
                     "extracted_record_count": len(extraction.records),
-                    "filter_strategy": "scope_pass_history",
+                    "filter_strategy": strategy,
                     "filtered_memory_ids": [m.memory_id for m in retrieved],
                     "retrieved_memory_ids": [m.memory_id for m in retrieved],
                     "fallback_used": False,
                 }
             )
             gen = fallback_generator.generate(
-                instance.question, retrieved, instance.question_date
+                question, retrieved, instance.question_date
             )
             record["answer"] = gen.answer
             record["usage_input_tokens"] += gen.usage_input_tokens
@@ -538,7 +568,7 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
     repl = [r for r in rel if r.temporal_relation in ("replacement", "correction")]
     reader = validated_reader
 
-    if contract == "species":
+    if contract in ("species", "species2"):
         # Species adjudication, in precedence order. Each branch is the
         # minimal deterministic policy for one validity species.
         cess = [r for r in rel if r.temporal_relation == "cessation"]
@@ -1518,6 +1548,10 @@ def main() -> int:
         "minimal_rules_species": lambda inst: run_minimal_rules(
             inst, extractor, validated_gen, conflict_gen, direct_gen,
             scope_gate=True, contract="species", subtractive=True,
+        ),
+        "minimal_rules_species2": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, contract="species2", subtractive=True,
         ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen

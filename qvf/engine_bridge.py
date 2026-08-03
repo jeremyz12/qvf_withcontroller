@@ -213,6 +213,16 @@ EXTRACTION_SYSTEM_PROMPT_SPECIES = EXTRACTION_SYSTEM_PROMPT_SCOPED + """
 """
 
 
+EXTRACTION_SYSTEM_PROMPT_SPECIES2 = EXTRACTION_SYSTEM_PROMPT_SPECIES + """
+10. CONFLICT-PAIR SCAN: whenever you extract ANY record for the query's slot,
+    actively re-scan EVERY other memory for competing or earlier values of
+    that same slot and extract them too — a chain or conflict can only be
+    seen downstream if BOTH sides are extracted. For change/trajectory
+    questions ("how did X change?") extracting the full dated chain of
+    values is the deliverable.
+"""
+
+
 CONTRADICTION_READER_PROMPT = """\
 You are a question answering assistant. The memories provided contain
 FACTUALLY INCOMPATIBLE claims about the thing the question asks about. The
@@ -575,7 +585,7 @@ class LLMSlotExtractor:
         (contradiction/cessation/condition/dependency). Defaults keep the
         pre-v5 contract byte-identical (existing arms are unaffected).
         """
-        if contract in ("v7", "species"):
+        if contract in ("v7", "species", "species2"):
             scoped = True
         if self.mock:
             if contract == "v7":
@@ -624,7 +634,10 @@ class LLMSlotExtractor:
         # Deterministic extraction on models that still accept temperature
         # (haiku-4-5); Opus 4.7+ rejects the param, so gate on model id.
         extra = {"temperature": 0.0} if "haiku" in self.model else {}
-        if contract == "species":
+        if contract == "species2":
+            sys_prompt = EXTRACTION_SYSTEM_PROMPT_SPECIES2
+            out_schema = ScopedSlotExtraction
+        elif contract == "species":
             sys_prompt = EXTRACTION_SYSTEM_PROMPT_SPECIES
             out_schema = ScopedSlotExtraction
         elif contract == "v7":
