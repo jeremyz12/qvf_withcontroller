@@ -176,6 +176,111 @@ EXTRACTION_SYSTEM_PROMPT_SCOPED = EXTRACTION_SYSTEM_PROMPT + """
 """
 
 
+WRITE_TIME_EXTRACTION_PROMPT = """\
+You are indexing ONE conversation session into a long-term memory ledger,
+at the moment the session is written to storage. You see only this session —
+no question, no other sessions.
+
+Extract user-state records: every stated or implied fact about the user's
+situation (location, job, device, plan, subscription, preference, project,
+health, relationship, possessions ...).
+
+Rules:
+1. slot: a short stable snake_case attribute name (location_city, phone_model,
+   job_title, backup_service ...). Use the most conventional name so the same
+   attribute gets the same slot across sessions.
+2. Copy an EXACT verbatim contiguous span from the session text as
+   source_span (mechanically verified; paraphrase gets rejected).
+3. Include obliquely implied states ("signed a lease in Austin" ->
+   location_city = Austin).
+4. Skip chitchat, questions, hypotheticals, plans that did not happen.
+5. temporal_relation is always 'unresolved' here (cross-session ordering is
+   resolved later by the ledger, not by you).
+6. No records is a valid answer for a session with no user-state facts.
+"""
+
+
+class LedgerExtraction(BaseModel):
+    records: List[ExtractedRecord] = Field(
+        description="User-state records found in THIS session only."
+    )
+
+
+class WriteTimeLedger:
+    """v8: extraction moves from query time to write time. Each session is
+    indexed once (small focused context — no 10-round attention dilution),
+    records accumulate in a per-item slot ledger, and query time becomes a
+    deterministic slot lookup (no embedding-similarity dependence). Disk-cached
+    so the indexing cost is paid once per item and amortized across queries."""
+
+    def __init__(self, model: str = "claude-haiku-4-5",
+                 cache_dir: str = "results/ledger_cache"):
+        self.model = model
+        self.cache_dir = Path(cache_dir) / model.replace(":", "_")
+        self.cache_dir.mkdir(parents=True, exist_ok=True)
+        self._client = anthropic.Anthropic()
+        self.last_index_tokens = (0, 0)
+
+    def _index_session(self, item_uid: str, sess_key: str,
+                       rounds: List[MemoryItem]) -> tuple[list, int, int]:
+        cache_file = self.cache_dir / f"{item_uid}_{sess_key.replace('/', '_')}.json"
+        if cache_file.exists():
+            return json.loads(cache_file.read_text(encoding="utf-8")), 0, 0
+        payload = [
+            {"memory_id": m.memory_id, "text": m.content, "metadata": m.metadata}
+            for m in rounds
+        ]
+        extra = {"temperature": 0.0} if "haiku" in self.model else {}
+        resp = self._client.messages.parse(
+            model=self.model,
+            max_tokens=8000,
+            system=[{"type": "text", "text": WRITE_TIME_EXTRACTION_PROMPT,
+                     "cache_control": {"type": "ephemeral"}}],
+            messages=[{"role": "user", "content":
+                       f"SESSION (JSON):\n{json.dumps(payload, ensure_ascii=False, indent=2)}"}],
+            output_format=LedgerExtraction,
+            **extra,
+        )
+        recs = []
+        if resp.stop_reason != "refusal" and resp.parsed_output is not None:
+            date = str((rounds[0].metadata or {}).get("session_date") or "")
+            recs = [
+                {"slot": r.slot, "value": r.value, "entity": r.entity,
+                 "source_memory_id": r.source_memory_id, "date": date}
+                for r in resp.parsed_output.records
+            ]
+        cache_file.write_text(json.dumps(recs, ensure_ascii=False),
+                              encoding="utf-8")
+        return recs, resp.usage.input_tokens, resp.usage.output_tokens
+
+    def index_item(self, item_uid: str, memories: List[MemoryItem]) -> list:
+        """Index every session of an item's memory pool; returns the ledger."""
+        sessions: dict = {}
+        for m in memories:
+            sess = m.memory_id.split("#")[0]
+            sessions.setdefault(sess, []).append(m)
+        ledger, tin, tout = [], 0, 0
+        for sess_key, rounds in sessions.items():
+            recs, i, o = self._index_session(item_uid, sess_key, rounds)
+            ledger.extend(recs)
+            tin += i
+            tout += o
+        self.last_index_tokens = (tin, tout)
+        return ledger
+
+
+LEDGER_SLOT_PICK_PROMPT = """\
+You route one user question against a memory ledger. Reply with ONLY a JSON
+object {"slots": [...], "scope": "current"|"past_or_change"}.
+
+- slots: which of the AVAILABLE SLOTS (given below) the question is about —
+  usually one, possibly several, empty list if none match.
+- scope: 'current' if the question asks what the state IS now;
+  'past_or_change' if it asks about a past state, when something happened,
+  a duration, ordering of events, or how a value changed over time.
+"""
+
+
 EXTRACTION_SYSTEM_PROMPT_V7 = EXTRACTION_SYSTEM_PROMPT_SCOPED + """
 8. RECALL CONTRACT: fill memory_triage with EXACTLY one entry per retrieved
    memory, in input order — does the memory state or imply a value for the

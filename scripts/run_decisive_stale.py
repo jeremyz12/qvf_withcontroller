@@ -47,6 +47,19 @@ TOP_K = 10
 
 
 def _dense_retriever_cls():
+    # QVF_EMBED_BACKEND=openai[:<model>] switches to the pure-API embedding
+    # stack (no local Ollama). Default stays nomic-embed-text via Ollama —
+    # the embedding model is part of the frozen retrieval protocol, so the
+    # switch must only happen between campaigns, never mid-run.
+    backend = os.environ.get("QVF_EMBED_BACKEND", "ollama")
+    if backend.startswith("openai"):
+        from functools import partial
+
+        from qvf.retrieval import OpenAIDenseRetriever
+
+        if ":" in backend:
+            return partial(OpenAIDenseRetriever, model=backend.split(":", 1)[1])
+        return OpenAIDenseRetriever
     from qvf.retrieval import OllamaDenseRetriever
 
     return OllamaDenseRetriever
@@ -73,6 +86,211 @@ def run_direct(instance, generator, retriever_cls=BM25Retriever,
 
 def _norm_val(v: str) -> str:
     return " ".join(str(v).lower().split())
+
+
+QUERY_GATE_SYSTEM = """\
+You classify one user question for a long-term-memory assistant. Reply with
+ONLY a JSON object {"invoke": true} or {"invoke": false}.
+
+invoke=true  -> the question asks for the CURRENT state of something that may
+                have been updated over time (address, job, plan, preference,
+                device, subscription...), where an outdated memory could
+                mislead the answer.
+invoke=false -> the question asks about history or the past (when something
+                happened, how long, what came first, how a value changed),
+                asks for a count/total/aggregate over time, or is otherwise
+                not about a possibly-updated current state.
+"""
+
+_GATE_CLIENT = None
+
+
+def query_gate(question: str) -> tuple[bool, int, int]:
+    """Cheap query-only risk gate (~300 tokens, temp 0). Fail-open: any
+    parse/API failure returns invoke=True so the guard never silently
+    disables itself."""
+    global _GATE_CLIENT
+    import anthropic
+
+    if _GATE_CLIENT is None:
+        _GATE_CLIENT = anthropic.Anthropic()
+    try:
+        resp = _GATE_CLIENT.messages.create(
+            model="claude-haiku-4-5",
+            max_tokens=64,
+            temperature=0.0,
+            system=QUERY_GATE_SYSTEM,
+            messages=[{"role": "user", "content": question}],
+        )
+        text = "".join(b.text for b in resp.content if b.type == "text")
+        invoke = json.loads(text[text.index("{"):text.rindex("}") + 1])["invoke"]
+        return bool(invoke), resp.usage.input_tokens, resp.usage.output_tokens
+    except Exception:  # noqa: BLE001
+        return True, 0, 0
+
+
+def _expand_siblings(retrieved, memories, radius: int = 2):
+    """Attach same-session neighbor rounds to each retrieved round (the
+    forensics found 22/26 retrieval misses had the answer in a sibling round
+    already adjacent to a retrieved one)."""
+    pos = {m.memory_id: i for i, m in enumerate(memories)}
+    keep = set()
+    for m in retrieved:
+        i = pos.get(m.memory_id)
+        if i is None:
+            continue
+        sess = m.memory_id.split("#")[0]
+        for j in range(max(0, i - radius), min(len(memories), i + radius + 1)):
+            if memories[j].memory_id.split("#")[0] == sess:
+                keep.add(j)
+    return [memories[j] for j in sorted(keep)]
+
+
+_ESCALATE_ROUTES = ("rules_conflict_latest", "rules_admit", "rules_no_records")
+
+
+def run_minimal_rules_escalated(instance, extractor, strong_extractor,
+                                validated_reader, conflict_reader,
+                                fallback_generator) -> dict:
+    """Targeted escalation: run v5 with the cheap extractor; if the case lands
+    on a measured dead route (conflict/admit/no_records), redo it with a
+    stronger extractor. Pays the big-model price only on hard cases."""
+    rec = run_minimal_rules(
+        instance, extractor, validated_reader, conflict_reader,
+        fallback_generator, scope_gate=True,
+    )
+    if rec.get("filter_strategy") in _ESCALATE_ROUTES:
+        rec2 = run_minimal_rules(
+            instance, strong_extractor, validated_reader, conflict_reader,
+            fallback_generator, scope_gate=True,
+        )
+        rec2["escalated"] = True
+        rec2["usage_input_tokens"] += rec.get("usage_input_tokens", 0)
+        rec2["usage_output_tokens"] += rec.get("usage_output_tokens", 0)
+        rec2["pre_escalation_strategy"] = rec.get("filter_strategy")
+        return rec2
+    rec["escalated"] = False
+    return rec
+
+
+def run_ledger_v8(instance, ledger_store, validated_reader,
+                  fallback_generator) -> dict:
+    """v8 write-time ledger: sessions were indexed at write time (query-blind,
+    LLM-extracted, disk-cached); query time is a slot lookup + date-ordered
+    adjudication + the usual physical delivery. No query-time extraction."""
+    import anthropic as _anthropic
+
+    uid = instance.question_id.rsplit("_", 2)[0]
+    ledger = ledger_store.index_item(uid, instance.memories)
+    lin, lout = ledger_store.last_index_tokens
+    record = {
+        "usage_input_tokens": lin,
+        "usage_output_tokens": lout,
+        "ledger_records": len(ledger),
+        "ledger_index_cached": lin == 0,
+        "repair_triggered": False,
+        "repair_added_ids": [],
+        "retrieved_memory_ids": [],
+    }
+    slots = sorted({r["slot"] for r in ledger})
+    from qvf.engine_bridge import LEDGER_SLOT_PICK_PROMPT
+    global _GATE_CLIENT
+    if _GATE_CLIENT is None:
+        _GATE_CLIENT = _anthropic.Anthropic()
+    picked, scope = [], "current"
+    try:
+        resp = _GATE_CLIENT.messages.create(
+            model="claude-haiku-4-5", max_tokens=200, temperature=0.0,
+            system=LEDGER_SLOT_PICK_PROMPT,
+            messages=[{"role": "user", "content":
+                       f"QUESTION: {instance.question}\n\nAVAILABLE SLOTS: {json.dumps(slots)}"}],
+        )
+        text = "".join(b.text for b in resp.content if b.type == "text")
+        obj = json.loads(text[text.index("{"):text.rindex("}") + 1])
+        picked = [s for s in obj.get("slots", []) if s in slots]
+        scope = obj.get("scope", "current")
+        record["usage_input_tokens"] += resp.usage.input_tokens
+        record["usage_output_tokens"] += resp.usage.output_tokens
+    except Exception:  # noqa: BLE001
+        pass
+    record["ledger_slots_picked"] = picked
+    record["query_temporal_scope"] = scope
+
+    by_id = {m.memory_id: m for m in instance.memories}
+
+    def _deliver(mem_ids, strategy):
+        mems = [by_id[i] for i in sorted(mem_ids, key=lambda x: list(by_id).index(x))
+                if i in by_id]
+        record["filter_strategy"] = strategy
+        record["filtered_memory_ids"] = [m.memory_id for m in mems]
+        gen = validated_reader.generate(
+            instance.question, mems, instance.question_date
+        )
+        record["answer"] = gen.answer
+        record["usage_input_tokens"] += gen.usage_input_tokens
+        record["usage_output_tokens"] += gen.usage_output_tokens
+        record["fallback_used"] = False
+        return record
+
+    def _fallback(strategy):
+        retriever = _dense_retriever_cls()(instance.memories)
+        retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
+        record["retrieved_memory_ids"] = [m.memory_id for m in retrieved]
+        record["filter_strategy"] = strategy
+        record["filtered_memory_ids"] = [m.memory_id for m in retrieved]
+        gen = fallback_generator.generate(
+            instance.question, retrieved, instance.question_date
+        )
+        record["answer"] = gen.answer
+        record["usage_input_tokens"] += gen.usage_input_tokens
+        record["usage_output_tokens"] += gen.usage_output_tokens
+        record["fallback_used"] = True
+        return record
+
+    matching = [r for r in ledger if r["slot"] in picked]
+    if scope == "past_or_change":
+        if matching:
+            return _deliver({r["source_memory_id"] for r in matching},
+                            "ledger_pass_history")
+        return _fallback("ledger_pass_history_fallback")
+    if not matching:
+        return _fallback("ledger_no_slot")
+
+    def _datekey(r):
+        m = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", r.get("date") or "")
+        return tuple(int(g) for g in m.groups()) if m else (0, 0, 0)
+
+    values = {_norm_val(r["value"]) for r in matching}
+    if len(values) == 1:
+        return _deliver({r["source_memory_id"] for r in matching},
+                        "ledger_single_value")
+    latest = max(_datekey(r) for r in matching)
+    keep = {r["source_memory_id"] for r in matching if _datekey(r) == latest}
+    return _deliver(keep, "ledger_surgery")
+
+
+def run_conditional_v5(instance, extractor, validated_reader, conflict_reader,
+                       fallback_generator) -> dict:
+    """Conditional invocation: a query-only gate decides per query whether to
+    run the full v5 pipeline (current-state risk) or answer directly from the
+    dense context (history/aggregate/other). Turns the always-on x2.5-3 cost
+    multiplier into a marginal cost on risky queries only."""
+    invoke, gin, gout = query_gate(instance.question)
+    if invoke:
+        rec = run_minimal_rules(
+            instance, extractor, validated_reader, conflict_reader,
+            fallback_generator, scope_gate=True,
+        )
+    else:
+        rec = run_direct(
+            instance, fallback_generator, retriever_cls=_dense_retriever_cls()
+        )
+        rec["filter_strategy"] = "gate_direct"
+        rec["fallback_used"] = False
+    rec["gate_invoked"] = invoke
+    rec["usage_input_tokens"] = rec.get("usage_input_tokens", 0) + gin
+    rec["usage_output_tokens"] = rec.get("usage_output_tokens", 0) + gout
+    return rec
 
 
 def run_extraction_only(instance, extractor, fallback_generator) -> dict:
@@ -119,7 +337,8 @@ def run_extraction_only(instance, extractor, fallback_generator) -> dict:
 
 def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                       fallback_generator, scope_gate: bool = False,
-                      contract: str = "v5", agg_guard: bool = False) -> dict:
+                      contract: str = "v5", agg_guard: bool = False,
+                      sibling_expand: bool = False) -> dict:
     """Engine-ablation: identical retrieval/repair/extraction to qvf_v4, but
     adjudication is ~30 lines of plain Python instead of the symbolic engine.
     Measures the engine's net contribution.
@@ -131,6 +350,8 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
     temporal-reasoning losses where surgery removed rounds the reader needed."""
     retriever = _dense_retriever_cls()(instance.memories)
     retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
+    if sibling_expand:
+        retrieved = _expand_siblings(retrieved, instance.memories)
     if agg_guard and _AGG_QUERY_RE.search(instance.question):
         # Aggregation questions (how many/total/since) are history
         # aggregations: pass through BEFORE paying for extraction.
@@ -918,6 +1139,21 @@ def main() -> int:
             for _g in (direct_gen, validated_gen, conflict_gen):
                 _g.temperature = 0.0
     haiku_gen = BaselineGenerator(model="claude-haiku-4-5")
+
+    _lazy = {}
+
+    def _strong_extractor():
+        if "strong" not in _lazy:
+            _lazy["strong"] = LLMSlotExtractor(model="claude-sonnet-5")
+        return _lazy["strong"]
+
+    def _ledger_store():
+        if "ledger" not in _lazy:
+            from qvf.engine_bridge import WriteTimeLedger
+
+            _lazy["ledger"] = WriteTimeLedger(model="claude-haiku-4-5")
+        return _lazy["ledger"]
+
     print(f"Reader: {args.reader}")
     judge = None if args.no_judge else ClaudeJudge()
 
@@ -995,6 +1231,20 @@ def main() -> int:
         "minimal_rules_v5agg": lambda inst: run_minimal_rules(
             inst, extractor, validated_gen, conflict_gen, direct_gen,
             scope_gate=True, agg_guard=True,
+        ),
+        "conditional_v5": lambda inst: run_conditional_v5(
+            inst, extractor, validated_gen, conflict_gen, direct_gen
+        ),
+        "minimal_rules_v5sib": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, sibling_expand=True,
+        ),
+        "minimal_rules_v5esc": lambda inst: run_minimal_rules_escalated(
+            inst, extractor, _strong_extractor(), validated_gen, conflict_gen,
+            direct_gen,
+        ),
+        "ledger_v8": lambda inst: run_ledger_v8(
+            inst, _ledger_store(), validated_gen, direct_gen
         ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen
