@@ -88,6 +88,17 @@ def _norm_val(v: str) -> str:
     return " ".join(str(v).lower().split())
 
 
+def _stated_date_key(r):
+    """Fallback date for a record whose source round has no usable
+    timestamp: the date stated IN the text (contract field stated_date).
+    Returns (yyyy, mm, dd) or None."""
+    sd = str(getattr(r, "stated_date", "") or "").strip()
+    mm = re.match(r"(\d{4})(?:-(\d{1,2}))?(?:-(\d{1,2}))?$", sd)
+    if not mm:
+        return None
+    return (int(mm.group(1)), int(mm.group(2) or 1), int(mm.group(3) or 1))
+
+
 QUERY_GATE_SYSTEM = """\
 You classify one user question for a long-term-memory assistant. Reply with
 ONLY a JSON object {"invoke": true} or {"invoke": false}.
@@ -426,7 +437,8 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                       sibling_expand: bool = False,
                       subtractive: bool = False,
                       premise_note: bool = False,
-                      repair_slotted: bool = False) -> dict:
+                      repair_slotted: bool = False,
+                      abstain_guard: bool = False) -> dict:
     """Engine-ablation: identical retrieval/repair/extraction to qvf_v4, but
     adjudication is ~30 lines of plain Python instead of the symbolic engine.
     Measures the engine's net contribution.
@@ -475,40 +487,373 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             for k in ("yes", "maybe", "no")
         }
 
+    if abstain_guard and contract == "species2":
+        # No-valid-record abstention guard: when NOT ONE extracted record
+        # matches the query slot, the question may presuppose something the
+        # history never stated (LoCoMo category-5 style trap). Soft guard:
+        # the reader keeps every retrieved round and may still answer if the
+        # fact is there — the note only licenses declining over guessing.
+        _q_norm = _norm_val(extraction.query_focus.slot)
+
+        def _s_ok(s):
+            s = _norm_val(s)
+            return bool(s) and bool(_q_norm) and (
+                s == _q_norm or s in _q_norm or _q_norm in s)
+
+        if not any(_s_ok(r.slot) and r.value for r in extraction.records):
+            gen = fallback_generator.generate(
+                f"{instance.question}\n\n[Validity check: none of the "
+                f"retrieved memory records states a value for "
+                f"'{extraction.query_focus.slot}' of "
+                f"'{extraction.query_focus.entity}'. If the conversation "
+                f"history truly does not mention this, say the information "
+                f"is not available rather than guessing.]",
+                retrieved, instance.question_date,
+            )
+            record.update({
+                "extracted_record_count": len(extraction.records),
+                "filter_strategy": "no_valid_record_note",
+                "filtered_memory_ids": [m.memory_id for m in retrieved],
+                "retrieved_memory_ids": [m.memory_id for m in retrieved],
+                "fallback_used": False,
+                "answer": gen.answer,
+            })
+            record["usage_input_tokens"] += gen.usage_input_tokens
+            record["usage_output_tokens"] += gen.usage_output_tokens
+            return record
+
     if scope_gate:
         scope = getattr(extraction.query_focus, "query_temporal_scope", "unclear")
         record["query_temporal_scope"] = scope
+        if contract == "species2" and scope != "past_or_change":
+            # Explicit-date override: a question naming a specific past
+            # date/month ("in May, 1986", "on 2025-04-10") is point-in-time
+            # seeking, whatever the extractor classified. Deterministic
+            # signal beats LLM scope judgment; replacement surgery on such
+            # a question deletes exactly the evidence it needs.
+            _dm = (re.search(r"\b(\d{4})-(\d{1,2})-(\d{1,2})\b",
+                             instance.question)
+                   or re.search(
+                       r"\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov"
+                       r"|Dec)[a-z]*\.?,?\s+\d{4}\b", instance.question))
+            if _dm:
+                scope = "past_or_change"
+                record["scope_overridden_by_date"] = True
         if scope == "past_or_change":
             question = instance.question
             strategy = "scope_pass_history"
             if contract == "species2":
-                # Trajectory route: change/history questions need the ordered
-                # state chain assembled, not deleted and not raw. Append a
-                # dated chain note when extraction found >=2 values for the
-                # query slot (MC dynamic questions literally ask "how did X
-                # change" and direct readers fail the assembly, 56%).
+                # Trajectory/point-in-time routes with chain-completion
+                # retrieval: the earliest state is usually ranked out of
+                # top-10 by change-question wording (pilot forensics: 5/6
+                # trajectory failures were incomplete chains in the note).
                 qslot = _norm_val(extraction.query_focus.slot)
+
+                def _slot_ok(s):
+                    s = _norm_val(s)
+                    return bool(s) and (s == qslot or s in qslot or qslot in s)
+
+                def _chain_of(extr, mems_by_id):
+                    def dk(r):
+                        src = mems_by_id.get(r.source_memory_id)
+                        raw = str((src.metadata or {}).get("session_date") or "") if src else ""
+                        mm = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", raw)
+                        if mm:
+                            return (tuple(int(g) for g in mm.groups()), raw)
+                        sd = _stated_date_key(r)
+                        if sd:
+                            return (sd, getattr(r, "stated_date", ""))
+                        return ((0, 0, 0), raw)
+                    ch = [r for r in extr.records
+                          if _slot_ok(r.slot) and r.value]
+                    ch.sort(key=lambda r: dk(r)[0])
+                    return ch, dk
+
                 by_mem = {m.memory_id: m for m in retrieved}
+                chain, _dk = _chain_of(extraction, by_mem)
 
-                def _datekey(r):
-                    src = by_mem.get(r.source_memory_id)
-                    raw = str((src.metadata or {}).get("session_date") or "") if src else ""
+                def _mdate(m):
+                    raw = str((m.metadata or {}).get("session_date") or "")
                     mm = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", raw)
-                    return (tuple(int(g) for g in mm.groups()) if mm else (0, 0, 0), raw)
+                    return tuple(int(g) for g in mm.groups()) if mm else None
 
-                chain = [r for r in extraction.records
-                         if _norm_val(r.slot) == qslot and r.value]
+                def _dk_over(mems_by_id):
+                    def dk(r):
+                        src = mems_by_id.get(r.source_memory_id)
+                        raw = str((src.metadata or {}).get("session_date") or "") if src else ""
+                        mm = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", raw)
+                        if mm:
+                            return (tuple(int(g) for g in mm.groups()), raw)
+                        sd = _stated_date_key(r)
+                        if sd:
+                            return (sd, getattr(r, "stated_date", ""))
+                        return ((0, 0, 0), raw)
+                    return dk
+
+                # Sweep extraction calls must NOT re-derive the query slot:
+                # on distractor-heavy windows the extractor drifts (e.g.
+                # 'programming language at work' -> 'work_language_style',
+                # then extracts writing style). Pin the already-known focus.
+                focus_q = (
+                    f"{instance.question}\n[Extraction focus: the query slot "
+                    f"is '{extraction.query_focus.slot}' of "
+                    f"'{extraction.query_focus.entity}'. Extract EVERY "
+                    f"message stating a value this slot held at some time, "
+                    f"with its date. Match the slot by MEANING, not wording "
+                    f"— the text may use a synonymous term (mayor = head of "
+                    f"a city, chairman = chair, club = team, works at = "
+                    f"employer). Use this exact slot name in the records.]"
+                )
+
+                def _merge_reextract(fresh, tag):
+                    """Merge new rounds and re-extract. If the fresh chain is
+                    at least as long, replace (re-extraction with more context
+                    often consolidates spurious records); otherwise union the
+                    unseen records in — never lose a state already found."""
+                    nonlocal chain, _dk, retrieved
+                    if not fresh:
+                        return
+                    merged = retrieved + fresh
+                    extraction2, ein3, eout3 = extractor.extract(
+                        focus_q, merged, instance.question_date,
+                        contract="species2",
+                    )
+                    record["usage_input_tokens"] += ein3
+                    record["usage_output_tokens"] += eout3
+                    mmap = {m.memory_id: m for m in merged}
+                    chain2, dk2 = _chain_of(extraction2, mmap)
+                    if len(chain2) >= len(chain):
+                        chain, _dk = chain2, dk2
+                        retrieved = merged
+                        record[tag] = len(fresh)
+                        return
+                    seen = {(r.source_memory_id, _norm_val(r.value))
+                            for r in chain}
+                    extra = [r for r in chain2
+                             if (r.source_memory_id, _norm_val(r.value))
+                             not in seen]
+                    if extra:
+                        dku = _dk_over(mmap)
+                        grown = sorted(chain + extra, key=lambda r: dku(r)[0])
+                        chain, _dk = grown, dku
+                        retrieved = merged
+                        record[tag] = len(fresh)
+
+                def _resweep(query, tag, before=None, upto=None):
+                    """Dense sweep: top-30 for `query`, merge <=6 new rounds.
+                    `upto` hard-filters to session_date <= upto; `before`
+                    soft-prefers rounds predating the earliest known state
+                    (the diagnosed recall hole)."""
+                    cands = retriever.retrieve(query, top_k=30)
+                    have = {m.memory_id for m in retrieved}
+                    fresh = [m for m in cands if m.memory_id not in have]
+                    if upto is not None:
+                        fresh = [m for m in fresh
+                                 if (_mdate(m) or (9999,)) <= upto]
+                    elif before is not None and before > (0, 0, 0):
+                        fresh.sort(
+                            key=lambda m: (_mdate(m) or (9999,)) >= before)
+                    _merge_reextract(fresh[:6], tag)
+
+                def _sibling_sweep(tag):
+                    """Deterministic completion: the state statement often
+                    lives in ANOTHER round of a session the chain already
+                    touches (extractor caught a diet-adjacent remark but the
+                    actual change statement is the neighbouring round). Zero
+                    retrieval involved."""
+                    def _sess_key(mid):
+                        # round ids "uid/s3#r0" -> "uid/s3"; document chunk
+                        # ids "rid/doc:X:p4" -> "rid/doc:X".
+                        return re.sub(r":p\d+$", "", mid.split("#")[0])
+
+                    have = {m.memory_id for m in retrieved}
+                    sess = {_sess_key(r.source_memory_id) for r in chain}
+                    sibs = [m for m in instance.memories
+                            if _sess_key(m.memory_id) in sess
+                            and m.memory_id not in have]
+                    _merge_reextract(sibs[:10], tag)
+
+                def _extract_sweep(tag, upto=None, before=None):
+                    """LLM-recognition sweep. Embeddings miss state values the
+                    query cannot name (a round saying 'started doing keto'
+                    ranks outside top-30 for 'user diet'), so: date-filter the
+                    FULL haystack in code, cap by dense rank, and let the
+                    extractor recognize slot states in the window. Rounds it
+                    grounds records in get merged; no re-extraction needed."""
+                    nonlocal chain, _dk, retrieved
+                    have = {m.memory_id for m in retrieved}
+                    window = []
+                    for m in instance.memories:
+                        if m.memory_id in have:
+                            continue
+                        d = _mdate(m)
+                        # Unknown date PASSES the filters: the date filter is
+                        # an optimization, not a correctness gate — undated
+                        # document chunks must stay reachable.
+                        if d is not None:
+                            if upto is not None and d > upto:
+                                continue
+                            if before is not None and d >= before:
+                                continue
+                        window.append(m)
+                    if not window:
+                        return
+                    if len(window) > 36:
+                        ranked = {m.memory_id: i for i, m in enumerate(
+                            retriever.retrieve(
+                                f"{extraction.query_focus.entity} "
+                                f"{extraction.query_focus.slot}",
+                                top_k=len(instance.memories)))}
+                        window.sort(key=lambda m: ranked.get(m.memory_id, 10**6))
+                        window = window[:36]
+                    ex3, ein3, eout3 = extractor.extract(
+                        focus_q, window, instance.question_date,
+                        contract="species2",
+                    )
+                    record["usage_input_tokens"] += ein3
+                    record["usage_output_tokens"] += eout3
+                    wmap = {m.memory_id: m for m in window}
+                    hits = [r for r in ex3.records
+                            if _slot_ok(r.slot) and r.value
+                            and r.source_memory_id in wmap]
+                    record.setdefault("recog_debug", []).append({
+                        "tag": tag, "n_window": len(window),
+                        "win": [m.memory_id.split("/")[-1] for m in window],
+                        "raw_recs": [(r.slot, r.value,
+                                      str(r.source_memory_id).split("/")[-1])
+                                     for r in ex3.records],
+                    })
+                    if not hits:
+                        return
+                    add_ids = list(dict.fromkeys(
+                        r.source_memory_id for r in hits))[:6]
+                    merged = retrieved + [wmap[i] for i in add_ids]
+                    combined = {m.memory_id: m for m in merged}
+
+                    dk3 = _dk_over(combined)
+
+                    seen_pairs = {(c.source_memory_id, _norm_val(c.value))
+                                  for c in chain}
+                    grown = chain + [
+                        r for r in hits
+                        if (r.source_memory_id, _norm_val(r.value))
+                        not in seen_pairs and r.source_memory_id in combined]
+                    grown.sort(key=lambda r: dk3(r)[0])
+                    chain, _dk = grown, dk3
+                    retrieved = merged
+                    record[tag] = len(add_ids)
+
+                if chain:
+                    sweep_q = (f"{extraction.query_focus.entity} "
+                               f"{extraction.query_focus.slot} earlier previous "
+                               f"before: " + "; ".join(r.value for r in chain[:3]))
+                    _resweep(sweep_q, "chain_sweep_added",
+                             before=_dk(chain[0])[0])
+                    _sibling_sweep("sib_sweep_added")
+                # Recognition pass over the whole undelivered haystack
+                # (capped by dense rank): catches missing chain HEADS and
+                # missing MIDDLE states alike — and when the main extraction
+                # found NOTHING (chain empty), this is the only mechanism
+                # that can build the chain at all.
+                _extract_sweep("recog_sweep_added")
+
                 vals = {_norm_val(r.value) for r in chain}
-                if len(vals) >= 2:
-                    chain.sort(key=lambda r: _datekey(r)[0])
-                    steps = " -> ".join(
-                        f"{r.value} ({_datekey(r)[1] or 'undated'})" for r in chain
-                    )
-                    question = (
-                        f"{instance.question}\n\n[Memory chain for "
-                        f"{extraction.query_focus.slot}: {steps}]"
-                    )
-                    strategy = "scope_pass_trajectory"
+                pm = re.search(r"(\d{4})-(\d{1,2})-(\d{1,2})", instance.question)
+                if pm:
+                    pdate = tuple(int(g) for g in pm.groups())
+                    pstr = pm.group(0)
+                else:
+                    # Month-name form ("in Jan, 1948" / "in March 2010"):
+                    # resolve to end-of-month so a state starting that month
+                    # still counts as valid at the asked time.
+                    mn = re.search(
+                        r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+                        r"[a-z]*\.?,?\s+(\d{4})\b", instance.question)
+                    if mn:
+                        month = ("jan feb mar apr may jun jul aug sep oct "
+                                 "nov dec").split().index(
+                                     mn.group(1).lower()[:3]) + 1
+                        pdate = (int(mn.group(2)), month, 31)
+                        pstr = mn.group(0)
+                    else:
+                        pdate, pstr = None, None
+                record["chain_len"] = len(chain)
+                record["chain_qslot"] = extraction.query_focus.slot
+                record["chain_vals"] = [
+                    (r.value, _dk(r)[1] or "undated") for r in chain]
+                record["pm_matched"] = pdate is not None
+                if pdate and vals:
+                    # Deterministic point-in-time slice: interval arithmetic
+                    # is code's job, not the reader's.
+                    # Falsified alternative (2026-08-04): splitting dated vs
+                    # undated records and hedging the note when undated ones
+                    # exist LOST net 4 questions on TempReason-raw (38% vs
+                    # 44%) — the hard note's reader compliance outweighs the
+                    # incomplete-date risk. Keep the simple selection.
+                    valid = None
+                    for r in chain:
+                        if _dk(r)[0] <= pdate:
+                            valid = r
+                    if valid is None:
+                        # Every extracted state postdates the asked date:
+                        # the chain head is missing. Recognition sweep over
+                        # rounds dated on/before the asked date.
+                        _extract_sweep("time_sweep_added", upto=pdate)
+                        record["chain_len"] = len(chain)
+                        for r in chain:
+                            if _dk(r)[0] <= pdate:
+                                valid = r
+                    if valid is not None:
+                        nxt = None
+                        for r in chain:
+                            if _dk(r)[0] > pdate:
+                                nxt = r
+                                break
+                        until = (f", and it stayed so until {_dk(nxt)[1]} "
+                                 f"(next change: {nxt.value})" if nxt else "")
+                        question = (
+                            f"{instance.question}\n\n[Deterministic validity "
+                            f"resolution from dated memory records: on "
+                            f"{pstr}, {extraction.query_focus.slot} "
+                            f"was {valid.value} — it was recorded on "
+                            f"{_dk(valid)[1]}{until}. This IS the answer to "
+                            f"the question; do not reply that information "
+                            f"for that date is unavailable.]"
+                        )
+                        strategy = "scope_pass_point_in_time"
+                    else:
+                        question = (
+                            f"{instance.question}\n\n[Validity note: the "
+                            f"extracted records of "
+                            f"{extraction.query_focus.slot} all postdate "
+                            f"{pstr}; earliest known is "
+                            f"{chain[0].value} ({_dk(chain[0])[1] or 'undated'}). "
+                            f"The answer is likely an EARLIER state — check "
+                            f"the raw conversation history for one.]"
+                        )
+                        strategy = "scope_pass_point_predates"
+                elif len(vals) >= 2:
+                    # Containment dedup: 'vegan' / 'vegan diet' or a value
+                    # plus its elaborated variant are one state, not two.
+                    dedup = []
+                    for r in chain:
+                        nv = _norm_val(r.value)
+                        if any(nv == d or nv in d or d in nv
+                               for d, _ in dedup):
+                            continue
+                        dedup.append((nv, r))
+                    if len(dedup) >= 2:
+                        steps = " -> ".join(
+                            f"{r.value} ({_dk(r)[1] or 'undated'})"
+                            for _, r in dedup
+                        )
+                        question = (
+                            f"{instance.question}\n\n[Memory chain for "
+                            f"{extraction.query_focus.slot}: {steps}. When "
+                            f"asked how something changed, list every "
+                            f"recorded state in order with dates.]"
+                        )
+                        strategy = "scope_pass_trajectory"
             record.update(
                 {
                     "extracted_record_count": len(extraction.records),
@@ -653,7 +998,32 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             # (benign update), nothing is removed and delivery == direct —
             # structurally incapable of harming already-solved cases.
             by_rid = {r.record_id: r for r in rel}
-            stale = {by_rid[t].source_memory_id for t in targets if t in by_rid}
+            by_mid = {m.memory_id: m for m in retrieved}
+
+            def _round_date(mid):
+                m = by_mid.get(mid)
+                raw = str((m.metadata or {}).get("session_date") or "") if m else ""
+                mm = re.search(r"(\d{4})[^\d](\d{1,2})[^\d](\d{1,2})", raw)
+                return tuple(int(g) for g in mm.groups()) if mm else None
+
+            # Temporal sanity check on deletion: a round may be subtracted
+            # only if it is STRICTLY OLDER than the round replacing it.
+            # On near-identical texts (wiki-diff versions) the extractor
+            # can invert the replacement direction and would otherwise
+            # delete the current state along with the stale one.
+            stale = set()
+            for r in repl:
+                rd = _round_date(r.source_memory_id)
+                for t in r.relation_target_record_ids:
+                    if t not in by_rid:
+                        continue
+                    tid = by_rid[t].source_memory_id
+                    if tid == r.source_memory_id:
+                        continue
+                    td = _round_date(tid)
+                    if rd is not None and td is not None and td >= rd:
+                        continue
+                    stale.add(tid)
             filtered = [m for m in retrieved if m.memory_id not in stale]
             strategy = ("rules_replacement_subtract" if stale
                         else "rules_replacement_noop")
@@ -661,7 +1031,14 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             keep = {r.source_memory_id for r in repl}
             filtered = [m for m in retrieved if m.memory_id in keep]
             strategy = "rules_replacement"
-    elif rel and len({_norm_val(r.value) for r in rel}) > 1:
+    elif rel and len({_norm_val(r.value) for r in rel
+                      if getattr(r, "slot_cardinality", "unknown")
+                      != "set"}) > 1:
+        # Distinct values among SINGLE-valued records = genuine conflict.
+        # SET-valued slots (interests, hobbies) are excluded from the
+        # trigger: their values COEXIST, and latest-wins adjudication
+        # there is a category error (manufactured a confident wrong answer
+        # on unanswerable LoCoMo traps).
         if subtractive:
             filtered = list(retrieved)  # keep all, flag the conflict
         else:
@@ -1185,7 +1562,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data", default="data/stale_T1_T2_400_FULL.json")
     parser.add_argument(
-        "--benchmark", choices=["stale", "longmemeval", "locomo", "memconflict"],
+        "--benchmark",
+        choices=["stale", "longmemeval", "locomo", "memconflict",
+                 "stale_chain", "tempreason", "hoh"],
         default="stale",
         help="longmemeval/locomo/memconflict load via eval.datasets "
         "(oracle condition unsupported there)",
@@ -1231,9 +1610,43 @@ def main() -> int:
         "unlike --sample-n. Deterministic given --sample-seed.",
     )
     parser.add_argument("--sample-seed", type=int, default=20260802)
+    parser.add_argument("--tempreason-raw", action="store_true",
+                        help="TempReason: raw Wikipedia article context "
+                        "instead of pre-extracted fact_context")
+    parser.add_argument("--hoh-min-versions", type=int, default=1,
+                        help="HoH: keep rows with >= N outdated versions")
+    parser.add_argument("--hoh-distractors", type=int, default=8,
+                        help="HoH: distractor passages per instance")
     args = parser.parse_args()
 
-    if args.benchmark in ("longmemeval", "locomo", "memconflict"):
+    if args.benchmark == "stale_chain":
+        from eval.stale_chain_dataset import load_stale_chain
+
+        instances = load_stale_chain(
+            args.data, limit_items=args.items, item_offset=args.item_offset
+        )
+        print(f"Loaded {len(instances)} stale_chain queries")
+    elif args.benchmark == "tempreason":
+        from eval.tempreason_dataset import load_tempreason
+
+        instances = load_tempreason(
+            args.data, limit=args.items, seed=args.sample_seed,
+            use_fact_context=not args.tempreason_raw,
+        )
+        print(f"Loaded {len(instances)} tempreason L2 queries "
+              f"(raw_context={args.tempreason_raw})")
+    elif args.benchmark == "hoh":
+        from eval.hoh_dataset import load_hoh
+
+        instances = load_hoh(
+            args.data, limit=args.items, seed=args.sample_seed,
+            n_distractors=args.hoh_distractors,
+            min_versions=args.hoh_min_versions,
+        )
+        print(f"Loaded {len(instances)} HoH queries "
+              f"(min_versions={args.hoh_min_versions}, "
+              f"distractors={args.hoh_distractors})")
+    elif args.benchmark in ("longmemeval", "locomo", "memconflict"):
         if args.benchmark == "longmemeval":
             from eval.datasets import load_longmemeval as loader
         elif args.benchmark == "memconflict":
@@ -1553,6 +1966,11 @@ def main() -> int:
             inst, extractor, validated_gen, conflict_gen, direct_gen,
             scope_gate=True, contract="species2", subtractive=True,
         ),
+        "minimal_rules_species2_abstain": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, contract="species2", subtractive=True,
+            abstain_guard=True,
+        ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen
         ),
@@ -1579,7 +1997,7 @@ def main() -> int:
                         "question_type": instance.question_type,
                         "question": instance.question,
                         "gold_answer": instance.gold_answer,
-                        "is_abstention": False,
+                        "is_abstention": instance.is_abstention,
                         "stale_type": instance.extra.get("stale_type"),
                         "latency_s": round(time.time() - t0, 2),
                         "extractor_model": getattr(extractor, "model", None),

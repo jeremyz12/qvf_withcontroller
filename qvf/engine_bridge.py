@@ -108,6 +108,13 @@ class ExtractedRecord(BaseModel):
         "a common-sense dependency (e.g. registering car+license in a new state "
         "implies 'residence_state' changed). Empty if none.",
     )
+    stated_date: str = Field(
+        default="",
+        description="When the TEXT ITSELF states when this state began or "
+        "held (a year, month or date in the span or its sentence), copy it "
+        "as YYYY, YYYY-MM or YYYY-MM-DD. For ranges ('from Jan, 1946 to "
+        "Jan, 1949') use the START. Empty if the text states no date.",
+    )
 
 
 class SlotExtraction(BaseModel):
@@ -220,6 +227,12 @@ EXTRACTION_SYSTEM_PROMPT_SPECIES2 = EXTRACTION_SYSTEM_PROMPT_SPECIES + """
     seen downstream if BOTH sides are extracted. For change/trajectory
     questions ("how did X change?") extracting the full dated chain of
     values is the deliverable.
+11. STATED DATE: when the text itself says when a state began or held
+    ("since 2019", "from Jan, 1946 to Jan, 1949", "moved there in March
+    2021"), fill stated_date with the START in YYYY / YYYY-MM / YYYY-MM-DD
+    form. Document prose often carries the date INSIDE the sentence while
+    the memory has no timestamp — this field is how downstream date
+    arithmetic sees it. Leave empty only if no date is stated.
 """
 
 
