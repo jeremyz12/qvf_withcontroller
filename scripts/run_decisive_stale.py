@@ -943,8 +943,10 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             record["usage_output_tokens"] += gen.usage_output_tokens
             return record
         if not repl and rel and extraction.query_focus.needs_current:
-            # Conditional applicability: if exactly one record's condition
-            # matches the query wording, prefer its rounds.
+            # Conditional applicability: if a record's condition matches the
+            # query wording, ANNOTATE it — subtractive-delivery principle:
+            # deliver everything (MemConflict forensics: keep-only-flagged
+            # dropped 13-14/15 rounds and the reader answered "no info").
             conded = [r for r in rel if (r.condition or "").strip()]
             if conded:
                 qn = _norm_val(instance.question)
@@ -952,36 +954,39 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                         if any(w in qn for w in _norm_val(r.condition).split()
                                if len(w) > 3)]
                 if len({r.source_memory_id for r in hits}) >= 1 and hits:
-                    keep = {r.source_memory_id for r in hits}
-                    filtered = [m for m in retrieved if m.memory_id in keep]
+                    note = "; ".join(
+                        f"'{r.value}' when {r.condition}" for r in conded[:4])
+                    q2 = (f"{instance.question}\n\n[Condition-bound states "
+                          f"on record: {note}. These COEXIST — answer for "
+                          f"the condition the question asks about.]")
                     record.update({
                         "extracted_record_count": len(rel),
                         "filter_strategy": "rules_conditional",
-                        "filtered_memory_ids": [m.memory_id for m in filtered],
+                        "filtered_memory_ids": [m.memory_id for m in retrieved],
                         "retrieved_memory_ids": [m.memory_id for m in retrieved],
                         "fallback_used": False,
                     })
                     gen = validated_reader.generate(
-                        instance.question, filtered, instance.question_date
+                        q2, retrieved, instance.question_date
                     )
                     record["answer"] = gen.answer
                     record["usage_input_tokens"] += gen.usage_input_tokens
                     record["usage_output_tokens"] += gen.usage_output_tokens
                     return record
         if contra and not repl:
-            # Factual disagreement: keep both sides, use the contradiction
-            # prompt (recency is NOT evidence here).
-            keep = {r.source_memory_id for r in contra}
-            filtered = [m for m in retrieved if m.memory_id in keep]
+            # Factual disagreement: deliver EVERYTHING (subtractive
+            # principle — the pair rounds alone starve the reader of
+            # context), use the contradiction prompt (recency is NOT
+            # evidence here).
             record.update({
                 "extracted_record_count": len(rel),
                 "filter_strategy": "rules_contradiction",
-                "filtered_memory_ids": [m.memory_id for m in filtered],
+                "filtered_memory_ids": [m.memory_id for m in retrieved],
                 "retrieved_memory_ids": [m.memory_id for m in retrieved],
                 "fallback_used": False,
             })
             gen = _contradiction_reader().generate(
-                instance.question, filtered, instance.question_date
+                instance.question, retrieved, instance.question_date
             )
             record["answer"] = gen.answer
             record["usage_input_tokens"] += gen.usage_input_tokens
@@ -1039,13 +1044,29 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         # trigger: their values COEXIST, and latest-wins adjudication
         # there is a category error (manufactured a confident wrong answer
         # on unanswerable LoCoMo traps).
+        # Change-language check: latest-wins is only licensed when at
+        # least one span actually SAYS something changed. Bare divergent
+        # re-assertions (misinformation vs truth about an immutable fact,
+        # e.g. two different birthdates) are a disagreement — recency is
+        # not evidence there; route to the contradiction reader instead.
+        _CHANGE_RE = re.compile(
+            r"\b(moved|moving|switch\w*|chang\w*|no longer|anymore|"
+            r"renamed|replac\w*|updat\w*|became|becomes|start\w*|"
+            r"from now|instead)\b", re.IGNORECASE)
+        has_change = any(
+            _CHANGE_RE.search(str(getattr(r, "source_span", "") or ""))
+            for r in rel)
         if subtractive:
             filtered = list(retrieved)  # keep all, flag the conflict
         else:
             keep = {r.source_memory_id for r in rel}
             filtered = [m for m in retrieved if m.memory_id in keep]
-        reader = conflict_reader or validated_reader
-        strategy = "rules_conflict_latest"
+        if has_change:
+            reader = conflict_reader or validated_reader
+            strategy = "rules_conflict_latest"
+        else:
+            reader = _contradiction_reader()
+            strategy = "rules_contradiction_bare"
     elif rel:
         if subtractive:
             filtered = list(retrieved)  # nothing superseded -> touch nothing
