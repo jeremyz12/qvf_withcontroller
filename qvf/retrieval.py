@@ -126,6 +126,41 @@ class OllamaDenseRetriever:
         )[:top_k]
         return [self.memories[i] for i in sorted(top)]
 
+    def retrieve_mmr(self, query: str, top_k: int = 10, lam: float = 0.7,
+                     pool: int = 50) -> List[MemoryItem]:
+        """MMR diversity reranking (Carbonell & Goldstein 1998): near-
+        duplicate rounds restating the same known state crowd the top-K and
+        push out the single round holding a missing state ('keto'). Select
+        greedily maximizing lam*relevance - (1-lam)*max-sim-to-selected over
+        a relevance pool. Deterministic, zero extra embedding calls."""
+        import numpy as np
+
+        if not self.memories:
+            return []
+        if top_k >= len(self.memories):
+            return list(self.memories)
+        q = self._embed([query])[0]
+        qn = q / (np.linalg.norm(q) or 1.0)
+        scores = self._embs @ qn
+        pool_idx = sorted(range(len(self.memories)),
+                          key=lambda i: float(scores[i]), reverse=True)[:pool]
+        selected: list = []
+        cand = list(pool_idx)
+        while cand and len(selected) < top_k:
+            if not selected:
+                best = cand[0]
+            else:
+                sel_embs = self._embs[selected]
+                best, best_v = None, -1e9
+                for i in cand:
+                    red = float(np.max(sel_embs @ self._embs[i]))
+                    v = lam * float(scores[i]) - (1.0 - lam) * red
+                    if v > best_v:
+                        best, best_v = i, v
+            selected.append(best)
+            cand.remove(best)
+        return [self.memories[i] for i in sorted(selected)]
+
 
 class OpenAIDenseRetriever(OllamaDenseRetriever):
     """Dense retrieval via the OpenAI embeddings API — removes the local

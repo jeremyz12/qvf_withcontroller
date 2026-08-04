@@ -19,6 +19,8 @@ from qvf import config
 from qvf.engine_bridge import (
     EXTRACTION_SYSTEM_PROMPT,
     EXTRACTION_SYSTEM_PROMPT_SCOPED,
+    EXTRACTION_SYSTEM_PROMPT_SPECIES,
+    EXTRACTION_SYSTEM_PROMPT_SPECIES2,
     ExtractedQueryFocus,
     ScopedQueryFocus,
     ScopedSlotExtraction,
@@ -90,16 +92,32 @@ class OpenAISlotExtractor:
     ) -> tuple[SlotExtraction, int, int]:
         if contract == "v7":
             raise NotImplementedError("v7 recall contract: Anthropic extractor only")
-        schema_cls = ScopedSlotExtraction if scoped else SlotExtraction
-        base_prompt = (EXTRACTION_SYSTEM_PROMPT_SCOPED if scoped
-                       else EXTRACTION_SYSTEM_PROMPT)
+        if contract == "species2":
+            schema_cls = ScopedSlotExtraction
+            base_prompt = EXTRACTION_SYSTEM_PROMPT_SPECIES2
+        elif contract == "species":
+            schema_cls = ScopedSlotExtraction
+            base_prompt = EXTRACTION_SYSTEM_PROMPT_SPECIES
+        elif scoped:
+            schema_cls = ScopedSlotExtraction
+            base_prompt = EXTRACTION_SYSTEM_PROMPT_SCOPED
+        else:
+            schema_cls = SlotExtraction
+            base_prompt = EXTRACTION_SYSTEM_PROMPT
+        species = contract in ("species", "species2")
         system = (
             base_prompt
             + "\n\nOutput format: return ONLY one JSON object, no prose and no "
             "markdown fences, shaped exactly like this example (field names "
             "and enum values must match):\n" + _JSON_EXAMPLE
             + ("\nquery_temporal_scope must be one of: current, "
-               "past_or_change, unclear." if scoped else "")
+               "past_or_change, unclear." if (scoped or species) else "")
+            + ("\nAdditional per-record fields you may emit: "
+               "temporal_relation also allows 'contradiction' and "
+               "'cessation'; optional string fields 'condition' and "
+               "'stated_date' (YYYY / YYYY-MM / YYYY-MM-DD); optional list "
+               "'implies_stale_slots'; 'slot_cardinality' is one of "
+               "single/set/unknown." if species else "")
         )
         mem_payload = [
             {"memory_id": m.memory_id, "text": m.content, "metadata": m.metadata}

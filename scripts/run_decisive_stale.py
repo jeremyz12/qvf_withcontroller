@@ -84,8 +84,93 @@ def run_direct(instance, generator, retriever_cls=BM25Retriever,
     }
 
 
+_WARN_INSTRUCTION = (
+    "\n\n[Instruction: some memories may be OUTDATED — a later message may "
+    "have superseded an earlier state (moves, job changes, new preferences). "
+    "Check the dates, use the state valid at the asked time for current-state "
+    "questions, and keep superseded states available when the question asks "
+    "about history or how something changed.]"
+)
+
+
+def run_warned_direct(instance, generator, retriever_cls=BM25Retriever) -> dict:
+    """TRUE instruction-only control: identical dense direct read plus a
+    staleness-awareness instruction appended to the question. (The `prompted`
+    condition is NOT this — it is the legacy-engine sidecar-annotation arm;
+    a referee pass caught the mislabel.)"""
+    retriever = retriever_cls(instance.memories)
+    retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
+    gen = generator.generate(
+        instance.question + _WARN_INSTRUCTION, retrieved,
+        instance.question_date)
+    return {
+        "answer": gen.answer,
+        "usage_input_tokens": gen.usage_input_tokens,
+        "usage_output_tokens": gen.usage_output_tokens,
+        "retrieved_memory_ids": [m.memory_id for m in retrieved],
+    }
+
+
+def run_full_context_direct(instance, generator) -> dict:
+    """Iso-cost skeptic baseline: the ENTIRE haystack in the prompt, no
+    retrieval — spends the same order of input budget as QVF's extraction."""
+    gen = generator.generate(
+        instance.question, list(instance.memories), instance.question_date)
+    return {
+        "answer": gen.answer,
+        "usage_input_tokens": gen.usage_input_tokens,
+        "usage_output_tokens": gen.usage_output_tokens,
+        "retrieved_memory_ids": [m.memory_id for m in instance.memories],
+    }
+
+
+_USE_MMR = False
+
+
 def _norm_val(v: str) -> str:
     return " ".join(str(v).lower().split())
+
+
+def _slot_ok_top(s, qslot):
+    s = _norm_val(s)
+    return bool(s) and bool(qslot) and (s == qslot or s in qslot or qslot in s)
+
+
+# Slot-mutability prior (ConflictBank-style): these attributes cannot change,
+# so two values are ALWAYS a disagreement — recency ("latest wins") is never
+# licensed, whatever the wording. ~30 deterministic lines, zero LLM calls.
+_IMMUTABLE_SLOT_RE = re.compile(
+    r"(birth\s*(date|day|place|year)|born|date\s*of\s*birth|"
+    r"mother|father|parent|sibling|brother|sister|"
+    r"gender|sex\b|blood\s*type|ethnicity|zodiac|"
+    r"native\s*(language|place)|home\s*town|hometown|"
+    r"maiden\s*name)", re.IGNORECASE)
+
+
+def _immutable_slot(slot):
+    return bool(_IMMUTABLE_SLOT_RE.search(str(slot or "")))
+
+
+def _corroboration_note(records, qslot):
+    """Count distinct source rounds asserting each value of the query slot.
+    Truth-discovery lite: support count is explicit evidence the reader may
+    weigh, instead of an uncontrolled frequency bias."""
+    support = {}
+    for r in records:
+        if not _slot_ok_top(r.slot, qslot) or not r.value:
+            continue
+        v = _norm_val(r.value)
+        support.setdefault(v, (r.value, set()))
+        support[v][1].add(r.source_memory_id)
+    multi = {k: v for k, v in support.items() if v[1]}
+    if len(multi) < 2:
+        return ""
+    parts = "; ".join(
+        f"'{v[0]}' asserted in {len(v[1])} separate round(s)"
+        for v in sorted(multi.values(), key=lambda x: -len(x[1]))[:4])
+    return (f"\n\n[Corroboration count from the record layer: {parts}. "
+            f"Weigh independent support, not recency, for facts that "
+            f"cannot change.]")
 
 
 def _stated_date_key(r):
@@ -438,7 +523,8 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                       subtractive: bool = False,
                       premise_note: bool = False,
                       repair_slotted: bool = False,
-                      abstain_guard: bool = False) -> dict:
+                      abstain_guard: bool = False,
+                      strong_extractor=None) -> dict:
     """Engine-ablation: identical retrieval/repair/extraction to qvf_v4, but
     adjudication is ~30 lines of plain Python instead of the symbolic engine.
     Measures the engine's net contribution.
@@ -449,7 +535,10 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
     stale noise. Motivated by pre-registered risk, confirmed on LME
     temporal-reasoning losses where surgery removed rounds the reader needed."""
     retriever = _dense_retriever_cls()(instance.memories)
-    retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
+    if _USE_MMR and hasattr(retriever, "retrieve_mmr"):
+        retrieved = retriever.retrieve_mmr(instance.question, top_k=TOP_K)
+    else:
+        retrieved = retriever.retrieve(instance.question, top_k=TOP_K)
     if sibling_expand:
         retrieved = _expand_siblings(retrieved, instance.memories)
     if agg_guard and _AGG_QUERY_RE.search(instance.question):
@@ -756,6 +845,38 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                 # found NOTHING (chain empty), this is the only mechanism
                 # that can build the chain at all.
                 _extract_sweep("recog_sweep_added")
+                if not chain and strong_extractor is not None:
+                    # Dead-route escalation: cheap extractor found no state
+                    # of the query slot anywhere. Re-extract with the strong
+                    # extractor over a WIDENED pool (delivered + top-36
+                    # undelivered by dense rank) — the failing layer can be
+                    # perception OR retrieval, so widen both at once.
+                    have = {m.memory_id for m in retrieved}
+                    wide = [m for m in instance.memories
+                            if m.memory_id not in have]
+                    if len(wide) > 36:
+                        ranked = {m.memory_id: i for i, m in enumerate(
+                            retriever.retrieve(
+                                f"{extraction.query_focus.entity} "
+                                f"{extraction.query_focus.slot}",
+                                top_k=len(instance.memories)))}
+                        wide.sort(key=lambda m: ranked.get(m.memory_id, 10**6))
+                        wide = wide[:36]
+                    pool = retrieved + wide
+                    ex4, ein4, eout4 = strong_extractor.extract(
+                        focus_q, pool, instance.question_date,
+                        contract="species2",
+                    )
+                    record["usage_input_tokens"] += ein4
+                    record["usage_output_tokens"] += eout4
+                    record["escalated_extraction"] = True
+                    pmap = {m.memory_id: m for m in pool}
+                    chain, _dk = _chain_of(ex4, pmap)
+                    if chain:
+                        add = [pmap[i] for i in dict.fromkeys(
+                            r.source_memory_id for r in chain)
+                            if i in pmap and i not in have][:8]
+                        retrieved = retrieved + add
 
                 vals = {_norm_val(r.value) for r in chain}
                 pm = re.search(r"(\d{4})-(\d{1,2})-(\d{1,2})", instance.question)
@@ -913,12 +1034,42 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
     repl = [r for r in rel if r.temporal_relation in ("replacement", "correction")]
     reader = validated_reader
 
+    # Falsified (2026-08-05): a needs-current recognition sweep (re-extract
+    # over a widened window when no replacement pair was found) merged ZERO
+    # rounds across 105 dev questions — the admit_noop bucket's root cause
+    # is not un-delivered old rounds; re-extraction still labels no
+    # replacement. Removed to save one extraction call per dead route.
+
     if contract in ("species", "species2"):
         # Species adjudication, in precedence order. Each branch is the
         # minimal deterministic policy for one validity species.
         cess = [r for r in rel if r.temporal_relation == "cessation"]
         contra = [r for r in rel if r.temporal_relation == "contradiction"]
         by_rid_all = {r.record_id: r for r in rel}
+        _qslot_top = _norm_val(extraction.query_focus.slot)
+        if (contract == "species2" and rel
+                and _immutable_slot(extraction.query_focus.slot)
+                and len({_norm_val(r.value) for r in rel
+                         if _slot_ok_top(r.slot, _qslot_top) and r.value}) > 1):
+            # Immutable-slot disagreement: birthdate/siblings/etc. cannot be
+            # "updated" — divergent values are misinformation-vs-truth, and
+            # recency is never evidence. Deliver everything + corroboration
+            # counts to the contradiction reader.
+            note = _corroboration_note(rel, _qslot_top)
+            record.update({
+                "extracted_record_count": len(rel),
+                "filter_strategy": "rules_immutable_disagreement",
+                "filtered_memory_ids": [m.memory_id for m in retrieved],
+                "retrieved_memory_ids": [m.memory_id for m in retrieved],
+                "fallback_used": False,
+            })
+            gen = _contradiction_reader().generate(
+                instance.question + note, retrieved, instance.question_date
+            )
+            record["answer"] = gen.answer
+            record["usage_input_tokens"] += gen.usage_input_tokens
+            record["usage_output_tokens"] += gen.usage_output_tokens
+            return record
         if cess and not repl:
             # State ended: remove the ended state's rounds, keep the
             # cessation statement (it IS the current answer: "no longer X").
@@ -948,7 +1099,11 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             # deliver everything (MemConflict forensics: keep-only-flagged
             # dropped 13-14/15 rounds and the reader answered "no info").
             conded = [r for r in rel if (r.condition or "").strip()]
-            if conded:
+            # Coexistence requires >=2 DISTINCT conditions on the slot; a
+            # single conditioned record is not a conditional conflict
+            # (STALE-400 forensics: loose trigger fired on 68 T1 questions
+            # at 33.8% accuracy, rerouting genuine updates).
+            if len({_norm_val(r.condition) for r in conded}) >= 2:
                 qn = _norm_val(instance.question)
                 hits = [r for r in conded
                         if any(w in qn for w in _norm_val(r.condition).split()
@@ -993,6 +1148,7 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             record["usage_output_tokens"] += gen.usage_output_tokens
             return record
 
+    premise_note_text = ""
     if repl:
         targets = set()
         for r in repl:
@@ -1032,6 +1188,33 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
             filtered = [m for m in retrieved if m.memory_id not in stale]
             strategy = ("rules_replacement_subtract" if stale
                         else "rules_replacement_noop")
+            if contract == "species2":
+                # Premise-refutation note. Error anatomy (chain held-out):
+                # 88% of premise-trap failures ECHO the value the question
+                # presupposes — memory surgery cannot reach a stale value
+                # sitting in the QUESTION TEXT. When a superseded value
+                # appears verbatim in the question, say so. (The earlier
+                # premise_note attempt was falsified for lack of a trigger:
+                # the old record was not extracted; the replacement pair now
+                # supplies it.)
+                qn = _norm_val(instance.question)
+                for r in repl:
+                    for t in r.relation_target_record_ids:
+                        if t not in by_rid:
+                            continue
+                        ov = _norm_val(by_rid[t].value)
+                        if ov and len(ov) > 3 and ov in qn \
+                                and ov != _norm_val(r.value):
+                            premise_note_text = (
+                                f"\n\n[Premise check: the question assumes "
+                                f"'{by_rid[t].value}', which is OUTDATED — "
+                                f"it was later superseded by '{r.value}'. "
+                                f"Answer from the CURRENT state, and note "
+                                f"the premise is stale.]")
+                            record["premise_flagged"] = True
+                            break
+                    if record.get("premise_flagged"):
+                        break
         else:
             keep = {r.source_memory_id for r in repl}
             filtered = [m for m in retrieved if m.memory_id in keep]
@@ -1088,11 +1271,14 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         }
     )
     if filtered:
-        gen = reader.generate(instance.question, filtered, instance.question_date)
+        gen = reader.generate(
+            instance.question + premise_note_text, filtered,
+            instance.question_date)
         record["fallback_used"] = False
     else:
         gen = fallback_generator.generate(
-            instance.question, retrieved, instance.question_date
+            instance.question + premise_note_text, retrieved,
+            instance.question_date
         )
         record["fallback_used"] = True
     record["answer"] = gen.answer
@@ -1305,7 +1491,7 @@ def run_prompted(instance, extractor, reader, fallback_generator) -> dict:
                 "allowed_as_history_ids",
             )
         }
-    if engine.ok and engine.sidecar is not None:
+    if engine.ok and engine.sidecar is not None and reader is not None:
         answer, rin, rout = reader.answer(instance.question, engine.sidecar)
         record["fallback_used"] = False
     else:
@@ -1564,7 +1750,7 @@ def run_oracle(instance, reader, fallback_generator) -> dict:
             for k in ("read_decision", "answer_policy", "next_action",
                       "blocked_as_current_ids", "allowed_as_history_ids")
         }
-    if engine.ok and engine.sidecar is not None:
+    if engine.ok and engine.sidecar is not None and reader is not None:
         answer, rin, rout = reader.answer(instance.question, engine.sidecar)
         record["fallback_used"] = False
     else:
@@ -1595,7 +1781,10 @@ def main() -> int:
         help="longmemeval only: filter to one question_type "
         "(e.g. knowledge-update)",
     )
-    parser.add_argument("--items", type=int, default=35)
+    parser.add_argument("--items", type=int, default=0,
+                        help="Limit item count; 0 = no limit. (Default was "
+                        "35 for legacy STALE dev runs — that silently "
+                        "truncated other benchmarks twice; now explicit.)")
     parser.add_argument(
         "--item-offset", type=int, default=0,
         help="Skip the first N STALE items (held-out evaluation: dev used 0-34)",
@@ -1634,11 +1823,30 @@ def main() -> int:
     parser.add_argument("--tempreason-raw", action="store_true",
                         help="TempReason: raw Wikipedia article context "
                         "instead of pre-extracted fact_context")
+    parser.add_argument("--top-k", type=int, default=0,
+                        help="Override primary retrieval TOP_K (0 = keep "
+                        "default). Set >= haystack size for full-context "
+                        "delivery into the QVF pipeline.")
+    parser.add_argument("--mmr", action="store_true",
+                        help="Primary retrieval uses MMR diversity "
+                        "reranking (Carbonell & Goldstein 1998) instead of "
+                        "plain top-K")
+    parser.add_argument("--qid-file", default=None,
+                        help="Path to a text file of question_ids (one per "
+                        "line); restricts the run to exactly these questions")
+    parser.add_argument("--mc-seed", type=int, default=20260802,
+                        help="MemConflict: stratified-sample seed "
+                        "(20260802 = dev slice; use a new seed for fresh "
+                        "confirmation)")
     parser.add_argument("--hoh-min-versions", type=int, default=1,
                         help="HoH: keep rows with >= N outdated versions")
     parser.add_argument("--hoh-distractors", type=int, default=8,
                         help="HoH: distractor passages per instance")
     args = parser.parse_args()
+    global _USE_MMR, TOP_K
+    _USE_MMR = bool(args.mmr)
+    if args.top_k:
+        TOP_K = args.top_k
 
     if args.benchmark == "stale_chain":
         from eval.stale_chain_dataset import load_stale_chain
@@ -1683,7 +1891,7 @@ def main() -> int:
                         "static_conflict": 30,
                         "conditional_conflict": 30,
                     },
-                    seed=20260802,
+                    seed=args.mc_seed,
                 )
         else:
             from eval.datasets import load_locomo as loader
@@ -1706,6 +1914,11 @@ def main() -> int:
             f"Loaded {len(instances)} queries from {args.items} STALE items "
             f"(offset {args.item_offset})"
         )
+    if args.qid_file:
+        keep_ids = {l.strip() for l in open(args.qid_file, encoding="utf-8")
+                    if l.strip()}
+        instances = [i for i in instances if i.question_id in keep_ids]
+        print(f"qid-file filter: {len(instances)} questions kept")
     if args.sample_items:
         import random as _random
 
@@ -1916,6 +2129,12 @@ def main() -> int:
         "dense_direct": lambda inst: run_direct(
             inst, direct_gen, retriever_cls=_dense_retriever_cls()
         ),
+        "warned_direct": lambda inst: run_warned_direct(
+            inst, direct_gen, retriever_cls=_dense_retriever_cls()
+        ),
+        "full_context_direct": lambda inst: run_full_context_direct(
+            inst, direct_gen
+        ),
         "dense_recency": lambda inst: run_direct(
             inst, recency_gen, retriever_cls=_dense_retriever_cls(),
             newest_first=True,
@@ -1991,6 +2210,11 @@ def main() -> int:
             inst, extractor, validated_gen, conflict_gen, direct_gen,
             scope_gate=True, contract="species2", subtractive=True,
             abstain_guard=True,
+        ),
+        "minimal_rules_species2_esc": lambda inst: run_minimal_rules(
+            inst, extractor, validated_gen, conflict_gen, direct_gen,
+            scope_gate=True, contract="species2", subtractive=True,
+            strong_extractor=_strong_extractor(),
         ),
         "extraction_only": lambda inst: run_extraction_only(
             inst, extractor, direct_gen
