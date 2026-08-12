@@ -1,0 +1,22 @@
+{
+ "uid": "confirm039-e06a4808",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm039-e06a4808/s0#r0",
+   "source_span": "I'm training for a triathlon on June 19th",
+   "entity": "user",
+   "slot": "sports_event_participation",
+   "value": "triathlon on June 19th",
+   "claim": "The user is training for a triathlon scheduled for June 19th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 21071,
+ "usage_out": 137
+}

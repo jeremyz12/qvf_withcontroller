@@ -1,0 +1,23 @@
+# 密钥与环境 —— 永不入库
+.env
+.env.*
+!.env.example
+
+# 缓存
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 超过/接近 GitHub 单文件上限的大数据文件(公开数据可再生/可下载;再生命令见 README)
+data/stale_T1_T2_400_FULL.json
+data/stale400_full_wt.json
+data/longmemeval_s_cleaned.json
+data/lme_temporal_reasoning_wt.json
+data/lme_knowledge_update_wt.json
+data/tempreason/
+data/locomo10.json
+data/locomo_full.json
+
+# 本地临时
+*.log
+node_modules/

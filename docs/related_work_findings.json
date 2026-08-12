@@ -1,0 +1,956 @@
+[
+  {
+    "area": "longmemeval-benchmark",
+    "summary": "LongMemEval (\"LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory\", Di Wu, Hongwei Wang, Wenhao Yu, Yuwei Zhang, Kai-Wei Chang, Dong Yu; ICLR 2025; arXiv 2410.10813; OpenReview pZiyCaVuti) is the de-facto standard benchmark for long-term conversational memory. It contains 500 manually curated questions, each embedded in a freely scalable, timestamped user-assistant chat history (\"haystack\") built by an attribute-controlled pipeline in the needle-in-a-haystack style. It tests five core abilities: information extraction, multi-session reasoning, temporal reasoning, knowledge updates, and abstention.\n\nDATA FORMAT: each of the 500 instances is a JSON object with fields: `question_id` (unique id; if it ends with `_abs` the question is an abstention/false-premise question — 30 such instances exist, drawn from the other types and modified into false-premise form), `question_type` (one of six labels: single-session-user, single-session-assistant, single-session-preference, temporal-reasoning, knowledge-update, multi-session; abstention is the implicit seventh type marked only via the `_abs` id suffix, giving \"seven types\"), `question`, `answer`, `question_date` (timestamp of the question — essential for query-conditioned temporal reasoning), `haystack_session_ids`, `haystack_dates` (per-session timestamps), `haystack_sessions` (list of sessions; each session is a list of turns `{\"role\": \"user\"|\"assistant\", \"content\": ...}`, and evidence turns additionally carry `\"has_answer\": true`), and `answer_session_ids` (ground-truth evidence session ids used for memory-recall evaluation). Per-type counts (sum = 500): single-session-user 70, single-session-assistant 56, single-session-preference 30, multi-session 133, knowledge-update 78, temporal-reasoning 133; 30 abstention instances overlap these labels via `_abs` ids.\n\nVARIANTS: (1) longmemeval_s (\"S\"): ~115k tokens of history per question (~40-50 sessions, tokenized with Llama 3); HF file ~277-278 MB. (2) longmemeval_m (\"M\"): ~500 sessions per history, roughly 1.5M tokens; HF file ~2.74-2.75 GB. (3) longmemeval_oracle: only the evidence sessions are included (oracle retrieval); 15.4 MB. All three contain the same 500 questions. A cleaned re-release (2025/09) \"further cleaned up the history sessions to prevent interference on answer correctness\" and is the currently recommended version (files longmemeval_s_cleaned.json, longmemeval_m_cleaned.json, longmemeval_oracle.json in the xiaowu0162/longmemeval-cleaned HF repo).\n\nEVALUATION PROTOCOL: generation systems write a JSONL hypothesis file with fields `question_id` and `hypothesis` per line; `src/evaluation/evaluate_qa.py <judge_model> <hypothesis_file> <reference_file>` calls an LLM judge (paper uses gpt-4o-2024-08-06; script supports gpt-4o / gpt-4o-mini / llama-3.1-70b-instruct; temperature 0, max 10 tokens) with QUESTION-TYPE-SPECIFIC binary yes/no prompts, then `print_qa_metrics.py` aggregates accuracy overall and per type (the judge decision is parsed as `'yes' in eval_response.lower()`, producing an `autoeval_label`). Per-type judge-prompt logic: default types — answer must contain the correct answer, subsets count as wrong; temporal-reasoning — off-by-one errors in day/week/month counts are not penalized; knowledge-update — response is correct if it contains the updated answer even if old info is also mentioned; single-session-preference — graded against a rubric, but \"does not need to reflect all the points in the rubric\"; abstention (`_abs`) — judged yes iff the model identifies the question as unanswerable/information-missing. The paper reports >97% judge-human agreement. Retrieval is evaluated separately with Recall@k and NDCG@k at `turn` or `session` granularity (`run_retrieval.sh IN_FILE RETRIEVER GRANULARITY`, retrievers flat-bm25 / flat-contriever / flat-stella / flat-gte; `print_retrieval_metrics.py`; ground truth = answer_session_ids and has_answer flags; retrieval metrics skip the 30 abstention instances). The paper also proposes memory-design optimizations across indexing/retrieval/reading: session decomposition, fact-augmented key expansion, time-aware query expansion (key-expansion outputs downloadable from Google Drive links in the README).\n\nPAPER BASELINE RESULTS: long-context full-history reading on S vs oracle: GPT-4o 0.870 (oracle) → 0.606 (S), a 30.3% relative drop; Llama 3.1 70B 0.744 → 0.334 (55.1% drop); Phi-3 14B 0.702 → 0.380. Commercial assistants on histories ~10x shorter than S: ChatGPT (GPT-4o) 37% drop, Coze 64% drop vs offline reading.\n\nSOTA 2025-2026 (mostly vendor self-reported, on longmemeval_s, GPT-4o judge unless noted; NOT strictly comparable — different dataset versions (original vs cleaned), judges, and answer models): Zep (arXiv 2501.13956, Jan 2025): 71.2% with gpt-4o (vs 60.2% full-context), 63.8% with gpt-4o-mini (vs 55.4%); latency 2.58s vs 28.9s, ~1.6k context tokens vs 115k; per-type gpt-4o: SSU 92.9, SSA 80.4, SSP 56.7, TR 62.4, KU 83.3, MS 57.9. Emergence AI (blog, June 2025): 86% overall with improved session-level RAG + cross-encoder rerank + CoT (SSA 100, SSU 98.57, TR 85.71, KU 83.33, MS 81.20, SSP 60), vs Oracle GPT-4o 82.4%; \"Simple Fast\" variant 79%. Mastra (blog, Jul 2025): 80% with plain semantic recall topK-20 + date-grouped formatting (SSA 100, SSU 97.1, KU 84.6, MS 76.7, TR 75.2, SSP 46.7); a later Mastra figure of 94.87% circulates on third-party leaderboards. Supermemory (research page): claims ~95% overall (SSU 97, SSA 100, SSP 90, KU 99, TR 91, MS 93), Zep numbers copied from Zep's paper. Mem0 (research page + 2026 blogs): 94.4 overall at ~6.8k mean retrieval tokens (per-category numbers reported inconsistently across their pages, e.g., blog: SSU 98.6/SSA 98.2/KU 93.6/MS 88.0). ByteRover 2.1.5 (blog): 92.8% on LongMemEval-S at 1.6s latency. OMEGA (omegamax.co leaderboard, Feb 2026): 95.4% (466/500) but with GPT-4.1 as generator AND judge (nonstandard). Fringe self-reported GitHub claims: agentmemory 96.2% (481/500), MemPalace/MemPal ~96.6%. Letta publishes no LongMemEval score. LONGMEMEVAL-V2 (2026/05, arXiv 2605.12493, github.com/xiaowu0162/LongMemEval-V2, HF xiaowu0162/longmemeval-v2): shifts to agentic memory — 451 questions over multimodal web-agent trajectory haystacks (up to 500 trajectories / 115M tokens), abilities: static state recall, dynamic state tracking, workflow knowledge, environment gotchas, premise awareness; leaderboard metric \"LAFS Gain\" rewards the accuracy-latency frontier.",
+    "benchmark_details": "Instance schema (all three variants share it): question_id (string; `_abs` suffix marks the 30 abstention/false-premise questions), question_type ∈ {single-session-user, single-session-assistant, single-session-preference, temporal-reasoning, knowledge-update, multi-session}, question (string), answer (string), question_date (timestamp string of when the question is asked), haystack_session_ids (list), haystack_dates (list of per-session timestamps, aligned with haystack_session_ids), haystack_sessions (list of sessions; each session = list of {\"role\": \"user\"/\"assistant\", \"content\": str} turns; evidence turns carry extra \"has_answer\": true), answer_session_ids (list of ground-truth evidence session ids). Sizes: 500 questions in every variant. longmemeval_s ≈ 115k history tokens/question (~40-50 sessions; Llama-3 tokenizer), HF file 277-278 MB; longmemeval_m ≈ 500 sessions (~1.5M tokens), HF file 2.74-2.75 GB; longmemeval_oracle = evidence sessions only, 15.4 MB. Per-type counts: SSU 70, SSA 56, SSP 30, MS 133, KU 78, TR 133 (sum 500); 30 abstention instances distributed across types via `_abs` ids. Official metrics: (a) QA accuracy via LLM judge — hypothesis JSONL {question_id, hypothesis} → `python3 src/evaluation/evaluate_qa.py gpt-4o hyp_file data/longmemeval_oracle.json` (judge gpt-4o-2024-08-06 in the paper, temperature 0, max 10 tokens, binary yes/no parsed by substring 'yes'; >97% human agreement) → `print_qa_metrics.py` for overall + per-type accuracy; per-type judge rules: TR forgives off-by-one date arithmetic; KU accepts updated answer even when stale info is co-mentioned; SSP uses a rubric but partial rubric coverage is OK; `_abs` judged correct iff model abstains/says unanswerable; default types require the full correct answer (subset = wrong). (b) Memory recall: Recall@k and NDCG@k at turn or session granularity against answer_session_ids / has_answer (abstention instances skipped); baseline retrievers flat-bm25, flat-contriever, flat-stella, flat-gte via `bash run_retrieval.sh IN_FILE RETRIEVER GRANULARITY`, metrics via `print_retrieval_metrics.py`. Repo layout: data/, src/evaluation/ (evaluate_qa.py, print_qa_metrics.py, print_retrieval_metrics.py), src/retrieval/, src/generation/, generation_logs/.",
+    "download_info": "GitHub (official): https://github.com/xiaowu0162/LongMemEval . Recommended cleaned dataset (2025/09) — HuggingFace repo https://huggingface.co/datasets/xiaowu0162/longmemeval-cleaned with exact files: longmemeval_s_cleaned.json (277 MB), longmemeval_m_cleaned.json (2.74 GB), longmemeval_oracle.json (15.4 MB). Original dataset — HuggingFace repo https://huggingface.co/datasets/xiaowu0162/longmemeval with files longmemeval_s (278 MB), longmemeval_m (2.75 GB), longmemeval_oracle (15.4 MB) (canonical local names in the repo scripts: longmemeval_s.json, longmemeval_m.json, longmemeval_oracle.json, placed under data/). Custom-history compilation corpus (Google Drive): https://drive.google.com/file/d/1loTKBdywbCfYL5h5zwfnVcqlh7QwnBQm/view containing 1_attr_bg/data_1_attr_bg.json, 2_questions/, 5_filler_sess/data_5_filler_sess.json, 6_session_cache/data_6_session_cache.json. Paper: https://arxiv.org/abs/2410.10813 ; OpenReview: https://openreview.net/forum?id=pZiyCaVuti ; project page: https://xiaowu0162.github.io/long-mem-eval/ . LongMemEval-V2: https://github.com/xiaowu0162/LongMemEval-V2 , HF dataset xiaowu0162/longmemeval-v2, paper arXiv 2605.12493, site https://xiaowu0162.github.io/longmemeval-v2/ .",
+    "sota_numbers": "Paper baselines (S variant, GPT-4o judge): GPT-4o full-context 60.6% vs oracle 87.0% (30.3% drop); Llama-3.1-70B 33.4% vs 74.4%; ChatGPT 37% drop / Coze 64% drop on shorter histories [arXiv 2410.10813]. Zep (Jan 2025, arXiv 2501.13956): gpt-4o 71.2% (vs 60.2% full-context), gpt-4o-mini 63.8% (vs 55.4%); 2.58s vs 28.9s latency; per-type gpt-4o SSU 92.9 / SSA 80.4 / SSP 56.7 / TR 62.4 / KU 83.3 / MS 57.9. Emergence AI (Jun 2025 blog): 86% overall (SSA 100, SSU 98.57, TR 85.71, KU 83.33, MS 81.20, SSP 60), Oracle GPT-4o 82.4%, naive RAG 52% [emergence.ai/blog/sota-on-longmemeval-with-rag]. Mastra (Jul 2025 blog): 80% (semantic recall topK 20); third-party leaderboards later list Mastra at 94.87% [mastra.ai/blog/use-rag-for-agent-memory; omegamax.co/benchmarks]. Supermemory (self-reported research page): ~95% overall; SSU 97, SSA 100, SSP 90, KU 99, TR 91, MS 93 [supermemory.ai/research/longmembench/]. Mem0 (self-reported, 2026): 94.4 overall at ~6,787 mean retrieval tokens; per-category figures inconsistent across their own pages [mem0.ai/research; mem0.ai/blog/ai-memory-benchmarks-in-2026]. ByteRover 2.1.5 (self-reported): 92.8% on LongMemEval-S, 1.6s latency [byterover.dev blog]. OMEGA (Feb 2026, nonstandard GPT-4.1 judge+generator): 95.4% (466/500) [omegamax.co/benchmarks]. Unverified GitHub claims: agentmemory 96.2% (481/500), MemPal/MemPalace ~96.6%. Letta: no published LongMemEval score. Caveat: numbers span original vs cleaned datasets, different judges and answer models, and are mostly vendor self-reported — no neutral leaderboard exists for V1.",
+    "gaps_for_qvf": "LongMemEval evaluates only two endpoints — retrieval recall (Recall@k/NDCG@k vs answer_session_ids) and final QA accuracy (binary LLM judge) — with NOTHING in between: exactly the post-retrieval / pre-generation slot QVF occupies. Concrete gaps QVF can fill: (1) No claim-level or relation-level ground truth — the benchmark never labels which retrieved memories contradict, supersede, or merely coexist with each other; QVF's Validity Map (EQUIVALENT/SUPPORTS/CONTRADICTS/SUPERSEDES/...) is a new annotation and evaluation layer, and knowledge-update questions (78) plus temporal-reasoning questions (133) give natural weak supervision: the update chain and question_date allow deriving SUPERSEDED_FOR_QUERY vs CURRENT_FOR_QUERY vs HISTORICAL_FOR_QUERY labels programmatically from answer_session_ids + haystack_dates. (2) Query-conditioned validity is the benchmark's hardest failure mode but is untested directly: temporal-reasoning is the weakest category for nearly every system (Zep 62.4, Mastra 75.2, Emergence 85.71, full-context GPT-4o 45.1), and Mem0's own blog admits ADD-only architectures degrade on knowledge-update — yet no metric distinguishes 'retrieved the right memory but misjudged its validity for this query' from 'never retrieved it'. QVF can define this decomposition (retrieval error vs validity-judgment error vs reading error) as a new diagnostic metric. (3) Abstention is marginal in LongMemEval (only 30 `_abs` instances, skipped in retrieval metrics, judged with a single yes/no prompt); QVF's sufficiency assessment (SUFFICIENT/INSUFFICIENT/AMBIGUOUS) generalizes abstention into calibrated sufficiency and can be validated on the `_abs` subset (INSUFFICIENT should predict abstention) while extending it with risk flags the benchmark lacks. (4) The judge protocol is per-type binary with no partial credit and no explanation audit — QVF's structured, citation-carrying claims enable attributable evaluation (which memory-IDs justified the answer) that the official protocol cannot express. (5) The distractor dimension is implicit (filler sessions from 5_filler_sess) but never scored; QVF's DISTRACTOR/UNRELATED roles make it explicit. (6) Practically: use longmemeval_s_cleaned.json as the main testbed (115k tokens fits standard retrieval budgets; M variant stresses scale), keep the official GPT-4o judge for end-to-end comparability with Zep/Emergence/Supermemory/Mem0 numbers, and report the standard per-type accuracy PLUS QVF's new intermediate metrics; also note V1 saturation claims (94-96% self-reported) motivate QVF's finer-grained evaluation story, and LongMemEval-V2 (agentic, premise awareness) is a plausible future extension target.",
+    "papers": [
+      {
+        "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+        "year": "2024 (ICLR 2025)",
+        "venue": "ICLR 2025",
+        "url": "https://arxiv.org/abs/2410.10813",
+        "core_idea": "500 curated questions embedded in scalable timestamped chat histories testing information extraction, multi-session reasoning, temporal reasoning, knowledge updates, and abstention; shows 30%+ accuracy drops for long-context LLMs and commercial assistants; proposes session decomposition, fact-augmented key expansion, and time-aware query expansion.",
+        "relation_to_qvf": "QVF's primary evaluation benchmark. Its question_date + haystack_dates + answer_session_ids + has_answer fields provide exactly the metadata QVF's Semantic Adapter consumes, and its knowledge-update/temporal-reasoning/abstention types map directly onto QVF's temporal labels, SUPERSEDES relation, and sufficiency assessment. But it only scores retrieval recall and final QA accuracy — QVF adds the missing intermediate validity layer."
+      },
+      {
+        "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory",
+        "year": "2025",
+        "venue": "arXiv preprint (2501.13956)",
+        "url": "https://arxiv.org/abs/2501.13956",
+        "core_idea": "Graphiti, a temporally-aware knowledge graph memory engine; 71.2% on LongMemEval-S with gpt-4o (vs 60.2% full-context) at 90% lower latency using ~1.6k context tokens.",
+        "relation_to_qvf": "Closest philosophical neighbor: encodes temporal validity (fact valid-from/invalid-at edges) at INGESTION time into a graph. QVF differs by computing validity QUERY-CONDITIONED at read time — an 'invalidated' fact can still be CURRENT_FOR_QUERY for a historical question, which Zep's global edge invalidation cannot express."
+      },
+      {
+        "title": "SOTA on LongMemEval with RAG (EmergenceMem)",
+        "year": "2025",
+        "venue": "Emergence AI technical blog",
+        "url": "https://www.emergence.ai/blog/sota-on-longmemeval-with-rag",
+        "core_idea": "86% on LongMemEval-S via turn-level matching with session-level retrieval, cross-encoder reranking, and chain-of-thought answering — beating Oracle GPT-4o (82.4%).",
+        "relation_to_qvf": "Shows careful retrieval + CoT alone reaches 86%, but per-type numbers (SSP 60%, KU 83%) reveal residual errors in preference and update handling — the validity-judgment errors QVF targets; a strong baseline to ablate against."
+      },
+      {
+        "title": "Zep Is The New State of the Art In Agent Memory",
+        "year": "2025",
+        "venue": "Zep blog",
+        "url": "https://blog.getzep.com/state-of-the-art-agent-memory/",
+        "core_idea": "Marketing companion to the Zep paper; details the LongMemEval-S setup (top-20 edges/nodes retrieved from the knowledge graph).",
+        "relation_to_qvf": "Documents the retrieval configuration (k=20 facts) that most later vendor comparisons copied; useful for standardizing QVF's retrieval budget."
+      },
+      {
+        "title": "LongMemEval — Supermemory Research",
+        "year": "2025/2026",
+        "venue": "Supermemory research page (self-published)",
+        "url": "https://supermemory.ai/research/longmembench/",
+        "core_idea": "Claims ~95% overall on LongMemEval-S with ~720 added tokens; per-type SSU 97 / SSA 100 / SSP 90 / KU 99 / TR 91 / MS 93; Zep comparison numbers taken from Zep's paper, not re-run.",
+        "relation_to_qvf": "Illustrates benchmark saturation claims and the comparability problem (no shared judge/protocol); motivates QVF's finer-grained, attributable intermediate metrics."
+      },
+      {
+        "title": "Mem0 Research: Token-Efficient Memory (2026 scores)",
+        "year": "2026",
+        "venue": "Mem0 research page / blog (self-published)",
+        "url": "https://mem0.ai/research",
+        "core_idea": "Claims 94.4 on LongMemEval and 92.5 on LoCoMo at ~6.8-7.0k mean tokens per retrieval; admits ADD-only (no update/delete) architecture hurts knowledge-update and multi-session categories.",
+        "relation_to_qvf": "Their acknowledged weakness — stale memories accumulating without supersession handling — is precisely the failure QVF's SUPERSEDES relation and query-conditioned temporal labels address."
+      },
+      {
+        "title": "Yes, you can use RAG for agent memory",
+        "year": "2025",
+        "venue": "Mastra blog",
+        "url": "https://mastra.ai/blog/use-rag-for-agent-memory",
+        "core_idea": "80% on longmemeval_s with plain vector recall (topK 20) plus date-grouped message formatting; argues simple RAG with good temporal formatting rivals graph memories.",
+        "relation_to_qvf": "Evidence that surfacing timestamps to the reader model matters — QVF systematizes this by converting raw timestamps into explicit query-conditioned temporal labels rather than relying on the generator to infer them."
+      },
+      {
+        "title": "LongMemEval-V2: Evaluating Long-Term Agent Memory in Agentic Context",
+        "year": "2026",
+        "venue": "arXiv 2605.12493 / official repo",
+        "url": "https://github.com/xiaowu0162/LongMemEval-V2",
+        "core_idea": "451 questions over multimodal web-agent trajectory haystacks (up to 500 trajectories / 115M tokens); abilities: static state recall, dynamic state tracking, workflow knowledge, environment gotchas, premise awareness; LAFS-Gain leaderboard metric rewards the accuracy-latency frontier.",
+        "relation_to_qvf": "Successor benchmark from the same authors; its 'premise awareness' and 'dynamic state tracking' abilities are agentic analogues of QVF's sufficiency assessment and temporal validity — a natural future-work target after LongMemEval V1 + LoCoMo."
+      },
+      {
+        "title": "OMEGA LongMemEval Benchmark Leaderboard",
+        "year": "2026",
+        "venue": "omegamax.co (vendor leaderboard)",
+        "url": "https://omegamax.co/benchmarks",
+        "core_idea": "Aggregates published scores (OMEGA 95.4 with GPT-4.1 judge, Mastra 94.87, Emergence 86, Zep 71.2) and notes most memory vendors (Mem0 per-type, Letta, Claude native) do not publish LongMemEval scores.",
+        "relation_to_qvf": "Best single snapshot of the fragmented 2026 'leaderboard'; underlines that no neutral protocol exists — QVF experiments should pin dataset version (cleaned), judge (gpt-4o), and retrieval budget explicitly."
+      }
+    ]
+  },
+  {
+    "area": "locomo-benchmark",
+    "summary": "LoCoMo (\"Evaluating Very Long-Term Conversational Memory of LLM Agents\", Maharana, Lee, Tulyakov, Bansal, Barbieri, Fang; ACL 2024 Long Papers, 2024.acl-long.747; arXiv:2402.17753) is a machine-generated + human-edited benchmark of very long multi-session dyadic conversations between two LLM-simulated personas (personas seeded from MSC, released as data/msc_personas_all.json; conversations grounded in temporal event graphs, with image sharing where turns carry img_url + BLIP captions). PAPER-VERSION STATS (50 conversations): avg 19.3 sessions, 304.9 turns, ~9,209 tokens per conversation, up to 35 sessions over months; 7,512 QA pairs across 5 categories: single-hop 2,705 (36%), multi-hop 1,104 (14.6%), temporal reasoning 1,547 (20.6%), open-domain knowledge 285 (3.9%), adversarial 1,871 (24.9%). RELEASED VERSION (what everyone actually uses): data/locomo10.json in github.com/snap-research/locomo — only 10 conversations, 1,986 QA pairs; per-category counts: category 4 = 841 (42.3%), category 5 = 446 (22.5%), category 2 = 321 (16.2%), category 1 = 282 (14.2%), category 3 = 96 (4.8%). Excluding category 5 leaves the widely cited 1,540 questions.\n\nDATA FORMAT (verified by fetching the raw locomo10.json): top level is a JSON list of conversation samples. Each sample has keys: \"qa\" (list) and \"conversation\" (object), plus in the repo README-documented annotations \"event_summary\" (events_session_<n> per speaker, ground truth for the event-summarization task), \"observation\" (session_<n>_observation, generated facts used as a RAG database), and \"session_summary\" (session_<n>_summary, generated summaries used as another RAG database), and \"sample_id\". \"conversation\" contains: speaker_a, speaker_b, and paired keys session_<n> (list of turns) and session_<n>_date_time (natural-language timestamp string like \"1:56 pm on 8 May, 2023\" — NOT ISO; any temporal system must parse these). Each turn has: speaker, dia_id (e.g. \"D1:3\" = session 1, dialog 3), text, and optionally img_url, blip_caption (and a search query used to fetch the image). Each qa item has: question, answer (string or number), evidence (list of dia_id strings like [\"D1:3\",\"D7:11\"] — ground-truth supporting turns), category (int 1–5); category-5 items have \"adversarial_answer\" INSTEAD of a normal answer field.\n\nCATEGORY NUMBERING — CRITICAL TRAP: per the original paper taxonomy matched to the released counts and question styles, the data numbering is: 1 = multi-hop (282), 2 = temporal reasoning (321), 3 = open-domain/counterfactual (\"Would X still ... if ...\" style, 96), 4 = single-hop (841), 5 = adversarial/unanswerable (446). However, the Mem0 evaluation harness (which Memobase, Backboard and most later vendor evals forked) hardcodes categories = [\"single_hop\",\"temporal\",\"multi_hop\",\"open_domain\"] indexed 1..4 — i.e., it calls category 1 \"single_hop\", category 3 \"multi_hop\", and category 4 \"open_domain\". So per-category columns in Mem0-lineage tables are MISLABELED relative to the paper taxonomy (only \"temporal\" matches); e.g., Mem0's high \"open-domain\" scores are actually on the 841 single-hop questions, and its low \"multi-hop\" scores are on the 96 open-domain counterfactuals. Multiple sources document this paper-vs-code mapping mismatch; use counts (282/321/96/841/446) to disambiguate any published table.\n\nORIGINAL EVALUATION (task_eval/evaluation.py + paper): QA scored by token-level F1 with answer normalization (lowercase, strip articles/punctuation, Porter stemming); category 1 (multi-hop) answers are comma-split and scored with a partial multi-answer F1; categories 2/3/4 use plain F1; category 5 scored binarily by checking whether the output contains \"no information available\" or \"not mentioned\" (models are prompted to say \"No information available\" for unanswerable questions). Also implemented: exact match, ROUGE-L, BERTScore. Retrieval quality measured by recall@k over three RAG databases (raw dialogs, observations, session summaries). Event summarization: ROUGE-1/2/L + FactScore precision/recall/F1. Multimodal dialogue generation: MMRelevance (evaluation code for these two tasks was never fully released — \"Coming soon\"). Headline paper results: best QA overall ≈37.8% F1 (GPT-3.5-turbo-16K family baselines; humans 87.9% F1; temporal reasoning worst at ~20.3% vs human 92.6%); long-context and RAG variants (scripts/evaluate_rag_gpts.sh, top-k ∈ {5,10,25,50}) still far below human.\n\nLATER-PAPER EVALUATION (de-facto standard since Mem0, arXiv:2504.19413): generate answers with gpt-4o-mini from retrieved memories, score with F1, BLEU-1, and \"J\" = LLM-as-a-Judge (binary correct/wrong; Mem0 used gpt-4o-mini as judge with lenient instructions returning JSON; Memobase used gpt-4o) on categories 1–4 only (adversarial excluded, claimed \"ground truth unavailable\" — actually because category-5 rows have adversarial_answer, and the original abstention-scoring was never ported). Mem0 paper J scores (10 runs avg): Mem0 66.88 (per-category as labeled by them: single-hop 67.13, multi-hop 51.15, temporal 55.51, open-domain 72.93), Mem0-graph 68.44, Zep 65.99, LangMem 58.10, OpenAI Memory 52.90, A-Mem lower (e.g. 39.79 single-hop), full-context baseline 72.90 (i.e., FULL CONTEXT BEATS ALL MEMORY SYSTEMS); latency: Mem0 search p95 0.200s, total p95 1.440s vs full-context total p95 17.117s (the \"91% lower p95 latency\" claim).\n\nCONTROVERSIES: (1) Mem0-vs-Zep war: Zep's rebuttal blog (\"Lies, Damn Lies, Statistics: Is Mem0 Really SOTA?\") says Mem0 misconfigured Zep (both speakers ingested as the same user role; timestamps appended to message text instead of Zep's created_at field; sequential instead of parallel searches) and reports corrected Zep J = 75.14% ± 0.17, p95 search 0.632s; Mem0's CTO countered in getzep/zep-papers issue #5 that Zep's later \"84%\" claim counted adversarial correct answers in the numerator but not denominator, changed prompts/templates, and used a single run, computing 58.44% ± 0.20 under Mem0's standardized protocol. (2) Benchmark-quality audit (Penfield Labs / dial481-locomo-audit, 2026): 99/1,540 (6.4%) wrong golden answers → effective score ceiling ~93.6% (per-category ceilings e.g. single-hop 95.72%, multi-hop 90.07%), LLM judge accepts up to ~63% of intentionally wrong vague-but-topical answers, category 5 (446 questions) has never been evaluated in any published memory-system result, tiny open-domain n=96 needs ~15-point gaps for significance, and 56% of adjacent leaderboard comparisons are statistically indistinguishable; some vendor claims (e.g. EverMemOS 95.96% single-hop) exceed the mathematical ceiling, implying credit from wrong gold answers. (3) Letta's blog shows a trivial filesystem-memory agent on gpt-4o-mini scores 74.0%, arguing LoCoMo is nearly saturated and doesn't discriminate memory architectures. (4) Zep and others note conversations (~16k–26k tokens) fit in modern context windows and the benchmark has NO knowledge-update/supersession questions — they advocate LongMemEval for that. (5) Scores across vendors are not comparable: different judges (gpt-4o vs gpt-4o-mini), prompts, retrieval configs, single-run vs 10-run averaging, and the category-label swap. Newer vendor numbers under their own harnesses: Memobase v0.0.37 75.78 J; Mem0's 2026 algorithm claims LoCoMo 92.5 (avg 6,956 tokens/query) and LongMemEval 94.4 — self-reported, post-audit-era caveats apply. A multiple-choice re-release exists: HuggingFace Percena/locomo-mc10 (all 1,986 questions as 10-option MC with fields question/choices/correct_choice_index/question_type + haystack_sessions/haystack_session_summaries/haystack_session_datetimes) to replace LLM-judge with plain accuracy.",
+    "papers": [
+      {
+        "title": "Evaluating Very Long-Term Conversational Memory of LLM Agents (LoCoMo)",
+        "year": "2024",
+        "venue": "ACL 2024 (Long), 2024.acl-long.747; arXiv:2402.17753",
+        "url": "https://aclanthology.org/2024.acl-long.747/",
+        "core_idea": "Machine-generated + human-verified very-long multi-session persona dialogues (paper: 50 convs, avg 304.9 turns / 9.2k tokens / 19.3 sessions; released: 10 convs) with three tasks: QA over 5 question categories (single-hop, multi-hop, temporal, open-domain, adversarial; F1 with stemming/normalization, comma-split partial F1 for multi-hop, abstention-phrase check for adversarial), event summarization (ROUGE + FactScore), and multimodal dialog generation (MMRelevance); shows GPT-3.5/GPT-4-era models far below human F1 (37.8 vs 87.9 overall; worst on temporal).",
+        "relation_to_qvf": "QVF's planned generalization benchmark. Its evidence field (dia_id lists) gives free ground truth for QVF's memory-ID citations (citation precision/recall); its category 5 adversarial questions map directly to QVF's DISTRACTOR role + INSUFFICIENT sufficiency output; its NL timestamps (\"1:56 pm on 8 May, 2023\") stress QVF's query-conditioned temporal labels. But it has no supersession/knowledge-update questions, so QVF's SUPERSEDED_FOR_QUERY machinery must be validated mainly on LongMemEval."
+      },
+      {
+        "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+        "year": "2025",
+        "venue": "arXiv:2504.19413 (later ECAI 2025 per Mem0)",
+        "url": "https://arxiv.org/abs/2504.19413",
+        "core_idea": "Extraction+update memory pipeline (and graph variant Mem0-g); established the now-standard LoCoMo protocol for memory systems: categories 1–4 only (1,540 Qs), gpt-4o-mini answerer, metrics F1/BLEU-1/LLM-as-a-Judge (gpt-4o-mini, binary, lenient), 10-run averages; J: Mem0 66.88, Mem0-g 68.44, Zep 65.99, LangMem 58.10, OpenAI Memory 52.90, full-context 72.90; big latency wins vs full-context (total p95 1.44s vs 17.1s).",
+        "relation_to_qvf": "Defines the evaluation harness QVF should reuse for comparability (and whose category-label swap QVF must correct when reporting per-category numbers). Mem0 filters/compresses at WRITE time; QVF filters at READ time conditioned on the query — complementary, and QVF can be layered on top of Mem0-style retrieval. Full-context beating all memory systems here is the gap QVF targets: better post-retrieval reasoning rather than more retrieval."
+      },
+      {
+        "title": "Is Mem0 Really SOTA in Agent Memory? (Zep rebuttal)",
+        "year": "2025",
+        "venue": "Zep blog",
+        "url": "https://blog.getzep.com/lies-damn-lies-statistics-is-mem0-really-sota-in-agent-memory/",
+        "core_idea": "Claims Mem0 misconfigured Zep on LoCoMo (both speakers as one user; timestamps in message text not created_at; sequential search) and reports corrected Zep J = 75.14% ± 0.17, p95 search 0.632s; also attacks LoCoMo itself (fits in context windows, no knowledge-update questions, unusable category 5, speaker-attribution and multimodal errors) and endorses LongMemEval (~115k-token conversations).",
+        "relation_to_qvf": "Documents exactly the metadata-handling pitfalls QVF's Semantic Adapter must avoid (timestamps as first-class metadata, correct speaker attribution). Its critique that LoCoMo lacks update/supersession questions justifies QVF's LongMemEval-main / LoCoMo-generalization split."
+      },
+      {
+        "title": "Revisiting Zep's 84% LoCoMo Claim: Corrected Evaluation & 58.44% Accuracy (zep-papers issue #5)",
+        "year": "2025",
+        "venue": "GitHub issue (filed by Mem0 CTO Deshraj, 2025-05-08)",
+        "url": "https://github.com/getzep/zep-papers/issues/5",
+        "core_idea": "Counter-rebuttal: Zep's higher claims allegedly included correct adversarial answers in the numerator while excluding category 5 from the denominator, altered system prompts/retrieval templates, and used a single run; under Mem0's standardized protocol Zep scores 58.44% ± 0.20.",
+        "relation_to_qvf": "Case study in why LoCoMo numbers are not cross-paper comparable; QVF should publish its exact judge, prompt, category mapping, run count, and per-category counts, and ideally evaluate under multiple harnesses."
+      },
+      {
+        "title": "LoCoMo audit: 6.4% of the answer key is wrong; judge accepts up to 63% of intentionally wrong answers",
+        "year": "2026",
+        "venue": "Penfield Labs (dev.to) + dial481/locomo-audit (GitHub)",
+        "url": "https://github.com/dial481/locomo-audit",
+        "core_idea": "Full audit of locomo10.json: 99/1,540 wrong golden answers (score ceiling ~93.57%), extremely lenient LLM judges (62.81% of vague wrong answers accepted), category 5 (446 Qs) never evaluated in any published result due to eval-code bugs, n=96 open-domain category statistically underpowered, 56% of adjacent leaderboard comparisons statistically indistinguishable, and some vendor scores exceed per-category ceilings (mathematically impossible without credit from wrong gold answers).",
+        "relation_to_qvf": "Directly usable: QVF should (a) report Wilson CIs per category, (b) consider the audit's corrected labels, (c) be the first to properly evaluate category 5 via QVF's sufficiency/abstention outputs, and (d) use a stricter judge protocol to avoid leniency inflation."
+      },
+      {
+        "title": "Benchmarking AI Agent Memory: Is a Filesystem All You Need?",
+        "year": "2025",
+        "venue": "Letta blog",
+        "url": "https://www.letta.com/blog/benchmarking-ai-agent-memory/",
+        "core_idea": "A Letta agent that just stores conversation history in files (gpt-4o-mini) scores 74.0% on LoCoMo — beating specialized memory systems — arguing LoCoMo is near-saturated and that memory is about context management, not retrieval machinery.",
+        "relation_to_qvf": "Sets the bar QVF must beat meaningfully: raw-history baselines already do well on LoCoMo, so QVF's value must show up in temporal/adversarial/multi-hop slices, citation faithfulness, and abstention quality rather than the headline J score."
+      },
+      {
+        "title": "Memobase LoCoMo benchmark (fork of Mem0 evaluation)",
+        "year": "2025",
+        "venue": "GitHub, memodb-io/memobase",
+        "url": "https://github.com/memodb-io/memobase/blob/main/docs/experiments/locomo-benchmark/README.md",
+        "core_idea": "Reruns the Mem0 harness (forked at commit 393a4fd) with gpt-4o judge; reports Memobase v0.0.37 J=75.78 and reproduces the per-category-number counts 1:282, 2:321, 3:96, 4:841 with the harness labels single_hop/temporal/multi_hop/open_domain — the clearest public documentation of the count-to-category-number mapping and of the harness's label swap.",
+        "relation_to_qvf": "Best reference implementation for QVF's LoCoMo eval plumbing (evals.py computes BLEU/F1/LLM-judge per question; generate_scores.py aggregates per category); QVF should fork this but fix the category names to the paper taxonomy."
+      },
+      {
+        "title": "LoCoMo-MC10: multiple-choice re-release of LoCoMo",
+        "year": "2025",
+        "venue": "HuggingFace dataset (Percena)",
+        "url": "https://huggingface.co/datasets/Percena/locomo-mc10",
+        "core_idea": "All 1,986 LoCoMo questions converted to 10-option multiple choice (fields: question, choices, correct_choice_index, question_type incl. adversarial, plus haystack_sessions / haystack_session_summaries / haystack_session_datetimes) so systems can be scored with plain accuracy instead of an LLM judge.",
+        "relation_to_qvf": "A judge-free evaluation channel for QVF that sidesteps the judge-leniency controversy; its LongMemEval-style haystack field names also ease sharing one loader across both benchmarks."
+      },
+      {
+        "title": "State of AI Agent Memory 2026 (Mem0 progress report)",
+        "year": "2026",
+        "venue": "Mem0 blog",
+        "url": "https://mem0.ai/blog/state-of-ai-agent-memory-2026",
+        "core_idea": "Mem0's 2026 algorithm self-reports LoCoMo 92.5 (avg 6,956 tokens/query) and LongMemEval 94.4 on the 1,540-question 4-category protocol — near the audit's ~93.6% ceiling — and clarifies token-accounting changes vs the 2025 paper.",
+        "relation_to_qvf": "Shows the 2026 SOTA claim level QVF will be compared against, and that headline LoCoMo is effectively saturated — reinforcing that QVF's contribution should be interpretable validity maps, category-5 abstention, and citation faithfulness rather than +1 point of J."
+      }
+    ],
+    "benchmark_details": "FILE: data/locomo10.json — JSON list of 10 conversation samples. Sample keys: sample_id, qa, conversation, event_summary, observation, session_summary. conversation = {speaker_a, speaker_b, session_<n>: [turns], session_<n>_date_time: \"1:56 pm on 8 May, 2023\" (natural-language timestamps)}; turn = {speaker, dia_id (\"D<session>:<turn>\" e.g. \"D1:3\"), text, optional img_url, blip_caption}. qa item = {question, answer (string|number), evidence: [\"D1:3\", ...] (ground-truth dia_ids), category: 1–5}; category-5 items carry adversarial_answer instead of answer. SIZES: 10 conversations, ~600 turns and ~26k tokens each (up to 35 sessions); 1,986 QA total; by category number: 1=282, 2=321, 3=96, 4=841, 5=446; non-adversarial = 1,540. CATEGORY TAXONOMY (paper names matched to data numbers): 1=multi-hop (synthesize across sessions; comma-separated multi-part answers), 2=temporal reasoning (dates/durations, needs parsing NL session timestamps), 3=open-domain/counterfactual (\"Would X ... if ...\"; integrates conversation + world knowledge; only 96 Qs), 4=single-hop (single-session fact; 841 Qs), 5=adversarial (unanswerable; correct behavior is abstaining, originally scored by detecting \"no information available\"/\"not mentioned\"). WARNING: the Mem0-lineage harness relabels 1→single_hop, 3→multi_hop, 4→open_domain (only temporal matches the paper) — nearly all post-2025 vendor tables use these swapped labels; disambiguate by counts. METRICS — original repo (task_eval/evaluation.py): normalized token F1 with Porter stemming (articles/punctuation stripped), comma-split partial F1 for category 1, abstention-phrase binary for category 5; also EM, ROUGE-L, BERTScore; retrieval recall@k over 3 RAG DBs (dialogs / observations / session summaries; scripts evaluate_gpts.sh, evaluate_claude.sh, evaluate_gemini.sh, evaluate_hf_llm.sh, evaluate_rag_gpts.sh); event summarization = ROUGE-1/2/L + FactScore; multimodal dialog = MMRelevance (eval code never released). METRICS — de-facto memory-system protocol (Mem0): categories 1–4 only (1,540 Qs), answerer gpt-4o-mini, metrics F1 + BLEU-1 + J (LLM-as-a-Judge: binary correct/wrong, lenient on verbosity/format, JSON output; Mem0 judge=gpt-4o-mini, Memobase judge=gpt-4o), 10-run averaging, plus search/total latency p50/p95. Paper-version stats for reference (50 convs, not released in full): 7,512 QA — single-hop 2,705/multi-hop 1,104/temporal 1,547/open-domain 285/adversarial 1,871; human QA F1 87.9.",
+    "download_info": "Official repo: https://github.com/snap-research/locomo (README: https://github.com/snap-research/locomo/blob/main/README.MD; LICENSE.txt in repo). Dataset file: data/locomo10.json — direct raw URL: https://raw.githubusercontent.com/snap-research/locomo/main/data/locomo10.json. Also in data/: msc_personas_all.json (MSC personas used to seed conversations) and multimodal_dialog/example/ (image-sharing example). Evaluation code: task_eval/ (evaluation.py etc.) and scripts/ (evaluate_gpts.sh, evaluate_claude.sh, evaluate_gemini.sh, evaluate_hf_llm.sh, evaluate_rag_gpts.sh, generate_observations.sh, generate_session_summaries.sh, generate_conversations.sh). Project page: https://snap-research.github.io/locomo/. Paper: https://aclanthology.org/2024.acl-long.747/ (PDF: https://aclanthology.org/2024.acl-long.747.pdf), arXiv: https://arxiv.org/abs/2402.17753. De-facto memory-system harness: Mem0's evaluation code (originally github.com/mem0ai/mem0 evaluation/ — the folder has since been moved/removed from main; a preserved fork with run_experiments.py, evals.py, generate_scores.py, compute_p95_latency.py, prompts.py lives at https://github.com/memodb-io/memobase/tree/main/docs/experiments/locomo-benchmark, forked at mem0 commit 393a4fd5a6cfeb754857a2229726f567a9fadf36). Multiple-choice variant: https://huggingface.co/datasets/Percena/locomo-mc10. Audit + corrected labels: https://github.com/dial481/locomo-audit. Note: only the 10-conversation subset was ever released; the 50-conversation set from the paper is not public.",
+    "sota_numbers": "LLM-as-a-Judge (J), categories 1–4 (1,540 Qs) unless noted. Mem0 paper (arXiv:2504.19413, judge gpt-4o-mini, 10 runs): full-context baseline 72.90; Mem0 66.88 (harness-labels single-hop 67.13 / multi-hop 51.15 / temporal 55.51 / open-domain 72.93); Mem0-graph 68.44; Zep 65.99; LangMem 58.10; OpenAI Memory 52.90; A-Mem much lower (39.79 single-hop, 18.85 multi-hop); latency: Mem0 search p95 0.200s, total p95 1.440s; Zep total p95 2.926s; full-context total p95 17.117s. Zep rebuttal (blog.getzep.com): corrected Zep 75.14 ± 0.17, p95 search 0.632s; Mem0 counter (getzep/zep-papers issue #5): Zep 58.44 ± 0.20 under standardized protocol. Memobase README (judge gpt-4o): Memobase v0.0.37 75.78 (v0.0.32 70.91), and reprints Mem0-paper rows. Letta blog: filesystem-only Letta agent, gpt-4o-mini: 74.0. Mem0 2026 self-report (mem0.ai/research, state-of-2026 blog): 92.5 on LoCoMo (6,956 tokens/query avg) and 94.4 on LongMemEval. Vendor claims near/above ceiling: EverMemOS single-hop 95.96 / multi-hop 91.37 (exceeds audit-computed category ceilings 95.72 / 90.07 — flagged as impossible without credit from wrong gold answers); assorted 2026 arXiv systems claim 94–96% \"memory accuracy\". Original-paper era (F1 metric, not J): best baseline ≈37.8 F1 overall (GPT-3.5-turbo-16K), temporal ≈20.3 F1, human 87.9 overall / 92.6 temporal; event summarization best ≈45.9 FactScore F1. Audit context for all of the above: effective max ≈93.57% due to 6.4% wrong gold answers; judge accepts up to ~63% of deliberately wrong vague answers; category 5 (446 Qs) has zero published evaluations.",
+    "gaps_for_qvf": "1) Category 5 (adversarial, 446 Qs) has never been properly evaluated by any memory system — QVF's sufficiency assessment (INSUFFICIENT) + DISTRACTOR role + abstention gives it a principled way to be first, restoring the full 1,986-question benchmark. 2) LoCoMo's evidence lists (dia_ids per question) are unused by existing systems beyond retrieval recall — QVF's atomic claims with memory-ID citations can be scored for citation precision/recall against evidence, a faithfulness metric no LoCoMo paper reports. 3) The judge-leniency and wrong-gold-answer problems (audit) mean headline J is unreliable; QVF can report a stricter, structured evaluation (per-category Wilson CIs, corrected labels, multiple judges) and position the Validity Map as an auditable intermediate artifact. 4) The category-label swap between paper and Mem0-lineage harness confuses the literature; QVF should publish the explicit number→name mapping (1=multi-hop, 2=temporal, 3=open-domain, 4=single-hop, 5=adversarial) and per-category counts to anchor comparability. 5) LoCoMo has NO knowledge-update/supersession questions and NL-string timestamps — so it cannot test QVF's core SUPERSEDES/SUPERSEDED_FOR_QUERY logic (LongMemEval must carry that), but its temporal category (321 Qs) does test date parsing/arithmetic over \"1:56 pm on 8 May, 2023\"-style session timestamps, exercising QVF's temporal labels in a different regime (HISTORICAL_FOR_QUERY vs TIME_INSENSITIVE). 6) Full-context beats all memory systems (72.9 vs ≤68.4 in the Mem0 paper) and a trivial filesystem agent hits 74.0 — evidence that the open problem is post-retrieval, query-conditioned reasoning over memories, exactly QVF's slot; QVF should also report token cost (Mem0 2026 reports ~6,956 tokens/query) to show the validity map earns its overhead."
+  },
+  {
+    "area": "memory-systems-for-llm-agents-2023-2026",
+    "summary": "SURVEY OF MEMORY SYSTEMS AND HOW EACH HANDLES STORAGE, UPDATES, AND VALIDITY/STALENESS/SUPERSESSION.\n\n(1) MemGPT/Letta (arXiv 2310.08560; docs.letta.com). OS-inspired \"virtual context management\" with three tiers: core memory (editable in-context blocks, e.g. persona/human), recall memory (searchable out-of-context conversation history), and archival memory (vector-DB table for long-term facts/documents). The agent SELF-manages memory via tool calls (core_memory_append/replace, archival_memory_insert/search): updates happen only when the LLM decides to rewrite a core block or insert into archival memory. Validity handling: essentially none beyond ad-hoc overwriting — there is no temporal model, no supersession semantics, and stale archival entries persist forever and can be retrieved alongside newer contradicting ones; contradiction resolution is left entirely to the generating LLM. Reported numbers: MemGPT scores 93.4% on the Deep Memory Retrieval (DMR) benchmark (as reported in the Zep paper for comparison).\n\n(2) Mem0 / Mem0g (arXiv 2504.19413, Apr 2025). Two-phase pipeline: an extraction phase distills candidate facts from new conversation turns; an update phase retrieves the top-s semantically similar existing memories and has an LLM pick one of four operations: ADD (no equivalent exists), UPDATE (augment existing), DELETE (remove memories contradicted by new information), NOOP. This is explicit contradiction resolution, but it is DESTRUCTIVE and WRITE-TIME: a contradicted old memory is deleted globally, even though it might be exactly what a historical question needs. Mem0g stores directed labeled graphs (entities as nodes, relations as edges) and, on conflict, marks obsolete relations invalid rather than hard-deleting. Notably, Mem0's platform v3 migration notes state the newer algorithm \"only adds new facts\" (no UPDATE/DELETE at extraction) — an industry retreat from destructive write-time resolution. Numbers (LoCoMo, LLM-as-Judge): Mem0 66.9%–67.13% vs OpenAI Memory 52.9% (26% relative uplift); Mem0g best on temporal questions 58.13% vs OpenAI 21.71%; p95 search latency ~0.20s; ~90% fewer tokens than full-context (~1,764 vs 26,031 per conversation).\n\n(3) Zep / Graphiti (arXiv 2501.13956, Jan 2025). Temporally-aware knowledge graph engine with three subgraphs: episodic (raw messages), semantic entity (extracted entities/relations), and community. THE key prior art for QVF's temporal story: a BI-TEMPORAL model with four timestamps per fact/edge — t_created/t_expired (transaction/ingestion timeline) and valid_at/invalid_at (real-world validity timeline). On ingestion, new edges are compared by an LLM against semantically related existing edges; if superseded, the old edge is INVALIDATED (expired_at/invalid_at set) but NOT deleted, preserving history so agents can answer \"what was true last Tuesday\". Temporal logic over the dual timeline determines fact validity at any query time. Crucially, though, the supersession decision is made ONCE, globally, at write time — it is not re-derived per query. Numbers: DMR 94.8% (gpt-4-turbo) vs MemGPT 93.4%, 98.2% with gpt-4o-mini; LongMemEval accuracy improvements up to 18.5% over a full-context baseline with ~90% latency reduction; secondary sources cite ~71.2% overall LongMemEval and 63.8% on the temporal-retrieval subtask.\n\n(4) A-MEM (arXiv 2502.12110; NeurIPS 2025). Zettelkasten-inspired atomic \"memory notes\" with LLM-generated contextual description, keywords, tags, plus embeddings. On adding a note, the system runs link generation (bidirectional links to nearest neighbors) and MEMORY EVOLUTION: an LLM prompt decides whether the new note should trigger rewriting of neighboring notes' context/tags. There is NO deletion and no explicit contradiction/supersession/temporal semantics — conflicting notes coexist; any \"validity\" emerges implicitly if evolution happens to rewrite a neighbor's text. Evaluated on LoCoMo with gains especially on multi-hop questions over MemGPT/MemoryBank/ReadAgent baselines.\n\n(5) HippoRAG (NeurIPS 2024, arXiv 2405.14831) and HippoRAG 2 (ICML 2025, arXiv 2502.14802, \"From RAG to Memory\"). HippoRAG: OpenIE extracts triples into a schema-less KG with synonym edges (hippocampal index); retrieval runs Personalized PageRank seeded from query entities (pattern completion), enabling single-step multi-hop. HippoRAG 2 adds deeper passage integration (passages as nodes), query-to-triple linking, and an LLM \"recognition memory\" filter for seed selection; framed as NON-PARAMETRIC CONTINUAL LEARNING — new knowledge is appended and connected. Validity handling: none — the graph is append-only; contradictory triples coexist with no timestamps, no invalidation, no staleness model. Numbers: HippoRAG 2 beats the best embedding model (NV-Embed-v2) by ~7% on associative (multi-hop) memory tasks with stronger factual and sense-making performance.\n\n(6) MemoryBank (AAAI 2024, arXiv 2305.10250). Hierarchical store: raw turns, daily event summaries, and evolving user-personality summaries; powers the SiliconFriend companion. Update mechanism: an EBBINGHAUS FORGETTING CURVE-inspired decay — each memory has a strength that is reinforced when retrieved and decays with elapsed time, so old unretrieved memories are forgotten/deleted. This is a purely time/recency-based GLOBAL staleness heuristic: no contradiction detection, no supersession semantics, and it can delete old facts that would still be valid for historical queries — the exact failure mode QVF's query-conditioned framing targets.\n\n(7) MemoChat (arXiv 2308.08239, 2023). Tuning/instruction pipeline teaching LLMs an iterative memorization–retrieval–response loop over self-composed STRUCTURED MEMOS (topic-organized summaries of dialogue segments). Consistency comes from re-retrieving memos; memos are appended, not revised — no update, invalidation, temporal scoping, or contradiction machinery. Evaluated on a manually annotated long-range consistency test set (MT-Bench+ style), not LongMemEval/LoCoMo.\n\n(8) Reflexion (NeurIPS 2023, arXiv 2303.11366). Episodic memory of verbal self-reflections: after a failed trial, the agent generates a natural-language self-critique stored in a bounded episodic buffer (typically 1–3 reflections) prepended to later attempts. Memory is task-scoped and reset between tasks; \"staleness\" is handled only by the sliding-window bound. No validity or contradiction reasoning — but it seeded the paradigm of textual, LLM-written memory artifacts that A-MEM/Mem0 build on.\n\n(9) NOTABLE 2025–2026 SYSTEMS. MemOS (arXiv 2507.03724): treats memory as a first-class OS resource via MemCube encapsulation of parametric/activation/plaintext memory with lifecycle governance (provenance, versioning, access control, transitions between memory types); LoCoMo overall LLM-judge 73.31→75.80 (MemOS-1031) vs MIRIX 64.33 and Mem0 59.22; 159% temporal-reasoning improvement over OpenAI memory; 2026 marketing claims 88.83 LoCoMo / 89.20 LongMemEval. MemoryOS (EMNLP 2025 Oral, arXiv 2506.06326): short/mid/long-term hierarchical storage; short→mid via dialogue-chain FIFO, mid→long via segmented paging with HEAT-based promotion/eviction — updates are recency/heat-driven overwrites, no semantic conflict resolution; LoCoMo +48.36% F1 avg over baselines (GPT-4o-mini). MIRIX (arXiv 2507.07957): six memory stores (core, episodic, semantic, procedural, resource, knowledge-vault) each managed by a dedicated agent plus a router; multimodal/screen capture; 85.38% avg on LoCoMo (claims >8 pts over LangMem/Mem0). Memory-R1 (arXiv 2508.19828): RL (PPO/GRPO) fine-tunes a Memory Manager for {ADD, UPDATE, DELETE, NOOP} and an Answer Agent that performs MEMORY DISTILLATION — retrieving up to 60 candidates and filtering to the relevant subset before answering; with only 152 training QA pairs it beats Mem0 on LoCoMo by +48% F1/+69% BLEU-1/+37% LLM-judge (LLaMA-3.1-8B) and generalizes to MSC and LongMemEval; its Answer Agent is the closest RL-based analog to a post-retrieval filter, but it emits no structured, interpretable validity artifact. LightMem (ICLR 2026, arXiv 2510.18866): Atkinson-Shiffrin-inspired sensory buffer → topic-aware short-term memory → SLEEP-TIME offline long-term consolidation (update decoupled from inference); LongMemEval +2.09–6.40% (GPT) with up to 38x token reduction. SeCom (ICLR 2025, arXiv 2502.05589, Microsoft): segment-level memory granularity plus LLMLingua-2 compression as retrieval denoising; gains on LoCoMo and Long-MT-Bench+. MemInsight (EMNLP 2025, arXiv 2503.21760, Amazon): autonomous attribute-based memory augmentation/annotation; +34% recall over RAG baseline on LoCoMo retrieval. M+ (ICML 2025, arXiv 2502.00592): latent-space memory pool (MemoryLLM) plus co-trained retriever, extending retention from <20k to >160k tokens — parametric rather than symbolic, so validity is inapplicable. Hindsight (arXiv 2512.12818, vectorize.io): four networks (World, Experience, Opinion, Entity/Observation) with retain/recall/reflect operations; reports 91.4% overall on LongMemEval (claimed SOTA as of early 2026). EverMemOS (ACL 2026): self-organizing memory OS for long-horizon reasoning.\n\n(10) DIRECTLY QVF-ADJACENT 2026 WORK (validity/supersession as the research object). STALE benchmark (arXiv 2605.06527): \"Can LLM Agents Know When Their Memories Are No Longer Valid?\" — 400 expert-validated implicit-conflict scenarios (co-referential vs propagated conflicts), 1,200 queries, contexts to 150K tokens; probes State Resolution, Premise Resistance, Implicit Policy Adaptation; best frontier model (Gemini-3.1-pro) only 55.2% overall; models at 92% on direct questions collapse to ~30% under stale-premise queries; memory frameworks evaluated (LightMem, Zep, LiCoMemory, A-MEM, Mem0) do poorly; their CUPMem prototype (write-side state adjudication) reaches 68%. TOKI (arXiv 2606.06240): bitemporal operator algebra (valid time + transaction time) with formal supersession/contradiction-resolution/temporal-composition operators for agent memory. \"Temporal Validity in Retrieval Memory\" / MemStrata (arXiv 2606.26511): deterministic (subject, relation, object) supersession layer retiring stale values in a bi-temporal ledger, arguing plain RAG cannot eliminate stale-fact errors by construction. MOSAIC (reported in that literature): 66% contradiction detection at ingestion vs 2–14% for existing memory systems. \"Beyond Dialogue Time: Temporal Semantic Memory for Personalized LLM Agents\" (arXiv 2601.07468). These confirm the problem QVF targets is recognized as open in 2026 — but ALL of these place the resolution machinery at WRITE/ingestion time or in a deterministic ledger, not as a query-conditioned read-time semantic analysis.",
+    "papers": [
+      {
+        "title": "MemGPT: Towards LLMs as Operating Systems (now Letta)",
+        "year": "2023",
+        "venue": "arXiv 2310.08560 / open-source Letta",
+        "url": "https://docs.letta.com/concepts/memory-management/",
+        "core_idea": "Virtual context management: self-editing core memory blocks in-context, recall memory (conversation DB) and archival memory (vector DB) out-of-context, all managed by the agent via tool calls.",
+        "relation_to_qvf": "Establishes agent-managed memory but has zero validity machinery: no timestamps semantics, no supersession, stale archival entries coexist with new ones. QVF would sit between its retrieval calls and generation; MemGPT is a system QVF could wrap, not a competitor on validity."
+      },
+      {
+        "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+        "year": "2025",
+        "venue": "arXiv 2504.19413",
+        "url": "https://arxiv.org/abs/2504.19413",
+        "core_idea": "Extraction + update pipeline where an LLM chooses ADD/UPDATE/DELETE/NOOP against retrieved similar memories; Mem0g graph variant marks obsolete relations invalid; LoCoMo J 66.9% vs OpenAI 52.9%, p95 search 0.20s.",
+        "relation_to_qvf": "Closest write-time contradiction resolver. Key difference: Mem0 resolves conflicts DESTRUCTIVELY and GLOBALLY at ingestion (DELETE), losing history that a historical query needs; QVF keeps all memories and judges validity per query at read time. Mem0's own v3 retreat to add-only implicitly concedes the write-time-deletion problem."
+      },
+      {
+        "title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory (Graphiti)",
+        "year": "2025",
+        "venue": "arXiv 2501.13956",
+        "url": "https://arxiv.org/abs/2501.13956",
+        "core_idea": "Bi-temporal knowledge graph: every edge carries transaction-time (created_at/expired_at) and valid-time (valid_at/invalid_at); new contradictory facts invalidate (not delete) superseded edges; DMR 94.8%, LongMemEval up to +18.5% acc with 90% lower latency.",
+        "relation_to_qvf": "The strongest prior art for temporal scoping. Differences: (a) invalidation is decided once at WRITE time by an ingestion LLM, not re-derived per query; (b) validity is a global property of the edge, whereas QVF's labels (HISTORICAL_FOR_QUERY etc.) are query-conditioned; (c) Zep outputs a graph, not an interpretable claims/relations/roles/sufficiency map with citations."
+      },
+      {
+        "title": "A-MEM: Agentic Memory for LLM Agents",
+        "year": "2025",
+        "venue": "arXiv 2502.12110 / NeurIPS 2025",
+        "url": "https://arxiv.org/abs/2502.12110",
+        "core_idea": "Zettelkasten-style atomic notes (context, keywords, tags, embedding) with LLM-driven link generation and memory evolution that rewrites neighboring notes' descriptions when new notes arrive.",
+        "relation_to_qvf": "Append-only with soft evolution; no contradiction/supersession/temporal semantics — conflicting notes silently coexist. Its 'evolution' mutates memory content (write-time), whereas QVF leaves memories untouched and produces an external validity map. A-MEM is a natural baseline memory backend for QVF experiments."
+      },
+      {
+        "title": "HippoRAG: Neurobiologically Inspired Long-Term Memory for LLMs",
+        "year": "2024",
+        "venue": "NeurIPS 2024, arXiv 2405.14831",
+        "url": "https://arxiv.org/abs/2405.14831",
+        "core_idea": "OpenIE-built KG as hippocampal index + Personalized PageRank from query entities for single-step multi-hop retrieval across documents.",
+        "relation_to_qvf": "Pure retrieval-side association; append-only, no timestamps, no invalidation — contradictory triples coexist. Orthogonal to QVF: it improves WHAT is retrieved, QVF judges what retrieved items MEAN for the query."
+      },
+      {
+        "title": "From RAG to Memory: Non-Parametric Continual Learning for LLMs (HippoRAG 2)",
+        "year": "2025",
+        "venue": "ICML 2025, arXiv 2502.14802",
+        "url": "https://arxiv.org/abs/2502.14802",
+        "core_idea": "Enhances HippoRAG with passage nodes, query-to-triple linking, and an LLM recognition-memory filter for PPR seeds; +7% on associative memory over best embedding retrievers; frames RAG-as-continual-learning.",
+        "relation_to_qvf": "Despite the 'continual learning' framing, knowledge integration is pure appending — no staleness, conflict, or temporal validity handling at all. Demonstrates that even SOTA 'memory' RAG leaves the validity problem entirely to the reader LLM, which is exactly the slot QVF fills."
+      },
+      {
+        "title": "MemoryBank: Enhancing Large Language Models with Long-Term Memory",
+        "year": "2023",
+        "venue": "AAAI 2024, arXiv 2305.10250",
+        "url": "https://arxiv.org/abs/2305.10250",
+        "core_idea": "Hierarchical store (turns, daily event summaries, personality portraits) with an Ebbinghaus forgetting-curve update rule: memory strength reinforced on retrieval, decays/deletes with elapsed time.",
+        "relation_to_qvf": "The canonical example of GLOBAL time-based staleness: old = weak = forgotten. QVF's core thesis is the direct rebuttal — an old memory can be exactly right for a historical question; recency-decay deletes it. Excellent contrast baseline in the paper's related work."
+      },
+      {
+        "title": "MemoChat: Tuning LLMs to Use Memos for Consistent Long-Range Open-Domain Conversation",
+        "year": "2023",
+        "venue": "arXiv 2308.08239",
+        "url": "https://arxiv.org/abs/2308.08239",
+        "core_idea": "Instruction-tuned memorization–retrieval–response loop over self-written structured topical memos for long-range consistency.",
+        "relation_to_qvf": "Structured memory artifacts, but write-once summaries with no update/invalidation/temporal scoping; consistency depends on retrieval hitting the right memo. Shows early structured-memo lineage that QVF's Validity Map generalizes into a typed, query-conditioned analysis."
+      },
+      {
+        "title": "Reflexion: Language Agents with Verbal Reinforcement Learning",
+        "year": "2023",
+        "venue": "NeurIPS 2023, arXiv 2303.11366",
+        "url": "https://arxiv.org/abs/2303.11366",
+        "core_idea": "Episodic buffer of natural-language self-reflections generated after failures, bounded sliding window, prepended to subsequent trials — verbal RL without weight updates.",
+        "relation_to_qvf": "Origin of textual episodic memory for agents; task-scoped, reset per task, no validity reasoning. Relevant only as lineage; its bounded-buffer 'forgetting' is another global recency heuristic QVF replaces with per-query judgment."
+      },
+      {
+        "title": "MemOS: A Memory OS for AI System",
+        "year": "2025",
+        "venue": "arXiv 2507.03724",
+        "url": "https://arxiv.org/abs/2507.03724",
+        "core_idea": "MemCube abstraction unifying parametric/activation/plaintext memory with lifecycle governance (provenance, versioning, scheduling); LoCoMo LLM-judge 73.31–75.80, 159% temporal-reasoning gain over OpenAI memory.",
+        "relation_to_qvf": "Governance/versioning metadata exists but conflict handling is infrastructural (versions, provenance), not semantic; no query-conditioned applicability or relation typing between memories. QVF could be positioned as the missing semantic 'validity layer' such OS-style systems lack."
+      },
+      {
+        "title": "Memory OS of AI Agent (MemoryOS)",
+        "year": "2025",
+        "venue": "EMNLP 2025 Oral, arXiv 2506.06326",
+        "url": "https://arxiv.org/abs/2506.06326",
+        "core_idea": "Short/mid/long-term hierarchical storage with dialogue-chain FIFO and heat-based segmented paging for promotion/eviction; LoCoMo +48.36% F1 over baselines on GPT-4o-mini.",
+        "relation_to_qvf": "Updates are recency/heat-driven overwrites — again a global, content-blind staleness policy with no contradiction semantics; superseded info is evicted rather than temporally scoped."
+      },
+      {
+        "title": "MIRIX: Multi-Agent Memory System for LLM-Based Agents",
+        "year": "2025",
+        "venue": "arXiv 2507.07957",
+        "url": "https://arxiv.org/abs/2507.07957",
+        "core_idea": "Six typed memory stores (core, episodic, semantic, procedural, resource, knowledge-vault), each with a manager agent plus a query router; multimodal screen-capture memory; 85.38% avg on LoCoMo.",
+        "relation_to_qvf": "Typed STORES but not typed RELATIONS between memories; each manager decides what belongs in its store — no cross-memory contradiction/supersession analysis and no query-time validity labels."
+      },
+      {
+        "title": "Memory-R1: Enhancing LLM Agents to Manage and Utilize Memories via Reinforcement Learning",
+        "year": "2025",
+        "venue": "arXiv 2508.19828",
+        "url": "https://arxiv.org/abs/2508.19828",
+        "core_idea": "PPO/GRPO-trained Memory Manager ({ADD,UPDATE,DELETE,NOOP}) plus an Answer Agent that distills up to 60 retrieved memories down to a relevant subset; with 152 training QAs beats Mem0 by +48% F1/+69% BLEU-1/+37% J on LoCoMo; generalizes to MSC and LongMemEval.",
+        "relation_to_qvf": "Nearest neighbor to QVF's post-retrieval filtering slot: its Answer Agent filters retrieved memories before answering. But it is a learned opaque filter — no atomic claims, no relation labels, no temporal/applicability labels, no sufficiency/abstention output, and its Memory Manager still does destructive write-time ops. QVF's differentiator: structured, interpretable, query-conditioned validity map with citations."
+      },
+      {
+        "title": "LightMem: Lightweight and Efficient Memory-Augmented Generation",
+        "year": "2025",
+        "venue": "ICLR 2026, arXiv 2510.18866",
+        "url": "https://arxiv.org/abs/2510.18866",
+        "core_idea": "Atkinson-Shiffrin pipeline: sensory-buffer compression → topic-aware short-term memory → sleep-time offline long-term consolidation; LongMemEval +2.09–6.40% (GPT) with up to 38x fewer tokens.",
+        "relation_to_qvf": "Consolidation (including conflict merging) is offline and global ('sleep-time'), decoupled from any specific query; evaluated by STALE as still failing implicit-invalidation cases."
+      },
+      {
+        "title": "SeCom: On Memory Construction and Retrieval for Personalized Conversational Agents",
+        "year": "2025",
+        "venue": "ICLR 2025, arXiv 2502.05589 (Microsoft)",
+        "url": "https://arxiv.org/abs/2502.05589",
+        "core_idea": "Segment-level memory granularity (topical segmentation) plus LLMLingua-2 compression as denoising; beats turn/session/summary granularities on LoCoMo and Long-MT-Bench+.",
+        "relation_to_qvf": "Purely granularity/compression work; no validity dimension. Useful as evidence that raw retrieved memory is noisy — QVF addresses the semantic noise (invalid/contradictory/distractor) rather than the token noise."
+      },
+      {
+        "title": "MemInsight: Autonomous Memory Augmentation for LLM Agents",
+        "year": "2025",
+        "venue": "EMNLP 2025, arXiv 2503.21760 (Amazon)",
+        "url": "https://arxiv.org/abs/2503.21760",
+        "core_idea": "LLM autonomously mines attributes to annotate/structure stored memories, improving retrieval; +34% recall over RAG baseline on LoCoMo retrieval.",
+        "relation_to_qvf": "Write-time semantic enrichment of individual memories; no inter-memory relations, no query-conditioned judgments. QVF's Validity Map is the read-time, relational counterpart."
+      },
+      {
+        "title": "M+: Extending MemoryLLM with Scalable Long-Term Memory",
+        "year": "2025",
+        "venue": "ICML 2025, arXiv 2502.00592",
+        "url": "https://arxiv.org/abs/2502.00592",
+        "core_idea": "Latent-space memory pool with a co-trained retriever, extending retention from <20k to >160k tokens.",
+        "relation_to_qvf": "Parametric/latent memory line — validity, citation, and contradiction are not even expressible; cite to delimit QVF's scope to symbolic/textual memory."
+      },
+      {
+        "title": "Hindsight: Building Agent Memory that Retains, Recalls, and Reflects",
+        "year": "2025",
+        "venue": "arXiv 2512.12818 (vectorize.io)",
+        "url": "https://arxiv.org/pdf/2512.12818",
+        "core_idea": "Four memory networks (World, Experience, Opinion, Entity/Observation) with retain/recall/reflect ops; reports 91.4% overall LongMemEval, claimed SOTA early 2026.",
+        "relation_to_qvf": "Current LongMemEval leader to beat/compare; separates opinion vs world facts but does not emit query-conditioned validity/temporal labels."
+      },
+      {
+        "title": "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid?",
+        "year": "2026",
+        "venue": "arXiv 2605.06527",
+        "url": "https://arxiv.org/html/2605.06527v1",
+        "core_idea": "Benchmark of 400 implicit-conflict scenarios / 1,200 queries (co-referential vs propagated conflicts, contexts to 150K tokens) probing state resolution, premise resistance, and implicit policy adaptation; best model 55.2%; memory frameworks (LightMem, Zep, LiCoMemory, A-MEM, Mem0) fare poorly; CUPMem write-side adjudication reaches 68%.",
+        "relation_to_qvf": "Strongest evidence the QVF problem is open and hard: even 2026 frontier models fail implicit invalidation, and premise-embedded stale queries crater accuracy 92%→30%. STALE's CUPMem fixes it at WRITE time; QVF's read-time query-conditioned map is the untried alternative. STALE could be an additional evaluation target for QVF beyond LongMemEval/LoCoMo."
+      },
+      {
+        "title": "TOKI: A Bitemporal Operator Algebra for Contradiction Resolution in LLM-Agent Persistent Memory",
+        "year": "2026",
+        "venue": "arXiv 2606.06240",
+        "url": "https://arxiv.org/pdf/2606.06240",
+        "core_idea": "Formal algebra over valid-time × transaction-time coordinates with supersession, contradiction-resolution, and temporal-composition operators for agent memory.",
+        "relation_to_qvf": "Formalizes bi-temporal supersession as deterministic algebra; QVF differs by treating validity as a query-conditioned SEMANTIC judgment (an LLM adapter emitting typed labels), covering relations TOKI cannot express (COMPLEMENTS, QUALIFIER, DISTRACTOR, sufficiency, risk flags)."
+      },
+      {
+        "title": "Temporal Validity in Retrieval Memory: Eliminating Stale-Fact Errors for AI Agents (MemStrata)",
+        "year": "2026",
+        "venue": "arXiv 2606.26511",
+        "url": "https://arxiv.org/html/2606.26511",
+        "core_idea": "Deterministic (subject, relation, object) supersession rule retiring stale values in a bi-temporal ledger; argues plain RAG cannot eliminate stale-fact errors by construction; reports large contradiction-detection gaps in existing systems (2–14% vs MOSAIC-style 66% at ingestion).",
+        "relation_to_qvf": "Same problem, opposite mechanism: deterministic write-time ledger vs QVF's read-time LLM semantic analysis. QVF's counterargument: (s,r,o) matching misses paraphrase/conditional/partial conflicts and cannot express 'valid for THIS historical query'."
+      },
+      {
+        "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+        "year": "2024",
+        "venue": "ICLR 2025, arXiv 2410.10813",
+        "url": "https://arxiv.org/abs/2410.10813",
+        "core_idea": "500 manually created questions over long chat histories testing five abilities: information extraction, multi-session reasoning, temporal reasoning, knowledge updates, abstention; commercial systems only 30–70%; temporal-aware designs gain 7–11% on temporal reasoning.",
+        "relation_to_qvf": "QVF's main evaluation. Its knowledge-update, temporal-reasoning, and abstention subtasks map one-to-one onto QVF's SUPERSEDED_FOR_QUERY/temporal labels and SUFFICIENT/INSUFFICIENT assessment."
+      }
+    ],
+    "sota_numbers": "DMR: Zep 94.8% (gpt-4-turbo) / 98.2% (gpt-4o-mini) vs MemGPT 93.4% (arxiv.org/abs/2501.13956). LongMemEval: Zep up to +18.5% acc over full-context with 90% latency cut, ~71.2% overall and 63.8% temporal-retrieval per secondary sources (blog.getzep.com, baeseokjae.github.io/posts/zep-ai-agent-memory-review-2026); Hindsight 91.4% overall, claimed SOTA early 2026 (arxiv.org/pdf/2512.12818, vectorize.io); LightMem +2.09–6.40% acc (GPT) with up to 38x token reduction (arxiv.org/abs/2510.18866); MemOS claims 89.20 (github.com/MemTensor/MemOS, 2026); commercial assistants only 30–70% per original paper (arxiv.org/abs/2410.10813). LoCoMo (LLM-as-Judge unless noted): Mem0 66.9–67.13 vs OpenAI Memory 52.9, Mem0g temporal 58.13 vs 21.71, p95 search 0.20s (arxiv.org/abs/2504.19413, mem0.ai/research-3); MIRIX 85.38 (arxiv.org/abs/2507.07957); MemOS 73.31→75.80 (MemOS-1031) vs MIRIX 64.33, Mem0 59.22, +159% temporal vs OpenAI memory (arxiv.org/abs/2507.03724, github.com/MemTensor/MemOS); MemoryOS +48.36% F1 avg over baselines on GPT-4o-mini (arxiv.org/abs/2506.06326); Memory-R1 (LLaMA-3.1-8B GRPO) +48% F1 / +69% BLEU-1 / +37% J over Mem0 (arxiv.org/abs/2508.19828); MemInsight +34% recall over RAG on LoCoMo retrieval (arxiv.org/abs/2503.21760). Validity-specific: STALE best frontier model 55.2% overall, direct-question 92% → 30% under stale premises, CUPMem 68% (arxiv.org/html/2605.06527v1); contradiction detection at ingestion 2–14% for existing systems vs 66% for MOSAIC-style adjudication (arxiv.org/html/2606.26511). HippoRAG 2: +7% associative memory over NV-Embed-v2 (arxiv.org/abs/2502.14802).",
+    "benchmark_details": "This area is a systems survey, but the two planned QVF benchmarks recur throughout: LongMemEval (ICLR 2025): 500 questions, five ability types (single/multi-session information extraction, multi-session reasoning, temporal reasoning, knowledge updates, abstention); variants LongMemEval-S (~115k-token histories) and LongMemEval-M (~500 sessions / up to ~1.5M tokens); JSON with question, answer, question_type, question_date, haystack_sessions (timestamped turn lists), answer_session_ids; official metric is LLM-judged QA accuracy per type plus abstention; judge scripts in the official repo. LoCoMo (Maharana et al. 2024): 10 very long multi-session conversations (~600 dialogues, ~26k tokens each, session timestamps), ~1,540–2,000 QA pairs in categories single-hop, multi-hop, temporal, open-domain/world-knowledge (and adversarial/unanswerable in the original); community practice (Mem0 paper) evaluates with F1/BLEU-1 plus LLM-as-a-Judge 'J' score; note category-numbering discrepancies across papers when comparing.",
+    "download_info": "LongMemEval: github.com/xiaowu0162/LongMemEval (official, ICLR 2025) — data files longmemeval_s.json, longmemeval_m.json, longmemeval_oracle.json via the repo's HuggingFace/Google Drive links (huggingface.co/datasets/xiaowu0162/longmemeval). LoCoMo: github.com/snap-research/locomo (official) — locomo10.json plus evaluation scripts; Mem0's evaluation harness for LoCoMo at github.com/mem0ai/mem0 (evaluation directory). STALE benchmark (optional third eval): arxiv.org/html/2605.06527v1 (repo linked from paper).",
+    "gaps_for_qvf": "Six concrete gaps QVF can claim. (1) Write-time vs read-time: every surveyed system that handles conflict at all does it at INGESTION — Mem0 deletes, Memory-R1's manager updates/deletes, Zep/Graphiti and TOKI/MemStrata set invalid_at once, CUPMem adjudicates on write, LightMem consolidates offline. No system re-derives validity conditioned on the current query at read time; Zep's bi-temporal graph can ANSWER historical queries but its supersession decision (later timestamp ⇒ invalidate) is global and irreversible per edge. QVF's query-conditioned labels (an old memory is CURRENT_FOR_QUERY for a historical question; a later timestamp alone does not prove supersession) occupy an empty slot. (2) No interpretable intermediate artifact: no system emits a structured map of atomic claims with memory-ID citations, typed inter-claim relations (EQUIVALENT/SUPPORTS/CONTRADICTS/SUPERSEDES/…), and per-memory roles between retrieval and generation — Memory-R1's Answer Agent filters opaquely; everything else passes raw text. (3) Append-only systems (A-MEM, HippoRAG 1/2, MemoChat, HippoRAG-style RAG generally) have zero contradiction semantics, so the reader LLM silently arbitrates conflicts — STALE shows even frontier models do this at ~55% and collapse to ~30% under stale-premise queries, quantifying the failure QVF prevents. (4) Recency-decay staleness (MemoryBank's Ebbinghaus curve, MemoryOS heat paging) deletes/evicts old-but-historically-valid memories — the exact anti-pattern QVF's thesis rebuts; use as motivating contrast. (5) Sufficiency and abstention: LongMemEval's abstention subtask is the weakest across reported systems, and no surveyed memory system performs explicit sufficiency assessment (SUFFICIENT/INSUFFICIENT/AMBIGUOUS) or risk flagging before generation. (6) Distractor labeling: no system identifies retrieved-but-misleading memories (QVF's DISTRACTOR/UNRESOLVED roles); benchmarks (LongMemEval haystacks, STALE distractor sessions) already contain the needed material, so QVF can quantify distractor identification as a novel metric. Evaluation positioning: LongMemEval knowledge-update + temporal-reasoning + abstention subsets and LoCoMo temporal/adversarial categories map directly onto QVF outputs, and STALE (2026) is an emerging third benchmark explicitly about memory invalidation where QVF's read-time approach can be contrasted with CUPMem's write-time adjudication."
+  },
+  {
+    "area": "knowledge-conflict-and-temporal-validity-in-rag-qa",
+    "summary": "This survey covers four intertwined threads from 2021-2026: (1) knowledge-conflict research (context-memory and inter-context), (2) temporal QA benchmarks, (3) temporal validity of facts as a research topic, and (4) mechanisms that decide WHICH evidence is valid for a given query time.\n\n(1) Knowledge conflict. The field was seeded by Longpre et al. (EMNLP 2021), whose entity-substitution framework creates context-memory conflicts by replacing the answer entity in a gold passage with an alternate entity (same-type, alias, corpus, popularity variants); they found QA models over-rely on parametric memory, modulated by model size and entity popularity. Chen, Zhang & Choi (EMNLP 2022, \"Rich Knowledge Sources Bring Complex Knowledge Conflicts\") extended this to the realistic multi-passage setting (up to 100 retrieved passages + parametric knowledge), showing that contradictions among sources barely move model confidence, and proposed a calibration objective that discourages committing to a single answer when retrieved evidence contains multiple conflicting candidates. Xie et al. (ICLR 2024, \"Adaptive Chameleon or Stubborn Sloth\") showed LLMs are highly receptive to coherent counter-memory evidence yet exhibit strong confirmation bias when any evidence agrees with their parametric belief. ClashEval (NeurIPS 2024 D&B) quantified the \"tug-of-war\": on 1,200+ questions with perturbed retrieved documents, LLMs adopt wrong retrieved content over 60% of the time, adoption probability falls as the perturbation becomes more implausible and rises when the model's prior token-probability confidence is low; they use these signals (prior vs. context probability comparison) as a simple conflict-resolution mechanism. Jin et al. (LREC-COLING 2024, \"Tug-of-War Between Knowledge\") found stronger RALMs show a Dunning-Kruger-like persistence in faulty internal memory. The EMNLP 2024 survey \"Knowledge Conflicts for LLMs\" established the now-standard taxonomy: context-memory, inter-context, and intra-memory conflict, cataloguing causes and mitigation families (faithful-to-context prompting, decoding-time interventions like context-aware decoding, disentanglement like DisentQA, fine-tuning like KAFT). ConflictBank (NeurIPS 2024 D&B) is the largest conflict benchmark (7.45M claim-evidence pairs, 553k QA pairs) explicitly covering misinformation, TEMPORAL, and semantic conflict causes. DynamicQA (Findings EMNLP 2024) showed temporally dynamic facts produce more intra-memory conflict and are HARDER to override with context - directly relevant to memory-augmented agents where the most frequently updated facts are the most conflict-prone. Behavioral studies with real (non-synthetic) documents (Kortukov et al. 2024) and task-dependence studies (2506.06485) refine the picture. Mechanism-level interventions include IRCAN (reweighting context-aware neurons), ParamMute (suppressing knowledge-critical FFNs), Micro-Act (actionable self-reasoning over conflicts), and proxy-model steering of context sensitivity (2508.19720).\n\n(2) Inter-context conflict and conflict-aware RAG. Astute RAG (Google, 2410.07176) iteratively consolidates internal and external knowledge with source-awareness; in their study 70% of retrieved passages lacked a direct answer and 19.2% of instances had internal-external conflicts. RAMDocs/MADAM-RAG (2504.13079) simulates realistic mixtures of ambiguity, misinformation, and noise, and resolves them via per-document agents that debate plus an aggregator that distinguishes legitimate ambiguity (multiple valid answers) from misinformation - conceptually close to QVF's role labels but implemented as free-form debate, not a typed structured map. \"Open Domain QA with Conflicting Contexts\" (2410.12311) crowdsourced conflict annotations on Google-retrieved contexts (about 25% of real retrieved contexts conflict). Healthcare-focused work (2511.06668) highlights outdated recommendations and evolving consensus as the canonical inter-context conflict source.\n\n(3) Temporal QA benchmarks. TimeQA (NeurIPS 2021 D&B; Chen et al.) built time-evolving facts from Wikidata with easy/hard implicit variants. TempLAMA (Dhingra et al., TACL 2022, \"Time-Aware Language Models as Temporal Knowledge Bases\") introduced temporally-scoped cloze queries and joint training with time prefixes; known biases: 2010-2020 span only and 70.69% of questions answered by the subject's most frequent object, encouraging frequency shortcuts. SituatedQA (2021) showed answers depend on temporal/geographic context of the asker. TempReason (ACL 2023) spans longer ranges and three reasoning levels (time-time, time-event, event-event), showing LLM accuracy collapses on low-resource years. MenatQA (Findings EMNLP 2023) probes scope, order, and counterfactual temporal factors. TIQ (WWW 2024 companion) targets implicit temporal constraints (\"during the Cold War\"). ChroKnowledge/ChroKnowBench (ICLR 2025) evaluates chronological knowledge across domains, distinguishing evolving vs. invariant facts and showing models partially recall or cut off at temporal boundaries; ChroKnowPrompt traverses neighboring years to elicit knowledge. Dynamic/live benchmarks: RealTimeQA, FreshQA/FreshLLMs (Findings ACL 2024; never/slow/fast-changing and false-premise categories; FreshPrompt), PAT-Questions (present-anchored, self-updating), UnSeenTimeQA (memorization-free), DyKnow (dynamically updated outdated-knowledge checks), EvolvingQA (NAACL 2024; continual-learning models fail at updating/removing outdated knowledge), GrowOVER (ACL 2024; RaLMs struggle with recently updated knowledge), DynaQuest, Test of Time (synthetic temporal-logic), TRAVELER (vague/implicit/explicit references), Complex-TR, TEMPO (2026, temporal-reasoning-intensive retrieval). The comprehensive survey \"It's High Time: A Survey of Temporal Question Answering\" (2505.20243) taxonomizes by source (diachronic news vs. Wikipedia snapshots), explicitness, and reasoning complexity, and lists open challenges: answer drift over static snapshots, temporal uncertainty (\"all dates treated as exact\"), implicit temporal intent, and weak robustness.\n\n(4) Temporal alignment and temporal validity. \"Time is Encoded in the Weights of Finetuned Language Models\" (2312.13401) found linear yearly decay plus seasonal misalignment and introduced time vectors; \"Set the Clock\" (Findings ACL 2024) showed pretrained LMs hold a \"chaotic\" internal sense of time and can be aligned to a target year (even 2022 alignment improving over earlier years); Ticktack (2503.04150) uses sexagenary cycle encodings for long-range time; activation-engineering work (2505.14158) steers time-sensitive facts. Most striking for QVF: \"Right Knowledge, Wrong Answer\" (2606.20959, 2026) shows models often CONTAIN both the outdated and the newer fact but emit the outdated one (parametric temporal conflict); their Temporal Attractor Steering recovers 29-57% of conflict cases. Temporal validity as a text property is studied by Wenzel & Jatowt: Temporal Validity Change Prediction (Findings ACL 2024) benchmarks detecting context statements that change how long a statement remains valid; Chronocept (2505.07637) models validity as continuous probability curves over time. On the systems side, MemStrata (2606.26511, 2026, \"Temporal Validity in Retrieval Memory\") is the closest system-level neighbor to QVF: a bi-temporal ledger with a deterministic supersession rule (same subject+relation, different object => retire older entry, no LLM call), motivated by an impossibility result that embedding similarity cannot separate contradictions from duplicates (AUROC 0.59, contradictions are MORE similar to originals than duplicates are); it achieves about 0% stale-fact errors vs. RAG's 15-40%, but supersession reliability drops from 97% on clean single-value facts to 44% on messy prose, and its supersession is GLOBAL (newer always retires older), not query-conditioned. \"Question Answering under Temporal Conflict\" (2506.07270) builds Temporal Wiki (Wikipedia snapshots) and Unified Clark (timestamped news) and shows an agentic structured external memory with temporal filtering beats ICL/RAG when multiple fact versions co-occur in context.\n\n(5) How existing methods decide WHICH evidence is valid for a query time - mechanisms and limitations. Mechanism families found: (a) score fusion at retrieval: TempRALM (\"It's About Time\", 2401.13222) adds temporal relevance to Atlas retrieval (up to 74% over Atlas); recency priors with half-life decay (score = alpha*cos + (1-alpha)*0.5^(age/h)); timestamp-aware embeddings (TempRetriever, TsContriever); (b) query decomposition + rerank: TimeR4 (EMNLP 2024) retrieve-rewrite-retrieve-rerank grounds implicit time in TKG facts; MRAG (Findings EMNLP 2025) separates semantic from temporal relevance and is evaluated on TempRAGEval (manually perturbed time-sensitive questions with gold evidence); (c) hard temporal filtering / windowing (time-aware RAG pipelines that disentangle subject and temporal window); (d) version/structure-aware indexing: VersionRAG, DyG-RAG (event-centric dynamic graphs), RAG-meets-temporal-graphs (2510.13590), MemoTime, HALO (half-life-based outdated-fact filtering in TKGs), AionRAG; (e) deterministic supersession over structured memory (MemStrata); (f) LLM prior-vs-context arbitration using token probabilities (ClashEval) or self-consolidation (Astute RAG) or multi-agent debate (MADAM-RAG); (g) parametric interventions (temporal alignment, TAS steering). Documented limitations: recency heuristics are corpus-sensitive and fail silently - the Freshness study (2509.19376) shows optimal (alpha, half-life) on one corpus collapses to 0.00 Latest@10 on another, and narrow top-K semantic candidate selection discards the newest item before any recency prior can act; LLM rerankers exhibit systematic recency bias, promoting artificially newer timestamps by up to 95 ranks and reversing 25% of pairwise preferences even with identical content (2509.11353), which is exactly the \"later timestamp proves supersession\" fallacy QVF rejects; supersession-by-recency breaks on historical questions (temporal QA surveys note systems \"treat all dates as exact\" and cannot infer implicit query time); filtering approaches delete rather than label, losing evidence needed for historical/comparative queries; conflict-resolution approaches (debate, consolidation, calibration) output a single answer or abstention rather than an auditable per-claim validity structure; and almost all conflict benchmarks manufacture conflicts synthetically (entity substitution, perturbation), which recent work shows behaves differently from naturally occurring conflicts in real documents.",
+    "papers": [
+      {
+        "title": "Entity-Based Knowledge Conflicts in Question Answering",
+        "year": "2021",
+        "venue": "EMNLP 2021",
+        "url": "https://aclanthology.org/2021.emnlp-main.565/",
+        "core_idea": "Creates context-memory conflicts by substituting the answer entity in gold passages (same-type/alias/corpus/popularity substitutions); shows QA models over-rely on parametric memory.",
+        "relation_to_qvf": "Foundational conflict-construction methodology; QVF differs by treating conflict as one of many typed relations (CONTRADICTS/SUPERSEDES/...) over real retrieved memories rather than synthetic substitutions, and by conditioning on the query."
+      },
+      {
+        "title": "Rich Knowledge Sources Bring Complex Knowledge Conflicts: Recalibrating Models to Reflect Conflicting Evidence",
+        "year": "2022",
+        "venue": "EMNLP 2022",
+        "url": "https://arxiv.org/abs/2210.13701",
+        "core_idea": "Multi-passage + parametric conflicts barely change model confidence; proposes calibration that withholds a single answer under conflicting answer candidates.",
+        "relation_to_qvf": "Closest early precedent for QVF's sufficiency/AMBIGUOUS output; but it only calibrates confidence, without identifying which evidence is valid or why."
+      },
+      {
+        "title": "Adaptive Chameleon or Stubborn Sloth: Revealing the Behavior of Large Language Models in Knowledge Conflicts",
+        "year": "2024",
+        "venue": "ICLR 2024",
+        "url": "https://arxiv.org/abs/2305.13300",
+        "core_idea": "LLMs accept coherent counter-memory evidence yet show confirmation bias when any evidence matches parametric beliefs.",
+        "relation_to_qvf": "Motivates an explicit pre-generation validity map: implicit conflict handling inside the generator is biased; QVF externalizes it as auditable labels."
+      },
+      {
+        "title": "ClashEval: Quantifying the tug-of-war between an LLM's internal prior and external evidence",
+        "year": "2024",
+        "venue": "NeurIPS 2024 Datasets & Benchmarks",
+        "url": "https://arxiv.org/abs/2404.10198",
+        "core_idea": "1,200+ questions with perturbed retrieved docs; LLMs adopt wrong context >60% of the time; adoption depends on perturbation plausibility and prior confidence; proposes token-probability arbitration.",
+        "relation_to_qvf": "Its arbitration mechanism is answer-level and probability-based; QVF instead produces claim-level, query-conditioned validity judgments with metadata-grounded reasons."
+      },
+      {
+        "title": "Knowledge Conflicts for LLMs: A Survey",
+        "year": "2024",
+        "venue": "EMNLP 2024",
+        "url": "https://arxiv.org/abs/2403.08319",
+        "core_idea": "Standard taxonomy: context-memory, inter-context, intra-memory conflict; catalogues causes, behaviors, and mitigations.",
+        "relation_to_qvf": "QVF's relation set refines 'inter-context conflict' into typed relations and adds query-conditioned temporal/applicability axes the survey identifies as open problems."
+      },
+      {
+        "title": "Tug-of-War Between Knowledge: Exploring and Resolving Knowledge Conflicts in Retrieval-Augmented Language Models",
+        "year": "2024",
+        "venue": "LREC-COLING 2024",
+        "url": "https://arxiv.org/abs/2402.14409",
+        "core_idea": "Evaluation framework for internal-vs-external conflicts; stronger RALMs persistently favor faulty internal memory (Dunning-Kruger effect).",
+        "relation_to_qvf": "Evidence that resolution cannot be left to the generator; supports a dedicated pre-generation filter module."
+      },
+      {
+        "title": "ConflictBank: A Benchmark for Evaluating the Influence of Knowledge Conflicts in LLMs",
+        "year": "2024",
+        "venue": "NeurIPS 2024 Datasets & Benchmarks",
+        "url": "https://arxiv.org/abs/2408.12076",
+        "core_idea": "7.45M claim-evidence pairs / 553k QA pairs covering misinformation, temporal, and semantic conflict causes.",
+        "relation_to_qvf": "Largest conflict benchmark including temporal conflicts; could supply auxiliary training/eval data for QVF's CONTRADICTS vs SUPERSEDES distinction."
+      },
+      {
+        "title": "DynamicQA: Tracing Internal Knowledge Conflicts in Language Models",
+        "year": "2024",
+        "venue": "Findings of EMNLP 2024",
+        "url": "https://arxiv.org/abs/2407.17023",
+        "core_idea": "Temporally dynamic and disputable facts cause more intra-memory conflict and are harder to update via context.",
+        "relation_to_qvf": "Shows the facts memory-augmented agents update most often are exactly the ones models resist updating - the failure mode QVF's UPDATE/SUPERSEDED labels target."
+      },
+      {
+        "title": "Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for Large Language Models",
+        "year": "2024",
+        "venue": "arXiv (Google Cloud AI Research); ICLR 2025",
+        "url": "https://arxiv.org/abs/2410.07176",
+        "core_idea": "Source-aware iterative consolidation of internal and external knowledge; finalizes answer by information reliability.",
+        "relation_to_qvf": "Consolidates into one answer without exposing structure; QVF outputs the intermediate validity map explicitly, enabling audit, abstention, and downstream control."
+      },
+      {
+        "title": "Retrieval-Augmented Generation with Conflicting Evidence (RAMDocs / MADAM-RAG)",
+        "year": "2025",
+        "venue": "arXiv 2504.13079 (COLM 2025)",
+        "url": "https://arxiv.org/abs/2504.13079",
+        "core_idea": "RAMDocs mixes ambiguity, misinformation, noise, and imbalanced support; MADAM-RAG resolves via per-document agents debating plus an aggregator distinguishing legitimate ambiguity from misinformation.",
+        "relation_to_qvf": "Nearest inter-context-conflict method in spirit (distinguishes ambiguity from misinformation); QVF replaces expensive multi-round debate with a single typed structured map including temporal validity, which debate lacks."
+      },
+      {
+        "title": "Open Domain Question Answering with Conflicting Contexts",
+        "year": "2024",
+        "venue": "arXiv (Findings NAACL 2025)",
+        "url": "https://arxiv.org/abs/2410.12311",
+        "core_idea": "Human-annotated naturally occurring conflicts in retrieved web contexts (~25% of questions); finetuning LLMs to explain conflict resolution helps.",
+        "relation_to_qvf": "Confirms natural conflicts are frequent and that explanation-style supervision helps - supports QVF's citation-bearing claims design."
+      },
+      {
+        "title": "TimeQA: A Benchmark for Question Answering over Time-Evolving Facts",
+        "year": "2021",
+        "venue": "NeurIPS 2021 Datasets & Benchmarks",
+        "url": "https://arxiv.org/abs/2108.06314",
+        "core_idea": "Wikidata-derived time-evolving facts with easy/hard (implicit) temporal specifications.",
+        "relation_to_qvf": "Canonical temporal-scope QA; but assumes a single gold answer per time scope and provides evidence already scoped - no notion of judging retrieved-memory validity."
+      },
+      {
+        "title": "Time-Aware Language Models as Temporal Knowledge Bases (TempLAMA)",
+        "year": "2022",
+        "venue": "TACL",
+        "url": "https://arxiv.org/abs/2106.15110",
+        "core_idea": "Temporally-scoped cloze probes; time-prefix training; documents frequency-shortcut bias (70.69% most-frequent-answer).",
+        "relation_to_qvf": "Shows parametric time-conditioning is weak; QVF instead conditions on query time at inference over external memories."
+      },
+      {
+        "title": "Towards Benchmarking and Improving the Temporal Reasoning Capability of Large Language Models (TempReason)",
+        "year": "2023",
+        "venue": "ACL 2023",
+        "url": "https://arxiv.org/abs/2306.08952",
+        "core_idea": "Three-level temporal reasoning benchmark (time-time, time-event, event-event); accuracy collapses on low-resource years.",
+        "relation_to_qvf": "Benchmark for the reasoning QVF's temporal labels must encode; its time-sensitive RL fine-tuning is a parametric alternative to QVF's inference-time labeling."
+      },
+      {
+        "title": "MenatQA: A New Dataset for Testing the Temporal Comprehension and Reasoning Abilities of Large Language Models",
+        "year": "2023",
+        "venue": "Findings of EMNLP 2023",
+        "url": "https://arxiv.org/abs/2310.05157",
+        "core_idea": "Probes scope, order, and counterfactual temporal factors, emphasizing implicit temporal information.",
+        "relation_to_qvf": "Its scope factor (question time narrower/wider than fact validity interval) is precisely QVF's PARTIALLY_APPLICABLE / temporal-label problem."
+      },
+      {
+        "title": "TIQ: A Benchmark for Temporal Question Answering with Implicit Time Constraints",
+        "year": "2024",
+        "venue": "WWW 2024 Companion",
+        "url": "https://dl.acm.org/doi/10.1145/3589335.3651895",
+        "core_idea": "Auto-constructed questions whose time constraint is implicit via events/eras rather than explicit dates.",
+        "relation_to_qvf": "Shows query time is often not literal in the query - QVF's Semantic Adapter must infer the implied reference time before labeling validity."
+      },
+      {
+        "title": "ChroKnowledge: Unveiling Chronological Knowledge of Language Models in Multiple Domains",
+        "year": "2025",
+        "venue": "ICLR 2025",
+        "url": "https://arxiv.org/abs/2410.09870",
+        "core_idea": "ChroKnowBench separates time-variant vs invariant facts across domains; ChroKnowPrompt traverses neighboring years; models show partial recall/temporal boundary cutoffs.",
+        "relation_to_qvf": "Its evolving-vs-constant fact distinction parallels QVF's TIME_INSENSITIVE label; purely parametric evaluation, no retrieved-evidence filtering."
+      },
+      {
+        "title": "FreshLLMs: Refreshing Large Language Models with Search Engine Augmentation (FreshQA)",
+        "year": "2024",
+        "venue": "Findings of ACL 2024",
+        "url": "https://arxiv.org/abs/2310.03214",
+        "core_idea": "FreshQA categorizes questions by answer volatility (never/slow/fast-changing, false-premise); FreshPrompt injects fresh search results.",
+        "relation_to_qvf": "Volatility categories inform QVF's temporal labels; FreshPrompt assumes newest search results are valid - the recency assumption QVF explicitly refuses."
+      },
+      {
+        "title": "Time is Encoded in the Weights of Finetuned Language Models",
+        "year": "2023",
+        "venue": "arXiv 2312.13401 (ACL 2024)",
+        "url": "https://arxiv.org/abs/2312.13401",
+        "core_idea": "Time vectors: temporal misalignment is linear-in-years with seasonal structure and manipulable via weight arithmetic.",
+        "relation_to_qvf": "Parametric temporal alignment is complementary; QVF handles per-query time conditioning that weight-space methods cannot."
+      },
+      {
+        "title": "Set the Clock: Temporal Alignment of Pretrained Language Models",
+        "year": "2024",
+        "venue": "Findings of ACL 2024",
+        "url": "https://arxiv.org/abs/2402.16797",
+        "core_idea": "Pretrained LMs encode a chaotic sense of time; alignment methods can target a chosen year.",
+        "relation_to_qvf": "Aligns the model to ONE global time; QVF's premise is that validity must be conditioned per query, including historical query times."
+      },
+      {
+        "title": "Right Knowledge, Wrong Answer: Test-Time Steering for Temporal Fact Conflicts in Open-Weight Language Models",
+        "year": "2026",
+        "venue": "arXiv 2606.20959",
+        "url": "https://arxiv.org/abs/2606.20959",
+        "core_idea": "Models retain both outdated and newer facts but emit the outdated one; Temporal Attractor Steering recovers 29-57% of conflict cases without retraining.",
+        "relation_to_qvf": "Parametric-side mirror of QVF's SUPERSEDES problem; activation steering always prefers the newer fact, so it cannot serve historical queries - QVF's query-conditioning is the differentiator."
+      },
+      {
+        "title": "Temporal Validity Change Prediction",
+        "year": "2024",
+        "venue": "Findings of ACL 2024",
+        "url": "https://arxiv.org/abs/2401.00779",
+        "core_idea": "Task: detect context statements that change how long a target statement remains valid (Twitter-sourced dataset).",
+        "relation_to_qvf": "Establishes 'temporal validity' as an NLP property of statements; QVF operationalizes it as query-conditioned labels over retrieved memories rather than free-standing durations."
+      },
+      {
+        "title": "Temporal Validity in Retrieval Memory: Eliminating Stale-Fact Errors for AI Agents over Evolving Knowledge (MemStrata)",
+        "year": "2026",
+        "venue": "arXiv 2606.26511",
+        "url": "https://arxiv.org/html/2606.26511",
+        "core_idea": "Bi-temporal ledger with deterministic supersession (same subject+relation, new object retires old entry; no LLM call); shows embedding similarity cannot separate contradictions from duplicates (AUROC 0.59); ~0% stale-fact errors vs RAG 15-40%.",
+        "relation_to_qvf": "Closest system to QVF. Key differences: supersession is global and recency-driven (newer always wins) vs QVF's query-conditioned validity (old memory can be CURRENT_FOR_QUERY for historical questions); drops to 44% reliability on messy prose, exactly where an LLM Semantic Adapter should win; QVF also adds relations, roles, sufficiency, risk flags."
+      },
+      {
+        "title": "Question Answering under Temporal Conflict: Evaluating and Organizing Evolving Knowledge with LLMs",
+        "year": "2025",
+        "venue": "arXiv 2506.07270",
+        "url": "https://arxiv.org/abs/2506.07270",
+        "core_idea": "Temporal Wiki (Wikipedia snapshots) and Unified Clark (timestamped news) benchmarks; agentic structured external memory + temporal filtering beats ICL/RAG when multiple fact versions co-occur.",
+        "relation_to_qvf": "Validates structured memory organization for temporal conflict; its resolution is chronological filtering, not typed per-claim labels, and lacks applicability/sufficiency assessment."
+      },
+      {
+        "title": "It's About Time: Incorporating Temporality in Retrieval Augmented Language Models (TempRALM)",
+        "year": "2024",
+        "venue": "arXiv 2401.13222 (IEEE)",
+        "url": "https://arxiv.org/abs/2401.13222",
+        "core_idea": "Adds temporal relevance scoring to Atlas retrieval (up to 74% over baseline) without retraining.",
+        "relation_to_qvf": "Retrieval-stage temporal scoring; complements QVF, which sits after retrieval and judges validity rather than rank."
+      },
+      {
+        "title": "TimeR4: Time-aware Retrieval-Augmented Large Language Models for Temporal Knowledge Graph Question Answering",
+        "year": "2024",
+        "venue": "EMNLP 2024",
+        "url": "https://aclanthology.org/2024.emnlp-main.394/",
+        "core_idea": "Retrieve-rewrite-retrieve-rerank pipeline grounding implicit temporal constraints in TKG facts, plus time-aware fine-tuned reranking.",
+        "relation_to_qvf": "Query-time grounding via rewriting is a useful sub-mechanism for QVF's adapter; restricted to structured TKGs, not free-form conversational memories."
+      },
+      {
+        "title": "MRAG: A Modular Retrieval Framework for Time-Sensitive Question Answering (with TempRAGEval)",
+        "year": "2025",
+        "venue": "Findings of EMNLP 2025",
+        "url": "https://aclanthology.org/2025.findings-emnlp.167.pdf",
+        "core_idea": "Separates semantic from temporal relevance; TempRAGEval adds temporal perturbations and gold-evidence labels for diagnostic evaluation.",
+        "relation_to_qvf": "TempRAGEval's diagnostic gold-evidence protocol is a model for evaluating QVF's per-memory labels; MRAG still scores relevance, not validity, and outputs no conflict structure."
+      },
+      {
+        "title": "Freshness and the Limits of Heuristic Trend Detection in Temporal RAG",
+        "year": "2025",
+        "venue": "arXiv 2509.19376",
+        "url": "https://arxiv.org/html/2509.19376",
+        "core_idea": "Half-life recency priors are extremely parameter- and corpus-sensitive (Latest@10 from 1.00 to 0.00); narrow top-K semantic candidate selection discards newest items before recency reranking can act.",
+        "relation_to_qvf": "Direct empirical evidence that recency heuristics cannot decide validity - supporting QVF's thesis that validity requires semantic, query-conditioned judgment."
+      },
+      {
+        "title": "Do Large Language Models Favor Recent Content? A Study on Recency Bias in LLM-Based Reranking",
+        "year": "2025",
+        "venue": "SIGIR-AP 2025",
+        "url": "https://arxiv.org/abs/2509.11353",
+        "core_idea": "All tested LLM rerankers systematically promote artificially newer timestamps with identical content (up to 95 ranks, 25% pairwise reversals); larger models attenuate but never eliminate the bias.",
+        "relation_to_qvf": "Quantifies the 'later timestamp = more valid' fallacy inside LLMs themselves; QVF must be designed (and evaluated) to resist this bias, e.g., via historical-query counterexamples."
+      },
+      {
+        "title": "Carpe Diem: On the Evaluation of World Knowledge in Lifelong Language Models (EvolvingQA)",
+        "year": "2024",
+        "venue": "NAACL 2024",
+        "url": "https://arxiv.org/abs/2311.08106",
+        "core_idea": "Continual-learning LMs on evolving Wikipedia fail specifically at updating and removing outdated answers.",
+        "relation_to_qvf": "Shows parametric updating fails at exactly the outdated-knowledge problem; supports inference-time validity filtering over external memory."
+      },
+      {
+        "title": "DyKnow: Dynamically Verifying Time-Sensitive Factual Knowledge in LLMs",
+        "year": "2024",
+        "venue": "EMNLP 2024 (demo/Findings)",
+        "url": "https://arxiv.org/html/2404.08700",
+        "core_idea": "Queries Wikidata at evaluation time to check LLM answers against current ground truth, avoiding benchmark staleness.",
+        "relation_to_qvf": "Dynamic gold-truth protocol useful for QVF evaluation hygiene (checking adapter labels against live fact validity intervals)."
+      },
+      {
+        "title": "HALO: Half-Life Based Outdated Fact Filtering in Temporal Knowledge Graphs",
+        "year": "2025",
+        "venue": "arXiv 2505.07509",
+        "url": "https://arxiv.org/pdf/2505.07509",
+        "core_idea": "Filters outdated TKG facts using estimated half-lives of relations.",
+        "relation_to_qvf": "Relation-level decay prior is a heuristic complement; global filtering again destroys evidence valid for historical queries, unlike QVF's labeling."
+      },
+      {
+        "title": "It's High Time: A Survey of Temporal Question Answering",
+        "year": "2025",
+        "venue": "arXiv 2505.20243",
+        "url": "https://arxiv.org/html/2505.20243v3",
+        "core_idea": "Comprehensive TQA survey: taxonomy, benchmarks (diachronic/synchronic/dynamic), temporal LMs vs temporal RAG; open challenges: answer drift, temporal uncertainty, implicit temporal intent.",
+        "relation_to_qvf": "Names the exact gaps QVF fills: systems treat dates as exact, cannot infer hidden timeframes, and handle retrieval and validity 'separately'."
+      },
+      {
+        "title": "LongMemEval: Benchmarking Chat Assistants on Long-Term Interactive Memory",
+        "year": "2025",
+        "venue": "ICLR 2025",
+        "url": "https://arxiv.org/abs/2410.10813",
+        "core_idea": "500 questions testing information extraction, multi-session reasoning, temporal reasoning, knowledge updates, abstention over ~115k-token (S) / ~500-session (M) histories; long-context LLMs drop 30-60%.",
+        "relation_to_qvf": "QVF's planned main benchmark; its temporal-reasoning + knowledge-update + abstention categories map one-to-one onto QVF's temporal labels, SUPERSEDES relation, and SUFFICIENT/INSUFFICIENT output."
+      }
+    ],
+    "sota_numbers": "ClashEval (NeurIPS 2024): LLMs override their own correct prior with wrong retrieved content >60% of the time; adoption falls with perturbation implausibility and rises with low prior confidence (https://arxiv.org/abs/2404.10198). Astute RAG: 70% of retrieved passages lacked direct answers; 19.2% of instances had internal-external conflict, 47.4% of which were correctly resolved by internal knowledge alone; 84.45% TriviaQA / 62.24% BioASQ after 3 consolidation rounds (https://arxiv.org/abs/2410.07176). MADAM-RAG: +11.40% over strong RAG baselines on AmbigDocs, +15.80% absolute on FaithEval with Llama3.3-70B (https://arxiv.org/abs/2504.13079). MemStrata (2026): evolving-knowledge accuracy 0.95-1.00 vs RAG 0.20-0.47; stale-fact errors ~0% vs 15-40%; contradiction-vs-duplicate embedding separation AUROC 0.59; supersession reliability 97% (clean) vs 44% (messy prose) (https://arxiv.org/html/2606.26511). Recency-bias reranking (SIGIR-AP 2025): artificial fresh timestamps shift Top-10 mean publication year by up to +4.78 years, move items up to 95 ranks, reverse 25% of pairwise preferences (https://arxiv.org/abs/2509.11353). TAS steering (2026): recovers 29-57% of parametric temporal-conflict cases while preserving 85-99% non-conflict accuracy on Qwen2.5/Mistral/Llama3.1 over an 8,746-record Wikidata benchmark (https://arxiv.org/abs/2606.20959). TempRALM: up to 74% improvement over Atlas baseline (https://arxiv.org/abs/2401.13222). Freshness study: Latest@10 swings 1.00 -> 0.00 across corpora for fixed recency-prior parameters; trend labeling only 0.08 macro-F1 with naive rules (https://arxiv.org/html/2509.19376). LongMemEval: long-context LLMs drop 30-60% on LongMemEval_S; commercial memory systems 30-70% accuracy (https://arxiv.org/abs/2410.10813). TempLAMA bias: 70.69% of questions answered by subject's most frequent object (frequency shortcut) (https://arxiv.org/abs/2306.08952 analysis).",
+    "benchmark_details": "This area is primarily methods+benchmarks context (QVF's main eval benchmarks LongMemEval/LoCoMo are covered by a separate area), but key reusable resources: ConflictBank: 7.45M claim-evidence pairs, 553k QA pairs; three conflict causes (misinformation, temporal, semantic); QA-format probes for retrieved-knowledge conflict, encoded-knowledge conflict, and their interplay. RAMDocs: extends AmbigDocs-style multi-answer disambiguation with misinformation and noise documents and varying per-answer document support; expected output = all valid answers (ambiguity) while suppressing misinformation; metric = answer-set accuracy/F1. TempRAGEval: time-sensitive questions (repurposed from TimeQA/SituatedQA) with manual temporal perturbations and gold evidence annotations on Wikipedia; diagnostic metrics for retrieval (evidence recall) and end-to-end answer accuracy. ChroKnowBench: time-variant vs time-invariant triples across general/biomedical/legal/commonsense/math domains with year-stamped objects. DynamicQA: (s,r,o) Wikipedia facts over 16 relations flagged static/temporal/disputable, each paired with a conflicting substituted-answer snippet; measures semantic entropy and coherent-persuasion score. FreshQA: ~600 questions labeled never/slow/fast-changing/false-premise, answers refreshed regularly; two-mode human eval (Relaxed/Strict). MenatQA: 2,853 time-sensitive samples with scope/order/counterfactual factor perturbations. TimeQA: 41k question-passage pairs, easy/hard splits (explicit vs implicit time scope). Judge protocols in this literature are mostly exact-match/F1 for extractive benchmarks and LLM-as-judge or human eval for freshness benchmarks (FreshQA strict mode requires no outdated statements anywhere in the response - a protocol worth borrowing for QVF).",
+    "download_info": "ConflictBank: https://github.com/zhaochen0110/conflictbank (HF: Warrieryes/ConflictBank). RAMDocs/MADAM-RAG: https://github.com/HanNight/RAMDocs (paper 2504.13079). Entity-substitution framework (Longpre): https://github.com/apple/ml-knowledge-conflicts. Knowledge-conflict survey resource list: https://github.com/pillowsofwind/Knowledge-Conflicts-Survey. DynamicQA: https://github.com/copenlu/dynamicqa. ChroKnowBench: https://huggingface.co/datasets/dmis-lab/ChroKnowBench and https://github.com/dmis-lab/ChroKnowledge. FreshQA: https://github.com/freshllms/freshqa (OpenDataLab mirror: https://opendatalab.com/OpenDataLab/FreshQA). TimeQA: https://github.com/wenhuchen/Time-Sensitive-QA. TempReason: https://github.com/DAMO-NLP-SG/TempReason. MenatQA: https://arxiv.org/pdf/2310.05157 (data via authors' repo linked in paper). EvolvingQA: https://github.com/kimyuji/EvolvingQA_benchmark. LongMemEval: https://github.com/xiaowu0162/longmemeval. Temporal-alignment code: https://github.com/yizhongw/llm-temporal-alignment. TempRAGEval/MRAG: linked from https://aclanthology.org/2025.findings-emnlp.167.pdf.",
+    "gaps_for_qvf": "Concrete gaps QVF can claim: (1) No existing method outputs a QUERY-CONDITIONED validity structure. Every surveyed mechanism either (a) filters/reranks at retrieval time (TempRALM, MRAG, TimeR4, HALO, half-life priors) - deleting or demoting evidence globally, which destroys memories that are valid for historical questions; (b) resolves to a single answer inside generation (Astute RAG consolidation, MADAM-RAG debate, ClashEval probability arbitration) - opaque, non-auditable, answer-level not claim-level; or (c) supersedes globally by recency (MemStrata's deterministic ledger, TAS steering toward newer facts) - hard-codes 'newer wins', the exact assumption QVF rejects. Nothing produces per-claim relations + applicability + query-conditioned temporal labels + roles + sufficiency + risk as a first-class intermediate representation. (2) The 'later timestamp does not prove supersession' thesis is empirically supported but unexploited: recency bias in LLM rerankers (2509.11353), corpus-sensitivity of recency priors (2509.19376), and MemStrata's failure on messy prose (44% supersession reliability) all show the field lacks a semantic, metadata-grounded superseding judgment - QVF's SUPERSEDES vs CONTRADICTS vs COEXISTS distinction fills this. (3) Conflict typology is impoverished: surveys distinguish only context-memory/inter-context/intra-memory; RAMDocs distinguishes only ambiguity vs misinformation vs noise. QVF's 9-relation set (esp. CONDITIONALLY_COMPATIBLE, COMPLEMENTS, SUPERSEDES-vs-CONTRADICTS) is finer-grained than anything published; a taxonomy-alignment table would be a strong related-work contribution. (4) Sufficiency+abstention is decoupled from conflict handling everywhere except Chen et al. 2022's calibration (which has no structure) - QVF unifies them. (5) Temporal QA benchmarks assume evidence is pre-scoped or gold; TempRAGEval is the only diagnostic per-evidence protocol, and none covers conversational memory. LongMemEval's temporal-reasoning/knowledge-update/abstention categories are the natural home, and no published LongMemEval system reports a structured validity-map intermediate - QVF would be first. (6) Naturally-occurring vs synthetic conflicts: most benchmarks perturb synthetically (entity substitution, ClashEval-style edits); Kortukov et al. and Open-Domain-QA-with-Conflicting-Contexts show behavior differs on real documents - QVF's use of real retrieved memories with real metadata is a defensible realism claim. (7) Risk flags (e.g., flagging that a memory is a DISTRACTOR or that supersession is UNRESOLVED) have no direct precedent; the closest is FreshQA's strict-mode 'no outdated statement anywhere' judging, which could be adapted into a stale-content-leakage metric for QVF."
+  },
+  {
+    "area": "rag-evidence-filtering-verification-structuring",
+    "summary": "The 2023-2026 literature on post-retrieval evidence processing splits into six strands, and across all of them the key finding for QVF is: many systems insert SOMETHING between retrieval and generation, but almost nothing inserts a typed, claim-level, query-conditioned validity structure, and temporal applicability is handled either globally (index-time supersession) or not at all.\n\n(1) Self-reflective / corrective filtering. Self-RAG (ICLR 2024) is the canonical structured-signal approach: it trains an LM to emit reflection tokens — Retrieve, ISREL (is the passage relevant), ISSUP (is the output supported), ISUSE (utility) — making per-passage critique an explicit, discrete intermediate signal. CRAG (2024) inserts a lightweight T5-based retrieval evaluator that buckets retrieved documents into Correct / Incorrect / Ambiguous, triggers web-search fallback for bad buckets, and runs a decompose-then-recompose step to strip irrelevant spans. Both operate at document/passage granularity with relevance-or-correctness labels only: no inter-evidence relations, no temporal reasoning, no query-conditioned validity (a document is judged \"correct\" absolutely, not \"correct for this query's time frame\"). RankRAG (NeurIPS 2024) unifies context ranking and generation in one instruction-tuned LLM (Llama3-RankRAG-70B beats GPT-4 on nine knowledge-intensive benchmarks) — again pure relevance. FILCO (2023) trains sentence-level context filters using entailment, lexical overlap, and conditional cross-mutual information (CXMI), cutting prompt length up to 64%. NLI-based reranking/filtering is common but empirically mixed: naive NLI-only reranking degrades EM/F1; hybrid DPR+BM25+NLI works better; NLI checkpoints are widely used for span-level support detection. SEER (2024) learns self-aligned evidence extraction. InstructRAG (2024/ICLR 2025) has the model write explicit denoising rationales; Speculative RAG (2024/ICLR 2025) drafts answers+rationales in parallel from document subsets and verifies with a generalist LM.\n\n(2) Claim decomposition. FActScore (EMNLP 2023) established the decompose-into-atomic-facts-then-verify paradigm; WICE (2023) does sub-claim entailment; VeriScore (2024) extracts only verifiable claims with a sliding context window; Core (2024) adds informativeness-weighted subclaim dedup; DnDScore (2024/EMNLP 2025) shows decontextualization must accompany decomposition; \"Decomposition Dilemmas\" (NAACL 2025) shows decomposition can boost OR burden verification. This strand supplies QVF's atomic-claim machinery but is used for output factuality evaluation, not as an input-side pre-generation structure, and none of it conditions claim validity on the query.\n\n(3) Structured intermediate representations. StructRAG (ICLR 2025) is the flagship: at inference time a hybrid structure router picks the optimal structure type (table, graph, algorithm, catalogue, chunk) for the task, a structurizer converts raw retrieved documents into that structure, and a utilizer decomposes the question against it — proving that inference-time restructuring of retrieved evidence pays off on knowledge-intensive reasoning, but its structures carry no validity or temporal semantics. Chain-of-Note (2023/EMNLP 2024) generates per-document reading notes (direct-answer / inferential / unknown) before answering (+1.97 EM avg) — a textual, untyped precursor of QVF's memory roles. Astute RAG (2024) clusters internal+external knowledge into consistent vs conflicting groups and picks the most reliable cluster — a coarse structured grouping. CARE-RAG (2025) builds parameter-aware vs context-aware evidence representations and does conflict-driven summarization with a distilled 3B detector. Evidence/claim graphs exist mainly for fact-checking and multi-hop QA: FactCG (2025) uses graph-based multi-hop data for fact verification; Reasoning-with-Graphs (2025) extracts explicit reasoning graphs from context; GRS-QA (2024) provides reasoning-structure-annotated QA; a 2026 \"Typed Claim Network\" paper builds corpus-level typed claim networks for scientific literature; GraphRAG-style systems retrieve triples/subgraphs instead of passages. Compression is the degenerate case of intermediate structuring: RECOMP (ICLR 2024) does extractive/abstractive summarization of retrieved docs; LLMLingua/LongLLMLingua/LLMLingua-2 (2023-2024) do token-level pruning (LongLLMLingua is query-aware); a 2026 paper reframes soft compression as a \"query-conditioned selector\" — the phrase exists, but only for token selection, not validity.\n\n(4) Sufficiency and evidential force. \"Sufficient Context\" (Google, ICLR 2025) introduces an autorater for whether retrieved context alone suffices to answer, showing big models answer wrongly instead of abstaining under insufficient context, and lifting selective accuracy 2-10 points; this is the direct precedent for QVF's SUFFICIENT/INSUFFICIENT/AMBIGUOUS field but is a single binary signal, not integrated with per-claim structure. \"Relevant Is Not Warranted\" (2026) argues relevance must be separated from evidential force in cited RAG — conceptually parallel to QVF's DIRECT_SUPPORT vs BACKGROUND vs DISTRACTOR roles.\n\n(5) Knowledge conflicts. Contradiction Detection in RAG Systems (2025) evaluates LLMs as \"context validators\" over retrieved sets; WikiContradict (NeurIPS 2024 D&B) benchmarks real Wikipedia contradictions; ConflictBank (2024) covers context-memory and inter-context conflict at scale; DRAGged into Conflicts (2025) contributes the expert-annotated CONFLICTS benchmark with a conflict-type taxonomy and shows explicit reasoning about conflict type improves responses; MAGIC (2025) probes multi-hop graph-based inter-context conflicts; informing models of conflict type can add ~24 accuracy points. Crucially, these taxonomies classify conflicts (inter-context vs context-memory vs ambiguity) rather than assigning query-conditioned validity labels to each evidence item, and resolution strategies are mostly \"prefer majority / prefer reliable cluster / surface both\" rather than QVF-style per-claim adjudication.\n\n(6) Temporal validity and memory-side neighbors (closest to QVF, mostly 2025-2026). Temporal RAG work largely bakes time into the index: T-GRAG/TG-RAG/DyG-RAG/E2RAG build timestamped or event-centric temporal graphs; SAT-Graph RAG does structure-aware temporal retrieval; IA-RAG (2026) applies Allen interval algebra for temporal reasoning over dynamic knowledge; ChronoQA and a Nature Scientific Data temporal-sensitive RAG dataset provide benchmarks. MemStrata (\"Temporal Validity in Retrieval Memory\", 2026) implements a deterministic (subject, relation, object) supersession ledger that retires contradicted values with no LLM calls, cutting stale-fact errors from 15-40% to ~0% — but it is GLOBAL invalidation: once superseded, a fact is retired for all queries, exactly the assumption QVF rejects (a superseded fact is still CURRENT_FOR_QUERY for a historical question). \"Don't Ask the LLM to Track Freshness\" (2026) similarly argues for deterministic memory-conflict resolution. On the agent-memory side: STALE (2026) benchmarks whether agents know memories are no longer valid (400 conflict scenarios, 1200 queries; best models only 55.2%), and its CUPMem prototype adjudicates state at WRITE time; MemConflict (2026) explicitly frames memory validity as a \"query-conditioned fitness-for-use problem\" with dynamic (temporal), static (factual), and conditional (contextual) conflict categories — the closest conceptual framing to QVF, but it is a benchmark/diagnosis, not a structured representation. MemChain (2026) is the closest structural neighbor: a trainable post-retrieval policy that converts (query + retrieved memories) into a question-conditioned evidence plan plus an ordered grounded evidence trace organizing memories by semantic roles and dependencies, trained with SFT then trace-guided RL, achieving SOTA on LoCoMo and LongMemEval-S with reduced context — but it optimizes answer quality end-to-end and does not emit interpretable validity labels, temporal applicability labels, typed inter-claim relations, or sufficiency/risk assessments.\n\nBottom line on the survey question: proposed structured intermediates include reflection/critique tokens (Self-RAG), correctness buckets (CRAG), reading notes (Chain-of-Note), extractive/abstractive summaries (RECOMP, compression), router-selected structures like tables/graphs (StructRAG), consistent-vs-conflicting clusters (Astute RAG, CARE-RAG), evidence/claim/reasoning graphs (FactCG, RwG, GraphRAG, typed claim networks), drafts+rationales (Speculative RAG, InstructRAG), sufficiency labels (Sufficient Context), and evidence plans/traces with semantic roles (MemChain). None of them jointly models query-conditioned applicability AND query-conditioned temporal validity at the atomic-claim level with typed inter-claim relations; temporal handling where it exists is index-time or globally deterministic, and query-conditioned validity exists only as a benchmark framing (MemConflict) or an implicit learned policy (MemChain), never as an explicit, interpretable output schema.",
+    "papers": [
+      {
+        "title": "Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection",
+        "year": "2023 (ICLR 2024)",
+        "venue": "ICLR 2024",
+        "url": "https://arxiv.org/abs/2310.11511",
+        "core_idea": "Trains an LM to emit discrete reflection tokens (Retrieve, ISREL relevance, ISSUP support, ISUSE utility) that critique each retrieved passage and its own output, enabling adaptive retrieval and self-critique.",
+        "relation_to_qvf": "Earliest widely-adopted structured per-passage signal between retrieval and generation; labels are relevance/support/utility only — no inter-evidence relations, no temporal or query-conditioned validity semantics. QVF generalizes its per-passage critique into a full typed validity map."
+      },
+      {
+        "title": "Corrective Retrieval Augmented Generation (CRAG)",
+        "year": "2024",
+        "venue": "arXiv / OpenReview",
+        "url": "https://arxiv.org/abs/2401.15884",
+        "core_idea": "A lightweight T5-large retrieval evaluator scores retrieved documents into Correct/Incorrect/Ambiguous, triggers web-search fallback on failure, and a decompose-then-recompose algorithm strips irrelevant spans before generation.",
+        "relation_to_qvf": "Prototype of a post-retrieval validity gate, but document-level, three-way, and query-agnostic in time: 'correct' is absolute, whereas QVF labels are conditioned on the query's temporal/semantic frame and are claim-level with citations."
+      },
+      {
+        "title": "RankRAG: Unifying Context Ranking with Retrieval-Augmented Generation in LLMs",
+        "year": "2024",
+        "venue": "NeurIPS 2024",
+        "url": "https://papers.nips.cc/paper_files/paper/2024/hash/db93ccb6cf392f352570dd5af0a223d3-Abstract-Conference.html",
+        "core_idea": "Instruction-tunes a single LLM to do both context ranking and answer generation; a small fraction of ranking data in the training blend beats dedicated rankers; Llama3-RankRAG-70B outperforms GPT-4 on nine knowledge-intensive benchmarks.",
+        "relation_to_qvf": "Pure relevance ranking fused into the generator; no explicit intermediate representation at all — the opposite design point from QVF's interpretable external map."
+      },
+      {
+        "title": "Learning to Filter Context for Retrieval-Augmented Generation (FILCO)",
+        "year": "2023",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2311.08377",
+        "core_idea": "Trains sentence-level context filters using entailment, lexical overlap, and conditional cross-mutual information (CXMI); improves six knowledge-intensive tasks while cutting prompt length up to 64%.",
+        "relation_to_qvf": "Query-aware evidence selection at sentence granularity, but output is just a filtered string — discards rather than labels, and has no notion of conflicting/superseded/historical evidence."
+      },
+      {
+        "title": "Chain-of-Note: Enhancing Robustness in Retrieval-Augmented Language Models",
+        "year": "2023 (EMNLP 2024)",
+        "venue": "EMNLP 2024",
+        "url": "https://arxiv.org/abs/2311.09210",
+        "core_idea": "Generates sequential reading notes for each retrieved document (direct-answer / inferential / unknown) before synthesizing the final answer; +1.97 EM average; supports 'unknown' abstention.",
+        "relation_to_qvf": "Free-text precursor of QVF's memory roles and sufficiency output, but notes are untyped prose with no schema, no citations-to-claims mapping, no relations between documents, no temporal labels."
+      },
+      {
+        "title": "RECOMP: Improving Retrieval-Augmented LMs with Compression and Selective Augmentation",
+        "year": "2023 (ICLR 2024)",
+        "venue": "ICLR 2024",
+        "url": "https://arxiv.org/abs/2310.04408",
+        "core_idea": "Compresses retrieved documents into concise extractive or abstractive summaries before generation; can selectively augment (return empty summary when retrieval is useless).",
+        "relation_to_qvf": "Lossy textual compression as intermediate; the empty-summary option is a crude sufficiency signal. No structure, labels, or temporal reasoning."
+      },
+      {
+        "title": "LLMLingua / LongLLMLingua / LLMLingua-2",
+        "year": "2023-2024",
+        "venue": "EMNLP 2023 / ACL 2024",
+        "url": "https://arxiv.org/abs/2310.06839",
+        "core_idea": "Token-level prompt compression via small-LM perplexity (up to 20x); LongLLMLingua adds query-aware coarse-to-fine compression to fight lost-in-the-middle; LLMLingua-2 reformulates as token classification.",
+        "relation_to_qvf": "Query-aware but purely surface-level token pruning; retains no semantics about validity, conflict, or time. Shows the cost-reduction motivation QVF can also claim (compact validity map vs raw memories)."
+      },
+      {
+        "title": "FActScore: Fine-grained Atomic Evaluation of Factual Precision in Long Form Text Generation",
+        "year": "2023",
+        "venue": "EMNLP 2023",
+        "url": "https://arxiv.org/abs/2305.14251",
+        "core_idea": "Decomposes long-form generations into atomic facts and computes the fraction supported by a knowledge source (decompose-then-verify pipeline).",
+        "relation_to_qvf": "Source of QVF's atomic-claim granularity, but applied to output evaluation, not input structuring; verification is binary supported/unsupported with no query conditioning or claim-to-claim relations."
+      },
+      {
+        "title": "Core: Robust Factual Precision with Informative Sub-Claim Identification / WICE / VeriScore / DnDScore / Decomposition Dilemmas",
+        "year": "2023-2025",
+        "venue": "arXiv / NAACL 2025 / EMNLP 2025",
+        "url": "https://arxiv.org/abs/2407.03572",
+        "core_idea": "Claim-decomposition refinements: WICE does sub-claim entailment; VeriScore extracts only verifiable claims; Core deduplicates and weights sub-claims by informativeness; DnDScore couples decontextualization with decomposition; Decomposition Dilemmas (arXiv 2411.02400) shows decomposition can help or hurt verification.",
+        "relation_to_qvf": "Provides the technical toolbox (and pitfalls) for QVF's claim extraction step — especially the decontextualization requirement, which for QVF must preserve memory metadata (timestamps, session) so claims stay adjudicable."
+      },
+      {
+        "title": "StructRAG: Boosting Knowledge Intensive Reasoning of LLMs via Inference-time Hybrid Information Structurization",
+        "year": "2024 (ICLR 2025)",
+        "venue": "ICLR 2025",
+        "url": "https://arxiv.org/abs/2410.08815",
+        "core_idea": "A hybrid structure router picks the optimal structure type (table, graph, algorithm, catalogue, chunk) per task; an LLM structurizer converts retrieved documents into that structure; a utilizer decomposes questions against it. SOTA on knowledge-intensive reasoning.",
+        "relation_to_qvf": "Strongest evidence that inference-time restructuring between retrieval and generation works; but its structures encode content organization, not validity — no applicability, temporal, conflict, or sufficiency semantics. QVF can cite it as the structural paradigm and differentiate on label semantics."
+      },
+      {
+        "title": "Sufficient Context: A New Lens on Retrieval Augmented Generation Systems",
+        "year": "2024 (ICLR 2025)",
+        "venue": "ICLR 2025 (Google)",
+        "url": "https://arxiv.org/abs/2411.06037",
+        "core_idea": "Defines and auto-rates whether retrieved context alone is sufficient to answer; shows large models answer wrongly instead of abstaining when context is insufficient; sufficiency-guided abstention lifts selective accuracy 2-10 points; shipped in Vertex AI RAG Engine.",
+        "relation_to_qvf": "Direct precedent for QVF's SUFFICIENT/INSUFFICIENT/AMBIGUOUS field, but it is a single query-level binary signal detached from any claim structure; QVF integrates sufficiency with per-claim roles and risk flags."
+      },
+      {
+        "title": "Astute RAG: Overcoming Imperfect Retrieval Augmentation and Knowledge Conflicts for LLMs",
+        "year": "2024",
+        "venue": "arXiv (Google)",
+        "url": "https://arxiv.org/abs/2410.07176",
+        "core_idea": "Elicits internal knowledge, then iteratively consolidates internal+external evidence by clustering into consistent vs conflicting groups and answering from the most reliable cluster; robust under worst-case retrieval.",
+        "relation_to_qvf": "Its consistent/conflicting clustering is a coarse two-relation ancestor of QVF's nine-relation taxonomy; conflict resolution is by cluster reliability, not query-conditioned adjudication, and there is no temporal dimension."
+      },
+      {
+        "title": "Speculative RAG: Enhancing Retrieval Augmented Generation through Drafting",
+        "year": "2024 (ICLR 2025)",
+        "venue": "ICLR 2025",
+        "url": "https://arxiv.org/abs/2407.08223",
+        "core_idea": "A small specialist LM drafts multiple answer+rationale pairs in parallel from distinct retrieved-document subsets; a generalist LM verifies and selects by rationale confidence.",
+        "relation_to_qvf": "Rationales are an implicit intermediate representation per evidence subset; perspective diversity across subsets loosely echoes QVF's COEXISTS/CONTRAST, but nothing is typed or query-conditioned."
+      },
+      {
+        "title": "InstructRAG: Instructing Retrieval-Augmented Generation via Self-Synthesized Rationales",
+        "year": "2024 (ICLR 2025)",
+        "venue": "ICLR 2025",
+        "url": "https://arxiv.org/abs/2406.13629",
+        "core_idea": "Trains the model to generate explicit denoising rationales connecting retrieved documents to answers, using self-synthesized rationale data.",
+        "relation_to_qvf": "Explicit denoising as free-text rationale; QVF replaces free-text rationale with an auditable typed schema."
+      },
+      {
+        "title": "SEER: Self-Aligned Evidence Extraction for Retrieval-Augmented Generation",
+        "year": "2024",
+        "venue": "EMNLP 2024",
+        "url": "https://arxiv.org/abs/2410.11315",
+        "core_idea": "Learns evidence extraction aligned to the generator's own preferences (self-alignment) to select faithful, complete, relevant evidence spans.",
+        "relation_to_qvf": "Query-aware evidence selection optimized for downstream answer quality; extraction-only, no labels or relations."
+      },
+      {
+        "title": "Contradiction Detection in RAG Systems: Evaluating LLMs as Context Validators",
+        "year": "2025",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2504.00180",
+        "core_idea": "Frames the LLM as a 'context validator' that must detect contradictions inside retrieved document sets before generation; evaluates detection across contradiction types.",
+        "relation_to_qvf": "Validates QVF's premise that a dedicated validation pass over retrieved context is needed; detection-only — no resolution labels, no temporal or applicability dimensions."
+      },
+      {
+        "title": "DRAGged into Conflicts: Detecting and Addressing Conflicting Sources in Search-Augmented LLMs (CONFLICTS benchmark)",
+        "year": "2025",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2506.08500",
+        "core_idea": "Proposes a taxonomy of knowledge-conflict types in RAG with desired model behavior per type, and CONFLICTS, the first expert-annotated conflict-type benchmark in a realistic RAG setting; explicit reasoning about conflict type significantly improves responses.",
+        "relation_to_qvf": "Empirical support for QVF's design: making conflict type explicit helps generation. Its taxonomy classifies the conflict, while QVF labels each claim's validity for the query — complementary granularity."
+      },
+      {
+        "title": "WikiContradict: A Benchmark for Evaluating LLMs on Real-World Knowledge Conflicts from Wikipedia",
+        "year": "2024",
+        "venue": "NeurIPS 2024 D&B",
+        "url": "https://arxiv.org/abs/2406.13805",
+        "core_idea": "QA benchmark built from real intra-Wikipedia contradictions (including temporal ones) to test how models answer under inter-context conflict.",
+        "relation_to_qvf": "Useful stress-test material; shows real-world conflicts are often temporal — but offers no mechanism, only evaluation."
+      },
+      {
+        "title": "MAGIC: A Multi-Hop and Graph-Based Benchmark for Inter-Context Conflicts in RAG",
+        "year": "2025",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2507.21544",
+        "core_idea": "Knowledge-graph-derived benchmark for inter-context conflicts requiring multi-hop reasoning to even detect the conflict.",
+        "relation_to_qvf": "Motivates QVF's relation edges between claims: conflicts are often indirect (via chains), which flat per-document classifiers miss."
+      },
+      {
+        "title": "Rethinking All Evidence: Enhancing Trustworthy RAG via Conflict-Driven Summarization (CARE-RAG)",
+        "year": "2025",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2507.01281",
+        "core_idea": "Builds parameter-aware evidence (from internal knowledge) and context-aware evidence (refined retrieval), then a distilled 3B detector performs conflict-driven summarization before generation; includes a QA-repair step for outdated benchmark answers.",
+        "relation_to_qvf": "Closest RAG-side pipeline shape to QVF (refine → detect conflict → structured synthesis → generate), but its intermediate is a summary, not a labeled map, and 'outdated' is handled by fixing gold answers, not by query-conditioned temporal labels."
+      },
+      {
+        "title": "Sufficient/temporal-graph line: RAG Meets Temporal Graphs; T-GRAG; DyG-RAG; TG-RAG; E2RAG; SAT-Graph RAG; IA-RAG",
+        "year": "2025-2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2510.13590",
+        "core_idea": "Family of temporal RAG systems that organize knowledge into timestamped subgraphs, event units, hierarchical temporal graphs, or dual entity-event graphs; IA-RAG (arXiv 2606.06044) adds Allen interval-algebra reasoning; SAT-Graph RAG does structure-aware temporal retrieval.",
+        "relation_to_qvf": "Temporality is baked into the INDEX/retrieval structure, resolved before or during retrieval; QVF instead adjudicates temporal applicability at read time conditioned on the query, requiring no re-indexing of memory stores."
+      },
+      {
+        "title": "Temporal Validity in Retrieval Memory (MemStrata): Eliminating Stale-Fact Errors for AI Agents over Evolving Knowledge",
+        "year": "2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2606.26511",
+        "core_idea": "A deterministic (subject, relation, object) supersession rule over a bi-temporal ledger retires contradicted values without LLM calls; stale-fact error drops from 15-40% (RAG) to ~0%; notes cosine similarity separates contradiction from duplication at AUROC 0.59 (near chance).",
+        "relation_to_qvf": "The strongest anti-thesis to QVF: global, write-time, deterministic invalidation. It cannot serve historical queries with superseded facts — exactly the query-conditioned distinction QVF claims. Also supplies a great motivating statistic (embedding similarity cannot detect contradiction)."
+      },
+      {
+        "title": "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid? (+ CUPMem)",
+        "year": "2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2605.06527",
+        "core_idea": "Benchmark of 400 expert-validated implicit-conflict scenarios (1,200 queries, contexts to 150K tokens) testing state resolution, false-premise resistance, and implicit policy adaptation; best models reach only 55.2%. CUPMem prototype adjudicates state at write time via structured state consolidation.",
+        "relation_to_qvf": "Quantifies the failure QVF targets — models cannot implicitly track memory validity — and its premise-resistance dimension maps to QVF's risk flags; but its fix is write-time consolidation, whereas QVF is read-time and query-conditioned."
+      },
+      {
+        "title": "MemConflict: Evaluating Long-Term Memory Systems Under Memory Conflicts",
+        "year": "2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2605.20926",
+        "core_idea": "Frames memory validity as a query-conditioned fitness-for-use problem; formalizes dynamic (temporal), static (factual), and conditional (contextual) conflicts; multi-session dialogue benchmark with cross-session conflicts and semantic distractors; six systems show uneven strengths and degradation with history length and conflict distance.",
+        "relation_to_qvf": "Closest conceptual framing to QVF — literally 'query-conditioned fitness-for-use' — but it is a benchmark/diagnosis with no proposed representation or module; QVF can be positioned as the first method-side answer to MemConflict's diagnosis."
+      },
+      {
+        "title": "MemChain: Learning Interpretable Memory Traces for Memory-Augmented LLM Agents",
+        "year": "2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2607.24097",
+        "core_idea": "Trainable post-retrieval memory policy that converts (query + retrieved memories) into a question-conditioned evidence plan, an ordered grounded evidence trace organizing memories by semantic roles and dependencies, and explicit memory actions producing a compact evidence context; SFT + Trace-Guided Memory Policy Optimization (RL); SOTA on LoCoMo and LongMemEval-S with frozen answer models.",
+        "relation_to_qvf": "Closest structural neighbor and the paper QVF must differentiate from: same insertion point (post-retrieval, pre-generation), same benchmarks. Differences: MemChain's roles/traces are learned and answer-optimized without a fixed interpretable schema; it has no temporal-applicability labels, no typed inter-claim relation taxonomy, no explicit sufficiency/risk output, and no query-conditioned validity semantics (a superseded memory is dropped, not labeled HISTORICAL_FOR_QUERY)."
+      },
+      {
+        "title": "Don't Ask the LLM to Track Freshness: A Deterministic Recipe for Memory Conflict Resolution",
+        "year": "2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/pdf/2606.01435",
+        "core_idea": "Argues LLMs should not adjudicate freshness at inference; proposes deterministic metadata-based rules for resolving memory conflicts.",
+        "relation_to_qvf": "Represents the deterministic-rules camp; QVF's counterargument is that timestamp rules alone conflate 'newer' with 'superseding' and cannot serve historical or conditional queries — the semantic adapter is needed precisely where rules underdetermine validity."
+      },
+      {
+        "title": "Relevant Is Not Warranted: Evidence-Force Calibration for Cited RAG",
+        "year": "2026",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/html/2605.28044",
+        "core_idea": "Separates topical relevance from evidential force (whether a document actually warrants the cited claim) and calibrates citation strength accordingly.",
+        "relation_to_qvf": "Independent support for QVF's role taxonomy distinguishing DIRECT_SUPPORT from BACKGROUND/CORROBORATION/DISTRACTOR — relevance and support are different axes."
+      },
+      {
+        "title": "FactCG: Enhancing Fact Checkers with Graph-Based Multi-Hop Data / Reasoning with Graphs (RwG) / GRS-QA",
+        "year": "2024-2025",
+        "venue": "arXiv / NAACL 2025",
+        "url": "https://arxiv.org/abs/2501.17144",
+        "core_idea": "Claim/evidence-graph line: FactCG trains fact-checkers with graph-connected multi-hop synthetic data; RwG (arXiv 2501.07845) extracts explicit reasoning graphs from context before answering; GRS-QA (arXiv 2411.00369) annotates QA pairs with explicit reasoning-structure graphs.",
+        "relation_to_qvf": "Evidence graphs as intermediates exist for verification and multi-hop QA, but edges are reasoning/entailment dependencies, not validity relations; none are query-conditioned or temporal."
+      },
+      {
+        "title": "Contextual Compression in Retrieval-Augmented Generation for Large Language Models: A Survey",
+        "year": "2024",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2409.13385",
+        "core_idea": "Surveys hard (token-pruning) and soft (embedding) compression of retrieved context, covering LLMLingua family, RECOMP, and selective augmentation.",
+        "relation_to_qvf": "Useful related-work citation to bound the compression strand; confirms no surveyed compressor carries validity semantics."
+      },
+      {
+        "title": "Retrieval-Augmented Generation with Conflicting Evidence (RAMDocs / MADAM-RAG)",
+        "year": "2025",
+        "venue": "arXiv",
+        "url": "https://arxiv.org/abs/2504.13079",
+        "core_idea": "Dataset and multi-agent debate method for RAG where sources legitimately disagree (ambiguity, misinformation, noise); models must surface all valid answers while suppressing misinformation.",
+        "relation_to_qvf": "Its 'multiple valid answers can coexist' stance matches QVF's COEXISTS/CONDITIONALLY_COMPATIBLE relations; resolution is via agent debate rather than an explicit validity map."
+      }
+    ],
+    "sota_numbers": "RankRAG: Llama3-RankRAG-70B outperforms GPT-4 on nine knowledge-intensive benchmarks (NeurIPS 2024 paper, https://papers.nips.cc/paper_files/paper/2024/hash/db93ccb6cf392f352570dd5af0a223d3-Abstract-Conference.html). Chain-of-Note: +1.97 EM average over standard RALM (arXiv 2311.09210). FILCO: outperforms baselines on six tasks while cutting prompt length up to 64% (arXiv 2311.08377). Sufficient Context: +2-10 points selective accuracy at fixed coverage via sufficiency-guided abstention (arXiv 2411.06037, ICLR 2025). Conflict-type awareness: informing LLMs of the conflict type present improves accuracy by ~24 percentage points (reported in inter-context conflict literature around MAGIC/CONFLICTS, arXiv 2507.21544 / 2506.08500). STALE: best frontier models only 55.2% overall accuracy on implicit memory-conflict scenarios (arXiv 2605.06527). MemStrata: stale-fact error ~0% vs 15-40% for vanilla RAG on evolving knowledge; cosine similarity separates contradiction from duplication at AUROC 0.59 (arXiv 2606.26511). MemChain: reported SOTA on LoCoMo and LongMemEval-S with frozen answer models while substantially reducing memory context (arXiv 2607.24097). CRAG: retrieval-evaluator-triggered correction recovers 2-3 F1 points under query errors and degrades gracefully under adversarial retrieval noise where Self-RAG fails catastrophically (per emergentmind summary of arXiv 2401.15884 follow-ups).",
+    "gaps_for_qvf": "1) No existing structured intermediate representation jointly encodes atomic claims with memory-ID citations + typed inter-claim relations + query-conditioned applicability + query-conditioned temporal labels + memory roles + sufficiency + risk flags. Existing intermediates are one-dimensional: relevance tokens (Self-RAG), correctness buckets (CRAG), notes (Chain-of-Note), summaries (RECOMP/CARE-RAG), content structures (StructRAG), consistent/conflicting clusters (Astute RAG), or learned traces (MemChain). 2) Temporal applicability is either index-time (temporal graph RAG: T-GRAG/TG-RAG/DyG-RAG/IA-RAG) or global write-time supersession (MemStrata, CUPMem, deterministic-freshness recipes); no system emits read-time labels like HISTORICAL_FOR_QUERY vs SUPERSEDED_FOR_QUERY — the 'old memory is correct for a historical question' and 'later timestamp does not prove supersession' distinctions are explicitly unmodeled, and MemStrata's global retirement is provably wrong for historical queries. 3) Query-conditioned validity exists only as a benchmark framing (MemConflict's 'query-conditioned fitness-for-use') and as an implicit learned objective (MemChain); no method outputs it as an interpretable schema — QVF can position itself as the first method-side, schema-explicit answer to the MemConflict/STALE diagnosis. 4) Conflict work (CONFLICTS, WikiContradict, MAGIC, ConflictBank) shows conflict-type awareness helps (~24 pts) but stops at detection/taxonomy; QVF's relation taxonomy (EQUIVALENT…SUPERSEDES…CONDITIONALLY_COMPATIBLE) plus per-claim adjudication is the missing resolution layer. 5) Sufficiency (Sufficient Context) is a query-level binary detached from claim structure; QVF integrates sufficiency with the evidence map so INSUFFICIENT/AMBIGUOUS verdicts are attributable to specific missing or conflicting claims. 6) Differentiation risks to manage in the paper: MemChain (2607.24097) occupies the same insertion point and same benchmarks (LoCoMo, LongMemEval-S) — QVF must emphasize interpretable fixed schema, temporal/applicability labels, zero-training LLM-adapter design, and auditability; and the deterministic camp (MemStrata, 'Don't Ask the LLM to Track Freshness') will argue LLM adjudication is unnecessary — QVF should include cases where deterministic rules underdetermine validity (historical queries, conditional facts, corroboration vs update) and cite MemStrata's own AUROC 0.59 embedding result as evidence that semantic adjudication is required.",
+    "benchmark_details": "Not a benchmark-focused area, but conflict/temporal evaluation resources found: CONFLICTS (arXiv 2506.08500) — expert-annotated conflict types in realistic search-augmented settings; WikiContradict (arXiv 2406.13805) — QA over real Wikipedia contradictions; MAGIC (arXiv 2507.21544) — KG-derived multi-hop inter-context conflicts; ConflictBank — large-scale Wikidata-based conflict claims; RAMDocs (arXiv 2504.13079) — documents with ambiguity/misinformation/noise; STALE (arXiv 2605.06527) — 400 scenarios / 1,200 queries / contexts to 150K tokens, three-dimension validity evaluation; MemConflict (arXiv 2605.20926) — multi-session dialogues with dynamic/static/conditional conflicts and distractors; ChronoQA — 5,176 Chinese temporal questions over 300K news articles (2019-2024); temporal-sensitive RAG QA dataset in Nature Scientific Data 2025 (arXiv 2508.12282).",
+    "download_info": "GitHub repos found: CRAG https://github.com/HuskyInSalt/CRAG; FILCO https://github.com/zorazrw/filco; StructRAG https://github.com/icip-cas/StructRAG; Sufficient Context https://github.com/hljoren/sufficientcontext; Decomposition Dilemmas https://github.com/qishenghu/Decomp_Dilemmas; FActScore pip package `factscore`. Primary arXiv PDFs are at the /abs/ URLs listed per paper."
+  },
+  {
+    "area": "novelty-check-query-conditioned-validity",
+    "summary": "The novelty check shows that QVF's problem space — deciding, per query, whether retrieved memories are valid, applicable, and temporally current — has become an active 2025-2026 research area, but no existing system produces QVF's proposed artifact: a single structured \"Query-Conditioned Validity Map\" combining atomic claims with memory-ID citations, a 9-way inter-claim relation taxonomy, per-query applicability labels, per-query temporal labels, memory roles, sufficiency assessment, and risk flags.\n\nThe exact conceptual framing QVF uses already appears in the literature. MemConflict (arXiv 2605.20926) explicitly \"treats memory validity as a query-conditioned fitness-for-use problem\" and decomposes it into temporal validity, factual correctness, and contextual applicability — but it is a diagnostic BENCHMARK (controlled multi-session dialogues with injected cross-session conflicts and distractors), not a method; it evaluates six existing memory systems and finds answer correctness misaligned with retrieval quality. STALE (arXiv 2605.06527) benchmarks whether agents know their memories are no longer valid (400 expert-validated conflict scenarios, 1,200 queries, up to 150K-token contexts; three probes: State Resolution, Premise Resistance, Implicit Policy Adaptation; best model only 55.2%); its companion method CUPMem works at WRITE time via state consolidation, not at read time conditioned on the query. These two are strong motivation/evaluation resources rather than competing methods.\n\nOn the method side, three works occupy nearly the same pipeline slot as QVF (after retrieval, before generation). ConvMemory v3 (arXiv 2606.26753) is the closest in spirit: a \"Validity Context Layer\" doing target-conditioned relation verification between retrieval and generation, evaluated on LongMemEval and LoCoMo — but its validity assessment is conditioned on the target proposition/entity and centers on supersession verification, without QVF's full relation taxonomy, per-query temporal label set (e.g., HISTORICAL_FOR_QUERY vs SUPERSEDED_FOR_QUERY vs FUTURE_OR_NOT_YET_VALID), memory roles, sufficiency, or risk flags. MemChain (arXiv 2607.24097) is a TRAINED post-retrieval policy (SFT + RL/TMPO) that emits question-conditioned evidence plans (with temporal scope current/recent/historical/any) and grounded evidence traces with evidence roles, citations, and relations, plus KEEP/DROP/MERGE/REFINE/ADD actions; it reports 69.80% on LoCoMo (GPT-4.1-mini answerer, +6.10 over the strongest baseline) and evaluates LongMemEval-S. MemChain's goal is token-efficient evidence compression optimized for answer reward, not an interpretable, declarative validity adjudication with explicit UNKNOWN/abstention labels — but it is the work QVF most needs to differentiate from in a related-work section, since \"question-conditioned plan + roles + relations + citations between retrieval and a frozen generator\" overlaps heavily. DeferMem (arXiv 2605.22411, query-time evidence distillation via RL) and RaMem (arXiv 2606.22844, validity-aware contextual reinstatement) are adjacent in the same slot.\n\nThe opposite design pole is deterministic, query-INDEPENDENT validity: MemStrata (\"Temporal Validity in Retrieval Memory,\" arXiv 2606.26511) maintains a bi-temporal ledger with (subject, relation)-keyed supersession, no LLM on the read path, ~0% stale-fact errors vs RAG's 15-40%, and archives superseded facts for as-of-time queries; \"Don't Ask the LLM to Track Freshness\" (arXiv 2606.01435) similarly argues for deterministic conflict-resolution rules (evaluated on MemoryAgentBench). These works validate QVF's premise that timestamp-only heuristics fail, but their validity is decided at ingestion, globally — directly contrasting QVF's thesis that validity is only well-defined relative to the query. In classic RAG filtering, Corrective RAG (arXiv 2401.15884) grades retrieved documents Correct/Incorrect/Ambiguous per query, Astute RAG consolidates conflicting internal/external knowledge, MADAM-RAG/RAMDocs (arXiv 2504.13079) handles conflicting evidence with multi-agent debate, and ECoRAG compresses by evidentiality — all coarser than QVF (document-level relevance or conflict handling, no temporal-applicability semantics, no structured map). Knowledge-conflict benchmarks (ConflictBank, WikiContradict, DRAGged into Conflicts arXiv 2506.08500) cover the CONTRADICTS relation only.\n\nAcronym check: \"QVF\" has no discovered collision with any ML system, model, or benchmark. It does collide outside ML with (1) the Qlik Sense application file format .qvf (widely known in BI/analytics) and (2) Michigan's \"Qualified Voter File\" official voter-registration database. Neither blocks use in an ML paper, but search-engine noise will be dominated by Qlik; consider styling as \"QVF (Query-conditioned Validity Filter)\" consistently.",
+    "papers": [
+      {
+        "title": "MemConflict: Evaluating Long-Term Memory Systems Under Memory Conflicts",
+        "year": "2026",
+        "venue": "arXiv:2605.20926",
+        "url": "https://arxiv.org/abs/2605.20926",
+        "core_idea": "Diagnostic benchmark that treats memory validity as a query-conditioned fitness-for-use problem; formalizes dynamic (temporal), static (factual), and conditional (contextual-applicability) conflicts; builds controlled multi-session dialogues with cross-session conflicts and semantically similar distractors; evaluates six memory systems via black-box answer accuracy plus white-box retrieval/ranking analysis.",
+        "relation_to_qvf": "Shares QVF's exact conceptual framing (query-conditioned validity, three of QVF's label dimensions) but is a BENCHMARK, not a method: it measures failures, proposes no adapter, no structured validity map, no relation taxonomy, no memory roles, no sufficiency/risk output. It is the strongest evidence the problem is recognized — and an additional evaluation target QVF should consider using. QVF must cite it and position itself as the first structured-output method for the problem MemConflict measures."
+      },
+      {
+        "title": "ConvMemory v3: A Validity Context Layer for Conversational Memory via Target-Conditioned Relation Verification",
+        "year": "2026",
+        "venue": "arXiv:2606.26753",
+        "url": "https://arxiv.org/pdf/2606.26753",
+        "core_idea": "Inserts a validity verification layer between memory retrieval and generation that performs target-conditioned relation verification: supersession/validity of a stored fact is judged relative to the target proposition being asked about, and only validity-passing memories reach the generator; evaluated on LongMemEval and LoCoMo.",
+        "relation_to_qvf": "Closest method overall: same pipeline slot (post-retrieval, pre-generation), same insight that validity is conditional rather than global, same two benchmarks QVF plans. Differences: its conditioning is on the target entity/proposition rather than the full query (so it cannot distinguish a historical-intent query from a current-intent query about the same target); it verifies a narrow relation set centered on supersession rather than QVF's 9-way relation taxonomy; it outputs a filtered memory set, not a declarative map with per-query applicability labels, per-query temporal labels (HISTORICAL_FOR_QUERY, FUTURE_OR_NOT_YET_VALID, etc.), memory roles, sufficiency assessment, or risk flags. QVF must differentiate explicitly from this paper."
+      },
+      {
+        "title": "MemChain: Learning Interpretable Memory Traces for Memory-Augmented LLM Agents",
+        "year": "2026",
+        "venue": "arXiv:2607.24097",
+        "url": "https://arxiv.org/html/2607.24097v1",
+        "core_idea": "Trainable post-retrieval memory policy (SFT + trace-guided RL) that generates a question-conditioned evidence plan (including temporal scope: current/recent/historical/any), a grounded evidence trace with evidence roles, candidate-ID citations and inter-step relations, and KEEP/DROP/MERGE/REFINE/ADD actions, then hands a compact evidence context to a frozen answer model; 69.80% on LoCoMo, evaluated also on LongMemEval-S, with ~24x context compression.",
+        "relation_to_qvf": "Heaviest overlap in output structure: question-conditioned planning, roles, relations, and citations between retrieval and a frozen generator, on QVF's exact benchmarks. Differences: MemChain is a TRAINED small-model policy optimized end-to-end for answer reward and token compression; its labels are actions and loose roles, not a normative validity taxonomy; it has no query-conditioned applicability/temporal label semantics, no explicit UNKNOWN/abstention labels, no sufficiency or risk-flag output, and its artifact is a compressed evidence packet rather than an auditable validity map. QVF's contribution must be framed as the declarative, interpretable, prompt-based (Claude-backend) adjudication layer with calibrated abstention — not another compression policy."
+      },
+      {
+        "title": "STALE: Can LLM Agents Know When Their Memories Are No Longer Valid? (with CUPMem)",
+        "year": "2026",
+        "venue": "arXiv:2605.06527",
+        "url": "https://arxiv.org/abs/2605.06527",
+        "core_idea": "Probing benchmark for memory-validity awareness: 400 expert-validated conflict scenarios / 1,200 queries across 100+ topics with contexts up to 150K tokens; tests State Resolution, Premise Resistance, and Implicit Policy Adaptation; best frontier model reaches only 55.2%. Companion prototype CUPMem strengthens write-time revision via structured state consolidation and propagation-aware search.",
+        "relation_to_qvf": "Provides the empirical motivation QVF needs (a large retrieve-vs-act-on-validity gap) and introduces implicit conflicts (invalidation without explicit negation), which QVF's CONTRADICTS/SUPERSEDES/CONDITIONALLY_COMPATIBLE relations should handle. Differences: it is a benchmark plus a WRITE-time consolidation method; QVF operates at READ time conditioned on the query, so an old memory can remain valid for a historical question — a case write-time state overwriting handles poorly. STALE's premise-resistance probe also suggests an extension QVF lacks: flagging false presuppositions in the query itself."
+      },
+      {
+        "title": "Temporal Validity in Retrieval Memory: Eliminating Stale-Fact Errors for AI Agents over Evolving Knowledge (MemStrata)",
+        "year": "2026",
+        "venue": "arXiv:2606.26511",
+        "url": "https://arxiv.org/html/2606.26511v1",
+        "core_idea": "Deterministic supersession layer: bi-temporal ledger (valid_from/valid_to/superseded_by) with (subject, relation)-keyed structural supersession decided at ingestion, no LLM or similarity threshold on the read path; superseded facts archived for as-of-time queries; drives stale-fact answer rate from RAG's 15-40% to ~0% on evolving-knowledge benchmarks, and shows embeddings cannot separate contradictions from paraphrases (AUROC 0.59).",
+        "relation_to_qvf": "The design antithesis of QVF and a key contrast citation. Its validity is global and query-independent, fixed at write time by ingestion order over structured triples; QVF's central claim is that validity is only defined relative to the query and that a later timestamp alone does not prove supersession — precisely the semantic judgment MemStrata refuses to make (its LLM fallback exists only for non-triple prose). MemStrata cannot express partial applicability, conditional compatibility, corroboration vs distraction, or sufficiency; conversely, its determinism/latency argument is a critique QVF must answer (QVF adds an LLM call per query on the read path). Its impossibility result for embedding-based conflict detection is strong supporting evidence for QVF's semantic-adapter approach."
+      },
+      {
+        "title": "Don't Ask the LLM to Track Freshness: A Deterministic Recipe for Memory Conflict Resolution",
+        "year": "2026",
+        "venue": "arXiv:2606.01435",
+        "url": "https://arxiv.org/pdf/2606.01435",
+        "core_idea": "Argues LLM-judged freshness is unreliable and proposes deterministic rules for resolving memory conflicts, evaluated on MemoryAgentBench; acknowledges older memories can be correct for retrospective queries.",
+        "relation_to_qvf": "Adjacent contrast work in the same deterministic camp as MemStrata; shares QVF's observation that newer-is-not-always-better, but resolves conflicts with rules rather than producing query-conditioned semantic labels, relations, roles, or sufficiency. Useful as a baseline/ablation reference (deterministic rules vs QVF's semantic adapter)."
+      },
+      {
+        "title": "Corrective Retrieval Augmented Generation (CRAG)",
+        "year": "2024",
+        "venue": "arXiv:2401.15884",
+        "url": "https://arxiv.org/pdf/2401.15884",
+        "core_idea": "A retrieval evaluator grades retrieved documents as Correct/Incorrect/Ambiguous per query, filters noise via decompose-then-recompose, and triggers corrective web search when retrieval fails.",
+        "relation_to_qvf": "The canonical ancestor of query-conditioned post-retrieval filtering in RAG. Differences: document-level 3-way relevance grading with no temporal semantics, no inter-evidence relations, no memory metadata, no roles, and a corrective-action objective rather than a structured validity representation. QVF generalizes this slot from relevance to validity/applicability/temporality over personal agent memory."
+      },
+      {
+        "title": "Retrieval-Augmented Generation with Conflicting Evidence (MADAM-RAG / RAMDocs)",
+        "year": "2025",
+        "venue": "arXiv:2504.13079",
+        "url": "https://arxiv.org/html/2504.13079v2",
+        "core_idea": "Benchmark (RAMDocs) and multi-agent debate method (MADAM-RAG) for RAG under conflicting, ambiguous, and noisy retrieved documents, distinguishing legitimate ambiguity from misinformation.",
+        "relation_to_qvf": "Representative of the RAG knowledge-conflict line (with ConflictBank, WikiContradict, DRAGged into Conflicts arXiv:2506.08500, Astute RAG, Micro-Act arXiv:2506.05278). Covers essentially only QVF's CONTRADICTS relation and does so over web documents without timestamps/metadata; no temporal labels, applicability, roles, or sufficiency, and resolution happens via debate rather than an explicit declarative map. QVF should cite this line as handling one cell of its taxonomy."
+      }
+    ],
+    "sota_numbers": "STALE: best frontier model only 55.2% overall accuracy on memory-validity probing (arXiv:2605.06527). MemChain: 69.80% accuracy on LoCoMo with GPT-4.1-mini answerer, +6.10 pts over strongest baseline, evidence context 143.3 tokens vs 3,491 for baselines; also evaluated on LongMemEval-S (500 instances) (arXiv:2607.24097). MemStrata: stale-fact answer rate ~0% vs 15-40% for vanilla RAG on evolving-knowledge suites; 0.95-1.00 vs 0.20-0.47 accuracy on code/config/API-evolution benchmarks; embedding AUROC 0.59 (near chance) for contradiction-vs-duplicate detection; read latency ~2.1s vs ~16-18s for LLM-rerank baselines (arXiv:2606.26511). MemConflict: six memory systems show uneven performance across dynamic/static/conditional conflict types, with answer correctness frequently misaligned with supporting-memory retrieval quality (arXiv:2605.20926). Graphiti temporal KG reports 94.8% vs MemGPT 93.4% on Deep Memory Retrieval (vendor-reported, vectorize.io/mem0 blog).",
+    "gaps_for_qvf": "(1) No existing system emits a declarative, auditable Query-Conditioned Validity Map: prior work either benchmarks the problem (MemConflict, STALE), filters/compresses without interpretable validity semantics (MemChain, DeferMem, ConvMemory v3), or decides validity deterministically and query-independently at write time (MemStrata, freshness-recipe). QVF's combined artifact — atomic claims + citations + 9-way relation taxonomy + per-query applicability + per-query temporal labels + memory roles + sufficiency + risk flags — has no direct precedent. (2) Query-conditioned TEMPORAL semantics are unclaimed territory: no found system distinguishes HISTORICAL_FOR_QUERY from SUPERSEDED_FOR_QUERY or has FUTURE_OR_NOT_YET_VALID; MemChain's temporal scope (current/recent/historical/any) is the nearest but is a plan attribute, not a per-memory label. (3) The explicit principle \"a later timestamp alone does not prove supersession\" contradicts the deterministic camp's ingestion-order rule and is empirically supported by STALE's implicit-conflict findings — a defensible, testable thesis. (4) Calibrated abstention via UNKNOWN labels and sufficiency assessment (SUFFICIENT/INSUFFICIENT/AMBIGUOUS) is absent from all found post-retrieval methods; CRAG's Ambiguous label is the only coarse analog. (5) Memory-role assignment (DISTRACTOR, CORROBORATION, QUALIFIER, etc.) as an explicit output is novel; MemChain has looser evidence roles inside traces. (6) Open attack surfaces QVF must defend: latency/cost of an LLM adapter call on the read path (MemStrata's critique), and differentiation from ConvMemory v3 (same slot, same benchmarks) and MemChain (similar structured intermediate) — the paper should include deterministic-rule and compression-policy baselines. (7) Evaluation gap QVF can exploit: MemConflict and STALE provide conflict-focused test beds where no structured-map method has yet been reported; adding one of them beyond LongMemEval/LoCoMo would strengthen novelty claims. Acronym: no ML collision found for \"QVF\"; collisions exist outside ML (Qlik Sense .qvf file format; Michigan Qualified Voter File) — usable but expect search noise."
+  }
+]

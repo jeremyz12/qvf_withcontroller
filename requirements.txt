@@ -1,0 +1,8 @@
+anthropic>=0.90.0
+pydantic>=2.7
+rank-bm25>=0.2.2
+tqdm>=4.66
+huggingface_hub>=0.23
+requests>=2.31
+python-dotenv>=1.0
+pyarrow>=15.0  # reading the HoH-QAs parquet (eval/hoh_dataset.py)

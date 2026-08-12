@@ -1,0 +1,602 @@
+{
+ "7c0ae4e7_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just finished updating my address after settling into my new place in Austin, and I’m trying to get set up with the local utilities and services here.\" and must NOT present the old state (\"I've been based in Seattle for the last few years.\") as current. (Spatiotemporal_Context.location(city) is now Austin.)",
+  "dim": "dim1"
+ },
+ "7c0ae4e7_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just finished updating my address after settling into my new place in Austin, and I’m trying to get set up with the local utilities and services here.\" and must NOT present the old state (\"I've been based in Seattle for the last few years.\") as current. (Spatiotemporal_Context.location(city) is now Austin.)",
+  "dim": "dim2"
+ },
+ "7c0ae4e7_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just finished updating my address after settling into my new place in Austin, and I’m trying to get set up with the local utilities and services here.\" and must NOT present the old state (\"I've been based in Seattle for the last few years.\") as current. (Spatiotemporal_Context.location(city) is now Austin.)",
+  "dim": "dim3"
+ },
+ "34566789_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m updating my info for my new gym membership—my home base is Portland now.\" and must NOT present the old state (\"I've been staying in Seattle for the past few years, so that's where I'm located.\") as current. (Elena’s current city location has changed to Portland.)",
+  "dim": "dim1"
+ },
+ "34566789_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m updating my info for my new gym membership—my home base is Portland now.\" and must NOT present the old state (\"I've been staying in Seattle for the past few years, so that's where I'm located.\") as current. (Elena’s current city location has changed to Portland.)",
+  "dim": "dim2"
+ },
+ "34566789_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m updating my info for my new gym membership—my home base is Portland now.\" and must NOT present the old state (\"I've been staying in Seattle for the past few years, so that's where I'm located.\") as current. (Elena’s current city location has changed to Portland.)",
+  "dim": "dim3"
+ },
+ "85b27125_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just moved into my new place in London and I’m getting settled in.\" and must NOT present the old state (\"Please ensure my records show Chicago, as that is where I am residing.\") as current. (Spatiotemporal_Context.location(city) is now London.)",
+  "dim": "dim1"
+ },
+ "85b27125_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just moved into my new place in London and I’m getting settled in.\" and must NOT present the old state (\"Please ensure my records show Chicago, as that is where I am residing.\") as current. (Spatiotemporal_Context.location(city) is now London.)",
+  "dim": "dim2"
+ },
+ "85b27125_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just moved into my new place in London and I’m getting settled in.\" and must NOT present the old state (\"Please ensure my records show Chicago, as that is where I am residing.\") as current. (Spatiotemporal_Context.location(city) is now London.)",
+  "dim": "dim3"
+ },
+ "b0d43dd4_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just renewed the lease on my flat for another year, even though the constant delays on the Tube's Northern Line make getting to the office every morning a complete headache.\" and must NOT present the old state (\"Since I’m currently based in Seattle, I’m happy to meet at a cafe in Capitol Hill or anywhere central to keep the commute reasonable for both of us.\") as current. (By mentioning a year-long lease on a 'flat' and a daily morning routine using the 'Tube's Northern Line', the statement strictly establishes the user's primary, long-term residence as London. This creates a state conflict with being based in Seattle, while avoiding explicitly naming the new city to satisfy the implicit constraint.)",
+  "dim": "dim1"
+ },
+ "b0d43dd4_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just renewed the lease on my flat for another year, even though the constant delays on the Tube's Northern Line make getting to the office every morning a complete headache.\" and must NOT present the old state (\"Since I’m currently based in Seattle, I’m happy to meet at a cafe in Capitol Hill or anywhere central to keep the commute reasonable for both of us.\") as current. (By mentioning a year-long lease on a 'flat' and a daily morning routine using the 'Tube's Northern Line', the statement strictly establishes the user's primary, long-term residence as London. This creates a state conflict with being based in Seattle, while avoiding explicitly naming the new city to satisfy the implicit constraint.)",
+  "dim": "dim2"
+ },
+ "b0d43dd4_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just renewed the lease on my flat for another year, even though the constant delays on the Tube's Northern Line make getting to the office every morning a complete headache.\" and must NOT present the old state (\"Since I’m currently based in Seattle, I’m happy to meet at a cafe in Capitol Hill or anywhere central to keep the commute reasonable for both of us.\") as current. (By mentioning a year-long lease on a 'flat' and a daily morning routine using the 'Tube's Northern Line', the statement strictly establishes the user's primary, long-term residence as London. This creates a state conflict with being based in Seattle, while avoiding explicitly naming the new city to satisfy the implicit constraint.)",
+  "dim": "dim3"
+ },
+ "35385383_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"The instructor just dimmed the lights, so I’m laying out my mat and getting ready for the first yoga flow of the evening.\" and must NOT present the old state (\"I'm currently on the intercity train and will be in transit for another three hours.\") as current. (No longer in transit; currently stationary and attending an in-person yoga class session.)",
+  "dim": "dim1"
+ },
+ "35385383_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"The instructor just dimmed the lights, so I’m laying out my mat and getting ready for the first yoga flow of the evening.\" and must NOT present the old state (\"I'm currently on the intercity train and will be in transit for another three hours.\") as current. (No longer in transit; currently stationary and attending an in-person yoga class session.)",
+  "dim": "dim2"
+ },
+ "35385383_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"The instructor just dimmed the lights, so I’m laying out my mat and getting ready for the first yoga flow of the evening.\" and must NOT present the old state (\"I'm currently on the intercity train and will be in transit for another three hours.\") as current. (No longer in transit; currently stationary and attending an in-person yoga class session.)",
+  "dim": "dim3"
+ },
+ "cafa590e_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I moved into the apartment above my office, I just walk downstairs and I’m at my desk in two minutes.\" and must NOT present the old state (\"These days, I'm taking the regional shuttle whenever I need to get into the hub.\") as current. (Current movement is on foot due to living on-site/next to the workplace, eliminating reliance on any public transport connection as the primary mode.)",
+  "dim": "dim1"
+ },
+ "cafa590e_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I moved into the apartment above my office, I just walk downstairs and I’m at my desk in two minutes.\" and must NOT present the old state (\"These days, I'm taking the regional shuttle whenever I need to get into the hub.\") as current. (Current movement is on foot due to living on-site/next to the workplace, eliminating reliance on any public transport connection as the primary mode.)",
+  "dim": "dim2"
+ },
+ "cafa590e_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I moved into the apartment above my office, I just walk downstairs and I’m at my desk in two minutes.\" and must NOT present the old state (\"These days, I'm taking the regional shuttle whenever I need to get into the hub.\") as current. (Current movement is on foot due to living on-site/next to the workplace, eliminating reliance on any public transport connection as the primary mode.)",
+  "dim": "dim3"
+ },
+ "1a85388f_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’m almost always working from my apartment on weekdays, so deliveries will have the best chance of reaching me there during the day.\" and must NOT present the old state (\"I'm primarily based at the office during the week, so that is where you should expect to find me.\") as current. (Primary location type has shifted to home (apartment) on weekdays instead of the office.)",
+  "dim": "dim1"
+ },
+ "1a85388f_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’m almost always working from my apartment on weekdays, so deliveries will have the best chance of reaching me there during the day.\" and must NOT present the old state (\"I'm primarily based at the office during the week, so that is where you should expect to find me.\") as current. (Primary location type has shifted to home (apartment) on weekdays instead of the office.)",
+  "dim": "dim2"
+ },
+ "1a85388f_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’m almost always working from my apartment on weekdays, so deliveries will have the best chance of reaching me there during the day.\" and must NOT present the old state (\"I'm primarily based at the office during the week, so that is where you should expect to find me.\") as current. (Primary location type has shifted to home (apartment) on weekdays instead of the office.)",
+  "dim": "dim3"
+ },
+ "6ff5a576_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I finally settled into my new desk at the office downtown, and it’s nice having a dedicated spot to handle my day-to-day work.\" and must NOT present the old state (\"I've got my main base set up at home, so I stay here for my daily tasks.\") as current. (Primary location has shifted from home-based to office-based (external commercial/work building).)",
+  "dim": "dim1"
+ },
+ "6ff5a576_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I finally settled into my new desk at the office downtown, and it’s nice having a dedicated spot to handle my day-to-day work.\" and must NOT present the old state (\"I've got my main base set up at home, so I stay here for my daily tasks.\") as current. (Primary location has shifted from home-based to office-based (external commercial/work building).)",
+  "dim": "dim2"
+ },
+ "6ff5a576_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I finally settled into my new desk at the office downtown, and it’s nice having a dedicated spot to handle my day-to-day work.\" and must NOT present the old state (\"I've got my main base set up at home, so I stay here for my daily tasks.\") as current. (Primary location has shifted from home-based to office-based (external commercial/work building).)",
+  "dim": "dim3"
+ },
+ "34d402c0_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"We’re under an excessive heat warning this week, and even overnight it’s been staying in the upper 80s with the AC running nonstop.\" and must NOT present the old state (\"It's been unusually cold for this time of year.\") as current. (Experiencing persistently extreme heat (including very warm nights) rather than unseasonably low temperatures.)",
+  "dim": "dim1"
+ },
+ "34d402c0_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"We’re under an excessive heat warning this week, and even overnight it’s been staying in the upper 80s with the AC running nonstop.\" and must NOT present the old state (\"It's been unusually cold for this time of year.\") as current. (Experiencing persistently extreme heat (including very warm nights) rather than unseasonably low temperatures.)",
+  "dim": "dim2"
+ },
+ "34d402c0_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"We’re under an excessive heat warning this week, and even overnight it’s been staying in the upper 80s with the AC running nonstop.\" and must NOT present the old state (\"It's been unusually cold for this time of year.\") as current. (Experiencing persistently extreme heat (including very warm nights) rather than unseasonably low temperatures.)",
+  "dim": "dim3"
+ },
+ "2eaf2b38_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since the dry season settled in, the air indoors feels crisp and my wooden table has started to get those tiny static shocks when I wipe it down.\" and must NOT present the old state (\"The humidity is so constant that surfaces stay damp all the time.\") as current. (Ambient conditions have shifted to a persistently dry, low-humidity period.)",
+  "dim": "dim1"
+ },
+ "2eaf2b38_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since the dry season settled in, the air indoors feels crisp and my wooden table has started to get those tiny static shocks when I wipe it down.\" and must NOT present the old state (\"The humidity is so constant that surfaces stay damp all the time.\") as current. (Ambient conditions have shifted to a persistently dry, low-humidity period.)",
+  "dim": "dim2"
+ },
+ "2eaf2b38_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since the dry season settled in, the air indoors feels crisp and my wooden table has started to get those tiny static shocks when I wipe it down.\" and must NOT present the old state (\"The humidity is so constant that surfaces stay damp all the time.\") as current. (Ambient conditions have shifted to a persistently dry, low-humidity period.)",
+  "dim": "dim3"
+ },
+ "7f481d58_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately when I step outside at sunrise, the sky is already clear and bright, and the air stays crisp with no haze hanging around.\" and must NOT present the old state (\"The morning haze usually persists until midday in where I live.\") as current. (The neighborhood’s typical weather has shifted to consistently clear mornings with little to no haze.)",
+  "dim": "dim1"
+ },
+ "7f481d58_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately when I step outside at sunrise, the sky is already clear and bright, and the air stays crisp with no haze hanging around.\" and must NOT present the old state (\"The morning haze usually persists until midday in where I live.\") as current. (The neighborhood’s typical weather has shifted to consistently clear mornings with little to no haze.)",
+  "dim": "dim2"
+ },
+ "7f481d58_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately when I step outside at sunrise, the sky is already clear and bright, and the air stays crisp with no haze hanging around.\" and must NOT present the old state (\"The morning haze usually persists until midday in where I live.\") as current. (The neighborhood’s typical weather has shifted to consistently clear mornings with little to no haze.)",
+  "dim": "dim3"
+ },
+ "ca76ab25_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m at this packed street-food market right now, and the music and chatter are so loud.\" and must NOT present the old state (\"It's quiet enough in here that I can hear the clock ticking across the hall.\") as current. (High ambient noise level)",
+  "dim": "dim1"
+ },
+ "ca76ab25_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m at this packed street-food market right now, and the music and chatter are so loud.\" and must NOT present the old state (\"It's quiet enough in here that I can hear the clock ticking across the hall.\") as current. (High ambient noise level)",
+  "dim": "dim2"
+ },
+ "ca76ab25_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m at this packed street-food market right now, and the music and chatter are so loud.\" and must NOT present the old state (\"It's quiet enough in here that I can hear the clock ticking across the hall.\") as current. (High ambient noise level)",
+  "dim": "dim3"
+ },
+ "3ab1d7a5_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Most of my client in America work happens at 9 a.m. their time — that's 2 p.m. my time, just after lunch.\" and must NOT present the old state (\"I'm on Pacific Time, so my local clock is running three hours behind my NYC clients.\") as current. (User is now in a timezone that is 5 hours ahead of the client(e.g., UK time/GMT or similar), no longer Pacific Time (3 hours behind).)",
+  "dim": "dim1"
+ },
+ "3ab1d7a5_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Most of my client in America work happens at 9 a.m. their time — that's 2 p.m. my time, just after lunch.\" and must NOT present the old state (\"I'm on Pacific Time, so my local clock is running three hours behind my NYC clients.\") as current. (User is now in a timezone that is 5 hours ahead of the client(e.g., UK time/GMT or similar), no longer Pacific Time (3 hours behind).)",
+  "dim": "dim2"
+ },
+ "3ab1d7a5_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Most of my client in America work happens at 9 a.m. their time — that's 2 p.m. my time, just after lunch.\" and must NOT present the old state (\"I'm on Pacific Time, so my local clock is running three hours behind my NYC clients.\") as current. (User is now in a timezone that is 5 hours ahead of the client(e.g., UK time/GMT or similar), no longer Pacific Time (3 hours behind).)",
+  "dim": "dim3"
+ },
+ "ac6b1ba4_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just signed a year-long lease in Toronto, and the sun doesn’t come up until after 7 a.m. for me lately.\" and must NOT present the old state (\"You should know I'm located in the Japan Standard Time zone, so there is a significant gap between my friends and me.\") as current. (Spatiotemporal_Context.timezone has shifted to a North American eastern timezone consistent with Toronto (UTC−5/UTC−4 seasonally), which is incompatible with being in Japan Standard Time (UTC+9).)",
+  "dim": "dim1"
+ },
+ "ac6b1ba4_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just signed a year-long lease in Toronto, and the sun doesn’t come up until after 7 a.m. for me lately.\" and must NOT present the old state (\"You should know I'm located in the Japan Standard Time zone, so there is a significant gap between my friends and me.\") as current. (Spatiotemporal_Context.timezone has shifted to a North American eastern timezone consistent with Toronto (UTC−5/UTC−4 seasonally), which is incompatible with being in Japan Standard Time (UTC+9).)",
+  "dim": "dim2"
+ },
+ "ac6b1ba4_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just signed a year-long lease in Toronto, and the sun doesn’t come up until after 7 a.m. for me lately.\" and must NOT present the old state (\"You should know I'm located in the Japan Standard Time zone, so there is a significant gap between my friends and me.\") as current. (Spatiotemporal_Context.timezone has shifted to a North American eastern timezone consistent with Toronto (UTC−5/UTC−4 seasonally), which is incompatible with being in Japan Standard Time (UTC+9).)",
+  "dim": "dim3"
+ },
+ "a4cb06e0_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’ve been spending most of my weekdays outside—walking around the neighborhood and working from the park when the weather’s decent.\" and must NOT present the old state (\"Honestly, I tend to stay indoors for the better part of the day.\") as current. (Updated indoor/outdoor status: predominantly outdoor during the day on weekdays.)",
+  "dim": "dim1"
+ },
+ "a4cb06e0_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’ve been spending most of my weekdays outside—walking around the neighborhood and working from the park when the weather’s decent.\" and must NOT present the old state (\"Honestly, I tend to stay indoors for the better part of the day.\") as current. (Updated indoor/outdoor status: predominantly outdoor during the day on weekdays.)",
+  "dim": "dim2"
+ },
+ "a4cb06e0_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’ve been spending most of my weekdays outside—walking around the neighborhood and working from the park when the weather’s decent.\" and must NOT present the old state (\"Honestly, I tend to stay indoors for the better part of the day.\") as current. (Updated indoor/outdoor status: predominantly outdoor during the day on weekdays.)",
+  "dim": "dim3"
+ },
+ "b6689bbc_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I took over the morning dog-walking route, I’m on my feet along the neighborhood sidewalks for hours every day before lunch.\" and must NOT present the old state (\"My routine keeps me indoors most days, so I'm not often outside.\") as current. (Updated indoor_outdoor_status: Predominantly Outdoor (spends most days outside for extended daily periods).)",
+  "dim": "dim1"
+ },
+ "b6689bbc_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I took over the morning dog-walking route, I’m on my feet along the neighborhood sidewalks for hours every day before lunch.\" and must NOT present the old state (\"My routine keeps me indoors most days, so I'm not often outside.\") as current. (Updated indoor_outdoor_status: Predominantly Outdoor (spends most days outside for extended daily periods).)",
+  "dim": "dim2"
+ },
+ "b6689bbc_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I took over the morning dog-walking route, I’m on my feet along the neighborhood sidewalks for hours every day before lunch.\" and must NOT present the old state (\"My routine keeps me indoors most days, so I'm not often outside.\") as current. (Updated indoor_outdoor_status: Predominantly Outdoor (spends most days outside for extended daily periods).)",
+  "dim": "dim3"
+ },
+ "3fad85a1_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since I moved closer, it only takes me about ten minutes to get to my workplace each morning, so I can be available for earlier meetings now.\" and must NOT present the old state (\"I typically come to my office from about thirty miles out, so that distance is pretty consistent for my daily travel.\") as current. (Commute radius is now very small (close to the workplace), consistent with roughly a 10-minute commute rather than ~30 miles.)",
+  "dim": "dim1"
+ },
+ "3fad85a1_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since I moved closer, it only takes me about ten minutes to get to my workplace each morning, so I can be available for earlier meetings now.\" and must NOT present the old state (\"I typically come to my office from about thirty miles out, so that distance is pretty consistent for my daily travel.\") as current. (Commute radius is now very small (close to the workplace), consistent with roughly a 10-minute commute rather than ~30 miles.)",
+  "dim": "dim2"
+ },
+ "3fad85a1_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since I moved closer, it only takes me about ten minutes to get to my workplace each morning, so I can be available for earlier meetings now.\" and must NOT present the old state (\"I typically come to my office from about thirty miles out, so that distance is pretty consistent for my daily travel.\") as current. (Commute radius is now very small (close to the workplace), consistent with roughly a 10-minute commute rather than ~30 miles.)",
+  "dim": "dim3"
+ },
+ "8612e685_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started this new role, I’ve gotten used to a commute that’s about an hour and a half each way, so I usually plan my weekdays around that travel time.\" and must NOT present the old state (\"I limit my daily travel to about forty minutes each way; beyond that, the road time just isn't worth it.\") as current. (Commute radius has expanded to roughly 90 minutes one-way.)",
+  "dim": "dim1"
+ },
+ "8612e685_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started this new role, I’ve gotten used to a commute that’s about an hour and a half each way, so I usually plan my weekdays around that travel time.\" and must NOT present the old state (\"I limit my daily travel to about forty minutes each way; beyond that, the road time just isn't worth it.\") as current. (Commute radius has expanded to roughly 90 minutes one-way.)",
+  "dim": "dim2"
+ },
+ "8612e685_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started this new role, I’ve gotten used to a commute that’s about an hour and a half each way, so I usually plan my weekdays around that travel time.\" and must NOT present the old state (\"I limit my daily travel to about forty minutes each way; beyond that, the road time just isn't worth it.\") as current. (Commute radius has expanded to roughly 90 minutes one-way.)",
+  "dim": "dim3"
+ },
+ "28d56b63_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since moving to my new place right by the ocean, I’ve been enjoying how dense the air feels on my morning walks.\" and must NOT present the old state (\"I live in a town sitting at 8,000 feet, so the air is just lighter up here.\") as current. (The user’s permanent residence altitude has changed from 8,000 feet to near sea level (coastal).)",
+  "dim": "dim1"
+ },
+ "28d56b63_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since moving to my new place right by the ocean, I’ve been enjoying how dense the air feels on my morning walks.\" and must NOT present the old state (\"I live in a town sitting at 8,000 feet, so the air is just lighter up here.\") as current. (The user’s permanent residence altitude has changed from 8,000 feet to near sea level (coastal).)",
+  "dim": "dim2"
+ },
+ "28d56b63_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since moving to my new place right by the ocean, I’ve been enjoying how dense the air feels on my morning walks.\" and must NOT present the old state (\"I live in a town sitting at 8,000 feet, so the air is just lighter up here.\") as current. (The user’s permanent residence altitude has changed from 8,000 feet to near sea level (coastal).)",
+  "dim": "dim3"
+ },
+ "7966499b_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I moved up to this mountain town, I’ve had to take it easy on hikes because the thin air hits me pretty fast.\" and must NOT present the old state (\"I'm settled in the coastal lowlands, so I'm consistently at sea level.\") as current. (Now living at a high elevation in a mountain area rather than at sea level.)",
+  "dim": "dim1"
+ },
+ "7966499b_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I moved up to this mountain town, I’ve had to take it easy on hikes because the thin air hits me pretty fast.\" and must NOT present the old state (\"I'm settled in the coastal lowlands, so I'm consistently at sea level.\") as current. (Now living at a high elevation in a mountain area rather than at sea level.)",
+  "dim": "dim2"
+ },
+ "7966499b_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I moved up to this mountain town, I’ve had to take it easy on hikes because the thin air hits me pretty fast.\" and must NOT present the old state (\"I'm settled in the coastal lowlands, so I'm consistently at sea level.\") as current. (Now living at a high elevation in a mountain area rather than at sea level.)",
+  "dim": "dim3"
+ },
+ "cc9aaa40_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that I’m in the top-floor place with big south-facing windows, the living room is flooded with sunlight for most of the day.\" and must NOT present the old state (\"It stays pretty dim in my living room even during the afternoon because of the trees outside.\") as current. (Natural light intensity is now consistently high throughout daylight hours due to strong direct sun exposure.)",
+  "dim": "dim1"
+ },
+ "cc9aaa40_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that I’m in the top-floor place with big south-facing windows, the living room is flooded with sunlight for most of the day.\" and must NOT present the old state (\"It stays pretty dim in my living room even during the afternoon because of the trees outside.\") as current. (Natural light intensity is now consistently high throughout daylight hours due to strong direct sun exposure.)",
+  "dim": "dim2"
+ },
+ "cc9aaa40_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that I’m in the top-floor place with big south-facing windows, the living room is flooded with sunlight for most of the day.\" and must NOT present the old state (\"It stays pretty dim in my living room even during the afternoon because of the trees outside.\") as current. (Natural light intensity is now consistently high throughout daylight hours due to strong direct sun exposure.)",
+  "dim": "dim3"
+ },
+ "374cb27e_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’ve been spending most of my daytime hours in the interior stacks at the library, and my eyes have adjusted to the steady, low indoor lighting there.\" and must NOT present the old state (\"I'm usually out in the open, so the sunlight is consistently bright around me.\") as current. (Updated light_exposure_intensity: predominantly low-intensity artificial indoor lighting during daytime (no longer high-intensity natural light).)",
+  "dim": "dim1"
+ },
+ "374cb27e_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’ve been spending most of my daytime hours in the interior stacks at the library, and my eyes have adjusted to the steady, low indoor lighting there.\" and must NOT present the old state (\"I'm usually out in the open, so the sunlight is consistently bright around me.\") as current. (Updated light_exposure_intensity: predominantly low-intensity artificial indoor lighting during daytime (no longer high-intensity natural light).)",
+  "dim": "dim2"
+ },
+ "374cb27e_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Lately I’ve been spending most of my daytime hours in the interior stacks at the library, and my eyes have adjusted to the steady, low indoor lighting there.\" and must NOT present the old state (\"I'm usually out in the open, so the sunlight is consistently bright around me.\") as current. (Updated light_exposure_intensity: predominantly low-intensity artificial indoor lighting during daytime (no longer high-intensity natural light).)",
+  "dim": "dim3"
+ },
+ "09949c3c_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just signed the paperwork for an 18-month assignment with my new team, and my start date is next Monday.\" and must NOT present the old state (\"I'm only in town for a while, so I'm planning to stay here for about five months.\") as current. (planned stay duration has shifted from about 5 months to about 18 months)",
+  "dim": "dim1"
+ },
+ "09949c3c_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just signed the paperwork for an 18-month assignment with my new team, and my start date is next Monday.\" and must NOT present the old state (\"I'm only in town for a while, so I'm planning to stay here for about five months.\") as current. (planned stay duration has shifted from about 5 months to about 18 months)",
+  "dim": "dim2"
+ },
+ "09949c3c_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just signed the paperwork for an 18-month assignment with my new team, and my start date is next Monday.\" and must NOT present the old state (\"I'm only in town for a while, so I'm planning to stay here for about five months.\") as current. (planned stay duration has shifted from about 5 months to about 18 months)",
+  "dim": "dim3"
+ },
+ "b17c5c02_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I went ahead and renewed my rental agreement for another full year, so my move date got pushed way out.\" and must NOT present the old state (\"I'd love to help out, but I'm only staying at this address for the next two months.\") as current. (planned_stay_duration is now about one year (significantly longer than two months).)",
+  "dim": "dim1"
+ },
+ "b17c5c02_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I went ahead and renewed my rental agreement for another full year, so my move date got pushed way out.\" and must NOT present the old state (\"I'd love to help out, but I'm only staying at this address for the next two months.\") as current. (planned_stay_duration is now about one year (significantly longer than two months).)",
+  "dim": "dim2"
+ },
+ "b17c5c02_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I went ahead and renewed my rental agreement for another full year, so my move date got pushed way out.\" and must NOT present the old state (\"I'd love to help out, but I'm only staying at this address for the next two months.\") as current. (planned_stay_duration is now about one year (significantly longer than two months).)",
+  "dim": "dim3"
+ },
+ "e72a2ba5_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I went ahead and booked my move for next month, so I’ll only be around a few more weeks.\" and must NOT present the old state (\"I'm planning on sticking around for the next two years.\") as current. (planned stay duration is now only a few more weeks (leaving next month), which is incompatible with a two-year plan)",
+  "dim": "dim1"
+ },
+ "e72a2ba5_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I went ahead and booked my move for next month, so I’ll only be around a few more weeks.\" and must NOT present the old state (\"I'm planning on sticking around for the next two years.\") as current. (planned stay duration is now only a few more weeks (leaving next month), which is incompatible with a two-year plan)",
+  "dim": "dim2"
+ },
+ "e72a2ba5_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I went ahead and booked my move for next month, so I’ll only be around a few more weeks.\" and must NOT present the old state (\"I'm planning on sticking around for the next two years.\") as current. (planned stay duration is now only a few more weeks (leaving next month), which is incompatible with a two-year plan)",
+  "dim": "dim3"
+ },
+ "b3613ccd_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m settling into a long-term routine now—signed a two-year lease and finally started a weekly pottery class nearby.\" and must NOT present the old state (\"I typically switch up my location every three months or so, so my mailing address is always temporary.\") as current. (Relocates residence infrequently; now staying in the same home for at least ~2 years instead of moving every 3–4 months.)",
+  "dim": "dim1"
+ },
+ "b3613ccd_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m settling into a long-term routine now—signed a two-year lease and finally started a weekly pottery class nearby.\" and must NOT present the old state (\"I typically switch up my location every three months or so, so my mailing address is always temporary.\") as current. (Relocates residence infrequently; now staying in the same home for at least ~2 years instead of moving every 3–4 months.)",
+  "dim": "dim2"
+ },
+ "b3613ccd_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m settling into a long-term routine now—signed a two-year lease and finally started a weekly pottery class nearby.\" and must NOT present the old state (\"I typically switch up my location every three months or so, so my mailing address is always temporary.\") as current. (Relocates residence infrequently; now staying in the same home for at least ~2 years instead of moving every 3–4 months.)",
+  "dim": "dim3"
+ },
+ "4124b1e4_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I finally finished unpacking in the new place—after bouncing between a couple of apartments over the past year, it feels good to have a key that actually stays on my keyring.\" and must NOT present the old state (\"Things change around here, but not for me; I haven't moved from this address in fifteen years.\") as current. (The user now has a recent history of multiple moves within the past year, indicating frequent location changes rather than a static 15-year residence.)",
+  "dim": "dim1"
+ },
+ "4124b1e4_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I finally finished unpacking in the new place—after bouncing between a couple of apartments over the past year, it feels good to have a key that actually stays on my keyring.\" and must NOT present the old state (\"Things change around here, but not for me; I haven't moved from this address in fifteen years.\") as current. (The user now has a recent history of multiple moves within the past year, indicating frequent location changes rather than a static 15-year residence.)",
+  "dim": "dim2"
+ },
+ "4124b1e4_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I finally finished unpacking in the new place—after bouncing between a couple of apartments over the past year, it feels good to have a key that actually stays on my keyring.\" and must NOT present the old state (\"Things change around here, but not for me; I haven't moved from this address in fifteen years.\") as current. (The user now has a recent history of multiple moves within the past year, indicating frequent location changes rather than a static 15-year residence.)",
+  "dim": "dim3"
+ },
+ "a4b2e2fd_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m filling out the rental application and trying to remember all the places I’ve lived since last summer—I’ve already moved three times, so my timeline is a bit messy.\" and must NOT present the old state (\"There is no need to ask for a new address; I've stayed at this same place for the last twelve years.\") as current. (High frequency of location change (recent multiple moves in a short period).)",
+  "dim": "dim1"
+ },
+ "a4b2e2fd_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m filling out the rental application and trying to remember all the places I’ve lived since last summer—I’ve already moved three times, so my timeline is a bit messy.\" and must NOT present the old state (\"There is no need to ask for a new address; I've stayed at this same place for the last twelve years.\") as current. (High frequency of location change (recent multiple moves in a short period).)",
+  "dim": "dim2"
+ },
+ "a4b2e2fd_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m filling out the rental application and trying to remember all the places I’ve lived since last summer—I’ve already moved three times, so my timeline is a bit messy.\" and must NOT present the old state (\"There is no need to ask for a new address; I've stayed at this same place for the last twelve years.\") as current. (High frequency of location change (recent multiple moves in a short period).)",
+  "dim": "dim3"
+ },
+ "01f694b2_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just wrapped up my master’s program last month, so now I’m focusing on settling into my full-time job.\" and must NOT present the old state (\"I haven't finished my education yet; I'm currently an undergraduate student.\") as current. (Education status has changed to having completed a master’s degree (no longer an enrolled undergraduate).)",
+  "dim": "dim1"
+ },
+ "01f694b2_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just wrapped up my master’s program last month, so now I’m focusing on settling into my full-time job.\" and must NOT present the old state (\"I haven't finished my education yet; I'm currently an undergraduate student.\") as current. (Education status has changed to having completed a master’s degree (no longer an enrolled undergraduate).)",
+  "dim": "dim2"
+ },
+ "01f694b2_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just wrapped up my master’s program last month, so now I’m focusing on settling into my full-time job.\" and must NOT present the old state (\"I haven't finished my education yet; I'm currently an undergraduate student.\") as current. (Education status has changed to having completed a master’s degree (no longer an enrolled undergraduate).)",
+  "dim": "dim3"
+ },
+ "7ee76c41_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been settling into my new routine at the office since starting my first full-time job.\" and must NOT present the old state (\"As for what I'm doing, honestly, I'm currently in the middle of my master's program.\") as current. (The user is now a full-time employee who has already graduated, implying they are no longer a master's student.)",
+  "dim": "dim1"
+ },
+ "7ee76c41_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been settling into my new routine at the office since starting my first full-time job.\" and must NOT present the old state (\"As for what I'm doing, honestly, I'm currently in the middle of my master's program.\") as current. (The user is now a full-time employee who has already graduated, implying they are no longer a master's student.)",
+  "dim": "dim2"
+ },
+ "7ee76c41_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been settling into my new routine at the office since starting my first full-time job.\" and must NOT present the old state (\"As for what I'm doing, honestly, I'm currently in the middle of my master's program.\") as current. (The user is now a full-time employee who has already graduated, implying they are no longer a master's student.)",
+  "dim": "dim3"
+ },
+ "dde8e774_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that I’m working full-time with a standard Monday–Friday schedule, I can usually commit to weeknight meetings and most weekends.\" and must NOT present the old state (\"I'm currently an undergraduate student, so my life is pretty much structured around the academic calendar.\") as current. (The user is no longer an undergraduate student; they are employed full-time on a typical weekday work schedule.)",
+  "dim": "dim1"
+ },
+ "dde8e774_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that I’m working full-time with a standard Monday–Friday schedule, I can usually commit to weeknight meetings and most weekends.\" and must NOT present the old state (\"I'm currently an undergraduate student, so my life is pretty much structured around the academic calendar.\") as current. (The user is no longer an undergraduate student; they are employed full-time on a typical weekday work schedule.)",
+  "dim": "dim2"
+ },
+ "dde8e774_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that I’m working full-time with a standard Monday–Friday schedule, I can usually commit to weeknight meetings and most weekends.\" and must NOT present the old state (\"I'm currently an undergraduate student, so my life is pretty much structured around the academic calendar.\") as current. (The user is no longer an undergraduate student; they are employed full-time on a typical weekday work schedule.)",
+  "dim": "dim3"
+ },
+ "42aa71ce_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just got my hospital ID badge and started my first week on the med-surg floor, and these 12-hour day shifts are wiping me out.\" and must NOT present the old state (\"These days, I'm working full-time as a graphic designer.\") as current. (Now employed as a full-time hospital nurse working 12-hour day shifts, which makes being employed full-time as a graphic designer infeasible.)",
+  "dim": "dim1"
+ },
+ "42aa71ce_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just got my hospital ID badge and started my first week on the med-surg floor, and these 12-hour day shifts are wiping me out.\" and must NOT present the old state (\"These days, I'm working full-time as a graphic designer.\") as current. (Now employed as a full-time hospital nurse working 12-hour day shifts, which makes being employed full-time as a graphic designer infeasible.)",
+  "dim": "dim2"
+ },
+ "42aa71ce_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I just got my hospital ID badge and started my first week on the med-surg floor, and these 12-hour day shifts are wiping me out.\" and must NOT present the old state (\"These days, I'm working full-time as a graphic designer.\") as current. (Now employed as a full-time hospital nurse working 12-hour day shifts, which makes being employed full-time as a graphic designer infeasible.)",
+  "dim": "dim3"
+ },
+ "3358e7d0_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"First day at my new office gig today—HR had me fill out the W‑4 and enroll in the company health plan during orientation.\" and must NOT present the old state (\"I'm retired these days, so my weekdays are completely open for this.\") as current. (Employment status has changed from retired to employed full-time (starting a new office job).)",
+  "dim": "dim1"
+ },
+ "3358e7d0_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"First day at my new office gig today—HR had me fill out the W‑4 and enroll in the company health plan during orientation.\" and must NOT present the old state (\"I'm retired these days, so my weekdays are completely open for this.\") as current. (Employment status has changed from retired to employed full-time (starting a new office job).)",
+  "dim": "dim2"
+ },
+ "3358e7d0_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"First day at my new office gig today—HR had me fill out the W‑4 and enroll in the company health plan during orientation.\" and must NOT present the old state (\"I'm retired these days, so my weekdays are completely open for this.\") as current. (Employment status has changed from retired to employed full-time (starting a new office job).)",
+  "dim": "dim3"
+ },
+ "17c4192e_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After orientation today, I finally got my employee badge and benefits portal set up at the company.\" and must NOT present the old state (\"I'm currently self-employed, so my work schedule is entirely up to me.\") as current. (Now employed by a company (salaried/employee) rather than self-employed.)",
+  "dim": "dim1"
+ },
+ "17c4192e_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After orientation today, I finally got my employee badge and benefits portal set up at the company.\" and must NOT present the old state (\"I'm currently self-employed, so my work schedule is entirely up to me.\") as current. (Now employed by a company (salaried/employee) rather than self-employed.)",
+  "dim": "dim2"
+ },
+ "17c4192e_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After orientation today, I finally got my employee badge and benefits portal set up at the company.\" and must NOT present the old state (\"I'm currently self-employed, so my work schedule is entirely up to me.\") as current. (Now employed by a company (salaried/employee) rather than self-employed.)",
+  "dim": "dim3"
+ },
+ "b4b839a8_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m updating my onboarding paperwork for the new position, and the background-check section asks for my alien registration number—I'll use the one on my green card.\" and must NOT present the old state (\"You can list my status as naturalized citizen now that the process is complete.\") as current. (The user is now a lawful permanent resident (green card holder), not a naturalized citizen.)",
+  "dim": "dim1"
+ },
+ "b4b839a8_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m updating my onboarding paperwork for the new position, and the background-check section asks for my alien registration number—I'll use the one on my green card.\" and must NOT present the old state (\"You can list my status as naturalized citizen now that the process is complete.\") as current. (The user is now a lawful permanent resident (green card holder), not a naturalized citizen.)",
+  "dim": "dim2"
+ },
+ "b4b839a8_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m updating my onboarding paperwork for the new position, and the background-check section asks for my alien registration number—I'll use the one on my green card.\" and must NOT present the old state (\"You can list my status as naturalized citizen now that the process is complete.\") as current. (The user is now a lawful permanent resident (green card holder), not a naturalized citizen.)",
+  "dim": "dim3"
+ },
+ "e3bd17b2_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m filling out the paperwork for my first passport application now that my naturalization ceremony is done.\" and must NOT present the old state (\"Just to be clear on my file, I'm classified as a permanent resident.\") as current. (Citizenship status has changed to naturalized citizen.)",
+  "dim": "dim1"
+ },
+ "e3bd17b2_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m filling out the paperwork for my first passport application now that my naturalization ceremony is done.\" and must NOT present the old state (\"Just to be clear on my file, I'm classified as a permanent resident.\") as current. (Citizenship status has changed to naturalized citizen.)",
+  "dim": "dim2"
+ },
+ "e3bd17b2_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m filling out the paperwork for my first passport application now that my naturalization ceremony is done.\" and must NOT present the old state (\"Just to be clear on my file, I'm classified as a permanent resident.\") as current. (Citizenship status has changed to naturalized citizen.)",
+  "dim": "dim3"
+ },
+ "fdada4cc_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"This week I formally took the shahada at my local mosque, and I’ve begun praying the five daily prayers as part of my life now as a Muslim.\" and must NOT present the old state (\"I identify as a practicing Hindu, and that faith is really central to who I am.\") as current. (Role_and_Identity.religious_affiliation has changed to practicing Muslim (conversion completed and daily practice established).)",
+  "dim": "dim1"
+ },
+ "fdada4cc_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"This week I formally took the shahada at my local mosque, and I’ve begun praying the five daily prayers as part of my life now as a Muslim.\" and must NOT present the old state (\"I identify as a practicing Hindu, and that faith is really central to who I am.\") as current. (Role_and_Identity.religious_affiliation has changed to practicing Muslim (conversion completed and daily practice established).)",
+  "dim": "dim2"
+ },
+ "fdada4cc_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"This week I formally took the shahada at my local mosque, and I’ve begun praying the five daily prayers as part of my life now as a Muslim.\" and must NOT present the old state (\"I identify as a practicing Hindu, and that faith is really central to who I am.\") as current. (Role_and_Identity.religious_affiliation has changed to practicing Muslim (conversion completed and daily practice established).)",
+  "dim": "dim3"
+ },
+ "8c758ed9_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m finalizing the paperwork for my shahada at the mosque next week, and I’ve been practicing the five daily prayers so I’m ready to start right away.\" and must NOT present the old state (\"I observe Easter according to the Orthodox calendar, which usually puts my holiday on a different weekend.\") as current. (The user’s religious affiliation has changed to Muslim (formal conversion via shahada and adopting Islamic daily prayer).)",
+  "dim": "dim1"
+ },
+ "8c758ed9_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m finalizing the paperwork for my shahada at the mosque next week, and I’ve been practicing the five daily prayers so I’m ready to start right away.\" and must NOT present the old state (\"I observe Easter according to the Orthodox calendar, which usually puts my holiday on a different weekend.\") as current. (The user’s religious affiliation has changed to Muslim (formal conversion via shahada and adopting Islamic daily prayer).)",
+  "dim": "dim2"
+ },
+ "8c758ed9_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’m finalizing the paperwork for my shahada at the mosque next week, and I’ve been practicing the five daily prayers so I’m ready to start right away.\" and must NOT present the old state (\"I observe Easter according to the Orthodox calendar, which usually puts my holiday on a different weekend.\") as current. (The user’s religious affiliation has changed to Muslim (formal conversion via shahada and adopting Islamic daily prayer).)",
+  "dim": "dim3"
+ },
+ "7d6f2e0b_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Last month I completed my conversion and was formally received into the Catholic Church, so I’ve been getting used to the new rhythm of parish life.\" and must NOT present the old state (\"I'm Anglican, so attending services is a consistent part of my routine.\") as current. (Role_and_Identity.religious_affiliation has changed from Anglican to Roman Catholic (formally converted/received).)",
+  "dim": "dim1"
+ },
+ "7d6f2e0b_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Last month I completed my conversion and was formally received into the Catholic Church, so I’ve been getting used to the new rhythm of parish life.\" and must NOT present the old state (\"I'm Anglican, so attending services is a consistent part of my routine.\") as current. (Role_and_Identity.religious_affiliation has changed from Anglican to Roman Catholic (formally converted/received).)",
+  "dim": "dim2"
+ },
+ "7d6f2e0b_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Last month I completed my conversion and was formally received into the Catholic Church, so I’ve been getting used to the new rhythm of parish life.\" and must NOT present the old state (\"I'm Anglican, so attending services is a consistent part of my routine.\") as current. (Role_and_Identity.religious_affiliation has changed from Anglican to Roman Catholic (formally converted/received).)",
+  "dim": "dim3"
+ },
+ "3125238e_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After getting more involved in local organizing this past year, I’ve started identifying as a Democrat and usually back the party’s candidates in elections.\" and must NOT present the old state (\"I've always considered myself an independent, so I tend to evaluate each issue on its own merits rather than following a party line.\") as current. (Political leaning has shifted from Independent to Democrat.)",
+  "dim": "dim1"
+ },
+ "3125238e_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After getting more involved in local organizing this past year, I’ve started identifying as a Democrat and usually back the party’s candidates in elections.\" and must NOT present the old state (\"I've always considered myself an independent, so I tend to evaluate each issue on its own merits rather than following a party line.\") as current. (Political leaning has shifted from Independent to Democrat.)",
+  "dim": "dim2"
+ },
+ "3125238e_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After getting more involved in local organizing this past year, I’ve started identifying as a Democrat and usually back the party’s candidates in elections.\" and must NOT present the old state (\"I've always considered myself an independent, so I tend to evaluate each issue on its own merits rather than following a party line.\") as current. (Political leaning has shifted from Independent to Democrat.)",
+  "dim": "dim3"
+ },
+ "0cfce5fd_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After sitting through a few local business association meetings this year, I’ve started backing the folks who prioritize cutting regulations and keeping taxes low so companies can grow and hire more people.\" and must NOT present the old state (\"I've always leaned towards candidates who focus on community support rather than corporate interests, it's just how I've viewed things for years.\") as current. (Political leaning has shifted toward a more pro-business, small-government (conservative/libertarian-leaning) preference emphasizing deregulation and lower taxes.)",
+  "dim": "dim1"
+ },
+ "0cfce5fd_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After sitting through a few local business association meetings this year, I’ve started backing the folks who prioritize cutting regulations and keeping taxes low so companies can grow and hire more people.\" and must NOT present the old state (\"I've always leaned towards candidates who focus on community support rather than corporate interests, it's just how I've viewed things for years.\") as current. (Political leaning has shifted toward a more pro-business, small-government (conservative/libertarian-leaning) preference emphasizing deregulation and lower taxes.)",
+  "dim": "dim2"
+ },
+ "0cfce5fd_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"After sitting through a few local business association meetings this year, I’ve started backing the folks who prioritize cutting regulations and keeping taxes low so companies can grow and hire more people.\" and must NOT present the old state (\"I've always leaned towards candidates who focus on community support rather than corporate interests, it's just how I've viewed things for years.\") as current. (Political leaning has shifted toward a more pro-business, small-government (conservative/libertarian-leaning) preference emphasizing deregulation and lower taxes.)",
+  "dim": "dim3"
+ },
+ "fafa5ba8_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started volunteering with the local party chapter, I’ve come to see myself as someone who wants the full platform pushed through as-is—half-measures just feel like wasted time to me now.\" and must NOT present the old state (\"I've never really fit into the hardline camps; I've always identified as a moderate who cares more about what actually works than sticking to a strict ideology.\") as current. (Updated political leaning: now identifies with a firmly partisan, uncompromising ideological stance (strong party-line/hardline orientation rather than a moderate/centrist identity).)",
+  "dim": "dim1"
+ },
+ "fafa5ba8_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started volunteering with the local party chapter, I’ve come to see myself as someone who wants the full platform pushed through as-is—half-measures just feel like wasted time to me now.\" and must NOT present the old state (\"I've never really fit into the hardline camps; I've always identified as a moderate who cares more about what actually works than sticking to a strict ideology.\") as current. (Updated political leaning: now identifies with a firmly partisan, uncompromising ideological stance (strong party-line/hardline orientation rather than a moderate/centrist identity).)",
+  "dim": "dim2"
+ },
+ "fafa5ba8_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started volunteering with the local party chapter, I’ve come to see myself as someone who wants the full platform pushed through as-is—half-measures just feel like wasted time to me now.\" and must NOT present the old state (\"I've never really fit into the hardline camps; I've always identified as a moderate who cares more about what actually works than sticking to a strict ideology.\") as current. (Updated political leaning: now identifies with a firmly partisan, uncompromising ideological stance (strong party-line/hardline orientation rather than a moderate/centrist identity).)",
+  "dim": "dim3"
+ },
+ "ad8b0a1f_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been getting used to making plans on my own lately, since it’s just me at home now.\" and must NOT present the old state (\"I always need to coordinate with my spouse before finalizing my schedule.\") as current. (Marital status has changed from married to living alone (no spouse to coordinate with).)",
+  "dim": "dim1"
+ },
+ "ad8b0a1f_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been getting used to making plans on my own lately, since it’s just me at home now.\" and must NOT present the old state (\"I always need to coordinate with my spouse before finalizing my schedule.\") as current. (Marital status has changed from married to living alone (no spouse to coordinate with).)",
+  "dim": "dim2"
+ },
+ "ad8b0a1f_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been getting used to making plans on my own lately, since it’s just me at home now.\" and must NOT present the old state (\"I always need to coordinate with my spouse before finalizing my schedule.\") as current. (Marital status has changed from married to living alone (no spouse to coordinate with).)",
+  "dim": "dim3"
+ },
+ "c9b5ba3a_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that my evenings are usually free, I’ve started signing up for weeknight yoga classes around 7 and can stay out a bit later without rushing home.\" and must NOT present the old state (\"I handle the kids' evening routine every weekday, so I'm consistently tied up during those hours.\") as current. (Caregiving duties in the evenings have shifted away from the user, leaving them generally available on weekday nights.)",
+  "dim": "dim1"
+ },
+ "c9b5ba3a_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that my evenings are usually free, I’ve started signing up for weeknight yoga classes around 7 and can stay out a bit later without rushing home.\" and must NOT present the old state (\"I handle the kids' evening routine every weekday, so I'm consistently tied up during those hours.\") as current. (Caregiving duties in the evenings have shifted away from the user, leaving them generally available on weekday nights.)",
+  "dim": "dim2"
+ },
+ "c9b5ba3a_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Now that my evenings are usually free, I’ve started signing up for weeknight yoga classes around 7 and can stay out a bit later without rushing home.\" and must NOT present the old state (\"I handle the kids' evening routine every weekday, so I'm consistently tied up during those hours.\") as current. (Caregiving duties in the evenings have shifted away from the user, leaving them generally available on weekday nights.)",
+  "dim": "dim3"
+ },
+ "90797997_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since my schedule has opened up a lot lately, I’ve started signing up for weekend workshops and even penciled in a two-week trip this fall without having to coordinate anything complicated.\" and must NOT present the old state (\"My life is essentially on hold until my daughter is older because I'm the only one available to care for her.\") as current. (Caregiving burden has dropped from being the sole, always-on responsible party to having substantial free time and flexibility for personal commitments.)",
+  "dim": "dim1"
+ },
+ "90797997_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since my schedule has opened up a lot lately, I’ve started signing up for weekend workshops and even penciled in a two-week trip this fall without having to coordinate anything complicated.\" and must NOT present the old state (\"My life is essentially on hold until my daughter is older because I'm the only one available to care for her.\") as current. (Caregiving burden has dropped from being the sole, always-on responsible party to having substantial free time and flexibility for personal commitments.)",
+  "dim": "dim2"
+ },
+ "90797997_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since my schedule has opened up a lot lately, I’ve started signing up for weekend workshops and even penciled in a two-week trip this fall without having to coordinate anything complicated.\" and must NOT present the old state (\"My life is essentially on hold until my daughter is older because I'm the only one available to care for her.\") as current. (Caregiving burden has dropped from being the sole, always-on responsible party to having substantial free time and flexibility for personal commitments.)",
+  "dim": "dim3"
+ },
+ "53b2cc05_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since I moved to this new city for work, most evenings are just me exploring on my own—I haven’t really connected with anyone here yet, so I spend my weekends solo.\" and must NOT present the old state (\"I've got a steady circle of friends that I hang out with frequently.\") as current. (Now has little to no local friend connections; social life is mostly solitary after relocating.)",
+  "dim": "dim1"
+ },
+ "53b2cc05_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since I moved to this new city for work, most evenings are just me exploring on my own—I haven’t really connected with anyone here yet, so I spend my weekends solo.\" and must NOT present the old state (\"I've got a steady circle of friends that I hang out with frequently.\") as current. (Now has little to no local friend connections; social life is mostly solitary after relocating.)",
+  "dim": "dim2"
+ },
+ "53b2cc05_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Since I moved to this new city for work, most evenings are just me exploring on my own—I haven’t really connected with anyone here yet, so I spend my weekends solo.\" and must NOT present the old state (\"I've got a steady circle of friends that I hang out with frequently.\") as current. (Now has little to no local friend connections; social life is mostly solitary after relocating.)",
+  "dim": "dim3"
+ },
+ "2c35494b_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I had to rebuild my whole circle after moving across the country, so the people I see on weekends now are friends I’ve made here over the past year or so.\" and must NOT present the old state (\"I'm pretty loyal to my current group; I've known most of them for over a decade.\") as current. (Social_Network.friends are now predominantly recent, local friendships formed within roughly the last year (a rebuilt social circle after relocation), rather than long-term decade-plus friendships.)",
+  "dim": "dim1"
+ },
+ "2c35494b_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I had to rebuild my whole circle after moving across the country, so the people I see on weekends now are friends I’ve made here over the past year or so.\" and must NOT present the old state (\"I'm pretty loyal to my current group; I've known most of them for over a decade.\") as current. (Social_Network.friends are now predominantly recent, local friendships formed within roughly the last year (a rebuilt social circle after relocation), rather than long-term decade-plus friendships.)",
+  "dim": "dim2"
+ },
+ "2c35494b_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I had to rebuild my whole circle after moving across the country, so the people I see on weekends now are friends I’ve made here over the past year or so.\" and must NOT present the old state (\"I'm pretty loyal to my current group; I've known most of them for over a decade.\") as current. (Social_Network.friends are now predominantly recent, local friendships formed within roughly the last year (a rebuilt social circle after relocation), rather than long-term decade-plus friendships.)",
+  "dim": "dim3"
+ },
+ "ac57aa59_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started hosting those monthly game nights, my weekends have turned into a rotating mix of people—I’m constantly meeting new folks and bouncing between different groups.\" and must NOT present the old state (\"I tend to keep a small, consistent group of close friends rather than branching out often.\") as current. (Now maintains a broad, expanding social circle and frequently branches out to new groups rather than sticking to a small, stable set of close friends.)",
+  "dim": "dim1"
+ },
+ "ac57aa59_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started hosting those monthly game nights, my weekends have turned into a rotating mix of people—I’m constantly meeting new folks and bouncing between different groups.\" and must NOT present the old state (\"I tend to keep a small, consistent group of close friends rather than branching out often.\") as current. (Now maintains a broad, expanding social circle and frequently branches out to new groups rather than sticking to a small, stable set of close friends.)",
+  "dim": "dim2"
+ },
+ "ac57aa59_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"Ever since I started hosting those monthly game nights, my weekends have turned into a rotating mix of people—I’m constantly meeting new folks and bouncing between different groups.\" and must NOT present the old state (\"I tend to keep a small, consistent group of close friends rather than branching out often.\") as current. (Now maintains a broad, expanding social circle and frequently branches out to new groups rather than sticking to a small, stable set of close friends.)",
+  "dim": "dim3"
+ },
+ "76de82b6_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been setting up my dating app profile again and debating what kind of first-date spot to suggest if I match with someone this week.\" and must NOT present the old state (\"Just so you know, I've been in a committed relationship with my partner for a little over three years now.\") as current. (Now not in a committed relationship; actively dating/available for new romantic connections.)",
+  "dim": "dim1"
+ },
+ "76de82b6_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been setting up my dating app profile again and debating what kind of first-date spot to suggest if I match with someone this week.\" and must NOT present the old state (\"Just so you know, I've been in a committed relationship with my partner for a little over three years now.\") as current. (Now not in a committed relationship; actively dating/available for new romantic connections.)",
+  "dim": "dim2"
+ },
+ "76de82b6_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been setting up my dating app profile again and debating what kind of first-date spot to suggest if I match with someone this week.\" and must NOT present the old state (\"Just so you know, I've been in a committed relationship with my partner for a little over three years now.\") as current. (Now not in a committed relationship; actively dating/available for new romantic connections.)",
+  "dim": "dim3"
+ },
+ "894c2b42_dim1": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been getting used to having the place to myself lately—coming home to a quiet, empty apartment has been a big change.\" and must NOT present the old state (\"My parents and my brother live with me, so it's a pretty full house with four of us.\") as current. (Now lives alone (no longer co-resides with parents or sibling).)",
+  "dim": "dim1"
+ },
+ "894c2b42_dim2": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been getting used to having the place to myself lately—coming home to a quiet, empty apartment has been a big change.\" and must NOT present the old state (\"My parents and my brother live with me, so it's a pretty full house with four of us.\") as current. (Now lives alone (no longer co-resides with parents or sibling).)",
+  "dim": "dim2"
+ },
+ "894c2b42_dim3": {
+  "gold": "The user's state has been UPDATED. Correct answers must reflect the NEW state: \"I’ve been getting used to having the place to myself lately—coming home to a quiet, empty apartment has been a big change.\" and must NOT present the old state (\"My parents and my brother live with me, so it's a pretty full house with four of us.\") as current. (Now lives alone (no longer co-resides with parents or sibling).)",
+  "dim": "dim3"
+ }
+}

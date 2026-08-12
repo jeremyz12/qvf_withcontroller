@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "judge-audit",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["scripts/judge_audit_server.py"],
+      "port": 8765
+    }
+  ]
+}
