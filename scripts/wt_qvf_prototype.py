@@ -101,12 +101,27 @@ _CATALOG_TAGS_RULE = """\
 """
 
 
+_CARD_STRICT = int(os.environ.get("QVF_CARD_STRICT", "0") or 0)
+
+# STRICT 覆盖规则(QVF_CARD_STRICT=1):只针对实测根因"连任/换届近同值
+# 合并"。迭代 2:删去"复查末三分之一"注意力指令——安全对照证实它令抽取
+# 行为整体漂移(丢日期/丢中间状态/卡数骤降);尾部衰减改由小批量分批解决。
+_CATALOG_STRICT_RULE = """\
+COVERAGE RULE (mandatory): every distinct state announcement MUST yield its
+own record, even when the new value is nearly identical to a previous one
+(re-election, renewed term, same role with a different ordinal such as
+"54th" vs "55th"). Never merge separate announcements into one record.
+"""
+
+
 def _catalog_prompt() -> str:
-    """当前生效的建卡提示词。两旗标全关时返回 CATALOG_PROMPT 本体(逐字节
-    不变);KEYS/TAGS 各自独立门控,可叠加。"""
+    """当前生效的建卡提示词。旗标全关时返回 CATALOG_PROMPT 本体(逐字节
+    不变);KEYS/TAGS/STRICT 各自独立门控,可叠加。"""
     base = CATALOG_PROMPT_V4 if _CARD_KEYS else CATALOG_PROMPT
     if _CARD_TAGS:
-        return base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
+        base = base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
+    if _CARD_STRICT:
+        base = base + _CATALOG_STRICT_RULE
     return base
 
 

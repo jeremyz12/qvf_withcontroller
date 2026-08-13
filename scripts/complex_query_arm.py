@@ -3,7 +3,8 @@
 
 逐题四步:
   ① COMPILE:一次 haiku 调用(模型走 qvf.config,temperature 0)把问题编译
-     为小计划 —— 严格 JSON:{"op", "slot", "date", "tag", "presupposed"};
+     为小计划 —— 严格 JSON:{"op", "slot", "slot2", "date", "tag",
+     "presupposed"}(slot2 可选,仅 join_at_change 用);
   ② EXECUTE:纯代码在键控(+标签)卡片库上执行计划。卡片解析与 qvf_router
      同口径:QVF_CARDS_KEYED 覆盖目录按 uid 先查,缺则回落 results/wt_cards;
      记录按 (owner, slot_class) 分组,聚焦槽位经 SLOT_ALIASES 归一,无键/无类
@@ -77,20 +78,25 @@ _SPAN_CAP = 240      # 单条 source_span 引文长度上限(防超长行灌爆�
 
 OPS = ("current", "point_in_time", "trajectory", "premise_check",
        "count_changes", "longest", "count_before", "first_last",
-       "tag_filter", "tag_trend")
+       "tag_filter", "tag_trend", "join_at_change")
 
 
 # ── ① COMPILE:问题 → 严格 JSON 小计划 ────────────────────────
 class CompiledPlan(BaseModel):
     op: Literal["current", "point_in_time", "trajectory", "premise_check",
                 "count_changes", "longest", "count_before", "first_last",
-                "tag_filter", "tag_trend"] = Field(
+                "tag_filter", "tag_trend", "join_at_change"] = Field(
         description="The single query operation this question compiles to.")
     slot: Optional[str] = Field(
         default=None,
         description="Concrete state attribute the question depends on "
         "(e.g. 'position', 'employer', 'residence city', 'phone model'); "
-        "null for tag_filter/tag_trend.")
+        "null for tag_filter/tag_trend. For join_at_change this is the "
+        "ANCHOR attribute (the one whose change the question refers to).")
+    slot2: Optional[str] = Field(
+        default=None,
+        description="join_at_change only: the OTHER concrete attribute whose "
+        "value is asked at the anchor's change date; null otherwise.")
     date: Optional[str] = Field(
         default=None,
         description="The asked date (YYYY-MM-DD) for point_in_time / "
@@ -111,8 +117,8 @@ small query plan for a dated personal-state record store. Output STRICT
 JSON only, exactly this object and nothing else:
 {"op": "<one of: current | point_in_time | trajectory | premise_check |
 count_changes | longest | count_before | first_last | tag_filter |
-tag_trend>", "slot": <str|null>, "date": <str|null>, "tag": <str|null>,
-"presupposed": <str|null>}
+tag_trend | join_at_change>", "slot": <str|null>, "slot2": <str|null>,
+"date": <str|null>, "tag": <str|null>, "presupposed": <str|null>}
 
 op semantics:
 - current: the state now.
@@ -129,10 +135,15 @@ op semantics:
   (fill tag).
 - tag_trend: what was mentioned under a tag category and whether it
   changed over time (fill tag).
+- join_at_change: the value of a SECOND attribute at the moment the anchor
+  attribute changed to a named value (slot = anchor attribute, presupposed
+  = the anchor VALUE named in the question, slot2 = the attribute whose
+  value is asked).
 
 Field rules: slot is a short concrete attribute noun phrase, never an
-abstraction like 'history' or 'timeline'; tag is copied verbatim from the
-question; unused fields are null.
+abstraction like 'history' or 'timeline'; slot2 (join_at_change only)
+follows the same rules as slot; tag is copied verbatim from the question;
+unused fields are null.
 
 Examples:
 Q: (Today is 2007-01-22.) How many times did I change my position?
@@ -143,6 +154,8 @@ Q: Looking across everything I've told you, what have I mentioned in the 饮食 
 A: {"op": "tag_trend", "slot": null, "date": null, "tag": "饮食", "presupposed": null}
 Q: Have I mentioned anything 高糖 (high-sugar)? List what and when.
 A: {"op": "tag_filter", "slot": null, "date": null, "tag": "高糖", "presupposed": null}
+Q: When I started at CERN, where was I living?
+A: {"op": "join_at_change", "slot": "employer", "slot2": "residence", "date": null, "tag": null, "presupposed": "CERN"}
 """
 
 
@@ -311,6 +324,81 @@ def _hygiene_pool(pool: List[dict]) -> List[dict]:
     return [by_mem[m] for m in order]
 
 
+def _exec_join(plan: dict, recs: List[dict], mem_dates: dict,
+               question: str = ""):
+    """join_at_change:跨槽位 join(零 LLM)。
+    ① 锚:在 slot 组(同 _select_pool 口径)内找 value 与 presupposed 模糊
+       匹配的记录(承 premise_check 的 _norm 双向包含口径),取其生效日 T;
+    ② 在 slot2(经 SLOT_ALIASES 归一,与 slot 同一 _select_pool 路径)组内
+       对 T 做 point_in_time 点查;
+    证据包 = 锚记录 + 覆盖记录 ± 相邻记录;结论行同时陈述两侧。
+    锚未命中/锚日期不可解析/副槽位无带日期记录,均降级为明示结论行。"""
+    slot = plan.get("slot") or ""
+    slot2 = plan.get("slot2") or ""
+    pv = _norm(plan.get("presupposed") or "")
+    ev: List[str] = []
+    derived: List[str] = []
+
+    a_chain = _chain(_select_pool(recs, slot, mem_dates, question), mem_dates)
+    anchor = next(
+        (r for r in a_chain
+         if pv and (pv in _norm(r.get("value", ""))
+                    or _norm(r.get("value", "")) in pv)), None)
+    if anchor is None:
+        ev = [_line(r, mem_dates) for r in a_chain]
+        derived.append(
+            f"Anchor not found: no dated {slot or 'anchor-attribute'} record "
+            f"matching '{plan.get('presupposed') or ''}' exists in memory, "
+            f"so the cross-attribute lookup cannot be resolved. Say so "
+            f"instead of guessing.")
+        return ev[:EVIDENCE_CAP], derived
+
+    a_label = _label(anchor)
+    a_value = anchor.get("value", "")
+    t_raw = _rec_date(anchor, mem_dates)
+    ev.append(_line(anchor, mem_dates))
+    qd = _pdate(t_raw)
+    if qd is None:
+        derived.append(
+            f"Anchor found (the user's {a_label} changed to {a_value}) but "
+            f"its date '{t_raw}' is unparseable, so the cross-attribute "
+            f"lookup cannot be resolved.")
+        return ev[:EVIDENCE_CAP], derived
+
+    b_chain = _chain(_select_pool(recs, slot2, mem_dates, question),
+                     mem_dates)
+    if not b_chain:
+        derived.append(
+            f"The user's {a_label} changed to {a_value} on {t_raw}, but no "
+            f"dated record of {slot2 or 'the other asked attribute'} exists "
+            f"in memory to look up at that date.")
+        return ev[:EVIDENCE_CAP], derived
+    b_dates = [_rec_date(r, mem_dates) for r in b_chain]
+    b_values = [str(r.get("value", "")) for r in b_chain]
+    b_label = _label(b_chain[-1])
+    parsed = [_pdate(d) for d in b_dates]
+    gi = None
+    for i, pd in enumerate(parsed):
+        if pd is not None and pd <= qd:
+            gi = i
+    if gi is None:
+        ev.append(_line(b_chain[0], mem_dates))
+        derived.append(
+            f"The user's {a_label} changed to {a_value} on {t_raw}, which "
+            f"predates every known state of {b_label}; the earliest known "
+            f"{b_label} is {b_values[0]} from {b_dates[0]}.")
+        return ev[:EVIDENCE_CAP], derived
+    ev += [_line(r, mem_dates)
+           for r in b_chain[max(0, gi - 1):gi + 2]]
+    until = (f", unchanged until {b_dates[gi + 1]}"
+             if gi + 1 < len(b_chain) else "")
+    derived.append(
+        f"The user's {a_label} changed to {a_value} on {t_raw}; on that "
+        f"date the user's {b_label} was {b_values[gi]} (recorded "
+        f"{b_dates[gi]}{until}). This IS the answer.")
+    return ev[:EVIDENCE_CAP], derived
+
+
 def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
                  question: str = ""):
     """执行小计划;返回 (证据行 ≤EVIDENCE_CAP, 计算结论行)。零 LLM。"""
@@ -318,6 +406,9 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
     slot = plan.get("slot") or ""
     ev: List[str] = []
     derived: List[str] = []
+
+    if op == "join_at_change":
+        return _exec_join(plan, recs, mem_dates, question)
 
     if op in ("tag_filter", "tag_trend"):
         tag = plan.get("tag") or ""

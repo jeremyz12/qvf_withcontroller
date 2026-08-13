@@ -14,11 +14,22 @@ S5(默认):对 len(chain)>=3 的条目,从 chain 结构机械推导 gold:
 S7(--s7):每条目 2 道闭集标签卷积演示题(类目题 + 子标签题),gold=null,
 改以 judge_rubric 字段约束评审(只能引用会话中确实出现的条目并带日期)。
 
+S6(--s6):跨槽位 join 题,只对双链条目(render_wikistate_multi 产物,
+含 chain2)生成:对主链每个转移日期 T(跳过首步)发问
+  "(Today is <末链日期>.) When I <转移短语,如 started at V>, <副槽位问
+  法> at that time?",gold = 副链上 [start_j, start_{j+1}) 区间覆盖 T 的
+取值(代码机械推导);T 早于副链首个 start、或恰落在副链任一边界上
+(新旧值同日皆可辩)则该题跳过;对称方向(副链锚定、主链取值)同规则。
+噪声干扰筛对两个槽位家族都生效(两链宣告句均豁免),任一命中整条目
+跳过。qid = uid_s6a{i}(主锚)/ uid_s6b{i}(副锚),i 为链内步序。
+
 用法:
   python scripts/gen_wikistate_complex.py --data data/wikistate_full.json \
       [更多数据文件 ...] --out results/wsc_s5.jsonl [--uids ...] [--limit N]
   python scripts/gen_wikistate_complex.py --s7 --data data/stale_chain_full.json \
       --limit 10 --out results/wsc_s7.jsonl
+  python scripts/gen_wikistate_complex.py --s6 \
+      --data data/wikistate_full_multi_P108_P551.json --out results/wsc_s6.jsonl
 """
 from __future__ import annotations
 
@@ -201,6 +212,99 @@ def gen_s5(entry: dict) -> List[dict]:
     return rows
 
 
+# ── S6:跨槽位 join(双链条目,机械 gold) ────────────────────
+_S6_PHRASE = {"position": "became {v}", "employer": "started at {v}",
+              "team": "joined {v}", "residence": "moved to {v}"}
+
+
+def _s6_ask(slot: str) -> str:
+    if _slot_family(slot) == "residence":
+        return "where was I living"
+    return f"what was my {_q_slot(slot)}"
+
+
+def gen_s6(entry: dict) -> List[dict]:
+    c2 = entry.get("chain2") or {}
+    chain_a = entry.get("chain") or []
+    chain_b = c2.get("chain") or []
+    slot_a = str(entry.get("slot", ""))
+    slot_b = str(c2.get("slot", ""))
+    if not chain_a or not chain_b or not slot_a or not slot_b:
+        return []
+    uid = entry["uid"]
+
+    # 双家族干扰筛(S6 版):跨槽位 join 的 gold 只有在两个家族的世界内
+    # 状态都唯一可判时才公平 —— 两链宣告句(state_span)均豁免,两个槽位
+    # 家族任一在噪声里命中转变语言,整条目跳过。
+    probe_chain = list(chain_a) + list(chain_b)
+    for fam_slot in (slot_a, slot_b):
+        if noise_interference({"slot": fam_slot, "chain": probe_chain,
+                               "sessions": entry.get("sessions", [])}):
+            CONTESTED["n"] += 1
+            return []
+
+    notes: List[str] = []
+
+    def _parse_chain(chain):
+        out = []
+        for step in chain:
+            dt, note = parse_partial_date(step["date"])
+            out.append(dt)
+            if note:
+                notes.append(note)
+        return out
+    try:
+        pa, pb = _parse_chain(chain_a), _parse_chain(chain_b)
+    except Exception:  # noqa: BLE001 —— 日期不可解析,数据异常,整条目跳过
+        return []
+    if any(b <= a for a, b in zip(pa, pa[1:])) or \
+            any(b <= a for a, b in zip(pb, pb[1:])):
+        return []  # 链日期非严格递增,区间语义失效,整条目跳过
+    date_basis = ("partial dates normalized to period start: "
+                  + ", ".join(notes)) if notes else "all chain dates complete"
+    today = (str(chain_a[-1]["date"]) if pa[-1] >= pb[-1]
+             else str(chain_b[-1]["date"]))
+
+    rows: List[dict] = []
+
+    def _direction(tag: str, anc_chain, anc_parsed, anc_slot,
+                   oth_chain, oth_parsed, oth_slot):
+        anc_vals = [str(s["value"]) for s in anc_chain]
+        oth_vals = [str(s["value"]) for s in oth_chain]
+        phrase_t = _S6_PHRASE[_slot_family(anc_slot)]
+        for i in range(1, len(anc_chain)):   # 首步是初态,不是转移
+            T, v = anc_parsed[i], anc_vals[i]
+            if anc_vals.count(v) > 1:
+                continue  # 锚值在链内重复出现,"When I ..." 指代歧义
+            if T < oth_parsed[0]:
+                continue  # T 早于副链首个已知状态,无区间可判
+            if any(T == s for s in oth_parsed):
+                continue  # T 恰在副链边界:新旧值同日皆可辩,歧义
+            j = max(k for k, s in enumerate(oth_parsed) if s < T)
+            hi = (oth_parsed[j + 1].isoformat()
+                  if j + 1 < len(oth_parsed) else "open")
+            rows.append({
+                "uid": uid, "qid": f"{uid}_s6{tag}{i}",
+                "qtype": "s6_cross_slot",
+                "slot": oth_slot, "anchor_slot": anc_slot,
+                "question": (f"(Today is {today}.) When I "
+                             f"{phrase_t.format(v=v)}, {_s6_ask(oth_slot)} "
+                             f"at that time?"),
+                "gold": oth_vals[j],
+                "basis": (f"T = {anc_slot} transition to {v} at "
+                          f"{T.isoformat()} ({anc_slot} chain[{i}].start); "
+                          f"{oth_slot} interval [{oth_parsed[j].isoformat()}, "
+                          f"{hi}) covers T -> gold = {oth_vals[j]}; T before "
+                          f"the first {oth_slot} start or exactly on a "
+                          f"{oth_slot} boundary is skipped as ambiguous; "
+                          + date_basis),
+            })
+
+    _direction("a", chain_a, pa, slot_a, chain_b, pb, slot_b)
+    _direction("b", chain_b, pb, slot_b, chain_a, pa, slot_a)
+    return rows
+
+
 # ── S7:闭集标签卷积演示题(judge 评,非机械 gold) ─────────────
 CLOSED_TAGS = ["饮食", "健康运动", "消费购物", "出行旅行", "居家生活",
                "工作学习", "社交关系", "娱乐爱好", "财务", "宠物"]
@@ -264,7 +368,12 @@ def main() -> None:
                     help="仅取(合并去重后的)前 N 个条目;0 = 不限")
     ap.add_argument("--s7", action="store_true",
                     help="生成 S7 演示题(judge 评)而非 S5 机械 gold 题")
+    ap.add_argument("--s6", action="store_true",
+                    help="生成 S6 跨槽位 join 题(需 render_wikistate_multi "
+                         "产物的 chain2 双链条目)")
     args = ap.parse_args()
+    if args.s6 and args.s7:
+        ap.error("--s6 与 --s7 互斥")
 
     entries, seen = [], set()
     for f in args.data:
@@ -278,7 +387,7 @@ def main() -> None:
     if args.limit:
         entries = entries[:args.limit]
 
-    gen = gen_s7 if args.s7 else gen_s5
+    gen = gen_s6 if args.s6 else (gen_s7 if args.s7 else gen_s5)
     rows, skipped = [], 0
     for e in entries:
         r = gen(e)
