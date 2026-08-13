@@ -45,6 +45,26 @@ from qvf.retrieval import BM25Retriever
 READER_MODEL = "claude-haiku-4-5"
 TOP_K = 10
 
+# Cost knife (default 0 = off, frozen behavior unchanged): when >0, caps the
+# number of EXTRA retrieval+extraction rounds (repair / sweep / escalation)
+# per pipeline invocation. One budget unit is charged right before each extra
+# extractor call; an exhausted budget skips that round entirely.
+_SCAN_BUDGET = int(os.environ.get("QVF_SCAN_BUDGET", "0") or 0)
+
+
+def _scan_taker():
+    used = [0]
+
+    def take():
+        if _SCAN_BUDGET <= 0:
+            return True
+        if used[0] >= _SCAN_BUDGET:
+            return False
+        used[0] += 1
+        return True
+
+    return take
+
 
 def _dense_retriever_cls():
     # QVF_EMBED_BACKEND=openai[:<model>] switches to the pure-API embedding
@@ -569,6 +589,7 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         "repair_triggered": False,
         "repair_added_ids": [],
     }
+    _scan_ok = _scan_taker()
     triage = getattr(extraction, "memory_triage", None)
     if triage is not None:
         record["triage_counts"] = {
@@ -702,6 +723,8 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                     nonlocal chain, _dk, retrieved
                     if not fresh:
                         return
+                    if not _scan_ok():
+                        return
                     merged = retrieved + fresh
                     extraction2, ein3, eout3 = extractor.extract(
                         focus_q, merged, instance.question_date,
@@ -787,6 +810,8 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                         window.append(m)
                     if not window:
                         return
+                    if not _scan_ok():
+                        return
                     if len(window) > 36:
                         ranked = {m.memory_id: i for i, m in enumerate(
                             retriever.retrieve(
@@ -845,7 +870,8 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
                 # found NOTHING (chain empty), this is the only mechanism
                 # that can build the chain at all.
                 _extract_sweep("recog_sweep_added")
-                if not chain and strong_extractor is not None:
+                if (not chain and strong_extractor is not None
+                        and _scan_ok()):
                     # Dead-route escalation: cheap extractor found no state
                     # of the query slot anywhere. Re-extract with the strong
                     # extractor over a WIDENED pool (delivered + top-36
@@ -1017,7 +1043,7 @@ def run_minimal_rules(instance, extractor, validated_reader, conflict_reader,
         have = {m.memory_id for m in retrieved}
         added = [m for m in second if m.memory_id not in have][:5]
         record["repair_added_ids"] = [m.memory_id for m in added]
-        if added:
+        if added and _scan_ok():
             merged = retrieved + added
             # scoped/contract must match the first extraction: switching
             # prompt/schema mid-pipeline was an uncontrolled confound
@@ -1324,6 +1350,7 @@ def run_minimal_rules_v6(instance, extractor, validated_reader, conflict_reader,
         "repair_triggered": False,
         "repair_added_ids": [],
     }
+    _scan_ok = _scan_taker()
 
     def _pass_through(strategy):
         record.update(
@@ -1365,7 +1392,7 @@ def run_minimal_rules_v6(instance, extractor, validated_reader, conflict_reader,
         have = {m.memory_id for m in retrieved}
         added = [m for m in second if m.memory_id not in have][:5]
         record["repair_added_ids"] = [m.memory_id for m in added]
-        if added:
+        if added and _scan_ok():
             merged = retrieved + added
             extraction, ein2, eout2 = extractor.extract(
                 instance.question, merged, instance.question_date, scoped=True
@@ -1663,6 +1690,7 @@ def run_repaired(instance, extractor, direct_reader, fallback_generator,
         "repair_triggered": False,
         "repair_added_ids": [],
     }
+    _scan_ok = _scan_taker()
 
     if needs_repair(engine, extraction):
         record["repair_triggered"] = True
@@ -1677,7 +1705,7 @@ def run_repaired(instance, extractor, direct_reader, fallback_generator,
         have = {m.memory_id for m in retrieved}
         added = [m for m in second if m.memory_id not in have][:5]
         record["repair_added_ids"] = [m.memory_id for m in added]
-        if added:
+        if added and _scan_ok():
             merged = retrieved + added
             extraction, ein2, eout2 = extractor.extract(
                 instance.question, merged, instance.question_date

@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "judge-audit",
+      "name": "scratchpad-static",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["scripts/judge_audit_server.py"],
-      "port": 8765
+      "runtimeArgs": ["-m", "http.server", "8791", "--directory", "C:\\Users\\25243\\AppData\\Local\\Temp\\claude\\D--ZZL-cluade\\dec0046c-4ab4-44f0-8d50-a751340e9494\\scratchpad"],
+      "port": 8791
     }
   ]
 }

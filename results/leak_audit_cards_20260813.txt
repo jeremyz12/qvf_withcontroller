@@ -1,0 +1,45 @@
+card files on disk: 694; matched to wikistate/stale-chain entries: 421; other datasets (skipped): 273
+families checked: {'chain': 53, 'confirm': 57, 'wiki': 57, 'wikiP108': 120, 'wikiP39': 44, 'wikiP54': 79, 'wikiP551': 11}
+
+entries checked: 421   card records: covered all records in 421 card files
+field-checks run: 59481   contained(exact+near): 43797   not-contained: 15684
+  source_span  exact= 24529 near=  733 none=  357 empty=    0 borderline_in_both=0
+  value        exact= 11147 near=  462 none=14010 empty=    0 borderline_in_both=2
+  stated_date  exact=  6359 near=  567 none= 1317 empty=17376 borderline_in_both=1
+
+LEAK CANDIDATES (in chain/probing gold, NOT in sessions): 0
+
+paraphrase/abstraction (not in sessions, not verbatim in gold — builder's own wording): 15681
+  by field: {'stated_date': 1316, 'value': 14008, 'source_span': 357}
+  PARA ('chain000-64560e32', 'r2', 'stated_date', '01-15', 0.8)
+  PARA ('chain000-64560e32', 'r6', 'stated_date', '2024', 0.75)
+  PARA ('chain000-64560e32', 'r11', 'stated_date', '2024-12', 0.429)
+  PARA ('chain000-64560e32', 'r12', 'value', "local children's hospital charity event", 0.667)
+  PARA ('chain000-64560e32', 'r14', 'stated_date', '2024', 0.75)
+  PARA ('chain000-64560e32', 'r17', 'value', 'employed (receives annual bonus)', 0.433)
+  PARA ('chain000-64560e32', 'r20', 'value', "lemon blueberry cake for cousin's birthday", 0.595)
+  PARA ('chain000-64560e32', 'r22', 'value', 'organize closet and sort bags/accessories', 0.415)
+
+sample exact containments:
+  ('chain000-64560e32', 'r1', 'source_span', 'I\'m actually thinking of visiting the City Art Museum again, I really enjoyed the "Impress')
+  ('chain000-64560e32', 'r1', 'value', 'City Art Museum')
+  ('chain000-64560e32', 'r2', 'source_span', 'I remember that Impressionist Masterpieces exhibit, it was on January 15th')
+sample near containments:
+  ('chain000-64560e32', 'r18', 'source_span', 'I feel guilty about the luxury handbag I bought last month', 0.897)
+  ('chain000-64560e32', 'r38', 'source_span', 'I used that new grout cleaner from Home Depot when I cleaned the grout three weeks ago', 0.988)
+  ('chain000-64560e32', 'r49', 'stated_date', '2025-04-03', 0.9)
+  ('chain000-64560e32', 'r54', 'stated_date', '2025-01-10', 0.9)
+  ('chain001-7e0f4274', 'r16', 'stated_date', '2025-02-18', 0.9)
+  ('chain001-7e0f4274', 'r41', 'value', 'enjoys West Side Story and The Sound of Music', 0.867)
+
+random paraphrase-value examples:
+   ('wikiP551004-Q42324811', 'r29', 'value', 'frequent domestic flyer; three recent flights to Chicago', 0.218)
+   ('wikiP108001-Q53970449', 'r12', 'value', 'court process for name change', 0.483)
+   ('wikiP54017-Q39590177', 'r43', 'value', '30 minutes per day', 0.611)
+   ('wikiP108010-Q53284080', 'r37', 'value', 'LGBTQ+ films and romantic comedies', 0.545)
+   ('chain020-a68cec19', 'r69', 'value', 'Spain', 0.8)
+   ('confirm054-1e10354c', 'r36', 'value', 'replaced hallway light bulb', 0.407)
+   ('wikiP108035-Q57788265', 'r67', 'value', 'moved', 0.8)
+   ('wikiP108029-Q30089966', 'r21', 'value', 'United States', 0.462)
+   ('wikiP108006-Q67650882', 'r76', 'value', 'aquarium keeping with planted tanks', 0.257)
+   ('wikiP54024-Q1084324', 'r28', 'value', 'has siblings', 0.75)

@@ -12,9 +12,19 @@ structured-output schema in qvf/schema.py rather than through prose alone.
 from __future__ import annotations
 
 import json
+import os
 from typing import List, Optional
 
 from qvf.retrieval import MemoryItem
+
+# 减脂开关(默认 0=关,冻结行为不变):读者投喂内容截断字符数
+_FEED_TRUNC = int(os.environ.get("QVF_FEED_TRUNC", "0") or 0)
+
+
+def _feed(t: str) -> str:
+    if _FEED_TRUNC <= 0 or len(t) <= _FEED_TRUNC:
+        return t
+    return t[:_FEED_TRUNC] + " …[truncated]"
 
 SEMANTIC_ADAPTER_SYSTEM_PROMPT = """\
 You are the Semantic Adapter of a Query-conditioned Validity Filter (QVF).
@@ -309,7 +319,7 @@ def format_adapter_input(
     mem_payload = [
         {
             "memory_id": m.memory_id,
-            "content": m.content,
+            "content": _feed(m.content),
             "metadata": m.metadata or {},
         }
         for m in memories
@@ -378,7 +388,7 @@ def format_prompt_only_analyst_input(
     mem_payload = [
         {
             "memory_id": m.memory_id,
-            "content": m.content,
+            "content": _feed(m.content),
             "metadata": m.metadata or {},
         }
         for m in memories
@@ -404,7 +414,7 @@ def format_prompt_only_generator_input(
     mem_payload = [
         {
             "memory_id": m.memory_id,
-            "content": m.content,
+            "content": _feed(m.content),
             "metadata": m.metadata or {},
         }
         for m in memories
@@ -484,7 +494,7 @@ def format_baseline_generator_input(
     mem_payload = [
         {
             "memory_id": m.memory_id,
-            "content": m.content,
+            "content": _feed(m.content),
             "metadata": m.metadata or {},
         }
         for m in memories
@@ -510,7 +520,7 @@ def format_qvf_generator_input(
     mem_payload = [
         {
             "memory_id": m.memory_id,
-            "content": m.content,
+            "content": _feed(m.content),
             "metadata": m.metadata or {},
         }
         for m in memories

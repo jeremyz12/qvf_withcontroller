@@ -36,6 +36,17 @@ from qvf.judge import ClaudeJudge  # noqa: E402
 MODEL = "claude-haiku-4-5"
 CARDS_DIR = Path("results/wt_cards")
 
+# QVF_CARD_KEYS=1:建卡改用 V4 目录提示词,卡片额外带 owner/slot_class 规范键
+# (ExtractedRecord 的对应可选字段由同名旗标在 qvf/engine_bridge.py 门控)。
+# 默认 0 = 冻结行为,提示词与载荷逐字节不变。
+_CARD_KEYS = int(os.environ.get("QVF_CARD_KEYS", "0") or 0)
+
+# QVF_CARD_TAGS=1:建卡提示词追加唯一一条 value_tags 语义标签规则(闭集类目
+# + 食品/健康自由子标签;ExtractedRecord 的对应可选字段由同名旗标在
+# qvf/engine_bridge.py 门控)。与 QVF_CARD_KEYS 可叠加(基底自动选 V4)。
+# 默认 0 = 冻结行为,提示词与载荷逐字节不变。
+_CARD_TAGS = int(os.environ.get("QVF_CARD_TAGS", "0") or 0)
+
 
 # ── 写入时:目录化抽取(查询无关) ──────────────────────────
 class CatalogExtraction(BaseModel):
@@ -65,11 +76,46 @@ Rules:
 """
 
 
+# V4(QVF_CARD_KEYS=1 时启用):在原提示词之上追加 owner/slot_class 两条
+# 规范键指令;规则 1-5(含 source_span 逐字子串契约)逐字不动。
+CATALOG_PROMPT_V4 = CATALOG_PROMPT + """\
+6. owner: who the state belongs to — 'user' when the memory speaks in the
+   first person (diary/chat voice), otherwise the person's name exactly as
+   the text names them. Empty only if genuinely unclear.
+7. slot_class: the normalized attribute category, EXACTLY one of:
+   position | employer | team | residence | device | location |
+   relationship | other:<short-noun> (e.g. other:diet). Records about the
+   same real-world attribute must share the same slot_class.
+"""
+
+
+# TAGS 规则(QVF_CARD_TAGS=1 时启用):在所选基底提示词(有 KEYS 则 V4,
+# 否则原版)之上仅追加这一条 value_tags 规则;其余指令与 source_span 逐字
+# 子串契约逐字不动。编号顺延基底(原版 1-5 → 6;V4 1-7 → 8)。
+_CATALOG_TAGS_RULE = """\
+{n}. value_tags: for each record also output value_tags — 0-3 labels from this
+   CLOSED SET (or an empty list if none apply): 饮食, 健康运动, 消费购物,
+   出行旅行, 居家生活, 工作学习, 社交关系, 娱乐爱好, 财务, 宠物 — PLUS
+   free-form food/health sub-tags like 高糖, 高油, 素食, 咖啡因 when the
+   value is food/drink related.
+"""
+
+
+def _catalog_prompt() -> str:
+    """当前生效的建卡提示词。两旗标全关时返回 CATALOG_PROMPT 本体(逐字节
+    不变);KEYS/TAGS 各自独立门控,可叠加。"""
+    base = CATALOG_PROMPT_V4 if _CARD_KEYS else CATALOG_PROMPT
+    if _CARD_TAGS:
+        return base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
+    return base
+
+
 def _client():
     return anthropic.Anthropic()
 
 
-def write_phase(data_path: str, limit_items: int = 0):
+def write_phase(data_path: str, limit_items: int = 0,
+                uids: Optional[List[str]] = None):
     CARDS_DIR.mkdir(parents=True, exist_ok=True)
     instances = load_stale_chain(data_path)
     by_uid = {}
@@ -78,6 +124,9 @@ def write_phase(data_path: str, limit_items: int = 0):
         if uid and uid not in by_uid:
             by_uid[uid] = inst
     items = list(by_uid.items())
+    if uids:  # --uids 子集重建(与环境变量无关;默认 None = 全量)
+        keep = set(uids)
+        items = [x for x in items if x[0] in keep]
     if limit_items:
         items = items[:limit_items]
     client = _client()
@@ -111,7 +160,8 @@ def write_phase(data_path: str, limit_items: int = 0):
             try:
                 resp = client.messages.parse(
                     model=MODEL, max_tokens=16000,
-                    system=[{"type": "text", "text": CATALOG_PROMPT,
+                    system=[{"type": "text",
+                             "text": _catalog_prompt(),
                              "cache_control": {"type": "ephemeral"}}],
                     messages=[{"role": "user", "content":
                                "MEMORY ROUNDS (JSON):\n" + json.dumps(batch, ensure_ascii=False)}],
@@ -444,9 +494,17 @@ def main():
     ap.add_argument("--out", default=r"results\wtqvf_chain_h45.jsonl")
     ap.add_argument("--items", type=int, default=0)
     ap.add_argument("--item-offset", type=int, default=0, dest="item_offset")
+    ap.add_argument("--uids", default=None,
+                    help="--phase write 时:逗号分隔 uid 列表,只建这些条目的卡片")
+    ap.add_argument("--cards-dir", default=None, dest="cards_dir",
+                    help="覆盖卡片库目录(默认 results/wt_cards;A/B 重建时指到新目录)")
     a = ap.parse_args()
+    if a.cards_dir:
+        global CARDS_DIR
+        CARDS_DIR = Path(a.cards_dir)
     if a.phase == "write":
-        write_phase(a.data, a.items)
+        uid_list = [u for u in (a.uids or "").split(",") if u] or None
+        write_phase(a.data, a.items, uid_list)
     else:
         read_phase(a.data, a.out, a.items, a.item_offset)
 

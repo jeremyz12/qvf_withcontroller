@@ -1,0 +1,41 @@
+{
+ "uid": "wikiP551002-Q107297",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP551002-Q107297/s0#r0",
+   "source_span": "Schönberg is my new residence",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Schönberg",
+   "claim": "The user moved to Schönberg in 1849.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1849",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP551002-Q107297/s5#r0",
+   "source_span": "Paris is officially my new residence as of today",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Paris",
+   "claim": "The user moved to Paris in 1851.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1851",
+   "owner": "user",
+   "slot_class": "residence"
+  }
+ ],
+ "usage_in": 21911,
+ "usage_out": 289
+}

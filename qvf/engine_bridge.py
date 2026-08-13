@@ -20,6 +20,82 @@ Design notes:
 from __future__ import annotations
 
 import json
+import os as _os
+
+_EXTRACT_TRUNC = int(_os.environ.get("QVF_EXTRACT_TRUNC", "0") or 0)
+
+
+def _etrunc(_t):
+    if _EXTRACT_TRUNC <= 0 or len(_t) <= _EXTRACT_TRUNC:
+        return _t
+    return _t[:_EXTRACT_TRUNC] + " ...[truncated]"
+
+_HIT_WINDOW = int(_os.environ.get("QVF_HIT_WINDOW", "0") or 0)
+
+# QVF_CARD_KEYS=1: ExtractedRecord additionally carries canonical card keys
+# (owner + slot_class) for write-time card stores and keyed routing. OFF
+# (default) keeps the LLM-facing schema and every payload byte-identical.
+_CARD_KEYS = int(_os.environ.get("QVF_CARD_KEYS", "0") or 0)
+
+# QVF_CARD_TAGS=1: ExtractedRecord additionally carries value_tags (semantic
+# roll-up labels from a prompt-defined closed set, plus food/health sub-tags)
+# for tag-level aggregation queries. OFF (default) keeps the LLM-facing schema
+# byte-identical. Composes with QVF_CARD_KEYS (both may be on).
+_CARD_TAGS = int(_os.environ.get("QVF_CARD_TAGS", "0") or 0)
+
+# Stopwords excluded from overlap scoring so filler sentences sharing only
+# function words cannot outrank the sentence stating the queried fact.
+_HIT_STOP = frozenset(
+    "the a an and or of to in on at is are was were be been am do does did "
+    "i you he she it we they my your his her its our their me him them us "
+    "this that these those for with about from as by not no yes so if but "
+    "what when where which who whom why how".split())
+
+
+def _hit_tokens(_s):
+    # Lowercase word tokens (stopwords dropped); single chars + character
+    # bigrams for non-ASCII runs so overlap scoring also works on CJK text
+    # without a tokenizer.
+    _s = _s.lower()
+    toks = set(re.findall(r"[a-z0-9]+", _s)) - _HIT_STOP
+    run = [c for c in _s if ord(c) > 127 and not c.isspace()]
+    toks.update(run)
+    toks.update(a + b for a, b in zip(run, run[1:]))
+    return toks
+
+
+def _hit_center(_t, _q):
+    # Char offset of the midpoint of the sentence/line best matching _q by
+    # lexical overlap; falls back to the first sentence (head) on no overlap.
+    q_toks = _hit_tokens(_q)
+    best, center, pos = -1, len(_t) // 2, 0
+    for seg in re.split(r"(?<=[.!?\n。！？])", _t):
+        if seg.strip():
+            score = len(q_toks & _hit_tokens(seg))
+            if score > best:
+                best, center = score, pos + len(seg) // 2
+        pos += len(seg)
+    return center
+
+
+def _ewindow(_t, _q):
+    # QVF_HIT_WINDOW>0: keep a window of that many chars CENTERED on the best
+    # query-match position instead of the head; takes precedence over
+    # QVF_EXTRACT_TRUNC. Unset/0 falls through to _etrunc (frozen behavior).
+    if _HIT_WINDOW <= 0:
+        return _etrunc(_t)
+    if len(_t) <= _HIT_WINDOW:
+        return _t
+    start = min(max(_hit_center(_t, _q) - _HIT_WINDOW // 2, 0),
+                len(_t) - _HIT_WINDOW)
+    end = start + _HIT_WINDOW
+    out = _t[start:end]
+    if start > 0:
+        out = "[truncated]... " + out
+    if end < len(_t):
+        out = out + " ...[truncated]"
+    return out
+
 import re
 import sys
 from dataclasses import dataclass, field
@@ -115,6 +191,30 @@ class ExtractedRecord(BaseModel):
         "as YYYY, YYYY-MM or YYYY-MM-DD. For ranges ('from Jan, 1946 to "
         "Jan, 1949') use the START. Empty if the text states no date.",
     )
+    if _CARD_KEYS:
+        # Canonical card keys (QVF_CARD_KEYS=1 only). Optional with ""
+        # defaults so every stored card, old or new, still parses either way.
+        owner: str = Field(
+            default="",
+            description="Who this state belongs to: 'user' when the text "
+            "speaks in the first person (diary/chat voice), otherwise the "
+            "person's name exactly as the text names them. Empty if unclear.",
+        )
+        slot_class: str = Field(
+            default="",
+            description="Normalized attribute category, EXACTLY one of: "
+            "position | employer | team | residence | device | location | "
+            "relationship | other:<short-noun> (e.g. other:diet).",
+        )
+    if _CARD_TAGS:
+        # Semantic roll-up tags (QVF_CARD_TAGS=1 only). Optional with []
+        # default so every stored card, old or new, still parses either way.
+        value_tags: List[str] = Field(
+            default_factory=list,
+            description="0-3 semantic category labels for this fact from the "
+            "CLOSED SET given in the instructions, plus free-form food/health "
+            "sub-tags when the value is food/drink related; [] if none apply.",
+        )
 
 
 class SlotExtraction(BaseModel):
@@ -637,7 +737,7 @@ class LLMSlotExtractor:
                 0,
             )
         mem_payload = [
-            {"memory_id": m.memory_id, "text": m.content, "metadata": m.metadata}
+            {"memory_id": m.memory_id, "text": _ewindow(m.content, query), "metadata": m.metadata}
             for m in memories
         ]
         user_input = (
@@ -730,7 +830,7 @@ class LocalSlotExtractor:
                "past_or_change, unclear." if scoped else "")
         )
         mem_payload = [
-            {"memory_id": m.memory_id, "text": m.content, "metadata": m.metadata}
+            {"memory_id": m.memory_id, "text": _ewindow(m.content, query), "metadata": m.metadata}
             for m in memories
         ]
         user_input = (

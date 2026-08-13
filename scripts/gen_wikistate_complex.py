@@ -1,0 +1,304 @@
+# -*- coding: utf-8 -*-
+"""WikiState-Complex 题集生成器:S5 聚合/计数题(机械 gold)+ S7 语义标签演示题。
+
+纯代码、零 API、确定性输出。
+
+S5(默认):对 len(chain)>=3 的条目,从 chain 结构机械推导 gold:
+  (a) longest_tenure  最长任期(仅闭区间口径;末段开区间在 Today=末链日期
+      时长为 0,不可能超过任何闭区间,故排除 —— 口径记入 basis);
+  (b) change_count    变更次数,gold = len(chain)-1;
+  (c) count_before    某日期(两链日期的中点,严格居间无歧义)之前有过多少
+      个不同取值;
+  (d) first_vs_last   最初取值 + 最新取值。
+
+S7(--s7):每条目 2 道闭集标签卷积演示题(类目题 + 子标签题),gold=null,
+改以 judge_rubric 字段约束评审(只能引用会话中确实出现的条目并带日期)。
+
+用法:
+  python scripts/gen_wikistate_complex.py --data data/wikistate_full.json \
+      [更多数据文件 ...] --out results/wsc_s5.jsonl [--uids ...] [--limit N]
+  python scripts/gen_wikistate_complex.py --s7 --data data/stale_chain_full.json \
+      --limit 10 --out results/wsc_s7.jsonl
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import zlib
+from datetime import date, timedelta
+from pathlib import Path
+from typing import List, Optional, Tuple
+
+
+# ── 日期解析(部分日期规约) ──────────────────────────────────
+def parse_partial_date(raw: str) -> Tuple[date, Optional[str]]:
+    """解析链日期,含 YYYY-00-00 / YYYY-MM-00 / YYYY-MM / YYYY 部分日期。
+
+    00 月/日与缺失月/日一律规约为 1(年首/月首),规约动作以
+    'raw→normalized' 记号返回,供写入 basis。完整日期返回 (date, None)。
+    """
+    parts = str(raw).strip().split("-")
+    y = int(parts[0])
+    mo = int(parts[1]) if len(parts) > 1 else 0
+    d = int(parts[2]) if len(parts) > 2 else 0
+    normalized = mo == 0 or d == 0 or len(parts) < 3
+    mo = mo or 1
+    d = d or 1
+    out = date(y, mo, d)
+    note = f"{raw}→{out.isoformat()}" if normalized else None
+    return out, note
+
+
+def _q_slot(slot: str) -> str:
+    """槽位名转问句用名词(沿用既有 probing_queries 风格:
+    'position held' 在问句中写作 'position')。"""
+    return slot[:-5] if slot.endswith(" held") else slot
+
+
+# ── 噪声干扰筛(dev 迭代 1)─────────────────────────────────────
+# 计数/首末类问题的机械 gold 只在"世界内唯一可判"时才公平:若公告句之外的
+# 噪声闲聊里出现与本槽位同族的转变语言(如噪声人格自己的 started my new
+# job),这些题型对该条目不生成;点查/轨迹/最长任期不受此限。
+_FAMILY_TERMS = {
+    "position": r"\b(job|role|position|promot\w*|career)\b",
+    "employer": r"\b(compan(y|ies)|employer|firm|startup|new job)\b",
+    "team": r"\b(team|club|squad)\b",
+    "residence": r"\b(moved|moving|relocat\w+|new (apartment|house|place|city))\b",
+}
+_TRANSITION_RE = re.compile(
+    r"\b(start(ed|ing)?|join(ed|ing)?|promot(ed|ion)|became|becoming|"
+    r"switch(ed|ing)?|left|quit|hired|new)\b", re.IGNORECASE)
+CONTESTED = {"n": 0}
+
+
+def _slot_family(slot: str) -> str:
+    s = slot.lower()
+    for fam in ("employer", "team", "residence"):
+        if fam in s:
+            return fam
+    return "position"
+
+
+def noise_interference(entry: dict) -> bool:
+    spans = [str(step.get("state_span", ""))
+             for step in entry.get("chain", [])]
+    fam = _slot_family(str(entry.get("slot", "")))
+    fam_re = re.compile(_FAMILY_TERMS[fam], re.IGNORECASE)
+    for sess in entry.get("sessions", []):
+        for turn in sess.get("turns", []):
+            t = str(turn)
+            if any(sp and sp[:60] in t for sp in spans):
+                continue
+            for sent in re.split(r"[.!?\n]", t):
+                if fam_re.search(sent) and (fam == "residence"
+                                            or _TRANSITION_RE.search(sent)):
+                    return True
+    return False
+
+
+# ── S5:机械 gold 生成 ────────────────────────────────────────
+def gen_s5(entry: dict) -> List[dict]:
+    chain = entry.get("chain") or []
+    if len(chain) < 3:
+        return []
+    uid = entry["uid"]
+    slot = entry["slot"]
+    qslot = _q_slot(slot)
+    today = str(chain[-1]["date"])  # Today 前缀沿用原始日期串(含 -00-00)
+
+    parsed: List[date] = []
+    notes: List[str] = []
+    for step in chain:
+        dt, note = parse_partial_date(step["date"])
+        parsed.append(dt)
+        if note:
+            notes.append(note)
+    if any(b < a for a, b in zip(parsed, parsed[1:])):
+        return []  # 链日期非单调,数据异常,整条目跳过
+    date_basis = ("partial dates normalized to period start: "
+                  + ", ".join(notes)) if notes else "all chain dates complete"
+    values = [str(step["value"]) for step in chain]
+    rows: List[dict] = []
+
+    # dev 迭代 3:干扰筛前置覆盖全部 S5 题型 —— 噪声里的同族转变提及经
+    # 会话日期回填后会伪造闭区间,连"最长任期"的机械 gold 也不再唯一。
+    if noise_interference(entry):
+        CONTESTED["n"] += 1
+        return rows
+
+    # (a) longest_tenure —— 仅闭区间;同值多段闭区间时长按值累加;并列最长
+    # 则 gold 有歧义,跳过该题。
+    closed = [(values[i], (parsed[i + 1] - parsed[i]).days)
+              for i in range(len(chain) - 1)]
+    if len(closed) >= 2:
+        per_value: dict = {}
+        for v, days in closed:
+            per_value[v] = per_value.get(v, 0) + days
+        best = max(per_value.values())
+        winners = [v for v, d in per_value.items() if d == best]
+        if len(winners) == 1:
+            rows.append({
+                "uid": uid, "qid": f"{uid}_s5a", "qtype": "longest_tenure",
+                "slot": slot,
+                "question": f"(Today is {today}.) Which {qslot} did I hold "
+                            "the longest?",
+                "gold": winners[0],
+                "basis": ("CLOSED intervals only: tenure_i = start_(i+1) - "
+                          "start_i; the last tenure is open and, as of Today "
+                          "= the last chain date, has length 0, so it cannot "
+                          "exceed any closed interval. Closed days per value: "
+                          + json.dumps(per_value, ensure_ascii=False)
+                          + "; " + date_basis),
+            })
+
+    # (b) change_count —— 每次链转移记一次变更。
+    rows.append({
+        "uid": uid, "qid": f"{uid}_s5b", "qtype": "change_count",
+        "slot": slot,
+        "question": f"(Today is {today}.) How many times did I change my "
+                    f"{qslot}?",
+        "gold": len(chain) - 1,
+        "basis": f"one change per chain transition: gold = len(chain)-1 = "
+                 f"{len(chain) - 1}",
+    })
+
+    # (c) count_before —— 取最居中且间隔 >=2 天的转移,问日期为两链日期的
+    # 严格中点(不与任何链日期重合,故无歧义);此前不同取值数由代码计出。
+    n_tr = len(chain) - 1
+    order = sorted(range(n_tr), key=lambda i: (abs(i - (n_tr - 1) / 2), i))
+    for i in order:
+        gap = (parsed[i + 1] - parsed[i]).days
+        if gap < 2:
+            continue
+        mid = parsed[i] + timedelta(days=gap // 2)
+        if not (parsed[i] < mid < parsed[i + 1]):
+            continue
+        gold_c = len(set(values[:i + 1]))
+        rows.append({
+            "uid": uid, "qid": f"{uid}_s5c", "qtype": "count_before",
+            "slot": slot,
+            "question": f"How many different {qslot} values did I have "
+                        f"before {mid.isoformat()}?",
+            "gold": gold_c,
+            "basis": (f"date = midpoint of chain[{i}].start "
+                      f"({parsed[i].isoformat()}) and chain[{i + 1}].start "
+                      f"({parsed[i + 1].isoformat()}), strictly between both; "
+                      f"gold = distinct values among steps 0..{i} (each began "
+                      f"strictly before that date) = {gold_c}; " + date_basis),
+        })
+        break
+
+    # (d) first_vs_last —— 首末取值直读。
+    rows.append({
+        "uid": uid, "qid": f"{uid}_s5d", "qtype": "first_vs_last",
+        "slot": slot,
+        "question": f"(Today is {today}.) What was my first {qslot}, and "
+                    "what is my most recent one?",
+        "gold": f"first: {values[0]}; most recent: {values[-1]}",
+        "basis": "gold = chain[0].value + chain[-1].value",
+    })
+    return rows
+
+
+# ── S7:闭集标签卷积演示题(judge 评,非机械 gold) ─────────────
+CLOSED_TAGS = ["饮食", "健康运动", "消费购物", "出行旅行", "居家生活",
+               "工作学习", "社交关系", "娱乐爱好", "财务", "宠物"]
+
+_TAG_AREA = {
+    "饮食": ("diet/food", "my eating"),
+    "健康运动": ("health & exercise", "my health or exercise habits"),
+    "消费购物": ("spending & shopping", "my spending or shopping habits"),
+    "出行旅行": ("transport & travel", "how I get around or travel"),
+    "居家生活": ("home & household", "my home life"),
+    "工作学习": ("work & study", "my work or studies"),
+    "社交关系": ("social relationships", "my relationships"),
+    "娱乐爱好": ("entertainment & hobbies", "my hobbies or entertainment"),
+    "财务": ("finances", "my finances"),
+    "宠物": ("pets", "my pets"),
+}
+
+SUB_TAGS = [("高糖", "high-sugar"), ("高油", "high-fat/oily"),
+            ("素食", "vegetarian"), ("咖啡因", "caffeine")]
+
+S7_RUBRIC = ("answer must cite only items actually present in sessions, "
+             "with dates")
+
+
+def gen_s7(entry: dict) -> List[dict]:
+    uid = entry["uid"]
+    h = zlib.crc32(uid.encode("utf-8"))  # 按 uid 确定性选标签,子集稳定
+    tag = CLOSED_TAGS[h % len(CLOSED_TAGS)]
+    gloss, area = _TAG_AREA[tag]
+    sub, sub_gloss = SUB_TAGS[h % len(SUB_TAGS)]
+    return [
+        {
+            "uid": uid, "qid": f"{uid}_s7a", "qtype": "s7_category",
+            "tag": tag,
+            "question": (f"Looking across everything I've told you, what "
+                         f"have I mentioned in the {tag} ({gloss}) category, "
+                         f"and has anything about {area} changed over time?"),
+            "gold": None,
+            "judge_rubric": S7_RUBRIC,
+        },
+        {
+            "uid": uid, "qid": f"{uid}_s7b", "qtype": "s7_subtag",
+            "tag": sub,
+            "question": (f"Have I mentioned anything {sub} ({sub_gloss})? "
+                         "List what and when."),
+            "gold": None,
+            "judge_rubric": S7_RUBRIC,
+        },
+    ]
+
+
+# ── CLI ──────────────────────────────────────────────────────
+def main() -> None:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--data", nargs="+", required=True,
+                    help="一个或多个 wikistate/chain 架构数据 json")
+    ap.add_argument("--out", required=True, help="输出 jsonl 路径")
+    ap.add_argument("--uids", nargs="*", default=None,
+                    help="仅生成这些 uid(默认全量)")
+    ap.add_argument("--limit", type=int, default=0,
+                    help="仅取(合并去重后的)前 N 个条目;0 = 不限")
+    ap.add_argument("--s7", action="store_true",
+                    help="生成 S7 演示题(judge 评)而非 S5 机械 gold 题")
+    args = ap.parse_args()
+
+    entries, seen = [], set()
+    for f in args.data:
+        for e in json.loads(Path(f).read_text(encoding="utf-8")):
+            if e["uid"] not in seen:
+                seen.add(e["uid"])
+                entries.append(e)
+    if args.uids:
+        keep = set(args.uids)
+        entries = [e for e in entries if e["uid"] in keep]
+    if args.limit:
+        entries = entries[:args.limit]
+
+    gen = gen_s7 if args.s7 else gen_s5
+    rows, skipped = [], 0
+    for e in entries:
+        r = gen(e)
+        if not r:
+            skipped += 1
+        rows.extend(r)
+
+    out = Path(args.out)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with out.open("w", encoding="utf-8") as fh:
+        for row in rows:
+            fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+
+    by_type: dict = {}
+    for row in rows:
+        by_type[row["qtype"]] = by_type.get(row["qtype"], 0) + 1
+    print(f"entries={len(entries)} skipped={skipped} "
+          f"contested_bcd={CONTESTED['n']} questions={len(rows)} "
+          f"by_type={json.dumps(by_type, ensure_ascii=False)} -> {out}")
+
+
+if __name__ == "__main__":
+    main()

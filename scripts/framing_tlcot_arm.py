@@ -55,6 +55,9 @@ ap.add_argument("--benchmark", choices=["stale", "stale_chain"], required=True)
 ap.add_argument("--out", required=True)
 ap.add_argument("--reader", default="claude-haiku-4-5")
 ap.add_argument("--data", default=None)
+ap.add_argument("--qid-file", default=None, dest="qid_file",
+                help="限定题号文件(逐行 question_id;透传 run_decisive_stale"
+                " --qid-file,用于只为路由到 prompt 臂的题产行)")
 a = ap.parse_args()
 
 if a.benchmark == "stale":
@@ -65,5 +68,7 @@ else:
             "--benchmark", "stale_chain", "--items", "0"]
 argv += ["--conditions", "warned_direct", "--out", a.out,
          "--reader", a.reader, "--resume"]
+if a.qid_file:
+    argv += ["--qid-file", a.qid_file]
 sys.argv = argv
 sys.exit(rds.main())

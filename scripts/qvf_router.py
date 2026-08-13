@@ -8,7 +8,9 @@
   ② 聚焦槽位在卡片库中的不同取值数 ≥3(深链) → wt(档案卡裁决)
   ③ 其余(浅更新/杂讯库) → rt(检索后现场抽取)
 臂缺行时按 rt→direct 降级并计数。"""
+import argparse
 import json
+import os
 import re
 import sys
 from collections import Counter
@@ -26,6 +28,49 @@ from scripts.wt_qvf_prototype import (FOCUS_PROMPT, QueryFocusMini, _norm,  # no
 CARDS = Path(r"results/wt_cards")
 CACHE_F = Path(r"results/router_focus_cache.json")
 MODEL = "claude-haiku-4-5"
+
+# —— 环境旗标(默认全 0/空 = v1.2 冻结行为,输出逐字节不变)——
+# QVF_ROUTER_KEYS=1:卡片带 slot_class 时,链深按 (owner, slot_class) 键控
+#   计算,聚焦槽位经 SLOT_ALIASES 归一映射;无键卡片/无类命中回退词重叠逻辑。
+# QVF_GATE_V2=1:门加宽 —— 时序薄链(键深 < QVF_GATE_DEPTH,默认 3)改走第
+#   四路 "prompt"(裁决规则提示词臂);事件算术题(时长/次数)一律 direct。
+# QVF_CARDS_KEYED=<dir>:键控卡片覆盖目录(按 uid 先查这里,缺则回落 CARDS)。
+_ROUTER_KEYS = int(os.environ.get("QVF_ROUTER_KEYS", "0") or 0)
+_GATE_V2 = int(os.environ.get("QVF_GATE_V2", "0") or 0)
+_GATE_DEPTH = int(os.environ.get("QVF_GATE_DEPTH", "3") or 3)
+_CARDS_KEYED = os.environ.get("QVF_CARDS_KEYED", "")
+
+# 聚焦槽位文本 → 规范 slot_class 的别名表(小写子串命中;命中多类时取键深
+# 最高者)。类目与 CATALOG_PROMPT_V4 的闭集一致。
+SLOT_ALIASES = {
+    "position": ["position", "职位", "job", "role", "chairman", "member",
+                 "committee", "议员", "委员", "职务", "任职", "mayor",
+                 "minister", "office"],
+    "employer": ["employer", "雇主", "company", "工作", "单位", "university",
+                 "institute", "works for", "employed"],
+    "team": ["team", "球队", "队", "club"],
+    "residence": ["residence", "住", "居住", "address", "city", "live",
+                  "hometown"],
+    "device": ["device", "phone", "laptop", "tablet", "camera", "手机",
+               "电脑", "设备"],
+    "location": ["location", "位置", "地点", "place", "where"],
+    "relationship": ["relationship", "partner", "spouse", "wife", "husband",
+                     "girlfriend", "boyfriend", "married", "婚", "恋", "关系"],
+}
+
+_EVENT_ARITH_RE = re.compile(
+    r"how long|how many times|days between|多久|几次|多少次|隔了",
+    re.IGNORECASE)
+_FP_RE = re.compile(r"\b(i|me|my|mine)\b", re.IGNORECASE)
+
+
+def _card_file(uid):
+    """键控卡片覆盖目录优先(QVF_CARDS_KEYED;默认空 = 只走 CARDS)。"""
+    if _CARDS_KEYED:
+        p = Path(_CARDS_KEYED) / f"{uid}.json"
+        if p.exists():
+            return p
+    return CARDS / f"{uid}.json"
 
 
 def normkey(k):
@@ -143,16 +188,50 @@ def focus_of(bench, qid, question):
     return out
 
 
-def chain_depth(uid, slot, presupposed=""):
+def _keyed_depth(recs, slot, question=None):
+    """QVF_ROUTER_KEYS=1:按 (owner, slot_class) 分组的键控链深。
+    返回 None = 不可键控(卡片无 slot_class / 聚焦槽位无类命中),调用方
+    回退原词重叠逻辑。一人称问题(本组基准默认;question=None 视同一人称)
+    且卡片带 owner 时限定 owner∈{"", "user"},防多人库把不同人的同类状态
+    并成一条深链;深度按组取最大,不跨 owner 汇总。"""
+    keyed = [r for r in recs if r.get("slot_class")]
+    if not keyed:
+        return None
+    fs = _norm(slot)
+    matched = [c for c, al in SLOT_ALIASES.items() if any(a in fs for a in al)]
+    if not matched:
+        return None
+    first_person = (question is None or _FP_RE.search(question)
+                    or "我" in question)
+    if first_person and any(r.get("owner") for r in keyed):
+        keyed = [r for r in keyed if (r.get("owner") or "") in ("", "user")]
+    groups = {}
+    for r in keyed:
+        cls = r.get("slot_class", "")
+        if cls not in matched:
+            continue
+        v = _norm(r.get("value", ""))
+        if v:
+            groups.setdefault(((r.get("owner") or ""), cls), set()).add(v)
+    if not groups:
+        return 0
+    return max(len(vs) for vs in groups.values())
+
+
+def chain_depth(uid, slot, presupposed="", question=None):
     """v3 同款分量深度:关系边+槽位模糊匹配并查集 → 含聚焦槽位的最佳分量的
     不同取值数(无槽位命中时按预设值锚定)。"""
-    f = CARDS / f"{uid}.json"
+    f = _card_file(uid)
     if not f.exists():
         return 0
     recs = json.loads(f.read_text(encoding="utf-8")).get("records", [])
     n = len(recs)
     if not n:
         return 0
+    if _ROUTER_KEYS:
+        kd = _keyed_depth(recs, slot, question)
+        if kd is not None:
+            return kd
     parent = list(range(n))
 
     def find(i):
@@ -221,8 +300,84 @@ def route(uid, focus):
     return "wt" if depth >= 3 else "rt"
 
 
+def route_v2(uid, focus, question=""):
+    """旗标路由(QVF_ROUTER_KEYS / QVF_GATE_V2 至少其一开启时使用):
+    返回 (route, keyed_depth)。GATE_V2 关闭时决策规则与 route() 完全一致,
+    仅链深计算可能走键控路径。"""
+    if _GATE_V2 and _EVENT_ARITH_RE.search(question or ""):
+        return "direct", None  # 事件算术(时长/计数):卡片裁决无增益,直读
+    if focus["scope"] == "unclear" and not focus["presupposed"]:
+        return "direct", None
+    depth = chain_depth(uid, focus["slot"], focus.get("presupposed", ""),
+                        question)
+    if focus["scope"] in ("trajectory", "point_in_time"):
+        r = "wt" if depth >= 2 else "rt"
+    else:
+        r = "wt" if depth >= 3 else "rt"
+    if _GATE_V2 and r == "rt" and depth < _GATE_DEPTH \
+            and _store_max_depth(uid) < _GATE_DEPTH:
+        r = "prompt"  # 时序+薄链且整库皆浅:改走裁决规则提示词臂
+    return r, depth
+
+
+_STORE_DEPTH_CACHE = {}
+
+
+def _store_max_depth(uid):
+    """库形态信号:全库 (owner, slot_class) 分组的最大不同值数。
+    库里存在深链(≥阈值)说明抽取路径在该库有用武之地,薄槽位问题仍走 rt;
+    整库皆浅(STALE 二态/LME 事件流)才值得改派提示词臂。无键控卡时返回 0
+    (视为浅,保持 GATE_V2 原行为)。"""
+    if uid in _STORE_DEPTH_CACHE:
+        return _STORE_DEPTH_CACHE[uid]
+    d = 0
+    f = _card_file(uid)
+    if f.exists():
+        try:
+            recs = json.loads(f.read_text(encoding="utf-8")).get("records", [])
+            groups = {}
+            for r in recs:
+                cls = r.get("slot_class")
+                if not cls:
+                    continue
+                v = _norm(r.get("value", ""))
+                if v:
+                    groups.setdefault(((r.get("owner") or ""), cls),
+                                      set()).add(v)
+            if groups:
+                d = max(len(vs) for vs in groups.values())
+        except Exception:  # noqa: BLE001
+            d = 0
+    _STORE_DEPTH_CACHE[uid] = d
+    return d
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--prompt-rows", nargs="+", default=None,
+                    help="prompt 臂(裁决规则提示词)预算行 jsonl;缺文件/缺行"
+                    "时记 result=None 并计入 missing_rows,不降级不崩溃")
+    ap.add_argument("--direct-rows", nargs="+", default=None,
+                    help="direct 路由决策的覆盖行 jsonl(可选;缺行回落各场"
+                    "次自带 direct 臂)")
+    ap.add_argument("--route-log", default=r"results/router_routes.jsonl",
+                    help="逐题路由决策 jsonl(仅 QVF_ROUTER_KEYS/QVF_GATE_V2 "
+                    "开启时写)")
+    a = ap.parse_args()
+    v2_active = bool(_ROUTER_KEYS or _GATE_V2)
+    prompt_arm = None
+    if a.prompt_rows:
+        prompt_arm = {}
+        for p in a.prompt_rows:
+            prompt_arm.update(load_arm(p))
+    direct_arm = None
+    if a.direct_rows:
+        direct_arm = {}
+        for p in a.direct_rows:
+            direct_arm.update(load_arm(p))
+    route_f = open(a.route_log, "w", encoding="utf-8") if v2_active else None
     grand = Counter()
+    grand_missing = 0
     grand_router = grand_direct = grand_n = 0
     print(f"{'bench':14s} {'n':>4s} {'direct':>7s} {'rt':>6s} {'wt':>6s} "
           f"{'ROUTER':>7s}  路由分布(direct/rt/wt) 降级")
@@ -233,10 +388,13 @@ def main():
         arms["wt"] = load_arm(*w_spec) if w_spec else {}
         items = json.loads(Path(data_f).read_text(encoding="utf-8"))
         qs = []
+        raw_ids = {}
         for it in items:
             for dim, q in it.get("probing_queries", {}).items():
-                qid = normkey(f"{it['uid']}_{dim}")
+                rid = f"{it['uid']}_{dim}"
+                qid = normkey(rid)
                 qs.append((it["uid"], qid, q["q"]))
+                raw_ids[qid] = rid
         # 整体测量口径:只要求兜底臂(direct)在场;路由臂缺行走降级链
         # (wt 仅部分覆盖的场次=冷库语义;P39 原卷仍限 test-52 由 wt 行天然决定)
         qs = [x for x in qs if x[1] in arms["direct"]]
@@ -247,8 +405,36 @@ def main():
         CACHE_F.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
         dist = Counter()
         fallback = 0
+        missing = 0
         correct = 0
         for (uid, qid, _q), fo in zip(qs, focuses):
+            if v2_active:
+                r, kd = route_v2(uid, fo, _q)
+                dist[r] += 1
+                pick, res = r, None
+                if r == "prompt":
+                    if prompt_arm and qid in prompt_arm:
+                        res = prompt_arm[qid]
+                    else:  # 行文件缺失/缺行:记 None 入 missing_rows,不降级
+                        missing += 1
+                        pick = None
+                elif r == "direct" and direct_arm and qid in direct_arm:
+                    res = direct_arm[qid]
+                else:
+                    if qid not in arms[pick]:
+                        fallback += 1
+                        pick = "rt" if "rt" != r and qid in arms["rt"] else "direct"
+                        if qid not in arms[pick]:
+                            pick = "direct"
+                    res = arms[pick].get(qid, False)
+                correct += bool(res)
+                if route_f:
+                    route_f.write(json.dumps(
+                        {"bench": name, "uid": uid, "qid": qid,
+                         "qid_raw": raw_ids.get(qid), "route": r,
+                         "keyed_depth": kd, "picked_arm": pick,
+                         "result": res}, ensure_ascii=False) + "\n")
+                continue
             r = route(uid, fo)
             dist[r] += 1
             pick = r
@@ -262,17 +448,23 @@ def main():
         accs = {a: (sum(v for k, v in arms[a].items() if k in {q[1] for q in qs})
                     / n * 100 if arms[a] else float("nan")) for a in arms}
         racc = correct / n * 100 if n else 0
+        extra = (f" prompt{dist['prompt']} 缺行{missing}" if v2_active else "")
         print(f"{name:14s} {n:4d} {accs['direct']:6.1f}% "
               f"{(accs['rt'] if arms['rt'] else float('nan')):5.1f}% "
               f"{accs['wt']:5.1f}% {racc:6.1f}%  "
-              f"{dist['direct']}/{dist['rt']}/{dist['wt']} 降级{fallback}")
+              f"{dist['direct']}/{dist['rt']}/{dist['wt']} 降级{fallback}{extra}")
+        grand_missing += missing
         grand_router += correct
         grand_direct += sum(v for k, v in arms["direct"].items() if k in {q[1] for q in qs})
         grand_n += n
         for k, v in dist.items():
             grand[k] += v
     print(f"\nTOTAL n={grand_n}: direct {grand_direct/grand_n*100:.1f}% → "
-          f"ROUTER {grand_router/grand_n*100:.1f}%  路由分布 {dict(grand)}")
+          f"ROUTER {grand_router/grand_n*100:.1f}%  路由分布 {dict(grand)}"
+          + (f"  missing_rows={grand_missing}" if v2_active else ""))
+    if route_f:
+        route_f.close()
+        print(f"route decisions -> {a.route_log}")
 
 
 if __name__ == "__main__":
