@@ -1,0 +1,1111 @@
+{
+ "uid": "confirm039-e06a4808",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm039-e06a4808/s0#r0",
+   "source_span": "I'm training for a triathlon on June 19th",
+   "entity": "user",
+   "slot": "training_event",
+   "value": "triathlon on June 19th",
+   "claim": "User is training for a triathlon scheduled for June 19th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "06-19",
+   "owner": "user",
+   "slot_class": "other:athletic_event",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm039-e06a4808/s0#r0",
+   "source_span": "during the charity marathon on April 17th where I got a personal best time of 55 minutes and 22 seconds",
+   "entity": "user",
+   "slot": "charity_marathon_result",
+   "value": "personal best time of 55 minutes and 22 seconds on April 17th",
+   "claim": "User achieved a personal best time of 55 minutes and 22 seconds in a charity marathon on April 17th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "04-17",
+   "owner": "user",
+   "slot_class": "other:race_result",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm039-e06a4808/s0#r2",
+   "source_span": "I bought new running shoes at the sports store on 5th street",
+   "entity": "user",
+   "slot": "running_shoes_purchase",
+   "value": "new running shoes at sports store on 5th street",
+   "claim": "User purchased new running shoes at a sports store on 5th street.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:apparel",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm039-e06a4808/s1#r0",
+   "source_span": "I recently inherited a few rare items, including an antique emerald and diamond necklace that's been in my family for generations, which a gemologist valued at $12,000",
+   "entity": "user",
+   "slot": "inherited_necklace",
+   "value": "antique emerald and diamond necklace valued at $12,000",
+   "claim": "User inherited an antique emerald and diamond necklace valued at $12,000 by a gemologist.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:heirloom",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm039-e06a4808/s1#r2",
+   "source_span": "a vintage 1960s Omega Speedmaster watch I purchased online for $3,200",
+   "entity": "user",
+   "slot": "omega_speedmaster_watch",
+   "value": "vintage 1960s Omega Speedmaster watch, one of 100 pieces with rare tropical dial, purchased for $3,200",
+   "claim": "User purchased a vintage 1960s Omega Speedmaster watch for $3,200, one of only 100 pieces made with a rare tropical dial.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:collectible",
+   "value_tags": [
+    "消费购物",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm039-e06a4808/s1#r4",
+   "source_span": "my rare first edition of F. Scott Fitzgerald's \"The Great Gatsby\" that I recently purchased at a used bookstore in the East Village. The owner told me it was one of only 300 copies printed with a misprinted title page, and I managed to negotiate the price down to $2,500",
+   "entity": "user",
+   "slot": "great_gatsby_first_edition",
+   "value": "rare first edition of The Great Gatsby, one of 300 copies with misprinted title page, purchased for $2,500",
+   "claim": "User purchased a rare first edition of The Great Gatsby at a used bookstore in East Village for $2,500; one of only 300 copies with a misprinted title page.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:collectible",
+   "value_tags": [
+    "消费购物",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm039-e06a4808/s2#r0",
+   "source_span": "I'm trying to organize my photos from my niece's high school graduation ceremony on May 20th",
+   "entity": "user",
+   "slot": "niece_graduation_event",
+   "value": "high school graduation ceremony on May 20th",
+   "claim": "User's niece had a high school graduation ceremony on May 20th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "05-20",
+   "owner": "user",
+   "slot_class": "other:family_event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm039-e06a4808/s3#r1",
+   "source_span": "Casa Milagro is hands down my favorite restaurant right now — the mole negro there ruined all other mole for me",
+   "entity": "user",
+   "slot": "favorite_restaurant",
+   "value": "Casa Milagro",
+   "claim": "User's favorite restaurant is Casa Milagro, where they love the mole negro.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm039-e06a4808/s3#r2",
+   "source_span": "I always sit at the little counter by the kitchen so I can watch them press tortillas",
+   "entity": "user",
+   "slot": "restaurant_seating_preference",
+   "value": "counter by the kitchen at Casa Milagro",
+   "claim": "User prefers to sit at the counter by the kitchen at their favorite restaurant to watch tortilla pressing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "at Casa Milagro",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:dining_habit",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm039-e06a4808/s4#r2",
+   "source_span": "I'm flying out of LAX",
+   "entity": "user",
+   "slot": "home_airport",
+   "value": "LAX",
+   "claim": "User's home airport is LAX.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm039-e06a4808/s4#r2",
+   "source_span": "my brother Alex is getting married next June",
+   "entity": "user",
+   "slot": "brother_wedding",
+   "value": "brother Alex getting married in June",
+   "claim": "User's brother Alex is getting married in June.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "06",
+   "owner": "user",
+   "slot_class": "other:family_event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm039-e06a4808/s4#r2",
+   "source_span": "my brother Alex is getting married next June, but I don't know the exact location yet",
+   "entity": "brother",
+   "slot": "relationship_to_user",
+   "value": "brother of user",
+   "claim": "Alex is the user's brother.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "Alex",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm039-e06a4808/s5#r0",
+   "source_span": "I was at the outlet mall last weekend and ended up getting a new wallet for my brother, it was a great deal on a leather wallet from a popular brand, originally $80 but I got it for $40",
+   "entity": "user",
+   "slot": "wallet_purchase_for_brother",
+   "value": "leather wallet for brother, originally $80 purchased for $40 at outlet mall",
+   "claim": "User purchased a leather wallet for their brother at an outlet mall for $40, originally priced at $80.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:gift",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm039-e06a4808/s6#r0",
+   "source_span": "I just got back from a concert on August 20th, it was an amazing show at the Red Rocks Amphitheater in Colorado",
+   "entity": "user",
+   "slot": "concert_attendance",
+   "value": "concert at Red Rocks Amphitheater in Colorado on August 20th",
+   "claim": "User attended a concert at Red Rocks Amphitheater in Colorado on August 20th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "08-20",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm039-e06a4808/s6#r2",
+   "source_span": "I was actually at a Dispatch concert",
+   "entity": "user",
+   "slot": "concert_artist",
+   "value": "Dispatch",
+   "claim": "User attended a Dispatch concert at Red Rocks Amphitheater on August 20th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "at Red Rocks on August 20th",
+   "implies_stale_slots": [],
+   "stated_date": "08-20",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm039-e06a4808/s7#r2",
+   "source_span": "I got it replaced on February 10th. The new one is working great, and I've been tracking my sugar levels consistently for the past three weeks",
+   "entity": "user",
+   "slot": "blood_glucose_meter",
+   "value": "new blood glucose meter obtained February 10th",
+   "claim": "User replaced their blood glucose meter on February 10th and has been using it to track sugar levels.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "02-10",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm039-e06a4808/s8#r0",
+   "source_span": "I just got back from the Berlinale and Sundance",
+   "entity": "user",
+   "slot": "film_festival_attendance",
+   "value": "Berlinale and Sundance",
+   "claim": "User recently attended the Berlinale and Sundance film festivals.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm039-e06a4808/s8#r0",
+   "source_span": "just submitted some articles about my experiences to film publications",
+   "entity": "user",
+   "slot": "film_writing",
+   "value": "submitted articles about film festival experiences to film publications",
+   "claim": "User submitted articles about their film festival experiences to film publications.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:writing_activity",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm039-e06a4808/s8#r0",
+   "source_span": "I'm planning my next film festival trip to Cannes in May",
+   "entity": "user",
+   "slot": "cannes_film_festival_plan",
+   "value": "attending Cannes Film Festival in May",
+   "claim": "User is planning to attend the Cannes Film Festival in May.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "05",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好",
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm039-e06a4808/s8#r4",
+   "source_span": "I recently participated in a panel discussion on that topic at the Sundance Institute last month",
+   "entity": "user",
+   "slot": "sundance_panel_participation",
+   "value": "panel discussion on independent filmmaking at Sundance Institute",
+   "claim": "User participated in a panel discussion on independent filmmaking at the Sundance Institute.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "工作学习",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm039-e06a4808/s9#r0",
+   "source_span": "I had a major panic attack at work about 6 weeks ago",
+   "entity": "user",
+   "slot": "panic_attack_history",
+   "value": "major panic attack at work approximately 6 weeks prior",
+   "claim": "User experienced a major panic attack at work approximately 6 weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "at work",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health_event",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm039-e06a4808/s9#r2",
+   "source_span": "I usually work 9-5",
+   "entity": "user",
+   "slot": "work_hours",
+   "value": "9-5",
+   "claim": "User's usual work hours are 9 AM to 5 PM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm039-e06a4808/s10#r0",
+   "source_span": "I just landed a potential collab with a brand that reached out to me after seeing my tweets using the hashtag #socialmediamarketing",
+   "entity": "user",
+   "slot": "brand_collaboration",
+   "value": "potential brand collaboration based on social media marketing presence",
+   "claim": "User has a potential brand collaboration based on their social media marketing tweets.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:business_opportunity",
+   "value_tags": [
+    "工作学习",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm039-e06a4808/s11#r0",
+   "source_span": "I have a half-finished blanket that I started last summer",
+   "entity": "user",
+   "slot": "yarn_craft_project",
+   "value": "half-finished blanket started last summer",
+   "claim": "User has a half-finished blanket project started last summer.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:craft",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm039-e06a4808/s11#r4",
+   "source_span": "I have 17 skeins, I can make a few scarves and maybe even a hat to match",
+   "entity": "user",
+   "slot": "yarn_stash",
+   "value": "17 skeins of worsted weight wool-acrylic blend yarn",
+   "claim": "User has 17 skeins of worsted weight wool-acrylic blend yarn for crafting projects.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:craft_supply",
+   "value_tags": [
+    "娱乐爱好",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm039-e06a4808/s12#r0",
+   "source_span": "I've attended six in the past four months, including that \"Effective Communication\" one at the Hilton Hotel last weekend",
+   "entity": "user",
+   "slot": "workshop_attendance",
+   "value": "six workshops in past four months including Effective Communication at Hilton Hotel",
+   "claim": "User has attended six workshops in the past four months, including an Effective Communication workshop at the Hilton Hotel.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm039-e06a4808/s13#r0",
+   "source_span": "I've been enjoying the flexibility of working from home one day a week",
+   "entity": "user",
+   "slot": "remote_work_policy",
+   "value": "working from home one day per week",
+   "claim": "User works from home one day per week as part of their new role.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm039-e06a4808/s13#r0",
+   "source_span": "I'm trying to get more organized with my new role",
+   "entity": "user",
+   "slot": "new_position",
+   "value": "new role",
+   "claim": "User has recently started a new role.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [
+    "work_hours",
+    "position"
+   ],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm039-e06a4808/s14#r1",
+   "source_span": "Honestly, Nine Dragon Noodle Bar has taken over as my favorite — I go at least twice a week now",
+   "entity": "user",
+   "slot": "favorite_restaurant",
+   "value": "Nine Dragon Noodle Bar",
+   "claim": "User's favorite restaurant is now Nine Dragon Noodle Bar, where they eat at least twice weekly.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm039-e06a4808/s14#r2",
+   "source_span": "Their hand-pulled beef noodle soup is stupidly good, and it's a ten minute walk from my office",
+   "entity": "user",
+   "slot": "office_location_proximity",
+   "value": "ten minute walk from Nine Dragon Noodle Bar",
+   "claim": "User's office is a ten minute walk from Nine Dragon Noodle Bar.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm039-e06a4808/s15#r2",
+   "source_span": "on my last solo trip to the state park, I saw some amazing species, including a Yellow Warbler, Black-and-white Warbler, American Coots, and a Great Egret",
+   "entity": "user",
+   "slot": "birdwatching_trip",
+   "value": "solo trip to state park with sightings of Yellow Warbler, Black-and-white Warbler, American Coots, and Great Egret",
+   "claim": "User took a solo birdwatching trip to a state park and spotted Yellow Warblers, Black-and-white Warblers, American Coots, and Great Egrets.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm039-e06a4808/s16#r0",
+   "source_span": "I started posting on Facebook again in early February",
+   "entity": "user",
+   "slot": "facebook_social_media",
+   "value": "resumed posting on Facebook in early February",
+   "claim": "User resumed posting on Facebook in early February.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "02",
+   "owner": "user",
+   "slot_class": "other:social_media",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm039-e06a4808/s17#r0",
+   "source_span": "I just got back from a solo trip to Tokyo last month",
+   "entity": "user",
+   "slot": "tokyo_solo_trip",
+   "value": "solo trip to Tokyo",
+   "claim": "User recently completed a solo trip to Tokyo.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm039-e06a4808/s17#r2",
+   "source_span": "I'm actually staying in the same area of Tokyo where I stayed during my solo trip, Shibuya",
+   "entity": "user",
+   "slot": "tokyo_accommodation_area",
+   "value": "Shibuya",
+   "claim": "User stays in Shibuya when visiting Tokyo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "in Tokyo",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm039-e06a4808/s19#r0",
+   "source_span": "I've been working on this project since February 10th",
+   "entity": "user",
+   "slot": "f16_model_project",
+   "value": "F-16 model painting project started February 10th",
+   "claim": "User started an F-16 model painting project on February 10th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "02-10",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm039-e06a4808/s22#r0",
+   "source_span": "I attended their guided tour of \"The Evolution of Abstract Expressionism\" today, led by Dr. Patel",
+   "entity": "user",
+   "slot": "museum_tour_attendance",
+   "value": "guided tour of The Evolution of Abstract Expressionism at Modern Art Museum led by Dr. Patel",
+   "claim": "User attended a guided tour at the Modern Art Museum on abstract expressionism led by Dr. Patel.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm039-e06a4808/s23#r0",
+   "source_span": "I just took a DNA test today to see if I can uncover more about my roots. I'm already aware that I have some Italian heritage through my maternal grandfather",
+   "entity": "user",
+   "slot": "dna_test_ancestry",
+   "value": "took DNA test; known Italian heritage through maternal grandfather",
+   "claim": "User took a DNA ancestry test and has known Italian heritage through their maternal grandfather.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:ancestry",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm039-e06a4808/s23#r2",
+   "source_span": "I'm really curious to see if the test will confirm my Irish and English roots",
+   "entity": "user",
+   "slot": "suspected_ancestry",
+   "value": "suspected Irish and English roots",
+   "claim": "User suspects they have Irish and English ancestry.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:ancestry",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm039-e06a4808/s23#r4",
+   "source_span": "my great-great-grandfather who came from Liverpool",
+   "entity": "user",
+   "slot": "ancestor_origin",
+   "value": "great-great-grandfather from Liverpool",
+   "claim": "User's great-great-grandfather came from Liverpool.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:ancestry",
+   "value_tags": []
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm039-e06a4808/s24#r0",
+   "source_span": "I just got back from an amazing dance workshop last weekend",
+   "entity": "user",
+   "slot": "dance_workshop",
+   "value": "contemporary dance workshop",
+   "claim": "User recently attended a contemporary dance workshop.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm039-e06a4808/s24#r0",
+   "source_span": "I've been really into Salsa lately and I want to try out some different styles and instructors",
+   "entity": "user",
+   "slot": "salsa_dance_interest",
+   "value": "interested in Salsa dancing; wants to explore different styles and instructors",
+   "claim": "User is interested in Salsa dancing and wants to explore different styles and instructors.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm039-e06a4808/s24#r2",
+   "source_span": "I think I'd prefer On1 since that's what I've been learning so far",
+   "entity": "user",
+   "slot": "salsa_style_preference",
+   "value": "On1 Salsa",
+   "claim": "User prefers On1 Salsa style which they have been learning.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm039-e06a4808/s26#r1",
+   "source_span": "Ferns & Fire is my new favorite spot — everything comes off a wood grill and even the vegetables taste like a main course",
+   "entity": "user",
+   "slot": "favorite_restaurant",
+   "value": "Ferns & Fire",
+   "claim": "User's favorite restaurant is now Ferns & Fire, a wood-grill restaurant.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm039-e06a4808/s26#r0",
+   "source_span": "Went out for my sister's birthday last weekend",
+   "entity": "user",
+   "slot": "sister_birthday",
+   "value": "sister's birthday",
+   "claim": "User celebrated their sister's birthday last weekend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:family_event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm039-e06a4808/s27#r0",
+   "source_span": "I actually attended a painting workshop at the Museum of Modern Art (MoMA) today",
+   "entity": "user",
+   "slot": "moma_painting_workshop",
+   "value": "painting workshop at Museum of Modern Art (MoMA)",
+   "claim": "User attended a painting workshop at MoMA.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm039-e06a4808/s30#r0",
+   "source_span": "I actually participated in a local theater production of \"Hamlet\" as an extra about 6 weeks ago",
+   "entity": "user",
+   "slot": "hamlet_theater_participation",
+   "value": "participated as extra in local Hamlet production approximately 6 weeks prior",
+   "claim": "User participated as an extra in a local theater production of Hamlet approximately 6 weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm039-e06a4808/s31#r0",
+   "source_span": "A tiny trattoria opened two streets from my flat and I've eaten there four times in three weeks",
+   "entity": "user",
+   "slot": "local_trattoria_visits",
+   "value": "four visits to local trattoria in three weeks",
+   "claim": "User has visited a local trattoria four times in three weeks.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm039-e06a4808/s31#r1",
+   "source_span": "Little Bruno's is my favorite place to eat now — the cacio e pepe is absurd and the owner remembers my name",
+   "entity": "user",
+   "slot": "favorite_restaurant",
+   "value": "Little Bruno's",
+   "claim": "User's favorite restaurant is now Little Bruno's, a trattoria near their flat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r43"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm039-e06a4808/s31#r0",
+   "source_span": "A tiny trattoria opened two streets from my flat",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "flat two streets from Little Bruno's trattoria",
+   "claim": "User lives in a flat located two streets from a local trattoria.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm039-e06a4808/s31#r3",
+   "source_span": "I want to bring my parents when they visit in January",
+   "entity": "user",
+   "slot": "parents_visit",
+   "value": "parents visiting in January",
+   "claim": "User's parents are visiting in January.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "01",
+   "owner": "user",
+   "slot_class": "other:family_event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm039-e06a4808/s32#r2",
+   "source_span": "During the meeting, the CEO emphasized the importance of increasing sales revenue by 15% within the next quarter and expanding our reach into new markets",
+   "entity": "user",
+   "slot": "company_strategic_objective",
+   "value": "increase sales revenue by 15% within next quarter and expand into new markets",
+   "claim": "User's company has strategic objectives to increase sales revenue by 15% and expand into new markets.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer",
+   "value_tags": [
+    "工作学习",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm039-e06a4808/s33#r4",
+   "source_span": "I keep a few emergency rations and water jugs stored in the garage in case I am unable to travel to the store",
+   "entity": "user",
+   "slot": "emergency_preparedness",
+   "value": "emergency rations and water jugs stored in garage",
+   "claim": "User maintains emergency rations and water jugs in their garage for emergency preparedness.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:preparedness",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm039-e06a4808/s3#r0",
+   "source_span": "I've been eating out every other night just to avoid cooking",
+   "entity": "user",
+   "slot": "eating_habits",
+   "value": "eating out every other night",
+   "claim": "User eats out every other night during cold weather.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "during cold weather",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm039-e06a4808/s14#r0",
+   "source_span": "My eating habits have shifted a lot since the weather warmed up",
+   "entity": "user",
+   "slot": "eating_habits",
+   "value": "eating habits shifted with warmer weather",
+   "claim": "User's eating habits have changed since the weather warmed up.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r53"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  }
+ ],
+ "usage_in": 21662,
+ "usage_out": 9793
+}

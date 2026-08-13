@@ -1,0 +1,1398 @@
+{
+ "uid": "confirm026-87aee3cc",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm026-87aee3cc/s0#r0",
+   "source_span": "I've been thinking of switching up my morning tea routine",
+   "entity": "user",
+   "slot": "morning_beverage",
+   "value": "green tea",
+   "claim": "The user is considering switching their morning tea routine to green tea.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "morning",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:beverage",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm026-87aee3cc/s0#r0",
+   "source_span": "I tried a new coffee shop downtown last week and their cappuccino was amazing",
+   "entity": "user",
+   "slot": "coffee_experience",
+   "value": "cappuccino at downtown coffee shop",
+   "claim": "The user tried a cappuccino at a downtown coffee shop and found it amazing.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:beverage",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm026-87aee3cc/s0#r4",
+   "source_span": "I think I'll give Sencha Naturals a try",
+   "entity": "user",
+   "slot": "green_tea_brand",
+   "value": "Sencha Naturals",
+   "claim": "The user decided to try Sencha Naturals green tea.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:beverage",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm026-87aee3cc/s1#r0",
+   "source_span": "I recently helped out at the \"Walk for a Cure\" event and it was really rewarding",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "Walk for a Cure event",
+   "claim": "The user volunteered at the Walk for a Cure event and found it rewarding.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:volunteering",
+   "value_tags": [
+    "社交关系",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm026-87aee3cc/s1#r2",
+   "source_span": "I attended a charity gala at the Hilton hotel recently",
+   "entity": "user",
+   "slot": "charity_event",
+   "value": "charity gala at Hilton hotel",
+   "claim": "The user attended a charity gala at the Hilton hotel organized by the rotary club.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "社交关系",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm026-87aee3cc/s1#r2",
+   "source_span": "The rotary club organized it to raise funds for education in underprivileged communities",
+   "entity": "user",
+   "slot": "charity_cause",
+   "value": "education in underprivileged communities",
+   "claim": "The user supports raising funds for education in underprivileged communities through rotary club events.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:charity",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm026-87aee3cc/s1#r2",
+   "source_span": "I ended up bidding on a painting and winning it",
+   "entity": "user",
+   "slot": "art_ownership",
+   "value": "painting from charity gala",
+   "claim": "The user won a painting through bidding at the charity gala.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:possession",
+   "value_tags": [
+    "消费购物",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm026-87aee3cc/s2#r0",
+   "source_span": "I recently got a skincare set from Drunk Elephant at Sephora",
+   "entity": "user",
+   "slot": "skincare_brand",
+   "value": "Drunk Elephant",
+   "claim": "The user purchased a skincare set from Drunk Elephant at Sephora.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:skincare",
+   "value_tags": [
+    "消费购物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm026-87aee3cc/s2#r0",
+   "source_span": "I stopped by H&M last week to grab a few essentials, like a new pair of jeans",
+   "entity": "user",
+   "slot": "shopping_activity",
+   "value": "H&M clothing purchase",
+   "claim": "The user shopped at H&M and purchased essentials including jeans.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:retail",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm026-87aee3cc/s2#r2",
+   "source_span": "I got the Drunk Elephant The Littles set, which includes the Beste No. 9 Jelly Cleanser, the Protini Polypeptide Cream, and the C-Firma Day Serum",
+   "entity": "user",
+   "slot": "skincare_products",
+   "value": "Drunk Elephant The Littles set with Beste No. 9, Protini, C-Firma Day Serum",
+   "claim": "The user owns a Drunk Elephant The Littles skincare set containing specific products.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:skincare",
+   "value_tags": [
+    "消费购物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm026-87aee3cc/s3#r0",
+   "source_span": "I've been dragging myself to 6am spin classes at Velocity Cycle Studio five days a week",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "6am spin classes at Velocity Cycle Studio five days a week",
+   "claim": "The user attends 6am spin classes at Velocity Cycle Studio five days a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm026-87aee3cc/s3#r3",
+   "source_span": "I've started rewarding myself with an oat latte after",
+   "entity": "user",
+   "slot": "post_exercise_reward",
+   "value": "oat latte",
+   "claim": "The user rewards themselves with an oat latte after spin classes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "after spin classes",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:beverage",
+   "value_tags": [
+    "饮食",
+    "咖啡因"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm026-87aee3cc/s4#r0",
+   "source_span": "I've booked our flights and I'm now looking for recommendations on car rentals",
+   "entity": "user",
+   "slot": "hawaii_trip_flights",
+   "value": "flights booked",
+   "claim": "The user has booked flights for a family trip to Hawaii in June.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06",
+   "owner": "user",
+   "slot_class": "other:travel",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm026-87aee3cc/s4#r2",
+   "source_span": "I'm thinking of booking a car for the entire duration of our trip, from June 15th to 25th",
+   "entity": "user",
+   "slot": "hawaii_trip_car_rental",
+   "value": "car rental for June 15-25",
+   "claim": "The user plans to book a car rental for the entire duration of their Hawaii trip from June 15th to 25th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "owner": "user",
+   "slot_class": "other:travel",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm026-87aee3cc/s4#r4",
+   "source_span": "I was thinking of booking a mid-size SUV, probably a Toyota RAV4 or a Honda CR-V",
+   "entity": "user",
+   "slot": "hawaii_car_type",
+   "value": "mid-size SUV (Toyota RAV4 or Honda CR-V)",
+   "claim": "The user is considering a mid-size SUV like a Toyota RAV4 or Honda CR-V for their Hawaii car rental.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm026-87aee3cc/s5#r0",
+   "source_span": "I've been making good progress on my submarine model, and I'm usually able to work on it for about an hour each evening",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "model building (submarine model)",
+   "claim": "The user builds submarine models as a hobby, spending about an hour each evening on it.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm026-87aee3cc/s6#r0",
+   "source_span": "I finished watching three weeks ago on Netflix",
+   "entity": "user",
+   "slot": "recently_watched_show",
+   "value": "The Good Doctor",
+   "claim": "The user finished watching The Good Doctor on Netflix three weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:entertainment",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm026-87aee3cc/s7#r0",
+   "source_span": "Like three weeks ago, I bought a luxury handbag that cost me a whopping $800",
+   "entity": "user",
+   "slot": "luxury_purchase",
+   "value": "luxury handbag for $800",
+   "claim": "The user purchased a luxury handbag for $800 three weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:expense",
+   "value_tags": [
+    "消费购物",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm026-87aee3cc/s7#r2",
+   "source_span": "I recently invested in a high-quality pair of luxury shoes that cost me $400",
+   "entity": "user",
+   "slot": "luxury_footwear",
+   "value": "luxury shoes for $400",
+   "claim": "The user invested in a high-quality pair of luxury shoes for $400.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:expense",
+   "value_tags": [
+    "消费购物",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm026-87aee3cc/s7#r4",
+   "source_span": "I recently found a budget-friendly skincare brand that cost me only $20, and it works just as well as the luxury brand I used to use",
+   "entity": "user",
+   "slot": "budget_skincare",
+   "value": "budget-friendly skincare brand for $20",
+   "claim": "The user found a budget-friendly skincare brand costing $20 that works as well as luxury brands.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:skincare",
+   "value_tags": [
+    "消费购物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm026-87aee3cc/s9#r4",
+   "source_span": "I've been trying to establish a consistent morning routine, which involves waking up at 6:30 am every day, including weekends",
+   "entity": "user",
+   "slot": "wake_time",
+   "value": "6:30 am daily",
+   "claim": "The user is establishing a morning routine with a consistent wake-up time of 6:30 am every day including weekends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:routine",
+   "value_tags": []
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm026-87aee3cc/s10#r0",
+   "source_span": "I've been using the new feed I got for my chickens about two weeks now",
+   "entity": "user",
+   "slot": "chicken_care",
+   "value": "new layer feed",
+   "claim": "The user has been using new layer feed for their chickens for about two weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm026-87aee3cc/s10#r0",
+   "source_span": "I spent around $120 on 50 pounds of layer feed and 20",
+   "entity": "user",
+   "slot": "feed_purchase_cost",
+   "value": "$120 for 50 pounds layer feed and 20 pounds chicken feed",
+   "claim": "The user spent $120 on 50 pounds of layer feed and 20 pounds of chicken feed.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:expense",
+   "value_tags": [
+    "宠物",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm026-87aee3cc/s10#r4",
+   "source_span": "I want to make sure I'm doing everything correctly",
+   "entity": "user",
+   "slot": "product_sales_goal",
+   "value": "homemade jam, honey, and goat's milk soap",
+   "claim": "The user is interested in selling homemade products including jam, honey, and goat's milk soap at the farmer's market.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:business",
+   "value_tags": [
+    "工作学习",
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm026-87aee3cc/s11#r0",
+   "source_span": "I just attended my coworker's bridal shower last weekend",
+   "entity": "user",
+   "slot": "event_attendance",
+   "value": "coworker's bridal shower",
+   "claim": "The user attended their coworker's bridal shower last weekend.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm026-87aee3cc/s11#r0",
+   "source_span": "I'm really hoping to attend another wedding in Hawaii next year, my coworker Sar",
+   "entity": "user",
+   "slot": "future_travel_plan",
+   "value": "destination wedding in Hawaii",
+   "claim": "The user plans to attend a destination wedding in Hawaii next year.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2026",
+   "owner": "user",
+   "slot_class": "other:travel",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm026-87aee3cc/s11#r2",
+   "source_span": "I think the wedding is on the island of Oahu",
+   "entity": "user",
+   "slot": "wedding_location",
+   "value": "Oahu, Hawaii",
+   "claim": "The user expects the destination wedding to be on the island of Oahu.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm026-87aee3cc/s11#r4",
+   "source_span": "I recently attended my cousin Rachel's wedding, and it was an amazing outdoor ceremony at a vineyard",
+   "entity": "user",
+   "slot": "recent_wedding",
+   "value": "cousin Rachel's vineyard wedding",
+   "claim": "The user recently attended their cousin Rachel's outdoor wedding at a vineyard.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm026-87aee3cc/s12#r0",
+   "source_span": "I set up on February 10th with a community of neon tetras, harlequin rasboras, and a pleco",
+   "entity": "user",
+   "slot": "aquarium",
+   "value": "20-gallon freshwater aquarium with neon tetras, harlequin rasboras, pleco",
+   "claim": "The user set up a 20-gallon freshwater aquarium on February 10th with specific fish species.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-10",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm026-87aee3cc/s13#r2",
+   "source_span": "I've really set my sights on establishing a fully self-sufficient garden on my property over the next few years",
+   "entity": "user",
+   "slot": "gardening_goal",
+   "value": "self-sufficient garden",
+   "claim": "The user plans to establish a fully self-sufficient garden on their property.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "居家生活",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm026-87aee3cc/s14#r0",
+   "source_span": "I recently attended a panel discussion on the topic at the Seattle International Film Festival, where I saw 8 films",
+   "entity": "user",
+   "slot": "film_festival_attendance",
+   "value": "Seattle International Film Festival, 8 films",
+   "claim": "The user attended the Seattle International Film Festival where they saw 8 films and attended a panel discussion.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm026-87aee3cc/s14#r2",
+   "source_span": "I was thinking about organizing a small film festival in my hometown",
+   "entity": "user",
+   "slot": "film_festival_project",
+   "value": "organizing small hometown film festival",
+   "claim": "The user is interested in organizing a small film festival in their hometown.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm026-87aee3cc/s15#r0",
+   "source_span": "I recently met a guy named Alex from Germany at a music festival, and we bonded over our shared love of indie rock",
+   "entity": "user",
+   "slot": "relationship",
+   "value": "met Alex from Germany at music festival",
+   "claim": "The user met someone named Alex from Germany at a music festival and bonded over indie rock.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm026-87aee3cc/s15#r2",
+   "source_span": "I met a woman named Rachel a week after the festival, and we chatted about her writing - she's working on her first novel",
+   "entity": "user",
+   "slot": "acquaintance",
+   "value": "Rachel, aspiring novelist",
+   "claim": "The user met someone named Rachel who is working on their first novel.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm026-87aee3cc/s16#r0",
+   "source_span": "I'm bouldering three nights a week at Granite Alley now and it doesn't even feel like exercise",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "bouldering three nights a week at Granite Alley",
+   "claim": "The user boulders three nights a week at Granite Alley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "exercise_routine"
+   ],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm026-87aee3cc/s17#r0",
+   "source_span": "I've been attending a lot of weddings lately and it got me thinking about my own love life and future with Jack today",
+   "entity": "user",
+   "slot": "relationship_status",
+   "value": "in relationship with Jack",
+   "claim": "The user is in a relationship with someone named Jack.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm026-87aee3cc/s19#r0",
+   "source_span": "I still remember the chocolate cake I baked for my sister's birthday four weeks ago - it was a huge hit",
+   "entity": "user",
+   "slot": "baking_activity",
+   "value": "chocolate cake for sister's birthday",
+   "claim": "The user baked a chocolate cake for their sister's birthday four weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "饮食",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm026-87aee3cc/s19#r2",
+   "source_span": "my blueberry oat muffins have been a favorite",
+   "entity": "user",
+   "slot": "baking_specialty",
+   "value": "blueberry oat muffins",
+   "claim": "The user has been baking blueberry oat muffins as a specialty.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "饮食",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm026-87aee3cc/s19#r4",
+   "source_span": "I made a batch two weeks ago for a potluck dinner and they were a hit",
+   "entity": "user",
+   "slot": "sugar_cookies",
+   "value": "sugar cookies for potluck",
+   "claim": "The user made sugar cookies two weeks ago for a potluck dinner.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "饮食",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm026-87aee3cc/s20#r0",
+   "source_span": "I'm preparing for the upcoming goat kidding season",
+   "entity": "user",
+   "slot": "livestock",
+   "value": "goats",
+   "claim": "The user raises goats and is preparing for the kidding season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm026-87aee3cc/s20#r2",
+   "source_span": "I remember last year we had an outbreak of pneumonia among our goats in late February",
+   "entity": "user",
+   "slot": "goat_health_history",
+   "value": "pneumonia outbreak in late February",
+   "claim": "The user's goat herd experienced a pneumonia outbreak in late February of the previous year.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm026-87aee3cc/s21#r0",
+   "source_span": "I've been going to the 9 am service on Sundays and it's been really helping me connect with my faith community",
+   "entity": "user",
+   "slot": "religious_practice",
+   "value": "Sunday 9 am service",
+   "claim": "The user regularly attends a 9 am Sunday service to connect with their faith community.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "Sundays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:spirituality",
+   "value_tags": [
+    "社交关系",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm026-87aee3cc/s21#r4",
+   "source_span": "I'm also considering attending a meditation session with my friend Emma, who's been exploring Buddhism",
+   "entity": "user",
+   "slot": "spiritual_exploration",
+   "value": "meditation with friend Emma",
+   "claim": "The user is considering attending a meditation session with their friend Emma who is exploring Buddhism.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:spirituality",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm026-87aee3cc/s22#r0",
+   "source_span": "I recently had a skin tag removed from my neck and I'm still taking antibiotics for pneumonia",
+   "entity": "user",
+   "slot": "health_status",
+   "value": "recovering from skin tag removal, pneumonia treatment",
+   "claim": "The user recently had a skin tag removed and is taking antibiotics for pneumonia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm026-87aee3cc/s22#r2",
+   "source_span": "I've been trying to track my food intake to see if certain foods make me bloated or gassy",
+   "entity": "user",
+   "slot": "food_tracking",
+   "value": "tracking food intake",
+   "claim": "The user is tracking their food intake to identify foods that cause bloating or gas.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm026-87aee3cc/s22#r4",
+   "source_span": "I've noticed that dairy products make me bloated and gassy",
+   "entity": "user",
+   "slot": "food_sensitivity",
+   "value": "dairy intolerance",
+   "claim": "The user has identified that dairy products cause bloating and gas.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm026-87aee3cc/s22#r4",
+   "source_span": "I recently got vaccinated against the flu on March 20th",
+   "entity": "user",
+   "slot": "vaccination",
+   "value": "flu vaccination",
+   "claim": "The user received a flu vaccination on March 20th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-20",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm026-87aee3cc/s23#r0",
+   "source_span": "I've been eyeing a new bike helmet online, specifically the Bell Zephyr model",
+   "entity": "user",
+   "slot": "desired_device",
+   "value": "Bell Zephyr bike helmet",
+   "claim": "The user is interested in purchasing a Bell Zephyr bike helmet.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm026-87aee3cc/s25#r0",
+   "source_span": "I hadn't written short stories for about six months before I started again three weeks ago",
+   "entity": "user",
+   "slot": "writing_practice",
+   "value": "short story writing",
+   "claim": "The user resumed writing short stories after a six-month break.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm026-87aee3cc/s25#r2",
+   "source_span": "I've been reading \"The 3 A.M. Epiphany\" and it's been helping me structure my stories better",
+   "entity": "user",
+   "slot": "writing_resource",
+   "value": "The 3 A.M. Epiphany book",
+   "claim": "The user is reading \"The 3 A.M. Epiphany\" to improve their story structure.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm026-87aee3cc/s26#r0",
+   "source_span": "I just posted a video of my cat Luna chasing a laser pointer and it's been doing really well - I've gained 41 new followers on TikTok since posting it",
+   "entity": "user",
+   "slot": "social_media_content",
+   "value": "TikTok cat Luna laser pointer video",
+   "claim": "The user posted a TikTok video of their cat Luna chasing a laser pointer and gained 41 followers.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social_media",
+   "value_tags": [
+    "娱乐爱好",
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm026-87aee3cc/s26#r0",
+   "source_span": "I have a cat named Luna",
+   "entity": "user",
+   "slot": "pet",
+   "value": "cat named Luna",
+   "claim": "The user owns a cat named Luna.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm026-87aee3cc/s27#r0",
+   "source_span": "I used this syrup to sweeten my Bourbon Smash, which was a cocktail I made last night",
+   "entity": "user",
+   "slot": "cocktail_making",
+   "value": "Bourbon Smash cocktail",
+   "claim": "The user makes cocktails including a Bourbon Smash with simple syrup.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:beverage",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm026-87aee3cc/s28#r2",
+   "source_span": "my friend's sister's law school graduation is on July 15th at 2 PM at the University of Chicago",
+   "entity": "user",
+   "slot": "event_reminder",
+   "value": "law school graduation July 15 University of Chicago",
+   "claim": "The user plans to attend a law school graduation on July 15th at the University of Chicago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-15",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm026-87aee3cc/s28#r2",
+   "source_span": "My niece's preschool graduation is next week",
+   "entity": "user",
+   "slot": "family_event",
+   "value": "niece's preschool graduation",
+   "claim": "The user's niece is graduating from preschool.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "社交关系",
+    "家庭"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm026-87aee3cc/s28#r2",
+   "source_span": "my sister wants me to bring cupcakes",
+   "entity": "user",
+   "slot": "contribution",
+   "value": "cupcakes for niece's graduation",
+   "claim": "The user is being asked to bring cupcakes to their niece's preschool graduation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "饮食",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm026-87aee3cc/s28#r2",
+   "source_span": "she'll be moving on to kindergarten in the fall",
+   "entity": "user",
+   "slot": "niece_milestone",
+   "value": "starting kindergarten",
+   "claim": "The user's niece will be starting kindergarten in the fall.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm026-87aee3cc/s29#r0",
+   "source_span": "I've mostly given up on the local buses for getting across town, simply because the subway schedules are much more consistent",
+   "entity": "user",
+   "slot": "commute_preference",
+   "value": "subway over local buses",
+   "claim": "The user prefers using the subway over local buses for getting across town due to consistency.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:transportation",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "confirm026-87aee3cc/s29#r2",
+   "source_span": "I'm in NYC—usually taking the subway from Queens into Midtown",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Queens, NYC",
+   "claim": "The user lives in Queens, NYC.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "confirm026-87aee3cc/s29#r4",
+   "source_span": "I'm mostly on the E or F from Jackson Heights/Roosevelt Ave",
+   "entity": "user",
+   "slot": "primary_transit_line",
+   "value": "E or F subway from Jackson Heights/Roosevelt Ave",
+   "claim": "The user primarily uses the E or F subway line from Jackson Heights/Roosevelt Avenue.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r59"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:transportation",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "confirm026-87aee3cc/s30#r0",
+   "source_span": "I signed up for marathon training with the Harbor Milers running club and the 16-week plan kicks off Monday",
+   "entity": "user",
+   "slot": "running_commitment",
+   "value": "marathon training with Harbor Milers running club",
+   "claim": "The user signed up for a 16-week marathon training program with Harbor Milers running club.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "fitness_activity"
+   ],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "confirm026-87aee3cc/s30#r0",
+   "source_span": "They do long runs on Saturday mornings along the waterfront",
+   "entity": "user",
+   "slot": "running_schedule",
+   "value": "Saturday morning long runs along waterfront",
+   "claim": "The Harbor Milers running club does long runs on Saturday mornings along the waterfront.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "confirm026-87aee3cc/s30#r2",
+   "source_span": "I bought shoes that cost more than my rent deposit",
+   "entity": "user",
+   "slot": "running_shoes_purchase",
+   "value": "expensive running shoes",
+   "claim": "The user purchased running shoes that cost more than their rent deposit.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "confirm026-87aee3cc/s32#r0",
+   "source_span": "I wore them to a music festival last weekend and they were super comfortable, I got a lot of compliments",
+   "entity": "user",
+   "slot": "music_festival_attendance",
+   "value": "music festival",
+   "claim": "The user wore new sneakers to a music festival last weekend and received compliments.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "confirm026-87aee3cc/s32#r2",
+   "source_span": "I'm planning to wear my new black sneakers, not my old ones",
+   "entity": "user",
+   "slot": "new_footwear",
+   "value": "new black sneakers",
+   "claim": "The user is planning to wear new black sneakers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "confirm026-87aee3cc/s32#r2",
+   "source_span": "one of the performers at the festival was wearing the same brand as me",
+   "entity": "user",
+   "slot": "sneaker_brand_preference",
+   "value": "same brand as festival performer",
+   "claim": "The user wears the same sneaker brand as a performer they saw at a festival.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r67",
+   "source_memory_id": "confirm026-87aee3cc/s24#r0",
+   "source_span": "I've been making good progress on my submarine model, and I'm usually able to work on it for about an hour each evening",
+   "entity": "user",
+   "slot": "model_building_hobby",
+   "value": "submarine model, one hour daily",
+   "claim": "The user builds submarine models as a hobby, spending about an hour each evening.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  }
+ ],
+ "usage_in": 21336,
+ "usage_out": 12446
+}

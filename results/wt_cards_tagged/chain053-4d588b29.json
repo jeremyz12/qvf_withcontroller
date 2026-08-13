@@ -1,0 +1,1297 @@
+{
+ "uid": "chain053-4d588b29",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain053-4d588b29/s0#r0",
+   "source_span": "I just went on a day trip to Santa Cruz with my family a week ago",
+   "entity": "user",
+   "slot": "recent_trip",
+   "value": "Santa Cruz day trip with family",
+   "claim": "User went on a day trip to Santa Cruz with family approximately one week prior.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:trip",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain053-4d588b29/s0#r0",
+   "source_span": "their fish and chips were incredible",
+   "entity": "user",
+   "slot": "favorite_restaurant",
+   "value": "The Fisherman's Grotto (Santa Cruz)",
+   "claim": "User enjoyed fish and chips at The Fisherman's Grotto in Santa Cruz.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:restaurant",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain053-4d588b29/s0#r2",
+   "source_span": "We actually visited the Santa Cruz Wharf during our day trip last week",
+   "entity": "user",
+   "slot": "visited_location",
+   "value": "Santa Cruz Wharf",
+   "claim": "User visited Santa Cruz Wharf during a recent day trip.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain053-4d588b29/s1#r0",
+   "source_span": "I'm looking to learn more about my new vintage Rolex watch",
+   "entity": "user",
+   "slot": "owns_device",
+   "value": "vintage Rolex watch from 1960s",
+   "claim": "User owns a vintage Rolex watch from the 1960s.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain053-4d588b29/s1#r0",
+   "source_span": "I once picked up a 1962 first edition of 'To Kill a Mockingbird' at a thrift store for $20 about 10 years ago",
+   "entity": "user",
+   "slot": "owns_collection_item",
+   "value": "1962 first edition of To Kill a Mockingbird",
+   "claim": "User owns a 1962 first edition of To Kill a Mockingbird purchased at a thrift store approximately 10 years ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015",
+   "owner": "user",
+   "slot_class": "other:possession",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain053-4d588b29/s1#r4",
+   "source_span": "I recently acquired a 1920s trunk",
+   "entity": "user",
+   "slot": "owns_collection_item",
+   "value": "1920s Louis Vuitton trunk",
+   "claim": "User recently acquired a 1920s Louis Vuitton trunk.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:possession",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain053-4d588b29/s2#r0",
+   "source_span": "I've been following Tati Westbrook's channel, where I've watched around 15 videos in the past month",
+   "entity": "user",
+   "slot": "content_interests",
+   "value": "makeup tutorials by Tati Westbrook",
+   "claim": "User watches makeup tutorials, specifically following Tati Westbrook's channel with approximately 15 videos watched in the past month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain053-4d588b29/s2#r4",
+   "source_span": "I think I'll go with the Naked Reloaded Palette",
+   "entity": "user",
+   "slot": "owns_device",
+   "value": "Urban Decay Naked Reloaded Palette",
+   "claim": "User plans to purchase the Urban Decay Naked Reloaded Palette.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain053-4d588b29/s3#r0",
+   "source_span": "I finally did the adult thing and got a physical booked for next month",
+   "entity": "user",
+   "slot": "healthcare_plan",
+   "value": "physical appointment scheduled",
+   "claim": "User has booked a physical appointment.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain053-4d588b29/s3#r1",
+   "source_span": "it's with Dr. Ingrid Halvorsen at Larkspur Family Health, she was the only one taking new patients within biking distance",
+   "entity": "user",
+   "slot": "primary_care_provider",
+   "value": "Dr. Ingrid Halvorsen at Larkspur Family Health",
+   "claim": "User's primary care provider is Dr. Ingrid Halvorsen at Larkspur Family Health.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain053-4d588b29/s4#r2",
+   "source_span": "I had a poll in my Instagram story last week asking about eco-friendly cleaning products and it got 40 responses",
+   "entity": "user",
+   "slot": "social_media_activity",
+   "value": "Instagram poll on eco-friendly cleaning products with 40 responses",
+   "claim": "User posted an Instagram story poll about eco-friendly cleaning products that received 40 responses.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain053-4d588b29/s4#r4",
+   "source_span": "my most popular post is a photo of my zero-waste kitchen setup, which got 57 likes and 12 comments on Instagram",
+   "entity": "user",
+   "slot": "social_media_activity",
+   "value": "Instagram post of zero-waste kitchen setup with 57 likes and 12 comments",
+   "claim": "User's most popular Instagram post is a photo of their zero-waste kitchen setup with 57 likes and 12 comments.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain053-4d588b29/s5#r0",
+   "source_span": "I'm working on a model of the F-15E Strike Eagle and I just received the kit a few weeks ago",
+   "entity": "user",
+   "slot": "hobby_project",
+   "value": "F-15E Strike Eagle scale model",
+   "claim": "User is building a scale model of an F-15E Strike Eagle received a few weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain053-4d588b29/s5#r2",
+   "source_span": "I've been working on it in short sessions after dinner. I just got the cockpit and fuselage assembled",
+   "entity": "user",
+   "slot": "hobby_project_status",
+   "value": "F-15E model: cockpit and fuselage assembled, planning to paint exterior soon",
+   "claim": "User has assembled the cockpit and fuselage of the F-15E model and is planning to start painting soon.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain053-4d588b29/s5#r4",
+   "source_span": "I actually got the Revell 1/48 F-15E Strike Eagle kit that I had pre-ordered online a few weeks ago",
+   "entity": "user",
+   "slot": "hobby_project",
+   "value": "Revell 1/48 F-15E Strike Eagle model kit",
+   "claim": "User has a Revell 1/48 F-15E Strike Eagle model kit that was pre-ordered and received a few weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain053-4d588b29/s6#r0",
+   "source_span": "I've been lazy and just grabbing whatever is convenient since the week of April 10th",
+   "entity": "user",
+   "slot": "eating_habit",
+   "value": "eating convenient/unhealthy snacks",
+   "claim": "User has been eating convenient foods instead of healthy options since approximately April 10th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-10",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain053-4d588b29/s6#r2",
+   "source_span": "I've actually been eating more fruit than usual lately, so that's a good habit to continue",
+   "entity": "user",
+   "slot": "eating_habit",
+   "value": "eating more fruit",
+   "claim": "User has been eating more fruit than usual and wants to continue this habit.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain053-4d588b29/s6#r4",
+   "source_span": "I've already been doing some prep work like that, so it's a good starting point",
+   "entity": "user",
+   "slot": "meal_prep_activity",
+   "value": "prepping veggies like carrots and cucumbers, cooking quinoa or rice",
+   "claim": "User is doing meal prep including prepping vegetables and cooking grains.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain053-4d588b29/s7#r0",
+   "source_span": "I've seen 55 bird species so far, and I'm hoping to add some new ones to my life list on this trip",
+   "entity": "user",
+   "slot": "hobby_hobby",
+   "value": "bird watching with 55 species on life list",
+   "claim": "User is a bird watcher who has seen 55 bird species and maintains a life list.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain053-4d588b29/s7#r0",
+   "source_span": "I'm planning a trip to Yellowstone National Park and I've heard it's a great spot for bird watching",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "Yellowstone National Park for bird watching",
+   "claim": "User is planning a trip to Yellowstone National Park for bird watching.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:trip",
+   "value_tags": [
+    "出行旅行",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain053-4d588b29/s8#r0",
+   "source_span": "almonds are my preferred snack for this occasion",
+   "entity": "user",
+   "slot": "snack_preference",
+   "value": "almonds",
+   "claim": "User prefers almonds as a snack.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain053-4d588b29/s9#r0",
+   "source_span": "I just moved in on March 15th",
+   "entity": "user",
+   "slot": "residence",
+   "value": "new apartment",
+   "claim": "User moved into a new apartment on March 15th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain053-4d588b29/s9#r0",
+   "source_span": "I started my new job that I started on February 20th",
+   "entity": "user",
+   "slot": "position",
+   "value": "new job",
+   "claim": "User started a new job on February 20th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-20",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain053-4d588b29/s9#r0",
+   "source_span": "I'm loving the short commute to my new job",
+   "entity": "user",
+   "slot": "commute_duration",
+   "value": "short",
+   "claim": "User has a short commute to their new job.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:work",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain053-4d588b29/s9#r2",
+   "source_span": "I was thinking about my weekend trip to visit my sister in Chicago on January 15th",
+   "entity": "user",
+   "slot": "recent_trip",
+   "value": "visit sister in Chicago",
+   "claim": "User visited their sister in Chicago on January 15th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-15",
+   "owner": "user",
+   "slot_class": "other:trip",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain053-4d588b29/s11#r2",
+   "source_span": "I'm particularly interested in Coursera and edX since they partner with top universities. Do they offer any courses that are specifically designed for students in my field of study, environmental science?",
+   "entity": "user",
+   "slot": "field_of_study",
+   "value": "environmental science",
+   "claim": "User's field of study is environmental science.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain053-4d588b29/s11#r0",
+   "source_span": "I completed all my coursework for the first month ahead of schedule",
+   "entity": "user",
+   "slot": "academic_progress",
+   "value": "completed first month coursework ahead of schedule",
+   "claim": "User completed all coursework for the first month ahead of schedule.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain053-4d588b29/s12#r0",
+   "source_span": "I recently met Tom, a marketing expert",
+   "entity": "user",
+   "slot": "professional_contact",
+   "value": "Tom (marketing expert)",
+   "claim": "User has a professional contact named Tom who is a marketing expert.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain053-4d588b29/s12#r0",
+   "source_span": "I was just thinking about catching up with Rachel, an old colleague from my previous company",
+   "entity": "user",
+   "slot": "professional_contact",
+   "value": "Rachel (old colleague)",
+   "claim": "User has an old colleague named Rachel from a previous company that they plan to catch up with.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain053-4d588b29/s12#r2",
+   "source_span": "similar to the one I attended hosted by Women in Tech with Dr. Maria Hernandez",
+   "entity": "user",
+   "slot": "event_attendance",
+   "value": "Women in Tech webinar with Dr. Maria Hernandez on AI and machine learning",
+   "claim": "User attended a Women in Tech webinar on AI and machine learning hosted by Dr. Maria Hernandez.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "工作学习",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain053-4d588b29/s13#r0",
+   "source_span": "I'm waiting for my DNA test results, which might give me a better understanding of my ancestry",
+   "entity": "user",
+   "slot": "pending_test",
+   "value": "DNA test results",
+   "claim": "User is waiting for DNA test results to learn about their ancestry.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain053-4d588b29/s14#r0",
+   "source_span": "I used to see my best friend at least twice a week, and we'd often go on outdoor adventures together, but now I'm flying solo",
+   "entity": "user",
+   "slot": "friendship_status",
+   "value": "best friend no longer frequently available",
+   "claim": "User's best friend is no longer available for regular outdoor adventures, and user is now hiking alone.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain053-4d588b29/s15#r0",
+   "source_span": "I make scrambled eggs with spinach and mushrooms on Tuesdays and Thursdays",
+   "entity": "user",
+   "slot": "meal_plan",
+   "value": "scrambled eggs with spinach and mushrooms on Tuesdays and Thursdays",
+   "claim": "User regularly makes scrambled eggs with spinach and mushrooms on Tuesdays and Thursdays.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "Tuesdays and Thursdays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain053-4d588b29/s16#r0",
+   "source_span": "my insurance shuffled networks in May and my old clinic dropped off the list",
+   "entity": "user",
+   "slot": "primary_care_provider",
+   "value": "previous clinic (no longer in network)",
+   "claim": "User's previous clinic dropped out of their insurance network in May.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain053-4d588b29/s16#r1",
+   "source_span": "I switched over to Dr. Amara Osei at Cedar Hollow Medical Group — first visit was yesterday",
+   "entity": "user",
+   "slot": "primary_care_provider",
+   "value": "Dr. Amara Osei at Cedar Hollow Medical Group",
+   "claim": "User switched primary care providers to Dr. Amara Osei at Cedar Hollow Medical Group with a first visit recently completed.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain053-4d588b29/s16#r2",
+   "source_span": "she wants me to track my blood pressure at home twice a week",
+   "entity": "user",
+   "slot": "health_monitoring",
+   "value": "blood pressure tracking twice a week",
+   "claim": "User's doctor has requested they track their blood pressure at home twice a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain053-4d588b29/s17#r0",
+   "source_span": "I've been to Hawaii before, we stayed at a resort in Waikiki",
+   "entity": "user",
+   "slot": "past_trip",
+   "value": "vacation in Waikiki, Hawaii at a resort",
+   "claim": "User has previously visited Hawaii and stayed at a resort in Waikiki.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:trip",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain053-4d588b29/s17#r4",
+   "source_span": "I actually tried poke bowls at a local restaurant called Poke Bar when I was in Hawaii last time",
+   "entity": "user",
+   "slot": "food_experience",
+   "value": "poke bowls at Poke Bar in Hawaii",
+   "claim": "User has tried poke bowls at Poke Bar during a previous visit to Hawaii.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain053-4d588b29/s18#r0",
+   "source_span": "I've done a road trip to Nashville before, from September 22nd to 25th",
+   "entity": "user",
+   "slot": "past_trip",
+   "value": "road trip to Nashville from September 22-25",
+   "claim": "User previously took a road trip to Nashville from September 22-25.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-09-22",
+   "owner": "user",
+   "slot_class": "other:trip",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain053-4d588b29/s18#r4",
+   "source_span": "I'm actually planning to visit Wrigley Field, which I visited before during my trip to Chicago last month, from October 15th to 18th",
+   "entity": "user",
+   "slot": "past_trip",
+   "value": "trip to Chicago from October 15-18",
+   "claim": "User previously visited Chicago from October 15-18 and saw Wrigley Field.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-10-15",
+   "owner": "user",
+   "slot_class": "other:trip",
+   "value_tags": [
+    "出行旅行",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain053-4d588b29/s19#r4",
+   "source_span": "I attended it for 3 days, from the 15th to the 17th",
+   "entity": "user",
+   "slot": "event_attendance",
+   "value": "data analysis workshop for 3 days",
+   "claim": "User attended a data analysis workshop for 3 days from the 15th to 17th of last month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:event",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain053-4d588b29/s22#r0",
+   "source_span": "I'm thinking of taking my dog Max to a pet-friendly beach nearby",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Max (dog)",
+   "claim": "User has a dog named Max.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain053-4d588b29/s22#r0",
+   "source_span": "I've been taking him on longer walks, about 30-40 minutes, 3-4 times a week",
+   "entity": "user",
+   "slot": "pet_exercise",
+   "value": "30-40 minute walks 3-4 times per week",
+   "claim": "User takes their dog Max on walks of 30-40 minutes, 3-4 times per week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "pet",
+   "value_tags": [
+    "宠物",
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain053-4d588b29/s22#r2",
+   "source_span": "I've been thinking of getting Max more interactive toys to keep him engaged and stimulated when I'm away. Can you recommend some other interactive dog toys besides the Kong toy I already got him?",
+   "entity": "user",
+   "slot": "pet_toy",
+   "value": "Kong toy",
+   "claim": "User has purchased a Kong toy for their dog Max.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain053-4d588b29/s22#r4",
+   "source_span": "I'm also considering taking my cat, Luna, to the pet-friendly beach with me",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Luna (cat)",
+   "claim": "User has a cat named Luna.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain053-4d588b29/s23#r0",
+   "source_span": "I go to on Saturdays at 10 am",
+   "entity": "user",
+   "slot": "recurring_activity",
+   "value": "trampoline park on Saturdays at 10 am",
+   "claim": "User visits a trampoline park on Saturdays at 10 am.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "Saturdays at 10 am",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:activity",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain053-4d588b29/s23#r2",
+   "source_span": "It's near my house, so it's in the 95123 zip code",
+   "entity": "user",
+   "slot": "residence_area",
+   "value": "95123 zip code (San Jose, CA)",
+   "claim": "User lives in the 95123 zip code area (San Jose, CA).",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain053-4d588b29/s24#r0",
+   "source_span": "I attended the morning prayer service at St. Mary's Catholic Church led by Father John today",
+   "entity": "user",
+   "slot": "religious_activity",
+   "value": "morning prayer service at St. Mary's Catholic Church",
+   "claim": "User attended a morning prayer service at St. Mary's Catholic Church led by Father John.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:religion",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain053-4d588b29/s25#r0",
+   "source_span": "I've tried striking up conversations with my neighbor Sarah, who's a freelancer",
+   "entity": "user",
+   "slot": "neighbor",
+   "value": "Sarah (freelancer)",
+   "claim": "User has a neighbor named Sarah who is a freelancer.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain053-4d588b29/s26#r2",
+   "source_span": "as an INFP, I tend to dwell on criticism longer than others might",
+   "entity": "user",
+   "slot": "personality_type",
+   "value": "INFP",
+   "claim": "User identifies as an INFP personality type and tends to dwell on criticism.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:personality",
+   "value_tags": []
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain053-4d588b29/s27#r0",
+   "source_span": "I've been doing yoga at the community center three times a week",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "yoga at community center",
+   "claim": "User does yoga at a community center three times a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "three times a week",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain053-4d588b29/s27#r0",
+   "source_span": "recently tried a new Pilates class at the gym near my work during my lunch break",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "Pilates class at gym near work during lunch break",
+   "claim": "User recently tried a Pilates class at the gym near their workplace during lunch break.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "during lunch break",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain053-4d588b29/s27#r4",
+   "source_span": "I've been really enjoying the Pilates class I took at the gym near my work last week, it was a lunch break class and it was really intense, I loved the focus on core strength and control",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "Pilates class at gym near work",
+   "claim": "User attended a Pilates class at the gym near their work that focused on core strength and control.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r52"
+   ],
+   "condition": "lunch break",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain053-4d588b29/s28#r0",
+   "source_span": "I've been a bit cautious about eating out since I got food poisoning from undercooked chicken at a street food stall last week. I was bedridden for 3 days",
+   "entity": "user",
+   "slot": "health_incident",
+   "value": "food poisoning from undercooked chicken, bedridden for 3 days",
+   "claim": "User got food poisoning from undercooked chicken at a street food stall and was bedridden for 3 days.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain053-4d588b29/s28#r2",
+   "source_span": "I'm looking for some healthy food delivery options in Shimokitazawa",
+   "entity": "user",
+   "slot": "location",
+   "value": "Shimokitazawa",
+   "claim": "User is currently in or near Shimokitazawa.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain053-4d588b29/s29#r2",
+   "source_span": "We're a family of four, so I'm trying to find rituals that actually fit two kids with different activities and bedtimes",
+   "entity": "user",
+   "slot": "family_composition",
+   "value": "family of four with two children with different activities and bedtimes",
+   "claim": "User is part of a family of four with two children who have different activities and bedtimes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain053-4d588b29/s29#r4",
+   "source_span": "It's always been just the four of us, my wife, our two children, and me",
+   "entity": "user",
+   "slot": "family_composition",
+   "value": "user, wife, and two children",
+   "claim": "User lives with their wife and two children in a family of four.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r56"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain053-4d588b29/s30#r0",
+   "source_span": "we ended up relocating across the bay in October for my partner's job",
+   "entity": "user",
+   "slot": "residence",
+   "value": "relocated across the bay",
+   "claim": "User relocated across the bay in October for their partner's job.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain053-4d588b29/s30#r1",
+   "source_span": "transferred all my records to Dr. Tobias Reyner at Quayside Primary Care this week",
+   "entity": "user",
+   "slot": "primary_care_provider",
+   "value": "Dr. Tobias Reyner at Quayside Primary Care",
+   "claim": "User transferred medical records to Dr. Tobias Reyner at Quayside Primary Care.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain053-4d588b29/s31#r0",
+   "source_span": "I stocked up on those last Saturday at Walmart, where I spent around $120",
+   "entity": "user",
+   "slot": "shopping_activity",
+   "value": "purchased chicken breast and ground beef at Walmart for approximately $120",
+   "claim": "User purchased chicken breast and ground beef at Walmart for approximately $120 last Saturday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "chain053-4d588b29/s31#r2",
+   "source_span": "I also have some veggies like apples, bananas, and carrots that I bought at Walmart last Saturday",
+   "entity": "user",
+   "slot": "shopping_activity",
+   "value": "purchased apples, bananas, and carrots at Walmart",
+   "claim": "User purchased fruits and vegetables including apples, bananas, and carrots at Walmart.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "chain053-4d588b29/s31#r4",
+   "source_span": "I actually have some bell peppers that I bought at Walmart last Saturday",
+   "entity": "user",
+   "slot": "shopping_activity",
+   "value": "purchased bell peppers at Walmart",
+   "claim": "User purchased bell peppers at Walmart last Saturday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "chain053-4d588b29/s32#r0",
+   "source_span": "I've been interested in musicals lately, especially after watching \"Hamilton\" on Disney+ a few weeks back",
+   "entity": "user",
+   "slot": "content_interests",
+   "value": "musical theater, particularly Hamilton",
+   "claim": "User has interest in musical theater and watched Hamilton on Disney+ recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  }
+ ],
+ "usage_in": 21072,
+ "usage_out": 11119
+}

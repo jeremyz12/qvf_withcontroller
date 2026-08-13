@@ -1,0 +1,1258 @@
+{
+ "uid": "confirm027-5a209bb7",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm027-5a209bb7/s0#r0",
+   "source_span": "at that bake sale on March 25th where I helped set up stalls and sold goods for the Cancer Support Group",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "Cancer Support Group bake sale",
+   "claim": "The user volunteered at a Cancer Support Group bake sale on March 25th, helping set up stalls and sell goods.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "March 25th",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:volunteering",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm027-5a209bb7/s0#r2",
+   "source_span": "I recently participated in the \"Walk for Hunger\" event on April 15th",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "Walk for Hunger event",
+   "claim": "The user participated in a 'Walk for Hunger' charity event on April 15th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "April 15th",
+   "implies_stale_slots": [],
+   "stated_date": "April 15",
+   "owner": "",
+   "slot_class": "other:volunteering",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm027-5a209bb7/s1#r0",
+   "source_span": "I just got a new set of sheets from them, and the original price of the sheets was $75",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "sheets from Bed Bath & Beyond for $75 original price",
+   "claim": "The user recently purchased a new set of sheets from Bed Bath & Beyond with an original price of $75.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm027-5a209bb7/s2#r2",
+   "source_span": "My current loan is $336,000 at 3.75%. We're thinking of refinancing to a 15-year loan",
+   "entity": "user",
+   "slot": "mortgage_status",
+   "value": "$336,000 loan at 3.75%, considering refinance to 15-year term",
+   "claim": "The user has a current mortgage of $336,000 at 3.75% and is considering refinancing to a 15-year loan.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:finance",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm027-5a209bb7/s2#r2",
+   "source_span": "my credit scores were pretty good - mine was 790, and Rachel's was 820",
+   "entity": "user",
+   "slot": "credit_score",
+   "value": "790",
+   "claim": "The user's credit score was 790 when starting to look for a home.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:finance",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm027-5a209bb7/s2#r2",
+   "source_span": "Rachel's was 820",
+   "entity": "Rachel",
+   "slot": "credit_score",
+   "value": "820",
+   "claim": "Rachel's credit score was 820 when starting to look for a home.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "Rachel",
+   "slot_class": "other:finance",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm027-5a209bb7/s3#r1",
+   "source_span": "been writing all my Go in Sublime Text for like three years now",
+   "entity": "user",
+   "slot": "development_tool",
+   "value": "Sublime Text for Go programming",
+   "claim": "The user has been writing Go code in Sublime Text for approximately three years.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm027-5a209bb7/s3#r1",
+   "source_span": "little thinkpad",
+   "entity": "user",
+   "slot": "device",
+   "value": "Thinkpad laptop",
+   "claim": "The user uses a ThinkPad laptop for development work.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm027-5a209bb7/s4#r0",
+   "source_span": "I just launched it last weekend",
+   "entity": "user",
+   "slot": "business_launch",
+   "value": "VerdeThreads website launched",
+   "claim": "The user launched their VerdeThreads website last weekend (relative to 2025-02-08).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm027-5a209bb7/s4#r0",
+   "source_span": "I built it using a website builder platform",
+   "entity": "user",
+   "slot": "website_builder",
+   "value": "website builder platform",
+   "claim": "The user built their VerdeThreads website using a website builder platform.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm027-5a209bb7/s4#r0",
+   "source_span": "I registered the domain name on the same day I came up with my business name, VerdeThreads",
+   "entity": "user",
+   "slot": "business_name",
+   "value": "VerdeThreads",
+   "claim": "The user's business is named VerdeThreads, with the domain registered on the same day the business name was conceived.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm027-5a209bb7/s4#r2",
+   "source_span": "I've been posting content on my social media channels, mainly Instagram and Facebook",
+   "entity": "user",
+   "slot": "social_media_presence",
+   "value": "Instagram and Facebook",
+   "claim": "The user maintains a social media presence on Instagram and Facebook for their business.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm027-5a209bb7/s5#r0",
+   "source_span": "I've been watching it every morning and I'm really hoping Tiger Woods wins",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "Masters golf tournament, Tiger Woods fan",
+   "claim": "The user watches the Masters golf tournament every morning and is rooting for Tiger Woods to win.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobbies",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm027-5a209bb7/s6#r0",
+   "source_span": "I've recently taken on a new role as a senior account manager",
+   "entity": "user",
+   "slot": "position",
+   "value": "senior account manager",
+   "claim": "The user has recently taken on a new position as a senior account manager.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm027-5a209bb7/s6#r0",
+   "source_span": "I've been mentoring a junior colleague, Alex, who's been shadowing me for the past month",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentoring junior colleague Alex",
+   "claim": "The user has been mentoring a junior colleague named Alex who has been shadowing them for the past month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "relationship",
+   "value_tags": [
+    "工作学习",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm027-5a209bb7/s7#r2",
+   "source_span": "On Mondays, Wednesdays, and Fridays, I've been going to the gym after work",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "gym on Mondays, Wednesdays, Fridays",
+   "claim": "The user goes to the gym after work on Mondays, Wednesdays, and Fridays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Mondays, Wednesdays, and Fridays after work",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm027-5a209bb7/s7#r2",
+   "source_span": "I typically get off work around 5 pm",
+   "entity": "user",
+   "slot": "work_hours",
+   "value": "off work at 5 pm",
+   "claim": "The user typically finishes work at 5 pm on weekdays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm027-5a209bb7/s8#r0",
+   "source_span": "I actually booked a guided tour there on March 1st",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "guided tour of Nikko National Park",
+   "claim": "The user booked a guided tour of Nikko National Park on March 1st.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "March 1",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm027-5a209bb7/s9#r0",
+   "source_span": "we just had a birthday celebration for one of our team members on Wednesday and cut a cake together",
+   "entity": "user",
+   "slot": "team_activity",
+   "value": "birthday celebration and cake cutting",
+   "claim": "The user participated in a birthday celebration for a team member on Wednesday, including cutting cake together.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Wednesday",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm027-5a209bb7/s10#r0",
+   "source_span": "I just turned 35",
+   "entity": "user",
+   "slot": "age_milestone",
+   "value": "35 years old",
+   "claim": "The user recently turned 35 years old.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "owner": "",
+   "slot_class": "other:personal",
+   "value_tags": []
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm027-5a209bb7/s10#r2",
+   "source_span": "I've been pretty busy with work lately, including a recent promotion to a senior manager role",
+   "entity": "user",
+   "slot": "position",
+   "value": "senior manager",
+   "claim": "The user has received a recent promotion to a senior manager role.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm027-5a209bb7/s11#r0",
+   "source_span": "I bought a new handbag from them for my sister's birthday, and it was totally worth it",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "Chanel handbag for sister, $3,000",
+   "claim": "The user purchased a Chanel handbag for their sister's birthday at approximately $3,000.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm027-5a209bb7/s11#r2",
+   "source_span": "I spent around $3,000 on the Chanel bag for my sister",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "Chanel handbag for sister, $3,000",
+   "claim": "The user spent around $3,000 on a Chanel handbag purchased for their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm027-5a209bb7/s12#r2",
+   "source_span": "I actually start my day pretty early, 7:30 am on weekdays",
+   "entity": "user",
+   "slot": "wake_time",
+   "value": "7:30 am on weekdays",
+   "claim": "The user starts their day early, waking up at 7:30 am on weekdays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "weekdays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:routine",
+   "value_tags": []
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm027-5a209bb7/s12#r2",
+   "source_span": "I've been using a planner to keep track of my appointments and deadlines",
+   "entity": "user",
+   "slot": "organization_tool",
+   "value": "planner for appointments and deadlines",
+   "claim": "The user uses a planner to organize appointments and deadlines.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm027-5a209bb7/s12#r4",
+   "source_span": "I've been trying to fit in a workout three times a week",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "workout three times a week",
+   "claim": "The user aims to exercise three times a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm027-5a209bb7/s13#r4",
+   "source_span": "I packed for my last trip to Hawaii on January 10th",
+   "entity": "user",
+   "slot": "travel",
+   "value": "trip to Hawaii",
+   "claim": "The user took a trip to Hawaii, with packing occurring on January 10th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "January 10",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm027-5a209bb7/s13#r4",
+   "source_span": "I had to buy again at the airport for a ridiculous price",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "sunscreen at Hawaii airport",
+   "claim": "The user had to purchase sunscreen at the Hawaii airport after forgetting to pack it.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm027-5a209bb7/s14#r0",
+   "source_span": "I've been listening to podcasts almost daily for the past three months",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "daily podcast listening",
+   "claim": "The user has been listening to podcasts almost daily for the past three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobbies",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm027-5a209bb7/s15#r2",
+   "source_span": "I've been experiencing anxiety and panic attacks for about three months now",
+   "entity": "user",
+   "slot": "health_condition",
+   "value": "anxiety and panic attacks",
+   "claim": "The user has been experiencing anxiety and panic attacks for approximately three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm027-5a209bb7/s16#r2",
+   "source_span": "I'm going to start waking up 30 minutes earlier each day",
+   "entity": "user",
+   "slot": "wake_time",
+   "value": "30 minutes earlier than 7:30 am, approximately 7:00 am",
+   "claim": "The user plans to adjust their wake-up time 30 minutes earlier from their current 7:30 am routine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:routine",
+   "value_tags": []
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm027-5a209bb7/s16#r4",
+   "source_span": "I've been wanting to start a daily journaling practice",
+   "entity": "user",
+   "slot": "daily_practice",
+   "value": "journaling",
+   "claim": "The user wants to start a daily journaling practice as part of their new morning routine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:habit",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm027-5a209bb7/s17#r0",
+   "source_span": "I recently tried that new Italian place downtown with friends Sarah and Alex on Wednesday",
+   "entity": "user",
+   "slot": "social_activity",
+   "value": "dining with friends Sarah and Alex at new Italian restaurant downtown",
+   "claim": "The user recently dined with friends Sarah and Alex at a new Italian restaurant downtown on Wednesday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Wednesday",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm027-5a209bb7/s18#r0",
+   "source_span": "I'm really happy with my new sheets from Bed Bath & Beyond - I got them for $32 after using a 20% off coupon",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "sheets from Bed Bath & Beyond, $32 after 20% off coupon",
+   "claim": "The user is satisfied with their recent purchase of sheets from Bed Bath & Beyond, which they bought for $32 after applying a 20% off coupon.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm027-5a209bb7/s19#r0",
+   "source_span": "I switched to Neovim last weekend, lua config and all",
+   "entity": "user",
+   "slot": "development_tool",
+   "value": "Neovim with lua config",
+   "claim": "The user switched to using Neovim with lua configuration last weekend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-05",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm027-5a209bb7/s19#r0",
+   "source_span": "my coworker Dmitri finally wore me down and I switched to Neovim",
+   "entity": "user",
+   "slot": "colleague",
+   "value": "Dmitri",
+   "claim": "The user has a coworker named Dmitri who convinced them to switch to Neovim.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm027-5a209bb7/s20#r0",
+   "source_span": "when I studied for the GRE, I used some helpful online resources and practice tests to prepare. I studied for several months beforehand",
+   "entity": "user",
+   "slot": "education_history",
+   "value": "GRE preparation with online resources",
+   "claim": "The user studied for the GRE using online resources and practice tests over several months.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm027-5a209bb7/s28#r0",
+   "source_span": "I started my Master's in Data Science at New York University in January 2018",
+   "entity": "user",
+   "slot": "education",
+   "value": "Master's in Data Science at New York University",
+   "claim": "The user started a Master's degree in Data Science at New York University in January 2018.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2018-01",
+   "owner": "",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm027-5a209bb7/s28#r0",
+   "source_span": "After taking a 6-month break to travel and explore career opportunities",
+   "entity": "user",
+   "slot": "travel",
+   "value": "6-month career exploration trip",
+   "claim": "The user took a 6-month break before starting their Master's to travel and explore career opportunities.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm027-5a209bb7/s29#r0",
+   "source_span": "Hawaii, which was our first big vacation together in years",
+   "entity": "user",
+   "slot": "travel",
+   "value": "family vacation to Hawaii",
+   "claim": "The user took a family vacation to Hawaii which was their first big vacation together in years.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm027-5a209bb7/s21#r0",
+   "source_span": "I've been doing yoga at the community center three times a week",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "yoga at community center three times a week",
+   "claim": "The user does yoga at the community center three times a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm027-5a209bb7/s21#r0",
+   "source_span": "recently tried a new Pilates class at the gym near my work during my lunch break",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "Pilates class at gym near work during lunch",
+   "claim": "The user recently tried a Pilates class at the gym near their workplace during their lunch break.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm027-5a209bb7/s22#r0",
+   "source_span": "I've been listening to a lot of podcasts lately, including 10 episodes of a particular show where I took notes on my phone about productivity tips and entrepreneurial strategies",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "10 podcast episodes with notes on productivity and entrepreneurship",
+   "claim": "The user has been listening to podcasts, including 10 episodes of a show, and taking notes on productivity and entrepreneurial strategies.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobbies",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm027-5a209bb7/s23#r0",
+   "source_span": "I've been meeting her at 2 pm on Tuesdays and Thursdays",
+   "entity": "user",
+   "slot": "social_routine",
+   "value": "tea breaks with Emma at 2 pm on Tuesdays and Thursdays",
+   "claim": "The user has regular tea breaks with Emma at 2 pm on Tuesdays and Thursdays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Tuesdays and Thursdays at 2 pm",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm027-5a209bb7/s23#r2",
+   "source_span": "I've been really into peach tea lately",
+   "entity": "user",
+   "slot": "beverage_preference",
+   "value": "peach tea",
+   "claim": "The user has been enjoying peach tea recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm027-5a209bb7/s23#r4",
+   "source_span": "I'm also meaning to pick up a box of that green tea my colleague Emma introduced me to - she swears by it",
+   "entity": "user",
+   "slot": "beverage_preference",
+   "value": "green tea recommended by Emma",
+   "claim": "The user is interested in trying green tea that their colleague Emma recommended.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm027-5a209bb7/s24#r0",
+   "source_span": "I've been taking the bus to work every day for the past three months",
+   "entity": "user",
+   "slot": "commute_method",
+   "value": "bus to work",
+   "claim": "The user has been commuting to work by bus every day for the past three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm027-5a209bb7/s24#r2",
+   "source_span": "I've been listening to them for a while now",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "Crime Junkie podcast fan",
+   "claim": "The user has been listening to the Crime Junkie podcast for a while.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobbies",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm027-5a209bb7/s25#r0",
+   "source_span": "I've been listening to 'The Nightingale' for the past 6 weeks",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "The Nightingale audiobook",
+   "claim": "The user has been listening to 'The Nightingale' audiobook for the past 6 weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobbies",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm027-5a209bb7/s26#r0",
+   "source_span": "I just baked a chocolate cake for my sister's birthday party last weekend and it turned out amazing - the espresso powder really enhanced the flavor",
+   "entity": "user",
+   "slot": "baking_activity",
+   "value": "chocolate cake with espresso powder for sister's birthday",
+   "claim": "The user baked a chocolate cake with espresso powder for their sister's birthday party last weekend.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:cooking",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm027-5a209bb7/s26#r4",
+   "source_span": "I think I'll go with strawberries, they're my favorite",
+   "entity": "user",
+   "slot": "food_preference",
+   "value": "strawberries",
+   "claim": "Strawberries are the user's favorite fruit.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm027-5a209bb7/s27#r0",
+   "source_span": "I also have a Box of Style subscription",
+   "entity": "user",
+   "slot": "subscription",
+   "value": "Box of Style",
+   "claim": "The user has a Box of Style subscription.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm027-5a209bb7/s27#r2",
+   "source_span": "I ordered a wireless headphone from Amazon last week",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "wireless headphones from Amazon",
+   "claim": "The user recently ordered wireless headphones from Amazon.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm027-5a209bb7/s27#r2",
+   "source_span": "I got a pair of sneakers from Zappos on the 15th of last month",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "sneakers from Zappos on the 15th",
+   "claim": "The user purchased sneakers from Zappos on the 15th of the previous month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm027-5a209bb7/s27#r2",
+   "source_span": "I bought some household essentials from Walmart's website around the same time",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "household essentials from Walmart",
+   "claim": "The user purchased household essentials from Walmart's website around the 15th of the previous month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm027-5a209bb7/s27#r2",
+   "source_span": "I made three separate purchases on ASOS in the first week of this month - two dresses and a pair of boots",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "two dresses and boots from ASOS in first week of month",
+   "claim": "The user made three separate purchases on ASOS in the first week of the month: two dresses and a pair of boots.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm027-5a209bb7/s27#r4",
+   "source_span": "I also purchased some books from Barnes & Noble's website about three weeks ago",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "books from Barnes & Noble",
+   "claim": "The user purchased books from Barnes & Noble's website approximately three weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm027-5a209bb7/s27#r4",
+   "source_span": "I had a major online shopping spree on Sephora's website in late April",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "Sephora products in late April",
+   "claim": "The user had a major shopping spree on Sephora's website in late April.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "April",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "confirm027-5a209bb7/s30#r1",
+   "source_span": "I caved and moved everything over to Zed",
+   "entity": "user",
+   "slot": "development_tool",
+   "value": "Zed editor",
+   "claim": "The user switched to using Zed editor with collaborative editing features.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-02",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "confirm027-5a209bb7/s30#r1",
+   "source_span": "the collab editing sold me when we started pairing remotely",
+   "entity": "user",
+   "slot": "work_style",
+   "value": "remote pair programming",
+   "claim": "The user practices remote pair programming with colleagues.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "confirm027-5a209bb7/s31#r0",
+   "source_span": "I'm trying to organize my digital life, can you help me set up a cloud storage system to back up my files and photos from high school and college days",
+   "entity": "user",
+   "slot": "cloud_storage",
+   "value": "Google Drive for file and photo backup",
+   "claim": "The user uses Google Drive to back up files and photos from high school and college.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "confirm027-5a209bb7/s32#r0",
+   "source_span": "I just got a 2018 Greek 2-euro coin from a local coin shop, which was the last one I needed to complete my EU set",
+   "entity": "user",
+   "slot": "hobby_activity",
+   "value": "EU coin collecting",
+   "claim": "The user collects European Union commemorative coins and recently completed their EU set with a 2018 Greek 2-euro coin.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  }
+ ],
+ "usage_in": 21146,
+ "usage_out": 9198
+}

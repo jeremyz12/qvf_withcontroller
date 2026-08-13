@@ -23,6 +23,15 @@ S6(--s6):跨槽位 join 题,只对双链条目(render_wikistate_multi 产物,
 噪声干扰筛对两个槽位家族都生效(两链宣告句均豁免),任一命中整条目
 跳过。qid = uid_s6a{i}(主锚)/ uid_s6b{i}(副锚),i 为链内步序。
 
+S6 隐式序数孪生题(s6_cross_slot_implicit):每道显式题额外配一道同
+i 同 gold 的孪生 —— 问句不点名锚值,改用序数短语("my second
+employer" / "my third residence";序数词 first..tenth,取转移新值在锚
+链中的 1-based 位置;该值在锚链中重复出现则歧义跳过 —— 与显式 repeat
+筛同条件;位置超出 tenth 仅跳孪生)。qid = uid_s6ia{i} / uid_s6ib{i},
+basis 写明序数映射。跳题规则与显式完全一致(before-first-start /
+boundary / repeat)。设计动机:显式题把锚值逐字写进问句,稠密检索凭
+词面即可命中;序数锚不含 needle,必须对锚链做有序记账。
+
 用法:
   python scripts/gen_wikistate_complex.py --data data/wikistate_full.json \
       [更多数据文件 ...] --out results/wsc_s5.jsonl [--uids ...] [--limit N]
@@ -216,6 +225,10 @@ def gen_s5(entry: dict) -> List[dict]:
 _S6_PHRASE = {"position": "became {v}", "employer": "started at {v}",
               "team": "joined {v}", "residence": "moved to {v}"}
 
+# 隐式序数孪生题的序数词(1-based;超出 tenth 的位置仅跳孪生,不影响显式题)
+_ORDINALS = ("first", "second", "third", "fourth", "fifth",
+             "sixth", "seventh", "eighth", "ninth", "tenth")
+
 
 def _s6_ask(slot: str) -> str:
     if _slot_family(slot) == "residence":
@@ -299,6 +312,33 @@ def gen_s6(entry: dict) -> List[dict]:
                           f"{oth_slot} boundary is skipped as ambiguous; "
                           + date_basis),
             })
+            # 隐式序数孪生:同 i 同 gold/区间逻辑,问句不点名锚值,改用
+            # 序数短语("my second employer")—— 问句中无逐字 needle,
+            # 必须对锚链做有序记账。锚值唯一(repeat 筛已过),其链内
+            # 1-based 位置即 i+1;位置超出 tenth 仅跳孪生。
+            p = i + 1
+            if p <= len(_ORDINALS):
+                word = _ORDINALS[p - 1]
+                noun = _q_slot(anc_slot)
+                rows.append({
+                    "uid": uid, "qid": f"{uid}_s6i{tag}{i}",
+                    "qtype": "s6_cross_slot_implicit",
+                    "slot": oth_slot, "anchor_slot": anc_slot,
+                    "anchor_ordinal": p,
+                    "question": (f"(Today is {today}.) When I "
+                                 f"{phrase_t.format(v=f'my {word} {noun}')}, "
+                                 f"{_s6_ask(oth_slot)} at that time?"),
+                    "gold": oth_vals[j],
+                    "basis": (f"ordinal mapping: 'my {word} {noun}' = "
+                              f"{anc_slot} chain position {p} (1-based) = "
+                              f"{v} (value unique in chain); T = {anc_slot} "
+                              f"transition to {v} at {T.isoformat()} "
+                              f"({anc_slot} chain[{i}].start); {oth_slot} "
+                              f"interval [{oth_parsed[j].isoformat()}, {hi}) "
+                              f"covers T -> gold = {oth_vals[j]}; skips "
+                              f"identical to explicit s6 (before-first-start"
+                              f" / boundary / repeat); " + date_basis),
+                })
 
     _direction("a", chain_a, pa, slot_a, chain_b, pb, slot_b)
     _direction("b", chain_b, pb, slot_b, chain_a, pa, slot_a)

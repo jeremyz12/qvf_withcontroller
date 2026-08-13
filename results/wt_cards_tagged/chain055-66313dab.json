@@ -1,0 +1,1339 @@
+{
+ "uid": "chain055-66313dab",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain055-66313dab/s3#r0",
+   "source_span": "I finally finished setting up the new place after two weekends of hauling boxes",
+   "entity": "user",
+   "slot": "residence",
+   "value": "new apartment",
+   "claim": "User recently moved to a new apartment and finished setting it up.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain055-66313dab/s3#r1",
+   "source_span": "the living room is basically one big beige IKEA Ektorp three-seater and a wobbly floor lamp, that's it",
+   "entity": "user",
+   "slot": "living_room_furniture",
+   "value": "IKEA Ektorp three-seater beige sofa, wobbly floor lamp",
+   "claim": "User's living room contains an IKEA Ektorp three-seater beige sofa and a wobbly floor lamp.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain055-66313dab/s3#r3",
+   "source_span": "the cover already has a coffee stain from day three, classic me",
+   "entity": "user",
+   "slot": "sofa_condition",
+   "value": "coffee stain on cover",
+   "claim": "User's sofa cover has a coffee stain.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain055-66313dab/s4#r0",
+   "source_span": "I recently bought a pair of black ankle boots from Zara on December 15th, and I'm trying to figure out what to wear them with. They were 30% off",
+   "entity": "user",
+   "slot": "clothing_owned",
+   "value": "black ankle boots from Zara",
+   "claim": "User owns black ankle boots purchased from Zara on December 15th at 30% off.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-12-15",
+   "owner": "user",
+   "slot_class": "other:clothing",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain055-66313dab/s4#r2",
+   "source_span": "blouses were really affordable at $15 each, and I got the skirt for 20% off with a promo code",
+   "entity": "user",
+   "slot": "clothing_owned",
+   "value": "pencil skirt and blouses from ASOS",
+   "claim": "User owns pencil skirt and blouses purchased from ASOS on January 3rd.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-03",
+   "owner": "user",
+   "slot_class": "other:clothing",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain055-66313dab/s4#r4",
+   "source_span": "I recently bought a pair of distressed denim jeans from H&M on January 13th",
+   "entity": "user",
+   "slot": "clothing_owned",
+   "value": "distressed denim jeans from H&M",
+   "claim": "User owns distressed denim jeans purchased from H&M on January 13th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-13",
+   "owner": "user",
+   "slot_class": "other:clothing",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain055-66313dab/s5#r0",
+   "source_span": "A few days ago, I stumbled upon a cookbook at a thrift store that focused on Indian cuisine and I got inspired to try making some Indian dishes on my own",
+   "entity": "user",
+   "slot": "cooking_interest",
+   "value": "Indian cuisine",
+   "claim": "User is interested in cooking Indian dishes after finding a cookbook on Indian cuisine.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "工作学习",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain055-66313dab/s8#r0",
+   "source_span": "I'm wondering if you have any tips on how to get my kitten, Luna, more comfortable with nail trimming",
+   "entity": "user",
+   "slot": "pet_owned",
+   "value": "kitten named Luna",
+   "claim": "User owns a kitten named Luna.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain055-66313dab/s8#r0",
+   "source_span": "I started applying flea and tick prevention medication to her today",
+   "entity": "user",
+   "slot": "pet_healthcare",
+   "value": "flea and tick prevention medication for Luna",
+   "claim": "User applies flea and tick prevention medication to Luna.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:petcare",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain055-66313dab/s9#r0",
+   "source_span": "I'm having some trouble with the paint job on my current model, a 1/48 scale F-16 Fighting Falcon. I've been working on it for about three weeks now",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "scale model building - 1/48 F-16 Fighting Falcon",
+   "claim": "User is building a 1/48 scale F-16 Fighting Falcon model.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain055-66313dab/s9#r4",
+   "source_span": "I was thinking of trying out a new airbrush and some additional paint supplies I picked up at the local hobby store recently",
+   "entity": "user",
+   "slot": "hobby_supplies",
+   "value": "airbrush and paint supplies for model building",
+   "claim": "User purchased an airbrush and paint supplies for model building.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "消费购物",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain055-66313dab/s10#r0",
+   "source_span": "I need help finding a good shoe polish for my brown leather boots. I have a kit I bought from Amazon",
+   "entity": "user",
+   "slot": "shoes_owned",
+   "value": "brown leather boots",
+   "claim": "User owns brown leather boots.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:clothing",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain055-66313dab/s10#r4",
+   "source_span": "I also wanted to ask about my old gym shoes, the blue Reebok CrossFit shoes",
+   "entity": "user",
+   "slot": "shoes_owned",
+   "value": "blue Reebok CrossFit shoes",
+   "claim": "User owns blue Reebok CrossFit shoes left in gym locker.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:clothing",
+   "value_tags": []
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain055-66313dab/s11#r4",
+   "source_span": "I've been rehearsing a monologue from A Midsummer Night's Dream, which is the play I'm auditioning for",
+   "entity": "user",
+   "slot": "audition_activity",
+   "value": "Shakespeare auditioning for A Midsummer Night's Dream",
+   "claim": "User is auditioning for A Midsummer Night's Dream.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain055-66313dab/s12#r0",
+   "source_span": "I recently participated in the \"Walk for Hunger\" charity event and managed to raise $250 in donations from my friends and family",
+   "entity": "user",
+   "slot": "charity_participation",
+   "value": "Walk for Hunger - raised $250",
+   "claim": "User participated in Walk for Hunger charity event and raised $250 in donations.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:volunteering",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain055-66313dab/s13#r0",
+   "source_span": "I just changed the color scheme of my living room to a bold blue-gray tone recently",
+   "entity": "user",
+   "slot": "living_room_decor",
+   "value": "bold blue-gray color scheme",
+   "claim": "User changed living room color scheme to bold blue-gray.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:decor",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain055-66313dab/s13#r2",
+   "source_span": "I also replaced my old white curtains with new gray ones in my living room, which really complements the bold blue-gray walls",
+   "entity": "user",
+   "slot": "living_room_furnishings",
+   "value": "gray curtains",
+   "claim": "User replaced white curtains with gray curtains in living room.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain055-66313dab/s14#r0",
+   "source_span": "I tested out my new Toyo R888R tires at Buttonwillow Raceway today",
+   "entity": "user",
+   "slot": "vehicle_tires",
+   "value": "Toyo R888R tires",
+   "claim": "User owns and tested Toyo R888R tires.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain055-66313dab/s14#r0",
+   "source_span": "I'm planning a road trip to Sonoma Raceway for the local drift competition on October 15th",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "Sonoma Raceway drift competition on October 15th",
+   "claim": "User is planning a road trip to Sonoma Raceway for drift competition on October 15th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-15",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain055-66313dab/s15#r0",
+   "source_span": "I also incorporated strength training exercises on Mondays and Wednesdays to improve my overall endurance",
+   "entity": "user",
+   "slot": "workout_routine",
+   "value": "strength training on Mondays and Wednesdays",
+   "claim": "User does strength training on Mondays and Wednesdays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain055-66313dab/s15#r2",
+   "source_span": "I'd like to make some adjustments to include my spin classes on Wednesdays and Sundays",
+   "entity": "user",
+   "slot": "workout_routine",
+   "value": "spin classes on Wednesdays and Sundays",
+   "claim": "User takes spin classes on Wednesdays and Sundays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain055-66313dab/s17#r0",
+   "source_span": "I got food poisoning from undercooked chicken at a street food stall last week. I was bedridden for 3 days",
+   "entity": "user",
+   "slot": "health_incident",
+   "value": "food poisoning from undercooked chicken - bedridden 3 days",
+   "claim": "User had food poisoning from undercooked chicken and was bedridden for 3 days.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain055-66313dab/s18#r0",
+   "source_span": "I've been using my new flash, which I got on March 20th",
+   "entity": "user",
+   "slot": "camera_equipment",
+   "value": "flash",
+   "claim": "User owns a camera flash purchased on March 20th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-20",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain055-66313dab/s19#r0",
+   "source_span": "the delivery guys just left and I'm sitting on an olive green velvet Article Sven sofa right now",
+   "entity": "user",
+   "slot": "living_room_furniture",
+   "value": "olive green velvet Article Sven sofa",
+   "claim": "User owns an olive green velvet Article Sven sofa.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain055-66313dab/s19#r1",
+   "source_span": "gave the old one to my coworker Priya, she came with a van and everything",
+   "entity": "user",
+   "slot": "sofa_disposition",
+   "value": "gave IKEA Ektorp sofa to coworker Priya",
+   "claim": "User gave old IKEA Ektorp sofa to coworker Priya.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain055-66313dab/s19#r2",
+   "source_span": "my cat has opinions",
+   "entity": "user",
+   "slot": "pet_owned",
+   "value": "cat",
+   "claim": "User owns a cat.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain055-66313dab/s21#r0",
+   "source_span": "I've been tracking my sleep with my Fitbit Inspire HR and averaging 6-7 hours of sleep per night",
+   "entity": "user",
+   "slot": "sleep_tracker",
+   "value": "Fitbit Inspire HR",
+   "claim": "User uses Fitbit Inspire HR to track sleep, averaging 6-7 hours per night.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain055-66313dab/s21#r2",
+   "source_span": "I check my blood pressure in the evening using my Omron blood pressure monitor",
+   "entity": "user",
+   "slot": "health_device",
+   "value": "Omron blood pressure monitor",
+   "claim": "User uses Omron blood pressure monitor to check blood pressure in evenings.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain055-66313dab/s22#r0",
+   "source_span": "I've been a member of Walgreens Balance Rewards for about 6 months now, and I'm close to reaching my next reward threshold",
+   "entity": "user",
+   "slot": "loyalty_program_membership",
+   "value": "Walgreens Balance Rewards - 6 months member",
+   "claim": "User has been a member of Walgreens Balance Rewards for about 6 months.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:membership",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain055-66313dab/s22#r2",
+   "source_span": "I've been trying to reach 20,000 points with Walgreens Balance Rewards to get the $20 reward",
+   "entity": "user",
+   "slot": "loyalty_program_goal",
+   "value": "Walgreens Balance Rewards - 20,000 points for $20 reward",
+   "claim": "User is working towards 20,000 points in Walgreens Balance Rewards for $20 reward.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:membership",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain055-66313dab/s22#r4",
+   "source_span": "I also have loyalty programs with Buy Buy Baby and ShopRite",
+   "entity": "user",
+   "slot": "loyalty_program_membership",
+   "value": "Buy Buy Baby and ShopRite loyalty programs",
+   "claim": "User is a member of Buy Buy Baby and ShopRite loyalty programs.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:membership",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain055-66313dab/s23#r0",
+   "source_span": "I recently got into photography with a vintage camera I picked up from a local antique shop - a 1960s Rolleiflex TLR that still works like a charm",
+   "entity": "user",
+   "slot": "camera_owned",
+   "value": "1960s Rolleiflex TLR vintage camera",
+   "claim": "User owns a 1960s Rolleiflex TLR vintage camera purchased from antique shop.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain055-66313dab/s25#r0",
+   "source_span": "I've been enjoying my new lunch break routine, I start taking a 20-minute walk to explore the nearby neighborhoods",
+   "entity": "user",
+   "slot": "routine_activity",
+   "value": "20-minute lunch break walk in nearby neighborhoods",
+   "claim": "User takes a 20-minute walk during lunch break to explore nearby neighborhoods.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain055-66313dab/s26#r0",
+   "source_span": "I've been using Knog Frog lights",
+   "entity": "user",
+   "slot": "bike_lights",
+   "value": "Knog Frog lights",
+   "claim": "User uses Knog Frog lights for bike commute.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain055-66313dab/s26#r0",
+   "source_span": "about a month ago, I did a century ride with some friends, which was a real challenge",
+   "entity": "user",
+   "slot": "cycling_achievement",
+   "value": "completed century ride",
+   "claim": "User completed a century ride with friends about a month ago.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain055-66313dab/s26#r2",
+   "source_span": "I've been thinking about upgrading my saddle too, been experiencing some discomfort on longer rides like that century ride I mentioned earlier",
+   "entity": "user",
+   "slot": "bike_equipment",
+   "value": "saddle needs upgrade for comfort",
+   "claim": "User is looking to upgrade bike saddle due to discomfort on longer rides.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain055-66313dab/s27#r0",
+   "source_span": "I recently completed a certification course in data analysis on May 25th",
+   "entity": "user",
+   "slot": "certification_completed",
+   "value": "data analysis certification",
+   "claim": "User completed a data analysis certification course on May 25th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-25",
+   "owner": "user",
+   "slot_class": "工作学习",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain055-66313dab/s27#r0",
+   "source_span": "I'm still on a high from attending my niece's high school graduation ceremony on June 12th - she graduated with honors",
+   "entity": "user",
+   "slot": "family_event_attended",
+   "value": "niece's high school graduation on June 12th - honors graduate",
+   "claim": "User attended niece's high school graduation on June 12th where she graduated with honors.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-12",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain055-66313dab/s27#r2",
+   "source_span": "I've been mentoring a college student, Rachel, this summer",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentoring college student Rachel",
+   "claim": "User mentors college student Rachel.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain055-66313dab/s27#r4",
+   "source_span": "I'm planning to attend her college graduation ceremony on August 10th",
+   "entity": "user",
+   "slot": "family_event_planned",
+   "value": "Rachel's college graduation on August 10th",
+   "claim": "User plans to attend Rachel's college graduation on August 10th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2026-08-10",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain055-66313dab/s28#r2",
+   "source_span": "I'm currently watching \"The Witcher\" on Netflix and I've been enjoying it so far",
+   "entity": "user",
+   "slot": "currently_watching",
+   "value": "The Witcher on Netflix",
+   "claim": "User is currently watching The Witcher on Netflix.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:entertainment",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain055-66313dab/s29#r0",
+   "source_span": "I've recently taken on a new role as a senior account manager",
+   "entity": "user",
+   "slot": "position",
+   "value": "senior account manager",
+   "claim": "User recently took on a position as senior account manager.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain055-66313dab/s29#r0",
+   "source_span": "I've been mentoring a junior colleague, Alex, who's been shadowing me for the past month",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentoring junior colleague Alex",
+   "claim": "User mentors junior colleague Alex who has been shadowing for a month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain055-66313dab/s30#r0",
+   "source_span": "my uncle downsized to a condo in Tempe and basically forced a couch on me",
+   "entity": "user",
+   "slot": "furniture_received",
+   "value": "L-shaped sectional couch from uncle in Tempe",
+   "claim": "User received L-shaped sectional couch from uncle who downsized to condo in Tempe.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain055-66313dab/s30#r1",
+   "source_span": "so now the living room has a brown leather L-shaped sectional inherited from my uncle taking up the whole east wall",
+   "entity": "user",
+   "slot": "living_room_furniture",
+   "value": "brown leather L-shaped sectional - 15 years old",
+   "claim": "User's living room has brown leather L-shaped sectional (15 years old) inherited from uncle on east wall.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain055-66313dab/s30#r3",
+   "source_span": "the velvet one went to my sister's place, she was thrilled",
+   "entity": "user",
+   "slot": "furniture_disposition",
+   "value": "gave olive green velvet sofa to sister",
+   "claim": "User gave olive green velvet sofa to sister.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain055-66313dab/s31#r0",
+   "source_span": "I've been using the Cartwheel app at Target for a few weeks now and have saved around $20 total",
+   "entity": "user",
+   "slot": "shopping_app_usage",
+   "value": "Cartwheel app at Target - saved $20",
+   "claim": "User uses Cartwheel app at Target and has saved around $20.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain055-66313dab/s31#r2",
+   "source_span": "I actually just used a coupon on coffee creamer at Target last Sunday",
+   "entity": "user",
+   "slot": "coupon_usage",
+   "value": "coupon for coffee creamer at Target",
+   "claim": "User used coupon on coffee creamer at Target.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain055-66313dab/s31#r2",
+   "source_span": "I used a $2 coupon at CVS last week",
+   "entity": "user",
+   "slot": "coupon_usage",
+   "value": "$2 coupon for laundry detergent at CVS",
+   "claim": "User used $2 coupon for laundry detergent at CVS.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain055-66313dab/s31#r4",
+   "source_span": "I'm collecting receipts for my purchases from Acme Market because they have a rewards program that gives you $10 off every time you spend $100. I just reached the $100 mark last week",
+   "entity": "user",
+   "slot": "loyalty_program_membership",
+   "value": "Acme Market rewards - $10 off per $100 spent",
+   "claim": "User has Acme Market rewards program membership and reached $100 spending threshold.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:membership",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain055-66313dab/s32#r0",
+   "source_span": "I'm thinking of buying some new games for my PlayStation 5, which I got for $50 off the original price at GameStop",
+   "entity": "user",
+   "slot": "gaming_device_owned",
+   "value": "PlayStation 5 - $50 off at GameStop",
+   "claim": "User owns PlayStation 5 purchased at $50 discount from GameStop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain055-66313dab/s7#r0",
+   "source_span": "I recently visited the MoMA with my sister, Emily, to see the retrospective of her work",
+   "entity": "user",
+   "slot": "family_outing",
+   "value": "visited MoMA with sister Emily to see Frida Kahlo retrospective",
+   "claim": "User visited MoMA with sister Emily to see Frida Kahlo retrospective.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain055-66313dab/s20#r2",
+   "source_span": "The game we played at Alex's was a strategy game, designed for 6-8 players, and it was pretty fast-paced",
+   "entity": "user",
+   "slot": "social_activity",
+   "value": "game night at Alex's place with friends two Fridays ago",
+   "claim": "User attended game night at Alex's place two Fridays ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain055-66313dab/s20#r2",
+   "source_span": "We had to work in teams to solve puzzles and complete challenges. I really enjoyed the teamwork aspect and the thrill of racing against the other team",
+   "entity": "user",
+   "slot": "leisure_interests",
+   "value": "team strategy games, puzzle solving",
+   "claim": "User enjoys team-based strategy games and puzzle solving.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain055-66313dab/s1#r2",
+   "source_span": "My sister and I also started a monthly game challenge where we take turns choosing a game to play and learn together",
+   "entity": "user",
+   "slot": "hobby_with_sister",
+   "value": "monthly game challenge with sister",
+   "claim": "User and sister participate in monthly game challenge.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain055-66313dab/s1#r2",
+   "source_span": "Last month, she chose Settlers of Catan, which I'd never played before",
+   "entity": "user",
+   "slot": "board_game_played",
+   "value": "Settlers of Catan",
+   "claim": "User played Settlers of Catan selected by sister in monthly challenge.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain055-66313dab/s1#r2",
+   "source_span": "I recently tried Azul at a board game cafe and loved it",
+   "entity": "user",
+   "slot": "board_game_tried",
+   "value": "Azul at board game cafe",
+   "claim": "User tried and enjoyed Azul at board game cafe.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain055-66313dab/s1#r4",
+   "source_span": "I've been watching YouTube tutorials to learn the rules of Carcassonne and Pandemic, which I recently bought at a garage sale",
+   "entity": "user",
+   "slot": "board_games_owned",
+   "value": "Carcassonne and Pandemic from garage sale",
+   "claim": "User owns Carcassonne and Pandemic purchased at garage sale.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain055-66313dab/s2#r0",
+   "source_span": "I recently bought a few new winter clothing items, including a coat and a pair of boots that I got for $80",
+   "entity": "user",
+   "slot": "clothing_owned",
+   "value": "winter coat and boots - $80",
+   "claim": "User bought winter coat and boots for $80.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:clothing",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain055-66313dab/s0#r0",
+   "source_span": "I already got her a set of aromatherapy candles from Amazon, which cost around $25",
+   "entity": "user",
+   "slot": "gift_given",
+   "value": "aromatherapy candles to colleague - $25",
+   "claim": "User gave colleague aromatherapy candles costing $25.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social",
+   "value_tags": [
+    "消费购物",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "chain055-66313dab/s0#r4",
+   "source_span": "I got my sister a set of kitchen utensils from Target, which cost around $70. It had a frying pan, cooking pot, and utensil holder",
+   "entity": "user",
+   "slot": "gift_given",
+   "value": "kitchen utensil set to sister from Target - $70",
+   "claim": "User gave sister kitchen utensil set (frying pan, pot, holder) from Target for $70.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social",
+   "value_tags": [
+    "消费购物",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "chain055-66313dab/s1#r0",
+   "source_span": "I'm planning to host a board game party for my birthday next month",
+   "entity": "user",
+   "slot": "birthday_event_planned",
+   "value": "board game party for birthday",
+   "claim": "User is planning board game party to celebrate birthday.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social",
+   "value_tags": [
+    "娱乐爱好",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "chain055-66313dab/s24#r4",
+   "source_span": "I was actually thinking of taking the train from Tokyo Station to get to Nikko",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "train from Tokyo Station to Nikko",
+   "claim": "User plans to take train from Tokyo Station to Nikko.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "chain055-66313dab/s25#r0",
+   "source_span": "I'm planning a trip to visit my family for the holidays",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "trip to visit family for holidays",
+   "claim": "User is planning trip to visit family for holidays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "chain055-66313dab/s25#r0",
+   "source_span": "I need to get my passport renewed",
+   "entity": "user",
+   "slot": "document_renewal",
+   "value": "passport renewal needed",
+   "claim": "User needs to renew passport.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:admin",
+   "value_tags": []
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "chain055-66313dab/s24#r0",
+   "source_span": "I'm planning a trip to Tokyo",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "trip to Tokyo day trips",
+   "claim": "User is planning trip to Tokyo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  }
+ ],
+ "usage_in": 21056,
+ "usage_out": 11367
+}

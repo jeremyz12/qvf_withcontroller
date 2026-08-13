@@ -1,0 +1,1610 @@
+{
+ "uid": "confirm015-73560dd9",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm015-73560dd9/s0#r0",
+   "source_span": "I've been trying to implement some new techniques I learned from a digital marketing workshop I attended recently",
+   "entity": "user",
+   "slot": "marketing_learning",
+   "value": "attended digital marketing workshop",
+   "claim": "The user attended a digital marketing workshop and is implementing techniques learned from it.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "for business strategy improvement",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:professional-development",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm015-73560dd9/s0#r0",
+   "source_span": "I've attended five in the last three months",
+   "entity": "user",
+   "slot": "workshops_attended",
+   "value": "five workshops in last three months",
+   "claim": "The user attended five workshops in the last three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:professional-development",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm015-73560dd9/s0#r4",
+   "source_span": "I'm currently running a campaign targeting people interested in photography and entrepreneurship",
+   "entity": "user",
+   "slot": "ad_campaign_targets",
+   "value": "photography and entrepreneurship interests",
+   "claim": "The user is running an ad campaign targeting people interested in photography and entrepreneurship.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "for Facebook Ads campaign",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:marketing",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm015-73560dd9/s0#r4",
+   "source_span": "I've set a daily budget of $20",
+   "entity": "user",
+   "slot": "ad_campaign_daily_budget",
+   "value": "$20",
+   "claim": "The user set a daily budget of $20 for their Facebook Ads campaign.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:marketing",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm015-73560dd9/s1#r0",
+   "source_span": "I'm thinking of getting a new leash for my dog Max",
+   "entity": "Max",
+   "slot": "pet_type_and_name",
+   "value": "dog named Max",
+   "claim": "Max is a dog.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm015-73560dd9/s1#r0",
+   "source_span": "I recently got a great deal on a pet bed for my cat Luna - I got 20% off, so I paid 80% of the original price",
+   "entity": "Luna",
+   "slot": "pet_type_and_name",
+   "value": "cat named Luna",
+   "claim": "Luna is a cat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:pet",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm015-73560dd9/s1#r2",
+   "source_span": "I think I'll go with the Ruffwear Roamer Leash, it seems like it would be perfect for our outdoor adventures",
+   "entity": "user",
+   "slot": "planned_purchase_leash",
+   "value": "Ruffwear Roamer Leash",
+   "claim": "The user plans to purchase a Ruffwear Roamer Leash for outdoor adventures with their dog.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "宠物",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm015-73560dd9/s2#r2",
+   "source_span": "the Gala for a Cure and Run for the Environment I participated in raised over $300 from larger event totals, bringing the overall total to over $177,300",
+   "entity": "user",
+   "slot": "charity_events_participation",
+   "value": "participated in Gala for a Cure and Run for the Environment",
+   "claim": "The user participated in the Gala for a Cure and Run for the Environment charity events, which raised significant funds.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:volunteer",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm015-73560dd9/s3#r0",
+   "source_span": "my new year thing is actually cooking instead of ordering pizza four nights a week",
+   "entity": "user",
+   "slot": "cooking_goal",
+   "value": "cook instead of ordering pizza four nights a week",
+   "claim": "The user's New Year resolution is to cook instead of ordering pizza four nights a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025",
+   "owner": "",
+   "slot_class": "other:habit",
+   "value_tags": [
+    "饮食",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm015-73560dd9/s3#r1",
+   "source_span": "I finally caved and signed up for Marley Spoon, first box lands Tuesday",
+   "entity": "user",
+   "slot": "meal_kit_service",
+   "value": "Marley Spoon subscription",
+   "claim": "The user signed up for Marley Spoon meal kit service.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-18",
+   "owner": "",
+   "slot_class": "other:subscription",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm015-73560dd9/s4#r2",
+   "source_span": "I just attended my cousin's wedding last weekend at a beautiful vineyard in Napa Valley",
+   "entity": "user",
+   "slot": "recent_events_attended",
+   "value": "cousin's wedding at Napa Valley vineyard",
+   "claim": "The user attended their cousin's wedding at a vineyard in Napa Valley.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm015-73560dd9/s4#r2",
+   "source_span": "our team lead, Emily, is getting married in April",
+   "entity": "Emily",
+   "slot": "relationship_status",
+   "value": "getting married in April",
+   "claim": "Emily, the team lead, is getting married in April.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04",
+   "owner": "Emily",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm015-73560dd9/s5#r0",
+   "source_span": "I'm looking for some ideas on how to display my vintage camera equipment and postcards",
+   "entity": "user",
+   "slot": "collection_items",
+   "value": "vintage camera equipment and postcards",
+   "claim": "The user collects vintage camera equipment and postcards.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm015-73560dd9/s6#r0",
+   "source_span": "As a Senior Marketing Specialist, I'm always trying to stay ahead of the curve and bring new ideas to my team. I report directly to the Head of Marketing",
+   "entity": "user",
+   "slot": "position",
+   "value": "Senior Marketing Specialist",
+   "claim": "The user is a Senior Marketing Specialist who reports to the Head of Marketing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-14",
+   "owner": "",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm015-73560dd9/s7#r0",
+   "source_span": "I just finished my 4th short story, \"The Lost City\"",
+   "entity": "user",
+   "slot": "short_stories_completed",
+   "value": "4th short story titled \"The Lost City\"",
+   "claim": "The user completed their 4th short story titled \"The Lost City\".",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm015-73560dd9/s7#r2",
+   "source_span": "I'm actually based near Denver, so Colorado Mountains sound perfect",
+   "entity": "user",
+   "slot": "residence_city",
+   "value": "Denver, Colorado area",
+   "claim": "The user is based near Denver, Colorado.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "owner": "",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm015-73560dd9/s8#r0",
+   "source_span": "I recently bought gifts for them at Costco, which included 2 bottles of wine, a box of chocolates, and a set of scented candles, all of which were on sale, and it came out to be around $80",
+   "entity": "user",
+   "slot": "recent_gift_purchases",
+   "value": "wine, chocolates, scented candles from Costco for ~$80",
+   "claim": "The user bought wine, chocolates, and scented candles as gifts from Costco for approximately $80.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-18",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm015-73560dd9/s8#r4",
+   "source_span": "I recently got a beautiful silver necklace from Tiffany & Co. for our mom's birthday",
+   "entity": "user",
+   "slot": "recent_jewelry_purchases",
+   "value": "silver necklace from Tiffany & Co. for mom",
+   "claim": "The user purchased a silver necklace from Tiffany & Co. as a gift for their mom's birthday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm015-73560dd9/s8#r4",
+   "source_span": "I'm thinking of getting her something more personal, like a customized necklace with her birthstone",
+   "entity": "user",
+   "slot": "planned_gift_purchases_sister",
+   "value": "customized necklace with birthstone for sister",
+   "claim": "The user plans to purchase a customized necklace with a birthstone as a gift for their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm015-73560dd9/s9#r0",
+   "source_span": "I'm planning a trip to Paris in May and I'm trying to prepare for my flight from JFK to CDG",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "Paris in May from JFK to CDG",
+   "claim": "The user is planning a trip to Paris in May with flights from JFK to CDG.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm015-73560dd9/s9#r2",
+   "source_span": "my flight is usually delayed by 15 minutes",
+   "entity": "user",
+   "slot": "flight_delay_history",
+   "value": "typically 15 minute delays",
+   "claim": "The user's flights are typically delayed by about 15 minutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "other:travel-pattern",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm015-73560dd9/s10#r0",
+   "source_span": "I drove up to Yosemite National Park solo today",
+   "entity": "user",
+   "slot": "recent_travel",
+   "value": "drove solo to Yosemite National Park",
+   "claim": "The user drove solo to Yosemite National Park.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm015-73560dd9/s10#r4",
+   "source_span": "I'm planning to camp overnight at Upper Pines Campground",
+   "entity": "user",
+   "slot": "planned_camping",
+   "value": "Upper Pines Campground overnight",
+   "claim": "The user plans to camp overnight at Upper Pines Campground in Yosemite.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm015-73560dd9/s11#r0",
+   "source_span": "I just picked up from Trader Joe's yesterday",
+   "entity": "user",
+   "slot": "grocery_shopping_location",
+   "value": "Trader Joe's",
+   "claim": "The user shops at Trader Joe's.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-21",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm015-73560dd9/s11#r0",
+   "source_span": "quinoa and almond milk, which I just picked up from Trader Joe's yesterday",
+   "entity": "user",
+   "slot": "dietary_items_purchased",
+   "value": "quinoa and almond milk",
+   "claim": "The user purchased quinoa and almond milk from Trader Joe's.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-21",
+   "owner": "",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm015-73560dd9/s12#r0",
+   "source_span": "I've been getting really into small-boat projects lately—especially human-powered ones",
+   "entity": "user",
+   "slot": "hobby_boat_building",
+   "value": "small-boat and human-powered boat projects",
+   "claim": "The user is interested in and working on small-boat and human-powered boat projects.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-25",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm015-73560dd9/s12#r4",
+   "source_span": "I am still prioritizing the completion of the wooden kayak before the lake season opens",
+   "entity": "user",
+   "slot": "project_wooden_kayak",
+   "value": "building wooden kayak before lake season",
+   "claim": "The user is prioritizing the completion of a wooden kayak before the lake season opens.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-25",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm015-73560dd9/s13#r2",
+   "source_span": "I've been using a white jig recently and it's been working pretty well for me, caught 7 bass with my buddy Alex at Lake Michigan last weekend",
+   "entity": "user",
+   "slot": "fishing_activity",
+   "value": "caught 7 bass at Lake Michigan with Alex",
+   "claim": "The user caught 7 bass at Lake Michigan with their buddy Alex using a white jig.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm015-73560dd9/s13#r2",
+   "source_span": "my buddy Alex",
+   "entity": "Alex",
+   "slot": "relationship_type",
+   "value": "user's fishing buddy",
+   "claim": "Alex is the user's buddy who goes fishing with them.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "Alex",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm015-73560dd9/s14#r2",
+   "source_span": "I was at the Billy Joel concert at Wembley Stadium last month and it was incredible - I was sitting in the lower tier, row 12, seat 17",
+   "entity": "user",
+   "slot": "concerts_attended",
+   "value": "Billy Joel at Wembley Stadium, lower tier row 12 seat 17",
+   "claim": "The user attended a Billy Joel concert at Wembley Stadium and sat in lower tier, row 12, seat 17.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm015-73560dd9/s14#r4",
+   "source_span": "I've been to a few festivals before, including the Governors Ball Music Festival in New York City earlier this year",
+   "entity": "user",
+   "slot": "music_festivals_attended",
+   "value": "Governors Ball Music Festival in NYC",
+   "claim": "The user attended the Governors Ball Music Festival in New York City earlier this year.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm015-73560dd9/s15#r0",
+   "source_span": "the 30 minute recipes were a lie, it was more like 55 with cleanup lol",
+   "entity": "user",
+   "slot": "marley_spoon_experience",
+   "value": "actual recipe time was 55 minutes, not 30",
+   "claim": "The user found that Marley Spoon recipes actually took about 55 minutes including cleanup, not 30 minutes as advertised.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-06",
+   "owner": "",
+   "slot_class": "other:subscription",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm015-73560dd9/s15#r1",
+   "source_span": "I bailed and switched over to Gobble instead, the 15-minute pans are more my speed",
+   "entity": "user",
+   "slot": "meal_kit_service",
+   "value": "Gobble subscription with 15-minute meals",
+   "claim": "The user switched from Marley Spoon to Gobble for their meal kit service, preferring the 15-minute preparation time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-06",
+   "owner": "",
+   "slot_class": "other:subscription",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm015-73560dd9/s15#r2",
+   "source_span": "my roommate is skeptical but she also eats cereal for dinner",
+   "entity": "user",
+   "slot": "roommate_exists",
+   "value": "has a roommate",
+   "claim": "The user has a roommate.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-06",
+   "owner": "",
+   "slot_class": "relationship",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm015-73560dd9/s16#r2",
+   "source_span": "I'm actually just back from a gardening workshop at a local nursery where I learned about companion planting",
+   "entity": "user",
+   "slot": "workshops_attended_gardening",
+   "value": "attended gardening workshop on companion planting at local nursery",
+   "claim": "The user attended a gardening workshop at a local nursery and learned about companion planting.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-08",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "工作学习",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm015-73560dd9/s16#r2",
+   "source_span": "I also learned how to make my own compost, which I'm excited to start using in my garden",
+   "entity": "user",
+   "slot": "gardening_activity",
+   "value": "making own compost",
+   "claim": "The user learned how to make compost and plans to use it in their garden.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-08",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "居家生活",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm015-73560dd9/s16#r0",
+   "source_span": "I'm thinking of expanding my garden to include some flowers, specifically marigolds and sunflowers",
+   "entity": "user",
+   "slot": "garden_plants",
+   "value": "planning to grow marigolds and sunflowers",
+   "claim": "The user is planning to expand their garden to include marigolds and sunflowers.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-08",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm015-73560dd9/s17#r0",
+   "source_span": "I've recently switched to a toothpaste that comes in a recyclable tube made from aluminum, and it's been about two weeks now since I started using it",
+   "entity": "user",
+   "slot": "toothpaste_type",
+   "value": "toothpaste in recyclable aluminum tube",
+   "claim": "The user switched to a toothpaste in a recyclable aluminum tube about two weeks ago.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-24",
+   "owner": "",
+   "slot_class": "other:personal-care",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm015-73560dd9/s18#r0",
+   "source_span": "I'm planning to buy a new coffee table, and I've been eyeing one at West Elm",
+   "entity": "user",
+   "slot": "planned_furniture_purchase",
+   "value": "coffee table from West Elm",
+   "claim": "The user is planning to purchase a coffee table from West Elm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-12",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm015-73560dd9/s18#r0",
+   "source_span": "I attended the holiday market in downtown on the following weekend after Black Friday and found some great unique gifts",
+   "entity": "user",
+   "slot": "recent_events_shopping",
+   "value": "attended holiday market downtown after Black Friday",
+   "claim": "The user attended a holiday market downtown the weekend after Black Friday and found unique gifts.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm015-73560dd9/s19#r0",
+   "source_span": "I'm planning a business trip to San Francisco and need help finding a good hotel near the conference center. I've stayed at the Marriott Hotel there before",
+   "entity": "user",
+   "slot": "business_travel_pattern",
+   "value": "business trips to San Francisco with hotel stays",
+   "claim": "The user travels to San Francisco for business and has stayed at the Marriott Hotel there.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm015-73560dd9/s19#r2",
+   "source_span": "I'm attending a conference at the Moscone Center",
+   "entity": "user",
+   "slot": "planned_conference",
+   "value": "attending conference at Moscone Center",
+   "claim": "The user is attending a conference at the Moscone Center in San Francisco.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm015-73560dd9/s19#r2",
+   "source_span": "My budget is around $200-300 per night",
+   "entity": "user",
+   "slot": "hotel_budget",
+   "value": "$200-300 per night",
+   "claim": "The user has a hotel budget of $200-300 per night for their San Francisco trip.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "owner": "",
+   "slot_class": "other:travel",
+   "value_tags": [
+    "出行旅行",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm015-73560dd9/s20#r2",
+   "source_span": "I've really set my sights on establishing a fully self-sufficient garden on my property over the next few years",
+   "entity": "user",
+   "slot": "gardening_goal",
+   "value": "establish fully self-sufficient garden",
+   "claim": "The user plans to establish a fully self-sufficient garden on their property over the next few years.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-16",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm015-73560dd9/s21#r0",
+   "source_span": "I even won at Scattergories on Christmas Day",
+   "entity": "user",
+   "slot": "game_wins",
+   "value": "won Scattergories on Christmas Day",
+   "claim": "The user won at Scattergories on Christmas Day.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-12-25",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm015-73560dd9/s22#r2",
+   "source_span": "I remember doing something similar on my 30th birthday, which was a week-long trip to Hawaii with friends",
+   "entity": "user",
+   "slot": "past_travel",
+   "value": "week-long trip to Hawaii with friends on 30th birthday",
+   "claim": "The user took a week-long trip to Hawaii with friends for their 30th birthday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm015-73560dd9/s22#r2",
+   "source_span": "I'm actually planning to visit Oahu and Maui",
+   "entity": "user",
+   "slot": "planned_trip_hawaii",
+   "value": "planned trip to Oahu and Maui",
+   "claim": "The user is planning a trip to Oahu and Maui in Hawaii.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-23",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm015-73560dd9/s23#r0",
+   "source_span": "I've been dealing with a lot lately, including a nasty flu that kept me bedridden for almost two weeks",
+   "entity": "user",
+   "slot": "recent_health_issue",
+   "value": "flu that caused bedridden period for almost two weeks",
+   "claim": "The user recently had a nasty flu that kept them bedridden for almost two weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-26",
+   "owner": "",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm015-73560dd9/s23#r4",
+   "source_span": "I'm still recovering from the flu and need to make sure I'm drinking enough water throughout the day",
+   "entity": "user",
+   "slot": "health_recovery_status",
+   "value": "recovering from flu",
+   "claim": "The user is still recovering from the flu.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-26",
+   "owner": "",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm015-73560dd9/s23#r4",
+   "source_span": "upcoming knee surgery",
+   "entity": "user",
+   "slot": "planned_medical_procedure",
+   "value": "knee surgery",
+   "claim": "The user has an upcoming knee surgery planned.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08",
+   "owner": "",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm015-73560dd9/s24#r2",
+   "source_span": "I recently made a type of flaky, buttery pastry in a cooking class, and it was amazing",
+   "entity": "user",
+   "slot": "cooking_class_attended",
+   "value": "attended cooking class and made flaky buttery pastry",
+   "claim": "The user attended a cooking class and made a flaky, buttery pastry.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-03",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "工作学习",
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm015-73560dd9/s25#r0",
+   "source_span": "I just started reading \"The Silent Patient\" by Alex Michaelides today",
+   "entity": "user",
+   "slot": "current_book_reading",
+   "value": "reading \"The Silent Patient\" by Alex Michaelides",
+   "claim": "The user is currently reading \"The Silent Patient\" by Alex Michaelides.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-06",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm015-73560dd9/s26#r0",
+   "source_span": "I started marathon training in August and cooking at all has become impossible",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "marathon training",
+   "claim": "The user started marathon training in August.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08",
+   "owner": "",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm015-73560dd9/s26#r1",
+   "source_span": "my meals come from CookUnity now, fully prepared trays",
+   "entity": "user",
+   "slot": "meal_kit_service",
+   "value": "CookUnity subscription with fully prepared meals",
+   "claim": "The user switched to CookUnity for fully prepared meal service.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r33"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-12",
+   "owner": "",
+   "slot_class": "other:subscription",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm015-73560dd9/s26#r2",
+   "source_span": "had a Peruvian thing last night that was unreal",
+   "entity": "user",
+   "slot": "cuisine_preferences",
+   "value": "enjoyed Peruvian cuisine from CookUnity",
+   "claim": "The user enjoyed Peruvian cuisine from CookUnity.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-12",
+   "owner": "",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm015-73560dd9/s27#r0",
+   "source_span": "I need help finding a good jeweler to fix my silver necklace",
+   "entity": "user",
+   "slot": "item_needing_repair",
+   "value": "silver necklace",
+   "claim": "The user needs to find a jeweler to repair their silver necklace.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-10",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm015-73560dd9/s27#r4",
+   "source_span": "I've been considering getting my ears re-pierced",
+   "entity": "user",
+   "slot": "planned_piercing",
+   "value": "getting ears re-pierced",
+   "claim": "The user is considering getting their ears re-pierced.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-10",
+   "owner": "",
+   "slot_class": "other:personal-care",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm015-73560dd9/s28#r0",
+   "source_span": "I recently bought gifts for them at Costco, which included 2 bottles of wine, a box of chocolates, and a set of scented candles, all of which were on sale, and it came out to be around $80",
+   "entity": "user",
+   "slot": "gift_purchase_frequency",
+   "value": "recently purchased gifts for coworkers",
+   "claim": "The user recently purchased gifts including wine, chocolates, and candles for coworkers.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-13",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "confirm015-73560dd9/s28#r0",
+   "source_span": "I just got a great experience with Chanel recently, I bought a new handbag from them for my sister's birthday, and it was totally worth it",
+   "entity": "user",
+   "slot": "luxury_shopping_experience",
+   "value": "purchased Chanel handbag for sister's birthday",
+   "claim": "The user purchased a Chanel handbag for their sister's birthday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-13",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "confirm015-73560dd9/s28#r2",
+   "source_span": "I spent around $3,000 on the Chanel bag for my sister",
+   "entity": "user",
+   "slot": "high_value_purchase",
+   "value": "$3,000 Chanel handbag",
+   "claim": "The user spent approximately $3,000 on a Chanel handbag for their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-13",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "confirm015-73560dd9/s29#r0",
+   "source_span": "I was just talking about this with Rachel last Friday when we had lunch",
+   "entity": "Rachel",
+   "slot": "relationship_type",
+   "value": "friend who has lunch with user",
+   "claim": "Rachel is someone the user has lunch with and discusses travel plans.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11",
+   "owner": "Rachel",
+   "slot_class": "relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "confirm015-73560dd9/s29#r0",
+   "source_span": "I'm thinking of planning a trip to Hawaii in October",
+   "entity": "user",
+   "slot": "planned_trip_hawaii_oct",
+   "value": "planning trip to Hawaii in October",
+   "claim": "The user is thinking of planning a trip to Hawaii in October.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-17",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "confirm015-73560dd9/s30#r0",
+   "source_span": "I just got back from a 7-day international trip to Paris, France with my family today",
+   "entity": "user",
+   "slot": "completed_trip",
+   "value": "7-day trip to Paris, France with family",
+   "claim": "The user just completed a 7-day trip to Paris, France with their family.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "confirm015-73560dd9/s30#r0",
+   "source_span": "I'm planning a bigger trip later this year, possibly to Japan or New Zealand",
+   "entity": "user",
+   "slot": "planned_trip_major",
+   "value": "planning trip to Japan or New Zealand",
+   "claim": "The user is planning a bigger trip to either Japan or New Zealand.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "confirm015-73560dd9/s30#r2",
+   "source_span": "I'm thinking of staying in Tokyo for 7 days and then heading to Kyoto for the remaining 3 days",
+   "entity": "user",
+   "slot": "planned_trip_japan_itinerary",
+   "value": "Tokyo 7 days, Kyoto 3 days",
+   "claim": "The user is considering staying 7 days in Tokyo and 3 days in Kyoto for their Japan trip.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "confirm015-73560dd9/s30#r4",
+   "source_span": "I think I'll go with the 5 days in Tokyo, 5 days in Kyoto split",
+   "entity": "user",
+   "slot": "planned_trip_japan_itinerary",
+   "value": "Tokyo 5 days, Kyoto 5 days",
+   "claim": "The user decided to split their Japan trip with 5 days in Tokyo and 5 days in Kyoto.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r65"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r67",
+   "source_memory_id": "confirm015-73560dd9/s30#r4",
+   "source_span": "I still can't believe I tried escargots for the first time on my recent trip to Paris, France, and loved them",
+   "entity": "user",
+   "slot": "food_tried",
+   "value": "tried escargots for the first time in Paris",
+   "claim": "The user tried escargots for the first time on their recent trip to Paris and loved them.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r68",
+   "source_memory_id": "confirm015-73560dd9/s31#r0",
+   "source_span": "race is done, knee is fine",
+   "entity": "user",
+   "slot": "marathon_completion",
+   "value": "completed marathon, knee is fine",
+   "claim": "The user completed their marathon and their knee is fine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-03",
+   "owner": "",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r69",
+   "source_memory_id": "confirm015-73560dd9/s31#r1",
+   "source_span": "my budget took a hit from holiday travel so I need cheaper per-serving",
+   "entity": "user",
+   "slot": "budget_constraint",
+   "value": "tighter budget after holiday travel",
+   "claim": "The user's budget was impacted by holiday travel and they need more affordable meal options.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-03",
+   "owner": "",
+   "slot_class": "other:financial",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r70",
+   "source_memory_id": "confirm015-73560dd9/s31#r2",
+   "source_span": "I went ahead and moved everything over to Home Chef, their oven-ready meals are like half the price",
+   "entity": "user",
+   "slot": "meal_kit_service",
+   "value": "Home Chef subscription with oven-ready meals",
+   "claim": "The user switched to Home Chef for more affordable meal service with oven-ready meals.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r54"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-03",
+   "owner": "",
+   "slot_class": "other:subscription",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r71",
+   "source_memory_id": "confirm015-73560dd9/s31#r3",
+   "source_span": "gonna do four dinners a week and wing it on the weekends",
+   "entity": "user",
+   "slot": "meal_planning_pattern",
+   "value": "four dinners per week with meal service, weekend meals ad hoc",
+   "claim": "The user plans to use meal service for four dinners a week and handle weekends informally.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-03",
+   "owner": "",
+   "slot_class": "other:habit",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r72",
+   "source_memory_id": "confirm015-73560dd9/s32#r0",
+   "source_span": "I'm thinking of getting a custom-made necklace with a charm representing my astrological sign, Scorpio",
+   "entity": "user",
+   "slot": "astrological_sign",
+   "value": "Scorpio",
+   "claim": "The user's astrological sign is Scorpio.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-24",
+   "owner": "",
+   "slot_class": "other:personal",
+   "value_tags": []
+  },
+  {
+   "record_id": "r73",
+   "source_memory_id": "confirm015-73560dd9/s32#r0",
+   "source_span": "I'm thinking of getting a custom-made necklace with a charm representing my astrological sign, Scorpio",
+   "entity": "user",
+   "slot": "planned_jewelry_purchase",
+   "value": "custom necklace with Scorpio charm",
+   "claim": "The user plans to get a custom-made necklace with a Scorpio charm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-24",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r74",
+   "source_memory_id": "confirm015-73560dd9/s32#r0",
+   "source_span": "I recently got my grandmother's old pearl earrings resized at a jewelry shop on 20th February",
+   "entity": "user",
+   "slot": "jewelry_repair_activity",
+   "value": "had grandmother's pearl earrings resized",
+   "claim": "The user had their grandmother's pearl earrings resized at a jewelry shop.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-20",
+   "owner": "",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r75",
+   "source_memory_id": "confirm015-73560dd9/s32#r2",
+   "source_span": "I've been wearing a silver necklace with a tiny star pendant almost daily since I bought it from a local boutique on 15th February",
+   "entity": "user",
+   "slot": "regular_jewelry_worn",
+   "value": "silver necklace with tiny star pendant worn daily",
+   "claim": "The user wears a silver necklace with a tiny star pendant almost daily, purchased from a local boutique.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-15",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r76",
+   "source_memory_id": "confirm015-73560dd9/s32#r4",
+   "source_span": "I've been meaning to replace a silver stud that I lost on 1st March during a brunch with friends",
+   "entity": "user",
+   "slot": "lost_jewelry_item",
+   "value": "lost silver stud on 1 March during brunch",
+   "claim": "The user lost a silver stud on March 1st during a brunch with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-01",
+   "owner": "",
+   "slot_class": "device",
+   "value_tags": []
+  },
+  {
+   "record_id": "r77",
+   "source_memory_id": "confirm015-73560dd9/s33#r0",
+   "source_span": "I recently attended a panel discussion on the topic at the Seattle International Film Festival, where I saw 8 films",
+   "entity": "user",
+   "slot": "film_festival_attendance",
+   "value": "attended Seattle International Film Festival and saw 8 films",
+   "claim": "The user attended the Seattle International Film Festival and saw 8 films there.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-27",
+   "owner": "",
+   "slot_class": "location",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r78",
+   "source_memory_id": "confirm015-73560dd9/s33#r2",
+   "source_span": "I was thinking about organizing a small film festival in my hometown",
+   "entity": "user",
+   "slot": "planned_project_film_festival",
+   "value": "planning to organize small film festival in hometown",
+   "claim": "The user is planning to organize a small film festival in their hometown.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-27",
+   "owner": "",
+   "slot_class": "other:project",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r79",
+   "source_memory_id": "confirm015-73560dd9/s21#r4",
+   "source_span": "I'm still on a high from winning that game of Scattergories on Christmas Day with 40 points",
+   "entity": "user",
+   "slot": "game_high_scores",
+   "value": "won Scattergories with 40 points on Christmas Day",
+   "claim": "The user won at Scattergories on Christmas Day with 40 points.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-12-25",
+   "owner": "",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  }
+ ],
+ "usage_in": 21151,
+ "usage_out": 12696
+}

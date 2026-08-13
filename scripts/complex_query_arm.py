@@ -4,7 +4,9 @@
 逐题四步:
   ① COMPILE:一次 haiku 调用(模型走 qvf.config,temperature 0)把问题编译
      为小计划 —— 严格 JSON:{"op", "slot", "slot2", "date", "tag",
-     "presupposed"}(slot2 可选,仅 join_at_change 用);
+     "presupposed", "anchor_index"}(slot2/anchor_index 可选,仅
+     join_at_change 用;anchor_index 承接序数锚 "my second employer",
+     1-based,与 presupposed 值锚二选一);
   ② EXECUTE:纯代码在键控(+标签)卡片库上执行计划。卡片解析与 qvf_router
      同口径:QVF_CARDS_KEYED 覆盖目录按 uid 先查,缺则回落 results/wt_cards;
      记录按 (owner, slot_class) 分组,聚焦槽位经 SLOT_ALIASES 归一,无键/无类
@@ -109,6 +111,12 @@ class CompiledPlan(BaseModel):
         default=None,
         description="Value the question asserts/presupposes for the "
         "attribute (premise_check); null otherwise.")
+    anchor_index: Optional[int] = Field(
+        default=None,
+        description="join_at_change only: when the question names the anchor "
+        "by ORDINAL instead of by value ('my second employer' -> 2), the "
+        "1-based ordinal position in the anchor attribute's dated history; "
+        "null otherwise.")
 
 
 COMPILE_PROMPT = """\
@@ -118,7 +126,8 @@ JSON only, exactly this object and nothing else:
 {"op": "<one of: current | point_in_time | trajectory | premise_check |
 count_changes | longest | count_before | first_last | tag_filter |
 tag_trend | join_at_change>", "slot": <str|null>, "slot2": <str|null>,
-"date": <str|null>, "tag": <str|null>, "presupposed": <str|null>}
+"date": <str|null>, "tag": <str|null>, "presupposed": <str|null>,
+"anchor_index": <int|null>}
 
 op semantics:
 - current: the state now.
@@ -138,12 +147,16 @@ op semantics:
 - join_at_change: the value of a SECOND attribute at the moment the anchor
   attribute changed to a named value (slot = anchor attribute, presupposed
   = the anchor VALUE named in the question, slot2 = the attribute whose
-  value is asked).
+  value is asked). If the question names the anchor by ORDINAL instead of
+  by value ('my second employer', 'my third residence'), fill anchor_index
+  with that 1-based ordinal (second = 2, third = 3, ...) and leave
+  presupposed null.
 
 Field rules: slot is a short concrete attribute noun phrase, never an
 abstraction like 'history' or 'timeline'; slot2 (join_at_change only)
 follows the same rules as slot; tag is copied verbatim from the question;
-unused fields are null.
+anchor_index (join_at_change only) is a 1-based integer used only for
+ordinal anchors; unused fields are null.
 
 Examples:
 Q: (Today is 2007-01-22.) How many times did I change my position?
@@ -155,7 +168,9 @@ A: {"op": "tag_trend", "slot": null, "date": null, "tag": "饮食", "presupposed
 Q: Have I mentioned anything 高糖 (high-sugar)? List what and when.
 A: {"op": "tag_filter", "slot": null, "date": null, "tag": "高糖", "presupposed": null}
 Q: When I started at CERN, where was I living?
-A: {"op": "join_at_change", "slot": "employer", "slot2": "residence", "date": null, "tag": null, "presupposed": "CERN"}
+A: {"op": "join_at_change", "slot": "employer", "slot2": "residence", "date": null, "tag": null, "presupposed": "CERN", "anchor_index": null}
+Q: When I started at my second employer, where was I living?
+A: {"op": "join_at_change", "slot": "employer", "slot2": "residence", "date": null, "tag": null, "presupposed": null, "anchor_index": 2}
 """
 
 
@@ -324,39 +339,74 @@ def _hygiene_pool(pool: List[dict]) -> List[dict]:
     return [by_mem[m] for m in order]
 
 
+def _ordinal_en(n: int) -> str:
+    """1 -> '1st', 2 -> '2nd', 11 -> '11th'(降级结论行用)。"""
+    if 10 <= n % 100 <= 20:
+        suf = "th"
+    else:
+        suf = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suf}"
+
+
 def _exec_join(plan: dict, recs: List[dict], mem_dates: dict,
                question: str = ""):
     """join_at_change:跨槽位 join(零 LLM)。
-    ① 锚:在 slot 组(同 _select_pool 口径)内找 value 与 presupposed 模糊
-       匹配的记录(承 premise_check 的 _norm 双向包含口径),取其生效日 T;
+    ① 锚:计划带 anchor_index(1-based,序数锚 "my Nth <slot>")时直接取
+       锚组有序带日期链的第 anchor_index 个元素,越界降级为明示结论行;
+       否则(presupposed 路径,原样保持)在 slot 组(同 _select_pool 口径)
+       内找 value 与 presupposed 模糊匹配的记录(承 premise_check 的 _norm
+       双向包含口径);取锚记录生效日 T;
     ② 在 slot2(经 SLOT_ALIASES 归一,与 slot 同一 _select_pool 路径)组内
        对 T 做 point_in_time 点查;
-    证据包 = 锚记录 + 覆盖记录 ± 相邻记录;结论行同时陈述两侧。
-    锚未命中/锚日期不可解析/副槽位无带日期记录,均降级为明示结论行。"""
+    证据包 = 锚记录 + 覆盖记录 ± 相邻记录;结论行同时陈述两侧(序数锚另加
+    一行序数映射,供读者把 "my Nth ..." 对上具体值)。
+    锚未命中/序数越界/锚日期不可解析/副槽位无带日期记录,均降级为明示
+    结论行。"""
     slot = plan.get("slot") or ""
     slot2 = plan.get("slot2") or ""
     pv = _norm(plan.get("presupposed") or "")
+    ai = plan.get("anchor_index")
+    if not isinstance(ai, int) or isinstance(ai, bool):
+        ai = None
     ev: List[str] = []
     derived: List[str] = []
 
     a_chain = _chain(_select_pool(recs, slot, mem_dates, question), mem_dates)
-    anchor = next(
-        (r for r in a_chain
-         if pv and (pv in _norm(r.get("value", ""))
-                    or _norm(r.get("value", "")) in pv)), None)
-    if anchor is None:
-        ev = [_line(r, mem_dates) for r in a_chain]
-        derived.append(
-            f"Anchor not found: no dated {slot or 'anchor-attribute'} record "
-            f"matching '{plan.get('presupposed') or ''}' exists in memory, "
-            f"so the cross-attribute lookup cannot be resolved. Say so "
-            f"instead of guessing.")
-        return ev[:EVIDENCE_CAP], derived
+    if ai is not None:
+        if 1 <= ai <= len(a_chain):
+            anchor = a_chain[ai - 1]
+        else:
+            ev = [_line(r, mem_dates) for r in a_chain]
+            derived.append(
+                f"Ordinal anchor out of range: the question refers to the "
+                f"user's {_ordinal_en(ai)} "
+                f"{slot or 'anchor-attribute'} value, but only "
+                f"{len(a_chain)} dated state(s) are known in memory, so the "
+                f"cross-attribute lookup cannot be resolved. Say so instead "
+                f"of guessing.")
+            return ev[:EVIDENCE_CAP], derived
+    else:
+        anchor = next(
+            (r for r in a_chain
+             if pv and (pv in _norm(r.get("value", ""))
+                        or _norm(r.get("value", "")) in pv)), None)
+        if anchor is None:
+            ev = [_line(r, mem_dates) for r in a_chain]
+            derived.append(
+                f"Anchor not found: no dated {slot or 'anchor-attribute'} "
+                f"record matching '{plan.get('presupposed') or ''}' exists "
+                f"in memory, so the cross-attribute lookup cannot be "
+                f"resolved. Say so instead of guessing.")
+            return ev[:EVIDENCE_CAP], derived
 
     a_label = _label(anchor)
     a_value = anchor.get("value", "")
     t_raw = _rec_date(anchor, mem_dates)
     ev.append(_line(anchor, mem_dates))
+    if ai is not None:
+        derived.append(
+            f"Ordinal anchor resolved: the user's {_ordinal_en(ai)} "
+            f"{a_label} (1-based over the dated history) is {a_value}.")
     qd = _pdate(t_raw)
     if qd is None:
         derived.append(
@@ -420,7 +470,9 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
         elif op == "tag_filter":
             derived.append(
                 f"{len(hits)} stored item(s) carry the tag {tag}; every one "
-                f"is listed above with its date.")
+                f"is listed above with its date. Mention ONLY these items, "
+                f"each with its date; do not add or infer anything beyond "
+                f"them.")
         else:  # tag_trend:按年分组的演变
             by_year: dict = {}
             for r in hits:
@@ -430,8 +482,9 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
                             for y, vs in sorted(by_year.items()))
             derived.append(
                 f"Items tagged {tag} by year — {seq}. Describe what was "
-                f"mentioned and how it evolved, citing only these items "
-                f"with their dates.")
+                f"mentioned and how it evolved, citing ONLY these items "
+                f"with their dates; state trends only when two or more "
+                f"listed items directly show them, never by inference.")
         return ev[:EVIDENCE_CAP], derived
 
     pool = _select_pool(recs, slot, mem_dates, question)

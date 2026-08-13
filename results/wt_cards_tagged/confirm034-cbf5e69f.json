@@ -1,0 +1,1356 @@
+{
+ "uid": "confirm034-cbf5e69f",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm034-cbf5e69f/s0#r2",
+   "source_span": "You know I have to avoid all soy and gluten",
+   "entity": "user",
+   "slot": "dietary_restrictions",
+   "value": "soy and gluten avoidance",
+   "claim": "The user must avoid soy and gluten in their diet.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm034-cbf5e69f/s1#r0",
+   "source_span": "I just passed my statistics exam",
+   "entity": "user",
+   "slot": "exam_status",
+   "value": "passed statistics exam",
+   "claim": "The user passed their statistics exam.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-04",
+   "owner": "user",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm034-cbf5e69f/s1#r4",
+   "source_span": "I've been taking online courses on Coursera",
+   "entity": "user",
+   "slot": "online_education",
+   "value": "Coursera courses",
+   "claim": "The user is taking online courses on Coursera.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm034-cbf5e69f/s2#r0",
+   "source_span": "I usually go to bed at 11:30 PM",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "11:30 PM",
+   "claim": "The user's usual bedtime is 11:30 PM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-07",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm034-cbf5e69f/s2#r2",
+   "source_span": "I've been doing some of them already, like reading before bed and avoiding screens for an hour before bedtime. I've also been trying to make my bedroom a sleep sanctuary by keeping it cool, dark, and quiet.",
+   "entity": "user",
+   "slot": "sleep_habits",
+   "value": "reading before bed, no screens 1 hour before bed, cool/dark/quiet bedroom",
+   "claim": "The user practices pre-sleep habits including reading, screen avoidance, and maintaining a sleep-conducive bedroom environment.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm034-cbf5e69f/s3#r0",
+   "source_span": "Most of my podcast editing happens after dark, so I usually crawl into bed around 2am",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "2 AM",
+   "claim": "The user usually goes to bed around 2 AM due to late-night podcast editing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "when doing podcast editing after dark",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-12",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm034-cbf5e69f/s3#r1",
+   "source_span": "Coffee at 4pm doesn't even register anymore",
+   "entity": "user",
+   "slot": "caffeine_sensitivity",
+   "value": "high caffeine tolerance, 4pm coffee has no effect",
+   "claim": "The user has high caffeine tolerance and a 4 PM coffee no longer affects them.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-12",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "咖啡因"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm034-cbf5e69f/s3#r2",
+   "source_span": "My cat starts yelling for food at 7am regardless of any of this",
+   "entity": "user",
+   "slot": "pet_cat",
+   "value": "cat that wakes for food at 7am",
+   "claim": "The user has a cat that demands food at 7 AM daily.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-12",
+   "owner": "user",
+   "slot_class": "宠物",
+   "value_tags": [
+    "宠物"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm034-cbf5e69f/s4#r0",
+   "source_span": "I bought a 40-inch one from Best Buy for $250",
+   "entity": "user",
+   "slot": "device_television",
+   "value": "40-inch TV from Best Buy",
+   "claim": "The user purchased a 40-inch television from Best Buy for $250.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-08",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm034-cbf5e69f/s5#r0",
+   "source_span": "I had a great response to a photo I posted yesterday of a street performer I took while exploring the city center - it got over 50 likes and a few comments",
+   "entity": "user",
+   "slot": "hobby_street_photography",
+   "value": "street photography with strong social media engagement",
+   "claim": "The user engages in street photography and recently posted a popular image.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-11",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm034-cbf5e69f/s6#r0",
+   "source_span": "I've already been listening to the Data Science Podcast, which has become a staple in my daily commute. I've listened to at least 10 episodes so far",
+   "entity": "user",
+   "slot": "podcast_listening",
+   "value": "Data Science Podcast, 10+ episodes",
+   "claim": "The user regularly listens to the Data Science Podcast during their daily commute and has listened to at least 10 episodes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "during daily commute",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-14",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm034-cbf5e69f/s6#r4",
+   "source_span": "I also started watching YouTube tutorials on Python programming by Corey Schafer",
+   "entity": "user",
+   "slot": "learning_python",
+   "value": "Corey Schafer YouTube tutorials",
+   "claim": "The user learned Python programming using Corey Schafer's YouTube tutorials.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-14",
+   "owner": "user",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm034-cbf5e69f/s7#r0",
+   "source_span": "I just closed the deal on my new house in the suburbs last week, on February 20th",
+   "entity": "user",
+   "slot": "residence",
+   "value": "house in suburbs",
+   "claim": "The user closed on a new house in the suburbs.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [
+    "location"
+   ],
+   "stated_date": "2025-02-20",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm034-cbf5e69f/s7#r4",
+   "source_span": "I'm also planning to renovate the kitchen indoors, and I need to gut it completely",
+   "entity": "user",
+   "slot": "home_renovation_kitchen",
+   "value": "complete kitchen gut renovation planned",
+   "claim": "The user is planning a complete indoor kitchen renovation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "owner": "user",
+   "slot_class": "other:home",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm034-cbf5e69f/s8#r0",
+   "source_span": "I'm planning to meal prep again this weekend and was thinking of making a smoothie bowl with almond milk",
+   "entity": "user",
+   "slot": "meal_prep_activity",
+   "value": "smoothie bowl making with almond milk",
+   "claim": "The user meal preps and plans to make smoothie bowls with almond milk.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-18",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm034-cbf5e69f/s8#r0",
+   "source_span": "I've had some issues with substitutions in the past, like when I ordered from Instacart and they swapped out my preferred brand for a different one",
+   "entity": "user",
+   "slot": "shopping_provider",
+   "value": "Instacart",
+   "claim": "The user uses Instacart for grocery shopping and has experienced brand substitutions.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:shopping",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm034-cbf5e69f/s9#r2",
+   "source_span": "My current loan is $336,000 at 3.75%. We're thinking of refinancing to a 15-year loan",
+   "entity": "user",
+   "slot": "mortgage_details",
+   "value": "current $336,000 at 3.75%, considering 15-year refinance",
+   "claim": "The user has a current mortgage of $336,000 at 3.75% and is considering refinancing to a 15-year loan.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "财务",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm034-cbf5e69f/s9#r2",
+   "source_span": "mine was 790, and Rachel's was 820",
+   "entity": "Rachel",
+   "slot": "credit_score",
+   "value": "820",
+   "claim": "Rachel's credit score is 820.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "Rachel",
+   "slot_class": "财务",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm034-cbf5e69f/s9#r2",
+   "source_span": "mine was 790",
+   "entity": "user",
+   "slot": "credit_score",
+   "value": "790",
+   "claim": "The user's credit score is 790.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "财务",
+   "value_tags": [
+    "财务"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm034-cbf5e69f/s10#r0",
+   "source_span": "I just started taking fitness classes at the local community center",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "fitness classes at local community center",
+   "claim": "The user recently started taking fitness classes at a local community center.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm034-cbf5e69f/s10#r2",
+   "source_span": "I've been doing yoga at the community center on Mondays and Wednesdays",
+   "entity": "user",
+   "slot": "yoga_schedule",
+   "value": "Mondays and Wednesdays at community center",
+   "claim": "The user does yoga at the community center on Mondays and Wednesdays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm034-cbf5e69f/s10#r4",
+   "source_span": "I'm actually thinking of inviting my coworker John to join me for the Zumba class on Fridays",
+   "entity": "user",
+   "slot": "zumba_activity",
+   "value": "Zumba class on Fridays",
+   "claim": "The user attends a Zumba class on Fridays at the community center.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm034-cbf5e69f/s11#r0",
+   "source_span": "Took a contract with actual morning standups, so I've pulled lights-out back to midnight now",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "midnight (12 AM)",
+   "claim": "The user now goes to bed around midnight due to a new contract with morning standups.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "with new contract requiring morning standups",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-05",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm034-cbf5e69f/s11#r0",
+   "source_span": "Took a contract with actual morning standups",
+   "entity": "user",
+   "slot": "position",
+   "value": "contract position with morning standups",
+   "claim": "The user is in a contract position that requires morning standups.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-05",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm034-cbf5e69f/s12#r0",
+   "source_span": "I've been munching on almonds from that big bag I got from Costco last month - it was around $15",
+   "entity": "user",
+   "slot": "snacking_habit",
+   "value": "almonds from Costco",
+   "claim": "The user snacks on almonds purchased in bulk from Costco for about $15.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-22",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "value_tags": [
+    "饮食",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm034-cbf5e69f/s13#r0",
+   "source_span": "I got for my sister recently",
+   "entity": "user",
+   "slot": "gifting_history",
+   "value": "gave sister a beautiful silver necklace",
+   "claim": "The user gave their sister a silver necklace as a gift.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-25",
+   "owner": "user",
+   "slot_class": "other:relationship",
+   "value_tags": [
+    "社交关系",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm034-cbf5e69f/s13#r2",
+   "source_span": "I spent around $75 on that beautiful silver necklace from a new boutique downt",
+   "entity": "user",
+   "slot": "gift_spending",
+   "value": "$75 on silver necklace from boutique",
+   "claim": "The user spent approximately $75 on a silver necklace from a boutique downtown.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "消费购物",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm034-cbf5e69f/s14#r0",
+   "source_span": "I recently inherited one from my grandmother",
+   "entity": "user",
+   "slot": "heirloom_jewelry_box",
+   "value": "inherited antique jewelry box from grandmother",
+   "claim": "The user inherited an antique jewelry box from their grandmother.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-02",
+   "owner": "user",
+   "slot_class": "other:collection",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm034-cbf5e69f/s14#r0",
+   "source_span": "I just scored a great deal on a near-mint condition 1980s My Little Pony figurine at a garage sale in my neighborhood today",
+   "entity": "user",
+   "slot": "collectible_acquisition",
+   "value": "1980s My Little Pony figurine from garage sale",
+   "claim": "The user acquired a near-mint condition 1980s My Little Pony figurine at a neighborhood garage sale.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-02",
+   "owner": "user",
+   "slot_class": "other:collection",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm034-cbf5e69f/s15#r0",
+   "source_span": "I'm really happy with how my snake plant is doing - it's been two months since my sister gave it to me",
+   "entity": "user",
+   "slot": "houseplant_snake_plant",
+   "value": "snake plant, 2 months old, gift from sister",
+   "claim": "The user has a snake plant that their sister gave them two months ago and it is thriving.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-05",
+   "owner": "user",
+   "slot_class": "other:plants",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm034-cbf5e69f/s15#r0",
+   "source_span": "I'm thinking of moving my basil plant to a shadier spot this weekend",
+   "entity": "user",
+   "slot": "houseplant_basil",
+   "value": "basil plant",
+   "claim": "The user has a basil plant they are caring for.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-05",
+   "owner": "user",
+   "slot_class": "other:plants",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm034-cbf5e69f/s15#r2",
+   "source_span": "I've also been thinking of getting more plants, maybe some herbs like mint or cilantro",
+   "entity": "user",
+   "slot": "houseplant_plans",
+   "value": "considering acquiring mint or cilantro plants",
+   "claim": "The user is considering acquiring mint and/or cilantro plants.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-05",
+   "owner": "user",
+   "slot_class": "other:plants",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm034-cbf5e69f/s15#r4",
+   "source_span": "I've been thinking about getting a trellis for my spider plant, which is doing great at the kitchen window",
+   "entity": "user",
+   "slot": "houseplant_spider_plant",
+   "value": "spider plant at kitchen window",
+   "claim": "The user has a spider plant thriving at their kitchen window.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-05",
+   "owner": "user",
+   "slot_class": "other:plants",
+   "value_tags": [
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm034-cbf5e69f/s16#r0",
+   "source_span": "I just got a new set of sheets from them, and the original price of the sheets was $75",
+   "entity": "user",
+   "slot": "bedding_purchase",
+   "value": "new sheet set from Bed Bath & Beyond, $75 original price",
+   "claim": "The user purchased new sheets from Bed Bath & Beyond with an original price of $75.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-08",
+   "owner": "user",
+   "slot_class": "other:home",
+   "value_tags": [
+    "消费购物",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm034-cbf5e69f/s18#r0",
+   "source_span": "I recently attended a full-day conference on entrepreneurship at a downtown hotel in November",
+   "entity": "user",
+   "slot": "professional_development",
+   "value": "entrepreneurship conference in November",
+   "claim": "The user attended a full-day entrepreneurship conference at a downtown hotel in November.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11",
+   "owner": "user",
+   "slot_class": "other:education",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm034-cbf5e69f/s18#r2",
+   "source_span": "I want to offer online marketing services to small businesses, which is why I attended that webinar last month",
+   "entity": "user",
+   "slot": "business_idea",
+   "value": "online marketing services for small businesses",
+   "claim": "The user is planning to start a business offering online marketing services to small businesses.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-12",
+   "owner": "user",
+   "slot_class": "position",
+   "value_tags": [
+    "工作学习"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm034-cbf5e69f/s18#r4",
+   "source_span": "I connected with some like-minded people at a lecture series on sustainable living at the library in January",
+   "entity": "user",
+   "slot": "network_connection",
+   "value": "like-minded people at sustainable living lecture series",
+   "claim": "The user connected with like-minded people at a sustainable living lecture series at the library in January.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01",
+   "owner": "user",
+   "slot_class": "other:relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm034-cbf5e69f/s19#r0",
+   "source_span": "I've been meaning to buy a bike to reduce my reliance on public transport",
+   "entity": "user",
+   "slot": "transportation_plan",
+   "value": "planning to buy bike to replace public transport",
+   "claim": "The user is planning to buy a bike to reduce public transport use.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "owner": "user",
+   "slot_class": "other:transportation",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm034-cbf5e69f/s19#r2",
+   "source_span": "I'm in the city, and my new place is about 10 miles away from my previous one. I used to commute to work in 20 minutes, but now it takes a bit longer",
+   "entity": "user",
+   "slot": "relocation",
+   "value": "relocated 10 miles away within city",
+   "claim": "The user relocated within the city to a place 10 miles away, increasing commute time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location",
+   "value_tags": [
+    "出行旅行",
+    "居家生活"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm034-cbf5e69f/s20#r0",
+   "source_span": "my sister flew in from out of town as a surprise for my birthday celebration last month",
+   "entity": "user",
+   "slot": "family_event_birthday",
+   "value": "sister visited for birthday celebration last month",
+   "claim": "The user's sister visited from out of town to celebrate the user's birthday last month.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06",
+   "owner": "user",
+   "slot_class": "other:relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm034-cbf5e69f/s20#r0",
+   "source_span": "I'm planning a surprise party for my boyfriend's birthday",
+   "entity": "user",
+   "slot": "relationship_status",
+   "value": "in a relationship with boyfriend",
+   "claim": "The user is in a romantic relationship with a boyfriend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-16",
+   "owner": "user",
+   "slot_class": "social关系",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm034-cbf5e69f/s21#r0",
+   "source_span": "I attended the morning prayer service at St. Mary's Catholic Church led by Father John today",
+   "entity": "user",
+   "slot": "religious_affiliation",
+   "value": "Catholic, attends St. Mary's Catholic Church",
+   "claim": "The user attends St. Mary's Catholic Church and participates in morning prayer services.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-19",
+   "owner": "user",
+   "slot_class": "other:religion",
+   "value_tags": [
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm034-cbf5e69f/s22#r0",
+   "source_span": "Joined a sunrise swim group at the lido, which has forced a real change — I'm in bed by 10:30 pm these days",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "10:30 PM",
+   "claim": "The user now goes to bed by 10:30 PM due to joining a sunrise swim group.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r23"
+   ],
+   "condition": "due to sunrise swim group commitment",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-20",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm034-cbf5e69f/s22#r0",
+   "source_span": "Joined a sunrise swim group at the lido",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "sunrise swim group at lido",
+   "claim": "The user joined a sunrise swim group at a lido.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-07-20",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm034-cbf5e69f/s23#r2",
+   "source_span": "I've been playing guitar for about 6 months now, and I've noticed significant improvement in my fingerpicking skills, especially in the evening when I practice for at least 30 minutes",
+   "entity": "user",
+   "slot": "hobby_guitar",
+   "value": "guitar playing for 6 months, 30+ min evening practice",
+   "claim": "The user has been playing guitar for about 6 months with regular evening practice sessions of at least 30 minutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "evening practice sessions",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-23",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm034-cbf5e69f/s23#r2",
+   "source_span": "I jam with my friend who's a dr",
+   "entity": "user",
+   "slot": "social_activity",
+   "value": "jams with friend who is a drummer",
+   "claim": "The user jams with a friend who is a drummer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-23",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好",
+    "社交关系"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm034-cbf5e69f/s24#r2",
+   "source_span": "I recently installed an SSD in my new laptop",
+   "entity": "user",
+   "slot": "device_laptop",
+   "value": "new laptop with recently installed SSD",
+   "claim": "The user has a new laptop with an SSD upgrade.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-26",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm034-cbf5e69f/s24#r2",
+   "source_span": "I sold my old HP Pavilion for $200",
+   "entity": "user",
+   "slot": "device_laptop_old",
+   "value": "sold HP Pavilion for $200",
+   "claim": "The user sold their old HP Pavilion laptop for $200.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-26",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm034-cbf5e69f/s24#r4",
+   "source_span": "I got a Dell Inspiron 15 5000, and it's been a huge upgrade from my old HP Pavilion",
+   "entity": "user",
+   "slot": "device_laptop",
+   "value": "Dell Inspiron 15 5000",
+   "claim": "The user purchased a Dell Inspiron 15 5000 laptop as an upgrade.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r47"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-26",
+   "owner": "user",
+   "slot_class": "device",
+   "value_tags": [
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm034-cbf5e69f/s25#r0",
+   "source_span": "I bought a gift for my brother's graduation ceremony a few weeks ago, a personalized photo album from Shutterfly",
+   "entity": "user",
+   "slot": "gifting_history",
+   "value": "personalized photo album from Shutterfly for brother's graduation",
+   "claim": "The user gave their brother a personalized photo album from Shutterfly as a graduation gift.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-03",
+   "owner": "user",
+   "slot_class": "other:relationship",
+   "value_tags": [
+    "社交关系",
+    "消费购物"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm034-cbf5e69f/s26#r0",
+   "source_span": "I'm planning a trip to Japan",
+   "entity": "user",
+   "slot": "travel_plans",
+   "value": "trip to Japan planned",
+   "claim": "The user is planning a trip to Japan.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-06",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm034-cbf5e69f/s26#r2",
+   "source_span": "I'm planning to spend around 5 days in Kyoto",
+   "entity": "user",
+   "slot": "travel_duration_kyoto",
+   "value": "5 days in Kyoto",
+   "claim": "The user plans to spend approximately 5 days in Kyoto.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-06",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm034-cbf5e69f/s27#r0",
+   "source_span": "Half marathon training has taken over my life, my long runs start at 5am so I'm out cold by 9 pm now",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "9 PM",
+   "claim": "The user goes to bed by 9 PM due to early half-marathon training runs.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r43"
+   ],
+   "condition": "during half marathon training",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-09",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm034-cbf5e69f/s27#r0",
+   "source_span": "Half marathon training has taken over my life, my long runs start at 5am",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "half marathon training with 5 AM long runs",
+   "claim": "The user is training for a half marathon with long runs starting at 5 AM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-09",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm034-cbf5e69f/s28#r0",
+   "source_span": "My aunt was diagnosed with stage 4 cancer in early March",
+   "entity": "aunt",
+   "slot": "health_status",
+   "value": "diagnosed with stage 4 cancer in early March",
+   "claim": "The user's aunt was diagnosed with stage 4 cancer in early March.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03",
+   "owner": "aunt",
+   "slot_class": "健康运动",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm034-cbf5e69f/s29#r0",
+   "source_span": "I just went on a day trip to Santa Cruz with my family a week ago and we had an amazing lunch at The Fisherman's Grotto",
+   "entity": "user",
+   "slot": "travel_activity",
+   "value": "day trip to Santa Cruz with family, lunch at The Fisherman's Grotto",
+   "claim": "The user took a day trip to Santa Cruz with family and ate at The Fisherman's Grotto.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-13",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm034-cbf5e69f/s29#r2",
+   "source_span": "We actually visited the Santa Cruz Wharf during our day trip last week",
+   "entity": "user",
+   "slot": "travel_location_visited",
+   "value": "Santa Cruz Wharf",
+   "claim": "The user visited the Santa Cruz Wharf during a day trip.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-13",
+   "owner": "user",
+   "slot_class": "出行旅行",
+   "value_tags": [
+    "出行旅行"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm034-cbf5e69f/s30#r0",
+   "source_span": "I also attended the Halloween Horror Nights event at Universal Studios Hollywood on October 22nd and 29th",
+   "entity": "user",
+   "slot": "event_attendance",
+   "value": "Halloween Horror Nights at Universal Studios Hollywood on Oct 22 & 29",
+   "claim": "The user attended Halloween Horror Nights at Universal Studios Hollywood on October 22nd and 29th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-22",
+   "owner": "user",
+   "slot_class": "other:entertainment",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "confirm034-cbf5e69f/s31#r2",
+   "source_span": "I completed the 5K in 35 minutes",
+   "entity": "user",
+   "slot": "charity_run_performance",
+   "value": "completed 5K charity run in 35 minutes",
+   "claim": "The user completed a 5K charity run in 35 minutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "confirm034-cbf5e69f/s31#r2",
+   "source_span": "I've done a few charity runs in the past, like the one last Sunday",
+   "entity": "user",
+   "slot": "charity_run_participation",
+   "value": "participates in charity runs, recent 5K completion",
+   "claim": "The user has participated in charity runs in the past.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-20",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "confirm034-cbf5e69f/s32#r0",
+   "source_span": "Winter show rehearsals run until ten most nights, so my bedtime has drifted to 11:30 pm",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "11:30 PM",
+   "claim": "The user's bedtime has shifted to 11:30 PM due to winter show rehearsals.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r53"
+   ],
+   "condition": "due to winter show rehearsals",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-14",
+   "owner": "user",
+   "slot_class": "other:sleep",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "confirm034-cbf5e69f/s32#r0",
+   "source_span": "Winter show rehearsals run until ten most nights",
+   "entity": "user",
+   "slot": "activity_theater",
+   "value": "winter show rehearsals until 10 PM most nights",
+   "claim": "The user is in winter show rehearsals that run until 10 PM most nights.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-14",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "confirm034-cbf5e69f/s32#r1",
+   "source_span": "Race is done, the running shoes are having a nice rest",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "half marathon race completed",
+   "claim": "The user completed their half marathon race.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r54"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-14",
+   "owner": "user",
+   "slot_class": "other:health",
+   "value_tags": [
+    "健康运动"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "confirm034-cbf5e69f/s33#r0",
+   "source_span": "I've been playing the game's multiplayer mode with friends for a few weeks now, and we usually play for around 3 hours on Saturdays and Sundays",
+   "entity": "user",
+   "slot": "gaming_activity",
+   "value": "Last of Us Part II multiplayer 3 hours Sat-Sun with friends",
+   "claim": "The user plays The Last of Us Part II multiplayer mode with friends for about 3 hours on weekends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Saturdays and Sundays",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-24",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "confirm034-cbf5e69f/s33#r2",
+   "source_span": "I'm playing as the Fireflies",
+   "entity": "user",
+   "slot": "gaming_preference",
+   "value": "plays as Fireflies faction in multiplayer",
+   "claim": "The user plays as the Fireflies in The Last of Us Part II multiplayer mode.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-24",
+   "owner": "user",
+   "slot_class": "other:hobby",
+   "value_tags": [
+    "娱乐爱好"
+   ]
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "confirm034-cbf5e69f/s34#r0",
+   "source_span": "I recently tried that new Italian place downtown with friends Sarah and Alex on Wednesday",
+   "entity": "user",
+   "slot": "social_dining",
+   "value": "dining with friends Sarah and Alex at Italian restaurant downtown",
+   "claim": "The user dined with friends Sarah and Alex at an Italian restaurant downtown.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-27",
+   "owner": "user",
+   "slot_class": "other:relationship",
+   "value_tags": [
+    "社交关系"
+   ]
+  }
+ ],
+ "usage_in": 21265,
+ "usage_out": 12062
+}
