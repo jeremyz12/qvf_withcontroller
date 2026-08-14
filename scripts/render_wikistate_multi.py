@@ -265,9 +265,9 @@ def render_entry(cand, labels, propose, rng, stale, noise_n=30):
         # 占位 dim1(机械 gold):写入侧按实例迭代,空 probing_queries 会导致
         # 建卡阶段零实例零建库(S6 首测实雷),故至少给一个真问题。
         "probing_queries": {"dim1_current": {
-            "q": f"(Today is {chain[-1]['date']}.) What's my current "
-                 f"{slot_label} these days?",
-            "gold": str(chain[-1]["value"])}},
+            "q": f"(Today is {chain_a[-1]['date']}.) What's my current "
+                 f"{noun_a} these days?",
+            "gold": str(chain_a[-1]["value"])}},
         "attribution": (f"States derived from Wikidata {cand['qid']} "
                         f"{pa}+{pb} qualifiers (CC0); distractor sessions "
                         f"remixed from STALE (CC BY 4.0)."),
@@ -401,7 +401,10 @@ def run_smoke():
         ["Acme Labs", "Beta Corp", "Gamma Institute"]
     assert [s["value"] for s in e["chain2"]["chain"]] == \
         ["Oslo", "Bergen", "Tromso"]
-    assert e["probing_queries"] == {}
+    pq = e["probing_queries"]
+    assert set(pq) == {"dim1_current"}, "应有且仅有占位 dim1(防零建卡)"
+    assert pq["dim1_current"]["gold"] == str(e["chain"][-1]["value"])
+    assert e["chain"][-1]["date"] in pq["dim1_current"]["q"]
     assert "Q900002" in e["attribution"] and "P108+P551" in e["attribution"]
     dates = [s["date"] for s in e["sessions"]]
     assert dates == sorted(dates), "sessions not date-sorted"

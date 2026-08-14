@@ -111,6 +111,10 @@ COVERAGE RULE (mandatory): every distinct state announcement MUST yield its
 own record, even when the new value is nearly identical to a previous one
 (re-election, renewed term, same role with a different ordinal such as
 "54th" vs "55th"). Never merge separate announcements into one record.
+This rule applies ONLY to explicit announcements of taking up or starting
+the state (e.g. "I'm starting as...", "I've officially moved to...").
+Casual mentions, trips, visits, plans, or hypotheticals are NOT state
+changes — a trip to Paris is not a change of residence.
 """
 
 
