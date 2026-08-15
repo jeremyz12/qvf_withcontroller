@@ -631,6 +631,22 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
     return ev[:EVIDENCE_CAP], derived
 
 
+# ── 组合式时序代数門控(QVF_ALGEBRA=1;默认关 = 上面平面路径逐字节
+#    不变,本块不导入任何新模块)。旗标开:execute_plan 重绑为宏/表达式
+#    解释执行(scripts/qvf_algebra),编译提示词与输出模式换原语文档版
+#    (AlgebraProgram 表达式树)。──────────────────────────────
+_ALGEBRA = int(os.environ.get("QVF_ALGEBRA", "0") or 0)
+if _ALGEBRA:
+    from scripts.qvf_algebra import (ALGEBRA_COMPILE_PROMPT,  # noqa: E402
+                                     AlgebraProgram, execute_plan_algebra)
+    COMPILE_PROMPT = ALGEBRA_COMPILE_PROMPT  # noqa: F811
+    CompiledPlan = AlgebraProgram  # noqa: F811
+    _execute_plan_flat = execute_plan
+
+    def execute_plan(plan, recs, mem_dates, question=""):  # noqa: F811
+        return execute_plan_algebra(plan, recs, mem_dates, question)
+
+
 # ── ③ READ:证据包 → 日常口吻回答 ────────────────────────────
 def reader_content(ev: List[str], derived: List[str], qdate: str,
                    question: str) -> str:
