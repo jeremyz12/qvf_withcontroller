@@ -1,0 +1,48 @@
+{
+ "seed": 20260815,
+ "n_per_type": 25,
+ "bridge_frac": 0.2,
+ "fame_rule": "subject>=10 or mentioned-entity>=15 sitelinks",
+ "domains": {
+  "P26": {
+   "counts": {
+    "dim1_current": 25,
+    "dim4_point_in_time": 25,
+    "dim5_trajectory": 25,
+    "dim2_premise_mid": 25,
+    "change_count": 25,
+    "first_vs_last": 25,
+    "longest_tenure": 25
+   },
+   "n_s1_s4": 100,
+   "n_s5": 75
+  },
+  "P69": {
+   "counts": {
+    "dim1_current": 25,
+    "dim4_point_in_time": 25,
+    "dim5_trajectory": 25,
+    "dim2_premise_mid": 25,
+    "change_count": 25,
+    "first_vs_last": 25,
+    "longest_tenure": 25
+   },
+   "n_s1_s4": 100,
+   "n_s5": 75
+  },
+  "P1303": {
+   "counts": {
+    "dim1_current": 8,
+    "dim4_point_in_time": 8,
+    "dim5_trajectory": 7,
+    "dim2_premise_mid": 8,
+    "change_count": 25,
+    "first_vs_last": 16,
+    "longest_tenure": 16
+   },
+   "n_s1_s4": 31,
+   "n_s5": 57
+  }
+ },
+ "total": 438
+}

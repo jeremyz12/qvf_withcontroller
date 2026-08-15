@@ -1,0 +1,41 @@
+{
+ "prop": "P26",
+ "slot": "spouse",
+ "generated": "2026-08-15 13:28:02",
+ "command": "scripts/newdom_render.py --candidates data/newdom_P26.json --out data/newdom_P26_full.json --prop P26",
+ "seed": 20260815,
+ "renderer": "zero-LLM(模板宣告 + 组合式闲聊池 + STALE 噪声)",
+ "entries": 60,
+ "dropped": 0,
+ "chain_depth_dist": {
+  "3": 54,
+  "4": 4,
+  "5": 1,
+  "8": 1
+ },
+ "sessions_total": 1991,
+ "sessions_per_entry": 33.18,
+ "turns_total": 9673,
+ "noise_per_entry": 30,
+ "noise_telemetry": {
+  "noise_sessions_total": 1800,
+  "noise_sessions_edu_transition_hit": 58,
+  "noise_sessions_instrument_transition_hit": 51,
+  "noise_sessions_instrument_mention": 149,
+  "noise_sessions_spouse_transition_hit": 26,
+  "noise_sessions_spouse_mention": 153
+ },
+ "announce_template": "I officially married {title} today.",
+ "edu_family_pattern_extension": "\\b(school|universit(y|ies)|college|campus|degree|diploma|thesis|semester|enrol\\w*|graduat\\w*|admitted|admission|matriculat\\w*|student|studies|studying|studied|freshman|sophomore|exam(s)?|class(es)?|lecture(s)?|course(s|work)?|alma mater|dorm\\w*|tuition)\\b",
+ "instrument_family_pattern_extension": "\\b(instrument(s)?|guitar(s)?|piano|violin|viola|cello|drum(s|mer)?|drum kit|bass|flute|sax(ophone)?|trumpet|trombone|clarinet|oboe|harp|banjo|mandolin|accordion|keyboard(s)?|organ|synth\\w*|percussion|vocal(s|ist)?|singing|sang|choir|band|orchestra|ensemble|concert|gig(s)?|rehears\\w*|recital|music\\w*|melod\\w*|song(s)?|album(s)?|riff(s)?|chord(s)?)\\b",
+ "spouse_family_pattern_extension": "\\b(marr(y|ies|ied|iage|ying)|wedding|wed(ded)?|wife|husband|spouse|fianc\\w*|engag(ed|ement)s?|divorc\\w*|widow\\w*|bride|groom|honeymoon|anniversary|partner|boyfriend|girlfriend|dating|in-laws?)\\b",
+ "same_day_policy": "unique dates enforced (same-day steps dropped in prep_chain, original behaviour)",
+ "caliber_diffs_vs_old_domain": [
+  "闲聊为零 LLM 组合式模板池(旧单属性线 opus 整会话渲染、S6 线 opus 闲聊+确定性宣告;本线承后者但闲聊亦模板化)",
+  "宣告句为单一确定性模板(旧单属性线宣告措辞由 opus 变化)",
+  "MIN_CHAIN=2(旧线 3);链深≥2 优先为新域预注册口径",
+  "probing_queries 为占位空表,题面由盲写阶段回填(旧线渲染期即生成四问)",
+  "渲染种子 20260815(旧线 20260807)",
+  "STALE 噪声注入参数与旧线逐字一致(12 项×5 会话×5 轮×400 字符,30 条/条目,铺链年份范围);不做家族筛,教育家族命中仅遥测"
+ ]
+}

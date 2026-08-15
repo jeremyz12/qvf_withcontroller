@@ -1,0 +1,45 @@
+{
+ "prop": "P26",
+ "generated": "2026-08-15 13:27:06",
+ "command": "scripts/newdom_scrape_P26.py --fetch --max-sitelinks 5 --limit 800 --target 60 --overscan 90",
+ "route": "P26 专线:WDQS person-first 实体查询(配偶英文标签可用性推进查询侧,COUNT DISTINCT 带标签配偶 >= 2)+ 逐人明细 + 本地机械清洗。通用线(search API)与 sitelinks<=5 口径在本属性不可达 40-60 目标:证据件 scratchpad/newdom_P26_wdqs_evidence.*(300 人仅 7 存活,no_label=541)",
+ "endpoint": "https://query.wikidata.org/sparql",
+ "max_sitelinks": 5,
+ "max_sitelinks_note": "--probe 定标(LIMIT 800):标签可用性推进查询侧后 sitelinks=0 一档 >=800 可用人物,旧线口径 <=5 保持不放宽(早先证据件的 7/300 是未推进标签约束的样本流失);LEAK 过滤仍留下一阶段(wikistate_build 同款)",
+ "min_chain_new": 2,
+ "qualifier_rule": "start=P580|P585(必需), end=P582(可选);仅 P582 计缺日期",
+ "entity_rows": 800,
+ "detail_fetched": 90,
+ "overscan": 90,
+ "detail_fetch_errors": 0,
+ "pre_candidates": 89,
+ "candidates_written": 60,
+ "target": 60,
+ "entity_limit": 800,
+ "cleaning_counters": {
+  "missing_date": 3,
+  "bad_start": 2,
+  "missing_value": 1,
+  "disorder_end_before_start": 0,
+  "dup_value": 4,
+  "tie_start": 3,
+  "no_label": 0,
+  "dup_label": 0,
+  "single_after_clean": 1
+ },
+ "chain_depth_dist": {
+  "3": 54,
+  "4": 4,
+  "5": 1,
+  "9": 1
+ },
+ "sitelinks_dist": {
+  "0": 60
+ },
+ "qualifier_coverage": {
+  "steps_total": 192,
+  "steps_with_end_P582": 63
+ },
+ "selection_rule": "sort(-chain_depth, sitelinks asc, qid) top target",
+ "note": "布局与旧域候选件(wikistate_candidates*.json)逐字同构;SPARQL 侧部分日期已规约(2003-00-00 → 2003-01-01),与 S6 多属性线同形态,下游 parse_partial_date 兼容。"
+}

@@ -1,0 +1,42 @@
+{
+ "prop": "P69",
+ "generated": "2026-08-15 13:08:13",
+ "command": "scripts/newdom_scrape.py --fetch --prop P69 --target 60 --overscan 80 --scan-cap 1500",
+ "route": "search API haswbstatement + Special:EntityData, 与旧域 wikistate_scrape.py 同源;WDQS SPARQL 聚合两种写法均 504 超时、纯聚合无序不可复现,弃",
+ "max_sitelinks": 5,
+ "min_chain_new": 2,
+ "qualifier_rule": "start=P580|P585(必需), end=P582(可选);仅 P582 计缺日期",
+ "scanned": 533,
+ "search_offset": 600,
+ "pre_candidates": 80,
+ "candidates_written": 60,
+ "target": 60,
+ "overscan": 80,
+ "scan_cap": 1500,
+ "cleaning_counters": {
+  "missing_date": 371,
+  "bad_start": 0,
+  "missing_value": 0,
+  "disorder_end_before_start": 7,
+  "dup_value": 92,
+  "tie_start": 0,
+  "no_label": 0,
+  "dup_label": 0,
+  "single_after_clean": 408,
+  "sitelinks_reject": 45
+ },
+ "chain_depth_dist": {
+  "2": 40,
+  "3": 10,
+  "4": 10
+ },
+ "sitelinks_dist": {
+  "0": 60
+ },
+ "qualifier_coverage": {
+  "steps_total": 150,
+  "steps_with_end_P582": 140
+ },
+ "selection_rule": "sort(-chain_depth, sitelinks asc, qid) top target",
+ "note": "布局与旧域候选件(wikistate_candidates*.json)逐字同构;部分日期(YYYY-00-00)不归一,与旧域同款。"
+}

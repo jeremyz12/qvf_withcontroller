@@ -1,0 +1,45 @@
+{
+ "prop": "P1303",
+ "generated": "2026-08-15 13:06:14",
+ "command": "scripts/newdom_scrape_P1303.py --fetch --max-sitelinks 20 --limit 400 --target 60",
+ "endpoint": "https://query.wikidata.org/sparql",
+ "max_sitelinks": 20,
+ "min_chain_new": 2,
+ "entity_rows": 42,
+ "detail_fetched": 42,
+ "candidates_written": 42,
+ "target": 60,
+ "cleaning_counters": {
+  "missing_date": 69,
+  "bad_start": 0,
+  "disorder_end_before_start": 0,
+  "dup_value": 25,
+  "no_label": 0,
+  "dup_label": 0,
+  "single_after_clean": 0,
+  "same_day_kept": 48,
+  "qual_via_P580": 100,
+  "qual_via_P585": 0
+ },
+ "value_depth_dist": {
+  "2": 30,
+  "3": 9,
+  "4": 2,
+  "5": 1
+ },
+ "date_depth_dist": {
+  "1": 34,
+  "2": 6,
+  "3": 2
+ },
+ "qualifier_coverage": {
+  "steps_total": 100,
+  "via_P580": 100,
+  "via_P585": 0,
+  "steps_with_end_P582": 47
+ },
+ "statement_shapes": "union of band-side P527(pq:P1303,pq:P580/585) + person-side P463(pq:P1303,pq:P580/585) + direct P1303 main statements(pq:P580/585)",
+ "shape_evidence": "direct-only availability (WDQS 2026-08-15): 46/8/7 statements with pq:P580/P582/P585; 7 multi-value persons => target 40-60 unreachable on direct shape; union => 52 persons at sl<=50",
+ "same_day_policy": "same-day different-value steps KEPT and counted (set-valued domain; generic-line tie_start drop would collapse 52->11 persons, measured); selection prioritises distinct-date depth",
+ "selection_rule": "sort(-date_depth, -value_depth, sitelinks asc, qid) top target"
+}
