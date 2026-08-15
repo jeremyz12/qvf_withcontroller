@@ -103,6 +103,11 @@ _CATALOG_TAGS_RULE = """\
 
 _CARD_STRICT = int(os.environ.get("QVF_CARD_STRICT", "0") or 0)
 
+# QVF_FAIL_CLOSED=1:读取侧空证据检查 —— 卡片库在场但裁决链为空(纯代码
+# 裁决未产出任何 note)时,在行上记 wt_fail_closed=true 显式标记,供跑批侧
+# 转直读臂或弃答;默认 0 = 行架构与冻结版逐字节不变。
+_FAIL_CLOSED = int(os.environ.get("QVF_FAIL_CLOSED", "0") or 0)
+
 # STRICT 覆盖规则(QVF_CARD_STRICT=1):只针对实测根因"连任/换届近同值
 # 合并"。迭代 2:删去"复查末三分之一"注意力指令——安全对照证实它令抽取
 # 行为整体漂移(丢日期/丢中间状态/卡数骤降);尾部衰减改由小批量分批解决。
@@ -500,6 +505,8 @@ def read_phase(data_path: str, out_path: str, limit_items: int = 0,
             "dropped_n": len(drop_ids), "latency_s": round(time.time() - t0, 2),
             "reader_model": MODEL, "extractor_model": "write-time-cache",
         }
+        if _FAIL_CLOSED and cards and not notes:
+            row["wt_fail_closed"] = True  # 卡片在场但零裁决产出:显式降级标记
         fout.write(json.dumps(row, ensure_ascii=False) + "\n")
         fout.flush()
     fout.close()

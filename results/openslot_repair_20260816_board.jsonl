@@ -1,0 +1,18 @@
+{"bed": "P69 S5 (test, 主判据)", "slice": "TOTAL 75", "before": "16/75=21.3%", "after": "45/75=60.0%", "criterion": ">=55%", "verdict": "PASS (+38.7pp)", "note": "after=旗标开编译臂+fail-closed组合(空证据33行转直读,弃答0)"}
+{"bed": "P69 S5", "slice": "change_count", "before": "7/25=28.0% (direct 8.0)", "after": "9/25=36.0% (direct 8.0)", "criterion": "fail-closed: >=direct", "verdict": "PASS", "note": "fail_closed 8/25"}
+{"bed": "P69 S5", "slice": "first_vs_last", "before": "6/25=24.0% (direct 96.0)", "after": "21/25=84.0% (direct 96.0)", "criterion": "fail-closed: >=direct", "verdict": "FAIL -12pp", "note": "fail_closed 11/25;臂答14行10对,4错行低于直读"}
+{"bed": "P69 S5", "slice": "longest_tenure", "before": "3/25=12.0% (direct 76.0)", "after": "15/25=60.0% (direct 76.0)", "criterion": "fail-closed: >=direct", "verdict": "FAIL -16pp", "note": "fail_closed 14/25"}
+{"bed": "P69 S5", "slice": "空证据率", "before": "53/75=70.7% (fail-open,读者硬猜)", "after": "33/75=44.0% (fail-closed显式降级)", "criterion": "—", "verdict": "-26.7pp", "note": "开放槽位救援救回20行"}
+{"bed": "P69 S1-S4 (已有wt/rt行)", "slice": "TOTAL 100", "before": "80/100=80.0%", "after": "81/100=81.0%", "criterion": "—", "verdict": "+1.0pp", "note": "路由rt85/wt15->rt72/wt28;降级0缺行0;臂行沿用归档(旗标关)行"}
+{"bed": "P69 S1-S4", "slice": "dim1_current", "before": "25/25", "after": "24/25", "criterion": "—", "verdict": "-1", "note": ""}
+{"bed": "P69 S1-S4", "slice": "dim2_premise_mid", "before": "19/25", "after": "20/25", "criterion": "—", "verdict": "+1", "note": ""}
+{"bed": "P69 S1-S4", "slice": "dim4_point_in_time", "before": "17/25", "after": "17/25", "criterion": "—", "verdict": "0", "note": ""}
+{"bed": "P69 S1-S4", "slice": "dim5_trajectory", "before": "19/25", "after": "20/25", "criterion": "—", "verdict": "+1", "note": ""}
+{"bed": "P26 S5 (护栏)", "slice": "TOTAL 75", "before": "59/75=78.7%", "after": "59/75=78.7% (arm=combined)", "criterion": ">=77.7%", "verdict": "PASS", "note": "fail_closed 2行转直读;73判行判决与before逐题同分"}
+{"bed": "P26 S5", "slice": "per-qtype", "before": "cc 17/25, fvl 24/25, lt 18/25", "after": "cc 17/25, fvl 24/25, lt 18/25", "criterion": "—", "verdict": "0漂移", "note": ""}
+{"bed": "旧域 S5 test (护栏,全量314)", "slice": "TOTAL 314", "before": "282/314=89.8%", "after": "288/314=91.7%", "criterion": "掉幅<=1pp", "verdict": "PASS (+1.91pp)", "note": "证据重放on/off 0行变化;12空证据行fail-closed转直读(+6净胜);读者/判官零重跑"}
+{"bed": "旧域 S5", "slice": "change_count", "before": "66/79", "after": "67/79", "criterion": "—", "verdict": "+1", "note": ""}
+{"bed": "旧域 S5", "slice": "count_before", "before": "73/79", "after": "74/79", "criterion": "—", "verdict": "+1", "note": ""}
+{"bed": "旧域 S5", "slice": "first_vs_last", "before": "74/79", "after": "77/79", "criterion": "—", "verdict": "+3", "note": ""}
+{"bed": "旧域 S5", "slice": "longest_tenure", "before": "69/77", "after": "70/77", "criterion": "—", "verdict": "+1", "note": ""}
+{"bed": "冻结对拍", "slice": "旧域314+P26 75 旗标关重放", "before": "—", "after": "evidence 全一致 389/389", "criterion": "逐字节不变", "verdict": "PASS", "note": "replay_evidence旗标关 vs 归档evidence_n零失配;P69重放器按纪律拒触,由P26/旧域承载"}

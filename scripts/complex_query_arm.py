@@ -54,6 +54,19 @@ CARDS = Path(r"results/wt_cards")
 # 与 qvf_router 同名同义:键控卡片覆盖目录(按 uid 先查这里,缺则回落 CARDS)。
 _CARDS_KEYED = os.environ.get("QVF_CARDS_KEYED", "")
 
+# —— 修复机制旗标(默认全 0 = 冻结行为,输出逐字节不变)——
+# QVF_OPEN_SLOT=1:_select_pool 的槽位→slot_class 匹配升级为开放规范化
+#   (字符串归一+嵌入相似度;SLOT_ALIASES 词表降级为快路径缓存,未命中不再
+#   决定失败;见 scripts/open_slot.py)。
+# QVF_OPEN_KEYS=1:键控分组以 slot_class 字符串本身为键(other:* 一等公民),
+#   字符串归一命中即可入组,不再要求命中闭集别名表(不含嵌入级)。
+# QVF_FAIL_CLOSED=1:execute 后证据包为空时不再交读者猜 —— 跳过读者调用,
+#   行记 fail_closed=true(answer 空、judge_correct=null),由跑批侧转直读臂
+#   或弃答。
+_OPEN_SLOT = int(os.environ.get("QVF_OPEN_SLOT", "0") or 0)
+_OPEN_KEYS = int(os.environ.get("QVF_OPEN_KEYS", "0") or 0)
+_FAIL_CLOSED = int(os.environ.get("QVF_FAIL_CLOSED", "0") or 0)
+
 # 与 scripts/qvf_router.py 的 SLOT_ALIASES 逐字一致(复制而非导入:qvf_router
 # 模块级即创建 anthropic 客户端并读聚焦缓存,独立跑批器不背这些副作用)。
 SLOT_ALIASES = {
@@ -245,12 +258,12 @@ def _pdate(s: str):
         return None
 
 
-def _select_pool(recs: List[dict], slot: str, mem_dates: dict,
-                 question: str = "") -> List[dict]:
-    """槽位记录池:键控优先((owner, slot_class) 分组 + SLOT_ALIASES 归一,
-    取带日期不同值数最多的组 —— 与路由键控链深同精神);无键卡片/无类命中
-    回退 slot 词重叠(_slot_match)。一人称问题且卡片带 owner 时限定
-    owner∈{"", "user"}(与 qvf_router._keyed_depth 同规则)。"""
+def _select_pool_frozen(recs: List[dict], slot: str, mem_dates: dict,
+                        question: str = "") -> List[dict]:
+    """槽位记录池(冻结路径,一字不改):键控优先((owner, slot_class) 分组
+    + SLOT_ALIASES 归一,取带日期不同值数最多的组 —— 与路由键控链深同精神);
+    无键卡片/无类命中回退 slot 词重叠(_slot_match)。一人称问题且卡片带
+    owner 时限定 owner∈{"", "user"}(与 qvf_router._keyed_depth 同规则)。"""
     fs = _norm(slot or "")
     matched = [c for c, al in SLOT_ALIASES.items() if any(a in fs for a in al)]
     keyed = [r for r in recs if r.get("slot_class")]
@@ -273,6 +286,46 @@ def _select_pool(recs: List[dict], slot: str, mem_dates: dict,
             return sorted(pool, key=lambda r: _rec_date(r, mem_dates))
     pool = [r for r in recs if _slot_match(r.get("slot", ""), slot or "")]
     return sorted(pool, key=lambda r: _rec_date(r, mem_dates))
+
+
+def _select_pool(recs: List[dict], slot: str, mem_dates: dict,
+                 question: str = "") -> List[dict]:
+    """冻结路径优先;QVF_OPEN_SLOT/QVF_OPEN_KEYS 仅做【空池救援】:冻结
+    选池非空时原样返回(证据逐字节不变),空池时才用开放槽位规范化
+    (scripts/open_slot;词表 alias 否决 + 字符串归一 + other:* 嵌入)重找
+    记录组。救援也未命中时仍返回空池,交 QVF_FAIL_CLOSED 显式降级。
+    dev 迭代 2:救援式取代迭代 1 的覆盖式 —— 覆盖式在 dev 床把 16 道原本
+    判对的题的选池换成了更深的错类组(嵌入弱匹配),净负;空池救援保证
+    非空池行为零漂移。"""
+    pool = _select_pool_frozen(recs, slot, mem_dates, question)
+    if pool or not (_OPEN_SLOT or _OPEN_KEYS):
+        return pool
+    keyed = [r for r in recs if r.get("slot_class")]
+    if not keyed:
+        return pool
+    from scripts.open_slot import match_classes  # 旗标关闭时不加载
+    om = match_classes(slot or "", {r.get("slot_class", "") for r in keyed},
+                       use_embed=bool(_OPEN_SLOT))
+    if not om:
+        return pool
+    first_person = (not question or _FP_RE.search(question)
+                    or "我" in question)
+    kp = keyed
+    if first_person and any(r.get("owner") for r in keyed):
+        kp = [r for r in keyed if (r.get("owner") or "") in ("", "user")]
+    groups: dict = {}
+    for r in kp:
+        cls = r.get("slot_class", "")
+        if cls in om and _norm(r.get("value", "")):
+            groups.setdefault(((r.get("owner") or ""), cls), []).append(r)
+    if not groups:
+        return pool
+
+    def depth(g):
+        return len({_norm(r.get("value", "")) for r in g
+                    if _rec_date(r, mem_dates)})
+    rescued = max(groups.values(), key=depth)
+    return sorted(rescued, key=lambda r: _rec_date(r, mem_dates))
 
 
 def _chain(pool: List[dict], mem_dates: dict) -> List[dict]:
@@ -672,7 +725,7 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
     client = _client()
     judge = ClaudeJudge()
     md_cache: dict = {}
-    n_run = n_ok = n_null = 0
+    n_run = n_ok = n_null = n_fc = 0
     for q in qs:
         qid, uid = q["qid"], q["uid"]
         if qid in done:
@@ -688,6 +741,32 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
         # ② 纯代码执行
         ev, derived = execute_plan(plan, _load_records(uid), mem_dates,
                                    q["question"])
+        # ②' fail-closed:空证据包不交读者猜,显式降级标记(跑批侧转直读臂
+        #    或弃答;judge_correct=null 不计入本臂判分)
+        if _FAIL_CLOSED and not ev:
+            row = {
+                "question_id": qid, "mode": "complex_arm", "uid": uid,
+                "question_type": q.get("qtype"), "question": q["question"],
+                "gold_answer": q.get("gold"), "answer": "",
+                "plan": plan, "compile_ok": ok, "evidence_n": 0,
+                "usage_input_tokens": c_in, "usage_output_tokens": c_out,
+                "judge_correct": None,
+                "judge_reason": "fail_closed: empty evidence pack; "
+                                "batch side must fall back to the direct "
+                                "arm or abstain",
+                "fail_closed": True,
+                "reader_model": MODEL,
+                "latency_s": round(time.time() - t0, 2),
+            }
+            if q.get("judge_rubric"):
+                row["judge_rubric"] = q["judge_rubric"]
+            fout.write(json.dumps(row, ensure_ascii=False) + "\n")
+            fout.flush()
+            n_run += 1
+            n_fc += 1
+            print(f"[{qid}] op={plan.get('op')} ev=0 FAIL_CLOSED "
+                  f"({time.time() - t0:.1f}s)", flush=True)
+            continue
         # ③ 读者(只见证据包 + 日期 + 问题)
         qdate = _query_date(entry, q["question"])
         rr = client.messages.create(
@@ -728,11 +807,12 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
         print(f"[{qid}] op={plan.get('op')} ev={len(ev)} "
               f"judge={jc} ({time.time() - t0:.1f}s)", flush=True)
     fout.close()
-    n_judged = n_run - n_null
+    n_judged = n_run - n_null - n_fc
     acc = f"{n_ok}/{n_judged} = {n_ok / n_judged * 100:.1f}%" if n_judged \
         else "n/a"
     print(f"COMPLEX ARM DONE: ran {n_run} (skipped {len(done)} done); "
-          f"judged {n_judged}, correct {acc}; gold=null {n_null}")
+          f"judged {n_judged}, correct {acc}; gold=null {n_null}"
+          + (f"; fail_closed {n_fc}" if _FAIL_CLOSED else ""))
 
 
 def main():

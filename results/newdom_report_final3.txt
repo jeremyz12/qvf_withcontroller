@@ -1,0 +1,100 @@
+======================================================================
+① 卡片遥测(results/wt_cards_newdom)
+
+[P26] cards=2346 闭集 913 (38.9%) other:* 1433 (61.1%) 无类 0
+  top slot_class: [('device', 348), ('other:hobby', 278), ('relationship', 266), ('location', 155), ('other:activity', 149), ('other:habit', 91), ('residence', 62), ('other:event', 59)]
+  owner: {'user': 2180, '<empty>': 129, 'Rachel': 8}
+  逐字锚点合法率 2137/2346 = 91.1%
+
+[P69] cards=2300 闭集 874 (38.0%) other:* 1426 (62.0%) 无类 0
+  top slot_class: [('device', 298), ('other:hobby', 259), ('position', 187), ('location', 176), ('other:activity', 155), ('relationship', 124), ('other:habit', 122), ('other:education', 92)]
+  owner: {'user': 2081, '<empty>': 172, 'Emily': 9}
+  逐字锚点合法率 2066/2300 = 89.8%
+
+[P1303] cards=2113 闭集 682 (32.3%) other:* 1431 (67.7%) 无类 0
+  top slot_class: [('device', 259), ('other:hobby', 209), ('other:activity', 183), ('location', 180), ('relationship', 114), ('other:habit', 80), ('position', 61), ('other:instrument', 55)]
+  owner: {'user': 1832, '<empty>': 254, 'Max': 4}
+  逐字锚点合法率 1887/2113 = 89.3%
+======================================================================
+② 路由分布与漂移
+旧域 wiki-* 基线 n=1224: wt 92.0% rt 8.0%
+[P26] n=100: wt 91 (91.0%) rt 9 (9.0%) | 聚焦槽位别名命中 90/100=90.0% | keyed_depth=None(direct/含算术直通) 0
+    dim1_current: {'wt': 25}
+    dim2_premise_mid: {'wt': 23, 'rt': 2}
+    dim4_point_in_time: {'wt': 25}
+    dim5_trajectory: {'wt': 18, 'rt': 7}
+[P69] n=100: rt 85 (85.0%) wt 15 (15.0%) | 聚焦槽位别名命中 26/100=26.0% | keyed_depth=None(direct/含算术直通) 0
+    dim1_current: {'rt': 22, 'wt': 3}
+    dim2_premise_mid: {'rt': 22, 'wt': 3}
+    dim4_point_in_time: {'rt': 18, 'wt': 7}
+    dim5_trajectory: {'rt': 23, 'wt': 2}
+[P1303] n=31: rt 23 (74.2%) wt 8 (25.8%) | 聚焦槽位别名命中 1/31=3.2% | keyed_depth=None(direct/含算术直通) 0
+    dim1_current: {'wt': 1, 'rt': 7}
+    dim2_premise_mid: {'wt': 2, 'rt': 6}
+    dim4_point_in_time: {'rt': 5, 'wt': 3}
+    dim5_trajectory: {'rt': 5, 'wt': 2}
+新域合计 n=231: rt 50.6% wt 49.4%  漂移(vs 旧域wiki): wt -42.6pp rt +42.6pp
+======================================================================
+③ S1-S4 各臂与路由组合(逐域逐题型)
+
+[P26]
+  chain-dim1_current         direct 25/25=100.0% wt 24/25= 96.0%
+  chain-dim2_premise_mid     direct 22/25= 88.0% rt 1/2= 50.0% wt 24/25= 96.0%
+  chain-dim4_point_in_time   direct 16/25= 64.0% wt 25/25=100.0%
+  chain-dim5_trajectory      direct 22/25= 88.0% rt 7/7=100.0% wt 22/25= 88.0%
+  ROUTER dim1_current: 24/25=96.0%
+  ROUTER dim2_premise_mid: 23/25=92.0%
+  ROUTER dim4_point_in_time: 25/25=100.0%
+  ROUTER dim5_trajectory: 23/25=92.0%
+  ROUTER TOTAL 95/100=95.0%
+
+[P69]
+  chain-dim1_current         direct 25/25=100.0% rt 22/22=100.0% wt 23/25= 92.0%
+  chain-dim2_premise_mid     direct 18/25= 72.0% rt 17/22= 77.3% wt 22/25= 88.0%
+  chain-dim4_point_in_time   direct 13/25= 52.0% rt 13/18= 72.2% wt 18/25= 72.0%
+  chain-dim5_trajectory      direct 19/25= 76.0% rt 17/23= 73.9% wt 18/25= 72.0%
+  ROUTER dim1_current: 25/25=100.0%
+  ROUTER dim2_premise_mid: 19/25=76.0%
+  ROUTER dim4_point_in_time: 17/25=68.0%
+  ROUTER dim5_trajectory: 19/25=76.0%
+  ROUTER TOTAL 80/100=80.0%
+
+[P1303]
+  chain-dim1_current         direct 8/8=100.0% rt 7/7=100.0% wt 8/8=100.0%
+  chain-dim2_premise_mid     direct 0/8=  0.0% rt 2/6= 33.3% wt 5/8= 62.5%
+  chain-dim4_point_in_time   direct 8/8=100.0% rt 5/5=100.0% wt 7/8= 87.5%
+  chain-dim5_trajectory      direct 5/7= 71.4% rt 4/5= 80.0% wt 5/7= 71.4%
+  ROUTER dim1_current: 8/8=100.0%
+  ROUTER dim2_premise_mid: 4/8=50.0%
+  ROUTER dim4_point_in_time: 8/8=100.0%
+  ROUTER dim5_trajectory: 6/7=85.7%
+  ROUTER TOTAL 26/31=83.9%
+======================================================================
+④ S5 编译臂 vs 直读(逐域逐题型)+ 编译遥测
+
+[P26] arm n=75 direct n=75
+  compile_ok 75/75=100.0%  空证据行 2/75=2.7%  op分布 {'count_changes': 25, 'first_last': 25, 'longest': 25}
+  change_count     arm 17/25= 68.0% direct 16/25= 64.0%
+  first_vs_last    arm 24/25= 96.0% direct 25/25=100.0%
+  longest_tenure   arm 18/25= 72.0% direct 10/25= 40.0%
+
+[P69] arm n=75 direct n=75
+  compile_ok 75/75=100.0%  空证据行 53/75=70.7%  op分布 {'count_changes': 25, 'first_last': 25, 'longest': 25}
+  change_count     arm 7/25= 28.0% direct 2/25=  8.0%
+  first_vs_last    arm 6/25= 24.0% direct 24/25= 96.0%
+  longest_tenure   arm 3/25= 12.0% direct 19/25= 76.0%
+
+[P1303] arm n=57 direct n=57
+  compile_ok 57/57=100.0%  空证据行 7/57=12.3%  op分布 {'count_changes': 25, 'first_last': 16, 'longest': 16}
+  change_count     arm 18/25= 72.0% direct 19/25= 76.0%
+  first_vs_last    arm 11/16= 68.8% direct 16/16=100.0%
+  longest_tenure   arm 10/16= 62.5% direct 9/16= 56.2%
+======================================================================
+⑤ token 记账(haiku $1/$5 /M;判官 opus-5 另计)
+建卡(不含冒烟5库): in=3413956 out=1001040 ≈ $8.42
+newdom_direct_*              n= 231 in=184882 out=19705 ≈ $0.28
+newdom_rt_*                  n= 117 in=2941532 out=168709 ≈ $3.79
+newdom_wt_*                  n= 231 in=385096 out=25907 ≈ $0.51
+newdom_s5_arm_*              n= 207 in=441595 out=18581 ≈ $0.53
+newdom_s5_direct_*           n= 207 in=162439 out=15410 ≈ $0.24
+合计(haiku 侧): in=7529500 out=1249352 ≈ $13.78

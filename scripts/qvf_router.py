@@ -39,6 +39,12 @@ _ROUTER_KEYS = int(os.environ.get("QVF_ROUTER_KEYS", "0") or 0)
 _GATE_V2 = int(os.environ.get("QVF_GATE_V2", "0") or 0)
 _GATE_DEPTH = int(os.environ.get("QVF_GATE_DEPTH", "3") or 3)
 _CARDS_KEYED = os.environ.get("QVF_CARDS_KEYED", "")
+# QVF_OPEN_SLOT=1:_keyed_depth 的聚焦槽位→slot_class 匹配升级为开放规范化
+#   (字符串归一+嵌入相似度;SLOT_ALIASES 降级为快路径缓存;scripts/open_slot)。
+# QVF_OPEN_KEYS=1:键控分组以 slot_class 字符串本身为键(other:* 一等公民),
+#   字符串归一命中即可入组(不含嵌入级)。两旗标默认 0 = 冻结行为不变。
+_OPEN_SLOT = int(os.environ.get("QVF_OPEN_SLOT", "0") or 0)
+_OPEN_KEYS = int(os.environ.get("QVF_OPEN_KEYS", "0") or 0)
 
 # 聚焦槽位文本 → 规范 slot_class 的别名表(小写子串命中;命中多类时取键深
 # 最高者)。类目与 CATALOG_PROMPT_V4 的闭集一致。
@@ -199,6 +205,12 @@ def _keyed_depth(recs, slot, question=None):
         return None
     fs = _norm(slot)
     matched = [c for c, al in SLOT_ALIASES.items() if any(a in fs for a in al)]
+    if _OPEN_SLOT or _OPEN_KEYS:
+        from scripts.open_slot import match_classes  # 旗标关闭时不加载
+        om = match_classes(slot, {r.get("slot_class", "") for r in keyed},
+                           use_embed=bool(_OPEN_SLOT))
+        if om:
+            matched = om  # 开放命中覆盖词表;未命中保持冻结回退链
     if not matched:
         return None
     first_person = (question is None or _FP_RE.search(question)
