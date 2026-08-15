@@ -1,0 +1,54 @@
+{
+  "date": "2026-08-16",
+  "motivation": "study_logs/QVF_coupling_audit_20260815.md 杀伤链②: point_in_time 的 <= 边界被出题器特判剔除、永不受检; 计数/最长口径靠出题器与执行器两侧代码手工同步对齐。",
+  "n_questions": 137,
+  "by_category": {
+    "switch_day": 20,
+    "right_endpoint": 20,
+    "chain_tail_open": 30,
+    "same_value_multi_segment": 21,
+    "same_day_multi_value": 16,
+    "year_only_mixed_with_full_date": 30
+  },
+  "n_categories": 6,
+  "min_per_category": 16,
+  "templates_per_category": {
+    "switch_day": 4,
+    "right_endpoint": 4,
+    "chain_tail_open": 8,
+    "same_value_multi_segment": 10,
+    "same_day_multi_value": 8,
+    "year_only_mixed_with_full_date": 8
+  },
+  "n_synthetic": 37,
+  "n_real": 100,
+  "real_data_scan": {
+    "nonadjacent_repeat_entries": 0,
+    "sameday_dup_entries": 0,
+    "mixed_precision_entries": 24
+  },
+  "synthetic_rationale": "same_value_multi_segment 与 same_day_multi_value 两种情形在真实数据(P108/P54/P551 共 79 条可用链)中天然出现次数为 0(nonadjacent_repeat_entries=0, sameday_dup_entries=0),故按任务指令'挑选并构造'合成;其余 4 种情形直接从真实链挑选,不合成。",
+  "gold_method": "全部经 scripts.boundary_gold.gold() 计算,零 LLM、零对拍代码 (不调用 execute_plan);干扰筛 = gen_wikistate_complex.noise_interference,S5 口径。",
+  "gold_deriver_ambiguities": "见 scripts/boundary_gold.py 顶部 AMBIGUITIES(6 条,与本文件无关的独立文件已记录,此处不重复列出)。",
+  "gen_decisions": [
+    {
+      "id": "GEN-1",
+      "site": "cat_same_day_multi_value / tie-break input order",
+      "choice": "文档未规定同日不同值应如何排序,本脚本把合成的第二条(冲突)记录放在原记录之后(即 raw_chain 中原记录先出现、冲突记录后出现)喂给 boundary_gold.gold() —— 该函数内部用稳定排序,同日的两条会保持输入顺序,循环 'if seg.date<=dk: ans=seg.value' 最终把 ans定为循环中最后处理到的那条,即本脚本选择的读法是'同日多值时,喂给推导器时排在后面的记录(在本脚本的构造语义里对应'更晚被复述/确认'的那条)对 point_in_time 生效'。这是本脚本的出题设计选择,不是 boundary_gold.py 的算子语义歧义。"
+    }
+  ],
+  "sources": [
+    "data/wikistate_full_P108.json",
+    "data/wikistate_full_P54.json",
+    "data/wikistate_full_P551.json",
+    "synthetic (same_value_multi_segment, same_day_multi_value)"
+  ],
+  "categories": [
+    "chain_tail_open",
+    "right_endpoint",
+    "same_day_multi_value",
+    "same_value_multi_segment",
+    "switch_day",
+    "year_only_mixed_with_full_date"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-16",
+  "motivation": "study_logs/QVF_coupling_audit_20260815.md P5 预言: 乱序到达若改变答案则口径依赖会话呈现顺序而非 stated_date -> 语义洞。",
+  "n_questions": 90,
+  "n_pairs": 45,
+  "n_chains": 15,
+  "by_variant": {
+    "sequential": 45,
+    "shuffled": 45
+  },
+  "avg_inversions_among_declaring_sessions_in_shuffled": 1.93,
+  "design": "每条链取 3 个非边界算子问题(current/count_changes/first_last/count_before/point_in_time,后两者用严格居中的日期,不落在任何边界上 —— 乱序子集的自变量是会话呈现顺序,不是边界情形,避免两个变量混杂),每题各配 sequential(会话按 stated_date 升序呈现,即源文件本身的顺序)与 shuffled(源文件同一组会话对象做确定性重排,session.date 字段本身不变,只改变其在会话数组里出现的位置)两版,gold 相同。",
+  "materialize_note": "本文件不重复内嵌完整会话文本(源文件本身已含,平均每条链 ~33会话,内嵌两版会显著膨胀体积且与源数据重复);每行携带 session_order(展示顺序 -> 源文件 sessions 数组下标的映射)与 uid/source,下游按 materialize_note 字段还原具体会话顺序。",
+  "shuffle_method": "Random(seed) 确定性打乱(seed = sha256(uid+'_ooo')截断整数);若打乱后链声明会话(chain_index 非 None)之间仍保持日期顺序(inversions==0),换种子重试,保证乱序版确有'后面的会话陈述更早日期事实'的情形。",
+  "sources": [
+    "data/wikistate_full_P108.json",
+    "data/wikistate_full_P54.json",
+    "data/wikistate_full_P551.json"
+  ],
+  "gold_method": "同 wsc_boundary.jsonl,经 boundary_gold.gold() 计算。"
+}
