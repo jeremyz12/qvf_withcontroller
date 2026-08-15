@@ -1,0 +1,1014 @@
+{
+ "items": [
+  {
+   "loc": "scripts/qvf_router.py:28-29",
+   "what": "写死路径 CARDS/CACHE_F",
+   "cls": "principle",
+   "reason": "落盘位置属工程配置;换健康/订阅场景只需改路径,不影响机制。",
+   "risk": "low",
+   "remedy": "移入 config/CLI 参数即可,论文无需提及。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:30",
+   "what": "MODEL=claude-haiku-4-5 写死",
+   "cls": "principle",
+   "reason": "模型选型是实验参数,任何场景都要选一个;但结论对模型的依赖未测。",
+   "risk": "low",
+   "remedy": "限制句:'结果基于 haiku-4-5,模型迁移性见附录';已有 qwen3 本地编译实验可引用。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:38-41",
+   "what": "环境旗标默认值(GATE_DEPTH=3 等)",
+   "cls": "domain_adaptation",
+   "reason": "开关本身是工程,但 GATE_DEPTH=3 是在本组基准上调出的数值;换真实库(链深分布不同)该默认未必最优。",
+   "risk": "low",
+   "remedy": "报告 GATE_DEPTH∈{2,3,4} 敏感性一行表。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:45-59",
+   "what": "SLOT_ALIASES 58 词条、7 类闭集",
+   "cls": "benchmark_specific",
+   "reason": "chairman/mayor/minister/议员 直接对应 P39 取值域,7 类恰是评测槽位。反事实:用户聊'降压药换成了缬沙坦'或'Netflix 退订改 Disney+',无一类命中,键控链深整体失效,静默回退词重叠——回退质量从未被单独测量。",
+   "risk": "high",
+   "remedy": "通用化:用 LLM/嵌入把自由槽位归一到开放规范名,别名表仅作缓存;并单独报告'别名未命中时'的回退臂准确率。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:61-63",
+   "what": "_EVENT_ARITH_RE 7 短语事件算术正则",
+   "cls": "benchmark_specific",
+   "reason": "关键词路由典型脆性:'how often'、'since when'、'从…到现在'、西班牙语等改写全部漏检;命中面恰好覆盖本组基准的时长/计数题面。反事实:真实用户问'我这段感情维持了多长时间'——'多长时间'不在表内,漏检。",
+   "risk": "high",
+   "remedy": "把事件算术意图并入 focus_of 的 LLM 分类输出(加一个 scope 或 intent 字段),正则只留作零成本预筛;做改写鲁棒性小实验(每题 3 个 paraphrase)。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:64",
+   "what": "_FP_RE 英文第一人称闭集",
+   "cls": "domain_adaptation",
+   "reason": "个人记忆域一人称判定合理,但仅英文代词+'我'字;粤语'我哋'、日语、西语场景漏检导致 owner 过滤关闭——失效方向是保守的(不过滤),损害有限。",
+   "risk": "medium",
+   "remedy": "限制句声明中英双语支持;通用化交给 focus_of 输出 owner 字段。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:76-81",
+   "what": "normkey 的 qid 归一 3 条正则",
+   "cls": "benchmark_specific",
+   "reason": "编码各结果文件命名惯例,纯评测线胶水;但审稿人看到会问'为何题号对齐要靠正则重写'。",
+   "risk": "low",
+   "remedy": "移入 per-benchmark manifest;论文不涉及。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:101-163",
+   "what": "BENCHES 15 基准闭集+mode 过滤+STALE-full 复用 stale-150 wt 文件",
+   "cls": "benchmark_specific",
+   "reason": "声明考场清单本身正常,但 mode 字符串过滤和跨基准复用结果文件把'哪次历史跑批算哪个臂'埋进代码,可复现性与口径透明度差;STALE-full 复用尤其需要解释冷库语义。",
+   "risk": "medium",
+   "remedy": "改为数据驱动 manifest + 每基准写明臂结果的生成命令;论文附录列臂来源表。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:173",
+   "what": "focus_of 失败默认 unclear→direct",
+   "cls": "principle",
+   "reason": "分类失败落到最强兜底臂是安全设计,任何场景都该如此。",
+   "risk": "low",
+   "remedy": "无需处置;可在论文中作为 graceful degradation 卖点。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:174-177",
+   "what": "重试 3 次、max_tokens=400",
+   "cls": "principle",
+   "reason": "通用调用预算,场景无关。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:204-207",
+   "what": "question=None 视同一人称;owner∈{\"\",user} 闭集",
+   "cls": "benchmark_specific",
+   "reason": "注释自认'本组基准默认一人称'——数据形态假设内嵌代码。反事实:家庭共用助手,'my wife's phone'含 my 判一人称,再把空 owner 卡并入用户本人,错池;None→一人称在真实系统无对应输入。",
+   "risk": "medium",
+   "remedy": "owner 判定交给 focus_of 输出;空 owner 记为 unknown 而非 user;限制句声明单用户假设。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:269-271",
+   "what": "链深只计带 stated_date 记录",
+   "cls": "domain_adaptation",
+   "reason": "防杂讯膨胀方向正确,但依赖日期覆盖率。反事实:真实闲聊极少自述日期,链深普遍低估→路由系统性偏向 rt/prompt 臂,wt 臂饿死。",
+   "risk": "medium",
+   "remedy": "回退到 session_date/写入序;报告按日期覆盖率分桶的路由分布。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:279",
+   "what": "score=4h+min(rel,3) 手调权重",
+   "cls": "benchmark_specific",
+   "reason": "两个魔法数在本组数据上手调,注释无外部依据;换域后槽位命中/关系边的信噪比不同,权重未必成立。拿不准判严档。",
+   "risk": "medium",
+   "remedy": "权重网格敏感性表(4→{2,4,8},封顶→{2,3,5});若结论稳健即可降为限制句。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:294-300",
+   "what": "route() 阈值 depth≥2(时序)/≥3(其余)",
+   "cls": "benchmark_specific",
+   "reason": "路由核心数值在这几个考场上定标;真实库链深分布(多数槽位深 1)下 2/3 的最优性无证据。反事实:健康域'血压'可能一周多条记录,depth 轻易≥3,过度派 wt。",
+   "risk": "high",
+   "remedy": "阈值敏感性曲线 + 已有 learned router 的跨域迁移实验(冻结在旧域学的策略,新域直接用)作为主要辩护。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:303-320",
+   "what": "route_v2 四臂门控字面量",
+   "cls": "benchmark_specific",
+   "reason": "由 _EVENT_ARITH_RE 命中直通 + 2/3 阈值 + GATE_DEPTH=3 组成,继承各成分的考场耦合;prompt 臂触发条件('时序薄链+整库皆浅')是对 LoCoMo 形态的定制。",
+   "risk": "high",
+   "remedy": "同上:各成分单独消融 + 新域零改动测试中报告四臂分布漂移。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:326-352",
+   "what": "_store_max_depth 无键卡返回 0=视为浅",
+   "cls": "benchmark_specific",
+   "reason": "与 SLOT_ALIASES 复合放大:新域别名全 miss→无键卡→全库判浅→prompt 臂触发面失控。反事实:宠物/订阅域整库无键,所有时序薄链题被改派 prompt 臂,该臂在新域的质量未知。",
+   "risk": "medium",
+   "remedy": "无键时返回'未知'并保持原路由(fail-closed);记录该分支触发率。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:363",
+   "what": "--route-log 默认路径",
+   "cls": "principle",
+   "reason": "日志落盘,场景无关。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:400",
+   "what": "计分口径:只保留 direct 臂有行的题",
+   "cls": "benchmark_specific",
+   "reason": "臂覆盖差异被口径吸收——审稿人会问被滤掉多少题、是否偏向系统强项。这是测量协议而非系统,但必须透明。",
+   "risk": "medium",
+   "remedy": "每基准报告滤除题数与滤除子集上的 direct 成绩;口径写进实验设置。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:401-402",
+   "what": "if name==\"wiki-P39\" 再按 wt 覆盖裁题",
+   "cls": "benchmark_specific",
+   "reason": "按基准名硬编码裁剪测试集,dev/test 切分靠结果文件行覆盖实现——形式上最像 cherry-picking 的一行,即使动机(dev-5 隔离)正当。",
+   "risk": "high",
+   "remedy": "立即改为数据文件层面的显式 dev/test 切分(split 字段),代码删除该分支;论文写明切分时间与理由。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:424-428, 441-445",
+   "what": "缺行降级链 rt→direct、缺行按错计",
+   "cls": "domain_adaptation",
+   "reason": "部分覆盖下的组合协议;'缺行按错计'是保守方向,可辩护。prompt 臂缺行例外(不计入)需说明不构成选择性剔除。",
+   "risk": "medium",
+   "remedy": "报告各臂缺行率与 missing_rows 数;协议写进附录。"
+  },
+  {
+   "loc": "scripts/qvf_router.py:25-26",
+   "what": "从 wt_qvf_prototype 导入 FOCUS_PROMPT/QueryFocusMini/_slot_match",
+   "cls": "principle",
+   "reason": "契约单一来源是正确做法(对比 complex_query_arm 的复制粘贴)。",
+   "risk": "low",
+   "remedy": "无;反而应把 complex_query_arm 的复制改为同样的导入。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:25",
+   "what": "QVF_EMBED_BACKEND 默认 openai",
+   "cls": "principle",
+   "reason": "嵌入后端默认值,场景无关。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:36",
+   "what": "MODEL 硬编码",
+   "cls": "principle",
+   "reason": "同 router:实验参数。",
+   "risk": "low",
+   "remedy": "限制句 + 引本地模型实验。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:37",
+   "what": "CARDS_DIR 默认",
+   "cls": "principle",
+   "reason": "可覆盖的路径默认。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:42",
+   "what": "三个提示词变体旗标默认 0",
+   "cls": "principle",
+   "reason": "冻结基线的门控,是防过拟合纪律的体现。",
+   "risk": "low",
+   "remedy": "无;可正面引用。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:60-62",
+   "what": "CATALOG_PROMPT 开放式类别示例表",
+   "cls": "principle",
+   "reason": "开放集+示例引导是正确的通用写法;habits/providers 等示例已超出评测域。反事实:健康/订阅内容可被此提示覆盖。",
+   "risk": "low",
+   "remedy": "无;与七类闭集(规则7)形成对照,可在论文强调抽取层是开放的。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:65",
+   "what": "source_span 逐字子串契约",
+   "cls": "principle",
+   "reason": "可溯源性约束,任何记忆系统都该有。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:66-71",
+   "what": "temporal_relation 四值闭集+显式换态语言要求",
+   "cls": "domain_adaptation",
+   "reason": "replacement/cessation/contradiction/unresolved 是个人状态域合理本体,但表达不了并发态(同时两份工作)、渐变(体重)、周期态(赛季)。反事实:健康域'血压高了又降'难归四类。'A later date alone is NOT replacement'是通用防错,好。",
+   "risk": "medium",
+   "remedy": "限制句:本体覆盖离散排他状态;并发/渐变列为扩展。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:72-74",
+   "what": "stated_date 只抄自述日期、禁回填元数据",
+   "cls": "principle",
+   "reason": "防信息泄漏的溯源纪律,通用正确;真实场景同样适用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:75",
+   "what": "skip small talk / no invent",
+   "cls": "principle",
+   "reason": "通用降噪指令。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:82-84",
+   "what": "owner 规则:一人称归 user",
+   "cls": "domain_adaptation",
+   "reason": "助手-用户对话形态下合理;转述('我妈说她要搬家')的归属正确性依赖模型,未测。",
+   "risk": "low",
+   "remedy": "限制句;新域测试里放几条转述句作探针。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:85-89",
+   "what": "slot_class 七类闭集+other:<noun> 逃逸",
+   "cls": "benchmark_specific",
+   "reason": "核心指控点:七个具名类与评测域一一对应(position↔P39、employer↔P108、team↔P54、residence↔P551/stale、device/relationship↔LME/LoCoMo 题材)。有 other: 逃逸,但下游(SLOT_ALIASES、键控链深、_select_pool)只认七类,other 卡在键控路径全部失能——逃逸类是二等公民。反事实:就读学校、药物、订阅全进 other:*,复杂算子退化到词重叠池。",
+   "risk": "high",
+   "remedy": "两步走:①代码通用化——下游按 slot_class 字符串本身分组(含 other:xxx),别名表只做规范化不做准入;②泛化实验——报告 other:* 卡上的全链路成绩。这是零改动新域测试的中心测项。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:95-101",
+   "what": "value_tags 十类中文闭集+食品子标签 few-shot",
+   "cls": "benchmark_specific",
+   "reason": "标签体系与 S7 出题共享同一闭集(gen CLOSED_TAGS 逐字相同),评测是自己给自己出题的闭环:系统按 X 分类打标,考题从 X 采样,executor 按值 exact match。反事实:真实用户话题(法律、育儿、宗教)无类可归;且十类是中文,英文用户库打中文标签的行为未验证。",
+   "risk": "high",
+   "remedy": "S7 结论必须限定为'闭集标签检索能力'并明说标签域与出题域同源;或做开放标签版(LLM 自由打标+嵌入匹配)对照。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:126",
+   "what": "TAGS 规则编号 n=8/6",
+   "cls": "principle",
+   "reason": "提示词拼装编号,纯工程。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:109-118",
+   "what": "STRICT 规则:54th vs 55th 示例、taking up 限定、Paris 反例",
+   "cls": "benchmark_specific",
+   "reason": "注释自认由 P39 连任失败根因驱动,few-shot('54th/55th')直接取自考场取值形态,Paris 反例针对 residence 考题噪声。这是全库最接近'对着测试集写规则'的制品。反事实:健康域的近同值(体重 74/75kg)、订阅域的续费 vs 换购各有形态,此补丁不迁移。",
+   "risk": "high",
+   "remedy": "①论文必须交代该规则的迭代来自 dev 切分且 test 冻结在后(拿出时间戳/commit 证据);②把示例抽象为'同槽位近同值的独立宣告各自成卡'并换成非考场域示例重跑验证等效。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:164",
+   "what": "分批预算 320000 字符",
+   "cls": "principle",
+   "reason": "上下文预算工程。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:167",
+   "what": "+60 字符包装开销",
+   "cls": "principle",
+   "reason": "计量常数。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:181",
+   "what": "建卡 max_tokens=16000",
+   "cls": "principle",
+   "reason": "输出上限+截断触发分批,通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:194",
+   "what": "空记录且批>8 判静默投降",
+   "cls": "principle",
+   "reason": "批处理失败启发式,场景无关。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:197",
+   "what": "递归终止条件",
+   "cls": "principle",
+   "reason": "兜底截止,通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:226-234",
+   "what": "QueryFocusMini.slot few-shot 正例+NEVER 负例闭表",
+   "cls": "domain_adaptation",
+   "reason": "'never career progression/history' 是对抽象槽位名这一通用错误模式的修正,可迁移;但正例 'position/job'/'residence city' 与评测槽位重合,有轻度引导。反事实:健康域'blood pressure med'大概率仍能命名正确。",
+   "risk": "medium",
+   "remedy": "正例换成评测域外槽位(medication、subscription plan)重跑,证明示例内容不承载性能;成本极低。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:235",
+   "what": "scope 四值闭集",
+   "cls": "domain_adaptation",
+   "reason": "current/point_in_time/trajectory/unclear 是时态查询的合理类型学(时态 QA 文献有对应),且 unclear→direct 是安全逃逸;但它与基准题型同构且同出一手,需外部依据支撑。反事实:'我平均多久换一次手机'(聚合)落 unclear→direct,可接受但非最优。",
+   "risk": "medium",
+   "remedy": "论文引用时态 KGQA 类型学作独立依据;声明聚合/比较类查询由 direct 臂兜底。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:236",
+   "what": "point_date 格式 YYYY-MM-DD",
+   "cls": "domain_adaptation",
+   "reason": "依赖 LLM 把'去年圣诞'解析成 ISO;基准题面日期本就是 ISO,真实相对日期表达的解析成功率未测。",
+   "risk": "medium",
+   "remedy": "新域测试放相对日期改写探针;失败落 unclear 是安全方向。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:237-241",
+   "what": "presupposed_value few-shot(Xperia)",
+   "cls": "principle",
+   "reason": "单个通用示例定义字段语义,示例域(手机)非考场专属。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:244-253",
+   "what": "FOCUS_PROMPT 全文",
+   "cls": "domain_adaptation",
+   "reason": "scope 定义重述+premised help 特判;特判对应 stale 题型但语义通用(带前提的求助确实该查当前态)。",
+   "risk": "low",
+   "remedy": "无需改;与 :235 共用限制句。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:255-266",
+   "what": "READER_SYSTEM:宣称摘录已验证、笔记权威、反弃答",
+   "cls": "benchmark_specific",
+   "reason": "'outdated information has already been removed'是对读者说谎(检索并不保证),'do not say you lack the information'直接对着 LLM-judge 的弃答扣分写。反事实:真实部署中上游一旦错,读者被指令禁止怀疑,自信输出错误答案——这是把评测分数换真实可靠性的交易。",
+   "risk": "high",
+   "remedy": "改为'笔记是上游模块的结论,附日期证据,除非摘录明确矛盾否则采信';补一个对抗实验:注入错误笔记,测读者盲从率,新旧措辞对比。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:269-270",
+   "what": "_norm 小写+空白折叠",
+   "cls": "domain_adaptation",
+   "reason": "隐含英文分词;中文值无词界,整值成单 token,word-overlap 类匹配对 CJK 全部退化为子串匹配。系统宣称中英混排支持,此处是软肋。反事实:'住在北京市海淀区' vs '北京',子串命中侥幸可用,但'搬去上海了' vs '上海市'方向不定。",
+   "risk": "medium",
+   "remedy": "CJK 分支用字符 n-gram 或嵌入;论文限制句声明匹配层以英文为主。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:273-280",
+   "what": "_slot_match 至多差一词阈值",
+   "cls": "domain_adaptation",
+   "reason": "手写模糊阈值,开放槽位下有已知假阳性:'phone number' vs 'phone model' 交集 1≥min(2,2)-1 即合并。评测域槽位名短且互斥,掩盖了该风险。",
+   "risk": "medium",
+   "remedy": "嵌入相似度+阈值扫描替换;或至少构造对抗槽位对做单元测试并报告。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:283-284",
+   "what": "_rec_date 优先级 stated>session",
+   "cls": "principle",
+   "reason": "自述日期优先于元数据是通用正确的时间溯源顺序。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:327",
+   "what": "top_k=10",
+   "cls": "principle",
+   "reason": "检索规模默认参数。",
+   "risk": "low",
+   "remedy": "敏感性一行(k=5/10/20)可选。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:332",
+   "what": "聚焦 max_tokens=500",
+   "cls": "principle",
+   "reason": "预算参数。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:380-387",
+   "what": "comp_score=4×hits+min(edges,3)",
+   "cls": "benchmark_specific",
+   "reason": "注释自认权重取向来自观察到的污染形态(累加链无 replacement 边、闲聊反而有边)——这是在本组数据的噪声分布上手调的。反事实:换一个写入侧行为不同的库,'边多=污染'的先验可能反转。",
+   "risk": "medium",
+   "remedy": "权重敏感性表;把'为何槽位命中权重压倒关系边'的经验理由升级为跨库统计证据。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:397",
+   "what": "len(w)>3 长词过滤",
+   "cls": "domain_adaptation",
+   "reason": "英文停用词的长度代理:值为'IBM'(3字符)的雇主永远无法锚定;CJK 整串成词绕过过滤。真实短值(BMW、UNSW)域必踩。",
+   "risk": "medium",
+   "remedy": "换真正的停用词表;加'短值锚定'单元测试。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:394-404",
+   "what": "预设值锚定回退(双向子串/长词交集)",
+   "cls": "domain_adaptation",
+   "reason": "第二通道机制通用,匹配规则继承 _norm/长词过滤的英文假设与子串脆性。",
+   "risk": "medium",
+   "remedy": "随 _norm/_slot_match 一并升级;机制本身可保留。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:405-406",
+   "what": "无日期卡整卡丢弃",
+   "cls": "domain_adaptation",
+   "reason": "链时序化需要日期,但'丢弃'依赖评测集近乎满额的日期覆盖(合成数据+session_date 兜底)。反事实:真实聊天大量无日期陈述,轨迹题证据被系统性抽空,wt 臂空转。拿不准严判?——机制上有 session_date 兜底,真无日期才丢,判 domain_adaptation 但高危。",
+   "risk": "high",
+   "remedy": "回退写入序/回合序作弱时序;报告按日期覆盖率分桶的 wt 成绩;限制句明写。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:409-414",
+   "what": "值级去重首见保留",
+   "cls": "domain_adaptation",
+   "reason": "全局去重使 A→B→A 回归态丢失回归段——'搬回老家'在轨迹里消失。评测集少回归态所以没暴露(complex arm 另写了相邻合并口径,恰说明作者知道此处有坑)。",
+   "risk": "medium",
+   "remedy": "改为相邻合并(与 _chain 口径统一);加回归态单元测试。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:419",
+   "what": "时点裁决字符串日期比较",
+   "cls": "principle",
+   "reason": "零填充 ISO 上字典序=时间序,配合 parse_partial_date 规约成立;通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:424-428",
+   "what": "时点裁决行 'This IS the answer; do not claim...'",
+   "cls": "benchmark_specific",
+   "reason": "强反弃答措辞对着 judge 的弃答判罚写;真实部署中裁决若错(日期解析偏差),用户被喂以钦定错误答案。",
+   "risk": "medium",
+   "remedy": "软化为'依据以下日期证据回答';与 READER_SYSTEM 一起做盲从率对抗实验。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:431-434",
+   "what": "时点越界回退模板",
+   "cls": "principle",
+   "reason": "'问询早于全部已知态'的诚实回退,任何场景通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:436-440",
+   "what": "trajectory 完整历史模板",
+   "cls": "domain_adaptation",
+   "reason": "轨迹注入通用;'Give the complete ordered history'假设链短,真实长链(几十条)会撑爆 1-3 句约束。",
+   "risk": "low",
+   "remedy": "链长上限+摘要分支。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:443-445",
+   "what": "current 模板",
+   "cls": "principle",
+   "reason": "当前态裁决行,通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:450-463",
+   "what": "过时前提手术:drop 旧摘录+纠偏指令",
+   "cls": "domain_adaptation",
+   "reason": "机制(检测过时前提并纠正)是论文核心贡献且域通用;但'把旧卡整体移出摘录'过于激进——真实对话用户可能紧接着问旧状态;匹配规则继承英文长词假设。",
+   "risk": "medium",
+   "remedy": "旧摘录保留但加 [OUTDATED] 标注;匹配规则随 _norm 升级;这是该改代码而非改措辞的一项。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:471-481",
+   "what": "读者输入版式常量+TODAY'S DATE 注入",
+   "cls": "principle",
+   "reason": "上下文组装框架通用;TODAY'S DATE 在真实部署取系统时钟,依赖 question_date 只是评测态。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:483",
+   "what": "读者 max_tokens=1000/temp=0",
+   "cls": "principle",
+   "reason": "确定性评测参数。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:512-513",
+   "what": "CLI 默认指向 stale_chain 数据集",
+   "cls": "benchmark_specific",
+   "reason": "默认值可覆盖,危害仅在观感——'默认考场'坐实耦合印象。",
+   "risk": "low",
+   "remedy": "默认改 required 参数,一分钟工作量。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:142",
+   "what": "memory_id.split('/')[0] 取 uid",
+   "cls": "domain_adaptation",
+   "reason": "ID 架构假设,任何接入需适配层;真实系统 ID 无此形态即崩。属数据 schema 契约而非考场逻辑。",
+   "risk": "low",
+   "remedy": "文档化输入 schema 契约。"
+  },
+  {
+   "loc": "scripts/wt_qvf_prototype.py:158",
+   "what": "session_date 键名硬编码",
+   "cls": "domain_adaptation",
+   "reason": "同上,schema 契约。",
+   "risk": "low",
+   "remedy": "同上。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:52-55",
+   "what": "模型/卡片目录默认",
+   "cls": "principle",
+   "reason": "配置默认,场景无关。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:59-73",
+   "what": "SLOT_ALIASES 复制版(与 router 逐字一致)",
+   "cls": "benchmark_specific",
+   "reason": "同 qvf_router:45-59 的全部问题,外加复制而非导入的漂移隐患(两表失同步则路由与执行池口径分裂)。",
+   "risk": "high",
+   "remedy": "改导入单一来源;通用化方案同 router 条目。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:75",
+   "what": "_FP_RE+'我' 一人称判定",
+   "cls": "domain_adaptation",
+   "reason": "同 router:64,失效方向保守。",
+   "risk": "medium",
+   "remedy": "同 router 条目。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:76",
+   "what": "_TODAY_RE 匹配 '(Today is X.)' 题面前缀",
+   "cls": "benchmark_specific",
+   "reason": "正则与自家出题模板逐字耦合,是'对着考场写代码'的字面证据:真实用户永远不会写 '(Today is 2007-01-22.)'。换出题模板即失效,回落 +1 月算式(另一个考场约定)。",
+   "risk": "high",
+   "remedy": "评估时钟从 harness 元数据字段显式传入,严禁从题面文本抠;此条必须改代码,限制句救不了。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:78",
+   "what": "EVIDENCE_CAP=12",
+   "cls": "principle",
+   "reason": "证据包截断,通用预算。",
+   "risk": "low",
+   "remedy": "可选敏感性。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:79",
+   "what": "_SPAN_CAP=240",
+   "cls": "principle",
+   "reason": "引文长度上限,通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:81-83,88-90",
+   "what": "11 算子闭集",
+   "cls": "benchmark_specific",
+   "reason": "算子集与题型 S5a-d/S6/S7 近一一对应,没有任何基准不考的算子(无区间重叠、无差值、无跨槽聚合、无存在性判断)。这使'查询计划编译'贡献无法与'为这些题各写一个 handler'区分。反事实:'我房租一共涨了多少'、'我有没有同时打两份工'均不可编译,回落 current 空计划。",
+   "risk": "high",
+   "remedy": "论文重新定位:算子集是可扩展代数的一个实例,并给出编译失败→兜底的覆盖率数据;最好补 1-2 个不入评测的算子(如 delta/overlap)证明框架可扩展性;新域测试统计 op 分布与回落率。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:92-119",
+   "what": "CompiledPlan Field 描述内嵌 'my second employer'→2、饮食/高糖示例",
+   "cls": "benchmark_specific",
+   "reason": "schema 说明文本把 S6 题面短语和 S7 考题标签原样泄给编译模型——few-shot 之外的第二条泄漏通道。",
+   "risk": "high",
+   "remedy": "示例换成评测域外实例('my third apartment'、宠物/药物标签)重跑对照,量化泄漏贡献。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:122-174",
+   "what": "COMPILE_PROMPT 6 few-shot 与基准出题模板逐字/同构",
+   "cls": "benchmark_specific",
+   "reason": "全库杀伤力最大一项:#1↔S5b、#2↔S5c 逐字同构,#3/#4 在 tag=饮食/高糖 时与 S7 模板连括号 gloss 都逐字相同,#5/#6↔S6 短语同词。这是提示词空间的 train-on-test:编译准确率(含本地 qwen3 100% 复现)在多大程度上只是模板匹配,现有实验无法回答。",
+   "risk": "high",
+   "remedy": "必做实验:few-shot 全部改写为表面形式不相交的域外示例(药物/订阅/菜谱),冻结重跑全部基准,报告 delta;delta 小则指控解除,delta 大则结论要重写。这应排在所有处置的第一优先级。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:132-159",
+   "what": "op semantics 与 'never an abstraction'、序数映射规则",
+   "cls": "domain_adaptation",
+   "reason": "算子语义说明与'slot 不许抽象名词'是对通用编译错误模式的修正,序数映射是语言学通用规则,可迁移。",
+   "risk": "low",
+   "remedy": "无需改;随 few-shot 重写一并保留。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:178-184",
+   "what": "READER_SYSTEM 框定(each dated / 1-3 sentences)",
+   "cls": "domain_adaptation",
+   "reason": "聊天助手框定通用;'1-3 sentences'是对话风格约束,顺带迎合 judge 简洁偏好,但不构成信息性作弊。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:195-198,211-212",
+   "what": "compile 重试/预算/空计划降级",
+   "cls": "principle",
+   "reason": "失败降级到 current 空计划继续跑是安全设计。",
+   "risk": "low",
+   "remedy": "报告 ok=False 率即可。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:258-262",
+   "what": "owner∈{\"\",user} 闭集",
+   "cls": "domain_adaptation",
+   "reason": "单用户助手域合理;空 owner 视同 user 在多主体库会错并。较 router 版少了 None→一人称的考场假设,判轻一档。",
+   "risk": "medium",
+   "remedy": "空 owner 记 unknown;限制句。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:264-273",
+   "what": "分组择优:取带日期不同值最多的组",
+   "cls": "benchmark_specific",
+   "reason": "'变更最多的组=被问槽位'仅在'每条目单一长链'的合成结构下成立。反事实:真实用户 residence 换了 5 次、position 换了 1 次,问 position 却聚焦 residence 组——别名命中时有 slot_class 过滤兜着,别名 miss 时此启发式就是错误来源。",
+   "risk": "high",
+   "remedy": "组选择以槽位名-组名匹配(嵌入)为主、深度为并列破除;新域测试单独报告'别名 miss 且多链共存'切片。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:274-275",
+   "what": "无键回退 _slot_match",
+   "cls": "domain_adaptation",
+   "reason": "兜底通道正确,继承 _slot_match 的阈值脆性。",
+   "risk": "medium",
+   "remedy": "随 _slot_match 升级。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:283-289",
+   "what": "_chain 相邻同值合并、非相邻重现计再变更",
+   "cls": "benchmark_specific",
+   "reason": "口径本身('计转移数')语义上可辩护,但它与 gold=len(chain)-1 的对齐靠出题器和执行器同一作者手工同步——不是算子普适性的证据。反事实:真实用户对'搬了几次家'的期望可能计非相邻回归为一次或两次,无外部标注佐证。",
+   "risk": "medium",
+   "remedy": "小规模人工标注(30 题)验证计数语义符合人类期望;或在论文明写口径定义并承认由两侧共享。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:293-302",
+   "what": "_label 回退与证据行模板",
+   "cls": "principle",
+   "reason": "呈现格式,场景无关。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:311",
+   "what": "_COUNT_OPS 闭集限定池清洗范围",
+   "cls": "benchmark_specific",
+   "reason": "按题型分岔的特判开关:清洗只开在计数类算子上,说明清洗规则不敢全局开(会伤其他题型)——补丁性质的自供。",
+   "risk": "medium",
+   "remedy": "若清洗是普适卫生,应全局开并证明无害;否则承认是计数 gold 对齐的定向处理。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:312-314",
+   "what": "_DATEPHRASE_RE 剔除日期短语碎卡",
+   "cls": "benchmark_specific",
+   "reason": "针对 WikiState 抽取错误形态('6 months before 1980-02-12')的 dev 补丁。反事实:真实值可以合法含时长('签证 3 months'、'gym membership 12 months'),被误删;真实抽取噪声形态不同,此正则不迁移。",
+   "risk": "high",
+   "remedy": "上游修抽取(STRICT 提示或后验校验 value 是否日期短语),下游过滤删除;至少报告 with/without 消融证明主结论不依赖它。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:317-339",
+   "what": "同源保一:每 source_memory_id 只留一卡",
+   "cls": "benchmark_specific",
+   "reason": "'一句话至多一个状态'是 WikiState 合成器的构造性质,不是自然语言性质。反事实:'我搬到柏林并入职 SAP 了'一条消息两个状态,清洗删掉一个,计数与轨迹双错。",
+   "risk": "high",
+   "remedy": "放宽为每 (source, slot_class) 保一;新域测试放多状态单消息探针;报告消融。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:342-348",
+   "what": "_ordinal_en 序数后缀",
+   "cls": "principle",
+   "reason": "英文序数语言学规则,通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:369-370",
+   "what": "anchor_index int 且非 bool",
+   "cls": "principle",
+   "reason": "入参清洗,通用防御。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:376-377,389-392",
+   "what": "锚匹配:序数直取/值锚双向子串",
+   "cls": "domain_adaptation",
+   "reason": "双向子串宽度是手选,英文长值可用;CJK 与缩写值(前述 IBM 类)脆。机制通用。",
+   "risk": "medium",
+   "remedy": "随匹配层统一升级到嵌入;边界单测。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:379-400,410-416,420-425",
+   "what": "四条降级结论行(say so instead of guessing)",
+   "cls": "principle",
+   "reason": "失败时指令读者承认而非编造——诚实方向的降级,通用正确,与反弃答模板形成对照。",
+   "risk": "low",
+   "remedy": "无;可正面引用。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:441-448",
+   "what": "±1 相邻证据裁剪+'This IS the answer.'",
+   "cls": "benchmark_specific",
+   "reason": "答案钦定措辞同 :424 家族,对 judge 写;±1 裁剪假设单跳邻接够用,是对 S6 题结构的适配。",
+   "risk": "medium",
+   "remedy": "措辞软化;裁剪窗口作参数并报敏感性。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:469-487",
+   "what": "tag 算子结论行与 S7_RUBRIC 对齐",
+   "cls": "benchmark_specific",
+   "reason": "被评系统的输出指令('Mention ONLY these items, each with date')与评审 rubric('cite only items actually present, with dates')同一作者、语义对齐——评测闭环:按评分标准反写提示词。反事实:换独立 rubric(如'需归纳趋势原因')此指令反而扣分。",
+   "risk": "high",
+   "remedy": "S7 判分换独立第三方 rubric 或人工双评;论文披露 rubric 与系统提示的作者同源并给出对齐前的成绩。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:503-517",
+   "what": "premise_check 排除当前态+双向包含",
+   "cls": "domain_adaptation",
+   "reason": "过时前提机制通用(核心贡献);匹配继承子串脆性。",
+   "risk": "medium",
+   "remedy": "随匹配层升级;保留机制。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:518-534",
+   "what": "point_in_time ≤ 边界语义",
+   "cls": "domain_adaptation",
+   "reason": "≤ 择向本身是合理约定,但 gen S6 特判④把边界题全部剔除,该语义在基准上零覆盖——'从不被检验'比'被检验错'更难辩护。",
+   "risk": "medium",
+   "remedy": "补边界日单元测试+基准加边界子集(见 gen 289-296 条);二者一起做。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:544-563",
+   "what": "longest:仅闭区间、末段开区间不计",
+   "cls": "benchmark_specific",
+   "reason": "注释自认'与 gen S5a 同口径'——gold 对齐靠两侧代码同步。且该口径在真实语义上可疑:用户问'哪份工作干得最久',在职 10 年的当前工作被排除,答案违反直觉;评测没暴露是因为出题器同样排除。",
+   "risk": "high",
+   "remedy": "改为含进行中区间(截至 today)并同步重生成 gold;或论文明确定义并辩护'已完结任期'语义;人工标注验证哪种符合期望。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:564-573",
+   "what": "count_before 严格 <",
+   "cls": "benchmark_specific",
+   "reason": "与 gen 'strictly before' 口径两侧同步;且 S5c 用中点构造保证问日期不落链日期,</≤ 之别在基准上同样零覆盖。",
+   "risk": "medium",
+   "remedy": "边界单测+文档化口径;与 S5c 中点构造条目一起交代。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:584-593",
+   "what": "reader_content 拼装模板",
+   "cls": "principle",
+   "reason": "上下文版式,通用。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:614-628",
+   "what": "_query_date 兜底:末链日期+1 月",
+   "cls": "benchmark_specific",
+   "reason": "评估时钟约定在执行器与数据加载器两处手写同步——真实部署时钟是系统时间,+1 月算式无任何现实对应,纯粹是让考卷可判的约定。与 _TODAY_RE 同病。",
+   "risk": "high",
+   "remedy": "时钟作为显式输入参数从 harness 传入,删除题面解析与 +1 月算式;同一改动解决 :76。"
+  },
+  {
+   "loc": "scripts/complex_query_arm.py:692-694",
+   "what": "READ 调用参数",
+   "cls": "principle",
+   "reason": "确定性评测参数。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:55-70",
+   "what": "parse_partial_date 00 规约为月首/年首",
+   "cls": "domain_adaptation",
+   "reason": "部分日期规约是 Wikidata 数据处理通用做法;风险在执行器导入同一函数——被测系统与出题器共享解析,解析 bug 双侧抵消不可见。",
+   "risk": "medium",
+   "remedy": "执行器持有独立实现+交叉测试;或披露共享并给不确定日期敏感性。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:73-76",
+   "what": "_q_slot 剥 ' held' 尾缀",
+   "cls": "benchmark_specific",
+   "reason": "与 Wikidata 'position held' 命名逐字耦合;出题器工具,系统侧不依赖。",
+   "risk": "low",
+   "remedy": "无需处置,属基准构建代码。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:83-88",
+   "what": "_FAMILY_TERMS 四家族干扰词表",
+   "cls": "benchmark_specific",
+   "reason": "gold 唯一性由手写词表保障:漏词(gig/transferred/onboard)即噪声实际干扰却标记干净,gold 失真而无人知。这是基准效度问题,比系统过拟合更根本。",
+   "risk": "high",
+   "remedy": "抽样 50 条人工审计噪声干扰漏检率;或用 LLM 判干扰替代词表并报告一致率;审计结果进附录。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:89-91",
+   "what": "_TRANSITION_RE 转变动词表",
+   "cls": "benchmark_specific",
+   "reason": "同上,词表第二条件,漏检风险同源。",
+   "risk": "medium",
+   "remedy": "并入上条审计。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:95-100",
+   "what": "_slot_family 默认回落 position",
+   "cls": "benchmark_specific",
+   "reason": "槽位域假设写死;新属性域默认按 position 家族筛干扰,词表错配。",
+   "risk": "low",
+   "remedy": "新域出题时必须扩家族表——这本身证明出题器不域通用,论文别声称基准生成器可直接迁移。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:103-117",
+   "what": "noise_interference:60 字符前缀豁免、residence 免转变词",
+   "cls": "benchmark_specific",
+   "reason": "dev 手调细节,决定题集边界;residence 特例说明规则不自洽,是逐家族补丁。",
+   "risk": "medium",
+   "remedy": "披露筛除率按家族分解;并入人工审计。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:122-123",
+   "what": "len(chain)>=3 准入",
+   "cls": "benchmark_specific",
+   "reason": "基准范围定义,合理但需披露:短链(1-2 态)用户被排除,而真实库以短链为主——基准难度分布与真实分布背离。",
+   "risk": "low",
+   "remedy": "实验设置写明准入条件与被排除比例。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:137-138,273-275",
+   "what": "非单调日期链整条跳过",
+   "cls": "benchmark_specific",
+   "reason": "把执行器难处理的乱序链从基准移除——基准被净化到系统强项区。反事实:真实对话乱序披露是常态('对了我其实去年就搬了');系统在乱序上的行为完全未测。",
+   "risk": "high",
+   "remedy": "报告跳过率;把被跳条目做成 non-monotonic 压力子集,冻结系统跑一遍,成绩如实报告。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:146-149",
+   "what": "CONTESTED 命中整条跳过",
+   "cls": "benchmark_specific",
+   "reason": "题集二次裁剪;方向可辩护(保 gold 唯一)但削弱了'抗噪'声称——被噪声碰到的题都删了,何谈抗噪。",
+   "risk": "medium",
+   "remedy": "披露 CONTESTED 率;抗噪声称限定到保留题集或另测 CONTESTED 子集。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:153-173",
+   "what": "S5a longest 模板+口径",
+   "cls": "benchmark_specific",
+   "reason": "单模板出题→题面 77.1% 可预测基准身份(自家消融已证);口径与执行器 longest 分支逐字对齐(见 complex 544-563)。",
+   "risk": "high",
+   "remedy": "每题型至少 5 个由独立作者/LLM 改写的表面形式;已有的消融数据要在论文正面引用而非回避。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:176-184",
+   "what": "S5b 模板 gold=len-1",
+   "cls": "benchmark_specific",
+   "reason": "与 COMPILE few-shot #1 同句式——考题与被测系统提示词同模板,最直接的同分布问题。",
+   "risk": "high",
+   "remedy": "随 few-shot 重写实验一并解决;模板多样化。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:188-210",
+   "what": "S5c 中点构造 gap>=2、模板",
+   "cls": "benchmark_specific",
+   "reason": "与 few-shot #2 逐字同构;中点构造刻意规避 </≤ 边界歧义——出题器绕开执行器的未定义行为,双侧协同的又一证据。",
+   "risk": "high",
+   "remedy": "模板多样化+补边界日期题子集(不规避,直接考)。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:213-220",
+   "what": "S5d 模板与 gold 格式串",
+   "cls": "benchmark_specific",
+   "reason": "单模板;gold 是格式串,判分对措辞的容忍度依赖 judge。",
+   "risk": "medium",
+   "remedy": "模板多样化;判分标准写明。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:225-226",
+   "what": "_S6_PHRASE 家族短语表",
+   "cls": "benchmark_specific",
+   "reason": "'started at' 与 few-shot #5/#6 同词——题面短语进了被测系统提示词。",
+   "risk": "high",
+   "remedy": "短语表扩到每家族 3+ 变体,few-shot 用不相交短语。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:229-230",
+   "what": "_ORDINALS first..tenth",
+   "cls": "benchmark_specific",
+   "reason": "序数词表是英语通用知识,但仅存在于出题器;低危。",
+   "risk": "low",
+   "remedy": "无需处置。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:233-236",
+   "what": "_s6_ask:residence 问 'where was I living'",
+   "cls": "benchmark_specific",
+   "reason": "问法与 few-shot #5/#6 逐字一致——同分布证据链一环。",
+   "risk": "medium",
+   "remedy": "随模板多样化解决。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:249-256",
+   "what": "S6 双家族干扰筛",
+   "cls": "benchmark_specific",
+   "reason": "复用词表,继承其漏检风险。",
+   "risk": "medium",
+   "remedy": "并入词表审计。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:289-296",
+   "what": "S6 四条跳题特判(含④边界日跳过)",
+   "cls": "benchmark_specific",
+   "reason": "④把 T 恰落边界的题全删——执行器 point_in_time 的 ≤ 择向在基准上永不被检验,基准无法证伪执行器的边界语义。①②③是 gold 唯一性的合理保障。",
+   "risk": "high",
+   "remedy": "边界题不删,改为双答案可接受或单列 adversarial split;报告各条跳过率。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:299-314",
+   "what": "S6 显式题模板",
+   "cls": "benchmark_specific",
+   "reason": "与 few-shot #5 同构;单模板可预测。",
+   "risk": "high",
+   "remedy": "模板多样化+few-shot 域外化,同前。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:318-341",
+   "what": "S6 隐式序数孪生模板",
+   "cls": "benchmark_specific",
+   "reason": "'my second employer' 正是 few-shot #6 与 Field description 双通道泄漏的短语——隐式题的'隐式'被 few-shot 明示破解。",
+   "risk": "high",
+   "remedy": "同上;序数锚 few-shot 换域外槽位('my third apartment')验证能力真伪。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:349-350",
+   "what": "CLOSED_TAGS 十类中文闭集(与写入侧共享)",
+   "cls": "benchmark_specific",
+   "reason": "出题标签域=系统打标域=同一常量语义复制,S7 是闭环自考:考纲、答题者知识库、评分标准全部同源。反事实:独立标注者按自己的类目出题,exact match 立即失效。",
+   "risk": "high",
+   "remedy": "S7 结论降级为'闭集标签一致性';或引入独立标签体系出题的对照组。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:352-363",
+   "what": "_TAG_AREA gloss/area 映射",
+   "cls": "benchmark_specific",
+   "reason": "饮食条目 gloss 与 few-shot #3 逐字一致——连注释性括号都同源。",
+   "risk": "high",
+   "remedy": "随 few-shot 重写解决。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:365-366",
+   "what": "SUB_TAGS 四子标签",
+   "cls": "benchmark_specific",
+   "reason": "高糖条目与 few-shot #4 逐字一致;子标签仅 4 个且全在食品域,S7b 覆盖面极窄。",
+   "risk": "medium",
+   "remedy": "扩子标签域+few-shot 换域;S7b 声称范围收窄。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:368-369",
+   "what": "S7_RUBRIC 评审标准",
+   "cls": "benchmark_specific",
+   "reason": "rubric 与被评系统结论行指令同手同义(见 complex 469-487)——评分标准与应试提示互相塑形,判分独立性不成立。",
+   "risk": "high",
+   "remedy": "独立第三方 rubric 或人工双评;这是 S7 成绩可信度的先决条件。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:374-377",
+   "what": "crc32 取模选标签",
+   "cls": "principle",
+   "reason": "确定性抽样工程,子集稳定是好性质。",
+   "risk": "low",
+   "remedy": "无。"
+  },
+  {
+   "loc": "scripts/gen_wikistate_complex.py:379-396",
+   "what": "S7a/b 题面模板",
+   "cls": "benchmark_specific",
+   "reason": "与 few-shot #3/#4 在 饮食/高糖 实例化下完全逐字相同——全库模板-few-shot 重合的最强点,等价于把测试题印进了系统提示词。",
+   "risk": "high",
+   "remedy": "few-shot 域外重写实验的首要检验对象;S7 现有成绩在论文中不可作为泛化证据引用。"
+  }
+ ],
+ "summary": "三类计数:principle 36 项(路径/预算/重试/版式/溯源契约/诚实降级等——换任何场景都成立,多数无需处置);domain_adaptation 24 项(时态本体、scope 类型学、模糊匹配阈值、英文分词假设、owner 单用户假设、无日期丢弃等——面向个人状态记忆合理但需扩展或限制句,其中无日期整卡丢弃与匹配层 CJK/短值脆性是高危扩展点);benchmark_specific 46 项。benchmark_specific 中最危险三项:① complex_query_arm.py:122-174 COMPILE_PROMPT 六个 few-shot 与 gen_wikistate_complex 出题模板逐字/同构(S7 的 饮食/高糖 实例化连括号 gloss 都相同,并经 :92-119 Field description 二次泄漏)——提示词空间的 train-on-test,现有编译准确率无法与模板匹配区分;② 11 算子闭集(:81-90)与题型一一对应且计数/最长/边界口径靠出题器-执行器两侧代码手工同步对齐(longest 排除进行中区间、count_before 严格 <、point_in_time ≤ 边界被 gen 特判④从基准中剔除永不受检)——'查询计划编译'贡献与'每题型写一个 handler'不可区分;③ SLOT_ALIASES 七类闭集 + slot_class 七具名类 + CLOSED_TAGS 十标签闭环(router:45-59、prototype:85-89/95-101、gen:349-350)——键控机制的全部下游只认考场槽位域,S7 更是考纲/知识库/评分标准三位同源的自考闭环。紧随其后的高危:_TODAY_RE 从题面抠时钟(:76)与 +1 月约定(:614-628)、wiki-P39 按名裁题(router:401-402)、非单调链整条剔除(gen:137-138)、_hygiene 同源保一与日期短语正则(complex:312-339)、READER_SYSTEM 反弃答对 judge 措辞(prototype:255-266)。总体判决:写入侧抽取契约与读取侧裁决机制(过时前提手术、时点裁决、诚实降级)有真实的通用内核,'指控完全成立'言过其实;但复杂查询臂(S5-S7)的现有成绩确实无法自证泛化——few-shot 同分布、算子-题型同构、口径双侧同步、评审标准同源四件事叠加,构成审稿人可一击致命的证据链。辩护路径不是措辞而是补实验:few-shot 域外重写重跑(最急)、零改动新域测试、边界/乱序压力子集、S7 独立评审。若这四件补齐且 delta 可控,系统叙事可以成立;补不齐则 S5-S7 部分的声称必须降级为'在自建基准上的系统演示'。",
+ "decisive_test": "零改动新域测试设计(系统侧一行不改,含提示词、别名表、阈值、算子集全部冻结在当前 commit):(一)选域——从 Wikidata 取三个从未出现的属性:P69 就读学校(槽位类不在七类闭集,预期落 other:*)、P1303 演奏乐器(完全域外,检验 CATALOG 开放抽取)、P26 配偶(映射到闭集内 relationship 类,作为'闭集内新属性'阳性对照);三域并置使'闭集内 vs 闭集外'成为受控变量。(二)建材——每属性取 40-60 个多值实体,用与 WikiState 同一条目合成管线生成对话轮(此为数据侧,允许扩展 gen 的家族词表/短语表,因为出题器本就不是被审对象;但 S5-S7 题面必须由独立方改写:让另一个人或另一个模型在只看 gold 定义、不看 COMPILE_PROMPT 的条件下写问句,每题型至少 5 种表面形式,并保留 20% 与旧模板同构的题作对照桥)。(三)跑法——全流程:建卡→路由→四臂→judge,同时落三份遥测:①SLOT_ALIASES 命中率与 slot_class 分布(P69/P1303 预期命中≈0,直接量化闭集依赖);②COMPILE 的 op 分布、ok=False 率、空计划回落率;③路由四臂分布相对旧域的漂移。(四)判据——主判据:新域整体准确率 ≥ 旧域同题型成绩 − 10pp 且各题型无一崩到 50% 以下,则'只对考场成立'指控被证伪;分判据:(a) P26(闭集内)与 P69/P1303(闭集外)的差距即为闭集机制的真实贡献上界,若差距 > 15pp 则 SLOT_ALIASES/键控路径的泛化声称必须撤回;(b) 独立改写题 vs 同构对照桥题的差距即为模板同分布的膨胀量,若 > 8pp 则现有基准成绩需在论文中标注该膨胀;(c) 编译 ok 率 < 90% 或 current 空计划回落 > 20% 判编译器不迁移。(五)成本——数据合成与独立改写约 1-2 人日;推理:约 150 实体建卡 + 约 450-700 题 × (聚焦+编译+读者) 全程 haiku,估 300-500 万 token,約 $8-20;judge 再加约 $5;合计一周内、$30 以内可完成。该测试同时回答四个最危险指控(闭集、few-shot 同分布、算子覆盖、路由阈值迁移),是性价比最高的单一实验。"
+}

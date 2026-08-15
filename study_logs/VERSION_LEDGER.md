@@ -106,3 +106,9 @@
 | 版本 | 日期 | 内容 | 状态 |
 |---|---|---|---|
 | **阶段 0:本地模型编译能力下限(5080,ollama,零判官成本)** | 08-15 | **猜想被证实:本地小模型零微调即胜任编译任务,三档全部远超 90% 绿灯线。**369 题参考集(qid 去重、判对且 compile_ok:S5 282 + S6 21 + S7 严格档 66,覆盖 7/11 算子),提示词逐字节 import 冻结臂 COMPILE_PROMPT,执行等价全量双执行对拍:qwen3:4b = 98.9%(365/369,唯一失败模式:4 题 S6 join_at_change 锚方向反转)、**qwen3:8b = 100%(369/369)**、qwen3:14b = 100%(相对 8b 零增益多占 4GB)。JSON 合法率三档全 100%(regex 兜底 1107 次请求零触发);中位 2.5s/题;显存 8b 驻留 5.6GB。**判决:阶段 1 蒸馏对 8b/14b 无必要,编译岗位直接部署候选 qwen3:8b;4b 的 4 例单一失败模式为可选蒸馏靶。**诚实边界:①4 个基础算子(current/point_in_time/trajectory/premise_check)无历史参考计划未测;②指标为"与 haiku 判对计划的对齐率"(每行经判官验证);③解析层差异(messages.parse vs format=json+同一 pydantic)与 think:false 已入档。核验 PASS_WITH_ISSUES(minor:num_predict 512 vs 400、单向 regex 兜底零触发、无泄露)。产物:scripts/eval_local_compiler.py、summarize_local_compiler.py、results/local_compiler_stage0_20260815.md + 逐题 jsonl;冻结代码零改动 | ✅ 待端到端换装验证(8b 编译重跑 S5/S7 全量,需判官) |
+
+## 耦合审计线(08-15)
+
+| 版本 | 日期 | 内容 | 状态 |
+|---|---|---|---|
+| **代码级考场耦合审计(126 项制品逐项定性)** | 08-15 | 判决:principle 40 / domain_adaptation 29 / **benchmark_specific 57**(high 风险 34)。"指控完全成立"言过其实——写入契约与裁决机制有真实通用内核;但 **S5-S7 成绩无法自证泛化**,四件事成致命证据链:①COMPILE_PROMPT few-shot 与出题模板逐字同构(提示词 train-on-test;连带限定阶段 0 结论:"8B 可替换 haiku"成立、"编译已被解决"待域外改写检验);②算子-题型同构+口径双侧手工同步(≤ 边界被出题器剔除永不受检);③SLOT_ALIASES/七类闭集/十标签三位同源,other:* 在键控下游失能;④_EVENT_ARITH_RE 关键词路由、route 阈值 2/3、wiki-P39 按名裁题(应立即改数据层 split)。辩护=四补实验:few-shot 域外改写重跑(最急,~$5)、零改动新域测试(P69/P1303/P26 三域受控、独立盲写题面、预注册判据,<$30)、边界/乱序压力子集、S7 独立评审;补不齐则 S5-S7 降级为"自建基准上的系统演示"。全表 study_logs/QVF_coupling_audit_items_20260815.json,摘要+测试设计 QVF_coupling_audit_20260815.md | ✅ 待用户批预算开跑;三项零成本代码卫生(split 字段/fail-closed/open slot 分组)排在测试前 |
