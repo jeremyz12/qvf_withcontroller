@@ -638,13 +638,22 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
 _ALGEBRA = int(os.environ.get("QVF_ALGEBRA", "0") or 0)
 if _ALGEBRA:
     from scripts.qvf_algebra import (ALGEBRA_COMPILE_PROMPT,  # noqa: E402
-                                     AlgebraProgram, execute_plan_algebra)
+                                     AlgebraProgram, compile_plan_algebra,
+                                     execute_plan_algebra)
     COMPILE_PROMPT = ALGEBRA_COMPILE_PROMPT  # noqa: F811
     CompiledPlan = AlgebraProgram  # noqa: F811
     _execute_plan_flat = execute_plan
+    _compile_plan_flat = compile_plan
 
     def execute_plan(plan, recs, mem_dates, question=""):  # noqa: F811
         return execute_plan_algebra(plan, recs, mem_dates, question)
+
+    def compile_plan(client, question: str):  # noqa: F811
+        # dev round 2:代数臂改走 messages.create 纯文本编译(见
+        # qvf_algebra.compile_plan_algebra 文档字符串——messages.parse 结构
+        # 化输出在本模块扩展后的 schema 上被观测到挂起/400)。平面臂路径
+        # (旗标关)从不进入本分支,compile_plan 原实现逐字节不变。
+        return compile_plan_algebra(client, question, MODEL)
 
 
 # ── ③ READ:证据包 → 日常口吻回答 ────────────────────────────
@@ -754,9 +763,20 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
 
         # ① 编译(只见问题)
         plan, c_in, c_out, ok = compile_plan(client, q["question"])
-        # ② 纯代码执行
-        ev, derived = execute_plan(plan, _load_records(uid), mem_dates,
-                                   q["question"])
+        # ② 纯代码执行(代数臂:类型检查拒绝按 qvf_algebra 文档契约由调用方
+        # 接住,记 wellformed=False 并降级为空证据包,不中断跑批;平面臂
+        # execute_plan 从不抛出此类异常,故本 try/except 对旗标关时的输出
+        # 零影响)
+        wellformed = True
+        try:
+            ev, derived = execute_plan(plan, _load_records(uid), mem_dates,
+                                       q["question"])
+        except Exception as e:  # noqa: BLE001
+            wellformed = False
+            ev, derived = [], [
+                f"[compile rejected: {type(e).__name__}: {e}] The compiled "
+                f"query plan could not be executed; say the requested "
+                f"lookup could not be resolved."]
         # ②' fail-closed:空证据包不交读者猜,显式降级标记(跑批侧转直读臂
         #    或弃答;judge_correct=null 不计入本臂判分)
         if _FAIL_CLOSED and not ev:
@@ -776,6 +796,8 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
             }
             if q.get("judge_rubric"):
                 row["judge_rubric"] = q["judge_rubric"]
+            if _ALGEBRA:  # 新增字段仅代数臂路径出现,旗标关时行架构逐字节不变
+                row["compile_wellformed"] = wellformed
             fout.write(json.dumps(row, ensure_ascii=False) + "\n")
             fout.flush()
             n_run += 1
@@ -817,6 +839,8 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
         }
         if q.get("judge_rubric"):
             row["judge_rubric"] = q["judge_rubric"]
+        if _ALGEBRA:  # 新增字段仅代数臂路径出现,旗标关时行架构逐字节不变
+            row["compile_wellformed"] = wellformed
         fout.write(json.dumps(row, ensure_ascii=False) + "\n")
         fout.flush()
         n_run += 1

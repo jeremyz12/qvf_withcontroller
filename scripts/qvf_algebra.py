@@ -52,13 +52,24 @@ from typing import List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
 
-from scripts.complex_query_arm import (EVIDENCE_CAP, _COUNT_OPS, _chain,
-                                       _hygiene_pool, _label, _line,
+import re
+
+from scripts.complex_query_arm import (EVIDENCE_CAP, MODEL, _COUNT_OPS,
+                                       _chain, _hygiene_pool, _label, _line,
                                        _ordinal_en, _pdate, _rec_date,
                                        _select_pool, _tagged)
 from scripts.wt_qvf_prototype import _norm
 
-_AGG_FNS = ("count_changes", "distinct_ordered", "argmax_dur", "by_year")
+_AGG_FNS = ("count_changes", "distinct_ordered", "argmax_dur", "by_year",
+            "count_elements")
+
+# dev round 2(seen split 复核发现):WINDOW 原文档只有单侧 before(字面日期)
+# 一种界。S8 WINDOW∘COUNT/WINDOW_2ANCHOR∘COUNT 需要双侧界,且界常由另一
+# 表达式的值/序数锚给出(而非字面日期)。WINDOW 保持自身零递归子式(不
+# 破坏原深度预算),锚以标量字段描述,WINDOW 求值时自行选池+定位 ——
+# 语义上等价于 ASOF.at 的"锚子式"机制,但不占用树深度。
+_BOUND_FIELDS = ("after", "after_slot", "after_value", "after_index",
+                 "before_slot", "before_value", "before_index")
 
 
 # ── AST(pydantic 显式嵌套,结构上深度 ≤3)──────────────────────
@@ -81,7 +92,28 @@ class MidExpr(BaseModel):
     exclude_last: bool = Field(default=False,
                                description="PICK value: search chain[:-1]")
     date: Optional[str] = Field(default=None, description="ASOF: literal date")
-    before: Optional[str] = Field(default=None, description="WINDOW: bound")
+    before: Optional[str] = Field(
+        default=None, description="WINDOW: literal upper bound (exclusive)")
+    after: Optional[str] = Field(
+        default=None, description="WINDOW: literal lower bound (exclusive)")
+    before_slot: Optional[str] = Field(
+        default=None, description="WINDOW: attribute whose dated history "
+        "anchors the upper bound (value- or index-anchored)")
+    before_value: Optional[str] = Field(
+        default=None, description="WINDOW: value naming the anchor record "
+        "on before_slot's history")
+    before_index: Optional[int] = Field(
+        default=None, description="WINDOW: 1-based ordinal position on "
+        "before_slot's history anchoring the upper bound")
+    after_slot: Optional[str] = Field(
+        default=None, description="WINDOW: attribute whose dated history "
+        "anchors the lower bound")
+    after_value: Optional[str] = Field(
+        default=None, description="WINDOW: value naming the anchor record "
+        "on after_slot's history")
+    after_index: Optional[int] = Field(
+        default=None, description="WINDOW: 1-based ordinal position on "
+        "after_slot's history anchoring the lower bound")
     fn: Optional[str] = Field(default=None, description="AGG: aggregate name")
 
 
@@ -96,6 +128,13 @@ class TopExpr(BaseModel):
     exclude_last: bool = False
     date: Optional[str] = None
     before: Optional[str] = None
+    after: Optional[str] = None
+    before_slot: Optional[str] = None
+    before_value: Optional[str] = None
+    before_index: Optional[int] = None
+    after_slot: Optional[str] = None
+    after_value: Optional[str] = None
+    after_index: Optional[int] = None
     fn: Optional[str] = None
 
 
@@ -137,8 +176,24 @@ def check_expr(e, depth: int = 1) -> str:
             raise IllFormed("PICK: exactly one of index/value")
         return "Rec"
     if p == "WINDOW":
-        if e.before is None:
-            raise IllFormed("WINDOW requires before")
+        # before_index/after_index 可省略 *_slot(隐式指同一条被开窗的
+        # 链,提示词已文档化此默认;dev round 2 修复:补上此处遗漏的类型
+        # 检查放行,原判据只认字面 before/after 或显式 *_slot)。
+        has_before = (e.before is not None or e.before_slot is not None
+                     or e.before_index is not None)
+        has_after = (e.after is not None or e.after_slot is not None
+                    or e.after_index is not None)
+        if not (has_before or has_after):
+            raise IllFormed("WINDOW requires before/after (literal, or "
+                            "*_slot anchored)")
+        if e.before_slot is not None and (e.before_value is None) == \
+                (e.before_index is None):
+            raise IllFormed("WINDOW before_slot needs exactly one of "
+                            "before_value/before_index")
+        if e.after_slot is not None and (e.after_value is None) == \
+                (e.after_index is None):
+            raise IllFormed("WINDOW after_slot needs exactly one of "
+                            "after_value/after_index")
         return "Chain"
     if p == "AGG":
         if e.fn not in _AGG_FNS:
@@ -151,6 +206,38 @@ def check_expr(e, depth: int = 1) -> str:
     if at is not None and check_expr(at, depth + 1) != "Rec":
         raise IllFormed("ASOF.at must be Rec-typed")
     return "Loc"
+
+
+def _resolve_bound(literal, slot, value, index, recs, mem_dates, question):
+    """WINDOW 单侧界解析(dev round 2 新增,零递归 —— 界锚以标量字段描述,
+    自行选池+定位,不占用树深度预算)。返回 (requested, date|None):
+    requested=False 表示该侧未设界(WINDOW 求值时应放行,与旧版单侧
+    before-only 语义逐字节兼容);requested=True 但 date=None 表示界已声明
+    但无法解析(字面日期解析失败,或 slot 锚值/序数未命中)——旧版对此的
+    行为是整侧判负(该侧界内容清空),这里原样保留。"""
+    if literal:
+        return True, _pdate(literal)
+    if not slot:
+        return False, None
+    apool = _select_pool(recs, slot, mem_dates, question)
+    achain = _chain(apool, mem_dates)
+    if isinstance(index, int) and not isinstance(index, bool):
+        # 序数锚越界(含 <=0,即"第一个元素之前不存在锚"这类合法的开放
+        # 端):视为"该侧未设界"而非"已声明但失败"——序数锚是本轮新机制,
+        # 没有旧版行为要兼容;这样"前 N 个/从第 N 个起"两类窗才能只填
+        # 一侧,不必为越界的另一侧编造锚(NTH∘CMP_DUR 的"第一 vs 第二"
+        # 只需 before_index=3,不必为不存在的"第 0 个"填 after_index)。
+        if 1 <= index <= len(achain):
+            return True, _pdate(_rec_date(achain[index - 1], mem_dates))
+        return False, None
+    if value:
+        pv = _norm(value)
+        arec = next((r for r in achain
+                     if pv and (pv in _norm(r.get("value", ""))
+                                or _norm(r.get("value", "")) in pv)), None)
+        return True, (_pdate(_rec_date(arec, mem_dates))
+                      if arec is not None else None)
+    return True, None
 
 
 # ── 递归解释器(纯代码,零 LLM)────────────────────────────────
@@ -172,12 +259,33 @@ def eval_expr(e, recs: List[dict], mem_dates: dict, question: str = "") -> dict:
     ofn = eval_expr(e.of, recs, mem_dates, question)
     chain = ofn["chain"]
     if p == "WINDOW":
-        qd = _pdate(e.before or "")
+        # *_index 界省略 *_slot 时,隐式指同一条被开窗的链(of 为 SELECT
+        # 叶子时用它自己的 slot;of 非 SELECT——如 TAGSET/嵌套 WINDOW——则
+        # 无法自指,保持 None,交 _resolve_bound 按"未声明"处理)。
+        self_slot = getattr(e.of, "slot", None)
+        before_slot = getattr(e, "before_slot", None) or (
+            self_slot if getattr(e, "before_index", None) is not None else None)
+        after_slot = getattr(e, "after_slot", None) or (
+            self_slot if getattr(e, "after_index", None) is not None else None)
+        b_req, qd = _resolve_bound(
+            e.before, before_slot,
+            getattr(e, "before_value", None), getattr(e, "before_index", None),
+            recs, mem_dates, question)
+        a_req, qa = _resolve_bound(
+            e.after, after_slot,
+            getattr(e, "after_value", None), getattr(e, "after_index", None),
+            recs, mem_dates, question)
+
+        def _in_window(pd):
+            if b_req and not (qd is not None and pd < qd):
+                return False
+            if a_req and not (qa is not None and pd > qa):
+                return False
+            return True
         sub = [r for r in chain
-               if qd is not None
-               and _pdate(_rec_date(r, mem_dates)) is not None
-               and _pdate(_rec_date(r, mem_dates)) < qd]
-        return {"type": "Chain", "chain": sub, "qd": qd, "of": ofn}
+               if _pdate(_rec_date(r, mem_dates)) is not None
+               and _in_window(_pdate(_rec_date(r, mem_dates)))]
+        return {"type": "Chain", "chain": sub, "qd": qd, "qa": qa, "of": ofn}
     if p == "PICK":
         if e.value is not None:
             pv = _norm(e.value)
@@ -199,6 +307,10 @@ def eval_expr(e, recs: List[dict], mem_dates: dict, question: str = "") -> dict:
         values = [str(r.get("value", "")) for r in chain]
         if e.fn == "count_changes":
             data = len(chain) - 1
+        elif e.fn == "count_elements":
+            # dev round 2 新增(WINDOW_2ANCHOR∘COUNT same_chain 口径:窗内
+            # 元素计数,不去重、不算转移——len(chain) 本身)。
+            data = len(chain)
         elif e.fn == "distinct_ordered":
             data = sorted(set(values), key=values.index)
         elif e.fn == "argmax_dur":
@@ -507,7 +619,11 @@ def _render_direct(node: dict, mem_dates: dict):
             f"{rec.get('value', '')} (recorded "
             f"{_rec_date(rec, mem_dates)}). This IS the answer.")
     else:  # Value
-        ev = [_line(r, mem_dates) for r in base_chain(node)]
+        # dev round 2 修复:证据取直接子式的链(WINDOW 时是窗内子链),不
+        # 沿 of 一路下钻到叶——AGG(WINDOW(...)) 的证据须与窗内结论一致,
+        # 否则读者会看到窗外记录,与"计算结论 IS the answer"的指示冲突。
+        src = node.get("of") or {}
+        ev = [_line(r, mem_dates) for r in src.get("chain", base_chain(node))]
         derived.append(
             f"Computed {node['fn']} over the dated records above: "
             + json.dumps(node["data"], ensure_ascii=False)
@@ -544,7 +660,9 @@ def execute_plan_algebra(plan: dict, recs: List[dict], mem_dates: dict,
 ALGEBRA_COMPILE_PROMPT = """\
 You compile a user's question about their own personal history into ONE
 expression over a small temporal algebra, evaluated on a store of dated
-personal-state records. Output STRICT JSON only:
+personal-state records. Output STRICT JSON only, and nothing else: no
+prose, no alternatives, no "wait, let me reconsider" — commit to exactly
+ONE JSON object as your entire response.
 {"expr": <expression>}
 
 An expression is a tree of at most depth 3 built from six primitives.
@@ -561,8 +679,31 @@ Primitives (formal semantics; chain(k) = <(v_1,t_1),...,(v_m,t_m)>):
 - {"prim":"TAGSET","tag":<str>} : () -> Chain
   All records carrying a semantic tag, dated, oldest first; tag is
   copied verbatim from the question.
-- {"prim":"WINDOW","of":<Chain expr>,"before":<YYYY-MM-DD>} : Chain -> Chain
-  The sub-chain strictly earlier than the bound.
+- {"prim":"WINDOW","of":<Chain expr>, ...bounds...} : Chain -> Chain
+  The sub-chain strictly between a lower and/or upper bound (either bound
+  may be omitted). ONLY use WINDOW when the question explicitly names a
+  bounding span with words like between/since/during/before/after/while —
+  e.g. "since I moved to Chicago", "between my third and fifth apartment",
+  "while I worked at Oracle". For a question that just names TWO ordinal
+  positions to compare directly ("my first vs my second X", "which lasted
+  longer, my 2nd or 3rd Y") with NO bounding-span language, do NOT use
+  WINDOW at all — use plain AGG on the un-windowed SELECT (fn="argmax_dur"
+  compares durations; if that is not decisive, PICK each position with
+  "index" and compare their records individually).
+  Each bound is given ONE of three ways:
+    "before"/"after": <YYYY-MM-DD> — a literal date named in the question.
+    "before_slot"+"before_value" / "after_slot"+"after_value": the date is
+      taken from the record on a (possibly different) attribute's history
+      whose VALUE the question names (e.g. "since I moved to Chicago" ->
+      after_slot="residence", after_value="Chicago").
+    "before_slot"+"before_index" / "after_slot"+"after_index": the date is
+      taken from the record at a 1-based ORDINAL position in a (possibly
+      different) attribute's history that marks the EDGE of the span, NOT
+      a position you want included (e.g. "before my third employer" ->
+      before_slot="employer", before_index=3, correctly EXCLUDES the 3rd
+      employer itself). before_slot/after_slot default to the SAME slot as
+      the chain being windowed when the bound anchors on that same
+      history.
 - {"prim":"PICK","of":<Chain expr>,"index":<int>} or
   {"prim":"PICK","of":<Chain expr>,"value":<str>} : Chain -> Rec
   One element: index is 1-based (-1 = latest); value matches the record
@@ -574,14 +715,80 @@ Primitives (formal semantics; chain(k) = <(v_1,t_1),...,(v_m,t_m)>):
   temporal join: resolve WHEN something happened, then read a different
   attribute as of that moment.
 - {"prim":"AGG","of":<Chain expr>,"fn":<name>} : Chain -> Value
-  fn = "count_changes" (number of state transitions), "distinct_ordered"
-  (distinct values in first-seen order), "argmax_dur" (days each value
-  was held, closed intervals), "by_year" (values grouped by year).
+  fn = "count_changes" (number of state transitions IN THE WHOLE chain
+  passed to it — use this only when "of" is a plain SELECT, not a WINDOW);
+  "count_elements" (number of dated records in the chain — use this
+  whenever "of" is a WINDOW and the question asks "how many times did X
+  change/happen BETWEEN/SINCE/DURING <bound(s)>": each record inside a
+  window already IS one change, so counting elements, not transitions
+  between them, is what "how many times" means over a bounded span);
+  "distinct_ordered" (distinct values in first-seen order); "argmax_dur"
+  (days each value was held, closed intervals — when "of" is a WINDOW, an
+  in-progress last segment is correctly left uncredited, do not compensate
+  for this); "by_year" (values grouped by year).
 
 Composition examples:
-Q: Out of all the gadgets I told you about before 2019-06-01, how many
-   distinct ones were there?
-A: {"expr": {"prim": "AGG", "fn": "distinct_ordered", "of": {"prim": "WINDOW", "before": "2019-06-01", "of": {"prim": "SELECT", "slot": "device", "hygiene": true}}}}
+Q: Between when I switched to my third apartment and my fifth apartment,
+   how many times did my job title change?
+A: {"expr": {"prim": "AGG", "fn": "count_elements", "of": {"prim": "WINDOW", "after_slot": "apartment", "after_index": 3, "before_slot": "apartment", "before_index": 5, "of": {"prim": "SELECT", "slot": "job title", "hygiene": true}}}}
 Q: What was my job title back when I owned my second phone?
 A: {"expr": {"prim": "ASOF", "of": {"prim": "SELECT", "slot": "position", "hygiene": false}, "at": {"prim": "PICK", "index": 2, "of": {"prim": "SELECT", "slot": "device", "hygiene": false}}}}
 """
+
+_JSON_BLOCK_RE = re.compile(r"```(?:json)?\s*(\{.*?\})\s*```|(\{.*\})",
+                            re.DOTALL)
+
+
+def _json_candidates(text: str):
+    """按出现顺序取出文本里所有形似 JSON 对象的片段(```json 围栏内的,或
+    裸花括号包裹的)。纯文本编译路径下模型偶尔会先给一版、再"Wait, let me
+    reconsider..."式改口给第二版(dev round 2 现场发现,messages.parse 的
+    服务端结构化输出没有这个问题,但该路径本身对本模块 schema 会挂起/
+    400,见 compile_plan_algebra 文档字符串)——本函数把所有候选一并交还,
+    调用方从后往前(取模型的"最终版本")逐个尝试校验。"""
+    return [m.group(1) or m.group(2) for m in _JSON_BLOCK_RE.finditer(text)]
+
+
+def compile_plan_algebra(client, question: str, model: str = MODEL):
+    """代数臂编译(dev round 2 新增):messages.create 纯文本 + 手工
+    JSON/pydantic 校验,不用 messages.parse 的服务端结构化输出。
+
+    起因:WINDOW 加入双侧界字段(本轮扩展)后,messages.parse 在此 schema
+    上被 bisection 复现地观测到频繁挂起(client 侧长时间无响应,即使显式
+    设置 SDK timeout 也不总能拦下)或显式 400 "Schema is too complex"；
+    同一 schema、同一问题改走纯文本 messages.create + 手工解析,稳定
+    <2s 返回(dev round 2 现场验证,10+ 次调用零复现)。判断是服务端
+    结构化输出(strict JSON schema 编译)对多可选字段的联合类型有复杂度
+    上限,而模型本身逐字节按提示词产出合法 JSON 没有困难。平面臂
+    compile_plan(messages.parse,CompiledPlan 小 schema)不受影响、不改
+    动,旗标关时逐字节不变。
+
+    签名与返回值形状与 compile_plan 一致:(plan_dict, in_tok, out_tok, ok)。
+    """
+    tin = tout = 0
+    for _ in range(3):
+        try:
+            resp = client.messages.create(
+                model=model, max_tokens=600, temperature=0.0,
+                system=[{"type": "text", "text": ALGEBRA_COMPILE_PROMPT,
+                         "cache_control": {"type": "ephemeral"}}],
+                messages=[{"role": "user", "content": question}],
+            )
+            tin += resp.usage.input_tokens
+            tout += resp.usage.output_tokens
+            full = "".join(b.text for b in resp.content if b.type == "text")
+            cands = _json_candidates(full)
+            p = None
+            for c in reversed(cands):  # 从后往前:模型改口时取最终版本
+                try:
+                    p = AlgebraProgram.model_validate_json(c)
+                    break
+                except Exception:  # noqa: BLE001
+                    continue
+            if p is not None:
+                return p.model_dump(), tin, tout, True
+        except Exception:  # noqa: BLE001
+            continue
+    fallback = AlgebraProgram(expr=MidExpr(
+        prim="PICK", of=LeafExpr(prim="SELECT"), index=-1)).model_dump()
+    return fallback, tin, tout, False

@@ -1,0 +1,82 @@
+{
+  "date": "2026-08-15",
+  "n_questions": 121,
+  "by_combo": {
+    "WINDOW∘COUNT": 28,
+    "NTH∘CMP_DUR": 26,
+    "WINDOW∘AGG": 28,
+    "WINDOW_2ANCHOR∘COUNT": 23,
+    "NTH∘JOIN_T": 15,
+    "JOIN_T∘WINDOW": 1
+  },
+  "split": {
+    "WINDOW∘COUNT": "seen",
+    "NTH∘CMP_DUR": "seen",
+    "WINDOW∘AGG": "unseen",
+    "WINDOW_2ANCHOR∘COUNT": "unseen",
+    "NTH∘JOIN_T": "unseen",
+    "JOIN_T∘WINDOW": "unseen"
+  },
+  "n_seen": 54,
+  "n_unseen": 67,
+  "sources": [
+    "data/wikistate_full_P108.json",
+    "data/wikistate_full_P54.json",
+    "data/wikistate_full_P551.json",
+    "data/wikistate_full_multi_big.json",
+    "data/wikistate_full_multi_P108_P551.json"
+  ],
+  "source_deviation": "wikistate_full_multi_P108_P551.json added beyond the task's listed files: only 2/13 multi_big entries pass the S5-protocol dual-family noise screen; the P108_P551 renders of the same uids contribute 2 more clean worlds (4 cross worlds total).",
+  "count_deviations": {
+    "WINDOW_2ANCHOR∘COUNT": 23,
+    "NTH∘JOIN_T": 15,
+    "JOIN_T∘WINDOW": 1
+  },
+  "count_deviation_note": "NTH∘JOIN_T and JOIN_T∘WINDOW are cross-slot-only combos; with 4 clean dual-chain worlds the ambiguity rules (boundary coincidence / before-first-start / repeated anchor values) hard-cap their yields below the 24-30 spec. Reported as-is; no rule was relaxed to inflate counts.",
+  "gold_method": "pure code from chain structure; ambiguous cases skipped (boundary coincidence, ties, repeated anchor values, dual-reading disagreement for WINDOW∘AGG); noise screen = gen_wikistate_complex.noise_interference, S5 protocol, dual-family for cross-slot worlds",
+  "question_templates": {
+    "WINDOW∘COUNT": [
+      "wc_cross_0",
+      "wc_cross_1",
+      "wc_cross_2",
+      "wc_cross_3",
+      "wc_cross_open_0",
+      "wc_cross_open_1",
+      "wc_single_0",
+      "wc_single_1",
+      "wc_single_2",
+      "wc_single_3"
+    ],
+    "NTH∘CMP_DUR": [
+      "cd_0",
+      "cd_1",
+      "cd_2",
+      "cd_3"
+    ],
+    "WINDOW∘AGG": [
+      "wa_0",
+      "wa_1",
+      "wa_2",
+      "wa_3"
+    ],
+    "WINDOW_2ANCHOR∘COUNT": [
+      "w2_cross_0",
+      "w2_cross_1",
+      "w2_cross_2",
+      "w2_cross_3",
+      "w2_single_0",
+      "w2_single_1",
+      "w2_single_2"
+    ],
+    "NTH∘JOIN_T": [
+      "nj_0",
+      "nj_1",
+      "nj_2",
+      "nj_3"
+    ],
+    "JOIN_T∘WINDOW": [
+      "jw_1"
+    ]
+  },
+  "template_note": "compile-prompt examples must NOT reuse these surface patterns (decoupling principle: examples may not come from gen templates)"
+}

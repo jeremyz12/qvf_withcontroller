@@ -1,0 +1,85 @@
+{
+  "algebra": {
+    "n": 67,
+    "ok": 33,
+    "acc": 0.4925373134328358,
+    "tok_in_avg": 1777.5671641791046,
+    "tok_out_avg": 170.26865671641792,
+    "by_combo": {
+      "WINDOW∘AGG": {
+        "n": 28,
+        "ok": 26
+      },
+      "WINDOW_2ANCHOR∘COUNT": {
+        "n": 23,
+        "ok": 1
+      },
+      "NTH∘JOIN_T": {
+        "n": 15,
+        "ok": 5
+      },
+      "JOIN_T∘WINDOW": {
+        "n": 1,
+        "ok": 1
+      }
+    }
+  },
+  "flat": {
+    "n": 67,
+    "ok": 35,
+    "acc": 0.5223880597014925,
+    "tok_in_avg": 2223.9701492537315,
+    "tok_out_avg": 130.97014925373134,
+    "by_combo": {
+      "WINDOW∘AGG": {
+        "n": 28,
+        "ok": 22
+      },
+      "WINDOW_2ANCHOR∘COUNT": {
+        "n": 23,
+        "ok": 7
+      },
+      "NTH∘JOIN_T": {
+        "n": 15,
+        "ok": 6
+      },
+      "JOIN_T∘WINDOW": {
+        "n": 1,
+        "ok": 0
+      }
+    }
+  },
+  "direct": {
+    "n": 67,
+    "ok": 47,
+    "acc": 0.7014925373134329,
+    "tok_in_avg": 798.2835820895523,
+    "tok_out_avg": 90.16417910447761,
+    "by_combo": {
+      "WINDOW∘AGG": {
+        "n": 28,
+        "ok": 20
+      },
+      "WINDOW_2ANCHOR∘COUNT": {
+        "n": 23,
+        "ok": 21
+      },
+      "NTH∘JOIN_T": {
+        "n": 15,
+        "ok": 5
+      },
+      "JOIN_T∘WINDOW": {
+        "n": 1,
+        "ok": 1
+      }
+    }
+  },
+  "wellformed": {
+    "n": 67,
+    "wellformed": 67,
+    "rate": 1.0
+  },
+  "inexpressible_n": 52,
+  "unseen_n": 67,
+  "inexpressible_rate": 0.7761194029850746
+}
