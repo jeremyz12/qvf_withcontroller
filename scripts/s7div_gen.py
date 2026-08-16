@@ -91,31 +91,58 @@ def _split(uid: str) -> str:
 
 
 # ── 词典装载与编译 ───────────────────────────────────────────────
-def load_ontology() -> Tuple[dict, List[Tuple[str, re.Pattern, List[str]]]]:
-    doc = json.loads(ONTOLOGY_PATH.read_text(encoding="utf-8"))
+# 编译后的每条词典项: (phrase, 正则, attrs, neg_context 小写子串列表,
+# require_any 小写子串列表)。neg_context/require_any 为 v2 新增的可选字段
+# (见 data/s7div_seed_ontology_v2.json 的 _purpose 说明);v1 词典没有这两个
+# 字段,取默认空列表,匹配语义与原实现逐字节一致(向后兼容)。
+CompiledItem = Tuple[str, re.Pattern, List[str], List[str], List[str]]
+
+
+def load_ontology(path: Path = ONTOLOGY_PATH) -> Tuple[dict, List[CompiledItem]]:
+    doc = json.loads(path.read_text(encoding="utf-8"))
     attrs = doc["attributes"]
     compiled = []
     for it in doc["items"]:
         phrase = it["phrase"]
         pat = re.compile(r"\b" + re.escape(phrase) + r"\b", re.IGNORECASE)
-        compiled.append((phrase, pat, it["attrs"]))
+        neg_context = [s.lower() for s in it.get("neg_context", [])]
+        require_any = [s.lower() for s in it.get("require_any", [])]
+        compiled.append((phrase, pat, it["attrs"], neg_context, require_any))
     return attrs, compiled
 
 
+def _record_is_user(rec: dict) -> bool:
+    """该卡片记录的主体是否为用户本人(而非宠物/家人/朋友/同事等第三方)。
+    entity 字段缺失时按约定默认视为用户本人。v1 生成器未做此过滤 ——
+    P2 审计发现 110-uid 语料里有 2 条第三方记录(宠物猫 Luna 的口味偏好、
+    健身教练 Maria 的职业)会被词典误记成用户本人的饮食/运动证据,
+    v2 在此处一并修正。"""
+    ent = rec.get("entity", "user")
+    return not ent or ent == "user"
+
+
 def match_attrs(records: List[dict],
-                 compiled: List[Tuple[str, re.Pattern, List[str]]]
+                 compiled: List[CompiledItem]
                  ) -> Dict[str, List[dict]]:
     """对一个 uid 的全部卡片记录,机械推导 attr -> 命中记录列表(去重按
-    record_id)。零人工裁量:纯正则子串匹配 + 词典查表。"""
+    record_id)。零人工裁量:纯正则子串匹配 + 词典查表,附加 v2 的
+    entity 过滤(仅用户本人)与 neg_context/require_any 负例/正例过滤。"""
     hits: Dict[str, Dict[str, dict]] = {}
     for rec in records:
+        if not _record_is_user(rec):
+            continue
         val_l = str(rec.get("value", "")).lower()
         if not val_l:
             continue
-        for phrase, pat, attr_list in compiled:
-            if pat.search(val_l):
-                for a in attr_list:
-                    hits.setdefault(a, {})[rec.get("record_id", id(rec))] = rec
+        for phrase, pat, attr_list, neg_context, require_any in compiled:
+            if not pat.search(val_l):
+                continue
+            if any(n in val_l for n in neg_context):
+                continue
+            if require_any and not any(n in val_l for n in require_any):
+                continue
+            for a in attr_list:
+                hits.setdefault(a, {})[rec.get("record_id", id(rec))] = rec
     return {a: list(d.values()) for a, d in hits.items()}
 
 
@@ -241,6 +268,9 @@ def assert_no_verbatim_query_leak(rows: List[dict], attrs_doc: dict) -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--out", default=str(ROOT / "data" / "wsc_s7div.jsonl"))
+    ap.add_argument("--ontology", default=str(ONTOLOGY_PATH),
+                     help="种子词典路径(默认 v1)。传 "
+                          "data/s7div_seed_ontology_v2.json 使用 P2 噪声修订版。")
     ap.add_argument("--coverage-uids", choices=["all", "dev", "test"],
                      default="all",
                      help="all=正常生成写文件;dev/test=只打印覆盖率诊断,不写文件"
@@ -249,7 +279,7 @@ def main() -> None:
     args = ap.parse_args()
 
     entries = _load_entries()
-    attrs_doc, compiled = load_ontology()
+    attrs_doc, compiled = load_ontology(Path(args.ontology))
 
     uids = sorted(entries.keys() & {p.stem for p in CARDS_DIR.glob("*.json")})
     print(f"population uids: {len(uids)}")

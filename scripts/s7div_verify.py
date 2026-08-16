@@ -109,21 +109,42 @@ def assert1_no_leak(rows: List[dict], attrs_doc: dict) -> List[str]:
 
 
 # ── 断言② ────────────────────────────────────────────────────
+def _is_user_record(rec: dict) -> bool:
+    """entity 过滤的独立复核版本(与 s7div_gen._record_is_user 语义相同、
+    实现独立):entity 缺失按约定视为用户本人。"""
+    ent = rec.get("entity", "user")
+    return not ent or ent == "user"
+
+
 def _independent_match(records: List[dict], items: List[dict]) -> Dict[str, List[str]]:
     """与生成器 match_attrs() 语义相同、实现独立(手写边界检查 + 逐记录
-    逐词条双循环,不用正则预编译)的重算。返回 attr -> record_id 列表。"""
+    逐词条双循环,不用正则预编译)的重算。返回 attr -> record_id 列表。
+    v2:附加 entity 过滤(仅用户本人)与 neg_context(命中即剔除该条)/
+    require_any(非空时必须至少命中一条才算数)—— 字段名与 v2 词典
+    (data/s7div_seed_ontology_v2.json)一致,取值均已 lower() 好的
+    substring 列表;v1 词典没有这两个字段,.get(...,[]) 取到空列表,
+    语义与断言②的 v1 行为逐字节一致。"""
     out: Dict[str, List[str]] = {}
     for rec in records:
+        if not _is_user_record(rec):
+            continue
         val_l = str(rec.get("value", "")).lower()
         if not val_l:
             continue
         for it in items:
-            if _contains_phrase(val_l, it["phrase"].lower()):
-                for a in it["attrs"]:
-                    out.setdefault(a, [])
-                    rid = str(rec.get("record_id", ""))
-                    if rid not in out[a]:
-                        out[a].append(rid)
+            if not _contains_phrase(val_l, it["phrase"].lower()):
+                continue
+            neg_context = [s.lower() for s in it.get("neg_context", [])]
+            if any(n in val_l for n in neg_context):
+                continue
+            require_any = [s.lower() for s in it.get("require_any", [])]
+            if require_any and not any(n in val_l for n in require_any):
+                continue
+            for a in it["attrs"]:
+                out.setdefault(a, [])
+                rid = str(rec.get("record_id", ""))
+                if rid not in out[a]:
+                    out[a].append(rid)
     return out
 
 
@@ -190,10 +211,14 @@ def assert3_not_referenced_by_frozen() -> List[str]:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--questions", default=str(ROOT / "data" / "wsc_s7div.jsonl"))
+    ap.add_argument("--ontology", default=str(ONTOLOGY_PATH),
+                     help="种子词典路径,须与生成 --questions 时用的词典一致"
+                          "(v1 题集配 v1 词典,v2 题集配 "
+                          "data/s7div_seed_ontology_v2.json)。")
     args = ap.parse_args()
 
     rows = _load_rows(Path(args.questions))
-    doc = json.loads(ONTOLOGY_PATH.read_text(encoding="utf-8"))
+    doc = json.loads(Path(args.ontology).read_text(encoding="utf-8"))
     attrs_doc, items = doc["attributes"], doc["items"]
     entries: Dict[str, dict] = {}
     for f in DATA_FILES:
