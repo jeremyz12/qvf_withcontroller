@@ -123,14 +123,69 @@ changes — a trip to Paris is not a change of residence.
 """
 
 
+# QVF_CARD_V5=1(默认 0):写入侧抽取质量改进循环专用旗标。旗标关时对
+# _catalog_prompt() 输出逐字节无影响(冻结纪律)。旗标开时,在 KEYS/TAGS/
+# STRICT 叠加完的基底之上,追加由 QVF_CARD_V5_VARIANT 选择的候选契约文本
+# (默认候选 "h1")。候选文本定义见 _V5_VARIANTS。
+_CARD_V5 = int(os.environ.get("QVF_CARD_V5", "0") or 0)
+_CARD_V5_VARIANT = os.environ.get("QVF_CARD_V5_VARIANT", "h1")
+
+# H1:slot_class 精修——把"临时/教育性质的交流项目"从 employer 误分类中
+# 摘出。根因(实测,wikiP108019-Q41470166):模型把 "UC Berkeley semester
+# abroad" 的 slot 正确判成非雇主性质,但 slot_class 仍归了 employer,导致
+# 卡片链多出一个不属于雇主域的值。规则只收紧 slot_class 归类口径,不触碰
+# 抽取/覆盖逻辑,不改变任何 source_span 或 value 抽取行为——预期零丢真值
+# 代价。
+_V5_RULE_H1 = """\
+SLOT_CLASS PRECISION: a temporary exchange program, study-abroad term,
+short course, internship framed as education, or other primarily
+EDUCATIONAL arrangement is NOT slot_class employer — even when the person
+describes teaching, working, or attending there. Classify it under
+slot_class other:<short-noun> (e.g. other:exchange_program,
+other:study_abroad) instead. Only classify slot_class employer when the
+text frames the arrangement as the person's job/work engagement itself,
+not as a program they are enrolled in or a stint they are visiting for.
+"""
+
+# H2:显式就任动词正向白名单(任务纪律要求的组合式改动,规避"负向黑名单
+# 矫枉过正"已知陷阱)。只对 employer/position 记录生效:要求 source_span
+# 必须包含显式的"就任/在职自证"语言(现在时自证身份,或显式的开始/加入
+# 动词),而非仅仅提及在某地做某活动。目的:降低"language school in
+# Roppongi"/"TechCorp"一类孤立、无强化上下文的单次提及被当真雇主状态收
+# 录的概率,同时保留"I'm starting as..."等真实就任声明的收录(与规则3的
+# replacement 触发语言同源,不新增互斥条件)。
+_V5_RULE_H2 = """\
+EMPLOYER/POSITION EVIDENCE BAR: for slot_class employer or position
+specifically, only create a record when the source_span itself contains
+an explicit self-identification of employment or role (e.g. "I'm a/an
+<role> at <org>", "I work at/for <org>", "I've started/joined/began
+working at <org>", "my job at <org>"). A mention of visiting, teaching
+one class, doing an activity at, or commuting to a place is NOT
+sufficient evidence of employer/position by itself — skip it unless the
+text also contains one of the explicit self-identification forms above.
+This bar applies ONLY to slot_class employer/position; all other slots
+keep the existing coverage rules unchanged.
+"""
+
+_V5_VARIANTS = {
+    "h1": _V5_RULE_H1,
+    "h2": _V5_RULE_H2,
+    "h1h2": _V5_RULE_H1 + _V5_RULE_H2,
+}
+
+
 def _catalog_prompt() -> str:
     """当前生效的建卡提示词。旗标全关时返回 CATALOG_PROMPT 本体(逐字节
-    不变);KEYS/TAGS/STRICT 各自独立门控,可叠加。"""
+    不变);KEYS/TAGS/STRICT/V5 各自独立门控,可叠加。V5 追加在所有其他
+    旗标之后,不改动其之前的任何字节。"""
     base = CATALOG_PROMPT_V4 if _CARD_KEYS else CATALOG_PROMPT
     if _CARD_TAGS:
         base = base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
     if _CARD_STRICT:
         base = base + _CATALOG_STRICT_RULE
+    if _CARD_V5:
+        variant = _V5_VARIANTS.get(_CARD_V5_VARIANT, _V5_RULE_H1)
+        base = base + variant
     return base
 
 
