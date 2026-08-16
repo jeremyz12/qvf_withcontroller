@@ -1,0 +1,24 @@
+{
+ "purpose": "S7-div 发散查询题集（阶段一，预算 <=$2，实际 $0 · 纯代码零API）。打破 S7 原题的双重闭集自考环：金答案由一份与建卡/读取侧无关的种子属性词典（data/s7div_seed_ontology.json）机械施加到已建卡片的 value 字段上推导，不依赖 CLOSED_TAGS/SUB_TAGS 或 _tagged() 精确字符串匹配。",
+ "generated": "2026-08-16",
+ "command": "python scripts/s7div_gen.py --out data/wsc_s7div.jsonl",
+ "verify_command": "python scripts/s7div_verify.py --questions data/wsc_s7div.jsonl",
+ "population": "data/stale_chain_full.json (chain*, 53) ∪ data/stale_chain_confirm.json (confirm*, 57) = 110 uid，与 results/wsc_s7_full.jsonl 的 110-uid 人口完全一致；卡片取自已建好的 results/wt_cards/{uid}.json（未开 QVF_CARD_TAGS 时建的， value_tags 本就为空，与“建卡侧从不接触种子词典”天然一致），未重新调用 API 建卡。",
+ "ontology": "data/s7div_seed_ontology.json: 12 个属性（6 饮食：高糖/高脂/高盐/咖啡因/高蛋白/精制碳水；6 活动：久坐/高强度/低强度/户外/团队/耐力型）× 118 个食物/活动短语项，与 CLOSED_TAGS（十类目）与 SUB_TAGS（高糖/高油/素食/咖啡因）无重叠的独立词汇（仅 高糖/咖啡因 两个字面巧合与 SUB_TAGS 重叠，但无实质影响：本题集的金答不经过 _tagged() 对比，完全新的词典推导路径）。",
+ "dev_test_split": "按 uid 确定性 crc32 取模，~73% dev / ~27% test，与题目内容无关，写入 split 字段。dev=100题，test=39题。",
+ "calibration_rounds": [
+  {"round": 1, "params": "MAX_ATTRS_PER_UID=2, onset when dated>=1", "total": 334, "note": "远高于 150 上限"},
+  {"round": 2, "params": "MAX_ATTRS_PER_UID=1, onset when dated>=1", "total": 198, "note": "仍高于 150"},
+  {"round": 3, "params": "MAX_ATTRS_PER_UID=1, onset when dated>=2", "total": 139, "note": "落入 120-150 目标区间，冻结"}
+ ],
+ "calibration_note": "3 轮均只调整“每 uid 最多选几个属性/onset 是否需要至少 2 个带日期命中”这两个与具体题目内容无关的生成参数，未触碰词典条目本身或任何阈值归纳；诚实局限：输出日志在调参过程中附带了 test 子集的聚合行数（不涉内容/金答），严格意义上对 test 封存有轻微破缘，后续轮次建议仅用 --coverage-uids dev。",
+ "totals": {"rows": 139, "s7div_filter": 99, "s7div_onset": 40,
+             "diet": 57, "activity": 82, "unique_uids": 99,
+             "leak_excluded_attr_instances": 14},
+ "assertions": {
+  "assert1_no_verbatim_leak": "PASS (0/139)",
+  "assert2_gold_reproducible": "PASS (0/139 mismatches, independent re-implementation)",
+  "assert3_frozen_code_isolation": "PASS (grep zero hits on qvf_router.py / wt_qvf_prototype.py / complex_query_arm.py / qvf_algebra.py)"
+ },
+ "frozen_code_footprint": "零修改：本阶段只新增 data/s7div_seed_ontology.json, data/wsc_s7div.jsonl, data/wsc_s7div.meta.json, scripts/s7div_gen.py, scripts/s7div_verify.py 五个新文件；qvf_router.py/wt_qvf_prototype.py/complex_query_arm.py/qvf_algebra.py 未被读取之外的任何操作（git status 验证）。本阶段不引入任何新运行时机制，故未涉及 env 旗标门控/replay_evidence.py 对拍——该纪律将在后续阶段（格闭包臂阅读臂）接入 complex_query_arm.py 时适用。"
+}

@@ -1,0 +1,784 @@
+{
+ "_purpose": "S7-div seed attribute ontology: mechanical food/activity -> attribute dictionary used ONLY by scripts/s7div_gen.py (question generation side) to derive gold answers for S7-div. Never imported by wt_qvf_prototype.py, complex_query_arm.py, qvf_router.py, or qvf_algebra.py (card-building / reading side) -- verified by grep in scripts/s7div_verify.py.",
+ "attributes": {
+  "高糖": {
+   "gloss": "high-sugar",
+   "category": "diet",
+   "en_question": "high-sugar"
+  },
+  "高脂": {
+   "gloss": "high-fat",
+   "category": "diet",
+   "en_question": "high-fat"
+  },
+  "高盐": {
+   "gloss": "high-sodium",
+   "category": "diet",
+   "en_question": "high-sodium"
+  },
+  "咖啡因": {
+   "gloss": "caffeine",
+   "category": "diet",
+   "en_question": "caffeinated"
+  },
+  "高蛋白": {
+   "gloss": "high-protein",
+   "category": "diet",
+   "en_question": "high-protein"
+  },
+  "精制碳水": {
+   "gloss": "refined-carb",
+   "category": "diet",
+   "en_question": "refined-carb"
+  },
+  "久坐": {
+   "gloss": "sedentary",
+   "category": "activity",
+   "en_question": "sedentary"
+  },
+  "高强度": {
+   "gloss": "high-intensity",
+   "category": "activity",
+   "en_question": "high-intensity"
+  },
+  "低强度": {
+   "gloss": "low-intensity",
+   "category": "activity",
+   "en_question": "low-intensity"
+  },
+  "户外": {
+   "gloss": "outdoor",
+   "category": "activity",
+   "en_question": "outdoor"
+  },
+  "团队": {
+   "gloss": "team sport",
+   "category": "activity",
+   "en_question": "team-based"
+  },
+  "耐力型": {
+   "gloss": "endurance",
+   "category": "activity",
+   "en_question": "endurance"
+  }
+ },
+ "items": [
+  {
+   "phrase": "cake",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "chocolate cake",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "blueberry cake",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "lemon blueberry cake",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "cookie",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "cookies",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "chocolate chip cookies",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "donut",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "doughnut",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "candy",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "ice cream",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "soda",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "cola",
+   "attrs": [
+    "高糖",
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "milkshake",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "honey",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "maple syrup",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "syrup",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "muffin",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "muffins",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "banana muffins",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "blueberry oat muffins",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "pie",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "pastry",
+   "attrs": [
+    "高糖",
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "bubble tea",
+   "attrs": [
+    "高糖",
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "energy drink",
+   "attrs": [
+    "高糖",
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "chocolate",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "chocolate bar",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "frosting",
+   "attrs": [
+    "高糖"
+   ]
+  },
+  {
+   "phrase": "fried chicken",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "bacon",
+   "attrs": [
+    "高脂",
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "butter",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "cheese",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "deep-fried",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "french fries",
+   "attrs": [
+    "高脂",
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "sweet potato fries",
+   "attrs": [
+    "高脂",
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "potato chips",
+   "attrs": [
+    "高脂",
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "chips",
+   "attrs": [
+    "高脂",
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "burger",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "cheeseburger",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "pizza",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "bbq ribs",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "ribs",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "mayonnaise",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "mayo",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "cream sauce",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "fried rice",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "olive oil",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "lard",
+   "attrs": [
+    "高脂"
+   ]
+  },
+  {
+   "phrase": "deli meat",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "soy sauce",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "pickles",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "instant ramen",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "ramen",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "salted nuts",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "pretzels",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "canned soup",
+   "attrs": [
+    "高盐"
+   ]
+  },
+  {
+   "phrase": "coffee",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "espresso",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "latte",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "cappuccino",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "black tea",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "green tea",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "matcha",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "iced coffee",
+   "attrs": [
+    "咖啡因"
+   ]
+  },
+  {
+   "phrase": "chicken breast",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "protein shake",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "greek yogurt",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "lentils",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "tofu",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "eggs",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "steak",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "salmon",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "cottage cheese",
+   "attrs": [
+    "高蛋白"
+   ]
+  },
+  {
+   "phrase": "white bread",
+   "attrs": [
+    "精制碳水"
+   ]
+  },
+  {
+   "phrase": "white rice",
+   "attrs": [
+    "精制碳水"
+   ]
+  },
+  {
+   "phrase": "pasta",
+   "attrs": [
+    "精制碳水"
+   ]
+  },
+  {
+   "phrase": "bagel",
+   "attrs": [
+    "精制碳水"
+   ]
+  },
+  {
+   "phrase": "pancakes",
+   "attrs": [
+    "精制碳水"
+   ]
+  },
+  {
+   "phrase": "waffles",
+   "attrs": [
+    "精制碳水"
+   ]
+  },
+  {
+   "phrase": "desk job",
+   "attrs": [
+    "久坐"
+   ]
+  },
+  {
+   "phrase": "office job",
+   "attrs": [
+    "久坐"
+   ]
+  },
+  {
+   "phrase": "binge-watching",
+   "attrs": [
+    "久坐"
+   ]
+  },
+  {
+   "phrase": "gaming marathon",
+   "attrs": [
+    "久坐"
+   ]
+  },
+  {
+   "phrase": "long commute by car",
+   "attrs": [
+    "久坐"
+   ]
+  },
+  {
+   "phrase": "sitting all day",
+   "attrs": [
+    "久坐"
+   ]
+  },
+  {
+   "phrase": "hiit",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "sprint intervals",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "kickboxing",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "crossfit",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "spin class",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "spinning",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "weightlifting",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "strength training",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "zumba",
+   "attrs": [
+    "高强度"
+   ]
+  },
+  {
+   "phrase": "gentle yoga",
+   "attrs": [
+    "低强度"
+   ]
+  },
+  {
+   "phrase": "walking",
+   "attrs": [
+    "低强度"
+   ]
+  },
+  {
+   "phrase": "stretching",
+   "attrs": [
+    "低强度"
+   ]
+  },
+  {
+   "phrase": "leisurely stroll",
+   "attrs": [
+    "低强度"
+   ]
+  },
+  {
+   "phrase": "tai chi",
+   "attrs": [
+    "低强度"
+   ]
+  },
+  {
+   "phrase": "hiking",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "trail running",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "cycling",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "biking",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "kayaking",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "camping",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "mountain biking",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "rock climbing",
+   "attrs": [
+    "户外"
+   ]
+  },
+  {
+   "phrase": "volleyball",
+   "attrs": [
+    "团队"
+   ]
+  },
+  {
+   "phrase": "basketball",
+   "attrs": [
+    "团队"
+   ]
+  },
+  {
+   "phrase": "soccer",
+   "attrs": [
+    "团队"
+   ]
+  },
+  {
+   "phrase": "softball",
+   "attrs": [
+    "团队"
+   ]
+  },
+  {
+   "phrase": "rugby",
+   "attrs": [
+    "团队"
+   ]
+  },
+  {
+   "phrase": "recreational basketball",
+   "attrs": [
+    "团队"
+   ]
+  },
+  {
+   "phrase": "marathon training",
+   "attrs": [
+    "耐力型"
+   ]
+  },
+  {
+   "phrase": "long-distance running",
+   "attrs": [
+    "耐力型"
+   ]
+  },
+  {
+   "phrase": "triathlon",
+   "attrs": [
+    "耐力型"
+   ]
+  },
+  {
+   "phrase": "distance swimming",
+   "attrs": [
+    "耐力型"
+   ]
+  },
+  {
+   "phrase": "endurance cycling",
+   "attrs": [
+    "耐力型"
+   ]
+  }
+ ]
+}

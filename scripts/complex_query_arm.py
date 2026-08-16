@@ -66,6 +66,11 @@ _CARDS_KEYED = os.environ.get("QVF_CARDS_KEYED", "")
 _OPEN_SLOT = int(os.environ.get("QVF_OPEN_SLOT", "0") or 0)
 _OPEN_KEYS = int(os.environ.get("QVF_OPEN_KEYS", "0") or 0)
 _FAIL_CLOSED = int(os.environ.get("QVF_FAIL_CLOSED", "0") or 0)
+# QVF_TAG_LATTICE=1(阶段二):_tagged() 的闭集字符串相等改为格上闭包
+# (scripts/tag_lattice.py:is-a 传递闭包 + has-property 一跳 + 格未命中时
+# 嵌入软匹配)。默认 0 = 冻结行为,_tagged() 逐字节不变(纯字符串相等)。
+# 只延迟 import tag_lattice(旗标关时零副作用、不读 results/tag_lattice.json)。
+_TAG_LATTICE = int(os.environ.get("QVF_TAG_LATTICE", "0") or 0)
 
 # 与 scripts/qvf_router.py 的 SLOT_ALIASES 逐字一致(复制而非导入:qvf_router
 # 模块级即创建 anthropic 客户端并读聚焦缓存,独立跑批器不背这些副作用)。
@@ -357,6 +362,11 @@ def _line(rec: dict, mem_dates: dict) -> str:
 
 def _tagged(recs: List[dict], tag: str) -> List[dict]:
     t = (tag or "").strip()
+    if _TAG_LATTICE:
+        from scripts.tag_lattice import tag_matches  # noqa: E402  (延迟 import)
+        return [r for r in recs
+                if any(tag_matches((x or "").strip(), t)
+                       for x in (r.get("value_tags") or []))]
     return [r for r in recs
             if any((x or "").strip() == t for x in (r.get("value_tags") or []))]
 

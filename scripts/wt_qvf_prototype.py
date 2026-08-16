@@ -44,7 +44,8 @@ _CARD_KEYS = int(os.environ.get("QVF_CARD_KEYS", "0") or 0)
 # QVF_CARD_TAGS=1:建卡提示词追加唯一一条 value_tags 语义标签规则(闭集类目
 # + 食品/健康自由子标签;ExtractedRecord 的对应可选字段由同名旗标在
 # qvf/engine_bridge.py 门控)。与 QVF_CARD_KEYS 可叠加(基底自动选 V4)。
-# 默认 0 = 冻结行为,提示词与载荷逐字节不变。
+# QVF_CARD_TAGS=2(阶段二):同一字段改用完全开放标签规则(无固定类目表),
+# 与 =1 互斥选其一。默认 0 = 冻结行为,提示词与载荷逐字节不变。
 _CARD_TAGS = int(os.environ.get("QVF_CARD_TAGS", "0") or 0)
 
 
@@ -98,6 +99,21 @@ _CATALOG_TAGS_RULE = """\
    出行旅行, 居家生活, 工作学习, 社交关系, 娱乐爱好, 财务, 宠物 — PLUS
    free-form food/health sub-tags like 高糖, 高油, 素食, 咖啡因 when the
    value is food/drink related.
+"""
+
+# 阶段二·开放标签(QVF_CARD_TAGS=2 时启用,取代 =1 的闭集规则,互斥):
+# 打破"考纲/建卡契约同源"闭环——不再给模型任何固定类目表,标签自由生成,
+# 值本身即概念(如"三杯鸡"可打"台式炖菜"/"高糖"等自由标签)。旗标=0/1
+# 时 _catalog_prompt() 输出逐字节不变;=2 是新增第三分支,不改动前两支
+# 任何字节。编号规则与 =1 分支相同。
+_CATALOG_TAGS_RULE_OPEN = """\
+{n}. value_tags: for each record also output value_tags — 0-3 short
+   free-form semantic labels for this fact's VALUE (not a fixed category
+   list — invent whatever concise noun-phrase labels best describe it,
+   e.g. a dish name might get a cuisine-type label and a nutrition-type
+   label; a habit might get a domain label and an intensity label).
+   Use consistent wording for the same concept across records (e.g. always
+   "高糖", never mix with "糖分高"). Empty list if nothing salient applies.
 """
 
 
@@ -179,8 +195,10 @@ def _catalog_prompt() -> str:
     不变);KEYS/TAGS/STRICT/V5 各自独立门控,可叠加。V5 追加在所有其他
     旗标之后,不改动其之前的任何字节。"""
     base = CATALOG_PROMPT_V4 if _CARD_KEYS else CATALOG_PROMPT
-    if _CARD_TAGS:
+    if _CARD_TAGS == 1:
         base = base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
+    elif _CARD_TAGS >= 2:
+        base = base + _CATALOG_TAGS_RULE_OPEN.format(n=8 if _CARD_KEYS else 6)
     if _CARD_STRICT:
         base = base + _CATALOG_STRICT_RULE
     if _CARD_V5:
