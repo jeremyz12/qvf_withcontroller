@@ -1,0 +1,187 @@
+{
+ "generated": "calibrate subcommand, scripts/build_tag_lattice.py",
+ "cards_dir": "results\\wt_cards_opentags",
+ "population_uids": [
+  "chain000-64560e32",
+  "chain001-7e0f4274",
+  "chain002-4781d89c",
+  "chain003-d1abbcfb",
+  "chain005-c959aac8",
+  "chain006-8b6b3111",
+  "chain007-b4370a0a",
+  "chain010-d6277b1b",
+  "chain011-3c88e770",
+  "chain012-bba4fa1e",
+  "chain013-4dff9d85",
+  "chain014-190a5476",
+  "chain016-9f267739",
+  "chain023-0982db18",
+  "chain027-1537c0d3",
+  "chain028-c4ecf960",
+  "chain029-9c9f4b75",
+  "chain031-7ea5fe59",
+  "chain033-e867546b",
+  "chain035-0039ce98",
+  "chain036-a4acf22f",
+  "chain037-6938f375",
+  "chain038-35445662",
+  "chain039-1d263753",
+  "chain041-35609fb7",
+  "chain042-151d29cb",
+  "chain043-eee49ba4",
+  "chain044-9339c468",
+  "chain045-56051b4b",
+  "chain046-f5f6a909"
+ ],
+ "n_population_uids": 30,
+ "dev_rows_evaluated": 42,
+ "n_unique_labels_total": 1923,
+ "n_unique_labels_capped_for_haiku_builds": 150,
+ "max_labels_cap": 150,
+ "target_precision": 0.95,
+ "match_thresh_jaccard": 0.3,
+ "pr_curve": [
+  {
+   "n_dev_rows": 42,
+   "tp": 29,
+   "fp": 729,
+   "fn": 33,
+   "precision": 0.0383,
+   "recall": 0.4677,
+   "tau_syn": 0.86,
+   "read_tau": 0.3
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 19,
+   "fp": 130,
+   "fn": 43,
+   "precision": 0.1275,
+   "recall": 0.3065,
+   "tau_syn": 0.86,
+   "read_tau": 0.4
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 13,
+   "fp": 48,
+   "fn": 49,
+   "precision": 0.2131,
+   "recall": 0.2097,
+   "tau_syn": 0.86,
+   "read_tau": 0.5
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 11,
+   "fp": 38,
+   "fn": 51,
+   "precision": 0.2245,
+   "recall": 0.1774,
+   "tau_syn": 0.86,
+   "read_tau": 0.6
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 9,
+   "fp": 24,
+   "fn": 53,
+   "precision": 0.2727,
+   "recall": 0.1452,
+   "tau_syn": 0.86,
+   "read_tau": 0.7
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 4,
+   "fp": 9,
+   "fn": 58,
+   "precision": 0.3077,
+   "recall": 0.0645,
+   "tau_syn": 0.86,
+   "read_tau": 0.8
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 4,
+   "fp": 9,
+   "fn": 58,
+   "precision": 0.3077,
+   "recall": 0.0645,
+   "tau_syn": 0.86,
+   "read_tau": 0.9
+  },
+  {
+   "n_dev_rows": 42,
+   "tp": 4,
+   "fp": 9,
+   "fn": 58,
+   "precision": 0.3077,
+   "recall": 0.0645,
+   "tau_syn": 0.86,
+   "read_tau": null,
+   "note": "no_embed_fallback"
+  }
+ ],
+ "chosen": {
+  "tau_syn": 0.86,
+  "QVF_TAG_LATTICE_TAU": 0.8,
+  "precision": 0.3077,
+  "recall": 0.0645,
+  "target_precision_met": false
+ },
+ "production_lattice": {
+  "path": "results\\tag_lattice.json",
+  "nodes": 148,
+  "is_a_edges": 139,
+  "has_property_edges": 9,
+  "merged": 2,
+  "property_rejected": 11
+ },
+ "ablation_at_chosen_point": {
+  "full_both_invariants_on": {
+   "n_dev_rows": 42,
+   "tp": 4,
+   "fp": 9,
+   "fn": 58,
+   "precision": 0.3077,
+   "recall": 0.0645,
+   "tau_syn": 0.86,
+   "read_tau": 0.8,
+   "n_labels_processed": 150
+  },
+  "no_entailment_check": {
+   "n_dev_rows": 42,
+   "tp": 4,
+   "fp": 9,
+   "fn": 58,
+   "precision": 0.3077,
+   "recall": 0.0645,
+   "n_labels_processed": 150,
+   "note": "same capped label subset as production build"
+  },
+  "no_merge_or_attach": {
+   "n_dev_rows": 42,
+   "tp": 4,
+   "fp": 9,
+   "fn": 58,
+   "precision": 0.3077,
+   "recall": 0.0645,
+   "n_labels_processed": 1923,
+   "note": "zero haiku calls in this mode, ran on FULL uncapped vocabulary"
+  }
+ },
+ "usage": {
+  "haiku_in": 151035,
+  "haiku_out": 14977,
+  "haiku_calls": 318,
+  "embed_tokens": 4304
+ },
+ "usage_cost_usd_estimate": 0.226,
+ "caveats": [
+  "gold.record_id 出自旧版无标签 results/wt_cards/ 卡片的抽取顺序,与本阶段 QVF_CARD_TAGS=2 重建卡片是不同一次 LLM 抽取,record_id 不可跨版本对齐;本 calibrate 改用 gold.value 与卡片record.value 的词集 Jaccard 重叠(阈值 match-thresh)做近似同一事实判定,非阶段二判官(qvf/judge.py)的语义裁决,数字仅供阈值选点参考,不是最终 P1/P2 主判据的替代。",
+  "query_tag 取 attribute_gloss 原字段直接探测格,未经过complex_query_arm.py 真实查询编译器产出 plan.tag——阶段二接入编译器后的真实 P/R 可能与本表不同,需要复测。",
+  "仅覆盖 30/71 个 dev uid(受限于本阶段只建了 30 张卡);dev 100 题里落在这 30 uid 内的子集才被评估,非全量 dev 100 题。",
+  "预算发现:30 张卡实测去重 value_tags 词表达 1923 条(远超 8-uid 冒烟阶段 772 条的量级),按实测 haiku 单价(~$0.0008/标签)全量跑一次生产格已接近 $1.5+,tau_syn 网格(2 候选)+ no_entailment 消融再各乘一次,远超本阶段 ≤$3 预算上限。故实际执行做了两处降级(如实记录,非隐瞒):① tau_syn 只取单点(生产格未做 tau_syn 网格搜索,--tau-syn-grid 传入的仍是冻结默认 0.86,与 8-uid 冒烟阶段验证过的值一致);② 生产格 / no_entailment 消融只处理前 --max-labels 个去重标签(见 n_unique_labels_capped_for_haiku_builds vs n_unique_labels_total),未覆盖的标签在读取侧仍可命中嵌入回退(embed_similar 不要求标签是格节点),故检索并非对未入格标签完全失效,但格闭包(is_a/has_property)带来的增益只在入格的这部分标签上被验证。no_merge_or_attach 消融例外:该分支零 haiku 调用,在全量标签上运行,是唯一的全覆盖测量。"
+ ]
+}

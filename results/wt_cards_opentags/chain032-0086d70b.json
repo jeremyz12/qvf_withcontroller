@@ -1,0 +1,1239 @@
+{
+ "uid": "chain032-0086d70b",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain032-0086d70b/s0#r0",
+   "source_span": "I used to play the alto sax in high school",
+   "entity": "user",
+   "slot": "instrument_played",
+   "value": "alto sax",
+   "claim": "The user played alto saxophone in high school.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "in high school",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "musical instrument",
+    "woodwind"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain032-0086d70b/s0#r2",
+   "source_span": "I'm located in the San Francisco Bay Area",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "San Francisco Bay Area",
+   "claim": "The user's current residence is in the San Francisco Bay Area.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "geographic location",
+    "USA"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain032-0086d70b/s0#r2",
+   "source_span": "my grandfather's guitar is a 1962 Gibson J-45 acoustic",
+   "entity": "user",
+   "slot": "valued_possession",
+   "value": "1962 Gibson J-45 acoustic guitar (grandfather's)",
+   "claim": "The user owns a 1962 Gibson J-45 acoustic guitar that belonged to their grandfather.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1962",
+   "value_tags": [
+    "musical instrument",
+    "family heirloom",
+    "vintage guitar"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain032-0086d70b/s1#r0",
+   "source_span": "I'm training for a triathlon",
+   "entity": "user",
+   "slot": "active_fitness_goal",
+   "value": "training for a triathlon",
+   "claim": "The user is actively training for a triathlon.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "endurance sport",
+    "multi-sport"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain032-0086d70b/s1#r0",
+   "source_span": "I participated in the \"Run for Hunger\" charity event and raised $250 for a local food bank",
+   "entity": "user",
+   "slot": "charity_participation",
+   "value": "Run for Hunger (raised $250)",
+   "claim": "The user participated in the Run for Hunger charity event and raised $250 for a local food bank.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "charitable activity",
+    "fundraising"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain032-0086d70b/s1#r0",
+   "source_span": "I volunteered at a charity bake sale",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "charity bake sale",
+   "claim": "The user volunteered at a charity bake sale.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteer work",
+    "fundraising"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain032-0086d70b/s1#r2",
+   "source_span": "I've been trying to swim at least 3 times a week",
+   "entity": "user",
+   "slot": "swimming_frequency",
+   "value": "at least 3 times a week",
+   "claim": "The user swims at least 3 times a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness habit",
+    "frequency"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain032-0086d70b/s1#r4",
+   "source_span": "I volunteered at a charity bake sale at work, where we raised over $1,000 for the local children's hospital. I was in charge of selling cupcakes",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "charity bake sale at work (sold cupcakes, raised $1,000)",
+   "claim": "The user volunteered at a workplace charity bake sale selling cupcakes and raised over $1,000 for the local children's hospital.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteer work",
+    "fundraising",
+    "workplace"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain032-0086d70b/s2#r0",
+   "source_span": "I watched the NFL playoffs last weekend and had a blast watching the Kansas City Chiefs take down the Buffalo Bills at my friend's place",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "NFL (Kansas City Chiefs fan)",
+   "claim": "The user watches NFL games and supports the Kansas City Chiefs.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports interest",
+    "NFL fan"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain032-0086d70b/s3#r1",
+   "source_span": "I've got waist-length natural waves and they tangle into knots overnight no matter what I do",
+   "entity": "user",
+   "slot": "hair_characteristics",
+   "value": "waist-length natural waves",
+   "claim": "The user has waist-length natural wavy hair that tangles easily.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair type",
+    "hair length"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain032-0086d70b/s3#r2",
+   "source_span": "I only shampoo twice a week",
+   "entity": "user",
+   "slot": "hair_care_routine",
+   "value": "shampooing twice a week",
+   "claim": "The user shampoos their hair twice a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair care routine",
+    "frequency"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain032-0086d70b/s4#r0",
+   "source_span": "creating my starter from scratch took some time - it took me about a week to get it going, feeding it once a day and waiting for it to bubble and froth",
+   "entity": "user",
+   "slot": "sourdough_hobby",
+   "value": "baking sourdough with homemade starter",
+   "claim": "The user creates sourdough bread from a homemade starter that took a week to develop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking hobby",
+    "fermentation"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain032-0086d70b/s5#r0",
+   "source_span": "I'm thinking of selling some of our extra farm produce at the local farmer's market",
+   "entity": "user",
+   "slot": "farm_business_plan",
+   "value": "selling farm produce at farmer's market",
+   "claim": "The user is planning to sell farm produce at a local farmer's market.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "business plan",
+    "agriculture"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain032-0086d70b/s5#r0",
+   "source_span": "I've been meaning to return my neighbor John's sheep shearer, which he lent me last month",
+   "entity": "user",
+   "slot": "borrowed_item",
+   "value": "sheep shearer (borrowed from neighbor John)",
+   "claim": "The user borrowed a sheep shearer from neighbor John and intends to return it.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "farm equipment",
+    "borrowed item"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain032-0086d70b/s5#r0",
+   "source_span": "fresh eggs, goat milk, and horse manure fertilizer",
+   "entity": "user",
+   "slot": "farm_produce",
+   "value": "fresh eggs, goat milk, horse manure fertilizer",
+   "claim": "The user produces or has access to fresh eggs, goat milk, and horse manure fertilizer on their farm.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "farm products",
+    "livestock"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain032-0086d70b/s5#r2",
+   "source_span": "I'm also thinking of selling Billy's goat milk",
+   "entity": "user",
+   "slot": "livestock_name",
+   "value": "Billy (goat)",
+   "claim": "The user has a goat named Billy.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "farm animal",
+    "livestock"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain032-0086d70b/s5#r4",
+   "source_span": "I'm also thinking of upgrading my horse, Luna's, living quarters",
+   "entity": "user",
+   "slot": "livestock_name",
+   "value": "Luna (horse)",
+   "claim": "The user has a horse named Luna.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "farm animal",
+    "livestock"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain032-0086d70b/s6#r0",
+   "source_span": "I just finished reading \"The Nightingale\" by Kristin Hannah today",
+   "entity": "user",
+   "slot": "book_read",
+   "value": "The Nightingale by Kristin Hannah",
+   "claim": "The user finished reading The Nightingale by Kristin Hannah.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "historical fiction",
+    "book"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain032-0086d70b/s7#r0",
+   "source_span": "I met an entrepreneur named Alex at a meetup organized by the local startup community last week, who's looking for a co-founder for his fintech startup",
+   "entity": "user",
+   "slot": "professional_contact",
+   "value": "Alex (fintech entrepreneur)",
+   "claim": "The user met Alex, a fintech entrepreneur looking for a co-founder, at a local startup community meetup.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional networking",
+    "fintech"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain032-0086d70b/s7#r2",
+   "source_span": "I met a woman named Sophia at the same meetup who's working on a sustainable fashion brand",
+   "entity": "user",
+   "slot": "professional_contact",
+   "value": "Sophia (sustainable fashion entrepreneur)",
+   "claim": "The user met Sophia at the startup community meetup who is working on a sustainable fashion brand.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional networking",
+    "sustainable fashion"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain032-0086d70b/s8#r0",
+   "source_span": "I just won a cookbook by Gordon Ramsay in a giveaway in the 'Foodie Frenzy' group today",
+   "entity": "user",
+   "slot": "cookbook_owned",
+   "value": "Gordon Ramsay cookbook (won in giveaway)",
+   "claim": "The user won a Gordon Ramsay cookbook in a giveaway from the Foodie Frenzy group.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cookbook",
+    "cooking"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain032-0086d70b/s9#r0",
+   "source_span": "I'm looking for some photography inspiration and tips",
+   "entity": "user",
+   "slot": "hobby_interest",
+   "value": "photography",
+   "claim": "The user is interested in photography as a hobby.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "creative interest"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain032-0086d70b/s9#r2",
+   "source_span": "I'm interested in astrophotography",
+   "entity": "user",
+   "slot": "photography_specialty",
+   "value": "astrophotography",
+   "claim": "The user is interested in astrophotography as a photography specialty.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "photography specialty",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain032-0086d70b/s10#r2",
+   "source_span": "I typically come to my office from about thirty miles out",
+   "entity": "user",
+   "slot": "commute_distance",
+   "value": "approximately 30 miles",
+   "claim": "The user commutes approximately 30 miles to their office.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "commute",
+    "work"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain032-0086d70b/s11#r0",
+   "source_span": "I got a synthetic oil change three weeks ago and it was $35",
+   "entity": "user",
+   "slot": "car_maintenance",
+   "value": "synthetic oil change ($35 with coupon)",
+   "claim": "The user had a synthetic oil change three weeks ago for $35 using a coupon.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "car maintenance",
+    "vehicle care"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain032-0086d70b/s12#r0",
+   "source_span": "I started using the hashtag #MyFitnessJourney on Instagram about 6 weeks ago",
+   "entity": "user",
+   "slot": "social_media_activity",
+   "value": "Instagram fitness tracking (#MyFitnessJourney)",
+   "claim": "The user started tracking their fitness journey on Instagram with the hashtag #MyFitnessJourney about 6 weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "fitness"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain032-0086d70b/s13#r1",
+   "source_span": "I went for a blunt chin-length bob",
+   "entity": "user",
+   "slot": "hair_style",
+   "value": "blunt chin-length bob",
+   "claim": "The user got a blunt chin-length bob haircut recently.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair style",
+    "short hair"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain032-0086d70b/s13#r2",
+   "source_span": "The ends flip outward by lunchtime every single day though",
+   "entity": "user",
+   "slot": "hair_styling_challenge",
+   "value": "ends flip outward throughout the day",
+   "claim": "The user experiences their hair ends flipping outward by lunchtime daily with their new bob cut.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair care challenge",
+    "hair styling"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain032-0086d70b/s14#r0",
+   "source_span": "I started exploring different music genres, including indie rock, electronic, and hip-hop today",
+   "entity": "user",
+   "slot": "music_interest",
+   "value": "indie rock, electronic, hip-hop",
+   "claim": "The user is exploring indie rock, electronic, and hip-hop music genres.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "music genre",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain032-0086d70b/s14#r2",
+   "source_span": "I'm interested in learning more about the music production process, so I might start listening to more podcasts like Song Exploder",
+   "entity": "user",
+   "slot": "podcast_interest",
+   "value": "Song Exploder",
+   "claim": "The user is interested in listening to music production podcasts like Song Exploder.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "podcast",
+    "music production"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain032-0086d70b/s15#r0",
+   "source_span": "the number of dresses I got from a recent collection was equal to the number of times I got something for under $30",
+   "entity": "user",
+   "slot": "shopping_habit",
+   "value": "found multiple items under $30",
+   "claim": "The user found several items priced under $30 in a recent shopping period.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shopping",
+    "budget shopping"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain032-0086d70b/s15#r2",
+   "source_span": "I got two dresses",
+   "entity": "user",
+   "slot": "clothing_purchase",
+   "value": "two dresses",
+   "claim": "The user purchased two dresses recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "clothing",
+    "shopping"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain032-0086d70b/s16#r2",
+   "source_span": "I want to categorize my activity on Facebook, Twitter, Instagram, LinkedIn, YouTube, Reddit, and Goodreads",
+   "entity": "user",
+   "slot": "social_media_platform",
+   "value": "Facebook, Twitter, Instagram, LinkedIn, YouTube, Reddit, Goodreads",
+   "claim": "The user is active on Facebook, Twitter, Instagram, LinkedIn, YouTube, Reddit, and Goodreads.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "platforms"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain032-0086d70b/s17#r0",
+   "source_span": "I'm looking for a new audiobook to listen to after finishing \"Sapiens\". I want something similar to \"The Nightingale\", which was really emotional and engaging, and lasted for 17 hours",
+   "entity": "user",
+   "slot": "audiobook_interest",
+   "value": "The Nightingale (17 hours), Sapiens",
+   "claim": "The user listens to audiobooks, including The Nightingale (17 hours) and Sapiens, and prefers emotional historical fiction.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "audiobook",
+    "reading"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain032-0086d70b/s18#r0",
+   "source_span": "I'm trying to get settled in the US",
+   "entity": "user",
+   "slot": "relocation_status",
+   "value": "recently relocated to the US",
+   "claim": "The user has recently relocated to the United States.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "relocation",
+    "immigration status"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain032-0086d70b/s18#r2",
+   "source_span": "my asylum seeker background",
+   "entity": "user",
+   "slot": "immigration_background",
+   "value": "asylum seeker",
+   "claim": "The user has an asylum seeker background.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "immigration status",
+    "personal background"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain032-0086d70b/s20#r0",
+   "source_span": "I just babysat her for a week",
+   "entity": "user",
+   "slot": "family_relation",
+   "value": "niece (babysat for a week)",
+   "claim": "The user babysat their niece for a week recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family",
+    "childcare"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain032-0086d70b/s21#r2",
+   "source_span": "I just got back from Cancun, Mexico last month, where I went on a 5-day vacation with my family from June 15th to 20th. We stayed at an all-inclusive resort called Moon Palace",
+   "entity": "user",
+   "slot": "vacation",
+   "value": "Cancun, Mexico (Moon Palace resort, 5 days)",
+   "claim": "The user took a 5-day family vacation to Cancun, Mexico at the Moon Palace all-inclusive resort from June 15-20.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "value_tags": [
+    "vacation",
+    "travel",
+    "family"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain032-0086d70b/s22#r1",
+   "source_span": "now I have a platinum pixie cut",
+   "entity": "user",
+   "slot": "hair_style",
+   "value": "platinum pixie cut",
+   "claim": "The user now has a platinum pixie cut.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r27"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair style",
+    "short hair",
+    "platinum blonde"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain032-0086d70b/s22#r2",
+   "source_span": "My scalp is feeling tight and flaky after all that bleach",
+   "entity": "user",
+   "slot": "scalp_condition",
+   "value": "tight and flaky scalp",
+   "claim": "The user has a tight and flaky scalp following bleaching treatment.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair health",
+    "scalp condition"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain032-0086d70b/s23#r0",
+   "source_span": "I made a batch of homemade granola last week and used honey instead of brown sugar",
+   "entity": "user",
+   "slot": "baking_experiment",
+   "value": "homemade granola with honey",
+   "claim": "The user made homemade granola using honey as a sweetener instead of brown sugar.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking",
+    "granola",
+    "honey"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain032-0086d70b/s23#r0",
+   "source_span": "I've been stuck on my Old Fashioned recipe",
+   "entity": "user",
+   "slot": "cocktail_preference",
+   "value": "Old Fashioned",
+   "claim": "The user has been primarily making Old Fashioned cocktails.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cocktail",
+    "whiskey-based drink"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain032-0086d70b/s23#r2",
+   "source_span": "I think I'll try the Boulevardier, I've heard of it before but never got around to making it. Do you have a recommended whiskey for this cocktail, or should I stick with my trusty Woodford Reserve Double Oaked?",
+   "entity": "user",
+   "slot": "whiskey_preference",
+   "value": "Woodford Reserve Double Oaked",
+   "claim": "The user has a preference for Woodford Reserve Double Oaked whiskey for cocktails.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "whiskey",
+    "bourbon"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain032-0086d70b/s24#r0",
+   "source_span": "I play Settlers of Catan with my family - we've been doing it every Sunday evening for the past six weeks",
+   "entity": "user",
+   "slot": "game_hobby",
+   "value": "Settlers of Catan (weekly Sunday tradition)",
+   "claim": "The user plays Settlers of Catan with family every Sunday evening for the past six weeks.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "board game",
+    "family tradition",
+    "weekly habit"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain032-0086d70b/s24#r2",
+   "source_span": "I've learned a new game called Azul recently. I've even played it three times in a row with my friends",
+   "entity": "user",
+   "slot": "game_hobby",
+   "value": "Azul",
+   "claim": "The user recently learned Azul and has played it three times with friends.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "board game",
+    "strategy game"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain032-0086d70b/s25#r0",
+   "source_span": "I've been really loving my new black boots from Zara - I got them on the 15th of last month",
+   "entity": "user",
+   "slot": "clothing_item",
+   "value": "black boots from Zara",
+   "claim": "The user purchased black boots from Zara on August 15th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-08-15",
+   "value_tags": [
+    "footwear",
+    "clothing"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain032-0086d70b/s25#r2",
+   "source_span": "I've been really loving my new black boots from Zara - I got them on the 15th of last month and have worn them four times since then",
+   "entity": "user",
+   "slot": "clothing_wear_count",
+   "value": "boots worn 4 times (as of Sep 3)",
+   "claim": "The user has worn their new Zara black boots four times since purchasing them on August 15th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "clothing wear",
+    "usage frequency"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain032-0086d70b/s26#r2",
+   "source_span": "I've been enjoying my role as Senior Software Engineer for a while, especially the part where I now lead a team of five engineers",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Senior Software Engineer",
+   "claim": "The user works as a Senior Software Engineer and leads a team of five engineers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "employment",
+    "leadership role"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain032-0086d70b/s26#r4",
+   "source_span": "I'm based in the San Francisco Bay Area",
+   "entity": "user",
+   "slot": "work_location",
+   "value": "San Francisco Bay Area",
+   "claim": "The user works in the San Francisco Bay Area.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work location",
+    "geographic location"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain032-0086d70b/s27#r0",
+   "source_span": "I just watched the National Theatre's production of One Man, Two Guvnors on YouTube in late March",
+   "entity": "user",
+   "slot": "theater_watched",
+   "value": "One Man, Two Guvnors (National Theatre)",
+   "claim": "The user watched the National Theatre's production of One Man, Two Guvnors in late March.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03",
+   "value_tags": [
+    "theater",
+    "comedy"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain032-0086d70b/s27#r2",
+   "source_span": "I re-read A Midsummer Night's Dream recently",
+   "entity": "user",
+   "slot": "book_read",
+   "value": "A Midsummer Night's Dream by Shakespeare",
+   "claim": "The user re-read A Midsummer Night's Dream by Shakespeare recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "literature",
+    "Shakespeare",
+    "play"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain032-0086d70b/s28#r0",
+   "source_span": "I just attended a 3-day project management workshop last month, earning 21 professional development units (PDUs)",
+   "entity": "user",
+   "slot": "professional_development",
+   "value": "project management workshop (21 PDUs)",
+   "claim": "The user attended a 3-day project management workshop and earned 21 professional development units.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional training",
+    "PDU",
+    "project management"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain032-0086d70b/s29#r0",
+   "source_span": "I started treating my snake plant, Slinky, with neem oil for pests today",
+   "entity": "user",
+   "slot": "houseplant_name",
+   "value": "Slinky (snake plant)",
+   "claim": "The user has a snake plant named Slinky that they are treating with neem oil for pests.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "houseplant",
+    "plant care"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain032-0086d70b/s29#r1",
+   "source_span": "The basil and mint are doing great",
+   "entity": "user",
+   "slot": "herb_garden_plant",
+   "value": "basil, mint",
+   "claim": "The user grows basil and mint in their herb garden, and they are thriving.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "herb garden",
+    "herbs"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain032-0086d70b/s29#r1",
+   "source_span": "the cilantro is growing really slow",
+   "entity": "user",
+   "slot": "herb_garden_plant",
+   "value": "cilantro",
+   "claim": "The user grows cilantro in their herb garden, but it is growing slowly.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "herb garden",
+    "herbs"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain032-0086d70b/s29#r2",
+   "source_span": "I've been watering my cilantro every day, but I'll try scaling back to every other day",
+   "entity": "user",
+   "slot": "herb_watering_frequency",
+   "value": "every other day (for cilantro)",
+   "claim": "The user plans to water their cilantro every other day instead of daily.",
+   "slot_cardinality": "single",
+   "temporal_relation": "correction",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "plant care",
+    "watering frequency"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain032-0086d70b/s30#r0",
+   "source_span": "I'm planning to record some of my grandmother's stories and recipes soon",
+   "entity": "user",
+   "slot": "family_project",
+   "value": "recording grandmother's stories and recipes",
+   "claim": "The user is planning to record their grandmother's stories and recipes for preservation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family history",
+    "project"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain032-0086d70b/s30#r2",
+   "source_span": "my grandmother was hospitalized for a week two months ago",
+   "entity": "user",
+   "slot": "family_health_event",
+   "value": "grandmother hospitalization (week duration)",
+   "claim": "The user's grandmother was hospitalized for a week approximately two months ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family health",
+    "healthcare event"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain032-0086d70b/s31#r1",
+   "source_span": "My stylist cut it into a shoulder-length shag with curtain bangs this morning",
+   "entity": "user",
+   "slot": "hair_style",
+   "value": "shoulder-length shag with curtain bangs",
+   "claim": "The user got a shoulder-length shag haircut with curtain bangs.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r39"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair style",
+    "shag",
+    "shoulder-length"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain032-0086d70b/s31#r2",
+   "source_span": "The bangs keep splitting straight down the middle after an hour",
+   "entity": "user",
+   "slot": "hair_styling_challenge",
+   "value": "curtain bangs split at center after one hour",
+   "claim": "The user experiences their curtain bangs splitting down the middle within an hour.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hair styling challenge",
+    "bang styling"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "chain032-0086d70b/s32#r2",
+   "source_span": "I move pretty often (about every three months)",
+   "entity": "user",
+   "slot": "relocation_frequency",
+   "value": "every three months",
+   "claim": "The user relocates approximately every three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "relocation",
+    "lifestyle pattern"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "chain032-0086d70b/s33#r0",
+   "source_span": "I've already been to the Modern Art Museum recently for the \"Art in Bloom\" exhibition, which was amazing by the way - I spent a whole Sunday afternoon there",
+   "entity": "user",
+   "slot": "museum_visit",
+   "value": "Modern Art Museum (Art in Bloom exhibition)",
+   "claim": "The user visited the Modern Art Museum for the Art in Bloom exhibition on a Sunday afternoon recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "museum visit",
+    "art exhibition"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "chain032-0086d70b/s33#r2",
+   "source_span": "I attended a lecture there last month and was really impressed by the speaker's insights on AI and machine learning in art",
+   "entity": "user",
+   "slot": "museum_visit",
+   "value": "Museum of Contemporary Art (lecture on AI and machine learning in art)",
+   "claim": "The user attended a lecture at the Museum of Contemporary Art last month about AI and machine learning in art.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "museum visit",
+    "lecture",
+    "technology"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "chain032-0086d70b/s33#r4",
+   "source_span": "I recently visited it with my cousin and enjoyed the dinosaur exhibit",
+   "entity": "user",
+   "slot": "museum_visit",
+   "value": "Natural History Museum (dinosaur exhibit)",
+   "claim": "The user recently visited the Natural History Museum with their cousin and enjoyed the dinosaur exhibit.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "museum visit",
+    "natural history"
+   ]
+  }
+ ],
+ "usage_in": 20761,
+ "usage_out": 9399
+}

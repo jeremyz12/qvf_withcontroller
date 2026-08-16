@@ -1,0 +1,1247 @@
+{
+ "uid": "chain046-f5f6a909",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain046-f5f6a909/s0#r0",
+   "source_span": "I've been asking my close friends and family to use they/them pronouns when referring to me",
+   "entity": "user",
+   "slot": "pronouns",
+   "value": "they/them",
+   "claim": "User requests to be referred to using they/them pronouns.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gender identity",
+    "pronouns"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain046-f5f6a909/s0#r0",
+   "source_span": "I've been feeling more comfortable shopping in the men's section lately",
+   "entity": "user",
+   "slot": "clothing_shopping_preference",
+   "value": "men's section",
+   "claim": "User feels more comfortable shopping in the men's clothing section.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gender expression",
+    "shopping preference"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain046-f5f6a909/s1#r0",
+   "source_span": "I recently posted a review of a new restaurant in town, which got 217 views",
+   "entity": "user",
+   "slot": "youtube_channel_activity",
+   "value": "restaurant review video with 217 views",
+   "claim": "User posted a restaurant review video on YouTube that received 217 views.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "content creation",
+    "YouTube",
+    "food review"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain046-f5f6a909/s1#r4",
+   "source_span": "I've been experimenting with Italian recipes in my own kitchen",
+   "entity": "user",
+   "slot": "cooking_interests",
+   "value": "Italian recipes",
+   "claim": "User has been experimenting with Italian recipes at home.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking hobby",
+    "Italian cuisine"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain046-f5f6a909/s3#r1",
+   "source_span": "My 1998 Volvo V70 wagon is leaking coolant somewhere near the thermostat housing",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "1998 Volvo V70 wagon",
+   "claim": "User owns a 1998 Volvo V70 wagon that is currently leaking coolant.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1998",
+   "value_tags": [
+    "vehicle ownership",
+    "car model"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain046-f5f6a909/s4#r0",
+   "source_span": "I recently helped a friend with her organic produce stall at the Farmers' Market at the community center on March 27th",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "helped friend at organic produce stall at Farmers' Market on March 27th",
+   "claim": "User volunteered to help a friend with an organic produce stall at the Farmers' Market at the community center on March 27th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-27",
+   "value_tags": [
+    "volunteering",
+    "farmers market",
+    "organic produce"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain046-f5f6a909/s4#r0",
+   "source_span": "I'm thinking of expanding my product line to include some organic skincare items",
+   "entity": "user",
+   "slot": "business_plans",
+   "value": "expand product line to include organic skincare",
+   "claim": "User is planning to expand their product line to include organic skincare items.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entrepreneurship",
+    "skincare",
+    "organic products"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain046-f5f6a909/s5#r0",
+   "source_span": "I recently completed my Master's degree, and I had to make some minor revisions to my thesis, which I finished by April 1st",
+   "entity": "user",
+   "slot": "education_status",
+   "value": "Master's degree completed",
+   "claim": "User completed their Master's degree and finished thesis revisions by April 1st.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-01",
+   "value_tags": [
+    "education",
+    "academic achievement"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain046-f5f6a909/s5#r2",
+   "source_span": "I'm interested in artificial intelligence and healthcare, and my skills include programming languages like Python and R, as well as experience with machine learning frameworks like TensorFlow and PyTorch",
+   "entity": "user",
+   "slot": "technical_skills",
+   "value": "Python, R, TensorFlow, PyTorch, machine learning",
+   "claim": "User has skills in Python, R, TensorFlow, PyTorch, and machine learning.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "programming",
+    "machine learning",
+    "AI"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain046-f5f6a909/s5#r2",
+   "source_span": "I'm interested in artificial intelligence and healthcare",
+   "entity": "user",
+   "slot": "research_interests",
+   "value": "AI and healthcare",
+   "claim": "User is interested in artificial intelligence and healthcare research.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "research interest",
+    "AI",
+    "healthcare"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain046-f5f6a909/s5#r4",
+   "source_span": "I'd also like to highlight my published paper in the Journal of Medical Imaging and Analysis",
+   "entity": "user",
+   "slot": "publications",
+   "value": "paper published in Journal of Medical Imaging and Analysis",
+   "claim": "User has a published paper in the Journal of Medical Imaging and Analysis.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "publication",
+    "academic research"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain046-f5f6a909/s6#r2",
+   "source_span": "I'm thinking of having around 15-20 people in our group. We're open to both tent and RV camping, but we'd definitely need amenities like flush toilets and potable water. We're flexible on the region, but somewhere with nice hiking trails and scenic views would be great.",
+   "entity": "user",
+   "slot": "camping_plans",
+   "value": "15-20 person group camping trip in July or August with tent/RV, flush toilets, potable water, hiking trails",
+   "claim": "User is planning a summer family camping trip in July or August for 15-20 people with tent and RV camping options, flush toilets, potable water, and hiking trails.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel plans",
+    "family activity",
+    "camping"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain046-f5f6a909/s7#r0",
+   "source_span": "I've been taking kickboxing classes on Thursdays, which has been a great way to get some exercise and relieve stress after a long day of work",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "kickboxing classes on Thursdays",
+   "claim": "User takes kickboxing classes on Thursdays for exercise and stress relief.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "on Thursdays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "exercise",
+    "kickboxing",
+    "stress relief"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain046-f5f6a909/s7#r0",
+   "source_span": "I'm trying to get organized with my new apartment",
+   "entity": "user",
+   "slot": "housing_status",
+   "value": "new apartment",
+   "claim": "User has recently moved into a new apartment.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "housing",
+    "recent move"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain046-f5f6a909/s8#r0",
+   "source_span": "I've been using an old wooden box to store my jewelry, it's been really convenient",
+   "entity": "user",
+   "slot": "jewelry_storage",
+   "value": "old wooden box",
+   "claim": "User uses an old wooden box for storing jewelry.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "storage",
+    "jewelry"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain046-f5f6a909/s8#r2",
+   "source_span": "my wooden box is made of mahogany and has a peculiar smell to it, which I've grown quite fond of",
+   "entity": "user",
+   "slot": "jewelry_storage_material",
+   "value": "mahogany with distinctive smell",
+   "claim": "User's wooden jewelry box is made of mahogany and has a peculiar smell the user has grown fond of.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "mahogany wood",
+    "antique storage"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain046-f5f6a909/s9#r2",
+   "source_span": "I'm editing in Premiere Pro and the final needs to be 8K",
+   "entity": "user",
+   "slot": "video_editing_software",
+   "value": "Premiere Pro",
+   "claim": "User edits videos using Premiere Pro.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "video production",
+    "software"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain046-f5f6a909/s10#r0",
+   "source_span": "I just learned how to make adobo and lumpia from my grandma last Sunday when I visited her for lunch",
+   "entity": "user",
+   "slot": "cooking_learned_dishes",
+   "value": "adobo and lumpia",
+   "claim": "User learned how to make adobo and lumpia from their grandmother on a Sunday visit.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "Filipino cuisine",
+    "family cooking",
+    "culinary skills"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain046-f5f6a909/s10#r0",
+   "source_span": "I'm looking for some recipe suggestions for a cultural potluck at work",
+   "entity": "user",
+   "slot": "work_activities",
+   "value": "cultural potluck at work",
+   "claim": "User is participating in a cultural potluck event at work.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work event",
+    "cultural celebration"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain046-f5f6a909/s11#r0",
+   "source_span": "I just got a new bike helmet recently, which I bought on March 10th - it's a blue and white Bell helmet, and I got a good deal on it with a 10% student discount",
+   "entity": "user",
+   "slot": "bike_helmet",
+   "value": "blue and white Bell helmet",
+   "claim": "User purchased a blue and white Bell bike helmet on March 10th with a student discount.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-10",
+   "value_tags": [
+    "bike gear",
+    "safety equipment"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain046-f5f6a909/s11#r0",
+   "source_span": "I'm thinking of getting a bike carrier for my car, so I can transport my bike more easily. I've been researching online, and I think I'll buy a Saris Bones trunk rack, which costs around $150",
+   "entity": "user",
+   "slot": "bike_carrier_plan",
+   "value": "Saris Bones trunk rack at $150",
+   "claim": "User plans to purchase a Saris Bones trunk rack bike carrier for approximately $150.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "bike accessory",
+    "purchase plan"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain046-f5f6a909/s11#r2",
+   "source_span": "I had a minor issue with the gears during my last bike trip",
+   "entity": "user",
+   "slot": "bike_maintenance_needs",
+   "value": "gear adjustment",
+   "claim": "User experienced a minor gear issue during a recent bike trip and needs to get it checked.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "bike maintenance"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain046-f5f6a909/s11#r4",
+   "source_span": "I've been tracking my bike's maintenance on a spreadsheet, and according to it, I'm due for a brake pad replacement soon",
+   "entity": "user",
+   "slot": "bike_maintenance_needs",
+   "value": "brake pad replacement",
+   "claim": "User's maintenance tracking indicates they are due for a brake pad replacement soon.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "bike maintenance",
+    "brake system"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain046-f5f6a909/s12#r0",
+   "source_span": "I just got positive feedback from my advisor exactly one week after submitting my thesis proposal",
+   "entity": "user",
+   "slot": "thesis_progress",
+   "value": "received positive feedback on thesis proposal",
+   "claim": "User received positive feedback from their advisor on their thesis proposal.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "academic progress"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain046-f5f6a909/s12#r1",
+   "source_span": "I'm working on my literature review and I'm trying to organize my sources better. Can you recommend any tools or software that can help me with citation management?",
+   "entity": "user",
+   "slot": "research_tools",
+   "value": "citation management software",
+   "claim": "User is seeking citation management tools to organize research sources.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "research",
+    "academic tools"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain046-f5f6a909/s12#r2",
+   "source_span": "I think I'll give Mendeley a try. I've heard good things about it from my peers.",
+   "entity": "user",
+   "slot": "research_tools",
+   "value": "Mendeley",
+   "claim": "User has chosen to use Mendeley for citation management.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r25"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "research",
+    "academic tools"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain046-f5f6a909/s13#r0",
+   "source_span": "I'm pretty much fully booked with the home renovation until the end of the month, since the work has to be done before the weather turns",
+   "entity": "user",
+   "slot": "home_projects",
+   "value": "home renovation until end of month, must be done before weather turns",
+   "claim": "User has a home renovation project scheduled until the end of the month that must be completed before the weather changes.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home improvement",
+    "time-sensitive project"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain046-f5f6a909/s14#r0",
+   "source_span": "I just learned how to make croissants from scratch in my pastry-making class today and it was amazing",
+   "entity": "user",
+   "slot": "classes_taken",
+   "value": "pastry-making class",
+   "claim": "User is taking a pastry-making class and recently learned how to make croissants from scratch.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "education",
+    "culinary skills",
+    "baking"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain046-f5f6a909/s14#r0",
+   "source_span": "I'm looking for some new bread recipes to try out with my new bread maker",
+   "entity": "user",
+   "slot": "kitchen_appliances",
+   "value": "bread maker",
+   "claim": "User owns a bread maker and is looking for bread recipes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "kitchen equipment",
+    "baking"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain046-f5f6a909/s15#r0",
+   "source_span": "I participated in the 'Ride to Cure Cancer' charity bike ride and rode 40 miles on my road bike recently",
+   "entity": "user",
+   "slot": "charity_activities",
+   "value": "Ride to Cure Cancer charity bike ride, 40 miles",
+   "claim": "User participated in the 'Ride to Cure Cancer' charity bike ride, riding 40 miles on their road bike.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "charity",
+    "cycling",
+    "health advocacy"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain046-f5f6a909/s15#r0",
+   "source_span": "I'm planning a long bike trip next weekend and I want to make sure my road bike is in top condition",
+   "entity": "user",
+   "slot": "recreational_activities",
+   "value": "long bike trip next weekend",
+   "claim": "User is planning a long bike trip for the upcoming weekend.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "outdoor recreation",
+    "cycling"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain046-f5f6a909/s15#r2",
+   "source_span": "I already have a Kryptonite U-lock, which cost me $80",
+   "entity": "user",
+   "slot": "bike_lock",
+   "value": "Kryptonite U-lock",
+   "claim": "User owns a Kryptonite U-lock bike lock that cost $80.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "bike security",
+    "bike accessory"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain046-f5f6a909/s16#r1",
+   "source_span": "Drove home a Hyundai Ioniq 5 yesterday, the silence is honestly unsettling after decades of engine noise",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Hyundai Ioniq 5",
+   "claim": "User recently purchased a Hyundai Ioniq 5 electric vehicle, replacing a previous gasoline-powered car.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vehicle ownership",
+    "electric vehicle",
+    "EV"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain046-f5f6a909/s16#r0",
+   "source_span": "I finally gave up on wrenching every weekend",
+   "entity": "user",
+   "slot": "hobby_status",
+   "value": "stopped weekend car maintenance hobby",
+   "claim": "User stopped spending weekends doing car repairs and maintenance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby change",
+    "lifestyle change"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain046-f5f6a909/s16#r2",
+   "source_span": "I only drive maybe 30 km a day",
+   "entity": "user",
+   "slot": "daily_driving_distance",
+   "value": "approximately 30 km per day",
+   "claim": "User drives approximately 30 kilometers per day on average.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "commute",
+    "driving habits"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain046-f5f6a909/s17#r0",
+   "source_span": "I'm planning a birthday party for my nieces, Ava and Olivia, and I need some help with decoration ideas. They're turning 4 and 5",
+   "entity": "user",
+   "slot": "family_relationships",
+   "value": "nieces Ava (turning 4) and Olivia (turning 5)",
+   "claim": "User has nieces named Ava and Olivia who are turning 4 and 5 years old, and is planning a birthday party for them.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family",
+    "children"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain046-f5f6a909/s17#r4",
+   "source_span": "my sister-in-law Rachel just had twins, and I've been helping out with babysitting duties",
+   "entity": "user",
+   "slot": "family_relationships",
+   "value": "sister-in-law Rachel with twins",
+   "claim": "User's sister-in-law Rachel recently had twins, and user is helping with babysitting.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family",
+    "caregiving"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain046-f5f6a909/s18#r0",
+   "source_span": "I just watched this heartwarming one called \"Love in the Time of Pride\" for free at the Outfest Los Angeles LGBTQ+ Film Festival",
+   "entity": "user",
+   "slot": "film_festivals_attended",
+   "value": "Outfest Los Angeles LGBTQ+ Film Festival",
+   "claim": "User attended the Outfest Los Angeles LGBTQ+ Film Festival and watched a film there.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entertainment",
+    "LGBTQ+ event",
+    "film festival"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain046-f5f6a909/s19#r2",
+   "source_span": "I'm a Digital Marketing Specialist, and my top tasks include managing our social media presence, creating and scheduling posts, analyzing engagement metrics, and collaborating with our design team to develop visual content",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Digital Marketing Specialist",
+   "claim": "User works as a Digital Marketing Specialist managing social media, creating content, analyzing metrics, and collaborating with design teams.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "employment",
+    "marketing"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain046-f5f6a909/s19#r2",
+   "source_span": "I usually work 40 hours a week, with some weeks being busier than others",
+   "entity": "user",
+   "slot": "work_hours",
+   "value": "40 hours per week",
+   "claim": "User works approximately 40 hours per week, with busier weeks varying.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "employment",
+    "work schedule"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain046-f5f6a909/s20#r0",
+   "source_span": "I got a parking ticket near my work for $50 - I was only 10 minutes overdue",
+   "entity": "user",
+   "slot": "recent_expenses",
+   "value": "parking ticket $50",
+   "claim": "User received a $50 parking ticket for being 10 minutes overdue near their workplace.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "parking",
+    "fine"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain046-f5f6a909/s20#r2",
+   "source_span": "I've had some car-related expenses recently, like the parking ticket. I also got my car serviced recently, which cost me some money",
+   "entity": "user",
+   "slot": "recent_expenses",
+   "value": "car service",
+   "claim": "User recently had their car serviced and incurred related expenses.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "car maintenance",
+    "expense"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain046-f5f6a909/s20#r4",
+   "source_span": "I spent around $25 on car maintenance, because I replaced the air filter during the service. And of course, there's the $50 parking ticket. I also filled up the gas tank recently, which cost me $30",
+   "entity": "user",
+   "slot": "recent_expenses",
+   "value": "car maintenance $25 (air filter), parking ticket $50, gas $30",
+   "claim": "User's recent expenses include $25 for air filter replacement, $50 for a parking ticket, and $30 for gas.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "car expenses",
+    "fuel",
+    "maintenance"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain046-f5f6a909/s21#r2",
+   "source_span": "I recently upgraded my laptop's RAM from 8GB to 16GB, which cost me $120, and it's made a huge difference",
+   "entity": "user",
+   "slot": "laptop_specs",
+   "value": "16GB RAM",
+   "claim": "User upgraded their laptop RAM to 16GB for $120.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "computer upgrade",
+    "hardware"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain046-f5f6a909/s22#r0",
+   "source_span": "I usually sleep in a bit later on weekends, around 8:30-9:00 am, so I have some extra time to enjoy my breakfast",
+   "entity": "user",
+   "slot": "weekend_routine",
+   "value": "sleep in until 8:30-9:00 am on weekends",
+   "claim": "User typically sleeps until 8:30-9:00 am on weekends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "on weekends",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep schedule",
+    "weekend habit"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain046-f5f6a909/s23#r0",
+   "source_span": "I recently attended a guided tour at the Modern Art Museum, which was amazing. Speaking of which, it was actually a week after visiting the Natural History Museum with my sister",
+   "entity": "user",
+   "slot": "museum_visits",
+   "value": "Modern Art Museum and Natural History Museum",
+   "claim": "User visited the Natural History Museum with their sister, followed by a guided tour at the Modern Art Museum a week later.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cultural activities",
+    "art",
+    "museum"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain046-f5f6a909/s24#r2",
+   "source_span": "I've had a good experience with my Samsung Galaxy Watch Active2, which I got for a discounted price of $200, by the way. The usual price of the Samsung Galaxy Watch Active2 is $250",
+   "entity": "user",
+   "slot": "smartwatch",
+   "value": "Samsung Galaxy Watch Active2",
+   "claim": "User owns a Samsung Galaxy Watch Active2 smartwatch purchased for $200 (regular price $250).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "wearable technology",
+    "fitness tracker"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain046-f5f6a909/s25#r0",
+   "source_span": "I got her that silver necklace from Tiffany's - I spent around $200 on it, and I also got her a $100 gift card",
+   "entity": "user",
+   "slot": "gift_giving",
+   "value": "sister's birthday gift: Tiffany's silver necklace $200 + gift card $100",
+   "claim": "User purchased a Tiffany's silver necklace for $200 and a $100 gift card as birthday gifts for their sister three weeks prior.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gift giving",
+    "shopping"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain046-f5f6a909/s26#r0",
+   "source_span": "I just returned from a 10-day trip to Japan and fell in love with the food",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "10-day trip to Japan",
+   "claim": "User recently returned from a 10-day trip to Japan.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "cultural experience"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain046-f5f6a909/s27#r2",
+   "source_span": "I have a master's degree in Computer Science, and my research experience was focused on deep learning. I'm interested in pursuing a Ph.D. in the same area, specifically in natural language processing",
+   "entity": "user",
+   "slot": "education_plans",
+   "value": "pursue Ph.D. in natural language processing",
+   "claim": "User with a Master's in Computer Science and deep learning research experience plans to pursue a Ph.D. in natural language processing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "education",
+    "graduate studies"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain046-f5f6a909/s27#r2",
+   "source_span": "My career goal is to become a researcher in a top tech company, and I believe a Ph.D. will help me achieve that",
+   "entity": "user",
+   "slot": "career_goals",
+   "value": "researcher at top tech company",
+   "claim": "User's career goal is to become a researcher at a top technology company.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "career",
+    "aspiration"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain046-f5f6a909/s27#r4",
+   "source_span": "I submitted my thesis draft on April 25th, which marked the completion of the revision process, 15 days after incorporating the feedback",
+   "entity": "user",
+   "slot": "thesis_progress",
+   "value": "thesis draft submitted April 25th, revisions complete",
+   "claim": "User submitted their thesis draft on April 25th after completing revisions 15 days after incorporating advisor feedback.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-25",
+   "value_tags": [
+    "academic progress"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain046-f5f6a909/s28#r0",
+   "source_span": "I started using hashtags more consistently on my posts about three weeks ago, and I've noticed a boost in likes and comments since then",
+   "entity": "user",
+   "slot": "instagram_strategy",
+   "value": "hashtag strategy implemented",
+   "claim": "User implemented a consistent hashtag strategy on Instagram three weeks ago and has seen increased engagement.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "content strategy"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain046-f5f6a909/s28#r2",
+   "source_span": "I've been averaging around 20-30 more likes per post compared to before, and I've seen an increase in comments as well. I've been posting a mix of photos and stories, mostly about fitness and wellness. I've been using 5-10 relevant hashtags per post, and I've noticed that #fitnessjourney has been doing really well for me",
+   "entity": "user",
+   "slot": "instagram_content",
+   "value": "fitness and wellness photos and stories with 5-10 hashtags per post",
+   "claim": "User posts fitness and wellness content on Instagram with 5-10 hashtags per post and has seen increased engagement from the #fitnessjourney hashtag.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "fitness content"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain046-f5f6a909/s28#r4",
+   "source_span": "I've been noticing that my posts are doing well on Tuesdays and Thursdays, so I've started scheduling my posts in advance to ensure I'm consistently posting on those days",
+   "entity": "user",
+   "slot": "instagram_posting_schedule",
+   "value": "posts scheduled for Tuesdays and Thursdays",
+   "claim": "User schedules Instagram posts for Tuesdays and Thursdays based on observed engagement patterns.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "posting strategy"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain046-f5f6a909/s29#r0",
+   "source_span": "I just got a new car stereo for my Toyota Camry, which I've been meaning to do for months now, and it's been a game-changer",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Toyota Camry",
+   "claim": "User owns a Toyota Camry and recently upgraded the car stereo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vehicle ownership",
+    "car upgrade"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain046-f5f6a909/s29#r0",
+   "source_span": "I've been using lavender or vanilla scents, but I'm open to trying something new",
+   "entity": "user",
+   "slot": "car_air_freshener_preference",
+   "value": "lavender or vanilla scents",
+   "claim": "User has been using lavender or vanilla air fresheners in their car.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "car maintenance",
+    "fragrance"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain046-f5f6a909/s30#r1",
+   "source_span": "Traded in for a Ford Maverick hybrid pickup last Tuesday and I'm still adjusting to the pedal again",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Ford Maverick hybrid pickup",
+   "claim": "User recently traded in their previous vehicle for a Ford Maverick hybrid pickup and is adjusting to driving it.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r33"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vehicle ownership",
+    "hybrid vehicle"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain046-f5f6a909/s30#r0",
+   "source_span": "My sister and I are starting a small landscaping side gig, so I needed a bed instead of a hatch",
+   "entity": "user",
+   "slot": "business_ventures",
+   "value": "landscaping side business with sister",
+   "claim": "User and their sister are starting a small landscaping side business.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entrepreneurship",
+    "landscaping"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain046-f5f6a909/s30#r2",
+   "source_span": "What's a reasonable tonneau cover setup if I'm hauling soil bags and mulch most weekends?",
+   "entity": "user",
+   "slot": "business_operations",
+   "value": "hauling soil bags and mulch for landscaping business",
+   "claim": "User and their sister's landscaping business involves hauling soil bags and mulch most weekends.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "landscaping",
+    "business operations"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "chain046-f5f6a909/s31#r0",
+   "source_span": "I just learned how to make adobo and lumpia from my grandma last Sunday when I visited her for lunch",
+   "entity": "user",
+   "slot": "cooking_learned_dishes",
+   "value": "adobo and lumpia",
+   "claim": "User learned how to make adobo and lumpia from their grandmother during a Sunday lunch visit.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "Filipino cuisine",
+    "family cooking"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "chain046-f5f6a909/s32#r0",
+   "source_span": "I recently participated in a charity 5K run/walk on April 15th, which was a lot of fun, and I'm interested in finding more opportunities to get involved in my community",
+   "entity": "user",
+   "slot": "charity_activities",
+   "value": "charity 5K run/walk on April 15th",
+   "claim": "User participated in a charity 5K run/walk on April 15th and is interested in more community involvement.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-15",
+   "value_tags": [
+    "charity",
+    "fitness event",
+    "community involvement"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "chain046-f5f6a909/s32#r2",
+   "source_span": "I'm actually looking for events that support causes I care about, like children's health and welfare",
+   "entity": "user",
+   "slot": "charitable_causes",
+   "value": "children's health and welfare",
+   "claim": "User cares about and supports charitable causes related to children's health and welfare.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "charity",
+    "children's health",
+    "philanthropy"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "chain046-f5f6a909/s32#r4",
+   "source_span": "I recently attended a charity gala on April 22nd for the local children's hospital, and it was a wonderful experience",
+   "entity": "user",
+   "slot": "charity_events_attended",
+   "value": "charity gala for local children's hospital on April 22nd",
+   "claim": "User attended a charity gala for the local children's hospital on April 22nd.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-22",
+   "value_tags": [
+    "charity",
+    "fundraising event",
+    "children's health"
+   ]
+  }
+ ],
+ "usage_in": 21606,
+ "usage_out": 10321
+}

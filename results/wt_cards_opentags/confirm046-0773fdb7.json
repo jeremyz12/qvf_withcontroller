@@ -1,0 +1,1913 @@
+{
+ "uid": "confirm046-0773fdb7",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm046-0773fdb7/s0#r0",
+   "source_span": "I'm looking to improve my social media strategy, specifically on Instagram",
+   "entity": "user",
+   "slot": "social_media_platform_focus",
+   "value": "Instagram",
+   "claim": "The user is focused on improving their Instagram social media strategy.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "strategy"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm046-0773fdb7/s0#r0",
+   "source_span": "I've been doing well lately, and I think it's because of my consistent posting schedule and engagement with other users in my niche",
+   "entity": "user",
+   "slot": "instagram_strategy",
+   "value": "consistent posting schedule and engagement with niche users",
+   "claim": "The user attributes their Instagram success to consistent posting and engagement.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "engagement strategy",
+    "posting consistency"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm046-0773fdb7/s0#r0",
+   "source_span": "I recently posted a quote about gratitude that went viral and gained around 50 new followers in just a few hours",
+   "entity": "user",
+   "slot": "instagram_viral_post",
+   "value": "gratitude quote post gaining 50 followers",
+   "claim": "The user recently posted a viral gratitude quote that gained 50 new followers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "viral content",
+    "gratitude theme"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm046-0773fdb7/s0#r4",
+   "source_span": "I think #GratitudeUnlocked is a great idea for a hashtag. I'll definitely start using it for my quote series",
+   "entity": "user",
+   "slot": "instagram_branded_hashtag",
+   "value": "#GratitudeUnlocked",
+   "claim": "The user plans to use #GratitudeUnlocked as their branded hashtag for a quote series.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "branding",
+    "hashtag strategy"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm046-0773fdb7/s0#r4",
+   "source_span": "I've been using Canva",
+   "entity": "user",
+   "slot": "graphic_design_tool",
+   "value": "Canva",
+   "claim": "The user uses Canva for creating graphics.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "for Instagram graphics",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "design tool"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm046-0773fdb7/s1#r0",
+   "source_span": "I recently took a break from social media and realized how much time I was wasting on it. I deleted Instagram and Facebook from my phone and didn't log in to Twitter on my laptop during that time",
+   "entity": "user",
+   "slot": "social_media_break",
+   "value": "deleted Instagram and Facebook from phone, avoided Twitter",
+   "claim": "The user took a break from social media by removing apps and avoiding platforms.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1",
+    "r2"
+   ],
+   "condition": "during break period",
+   "implies_stale_slots": [
+    "social_media_platform_focus",
+    "instagram_strategy"
+   ],
+   "stated_date": "",
+   "value_tags": [
+    "digital detox",
+    "time management"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm046-0773fdb7/s1#r0",
+   "source_span": "I'm trying to set limits for myself, but I'm not sure how to stick to them",
+   "entity": "user",
+   "slot": "social_media_management_goal",
+   "value": "setting limits on social media usage",
+   "claim": "The user is working on setting and maintaining limits for social media use.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "post-break",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "self-regulation",
+    "habit change"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm046-0773fdb7/s2#r0",
+   "source_span": "I'm planning a trip to Tokyo",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Tokyo trip",
+   "claim": "The user is planning a trip to Tokyo.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "Japan"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm046-0773fdb7/s2#r0",
+   "source_span": "I'm really interested in visiting a city with a lot of temples and scenic views",
+   "entity": "user",
+   "slot": "travel_preference",
+   "value": "temples and scenic views",
+   "claim": "The user prefers destinations with temples and scenic views.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel style",
+    "cultural interest"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm046-0773fdb7/s2#r4",
+   "source_span": "I was actually thinking of taking the train from Tokyo Station to get to Nikko",
+   "entity": "user",
+   "slot": "day_trip_plan",
+   "value": "train from Tokyo Station to Nikko",
+   "claim": "The user plans to take the train from Tokyo Station to Nikko.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "day trip from Tokyo",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "transportation",
+    "day trip"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm046-0773fdb7/s3#r0",
+   "source_span": "Finally caved and signed up for evening classes — I'm learning Brazilian Portuguese",
+   "entity": "user",
+   "slot": "language_study",
+   "value": "Brazilian Portuguese",
+   "claim": "The user signed up for evening classes to learn Brazilian Portuguese.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-18",
+   "value_tags": [
+    "language learning",
+    "evening class"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm046-0773fdb7/s3#r0",
+   "source_span": "mostly so I can survive a trip to Salvador eventually",
+   "entity": "user",
+   "slot": "language_study_motivation",
+   "value": "prepare for trip to Salvador",
+   "claim": "The user's primary motivation for learning Portuguese is to prepare for a trip to Salvador.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel motivation",
+    "language goal"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm046-0773fdb7/s3#r2",
+   "source_span": "I commute 40 minutes each way",
+   "entity": "user",
+   "slot": "commute_duration",
+   "value": "40 minutes each way",
+   "claim": "The user commutes 40 minutes each way.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "commute",
+    "duration"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm046-0773fdb7/s4#r4",
+   "source_span": "We're quite close with the neighbors and always make sure to check in on one another",
+   "entity": "user",
+   "slot": "neighbor_relationship",
+   "value": "close and mutually supportive",
+   "claim": "The user is close with their neighbors and regularly checks in on each other.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "community",
+    "neighbor relations"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm046-0773fdb7/s5#r0",
+   "source_span": "I've been wanting to try making it",
+   "entity": "user",
+   "slot": "baking_interest",
+   "value": "sourdough bread",
+   "claim": "The user is interested in making sourdough bread.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking",
+    "sourdough"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm046-0773fdb7/s5#r0",
+   "source_span": "I'm currently out of bananas, so I'll need to pick some up before I can make my famous banana muffins again",
+   "entity": "user",
+   "slot": "favorite_recipe",
+   "value": "banana muffins",
+   "claim": "The user has a famous banana muffin recipe they make.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking",
+    "banana-based dessert"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm046-0773fdb7/s5#r4",
+   "source_span": "I think I'll store my sourdough starter in the refrigerator for now, since I won't be baking frequently",
+   "entity": "user",
+   "slot": "sourdough_storage_method",
+   "value": "refrigerator",
+   "claim": "The user stores their sourdough starter in the refrigerator.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "when not baking frequently",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "food storage",
+    "sourdough maintenance"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm046-0773fdb7/s5#r4",
+   "source_span": "I recently organized it and want to keep it that way",
+   "entity": "user",
+   "slot": "baking_cabinet_status",
+   "value": "recently organized",
+   "claim": "The user recently organized their baking cabinet.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home organization"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm046-0773fdb7/s6#r0",
+   "source_span": "I'm considering getting a Portuguese passport",
+   "entity": "user",
+   "slot": "citizenship_goal",
+   "value": "Portuguese passport",
+   "claim": "The user is considering obtaining a Portuguese passport.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "citizenship",
+    "travel documentation"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm046-0773fdb7/s6#r0",
+   "source_span": "My grandma, who's a Portuguese citizen, visited us last month and brought up the topic of getting a Portuguese passport for me and my siblings",
+   "entity": "user",
+   "slot": "family_background",
+   "value": "Portuguese heritage through grandmother",
+   "claim": "The user has Portuguese heritage through their grandmother who is a Portuguese citizen.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "heritage",
+    "family"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm046-0773fdb7/s7#r0",
+   "source_span": "I've had it set up since February 10th",
+   "entity": "user",
+   "slot": "aquarium_setup_date",
+   "value": "February 10",
+   "claim": "The user set up their aquarium on February 10th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-10",
+   "value_tags": [
+    "aquarium",
+    "setup date"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm046-0773fdb7/s7#r0",
+   "source_span": "added my first batch of fish on February 24th - 10 neon tetras, 5 harlequin rasboras, and 1 small pleco",
+   "entity": "user",
+   "slot": "aquarium_initial_stocking",
+   "value": "10 neon tetras, 5 harlequin rasboras, 1 small pleco",
+   "claim": "The user initially stocked their aquarium with neon tetras, harlequin rasboras, and a pleco.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-24",
+   "value_tags": [
+    "aquarium fish",
+    "freshwater species"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm046-0773fdb7/s8#r0",
+   "source_span": "I attended their guided tour of \"The Evolution of Abstract Expressionism\" today, led by Dr. Patel",
+   "entity": "user",
+   "slot": "museum_visit",
+   "value": "Modern Art Museum guided tour on abstract expressionism",
+   "claim": "The user attended a guided tour at the Modern Art Museum led by Dr. Patel.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "art museum",
+    "guided tour"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm046-0773fdb7/s8#r0",
+   "source_span": "I'm planning to visit the Modern Art Museum again soon",
+   "entity": "user",
+   "slot": "museum_interest",
+   "value": "Modern Art Museum",
+   "claim": "The user plans to visit the Modern Art Museum again.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "art museum",
+    "repeat visitor"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm046-0773fdb7/s8#r2",
+   "source_span": "I'm particularly interested in abstract expressionism",
+   "entity": "user",
+   "slot": "art_interest",
+   "value": "abstract expressionism",
+   "claim": "The user is particularly interested in abstract expressionism.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "art movement",
+    "aesthetic preference"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm046-0773fdb7/s9#r0",
+   "source_span": "I'm feeling really sluggish in the afternoons lately",
+   "entity": "user",
+   "slot": "afternoon_energy_level",
+   "value": "low energy",
+   "claim": "The user experiences low energy in the afternoons.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "afternoons",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fatigue",
+    "time of day"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm046-0773fdb7/s9#r0",
+   "source_span": "I've been getting enough sleep",
+   "entity": "user",
+   "slot": "sleep_duration",
+   "value": "sufficient",
+   "claim": "The user reports getting enough sleep.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep health"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm046-0773fdb7/s9#r0",
+   "source_span": "I do yoga on Monday evenings",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "yoga",
+   "claim": "The user does yoga on Monday evenings.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Monday evenings",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "exercise",
+    "yoga"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm046-0773fdb7/s10#r0",
+   "source_span": "I've got a piece of consumer electronics that suddenly stopped working",
+   "entity": "user",
+   "slot": "electronics_repair_interest",
+   "value": "consumer electronics repair and troubleshooting",
+   "claim": "The user is interested in troubleshooting and repairing consumer electronics.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "DIY repair",
+    "electronics"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm046-0773fdb7/s10#r2",
+   "source_span": "I'm comfortable opening it up and probing around",
+   "entity": "user",
+   "slot": "repair_skill_level",
+   "value": "comfortable with internal diagnosis",
+   "claim": "The user is comfortable disassembling and diagnosing electronics.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "technical skill",
+    "hands-on repair"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm046-0773fdb7/s11#r0",
+   "source_span": "So I bailed on the evening class, which is a little embarrassing, but I've switched to Korean instead",
+   "entity": "user",
+   "slot": "language_study",
+   "value": "Korean",
+   "claim": "The user stopped Brazilian Portuguese evening classes and switched to Korean.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language learning",
+    "self-study"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm046-0773fdb7/s11#r0",
+   "source_span": "my roommate got me hooked on a variety show and now I'm gone",
+   "entity": "user",
+   "slot": "language_study_motivation",
+   "value": "Korean variety show",
+   "claim": "The user was motivated to learn Korean by a variety show recommended by their roommate.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "media influence",
+    "entertainment"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm046-0773fdb7/s11#r1",
+   "source_span": "Hangul honestly took me about a weekend",
+   "entity": "user",
+   "slot": "hangul_learning_pace",
+   "value": "one weekend",
+   "claim": "The user learned Hangul (Korean alphabet) in about a weekend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "learning pace",
+    "language script"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm046-0773fdb7/s12#r0",
+   "source_span": "I stumbled upon an unusual vintage camera at a thrift store today",
+   "entity": "user",
+   "slot": "vintage_camera_interest",
+   "value": "collecting vintage cameras",
+   "claim": "The user is interested in vintage cameras and found one at a thrift store.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "camera collecting",
+    "vintage"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm046-0773fdb7/s12#r2",
+   "source_span": "I'd love to know more about the Leica IIIa model",
+   "entity": "user",
+   "slot": "camera_interest_specific",
+   "value": "Leica IIIa rangefinder",
+   "claim": "The user is specifically interested in learning about the Leica IIIa camera model.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "camera model",
+    "rangefinder"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm046-0773fdb7/s13#r0",
+   "source_span": "I'm redecorating my living room",
+   "entity": "user",
+   "slot": "home_renovation_project",
+   "value": "living room redecoration",
+   "claim": "The user is redecorating their living room.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home decoration",
+    "interior design"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm046-0773fdb7/s13#r0",
+   "source_span": "I scored an amazing deal on from Overstock during their Black Friday sale - it's a plush Moroccan-inspired design in a soft blue and cream color palette",
+   "entity": "user",
+   "slot": "living_room_rug",
+   "value": "plush Moroccan-inspired rug in soft blue and cream",
+   "claim": "The user purchased a Moroccan-inspired rug in blue and cream from Overstock on Black Friday.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home decor",
+    "Moroccan style"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm046-0773fdb7/s13#r2",
+   "source_span": "I like the idea of a reclaimed wood coffee table. Do you think a wooden coffee table with a lower shelf would be a good idea, considering I have a lot of books and decorative items I'd like to display?",
+   "entity": "user",
+   "slot": "coffee_table_preference",
+   "value": "reclaimed wood with lower shelf for storage",
+   "claim": "The user prefers a reclaimed wood coffee table with a lower shelf for displaying books and decorative items.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "furniture",
+    "storage"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm046-0773fdb7/s13#r4",
+   "source_span": "I'm also thinking of adding some plants to my living room to purify the air and brighten things up",
+   "entity": "user",
+   "slot": "living_room_plants_interest",
+   "value": "adding low-maintenance plants",
+   "claim": "The user wants to add low-maintenance plants to their living room for air purification and aesthetics.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "indoor plants",
+    "home decoration"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm046-0773fdb7/s14#r0",
+   "source_span": "I've been doing a lot of exercise lately, actually started a new routine about 6 weeks ago",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "new fitness routine",
+   "claim": "The user started a new exercise routine about 6 weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness",
+    "exercise"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm046-0773fdb7/s14#r0",
+   "source_span": "I'm looking to plan some healthy meals to support my fitness goals",
+   "entity": "user",
+   "slot": "nutrition_goal",
+   "value": "healthy meal planning for fitness",
+   "claim": "The user is planning healthy meals to support their fitness goals.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "nutrition",
+    "fitness"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm046-0773fdb7/s14#r2",
+   "source_span": "I'm actually not a big fan of eggs",
+   "entity": "user",
+   "slot": "food_preference",
+   "value": "dislikes eggs",
+   "claim": "The user does not like eggs.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "dietary preference"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm046-0773fdb7/s14#r2",
+   "source_span": "I've been doing a lot of high-intensity exercises lately",
+   "entity": "user",
+   "slot": "exercise_type",
+   "value": "high-intensity exercises",
+   "claim": "The user does high-intensity exercises.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "exercise intensity",
+    "fitness"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm046-0773fdb7/s14#r4",
+   "source_span": "I'm also trying to increase my water intake",
+   "entity": "user",
+   "slot": "hydration_goal",
+   "value": "increase daily water intake",
+   "claim": "The user is working on increasing their daily water intake.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hydration",
+    "health"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm046-0773fdb7/s16#r0",
+   "source_span": "I just got back from a 10-day trip to Japan on March 15th",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "10-day trip to Japan",
+   "claim": "The user took a 10-day trip to Japan.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "value_tags": [
+    "travel",
+    "Japan"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm046-0773fdb7/s16#r0",
+   "source_span": "took some amazing shots, especially from the 52nd floor of the Park Hyatt Tokyo hotel in Shinjuku",
+   "entity": "user",
+   "slot": "travel_photography",
+   "value": "photography from Park Hyatt Tokyo 52nd floor",
+   "claim": "The user took impressive photos from the 52nd floor of Park Hyatt Tokyo in Shinjuku.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "during Japan trip",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel photography",
+    "iconic location"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm046-0773fdb7/s16#r0",
+   "source_span": "I'm looking for some recommendations on good travel photography courses online",
+   "entity": "user",
+   "slot": "learning_interest",
+   "value": "travel photography courses",
+   "claim": "The user is interested in taking travel photography courses.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "photography education",
+    "travel"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm046-0773fdb7/s16#r2",
+   "source_span": "I'm considering going to either New Zealand or Iceland for my next trip",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "New Zealand or Iceland",
+   "claim": "The user is considering a trip to either New Zealand or Iceland.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "next trip",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel planning",
+    "destination"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm046-0773fdb7/s16#r4",
+   "source_span": "I'm leaning towards Iceland, and I'm thinking of visiting during the winter months to capture the Northern Lights",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Iceland in winter for Northern Lights photography",
+   "claim": "The user plans to visit Iceland in winter to photograph the Northern Lights.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r48"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "Iceland travel",
+    "winter photography"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm046-0773fdb7/s17#r0",
+   "source_span": "I recently acquired a rare 1913 Liberty Head nickel about three months ago",
+   "entity": "user",
+   "slot": "coin_collection",
+   "value": "1913 Liberty Head nickel",
+   "claim": "The user acquired a rare 1913 Liberty Head nickel about three months ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-09",
+   "value_tags": [
+    "rare coin",
+    "numismatics"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm046-0773fdb7/s17#r0",
+   "source_span": "I'm curious to know more about the process of getting it authenticated and graded",
+   "entity": "user",
+   "slot": "coin_authentication_interest",
+   "value": "coin grading and authentication services",
+   "claim": "The user is interested in authenticating and grading their rare nickel.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "coin grading",
+    "authentication"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm046-0773fdb7/s18#r0",
+   "source_span": "I'm considering adding some new fish to my tank to distract the platies from nipping the neon tetras",
+   "entity": "user",
+   "slot": "aquarium_inhabitants",
+   "value": "platies nipping neon tetras behavior issue",
+   "claim": "The user has platies in their tank that are nipping at the neon tetras.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "aquarium behavior",
+    "fish compatibility"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm046-0773fdb7/s18#r2",
+   "source_span": "I've got a 30-gallon tank with a ph of around 7.5, temperature of 76-78 F, and moderate hardness",
+   "entity": "user",
+   "slot": "aquarium_specifications",
+   "value": "30-gallon tank, pH 7.5, 76-78F, moderate hardness",
+   "claim": "The user's aquarium is 30 gallons with specific water parameters.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "aquarium parameters",
+    "water chemistry"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm046-0773fdb7/s18#r4",
+   "source_span": "I'm thinking of adding some honey gouramis to my tank",
+   "entity": "user",
+   "slot": "aquarium_expansion_plan",
+   "value": "adding honey gouramis",
+   "claim": "The user is considering adding honey gouramis to their aquarium.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "aquarium fish",
+    "community tank"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm046-0773fdb7/s19#r2",
+   "source_span": "I was thinking of writing about my recent gaming sessions, including the 8 hours I spent playing The Elder Scrolls Online with my friend Mike last weekend",
+   "entity": "user",
+   "slot": "gaming_habit",
+   "value": "playing The Elder Scrolls Online with Mike",
+   "claim": "The user spent 8 hours playing The Elder Scrolls Online with their friend Mike.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gaming",
+    "social gaming"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm046-0773fdb7/s19#r4",
+   "source_span": "I've been playing video games almost every day after work, if I've been doing it consistently since I pre-ordered the new God of War game two weeks ago",
+   "entity": "user",
+   "slot": "gaming_frequency",
+   "value": "almost daily after work since pre-ordering God of War",
+   "claim": "The user plays video games almost every day after work since pre-ordering the new God of War game.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "after work",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gaming habit",
+    "frequency"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm046-0773fdb7/s20#r2",
+   "source_span": "I like the suggestions, especially Porto and Kyoto",
+   "entity": "user",
+   "slot": "travel_destination_interest",
+   "value": "Porto and Kyoto",
+   "claim": "The user is interested in visiting Porto and Kyoto.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel planning",
+    "destination preference"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm046-0773fdb7/s20#r4",
+   "source_span": "I'm actually thinking of visiting Miami first, since I've never been there before and I have a bachelor party to attend in June",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Miami bachelor party in June",
+   "claim": "The user is planning to attend a bachelor party in Miami in June.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "first time visiting Miami",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06",
+   "value_tags": [
+    "travel",
+    "special event"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "confirm046-0773fdb7/s21#r0",
+   "source_span": "I just started using a white noise machine today to help me sleep better",
+   "entity": "user",
+   "slot": "sleep_aid",
+   "value": "white noise machine",
+   "claim": "The user started using a white noise machine to improve sleep.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep technology",
+    "sleep improvement"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "confirm046-0773fdb7/s21#r2",
+   "source_span": "I've been using the rain sounds setting on my white noise machine and it's been really effective in helping me fall asleep",
+   "entity": "user",
+   "slot": "sleep_aid_setting",
+   "value": "rain sounds",
+   "claim": "The user uses the rain sounds setting on their white noise machine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep aid",
+    "sound setting"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "confirm046-0773fdb7/s21#r4",
+   "source_span": "I've also been tracking my sleep with my Fitbit Charge 3",
+   "entity": "user",
+   "slot": "fitness_device",
+   "value": "Fitbit Charge 3",
+   "claim": "The user tracks their sleep with a Fitbit Charge 3.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "wearable technology",
+    "sleep tracking"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "confirm046-0773fdb7/s22#r0",
+   "source_span": "my partner landed a two-year posting in Helsinki, so I've started studying Finnish",
+   "entity": "user",
+   "slot": "language_study",
+   "value": "Finnish",
+   "claim": "The user started studying Finnish because their partner has a two-year posting in Helsinki.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "partner relocation to Helsinki",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language learning",
+    "relocation"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "confirm046-0773fdb7/s22#r0",
+   "source_span": "my partner landed a two-year posting in Helsinki",
+   "entity": "user",
+   "slot": "partner_relocation_plan",
+   "value": "Helsinki two-year posting",
+   "claim": "The user's partner has a two-year work posting in Helsinki.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence_location"
+   ],
+   "stated_date": "",
+   "value_tags": [
+    "relocation",
+    "partner career"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "confirm046-0773fdb7/s22#r2",
+   "source_span": "I found a tutor who does 6am lessons",
+   "entity": "user",
+   "slot": "language_learning_method",
+   "value": "morning tutor sessions at 6am",
+   "claim": "The user has a tutor who provides 6am Finnish language lessons.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Finnish study",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language tutoring",
+    "early morning"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "confirm046-0773fdb7/s23#r2",
+   "source_span": "I've been doing my Sunday runs for 6 weeks now, and I'm starting to see some great improvements in my fitness level",
+   "entity": "user",
+   "slot": "exercise_routine",
+   "value": "Sunday runs 6 weeks",
+   "claim": "The user has been doing Sunday runs for 6 weeks with fitness improvements.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r28"
+   ],
+   "condition": "Sunday mornings",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "running",
+    "fitness progress"
+   ]
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "confirm046-0773fdb7/s23#r2",
+   "source_span": "I like the idea of creating a schedule template that includes time blocks for my morning coffee and news reading on Saturdays",
+   "entity": "user",
+   "slot": "weekend_routine",
+   "value": "Saturday morning coffee and news reading",
+   "claim": "The user has a Saturday morning routine of coffee and news reading.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Saturday mornings",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "routine",
+    "weekend habit"
+   ]
+  },
+  {
+   "record_id": "r67",
+   "source_memory_id": "confirm046-0773fdb7/s24#r0",
+   "source_span": "I just completed the 10K charity run today in 55 minutes",
+   "entity": "user",
+   "slot": "running_achievement",
+   "value": "10K charity run in 55 minutes",
+   "claim": "The user completed a 10K charity run in 55 minutes.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "running achievement",
+    "charity event"
+   ]
+  },
+  {
+   "record_id": "r68",
+   "source_memory_id": "confirm046-0773fdb7/s24#r2",
+   "source_span": "I recently did a 30 km bike ride with my sister and really enjoyed it",
+   "entity": "user",
+   "slot": "cycling_activity",
+   "value": "30 km bike ride with sister",
+   "claim": "The user recently completed a 30 km bike ride with their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cycling",
+    "social activity"
+   ]
+  },
+  {
+   "record_id": "r69",
+   "source_memory_id": "confirm046-0773fdb7/s24#r4",
+   "source_span": "I'm planning to focus on longer rides, up to 60 km",
+   "entity": "user",
+   "slot": "cycling_goal",
+   "value": "60 km rides",
+   "claim": "The user is planning to do longer cycling rides up to 60 km.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cycling",
+    "fitness goal"
+   ]
+  },
+  {
+   "record_id": "r70",
+   "source_memory_id": "confirm046-0773fdb7/s24#r4",
+   "source_span": "I'm also thinking of joining a cycling group to get some speed work in, similar to what I did with my running group",
+   "entity": "user",
+   "slot": "cycling_community_interest",
+   "value": "joining cycling group for speed training",
+   "claim": "The user is interested in joining a cycling group, similar to their running group experience.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cycling group",
+    "speed training"
+   ]
+  },
+  {
+   "record_id": "r71",
+   "source_memory_id": "confirm046-0773fdb7/s25#r0",
+   "source_span": "I use a specific brand of laundry detergent for my household needs",
+   "entity": "user",
+   "slot": "laundry_detergent",
+   "value": "specific brand (not specified)",
+   "claim": "The user uses a specific brand of laundry detergent.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "household product"
+   ]
+  },
+  {
+   "record_id": "r72",
+   "source_memory_id": "confirm046-0773fdb7/s25#r4",
+   "source_span": "I already use Ibotta and Fetch Rewards",
+   "entity": "user",
+   "slot": "cashback_apps",
+   "value": "Ibotta and Fetch Rewards",
+   "claim": "The user uses Ibotta and Fetch Rewards for cashback rewards.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shopping app",
+    "savings"
+   ]
+  },
+  {
+   "record_id": "r73",
+   "source_memory_id": "confirm046-0773fdb7/s26#r0",
+   "source_span": "I completed my Bachelor's degree in Business Administration from the University of Michigan exactly 5 years ago, in May 2017",
+   "entity": "user",
+   "slot": "education",
+   "value": "Bachelor's degree in Business Administration from University of Michigan",
+   "claim": "The user completed a Bachelor's degree in Business Administration from the University of Michigan in May 2017.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-05",
+   "value_tags": [
+    "higher education",
+    "business"
+   ]
+  },
+  {
+   "record_id": "r74",
+   "source_memory_id": "confirm046-0773fdb7/s27#r0",
+   "source_span": "I tried taking a different bus that leaves 15 minutes earlier last week, but it turned out to be even more crowded, so I switched back to my original route",
+   "entity": "user",
+   "slot": "commute_method",
+   "value": "bus",
+   "claim": "The user commutes by bus and tried an earlier bus route but returned to their original route.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "public transportation",
+    "commute"
+   ]
+  },
+  {
+   "record_id": "r75",
+   "source_memory_id": "confirm046-0773fdb7/s27#r0",
+   "source_span": "I'm thinking of optimizing my daily commute. Can you help me find a way to avoid the crowds on Mondays and Fridays?",
+   "entity": "user",
+   "slot": "commute_crowding_issue",
+   "value": "crowds on Mondays and Fridays",
+   "claim": "The user experiences crowding on their commute on Mondays and Fridays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Mondays and Fridays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "commute challenge"
+   ]
+  },
+  {
+   "record_id": "r76",
+   "source_memory_id": "confirm046-0773fdb7/s27#r4",
+   "source_span": "I currently pay $3 per ride, and I commute 20 times a month. The monthly pass costs $90",
+   "entity": "user",
+   "slot": "commute_cost",
+   "value": "$3 per ride or $90 monthly pass",
+   "claim": "The user's bus fare is $3 per ride or $90 for a monthly pass, commuting 20 times per month.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "current pricing",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "transportation cost",
+    "public transit"
+   ]
+  },
+  {
+   "record_id": "r77",
+   "source_memory_id": "confirm046-0773fdb7/s28#r0",
+   "source_span": "The Helsinki plan collapsed — the posting got reassigned to Dar es Salaam. So Swahili is my new project as of this week",
+   "entity": "user",
+   "slot": "language_study",
+   "value": "Swahili",
+   "claim": "The user switched to studying Swahili after their partner's posting was reassigned to Dar es Salaam.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r62"
+   ],
+   "condition": "partner posting reassignment",
+   "implies_stale_slots": [
+    "partner_relocation_plan"
+   ],
+   "stated_date": "",
+   "value_tags": [
+    "language learning",
+    "relocation change"
+   ]
+  },
+  {
+   "record_id": "r78",
+   "source_memory_id": "confirm046-0773fdb7/s28#r0",
+   "source_span": "the posting got reassigned to Dar es Salaam",
+   "entity": "user",
+   "slot": "partner_relocation_plan",
+   "value": "Dar es Salaam",
+   "claim": "The user's partner's work posting was reassigned to Dar es Salaam instead of Helsinki.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r63"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence_location"
+   ],
+   "stated_date": "",
+   "value_tags": [
+    "relocation",
+    "work posting"
+   ]
+  },
+  {
+   "record_id": "r79",
+   "source_memory_id": "confirm046-0773fdb7/s28#r2",
+   "source_span": "My whole tutor situation has reset again, sigh. Third time this year",
+   "entity": "user",
+   "slot": "language_tutor_experience",
+   "value": "tutor changes - third time this year",
+   "claim": "The user has had to change tutors three times in the year due to language study shifts.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "language study transitions",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language tutoring",
+    "change frequency"
+   ]
+  },
+  {
+   "record_id": "r80",
+   "source_memory_id": "confirm046-0773fdb7/s29#r0",
+   "source_span": "I'm looking to improve my Twitter presence",
+   "entity": "user",
+   "slot": "social_media_focus",
+   "value": "Twitter",
+   "claim": "The user is working on improving their Twitter presence.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "fitness niche"
+   ]
+  },
+  {
+   "record_id": "r81",
+   "source_memory_id": "confirm046-0773fdb7/s29#r0",
+   "source_span": "my tweet from last Thursday did pretty well, it got retweeted 20 times and liked 50 times",
+   "entity": "user",
+   "slot": "twitter_engagement",
+   "value": "20 retweets, 50 likes on recent tweet",
+   "claim": "The user recently had a tweet with 20 retweets and 50 likes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "last Thursday",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social engagement",
+    "success metric"
+   ]
+  },
+  {
+   "record_id": "r82",
+   "source_memory_id": "confirm046-0773fdb7/s30#r0",
+   "source_span": "I have a kit I bought from Amazon",
+   "entity": "user",
+   "slot": "shoe_care_product",
+   "value": "shoe polish kit from Amazon",
+   "claim": "The user bought a shoe polish kit from Amazon.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "for brown leather boots",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shoe care"
+   ]
+  },
+  {
+   "record_id": "r83",
+   "source_memory_id": "confirm046-0773fdb7/s30#r0",
+   "source_span": "I wore the boots on Thursday, and they're starting to look a bit dull",
+   "entity": "user",
+   "slot": "brown_leather_boots",
+   "value": "brown leather boots needing polish",
+   "claim": "The user has brown leather boots that need polishing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "footwear",
+    "maintenance"
+   ]
+  },
+  {
+   "record_id": "r84",
+   "source_memory_id": "confirm046-0773fdb7/s30#r4",
+   "source_span": "my old gym shoes, the blue Reebok CrossFit shoes. I think I left them in my gym locker",
+   "entity": "user",
+   "slot": "gym_footwear",
+   "value": "blue Reebok CrossFit shoes left at gym",
+   "claim": "The user left their blue Reebok CrossFit shoes in their gym locker.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gym equipment",
+    "lost item"
+   ]
+  },
+  {
+   "record_id": "r85",
+   "source_memory_id": "confirm046-0773fdb7/s31#r0",
+   "source_span": "I just got back from a solo trip to Tokyo last month",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "solo trip to Tokyo",
+   "claim": "The user took a solo trip to Tokyo last month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "solo travel"
+   ]
+  },
+  {
+   "record_id": "r86",
+   "source_memory_id": "confirm046-0773fdb7/s31#r0",
+   "source_span": "I fell in love with the city",
+   "entity": "user",
+   "slot": "travel_sentiment",
+   "value": "loved Tokyo",
+   "claim": "The user fell in love with Tokyo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel sentiment",
+    "destination affinity"
+   ]
+  },
+  {
+   "record_id": "r87",
+   "source_memory_id": "confirm046-0773fdb7/s31#r0",
+   "source_span": "I'm planning a trip to Nikko, Japan",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Nikko day trip from Tokyo",
+   "claim": "The user is planning a trip to Nikko, Japan.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel planning",
+    "Japan"
+   ]
+  },
+  {
+   "record_id": "r88",
+   "source_memory_id": "confirm046-0773fdb7/s31#r2",
+   "source_span": "I'm actually staying in the same area of Tokyo where I stayed during my solo trip, Shibuya",
+   "entity": "user",
+   "slot": "tokyo_accommodation_area",
+   "value": "Shibuya",
+   "claim": "The user stays in Shibuya when visiting Tokyo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "repeated visits",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel accommodation",
+    "Tokyo district"
+   ]
+  },
+  {
+   "record_id": "r89",
+   "source_memory_id": "confirm046-0773fdb7/s32#r0",
+   "source_span": "Change of plans yet again — the relocation is off entirely, we're staying put in Leeds",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Leeds",
+   "claim": "The user and their partner are staying in Leeds instead of relocating.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r63",
+    "r78"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "residence",
+    "relocation cancelled"
+   ]
+  },
+  {
+   "record_id": "r90",
+   "source_memory_id": "confirm046-0773fdb7/s32#r1",
+   "source_span": "a documentary got me completely obsessed and I'm now working through an Icelandic textbook every night",
+   "entity": "user",
+   "slot": "language_study",
+   "value": "Icelandic",
+   "claim": "The user started studying Icelandic after a documentary inspired them.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r77"
+   ],
+   "condition": "hobby language",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language learning",
+    "documentary inspiration"
+   ]
+  },
+  {
+   "record_id": "r91",
+   "source_memory_id": "confirm046-0773fdb7/s32#r2",
+   "source_span": "Everyone keeps telling me that's a ridiculous choice for a hobby language. Don't care, the sagas got me",
+   "entity": "user",
+   "slot": "language_study_motivation",
+   "value": "Icelandic sagas",
+   "claim": "The user is motivated to learn Icelandic by Icelandic sagas despite others' skepticism.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language motivation",
+    "literature"
+   ]
+  },
+  {
+   "record_id": "r92",
+   "source_memory_id": "confirm046-0773fdb7/s32#r3",
+   "source_span": "Booked Reykjavík for February, so I've got a deadline now",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Reykjavik trip in February",
+   "claim": "The user booked a trip to Reykjavik for February.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2026-02",
+   "value_tags": [
+    "travel planning",
+    "Iceland"
+   ]
+  },
+  {
+   "record_id": "r93",
+   "source_memory_id": "confirm046-0773fdb7/s33#r0",
+   "source_span": "I discovered this amazing coffee shop near my hotel on my last trip, and I drank their cold brew coffee every morning",
+   "entity": "user",
+   "slot": "coffee_preference",
+   "value": "cold brew coffee",
+   "claim": "The user drinks cold brew coffee and found a favorite coffee shop near their Chicago hotel.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at hotel",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "coffee preference",
+    "beverage"
+   ]
+  },
+  {
+   "record_id": "r94",
+   "source_memory_id": "confirm046-0773fdb7/s33#r0",
+   "source_span": "I'm planning a trip to Chicago soon",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Chicago trip",
+   "claim": "The user is planning a trip to Chicago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel planning",
+    "destination"
+   ]
+  },
+  {
+   "record_id": "r95",
+   "source_memory_id": "confirm046-0773fdb7/s33#r2",
+   "source_span": "I'm really interested in architecture",
+   "entity": "user",
+   "slot": "interest",
+   "value": "architecture",
+   "claim": "The user is interested in architecture.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "aesthetic interest"
+   ]
+  },
+  {
+   "record_id": "r96",
+   "source_memory_id": "confirm046-0773fdb7/s34#r0",
+   "source_span": "I just surprised my sister with a designer handbag on her birthday today",
+   "entity": "user",
+   "slot": "gift_giving_habit",
+   "value": "designer handbag gifts",
+   "claim": "The user gave their sister a designer handbag as a birthday gift.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "sister's birthday",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gift giving",
+    "luxury items"
+   ]
+  },
+  {
+   "record_id": "r97",
+   "source_memory_id": "confirm046-0773fdb7/s34#r0",
+   "source_span": "I'm looking for some gift ideas for my mom's birthday, which is coming up soon",
+   "entity": "user",
+   "slot": "family_event_plan",
+   "value": "mom's birthday gift planning",
+   "claim": "The user is planning to give a birthday gift to their mother.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "upcoming",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gift planning",
+    "family"
+   ]
+  },
+  {
+   "record_id": "r98",
+   "source_memory_id": "confirm046-0773fdb7/s34#r2",
+   "source_span": "My mom loves gardening",
+   "entity": "user",
+   "slot": "family_interest",
+   "value": "mother loves gardening",
+   "claim": "The user's mother loves gardening.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family hobby",
+    "gardening"
+   ]
+  },
+  {
+   "record_id": "r99",
+   "source_memory_id": "confirm046-0773fdb7/s34#r2",
+   "source_span": "She's also been talking about trying out new recipes, so maybe something for cooking as well",
+   "entity": "user",
+   "slot": "family_interest",
+   "value": "mother interested in cooking and new recipes",
+   "claim": "The user's mother is interested in trying new recipes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family hobby",
+    "cooking"
+   ]
+  }
+ ],
+ "usage_in": 21060,
+ "usage_out": 13289
+}

@@ -1,0 +1,1176 @@
+{
+ "uid": "chain041-35609fb7",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain041-35609fb7/s0#r0",
+   "source_span": "I already got her a set of aromatherapy candles from Amazon, which cost around $25",
+   "entity": "user",
+   "slot": "recent_gifts_given",
+   "value": "aromatherapy candles set from Amazon for colleague ($25)",
+   "claim": "The user recently purchased aromatherapy candles from Amazon for $25 as a gift for a colleague.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "gift for colleague going through difficult time",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "wellness",
+    "gift-giving"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain041-35609fb7/s0#r4",
+   "source_span": "I got my sister a set of kitchen utensils from Target, which cost around $70. It had a frying pan, cooking pot, and utensil holder.",
+   "entity": "user",
+   "slot": "recent_gifts_given",
+   "value": "kitchen utensils set from Target for sister ($70, includes frying pan, cooking pot, utensil holder)",
+   "claim": "The user purchased a kitchen utensil set from Target for $70 including a frying pan, cooking pot, and utensil holder as a gift for their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "kitchen",
+    "gift-giving"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain041-35609fb7/s1#r0",
+   "source_span": "I still remember the huge portion of spicy pork bibimbap I got from KoDeliver on Sunday",
+   "entity": "user",
+   "slot": "food_ordering_services",
+   "value": "KoDeliver",
+   "claim": "The user orders food from KoDeliver.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "food delivery",
+    "korean cuisine"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain041-35609fb7/s1#r0",
+   "source_span": "the huge portion of spicy pork bibimbap I got from KoDeliver on Sunday",
+   "entity": "user",
+   "slot": "food_preferences",
+   "value": "spicy pork bibimbap",
+   "claim": "The user enjoys spicy pork bibimbap and finds it flavorful and fresh.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "korean",
+    "spicy",
+    "pork"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain041-35609fb7/s2#r0",
+   "source_span": "I got it for a steal during their winter clearance sale - it was originally $25, but I snagged it for $15",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "long-sleeved shirt from H&M ($15, originally $25)",
+   "claim": "The user purchased a long-sleeved shirt from H&M for $15 during a winter clearance sale.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-07",
+   "value_tags": [
+    "clothing",
+    "discount shopping"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain041-35609fb7/s2#r2",
+   "source_span": "I've been wearing my new Adidas sneakers almost every day since I got them",
+   "entity": "user",
+   "slot": "footwear",
+   "value": "Adidas sneakers",
+   "claim": "The user owns Adidas sneakers and wears them almost every day.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "athletic",
+    "daily wear"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain041-35609fb7/s2#r4",
+   "source_span": "my yellow skirt from the local boutique",
+   "entity": "user",
+   "slot": "clothing",
+   "value": "yellow skirt from local boutique",
+   "claim": "The user owns a yellow skirt from a local boutique.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "clothing"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain041-35609fb7/s3#r1",
+   "source_span": "we're doing a Patagonia trekking trip in October, ten days of hiking",
+   "entity": "user",
+   "slot": "planned_trips",
+   "value": "Patagonia trekking trip, October, 10 days of hiking",
+   "claim": "The user is planning a 10-day trekking trip to Patagonia in October.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10",
+   "value_tags": [
+    "outdoor",
+    "hiking"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain041-35609fb7/s3#r1",
+   "source_span": "finally cashed in my bonus and I'm booking the big one this year",
+   "entity": "user",
+   "slot": "financial_status",
+   "value": "recently received bonus, using it to fund major trip",
+   "claim": "The user recently received a bonus and is using it to fund a major trip.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "finance",
+    "income"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain041-35609fb7/s4#r2",
+   "source_span": "I'm trying to recreate a dish that my mom used to make when I was growing up",
+   "entity": "user",
+   "slot": "cultural_background",
+   "value": "has home country/childhood food traditions from mother's cooking",
+   "claim": "The user has cultural/family food traditions from their mother's cooking from back home.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family",
+    "culture"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain041-35609fb7/s5#r0",
+   "source_span": "I spent an entire Saturday at the local wetlands last weekend and got to see an Osprey diving into the water to catch a fish",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "bird photography, bird watching in natural habitats",
+   "claim": "The user enjoys bird photography and bird watching in natural habitats.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "outdoor",
+    "photography"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain041-35609fb7/s6#r0",
+   "source_span": "I've been cooking at home a lot more frequently over the past three months",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "home cooking, experimenting with new recipes",
+   "claim": "The user has been cooking at home more frequently over the past three months and experimenting with new recipes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain041-35609fb7/s7#r2",
+   "source_span": "I've been taking contemporary classes since January",
+   "entity": "user",
+   "slot": "current_activities",
+   "value": "contemporary dance classes",
+   "claim": "The user has been taking contemporary dance classes since January.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01",
+   "value_tags": [
+    "dance",
+    "classes"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain041-35609fb7/s7#r2",
+   "source_span": "I've been listening to Lana Del Rey a lot lately",
+   "entity": "user",
+   "slot": "music_preferences",
+   "value": "Lana Del Rey",
+   "claim": "The user enjoys listening to Lana Del Rey's music.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "music",
+    "artist"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain041-35609fb7/s7#r4",
+   "source_span": "I've been thinking of creating a piece inspired by my recent salsa class experience",
+   "entity": "user",
+   "slot": "current_activities",
+   "value": "salsa dance classes",
+   "claim": "The user has been taking salsa dance classes recently.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "dance",
+    "classes"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain041-35609fb7/s8#r0",
+   "source_span": "I tried snorkeling for the first time last month in Miami and was surprised by how much I enjoyed it",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "snorkeling",
+   "claim": "The user tried snorkeling for the first time in Miami and enjoyed it.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02",
+   "value_tags": [
+    "water sports",
+    "outdoor"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain041-35609fb7/s8#r2",
+   "source_span": "I'm thinking of staying in Waikiki for my trip",
+   "entity": "user",
+   "slot": "planned_trips",
+   "value": "Hawaii trip, staying in Waikiki",
+   "claim": "The user is planning a trip to Hawaii with stay in Waikiki.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "hawaii"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain041-35609fb7/s9#r0",
+   "source_span": "I've been meal prepping on them for four weeks now",
+   "entity": "user",
+   "slot": "habits",
+   "value": "meal prepping on Sundays for 4 weeks",
+   "claim": "The user has been meal prepping on Sundays for four weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking",
+    "organization"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain041-35609fb7/s10#r2",
+   "source_span": "my investment portfolio consists of market index funds, though I do keep a smaller portion in corporate bonds",
+   "entity": "user",
+   "slot": "investments",
+   "value": "market index funds (primary), corporate bonds (smaller portion)",
+   "claim": "The user's investment portfolio consists primarily of market index funds with a smaller portion in corporate bonds.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "finance",
+    "investments"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain041-35609fb7/s11#r0",
+   "source_span": "I'm working on my Master's thesis, and I just completed a draft of my literature review chapter today",
+   "entity": "user",
+   "slot": "current_activities",
+   "value": "Master's thesis research with focus on biodiversity and machine learning",
+   "claim": "The user is working on a Master's thesis with a focus on machine learning applications in biodiversity studies.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-22",
+   "value_tags": [
+    "education",
+    "research"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain041-35609fb7/s12#r4",
+   "source_span": "I'll schedule a yoga class on Tuesday at 6 pm",
+   "entity": "user",
+   "slot": "current_activities",
+   "value": "yoga classes",
+   "claim": "The user participates in yoga classes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness",
+    "wellness"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain041-35609fb7/s13#r0",
+   "source_span": "I just attended the opening reception for the \"Frida Kahlo and Diego Rivera\" exhibition at the Philadelphia Museum of Art today",
+   "entity": "user",
+   "slot": "recent_activities",
+   "value": "attended Frida Kahlo and Diego Rivera exhibition opening at Philadelphia Museum of Art",
+   "claim": "The user attended the opening reception of the Frida Kahlo and Diego Rivera exhibition at the Philadelphia Museum of Art.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-02",
+   "value_tags": [
+    "art",
+    "museum"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain041-35609fb7/s14#r0",
+   "source_span": "I just played it with my cousins on New Year's Eve",
+   "entity": "user",
+   "slot": "family_relationships",
+   "value": "has cousins",
+   "claim": "The user has cousins they spend time with.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain041-35609fb7/s14#r0",
+   "source_span": "I had a great game night at Mike's apartment the week before, playing Settlers of Catan with him and Rachel",
+   "entity": "user",
+   "slot": "social_relationships",
+   "value": "friends: Mike, Rachel",
+   "claim": "The user has friends named Mike and Rachel whom they spend time with.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "friendship"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain041-35609fb7/s14#r2",
+   "source_span": "I've heard of Carcassonne and actually just taught it to my girlfriend a few weeks ago",
+   "entity": "user",
+   "slot": "social_relationships",
+   "value": "has girlfriend",
+   "claim": "The user has a girlfriend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "relationship"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain041-35609fb7/s14#r2",
+   "source_span": "She really enjoyed it, and we've been playing it regularly",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "board games, specifically Carcassonne",
+   "claim": "The user and their girlfriend regularly play the board game Carcassonne together.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "games",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain041-35609fb7/s15#r0",
+   "source_span": "I've been subscribed to MKBHD and TechInfluencer",
+   "entity": "user",
+   "slot": "youtube_subscriptions",
+   "value": "MKBHD, TechInfluencer",
+   "claim": "The user is subscribed to YouTube channels MKBHD and TechInfluencer.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "tech",
+    "youtube"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain041-35609fb7/s15#r0",
+   "source_span": "I've been watching a ton of YouTube videos lately - over the past two weekends, I've watched at least 5 hours of YouTube videos each day",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "watches 5+ hours of YouTube videos per day on weekends",
+   "claim": "The user watches at least 5 hours of YouTube videos per day on weekends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "media",
+    "entertainment"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain041-35609fb7/s15#r2",
+   "source_span": "I've been trying to fix some things around the house, and I've found Home Repair Tutor's channel to be",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "DIY home repair",
+   "claim": "The user enjoys DIY home repair and watches instructional videos.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "DIY",
+    "home maintenance"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain041-35609fb7/s16#r0",
+   "source_span": "my hiking buddy blew out his ACL playing squash",
+   "entity": "user",
+   "slot": "social_relationships",
+   "value": "has hiking buddy",
+   "claim": "The user has a hiking buddy.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "friendship"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain041-35609fb7/s16#r1",
+   "source_span": "ended up swapping everything for a Kyoto temple tour instead, autumn leaves and all",
+   "entity": "user",
+   "slot": "planned_trips",
+   "value": "Kyoto temple tour trip to replace Patagonia hiking trip, autumn/fall focus",
+   "claim": "The user changed their planned Patagonia hiking trip to a Kyoto temple tour instead.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "japan"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain041-35609fb7/s17#r0",
+   "source_span": "I have a tennis lesson with Coach Thompson today",
+   "entity": "user",
+   "slot": "current_activities",
+   "value": "tennis lessons with Coach Thompson",
+   "claim": "The user has tennis lessons with Coach Thompson.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "lessons"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain041-35609fb7/s17#r4",
+   "source_span": "when I'm playing close sets like last Saturday's doubles match with Alex and Emma",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "tennis, doubles matches",
+   "claim": "The user plays tennis including doubles matches with partners like Alex and Emma.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "tennis"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain041-35609fb7/s18#r2",
+   "source_span": "I've been listening to a lot of podcasts lately, including 10 episodes of a particular show where I took notes on my phone about productivity tips and entrepreneurial strategies",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "listens to podcasts focused on productivity and entrepreneurship",
+   "claim": "The user listens to podcasts about productivity tips and entrepreneurial strategies.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "podcasts",
+    "business"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain041-35609fb7/s19#r0",
+   "source_span": "I just finished reading \"Bird by Bird\" by Anne Lamott today",
+   "entity": "user",
+   "slot": "books_read",
+   "value": "Bird by Bird by Anne Lamott",
+   "claim": "The user recently finished reading 'Bird by Bird' by Anne Lamott.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-15",
+   "value_tags": [
+    "writing",
+    "book"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain041-35609fb7/s19#r4",
+   "source_span": "I've been thinking a lot about the sound of the ocean lately",
+   "entity": "user",
+   "slot": "writing_interests",
+   "value": "writing about ocean sounds",
+   "claim": "The user is interested in writing about ocean sounds.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "writing",
+    "nature"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain041-35609fb7/s20#r0",
+   "source_span": "I'm planning to volunteer at another charity event this weekend",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "regular volunteer at charity events",
+   "claim": "The user volunteers at charity events regularly.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteering",
+    "charity"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain041-35609fb7/s20#r0",
+   "source_span": "a few months ago, I volunteered at a charity event and met a lot of like-minded people, including a guy named Tom",
+   "entity": "user",
+   "slot": "social_relationships",
+   "value": "knows Tom from charity event",
+   "claim": "The user met Tom at a charity event a few months ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "friendship"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain041-35609fb7/s20#r4",
+   "source_span": "I met a freelance writer at a coffee shop near my office last week and we exchanged numbers to grab lunch sometime",
+   "entity": "user",
+   "slot": "social_relationships",
+   "value": "met freelance writer at coffee shop",
+   "claim": "The user met a freelance writer at a coffee shop and exchanged contact information to meet for lunch.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "friendship"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain041-35609fb7/s21#r2",
+   "source_span": "I've been catching up on my magazine reading and came across a great article in Vogue about Greta Thunberg",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "reads Vogue magazine",
+   "claim": "The user reads Vogue magazine.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "magazines",
+    "reading"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain041-35609fb7/s21#r4",
+   "source_span": "I spent a lazy Sunday afternoon catching up on back issues of Vogue and Wired",
+   "entity": "user",
+   "slot": "media_consumption",
+   "value": "reads Vogue and Wired magazines",
+   "claim": "The user reads Vogue and Wired magazines.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "magazines",
+    "reading"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain041-35609fb7/s22#r0",
+   "source_span": "I've recently finished \"The Crown\" and I'm currently watching \"Slings & Arrows\" every Sunday and Wednesday evening - it's become a nice routine",
+   "entity": "user",
+   "slot": "tv_shows_watching",
+   "value": "watching Slings & Arrows on Sunday and Wednesday evenings",
+   "claim": "The user watches Slings & Arrows every Sunday and Wednesday evening as a regular routine.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "tv",
+    "theater"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain041-35609fb7/s22#r2",
+   "source_span": "I'm really interested in the Marvelous Mrs. Maisel",
+   "entity": "user",
+   "slot": "tv_shows_watching",
+   "value": "interested in watching The Marvelous Mrs. Maisel",
+   "claim": "The user is interested in watching The Marvelous Mrs. Maisel.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "tv",
+    "theater"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain041-35609fb7/s23#r2",
+   "source_span": "I had to buy at the airport last time I went to Hawaii",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "has visited Hawaii previously",
+   "claim": "The user has traveled to Hawaii in the past.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain041-35609fb7/s23#r4",
+   "source_span": "I packed for my last trip to Hawaii on January 10th and forgot to pack sunscreen, which I had to buy again at the airport for a ridiculous price",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "traveled to Hawaii on January 10",
+   "claim": "The user traveled to Hawaii on January 10.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-10",
+   "value_tags": [
+    "travel"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain041-35609fb7/s23#r4",
+   "source_span": "I've been using packing cubes lately, which have really helped me organize my clothes and find what I need quickly",
+   "entity": "user",
+   "slot": "travel_accessories",
+   "value": "uses packing cubes for organization",
+   "claim": "The user uses packing cubes to organize clothing while traveling.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "organization"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain041-35609fb7/s24#r0",
+   "source_span": "I'm trying to get back on track with my health after being sick with the flu a few weeks ago",
+   "entity": "user",
+   "slot": "health_status",
+   "value": "recently recovered from flu",
+   "claim": "The user recently recovered from the flu.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "health",
+    "illness"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain041-35609fb7/s24#r2",
+   "source_span": "I'm also trying to manage my blood pressure, which has been a bit high lately",
+   "entity": "user",
+   "slot": "health_status",
+   "value": "managing high blood pressure",
+   "claim": "The user has elevated blood pressure that they are managing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "health",
+    "medical"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain041-35609fb7/s24#r4",
+   "source_span": "I've been doing pretty well on my blood sugar levels lately, but I did have a spike two Sundays ago after eating a large dessert",
+   "entity": "user",
+   "slot": "health_status",
+   "value": "monitors blood sugar levels",
+   "claim": "The user monitors blood sugar levels and had a spike after eating dessert.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "health",
+    "medical"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain041-35609fb7/s24#r4",
+   "source_span": "I've been thinking about consulting with a registered dietitian to get some personalized advice on managing my diet",
+   "entity": "user",
+   "slot": "plans",
+   "value": "plans to consult with registered dietitian",
+   "claim": "The user plans to consult with a registered dietitian for dietary advice.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "health",
+    "nutrition"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain041-35609fb7/s25#r0",
+   "source_span": "I've been doing a charity event every month and I want to keep that streak going",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "participates in monthly charity events",
+   "claim": "The user participates in a charity event every month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteering",
+    "charity"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain041-35609fb7/s25#r2",
+   "source_span": "I participated in the Breast Cancer Awareness Walk last month, which was held at the local park",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "Breast Cancer Awareness Walk",
+   "claim": "The user participated in a Breast Cancer Awareness Walk at the local park.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteering",
+    "charity"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain041-35609fb7/s26#r0",
+   "source_span": "I'm trying to get more organized with my magazine subscriptions",
+   "entity": "user",
+   "slot": "subscriptions",
+   "value": "has magazine subscriptions",
+   "claim": "The user has magazine subscriptions.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "subscriptions",
+    "magazines"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain041-35609fb7/s26#r2",
+   "source_span": "I just got around to reading the March issue of National Geographic that had been sitting on my coffee table for months",
+   "entity": "user",
+   "slot": "subscriptions",
+   "value": "National Geographic magazine subscription",
+   "claim": "The user has a National Geographic magazine subscription.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "subscriptions",
+    "magazines"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain041-35609fb7/s27#r0",
+   "source_span": "I actually volunteered at the \"Walk for Wishes\" charity event there earlier this month, on October 15th",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "Walk for Wishes charity event at Six Flags Magic Mountain on October 15",
+   "claim": "The user volunteered at the 'Walk for Wishes' charity event at Six Flags Magic Mountain on October 15.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-10-15",
+   "value_tags": [
+    "volunteering",
+    "charity"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain041-35609fb7/s27#r2",
+   "source_span": "I got to ride it for free after the charity event",
+   "entity": "user",
+   "slot": "recent_activities",
+   "value": "rode Twisted Colossus rollercoaster at Six Flags Magic Mountain",
+   "claim": "The user rode the Twisted Colossus rollercoaster at Six Flags Magic Mountain after a charity event.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "recreation"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain041-35609fb7/s28#r2",
+   "source_span": "I have a few meetings lined up this week, including a team meeting on Wednesday at 2 pm and a client meeting on Friday at 10 am",
+   "entity": "user",
+   "slot": "work_activities",
+   "value": "has recurring team and client meetings",
+   "claim": "The user has team meetings and client meetings as part of their work schedule.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain041-35609fb7/s28#r2",
+   "source_span": "I need to finish a report that's due by the end of the week and work on a personal project that I've been putting off for a while",
+   "entity": "user",
+   "slot": "work_activities",
+   "value": "working on report due end of week and personal project",
+   "claim": "The user has a report due at the end of the week and is working on a personal project.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain041-35609fb7/s31#r0",
+   "source_span": "I raised $150 for the local children's hospital by selling chocolate chip cookies at my office building's charity bake sale in June",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "charity bake sale raising funds for children's hospital in June ($150)",
+   "claim": "The user participated in a charity bake sale in June, raising $150 for the local children's hospital.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06",
+   "value_tags": [
+    "volunteering",
+    "charity"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain041-35609fb7/s32#r0",
+   "source_span": "I completed 10 laps at the Speed Demon Racing Track with an average speed of 85mph during the Turbocharged Tuesdays event today",
+   "entity": "user",
+   "slot": "hobbies",
+   "value": "auto racing/track racing at Speed Demon Racing Track",
+   "claim": "The user participates in auto racing events, recently completing 10 laps at 85mph at the Turbocharged Tuesdays event.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-12-27",
+   "value_tags": [
+    "automotive",
+    "racing"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "chain041-35609fb7/s32#r2",
+   "source_span": "I got a discount on a set of new brake pads during the Winter Tune-Up event at the Speed Shop earlier this year",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "brake pads from Speed Shop Winter Tune-Up event (discounted)",
+   "claim": "The user purchased discounted brake pads at the Speed Shop Winter Tune-Up event.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "automotive",
+    "maintenance"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "chain041-35609fb7/s32#r4",
+   "source_span": "after replacing the spark plugs with new ones from NGK, the engine felt much smoother and responsive",
+   "entity": "user",
+   "slot": "vehicle_maintenance",
+   "value": "replaced spark plugs with NGK spark plugs",
+   "claim": "The user replaced spark plugs with NGK brand spark plugs, improving engine performance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "automotive",
+    "maintenance"
+   ]
+  }
+ ],
+ "usage_in": 20658,
+ "usage_out": 8580
+}

@@ -1,0 +1,1608 @@
+{
+ "uid": "confirm003-4c13bf12",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm003-4c13bf12/s0#r0",
+   "source_span": "I'm planning a trip to Europe with my family this summer",
+   "entity": "user",
+   "slot": "trip_plans",
+   "value": "Europe trip with family in summer",
+   "claim": "User is planning a trip to Europe with family during summer.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "summer",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "family activity",
+    "international"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm003-4c13bf12/s0#r0",
+   "source_span": "find the best deals on flights to Paris, Rome, and Barcelona",
+   "entity": "user",
+   "slot": "trip_destinations",
+   "value": "Paris, Rome, Barcelona",
+   "claim": "User is seeking flights to Paris, Rome, and Barcelona for the Europe trip.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "destinations"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm003-4c13bf12/s0#r0",
+   "source_span": "I've been flying a lot domestically lately, and I've noticed that three of those flights were to Chicago",
+   "entity": "user",
+   "slot": "recent_flights",
+   "value": "Chicago (domestic)",
+   "claim": "User has taken three recent domestic flights to Chicago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "domestic"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm003-4c13bf12/s0#r2",
+   "source_span": "We're planning to travel in mid-July for about two weeks, and there will be four of us traveling together",
+   "entity": "user",
+   "slot": "trip_details",
+   "value": "mid-July, two weeks, four people",
+   "claim": "User is planning to travel mid-July for two weeks with three other people (four total).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "group travel"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm003-4c13bf12/s0#r2",
+   "source_span": "we'd prefer airlines with more legroom, like Norwegian or Icelandair",
+   "entity": "user",
+   "slot": "airline_preference",
+   "value": "Norwegian, Icelandair",
+   "claim": "User prefers airlines with more legroom such as Norwegian or Icelandair.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "comfort"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm003-4c13bf12/s0#r2",
+   "source_span": "We don't have any specific airline alliances in mind, but we do prefer direct flights or at least minimal layovers",
+   "entity": "user",
+   "slot": "flight_preference",
+   "value": "direct flights or minimal layovers",
+   "claim": "User prefers direct flights or minimal layovers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "convenience"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm003-4c13bf12/s0#r4",
+   "source_span": "I'd like to explore other airline options, especially TAP Air Portugal, as I've heard good things about their service",
+   "entity": "user",
+   "slot": "airline_preference",
+   "value": "TAP Air Portugal",
+   "claim": "User is interested in exploring TAP Air Portugal as an airline option.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "airline"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm003-4c13bf12/s1#r2",
+   "source_span": "I was just thinking about my recent games of Carcassonne with my roommate. I've been on a roll lately, winning four out of our last six games",
+   "entity": "user",
+   "slot": "roommate_activity",
+   "value": "Carcassonne board games with roommate; won 4 out of 6 games",
+   "claim": "User has been playing Carcassonne with roommate and recently won 4 out of 6 games.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "gaming",
+    "social activity"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm003-4c13bf12/s1#r2",
+   "source_span": "I think I'll definitely give it a try",
+   "entity": "user",
+   "slot": "games_to_purchase",
+   "value": "Ticket to Ride",
+   "claim": "User plans to purchase the board game Ticket to Ride.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "gaming"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm003-4c13bf12/s2#r0",
+   "source_span": "I've been doing some work at a senior center and it's been really fulfilling",
+   "entity": "user",
+   "slot": "volunteer_activities",
+   "value": "senior center volunteer work",
+   "claim": "User volunteers at a senior center and finds it fulfilling.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteer",
+    "community service"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm003-4c13bf12/s2#r0",
+   "source_span": "I lost my grandmother a few months ago",
+   "entity": "user",
+   "slot": "family_loss",
+   "value": "grandmother (death)",
+   "claim": "User's grandmother passed away a few months ago.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "loss",
+    "grief"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm003-4c13bf12/s2#r2",
+   "source_span": "I'm actually also dealing with the loss of another loved one, my best friend's mom, who passed away suddenly about a month after my grandmother",
+   "entity": "user",
+   "slot": "family_loss",
+   "value": "best friend's mom (death)",
+   "claim": "User's best friend's mom passed away about a month after grandmother.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "loss",
+    "grief"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm003-4c13bf12/s3#r0",
+   "source_span": "I've been spending a lot of time alone lately, and it's really getting to me",
+   "entity": "user",
+   "slot": "emotional_state",
+   "value": "loneliness",
+   "claim": "User is feeling lonely from spending too much time alone.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "mental health",
+    "social"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm003-4c13bf12/s3#r0",
+   "source_span": "I did recently try taking a painting class, which was fun",
+   "entity": "user",
+   "slot": "activities",
+   "value": "painting class",
+   "claim": "User recently took a painting class and enjoyed it.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "social activity"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm003-4c13bf12/s3#r0",
+   "source_span": "I just got back from my high school reunion",
+   "entity": "user",
+   "slot": "events_attended",
+   "value": "high school reunion",
+   "claim": "User recently attended their high school reunion.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social event"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm003-4c13bf12/s3#r2",
+   "source_span": "I think I'll start with a language exchange group or a recreational sports team",
+   "entity": "user",
+   "slot": "planned_activities",
+   "value": "language exchange group or recreational sports team",
+   "claim": "User plans to join a language exchange group or recreational sports team.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "social activity"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm003-4c13bf12/s3#r4",
+   "source_span": "I'm thinking of joining a recreational volleyball team, as I used to play in high school",
+   "entity": "user",
+   "slot": "planned_activities",
+   "value": "recreational volleyball team",
+   "claim": "User plans to join a recreational volleyball team, which they played in high school.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm003-4c13bf12/s4#r1",
+   "source_span": "been doing most of my dev work on my Lenovo ThinkPad X1 Carbon Gen 9",
+   "entity": "user",
+   "slot": "work_device",
+   "value": "Lenovo ThinkPad X1 Carbon Gen 9",
+   "claim": "User uses a Lenovo ThinkPad X1 Carbon Gen 9 for development work.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work",
+    "device",
+    "tech"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm003-4c13bf12/s4#r2",
+   "source_span": "only gripe is the fan spins up the second I open more than six tabs",
+   "entity": "user",
+   "slot": "device_issue",
+   "value": "Lenovo ThinkPad X1 Carbon Gen 9 fan overheats with 6+ tabs",
+   "claim": "User's Lenovo ThinkPad experiences fan noise when opening more than six browser tabs.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "with 6+ tabs open",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "device issue"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm003-4c13bf12/s5#r2",
+   "source_span": "I'm flying out of LAX, just me",
+   "entity": "user",
+   "slot": "travel_origin",
+   "value": "LAX (Los Angeles)",
+   "claim": "User's home airport for departures is LAX.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "location"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm003-4c13bf12/s5#r2",
+   "source_span": "my brother Alex is getting married next June",
+   "entity": "user",
+   "slot": "family_events",
+   "value": "brother Alex's wedding in June",
+   "claim": "User's brother Alex is getting married in June.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2026-06",
+   "value_tags": [
+    "family event",
+    "wedding"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm003-4c13bf12/s5#r0",
+   "source_span": "I'm planning to attend a few weddings in the coming months",
+   "entity": "user",
+   "slot": "events_planned",
+   "value": "multiple weddings",
+   "claim": "User is planning to attend several weddings in the coming months.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "family event"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm003-4c13bf12/s5#r0",
+   "source_span": "Emily's wedding on November 12th",
+   "entity": "user",
+   "slot": "events_planned",
+   "value": "Emily's wedding in Cancun",
+   "claim": "User is attending Emily's wedding in Cancun on November 12th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "family event",
+    "wedding"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm003-4c13bf12/s6#r0",
+   "source_span": "I've been doing well lately, and I think it's because of my consistent posting schedule and engagement with other users in my niche",
+   "entity": "user",
+   "slot": "social_media_strategy",
+   "value": "consistent posting and engagement on Instagram",
+   "claim": "User attributes social media success to consistent posting and engagement with users.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "on Instagram",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "content creation"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm003-4c13bf12/s6#r0",
+   "source_span": "I recently posted a quote about gratitude that went viral and gained around 50 new followers in just a few hours",
+   "entity": "user",
+   "slot": "social_media_success",
+   "value": "gratitude quote post went viral, gained 50 followers",
+   "claim": "User's gratitude quote post went viral and attracted 50 new followers.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "viral content"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm003-4c13bf12/s6#r2",
+   "source_span": "I like the idea of creating a series of quotes around the theme of gratitude",
+   "entity": "user",
+   "slot": "content_plans",
+   "value": "gratitude quote series on Instagram",
+   "claim": "User plans to create a series of gratitude-themed quotes for Instagram.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "content creation"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm003-4c13bf12/s6#r4",
+   "source_span": "I think #GratitudeUnlocked is a great idea for a hashtag. I'll definitely start using it for my quote series",
+   "entity": "user",
+   "slot": "social_media_hashtag",
+   "value": "#GratitudeUnlocked",
+   "claim": "User will use #GratitudeUnlocked hashtag for their gratitude quote series.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "for Instagram quote series",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "branding"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm003-4c13bf12/s7#r0",
+   "source_span": "I just got a new backpack for traveling a few weeks ago, and it's been a lifesaver - I got a great deal on it, 20% off at that new outdoor store downtown",
+   "entity": "user",
+   "slot": "travel_gear",
+   "value": "new backpack with 20% discount from outdoor store",
+   "claim": "User recently purchased a new travel backpack at 20% discount from a downtown outdoor store.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "gear",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm003-4c13bf12/s7#r4",
+   "source_span": "I recently bought a new messenger-style bag for carrying my work files and laptop, and it's been really helpful in keeping my work stuff separate from my personal stuff",
+   "entity": "user",
+   "slot": "work_gear",
+   "value": "messenger-style bag for work files and laptop",
+   "claim": "User recently purchased a messenger-style bag for organizing work files and laptop separately.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work",
+    "gear",
+    "organization"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm003-4c13bf12/s8#r2",
+   "source_span": "I'm interested in selling my vintage Spider-Man comic book and the silver dollar coin",
+   "entity": "user",
+   "slot": "items_to_sell",
+   "value": "vintage Spider-Man comic book, silver dollar coin",
+   "claim": "User plans to sell vintage Spider-Man comic book and silver dollar coin collectibles.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "collectibles",
+    "selling"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm003-4c13bf12/s8#r4",
+   "source_span": "I think I'll list the Spider-Man comic book on eBay",
+   "entity": "user",
+   "slot": "selling_platform",
+   "value": "eBay for Spider-Man comic",
+   "claim": "User plans to list the vintage Spider-Man comic book on eBay.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r30"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "selling",
+    "platform"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm003-4c13bf12/s9#r0",
+   "source_span": "I make scrambled eggs with spinach and mushrooms on Tuesdays and Thursdays, and I love it",
+   "entity": "user",
+   "slot": "regular_meals",
+   "value": "scrambled eggs with spinach and mushrooms",
+   "claim": "User eats scrambled eggs with spinach and mushrooms on Tuesdays and Thursdays.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "Tuesdays and Thursdays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "food",
+    "vegetarian",
+    "egg-based",
+    "breakfast"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm003-4c13bf12/s10#r0",
+   "source_span": "I just got my new Instant Pot and kitchen knives from the Amazon Prime Day sales",
+   "entity": "user",
+   "slot": "kitchen_items",
+   "value": "Instant Pot, kitchen knives",
+   "claim": "User purchased an Instant Pot and kitchen knives during Amazon Prime Day sales.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cookware",
+    "kitchen",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm003-4c13bf12/s11#r0",
+   "source_span": "I need help with canceling my United Airlines flight to LA on March 15th",
+   "entity": "user",
+   "slot": "cancelled_flights",
+   "value": "United Airlines to LA on March 15",
+   "claim": "User cancelled a United Airlines flight to Los Angeles scheduled for March 15.",
+   "slot_cardinality": "set",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "cancellation"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm003-4c13bf12/s11#r2",
+   "source_span": "I'm also planning a trip to Tokyo in April with Japan Airlines",
+   "entity": "user",
+   "slot": "trip_plans",
+   "value": "Tokyo trip in April with Japan Airlines",
+   "claim": "User is planning a trip to Tokyo in April and will travel with Japan Airlines.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2026-04",
+   "value_tags": [
+    "travel",
+    "international"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm003-4c13bf12/s11#r4",
+   "source_span": "Do you know how many miles I need to complete to reach elite status with American Airlines? I think I'm close",
+   "entity": "user",
+   "slot": "airline_loyalty",
+   "value": "American Airlines elite status (approaching)",
+   "claim": "User is close to reaching elite status with American Airlines.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "loyalty program"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm003-4c13bf12/s12#r0",
+   "source_span": "I watched the NFL playoffs last weekend and had a blast watching the Kansas City Chiefs take down the Buffalo Bills at my friend's place",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "NFL playoffs, Kansas City Chiefs",
+   "claim": "User watches NFL playoffs and supports the Kansas City Chiefs.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "NFL",
+    "entertainment"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm003-4c13bf12/s13#r0",
+   "source_span": "I recently got a new pair of AG Jeans for $80",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "AG Jeans for $80",
+   "claim": "User purchased AG Jeans for $80.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "clothing",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm003-4c13bf12/s14#r0",
+   "source_span": "I've been to Hawaii before, we stayed at a resort in Waikiki, which was amazing",
+   "entity": "user",
+   "slot": "past_trips",
+   "value": "Hawaii, Waikiki resort",
+   "claim": "User previously visited Hawaii and stayed at a Waikiki resort.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "vacation"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm003-4c13bf12/s14#r0",
+   "source_span": "I'm planning a trip to Hawaii and I'm looking for some recommendations on what to do in Honolulu",
+   "entity": "user",
+   "slot": "trip_plans",
+   "value": "Hawaii/Honolulu trip",
+   "claim": "User is planning a trip to Hawaii to visit Honolulu.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "vacation"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm003-4c13bf12/s14#r4",
+   "source_span": "I actually tried poke bowls at a local restaurant called Poke Bar when I was in Hawaii last time, and it was amazing",
+   "entity": "user",
+   "slot": "food_experiences",
+   "value": "poke bowls at Poke Bar in Hawaii",
+   "claim": "User enjoyed poke bowls at Poke Bar during a previous Hawaii visit.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "food",
+    "dining",
+    "seafood",
+    "Hawaiian"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm003-4c13bf12/s15#r0",
+   "source_span": "I recently had a conversation with a data scientist from Airbnb at the YPN networking mixer",
+   "entity": "user",
+   "slot": "networking_events",
+   "value": "YPN networking mixer",
+   "claim": "User recently attended a YPN networking mixer where they met a data scientist from Airbnb.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional",
+    "networking"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm003-4c13bf12/s16#r0",
+   "source_span": "I've been pretty consistent with my training, logging over 100 miles of running in the 8 weeks leading up to the Spring Fling Run",
+   "entity": "user",
+   "slot": "running_training",
+   "value": "100+ miles in 8 weeks for Spring Fling Run",
+   "claim": "User trained for the Spring Fling Run by logging over 100 miles in 8 weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness",
+    "running",
+    "training"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm003-4c13bf12/s16#r0",
+   "source_span": "I'm training for another run",
+   "entity": "user",
+   "slot": "current_training",
+   "value": "training for upcoming run",
+   "claim": "User is currently training for an upcoming run.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r43"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness",
+    "running"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm003-4c13bf12/s17#r0",
+   "source_span": "I've been playing for 9 months now and trying to practice for 45 minutes daily",
+   "entity": "user",
+   "slot": "guitar_practice",
+   "value": "9 months experience, 45 minutes daily practice",
+   "claim": "User has been playing guitar for 9 months and practices 45 minutes daily.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "music",
+    "practice"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm003-4c13bf12/s17#r2",
+   "source_span": "I've been looking into recording my own music",
+   "entity": "user",
+   "slot": "music_plans",
+   "value": "recording own music",
+   "claim": "User is considering recording their own music.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "music"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm003-4c13bf12/s17#r4",
+   "source_span": "I think I'll try out Logic Pro first since it seems more user-friendly for beginners",
+   "entity": "user",
+   "slot": "music_software",
+   "value": "Logic Pro",
+   "claim": "User plans to use Logic Pro as their digital audio workstation for music production.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "for beginners",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "music",
+    "software",
+    "production"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm003-4c13bf12/s18#r2",
+   "source_span": "I ordered a wireless headphone from Amazon last week",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "wireless headphones from Amazon",
+   "claim": "User recently purchased wireless headphones from Amazon.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "electronics",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm003-4c13bf12/s18#r2",
+   "source_span": "I got a pair of sneakers from Zappos on the 15th of last month",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "sneakers from Zappos",
+   "claim": "User purchased sneakers from Zappos on the 15th of the previous month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shoes",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm003-4c13bf12/s18#r2",
+   "source_span": "I also bought some household essentials from Walmart's website around the same time",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "household essentials from Walmart",
+   "claim": "User purchased household essentials from Walmart's website around the 15th of previous month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "household",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm003-4c13bf12/s18#r2",
+   "source_span": "I made three separate purchases on ASOS in the first week of this month - two dresses and a pair of bo",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "ASOS purchases: two dresses and boots",
+   "claim": "User made three purchases on ASOS in the first week of the month including two dresses and boots.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "clothing",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm003-4c13bf12/s18#r4",
+   "source_span": "I also purchased some books from Barnes & Noble's website about three weeks ago",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "books from Barnes & Noble",
+   "claim": "User purchased books from Barnes & Noble's website about three weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "books",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm003-4c13bf12/s18#r4",
+   "source_span": "I had a major online shopping spree on Sephora's website in late April",
+   "entity": "user",
+   "slot": "recent_purchases",
+   "value": "Sephora shopping spree in late April",
+   "claim": "User had a major shopping spree on Sephora's website in late April.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04",
+   "value_tags": [
+    "beauty",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm003-4c13bf12/s19#r0",
+   "source_span": "I just got a new 128GB SanDisk Extreme Pro memory card today",
+   "entity": "user",
+   "slot": "camera_gear",
+   "value": "128GB SanDisk Extreme Pro memory card",
+   "claim": "User recently purchased a 128GB SanDisk Extreme Pro memory card.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "camera",
+    "storage",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm003-4c13bf12/s19#r4",
+   "source_span": "I just got a new F-Stop Gear Loka 40L backpack",
+   "entity": "user",
+   "slot": "camera_gear",
+   "value": "F-Stop Gear Loka 40L backpack",
+   "claim": "User recently purchased an F-Stop Gear Loka 40L photography backpack.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r54"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "camera",
+    "gear",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm003-4c13bf12/s20#r0",
+   "source_span": "I'm planning a trip to Tokyo in November",
+   "entity": "user",
+   "slot": "trip_plans",
+   "value": "Tokyo trip in November",
+   "claim": "User is planning a trip to Tokyo in November.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11",
+   "value_tags": [
+    "travel",
+    "international"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm003-4c13bf12/s20#r0",
+   "source_span": "I've already taken care of my visa, I applied online a week after booking my ticket and got it in the mail about 10 days later",
+   "entity": "user",
+   "slot": "travel_documentation",
+   "value": "Japan visa obtained",
+   "claim": "User obtained a Japan visa through online application.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "for Tokyo trip",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "documentation"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm003-4c13bf12/s20#r4",
+   "source_span": "I'm planning to take a bullet train from Tokyo to Osaka on my last day in Japan",
+   "entity": "user",
+   "slot": "trip_plans",
+   "value": "bullet train from Tokyo to Osaka",
+   "claim": "User plans to take a bullet train from Tokyo to Osaka on the last day of their Japan trip.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r56"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "transportation"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "confirm003-4c13bf12/s21#r0",
+   "source_span": "I finally went the repairable route and picked up a Framework Laptop 13 (AMD Ryzen) last weekend",
+   "entity": "user",
+   "slot": "primary_device",
+   "value": "Framework Laptop 13 (AMD Ryzen)",
+   "claim": "User recently purchased a Framework Laptop 13 with AMD Ryzen processor.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r18"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work",
+    "device",
+    "laptop",
+    "repairable"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "confirm003-4c13bf12/s21#r2",
+   "source_span": "I did put 32gb in it because I refuse to think about ram again for three years",
+   "entity": "user",
+   "slot": "device_specs",
+   "value": "32GB RAM",
+   "claim": "User configured Framework Laptop with 32GB RAM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "for Framework Laptop 13",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "device",
+    "specs"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "confirm003-4c13bf12/s22#r1",
+   "source_span": "my supervisor's name is Rachel, and I'm still getting used to my new role",
+   "entity": "user",
+   "slot": "work_role",
+   "value": "new role with supervisor Rachel",
+   "claim": "User is in a new role at work with supervisor named Rachel.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work",
+    "role"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "confirm003-4c13bf12/s22#r2",
+   "source_span": "wrapping up the Johnson account, onboarding my new team, and mentoring Alex",
+   "entity": "user",
+   "slot": "work_projects",
+   "value": "Johnson account wrap-up, team onboarding, mentoring Alex",
+   "claim": "User is managing three main projects: wrapping up Johnson account, onboarding team, and mentoring Alex.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work",
+    "projects"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "confirm003-4c13bf12/s23#r0",
+   "source_span": "I've recently started taking them again and it's been really helpful for my mental health",
+   "entity": "user",
+   "slot": "activities",
+   "value": "painting classes",
+   "claim": "User has restarted painting classes and finds them beneficial for mental health.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "mental health",
+    "art"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "confirm003-4c13bf12/s24#r0",
+   "source_span": "I upgraded my laptop's RAM from 8GB to 16GB as a birthday gift to myself on 25th February, and it cost me $40",
+   "entity": "user",
+   "slot": "device_upgrade",
+   "value": "RAM upgrade from 8GB to 16GB for $40",
+   "claim": "User upgraded their laptop RAM from 8GB to 16GB for $40 on February 25th as a birthday gift.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-25",
+   "value_tags": [
+    "device",
+    "upgrade",
+    "birthday"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "confirm003-4c13bf12/s24#r2",
+   "source_span": "I recently got a new one from Amazon on 15th March, it's a black Lenovo one with extra padding for my 15.6-inch laptop, and it cost me around $40",
+   "entity": "user",
+   "slot": "work_gear",
+   "value": "black Lenovo laptop bag for 15.6-inch laptop from Amazon",
+   "claim": "User purchased a black Lenovo laptop bag with extra padding for 15.6-inch laptop from Amazon on March 15th for $40.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "value_tags": [
+    "work",
+    "protection",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "confirm003-4c13bf12/s25#r0",
+   "source_span": "I recently got a coupon organizer binder on Amazon, which arrived on the 24th, and I bought it on the 20th",
+   "entity": "user",
+   "slot": "household_items",
+   "value": "coupon organizer binder from Amazon",
+   "claim": "User purchased a coupon organizer binder from Amazon, ordered on 20th and arrived on 24th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09-20",
+   "value_tags": [
+    "organization",
+    "household",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r67",
+   "source_memory_id": "confirm003-4c13bf12/s25#r4",
+   "source_span": "I've been using a lot of them recently, like the ones I clipped from the Sunday paper on February 10th for cat food and toilet paper, which I redeemed on February 12th",
+   "entity": "user",
+   "slot": "coupon_usage",
+   "value": "cat food and toilet paper coupons",
+   "claim": "User clips and redeems coupons for cat food and toilet paper.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-10",
+   "value_tags": [
+    "savings",
+    "household"
+   ]
+  },
+  {
+   "record_id": "r68",
+   "source_memory_id": "confirm003-4c13bf12/s26#r0",
+   "source_span": "I just paid my annual bill for my current property last month, which came out to be $4,200",
+   "entity": "user",
+   "slot": "property_ownership",
+   "value": "current property with $4,200 annual tax bill",
+   "claim": "User owns a property with an annual property tax bill of $4,200.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "property",
+    "home ownership",
+    "taxes"
+   ]
+  },
+  {
+   "record_id": "r69",
+   "source_memory_id": "confirm003-4c13bf12/s26#r2",
+   "source_span": "the 5-acre property I'm considering, which has a small cabin on it",
+   "entity": "user",
+   "slot": "property_plans",
+   "value": "5-acre property with small cabin",
+   "claim": "User is considering purchasing a 5-acre property that has a small cabin.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r68"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "property",
+    "real estate"
+   ]
+  },
+  {
+   "record_id": "r70",
+   "source_memory_id": "confirm003-4c13bf12/s26#r4",
+   "source_span": "I'm thinking of using it as a weekend getaway and maybe doing some gardening and sustainable living",
+   "entity": "user",
+   "slot": "property_plans",
+   "value": "weekend getaway, gardening, sustainable living",
+   "claim": "User plans to use the potential property as weekend getaway for gardening and sustainable living.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r69"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "lifestyle",
+    "property"
+   ]
+  },
+  {
+   "record_id": "r71",
+   "source_memory_id": "confirm003-4c13bf12/s27#r0",
+   "source_span": "I recently attended a local production of \"The Phantom of the Opera\" at the city opera house about three weeks ago",
+   "entity": "user",
+   "slot": "entertainment_experiences",
+   "value": "The Phantom of the Opera at city opera house",
+   "claim": "User attended a local production of The Phantom of the Opera at the city opera house about three weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entertainment",
+    "theater",
+    "musical"
+   ]
+  },
+  {
+   "record_id": "r72",
+   "source_memory_id": "confirm003-4c13bf12/s27#r2",
+   "source_span": "I'm especially interested in watching \"Hamilton\" since I loved \"In the Heights\" so much",
+   "entity": "user",
+   "slot": "media_interests",
+   "value": "Hamilton musical, enjoyed In the Heights",
+   "claim": "User is interested in Hamilton and has enjoyed In the Heights.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entertainment",
+    "musical",
+    "theater"
+   ]
+  },
+  {
+   "record_id": "r73",
+   "source_memory_id": "confirm003-4c13bf12/s27#r4",
+   "source_span": "I've been enjoying \"The Ensemblist\" podcast with my friend Emma",
+   "entity": "user",
+   "slot": "podcast_listening",
+   "value": "The Ensemblist podcast with friend Emma",
+   "claim": "User listens to The Ensemblist podcast with friend Emma.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entertainment",
+    "podcast",
+    "theater"
+   ]
+  },
+  {
+   "record_id": "r74",
+   "source_memory_id": "confirm003-4c13bf12/s28#r2",
+   "source_span": "I just got a beautiful vase from West Elm as a gift for my coworker's wedding, and it cost me $120",
+   "entity": "user",
+   "slot": "gift_purchases",
+   "value": "West Elm vase for coworker's wedding for $120",
+   "claim": "User purchased a vase from West Elm as a wedding gift for a coworker for $120.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gifts",
+    "wedding",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r75",
+   "source_memory_id": "confirm003-4c13bf12/s29#r2",
+   "source_span": "I have a lot of clothes that I don't wear often, like that luxury handbag I bought on the 15th for $1,200, which is still unworn",
+   "entity": "user",
+   "slot": "luxury_items",
+   "value": "luxury handbag for $1,200 (unused)",
+   "claim": "User purchased a luxury handbag for $1,200 on the 15th that remains unworn.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-11-15",
+   "value_tags": [
+    "luxury",
+    "fashion",
+    "purchase"
+   ]
+  },
+  {
+   "record_id": "r76",
+   "source_memory_id": "confirm003-4c13bf12/s30#r0",
+   "source_span": "travel schedule got brutal this quarter so I wanted something thinner for planes",
+   "entity": "user",
+   "slot": "travel_patterns",
+   "value": "increased business travel this quarter",
+   "claim": "User has experienced increased travel demands this quarter.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "work",
+    "schedule"
+   ]
+  },
+  {
+   "record_id": "r77",
+   "source_memory_id": "confirm003-4c13bf12/s30#r1",
+   "source_span": "ended up trading down in thickness and up in battery — the ASUS Zenbook S 14 is my daily driver now",
+   "entity": "user",
+   "slot": "primary_device",
+   "value": "ASUS Zenbook S 14",
+   "claim": "User switched to ASUS Zenbook S 14 as their daily driver laptop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r59"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work",
+    "device",
+    "laptop",
+    "portable"
+   ]
+  },
+  {
+   "record_id": "r78",
+   "source_memory_id": "confirm003-4c13bf12/s30#r3",
+   "source_span": "it only has two usb-c ports so I'm hunting for a decent slim hub",
+   "entity": "user",
+   "slot": "device_need",
+   "value": "slim USB-C hub for ASUS Zenbook S 14",
+   "claim": "User needs a slim USB-C hub for their ASUS Zenbook due to limited ports.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "for ASUS Zenbook S 14",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "device",
+    "accessory",
+    "need"
+   ]
+  },
+  {
+   "record_id": "r79",
+   "source_memory_id": "confirm003-4c13bf12/s32#r0",
+   "source_span": "one of them was a one-day digital marketing workshop at a coworking space near my apartment",
+   "entity": "user",
+   "slot": "professional_development",
+   "value": "digital marketing workshop at coworking space",
+   "claim": "User attended a one-day digital marketing workshop at a coworking space near their apartment.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional",
+    "training",
+    "marketing"
+   ]
+  },
+  {
+   "record_id": "r80",
+   "source_memory_id": "confirm003-4c13bf12/s32#r2",
+   "source_span": "the facilitator, Alex, shared some valuable insights on how to grow your online presence",
+   "entity": "user",
+   "slot": "workshop_learnings",
+   "value": "online presence growth strategies from facilitator Alex",
+   "claim": "User learned about growing online presence from facilitator Alex at digital marketing workshop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "from digital marketing workshop",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional",
+    "marketing",
+    "learning"
+   ]
+  }
+ ],
+ "usage_in": 20602,
+ "usage_out": 12049
+}

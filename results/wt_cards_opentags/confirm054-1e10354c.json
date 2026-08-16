@@ -1,0 +1,1116 @@
+{
+ "uid": "confirm054-1e10354c",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "confirm054-1e10354c/s0#r0",
+   "source_span": "My Dell Inspiron's storage is almost full",
+   "entity": "user",
+   "slot": "laptop_model",
+   "value": "Dell Inspiron",
+   "claim": "User owns a Dell Inspiron laptop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "computing device",
+    "personal computer"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "confirm054-1e10354c/s0#r0",
+   "source_span": "I haven't cleaned up my files since August 2022",
+   "entity": "user",
+   "slot": "last_file_cleanup_date",
+   "value": "August 2022",
+   "claim": "User last cleaned up laptop files in August 2022.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2022-08",
+   "value_tags": [
+    "maintenance task",
+    "file management"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "confirm054-1e10354c/s0#r0",
+   "source_span": "my 256GB USB flash drive, which I bought in November 2021 for $25",
+   "entity": "user",
+   "slot": "usb_flash_drive_capacity",
+   "value": "256GB",
+   "claim": "User owns a 256GB USB flash drive purchased in November 2021 for $25.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2021-11",
+   "value_tags": [
+    "storage device",
+    "portable storage"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "confirm054-1e10354c/s0#r2",
+   "source_span": "my new 1TB Western Digital hard drive, which I got on March 2nd for $60",
+   "entity": "user",
+   "slot": "external_hard_drive",
+   "value": "1TB Western Digital",
+   "claim": "User owns a 1TB Western Digital external hard drive purchased on March 2nd for $60.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "storage device",
+    "external storage"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "confirm054-1e10354c/s3#r0",
+   "source_span": "I crawl into bed around 1:30 am pretty much every night",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "1:30 am",
+   "claim": "User's typical bedtime is around 1:30 am.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep schedule",
+    "late night"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "confirm054-1e10354c/s3#r1",
+   "source_span": "I don't do anything useful before 11",
+   "entity": "user",
+   "slot": "productive_morning_start_time",
+   "value": "11 am",
+   "claim": "User does not have productive time before 11 am.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "morning routine",
+    "sleep inertia"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "confirm054-1e10354c/s3#r2",
+   "source_span": "My flatmate Priya keeps leaving me passive-aggressive notes about the kettle at midnight",
+   "entity": "user",
+   "slot": "flatmate_name",
+   "value": "Priya",
+   "claim": "User has a flatmate named Priya.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "household",
+    "relationship"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "confirm054-1e10354c/s3#r0",
+   "source_span": "Freelance life has completely wrecked my clock",
+   "entity": "user",
+   "slot": "employment_type",
+   "value": "Freelance",
+   "claim": "User works as a freelancer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work status",
+    "self-employed"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "confirm054-1e10354c/s4#r0",
+   "source_span": "I'm planning a road trip from Denver to Aspen, Colorado",
+   "entity": "user",
+   "slot": "planned_trip_destination",
+   "value": "Denver to Aspen, Colorado",
+   "claim": "User is planning a road trip from Denver to Aspen, Colorado.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel plans",
+    "road trip"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "confirm054-1e10354c/s6#r0",
+   "source_span": "I've had a lot of success with them in my garden, starting with a few varieties that are commonly used in cooking",
+   "entity": "user",
+   "slot": "herb_garden",
+   "value": "multiple varieties",
+   "claim": "User grows multiple varieties of herbs in a garden.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gardening",
+    "fresh herbs"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "confirm054-1e10354c/s7#r0",
+   "source_span": "I just started \"The Seven Husbands of Evelyn Hugo\" 2 weeks ago",
+   "entity": "user",
+   "slot": "currently_reading_book",
+   "value": "The Seven Husbands of Evelyn Hugo",
+   "claim": "User is currently reading 'The Seven Husbands of Evelyn Hugo'.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "reading",
+    "book"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "confirm054-1e10354c/s7#r4",
+   "source_span": "I've been enjoying audiobooks lately",
+   "entity": "user",
+   "slot": "audiobook_preference",
+   "value": "enjoys audiobooks",
+   "claim": "User enjoys listening to audiobooks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "entertainment",
+    "audio format"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "confirm054-1e10354c/s8#r0",
+   "source_span": "I'll be spending two weeks exploring Tokyo and other parts of the country",
+   "entity": "user",
+   "slot": "japan_trip_duration",
+   "value": "two weeks",
+   "claim": "User is planning a two-week trip to Japan.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel plans",
+    "international trip"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "confirm054-1e10354c/s9#r0",
+   "source_span": "I've been using a new nail clipper set I got online for around $25",
+   "entity": "user",
+   "slot": "pet_grooming_tool_nail_clipper",
+   "value": "nail clipper set (~$25 online)",
+   "claim": "User owns a nail clipper set purchased online for approximately $25.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet grooming",
+    "tool"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "confirm054-1e10354c/s9#r0",
+   "source_span": "for Max's thick nails",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Max",
+   "claim": "User has a pet named Max with thick nails.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet",
+    "dog"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "confirm054-1e10354c/s9#r2",
+   "source_span": "I was thinking of getting a new brush for Whiskers too",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Whiskers",
+   "claim": "User has a pet named Whiskers.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet",
+    "cat"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "confirm054-1e10354c/s10#r0",
+   "source_span": "I've been to a few conferences and mixers recently, including an industry-specific conference",
+   "entity": "user",
+   "slot": "networking_activity",
+   "value": "attends conferences and mixers",
+   "claim": "User attends conferences and networking mixers for professional connections.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional",
+    "networking"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "confirm054-1e10354c/s11#r1",
+   "source_span": "We had a really great time at that one park where we threw a big party for my sister's graduation",
+   "entity": "user",
+   "slot": "family_event_celebration",
+   "value": "sister's graduation party at a park",
+   "claim": "User attended a sister's graduation party at a local park.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family event",
+    "milestone"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "confirm054-1e10354c/s12#r2",
+   "source_span": "I'm flying from Los Angeles",
+   "entity": "user",
+   "slot": "trip_origin_city",
+   "value": "Los Angeles",
+   "claim": "User is flying from Los Angeles.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "for Hawaii trip",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel origin",
+    "departure city"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "confirm054-1e10354c/s12#r2",
+   "source_span": "we're planning to travel from April 20th to 27th",
+   "entity": "user",
+   "slot": "hawaii_trip_dates",
+   "value": "April 20-27",
+   "claim": "User is planning a Hawaii trip from April 20th to 27th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel dates",
+    "vacation"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "confirm054-1e10354c/s12#r2",
+   "source_span": "There are 5 of us in the group",
+   "entity": "user",
+   "slot": "trip_party_size",
+   "value": "5 people",
+   "claim": "User is traveling with a group of 5 people to Hawaii.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel group",
+    "group size"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "confirm054-1e10354c/s12#r2",
+   "source_span": "Our budget is around $800 per person",
+   "entity": "user",
+   "slot": "hawaii_trip_budget_per_person",
+   "value": "$800 per person",
+   "claim": "User's budget for Hawaii trip is approximately $800 per person.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "budget",
+    "travel cost"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "confirm054-1e10354c/s13#r0",
+   "source_span": "I've been attending yoga studio classes at least three to four times a week",
+   "entity": "user",
+   "slot": "yoga_class_frequency",
+   "value": "3-4 times per week",
+   "claim": "User attends yoga studio classes 3-4 times per week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness",
+    "exercise routine"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "confirm054-1e10354c/s14#r0",
+   "source_span": "I've been living in Tokyo for about 5 months now",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Tokyo, Japan",
+   "claim": "User has been living in Tokyo for approximately 5 months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "location",
+    "residence"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "confirm054-1e10354c/s14#r0",
+   "source_span": "I've been trying to be more adventurous with Japanese cuisine",
+   "entity": "user",
+   "slot": "dietary_preference",
+   "value": "vegetarian",
+   "claim": "User prefers vegetarian food and is exploring Japanese vegetarian cuisine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "diet",
+    "cuisine preference"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "confirm054-1e10354c/s14#r4",
+   "source_span": "I've been taking Japanese lessons at a local language school",
+   "entity": "user",
+   "slot": "language_learning",
+   "value": "Japanese",
+   "claim": "User is taking Japanese lessons at a local language school.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "language learning",
+    "education"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "confirm054-1e10354c/s14#r4",
+   "source_span": "My teacher, Yuka-sensei",
+   "entity": "user",
+   "slot": "language_teacher_name",
+   "value": "Yuka-sensei",
+   "claim": "User's Japanese language teacher is named Yuka-sensei.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "education",
+    "instructor"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "confirm054-1e10354c/s15#r2",
+   "source_span": "I make sure to close the door between the living quarters and the office unit before I settle in for the evening",
+   "entity": "user",
+   "slot": "work_living_space_separation",
+   "value": "separate door between office and living quarters",
+   "claim": "User has a door that separates office space from living quarters to mark end of workday.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "workspace organization",
+    "work-life boundary"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "confirm054-1e10354c/s16#r0",
+   "source_span": "I've dragged my lights-out back to 11:15 pm and it stuck for three whole weeks",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "11:15 pm",
+   "claim": "User has maintained a bedtime of 11:15 pm for three weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep schedule",
+    "improved sleep"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "confirm054-1e10354c/s16#r1",
+   "source_span": "The trick was a hard cutoff on the tablet at ten and a stupid amount of chamomile tea",
+   "entity": "user",
+   "slot": "bedtime_ritual",
+   "value": "tablet cutoff at 10 pm, chamomile tea",
+   "claim": "User uses tablet cutoff at 10 pm and drinks chamomile tea as bedtime ritual.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep hygiene",
+    "ritual"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "confirm054-1e10354c/s17#r0",
+   "source_span": "I just started playing in a recreational soccer league with my colleagues from work today",
+   "entity": "user",
+   "slot": "sports_activity",
+   "value": "recreational soccer league",
+   "claim": "User plays in a recreational soccer league with work colleagues.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "workplace activity"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "confirm054-1e10354c/s18#r0",
+   "source_span": "I've already started making my bed every morning as soon as I get up, and it's become a habit now",
+   "entity": "user",
+   "slot": "morning_routine_habit",
+   "value": "make bed every morning",
+   "claim": "User makes bed every morning as an established habit.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "daily habit",
+    "household routine"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "confirm054-1e10354c/s18#r4",
+   "source_span": "I've been doing a quick 10-minute tidy of the living room and kitchen after dinner",
+   "entity": "user",
+   "slot": "evening_cleanup_routine",
+   "value": "10-minute tidy after dinner",
+   "claim": "User performs 10-minute tidying of living room and kitchen after dinner.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "after dinner",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cleaning routine",
+    "household maintenance"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "confirm054-1e10354c/s19#r0",
+   "source_span": "I just got back from a beach trip with my friends Rachel and Mike",
+   "entity": "user",
+   "slot": "friend_names",
+   "value": "Rachel, Mike",
+   "claim": "User has friends named Rachel and Mike.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "relationship",
+    "friendship"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "confirm054-1e10354c/s20#r0",
+   "source_span": "I took a solo trip to San Francisco in early April and it was amazing, drove down from Portland in about 10 hours with a stop in Ashland for lunch",
+   "entity": "user",
+   "slot": "past_trip",
+   "value": "solo trip Portland to San Francisco, early April",
+   "claim": "User took a solo road trip from Portland to San Francisco in early April, driving approximately 10 hours with a stop in Ashland.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04",
+   "value_tags": [
+    "travel",
+    "road trip"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "confirm054-1e10354c/s21#r0",
+   "source_span": "I need to take my car to the dealership to get the GPS system checked out, my brother said it was acting up after he used it for a road trip",
+   "entity": "user",
+   "slot": "car_gps_issue",
+   "value": "GPS system acting up",
+   "claim": "User's car GPS system is malfunctioning after being used by the user's brother on a road trip.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "car maintenance",
+    "technical issue"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "confirm054-1e10354c/s21#r0",
+   "source_span": "I've been meaning to get a bike rack for it, so I can take my road bike to the nearby trails",
+   "entity": "user",
+   "slot": "bike_rack_need",
+   "value": "bike rack for road bike",
+   "claim": "User needs a bike rack to transport road bike to nearby trails.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "bike accessory",
+    "outdoor recreation"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "confirm054-1e10354c/s22#r0",
+   "source_span": "I recently started a small herb garden on my balcony",
+   "entity": "user",
+   "slot": "herb_garden_location",
+   "value": "balcony",
+   "claim": "User has started a small herb garden on the balcony.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gardening",
+    "balcony garden"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "confirm054-1e10354c/s22#r0",
+   "source_span": "I've been experimenting with different flavors and ingredients lately, and I recently started a small herb garden on my balcony, which has been great for adding fresh herbs to my cocktails and dishes",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "cocktail making",
+   "claim": "User enjoys making cocktails with fresh herbs from the balcony garden.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "cocktails"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "confirm054-1e10354c/s23#r0",
+   "source_span": "I've noticed that I've seen an increase in my Twitter usage by 20%, and I'm using it more during my daily commute",
+   "entity": "user",
+   "slot": "twitter_usage",
+   "value": "increased 20%, used during daily commute",
+   "claim": "User's Twitter usage has increased by 20%, particularly during daily commute.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "during daily commute",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social media",
+    "usage pattern"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "confirm054-1e10354c/s24#r0",
+   "source_span": "I actually wrote a 500-word story on a Saturday afternoon about a character who discovers a hidden world within their reflection, and it felt really fulfilling",
+   "entity": "user",
+   "slot": "writing_activity",
+   "value": "500-word story about reflection discovery",
+   "claim": "User wrote a 500-word story on a Saturday afternoon about discovering a hidden world in a reflection.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "creative writing",
+    "fiction"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "confirm054-1e10354c/s25#r0",
+   "source_span": "I've been using my new thermal cups every day",
+   "entity": "user",
+   "slot": "drinkware",
+   "value": "thermal cups",
+   "claim": "User uses thermal cups daily.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "beverage container",
+    "drinkware"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "confirm054-1e10354c/s25#r0",
+   "source_span": "I just got my favorite denim jacket back from the dry cleaner's last Saturday",
+   "entity": "user",
+   "slot": "clothing",
+   "value": "denim jacket",
+   "claim": "User has a favorite denim jacket that was recently returned from dry cleaning.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "clothing",
+    "favorite item"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "confirm054-1e10354c/s25#r0",
+   "source_span": "I had an accident with coffee at the office",
+   "entity": "user",
+   "slot": "work_incident",
+   "value": "coffee spill at office",
+   "claim": "User had a coffee spill accident at the office.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at office",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "workplace incident",
+    "accident"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "confirm054-1e10354c/s25#r2",
+   "source_span": "I'm also thinking of buying a coffee grinder to grind my own beans at home",
+   "entity": "user",
+   "slot": "coffee_equipment_plan",
+   "value": "coffee grinder",
+   "claim": "User is considering purchasing a coffee grinder for home use.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "coffee equipment",
+    "home appliance"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "confirm054-1e10354c/s26#r2",
+   "source_span": "I just got one last week but I'm not entirely happy with it",
+   "entity": "user",
+   "slot": "blender",
+   "value": "recently purchased blender",
+   "claim": "User recently purchased a blender but is not entirely satisfied with it.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "kitchen appliance",
+    "blender"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "confirm054-1e10354c/s26#r2",
+   "source_span": "the ones I have are starting to flake",
+   "entity": "user",
+   "slot": "cookware",
+   "value": "pots and pans needing replacement",
+   "claim": "User's pots and pans are starting to deteriorate (flaking).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cookware",
+    "kitchen equipment"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "confirm054-1e10354c/s26#r0",
+   "source_span": "I replaced the burnt-out light bulb in the hallway today",
+   "entity": "user",
+   "slot": "home_maintenance",
+   "value": "replaced hallway light bulb",
+   "claim": "User replaced a burnt-out light bulb in the hallway.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home maintenance",
+    "repair"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "confirm054-1e10354c/s27#r0",
+   "source_span": "I've already updated the BIOS, but it's still not holding a charge like it used to",
+   "entity": "user",
+   "slot": "laptop_battery_issue",
+   "value": "battery not holding charge",
+   "claim": "User's laptop battery is not holding a charge despite BIOS update.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "laptop issue",
+    "battery"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "confirm054-1e10354c/s27#r2",
+   "source_span": "Do you think a cracked screen could be affecting my laptop's battery life?",
+   "entity": "user",
+   "slot": "laptop_screen_condition",
+   "value": "cracked screen",
+   "claim": "User's laptop has a cracked screen.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "laptop damage",
+    "physical damage"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "confirm054-1e10354c/s28#r2",
+   "source_span": "I'm actually buying a $325,000 house, and I got pre-approved for $350,000 from Wells Fargo",
+   "entity": "user",
+   "slot": "home_purchase",
+   "value": "$325,000 house with Wells Fargo pre-approval of $350,000",
+   "claim": "User is buying a house for $325,000 and has pre-approval for $350,000 from Wells Fargo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "real estate",
+    "home purchase"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "confirm054-1e10354c/s29#r2",
+   "source_span": "I just got rid of my old coffee table and replaced it with a new one from IKEA",
+   "entity": "user",
+   "slot": "coffee_table",
+   "value": "IKEA modern coffee table",
+   "claim": "User replaced their old coffee table with a new modern coffee table from IKEA.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "furniture",
+    "home decor"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "confirm054-1e10354c/s30#r0",
+   "source_span": "I took the part-time job at the bakery on Ferndale Road and the 4:30 am start changed everything",
+   "entity": "user",
+   "slot": "employment",
+   "value": "part-time bakery job, Ferndale Road, 4:30 am start",
+   "claim": "User works a part-time job at a bakery on Ferndale Road with a 4:30 am start time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "job",
+    "employment"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "confirm054-1e10354c/s30#r1",
+   "source_span": "I'm basically unconscious by 9:45 pm now, no negotiation, no tea ritual needed",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "9:45 pm",
+   "claim": "User's bedtime is now approximately 9:45 pm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep schedule",
+    "early bedtime"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "confirm054-1e10354c/s31#r0",
+   "source_span": "I finished reading 'The Silent Patient' by Alex Michaelides last month",
+   "entity": "user",
+   "slot": "completed_book",
+   "value": "The Silent Patient by Alex Michaelides",
+   "claim": "User finished reading 'The Silent Patient' by Alex Michaelides.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "reading",
+    "completed book",
+    "psychological thriller"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "confirm054-1e10354c/s31#r4",
+   "source_span": "I've listened to audiobooks during my daily commute",
+   "entity": "user",
+   "slot": "commute_activity",
+   "value": "listening to audiobooks",
+   "claim": "User listens to audiobooks during daily commute.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "during daily commute",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "commute",
+    "audiobook"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "confirm054-1e10354c/s32#r0",
+   "source_span": "I had to wake up at 6:30 am on Monday last week to get ready on time for my 8 am meeting",
+   "entity": "user",
+   "slot": "work_meeting_time",
+   "value": "8 am",
+   "claim": "User has an 8 am work meeting requiring 6:30 am wake up time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work schedule",
+    "meeting time"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "confirm054-1e10354c/s32#r2",
+   "source_span": "I've been consistent with my 20-minute yoga session every morning before getting ready",
+   "entity": "user",
+   "slot": "morning_yoga_routine",
+   "value": "20-minute yoga session",
+   "claim": "User does a consistent 20-minute yoga session every morning.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "before getting ready",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "exercise",
+    "morning routine"
+   ]
+  }
+ ],
+ "usage_in": 21018,
+ "usage_out": 8321
+}

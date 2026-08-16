@@ -1,0 +1,1440 @@
+{
+ "uid": "chain036-a4acf22f",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain036-a4acf22f/s0#r0",
+   "source_span": "I just finished \"Gone Girl\" on January 4th",
+   "entity": "user",
+   "slot": "book_completed",
+   "value": "Gone Girl",
+   "claim": "User finished reading Gone Girl on January 4th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-04",
+   "value_tags": [
+    "psychological thriller",
+    "mystery"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain036-a4acf22f/s0#r0",
+   "source_span": "I just finished \"The Seven Husbands of Evelyn Hugo\" and loved it",
+   "entity": "user",
+   "slot": "book_completed",
+   "value": "The Seven Husbands of Evelyn Hugo",
+   "claim": "User completed reading The Seven Husbands of Evelyn Hugo and enjoyed it.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "literary fiction",
+    "historical fiction"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain036-a4acf22f/s0#r2",
+   "source_span": "I'm already listening to the audiobook",
+   "entity": "user",
+   "slot": "current_book",
+   "value": "The Silent Patient",
+   "claim": "User is currently listening to the audiobook version of The Silent Patient.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "psychological thriller",
+    "audiobook format"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain036-a4acf22f/s1#r2",
+   "source_span": "I've been enjoying my role as Senior Software Engineer for a while, especially the part where I now lead a team of five engineers",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Senior Software Engineer",
+   "claim": "User works as a Senior Software Engineer and leads a team of five engineers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "software engineering",
+    "leadership"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain036-a4acf22f/s1#r4",
+   "source_span": "I'm based in the San Francisco Bay Area",
+   "entity": "user",
+   "slot": "location",
+   "value": "San Francisco Bay Area",
+   "claim": "User is based in the San Francisco Bay Area.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "geographic location",
+    "california"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain036-a4acf22f/s2#r0",
+   "source_span": "my new Razer DeathAdder Elite mouse",
+   "entity": "user",
+   "slot": "computer_peripheral",
+   "value": "Razer DeathAdder Elite mouse",
+   "claim": "User owns a Razer DeathAdder Elite mouse.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gaming mouse",
+    "computer hardware"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain036-a4acf22f/s2#r0",
+   "source_span": "The Witcher 3, which I started playing again about two weeks ago",
+   "entity": "user",
+   "slot": "game_played",
+   "value": "The Witcher 3",
+   "claim": "User is playing The Witcher 3 again after restarting it about two weeks prior.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "action RPG",
+    "video game"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain036-a4acf22f/s2#r2",
+   "source_span": "I play Overwatch on it as well",
+   "entity": "user",
+   "slot": "game_played",
+   "value": "Overwatch",
+   "claim": "User plays Overwatch on a console.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "multiplayer game",
+    "shooter"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain036-a4acf22f/s3#r1",
+   "source_span": "my badge still says QA Analyst even though half my week is writing automation scripts nobody asked for",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "QA Analyst",
+   "claim": "User's official title is QA Analyst, though they spend half their time writing automation scripts.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "quality assurance",
+    "test automation"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain036-a4acf22f/s4#r0",
+   "source_span": "I just got rid of a bunch of old clothes and household items at Goodwill last weekend",
+   "entity": "user",
+   "slot": "donation_activity",
+   "value": "Donated clothes and household items to Goodwill",
+   "claim": "User donated old clothes and household items to Goodwill.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "donation",
+    "decluttering"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain036-a4acf22f/s5#r2",
+   "source_span": "I'm trying to get to bed around 10:30 PM every night",
+   "entity": "user",
+   "slot": "target_bedtime",
+   "value": "10:30 PM",
+   "claim": "User aims to go to bed around 10:30 PM every night.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep schedule",
+    "routine"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain036-a4acf22f/s5#r2",
+   "source_span": "on days I wake up at 7:00 or 7:30, I usually have time to stretch for 10 minutes",
+   "entity": "user",
+   "slot": "target_wake_time",
+   "value": "7:00 AM or 7:30 AM",
+   "claim": "User aims to wake up at 7:00 or 7:30 AM to have time for a 10-minute stretch.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "morning routine",
+    "sleep schedule"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain036-a4acf22f/s5#r4",
+   "source_span": "I like to meditate for 15 minutes on days when I wake up at 7:00 or 7:30",
+   "entity": "user",
+   "slot": "meditation_practice",
+   "value": "15 minutes at 7:00-7:30 AM wake times",
+   "claim": "User meditates for 15 minutes on mornings when they wake at 7:00 or 7:30 AM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "meditation",
+    "mindfulness practice"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain036-a4acf22f/s6#r4",
+   "source_span": "I have my own set of high-carbon knives that I keep in a leather roll",
+   "entity": "user",
+   "slot": "kitchen_tool",
+   "value": "High-carbon knife set in leather roll",
+   "claim": "User owns a set of high-carbon knives stored in a leather roll.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "kitchen equipment",
+    "cookware"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain036-a4acf22f/s7#r0",
+   "source_span": "I'm planning a trip to Japan in March for the Cherry Blossom season",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "Japan in March for Cherry Blossom season",
+   "claim": "User is planning a trip to Japan in March during cherry blossom season.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03",
+   "value_tags": [
+    "travel plan",
+    "cherry blossom season"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain036-a4acf22f/s8#r0",
+   "source_span": "I've mostly switched to using the light rail for my daily travel because the schedule matches my hours perfectly",
+   "entity": "user",
+   "slot": "commute_method",
+   "value": "Light rail",
+   "claim": "User primarily uses light rail for daily commuting as it aligns with their schedule.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "public transportation",
+    "commute"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain036-a4acf22f/s9#r0",
+   "source_span": "I've been to a few events recently, including a panel discussion on \"The Future of Publishing\" at a university campus",
+   "entity": "user",
+   "slot": "event_attended",
+   "value": "Panel discussion on The Future of Publishing at university campus",
+   "claim": "User attended a panel discussion about The Future of Publishing at a university campus.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "publishing industry",
+    "panel discussion"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain036-a4acf22f/s10#r0",
+   "source_span": "my new online course on digital marketing",
+   "entity": "user",
+   "slot": "business_offering",
+   "value": "Online course on digital marketing",
+   "claim": "User has created an online course on digital marketing.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "online course",
+    "digital marketing education"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain036-a4acf22f/s11#r0",
+   "source_span": "they finally moved me over — I'm an Automation Engineer as of Monday",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Automation Engineer",
+   "claim": "User transitioned to role of Automation Engineer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "software engineering",
+    "test automation"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain036-a4acf22f/s12#r2",
+   "source_span": "I started taking yoga classes at this new studio near my house about 6 weeks ago, and I've been really enjoying the 6:00 am classes on Tuesdays and Thursdays",
+   "entity": "user",
+   "slot": "exercise_class",
+   "value": "Yoga classes at local studio, Tuesday and Thursday 6:00 AM",
+   "claim": "User attends yoga classes at a nearby studio on Tuesday and Thursday mornings at 6:00 AM, started about 6 weeks prior.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "yoga",
+    "fitness routine"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain036-a4acf22f/s12#r2",
+   "source_span": "I've even started to wake up 15 minutes earlier each day to meditate before class",
+   "entity": "user",
+   "slot": "meditation_practice",
+   "value": "15 minutes before yoga class daily",
+   "claim": "User meditates for 15 minutes before yoga class each day.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "meditation",
+    "yoga preparation"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain036-a4acf22f/s13#r2",
+   "source_span": "I set it up my new self-cleaning cat litter box on Saturday morning",
+   "entity": "user",
+   "slot": "pet_equipment",
+   "value": "Self-cleaning cat litter box",
+   "claim": "User set up a new self-cleaning cat litter box.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cat care",
+    "pet equipment"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain036-a4acf22f/s13#r2",
+   "source_span": "Blue Buffalo brand, and it's a dry food",
+   "entity": "user",
+   "slot": "cat_food",
+   "value": "Blue Buffalo grain-free dry food (salmon flavor)",
+   "claim": "User's cat eats Blue Buffalo grain-free dry food in salmon flavor.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cat food",
+    "grain-free",
+    "salmon"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain036-a4acf22f/s13#r4",
+   "source_span": "I was also thinking of ordering a new collar for my dog Max",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Max (dog)",
+   "claim": "User has a dog named Max.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet ownership",
+    "dog"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain036-a4acf22f/s14#r0",
+   "source_span": "I just played it with my cousins on New Year's Eve",
+   "entity": "user",
+   "slot": "game_played",
+   "value": "Ticket to Ride",
+   "claim": "User played Ticket to Ride with cousins on New Year's Eve.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "board game",
+    "strategy game"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain036-a4acf22f/s14#r0",
+   "source_span": "I had a great game night at Mike's apartment the week before, playing Settlers of Catan with him and Rachel - Mike ended up winning",
+   "entity": "user",
+   "slot": "social_activity",
+   "value": "Board game night with Mike and Rachel at Mike's apartment",
+   "claim": "User attended a game night at Mike's apartment with Rachel, playing Settlers of Catan.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "board game",
+    "social gathering"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain036-a4acf22f/s14#r2",
+   "source_span": "I've heard of Carcassonne and actually just taught it to my girlfriend a few weeks ago. She really enjoyed it, and we've been playing it regularly",
+   "entity": "user",
+   "slot": "relationship_status",
+   "value": "In relationship (girlfriend)",
+   "claim": "User is in a relationship and has a girlfriend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "relationship"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain036-a4acf22f/s14#r2",
+   "source_span": "we've been playing it regularly",
+   "entity": "user",
+   "slot": "game_played",
+   "value": "Carcassonne",
+   "claim": "User plays Carcassonne regularly with girlfriend.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "board game",
+    "tile placement game"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain036-a4acf22f/s15#r0",
+   "source_span": "my recent attempt at homemade tortillas, which was a bit of a disaster the first time, but I learned from my mistakes and got it right the second time",
+   "entity": "user",
+   "slot": "cooking_skill_area",
+   "value": "Making homemade tortillas",
+   "claim": "User has learned to make homemade tortillas after initial difficulty.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "Mexican cuisine",
+    "baking"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain036-a4acf22f/s16#r2",
+   "source_span": "I went to San Francisco in August for work, solo trip, and stayed there for three nights",
+   "entity": "user",
+   "slot": "work_travel",
+   "value": "San Francisco in August for three nights",
+   "claim": "User traveled solo to San Francisco in August for work and stayed for three nights.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-08",
+   "value_tags": [
+    "business travel",
+    "solo trip"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain036-a4acf22f/s17#r0",
+   "source_span": "I usually go to bed at 11:30 PM",
+   "entity": "user",
+   "slot": "actual_bedtime",
+   "value": "11:30 PM",
+   "claim": "User typically goes to bed at 11:30 PM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sleep schedule",
+    "routine"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain036-a4acf22f/s18#r0",
+   "source_span": "I'm currently working on a 1/48 scale F-15E Strike Eagle and I want to give it a realistic worn look",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Scale model building (1/48 F-15E Strike Eagle)",
+   "claim": "User is building a 1/48 scale F-15E Strike Eagle model kit and working on weathering effects.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "model building",
+    "aircraft model"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain036-a4acf22f/s18#r0",
+   "source_span": "I just finished the wings of the F-15E model kit on March 1st",
+   "entity": "user",
+   "slot": "hobby_progress",
+   "value": "F-15E wings completed",
+   "claim": "User completed the wings section of the F-15E model kit on March 1st.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-01",
+   "value_tags": [
+    "model building progress"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain036-a4acf22f/s18#r4",
+   "source_span": "I'm also working on a 1/72 scale USS Nimitz aircraft carrier model kit on the side",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Scale model building (1/72 USS Nimitz aircraft carrier)",
+   "claim": "User is also building a 1/72 scale USS Nimitz aircraft carrier model kit.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "model building",
+    "ship model"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain036-a4acf22f/s19#r4",
+   "source_span": "I went grocery shopping last Sunday at the new Walmart near my house",
+   "entity": "user",
+   "slot": "shopping_location",
+   "value": "Walmart near house",
+   "claim": "User shops for groceries at a Walmart near their house.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shopping",
+    "grocery"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain036-a4acf22f/s20#r0",
+   "source_span": "I've been cooking at home a lot more frequently over the past three months",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Home cooking",
+   "claim": "User has been cooking at home frequently over the past three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking hobby",
+    "culinary skill"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain036-a4acf22f/s21#r0",
+   "source_span": "I just got a new pair of running shoes from Nike last month",
+   "entity": "user",
+   "slot": "exercise_equipment",
+   "value": "Nike running shoes",
+   "claim": "User owns a new pair of Nike running shoes purchased last month.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "running gear",
+    "sports equipment"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain036-a4acf22f/s21#r0",
+   "source_span": "I got them on sale for $80",
+   "entity": "user",
+   "slot": "exercise_equipment_cost",
+   "value": "$80 for Nike running shoes",
+   "claim": "User purchased Nike running shoes for $80 on sale.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "purchase price",
+    "discount"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain036-a4acf22f/s21#r2",
+   "source_span": "I got my new shoes on the 15th of March, specifically from Nike",
+   "entity": "user",
+   "slot": "exercise_equipment",
+   "value": "Nike running shoes",
+   "claim": "User purchased Nike running shoes on March 15th.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "value_tags": [
+    "running gear",
+    "Nike"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain036-a4acf22f/s21#r2",
+   "source_span": "I'm in 94111, San Francisco",
+   "entity": "user",
+   "slot": "location",
+   "value": "San Francisco, CA 94111",
+   "claim": "User is located in San Francisco, CA 94111.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "zip code",
+    "california"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain036-a4acf22f/s21#r4",
+   "source_span": "I recently got a new one from REI and it's been great for my daily commutes",
+   "entity": "user",
+   "slot": "commute_equipment",
+   "value": "Backpack from REI",
+   "claim": "User uses a backpack purchased from REI for daily commutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "backpack",
+    "commute gear"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain036-a4acf22f/s22#r0",
+   "source_span": "the infra team poached me — signed the internal transfer paperwork this morning, Platform Engineer now",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Platform Engineer",
+   "claim": "User transitioned to Platform Engineer role via internal transfer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r19"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "software engineering",
+    "infrastructure"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain036-a4acf22f/s22#r1",
+   "source_span": "suddenly I'm on call every third week which is a whole lifestyle change",
+   "entity": "user",
+   "slot": "job_responsibility",
+   "value": "On-call rotation every third week",
+   "claim": "User is on-call every third week as part of Platform Engineer role.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "on-call duty",
+    "job responsibility"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain036-a4acf22f/s23#r2",
+   "source_span": "I take the 7:15 AM train to work every weekday, so that's 20 days a month",
+   "entity": "user",
+   "slot": "commute_routine",
+   "value": "Train at 7:15 AM weekdays",
+   "claim": "User takes the 7:15 AM train to work on weekdays (20 days per month).",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "commute",
+    "routine"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain036-a4acf22f/s23#r2",
+   "source_span": "My usual route is around 20 miles, and individual tickets cost me $6 each",
+   "entity": "user",
+   "slot": "commute_cost",
+   "value": "$6 per ticket for 20-mile train route",
+   "claim": "User pays $6 per train ticket for a 20-mile commute route.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "transportation cost",
+    "commute expense"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain036-a4acf22f/s23#r2",
+   "source_span": "I've been doing this for four months now",
+   "entity": "user",
+   "slot": "commute_duration",
+   "value": "Four months",
+   "claim": "User has been using this commute routine for four months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "routine duration"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain036-a4acf22f/s23#r4",
+   "source_span": "I'm thinking of switching to a monthly pass, it would save me around $20 per month",
+   "entity": "user",
+   "slot": "commute_plan",
+   "value": "Consider monthly train pass to save $20/month",
+   "claim": "User is considering switching to a monthly train pass to save approximately $20 per month.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cost savings",
+    "commute optimization"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain036-a4acf22f/s23#r4",
+   "source_span": "I'm also considering buying a foldable bike to cycle to work on nicer days",
+   "entity": "user",
+   "slot": "commute_plan",
+   "value": "Consider foldable bike for cycling on nice days",
+   "claim": "User is considering purchasing a foldable bike for cycling to work on pleasant weather days.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "alternative commute",
+    "cycling"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain036-a4acf22f/s24#r0",
+   "source_span": "I've been writing regularly for a few weeks now",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Creative writing",
+   "claim": "User has been writing regularly for a few weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "creative writing",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain036-a4acf22f/s24#r0",
+   "source_span": "This change in my surroundings inspired me to write a poem about the changing seasons",
+   "entity": "user",
+   "slot": "writing_project",
+   "value": "Poem about changing seasons",
+   "claim": "User wrote a poem about the changing seasons inspired by environmental changes.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "poetry",
+    "seasonal theme"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain036-a4acf22f/s25#r2",
+   "source_span": "I just got a new pair of boots from Dr. Martens last week",
+   "entity": "user",
+   "slot": "footwear",
+   "value": "Dr. Martens boots",
+   "claim": "User purchased Dr. Martens boots recently.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "boots",
+    "footwear"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain036-a4acf22f/s25#r2",
+   "source_span": "I paid $120 for them",
+   "entity": "user",
+   "slot": "purchase_price",
+   "value": "$120 for Dr. Martens boots",
+   "claim": "User paid $120 for Dr. Martens boots.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "purchase price"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain036-a4acf22f/s25#r2",
+   "source_span": "They're high-waisted and dark blue",
+   "entity": "user",
+   "slot": "pants",
+   "value": "High-waisted dark blue Levi's jeans",
+   "claim": "User owns high-waisted dark blue Levi's jeans.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "denim",
+    "jeans"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain036-a4acf22f/s26#r0",
+   "source_span": "I recently finished watching Season 3 of \"The Crown\" on Netflix",
+   "entity": "user",
+   "slot": "show_watched",
+   "value": "The Crown Season 3",
+   "claim": "User finished watching Season 3 of The Crown on Netflix.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "television series",
+    "drama"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain036-a4acf22f/s26#r4",
+   "source_span": "I just finished the first 4 episodes, and I'm hooked",
+   "entity": "user",
+   "slot": "show_watched",
+   "value": "Game of Thrones",
+   "claim": "User is watching Game of Thrones and has completed the first 4 episodes.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "television series",
+    "fantasy drama"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain036-a4acf22f/s27#r0",
+   "source_span": "I just got back from an epic Super Bowl party at my friend Alex's house",
+   "entity": "user",
+   "slot": "social_event",
+   "value": "Super Bowl party at Alex's house",
+   "claim": "User attended a Super Bowl party at friend Alex's house.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports event",
+    "social gathering"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain036-a4acf22f/s27#r0",
+   "source_span": "the Kansas City Chiefs' win was incredible",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "Kansas City Chiefs (Super Bowl fan)",
+   "claim": "User supports the Kansas City Chiefs and watched them win at Super Bowl.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports fan",
+    "NFL"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain036-a4acf22f/s27#r4",
+   "source_span": "I was really into college basketball last week and watched the Duke vs. North Carolina matchup on February 1st",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "College basketball (Duke vs North Carolina)",
+   "claim": "User watched college basketball game between Duke and North Carolina on February 1st.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-01",
+   "value_tags": [
+    "college basketball",
+    "sports"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain036-a4acf22f/s28#r1",
+   "source_span": "She loves jewelry, so I was thinking of getting her something similar to the beautiful silver necklace I got for my sister recently",
+   "entity": "user",
+   "slot": "sibling_relationship",
+   "value": "Has a sister",
+   "claim": "User has a sister.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family relationship"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain036-a4acf22f/s28#r2",
+   "source_span": "I spent around $75 on that beautiful silver necklace from a new boutique downtown",
+   "entity": "user",
+   "slot": "gift_purchase",
+   "value": "Silver necklace for sister, $75 from downtown boutique",
+   "claim": "User purchased a silver necklace for their sister for $75 from a downtown boutique.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "jewelry gift",
+    "boutique purchase"
+   ]
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "chain036-a4acf22f/s28#r1",
+   "source_span": "my best friend",
+   "entity": "user",
+   "slot": "friendship",
+   "value": "Has a best friend",
+   "claim": "User has a best friend.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "close friendship"
+   ]
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "chain036-a4acf22f/s29#r0",
+   "source_span": "they handed me the team — I'm managing eight people starting next sprint, official title Engineering Manager",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Engineering Manager",
+   "claim": "User became Engineering Manager overseeing a team of eight people.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r42"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "management",
+    "leadership"
+   ]
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "chain036-a4acf22f/s29#r1",
+   "source_span": "weirdly I miss having a terminal open all day",
+   "entity": "user",
+   "slot": "job_preference",
+   "value": "Prefers hands-on coding work over pure management",
+   "claim": "User misses hands-on technical work with a terminal since transitioning to management.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "career preference",
+    "work satisfaction"
+   ]
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "chain036-a4acf22f/s30#r2",
+   "source_span": "I recently upgraded my laptop's RAM from 8GB to 16GB, which cost me $120",
+   "entity": "user",
+   "slot": "computer_hardware",
+   "value": "Laptop with 16GB RAM (upgraded from 8GB for $120)",
+   "claim": "User upgraded laptop RAM from 8GB to 16GB for $120.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hardware upgrade",
+    "RAM"
+   ]
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "chain036-a4acf22f/s31#r0",
+   "source_span": "I've been really into antiques lately",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Collecting antiques",
+   "claim": "User has developed an interest in collecting antiques.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "antique collecting",
+    "hobby"
+   ]
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "chain036-a4acf22f/s31#r0",
+   "source_span": "I recently purchased. It's a stunning silver piece with a large, blue gemstone in the center, and the shop owner told me it was from the 1920s",
+   "entity": "user",
+   "slot": "antique_purchase",
+   "value": "Vintage silver brooch with blue gemstone, 1920s",
+   "claim": "User purchased a vintage 1920s silver brooch with a large blue gemstone.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1920",
+   "value_tags": [
+    "vintage brooch",
+    "jewelry",
+    "1920s"
+   ]
+  },
+  {
+   "record_id": "r67",
+   "source_memory_id": "chain036-a4acf22f/s31#r0",
+   "source_span": "My friend Emily and I found it at an antique store in town the day after I visited my grandma",
+   "entity": "user",
+   "slot": "social_connection",
+   "value": "Friend Emily",
+   "claim": "User has a friend named Emily with whom they shop for antiques.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "friendship"
+   ]
+  },
+  {
+   "record_id": "r68",
+   "source_memory_id": "chain036-a4acf22f/s31#r0",
+   "source_span": "the day after I visited my grandma",
+   "entity": "user",
+   "slot": "family_visit",
+   "value": "Visits grandmother",
+   "claim": "User visits their grandmother.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family relationship"
+   ]
+  },
+  {
+   "record_id": "r69",
+   "source_memory_id": "chain036-a4acf22f/s32#r0",
+   "source_span": "I'm planning a trip to the coast next month",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "Coastal birding trip next month",
+   "claim": "User is planning a birding trip to the coast.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel plan",
+    "birding"
+   ]
+  },
+  {
+   "record_id": "r70",
+   "source_memory_id": "chain036-a4acf22f/s32#r0",
+   "source_span": "I just got back from the nearby nature reserve and I spot a pair of Ospreys nesting on a platform near the lake",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Birding",
+   "claim": "User watches birds at nature reserves and has spotted Ospreys.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "birding hobby",
+    "wildlife observation"
+   ]
+  },
+  {
+   "record_id": "r71",
+   "source_memory_id": "chain036-a4acf22f/s33#r0",
+   "source_span": "I just got a fresh supply of poop bags online",
+   "entity": "user",
+   "slot": "pet_supply",
+   "value": "Dog waste bags purchased online",
+   "claim": "User purchases dog waste bags online.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet care",
+    "supplies"
+   ]
+  },
+  {
+   "record_id": "r72",
+   "source_memory_id": "chain036-a4acf22f/s33#r0",
+   "source_span": "with our longer walks lately",
+   "entity": "user",
+   "slot": "dog_exercise",
+   "value": "Regular longer walks",
+   "claim": "User takes longer walks with their dog regularly.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "dog exercise",
+    "routine"
+   ]
+  },
+  {
+   "record_id": "r73",
+   "source_memory_id": "chain036-a4acf22f/s34#r0",
+   "source_span": "so the reorg landed and I stepped up — Director of Engineering, three teams under me",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Director of Engineering",
+   "claim": "User was promoted to Director of Engineering with three teams reporting to them.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r62"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "executive leadership",
+    "management"
+   ]
+  },
+  {
+   "record_id": "r74",
+   "source_memory_id": "chain036-a4acf22f/s34#r0",
+   "source_span": "my calendar is basically a wall of meetings now, I need a system",
+   "entity": "user",
+   "slot": "job_challenge",
+   "value": "Heavy meeting load as Director",
+   "claim": "User faces significant meeting demands in Director of Engineering role.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work challenge",
+    "time management"
+   ]
+  },
+  {
+   "record_id": "r75",
+   "source_memory_id": "chain036-a4acf22f/s34#r3",
+   "source_span": "I have to present roadmap to the board in March, first time",
+   "entity": "user",
+   "slot": "upcoming_responsibility",
+   "value": "Present engineering roadmap to board in March",
+   "claim": "User must present the engineering roadmap to the board for the first time in March.",
+   "slot_cardinality": "single",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2026-03",
+   "value_tags": [
+    "board presentation",
+    "executive communication"
+   ]
+  }
+ ],
+ "usage_in": 21766,
+ "usage_out": 10211
+}

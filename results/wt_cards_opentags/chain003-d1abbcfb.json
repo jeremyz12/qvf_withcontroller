@@ -1,0 +1,1131 @@
+{
+ "uid": "chain003-d1abbcfb",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain003-d1abbcfb/s0#r3",
+   "source_span": "you've been with the company for a while and have been promoted to Senior Marketing Man",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Senior Marketing Manager",
+   "claim": "The user holds the position of Senior Marketing Manager.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "management",
+    "marketing"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain003-d1abbcfb/s0#r4",
+   "source_span": "I've been leading a team of three junior marketers since my promotion",
+   "entity": "user",
+   "slot": "team_size",
+   "value": "3 junior marketers",
+   "claim": "The user leads a team of three junior marketers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "team leadership"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain003-d1abbcfb/s1#r0",
+   "source_span": "I recently finished reading \"Little Fires Everywhere\" by Celeste Ng, which I discussed in an online book club on February 3rd",
+   "entity": "user",
+   "slot": "recent_book_read",
+   "value": "Little Fires Everywhere by Celeste Ng",
+   "claim": "The user recently finished reading 'Little Fires Everywhere' by Celeste Ng.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "contemporary fiction",
+    "motherhood and identity themes"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain003-d1abbcfb/s1#r2",
+   "source_span": "I'll definitely check out some of these titles. I was particularly drawn to \"The Mothers\" and \"The Female Persuasion\"",
+   "entity": "user",
+   "slot": "books_interested_in",
+   "value": "The Mothers by Brit Bennett; The Female Persuasion by Meg Wolitzer",
+   "claim": "The user is interested in reading 'The Mothers' by Brit Bennett and 'The Female Persuasion' by Meg Wolitzer.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "contemporary fiction"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain003-d1abbcfb/s1#r4",
+   "source_span": "I recently met an author named Sarah Jones at a book reading event at the local library on February 10th. She read from her newly released novel, \"The Lost City\"",
+   "entity": "user",
+   "slot": "recent_event",
+   "value": "met author Sarah Jones at library book reading event",
+   "claim": "The user met author Sarah Jones at a book reading event at the local library.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-10",
+   "value_tags": [
+    "literary event"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain003-d1abbcfb/s2#r0",
+   "source_span": "I recently got a new laptop bag on 15th March from Amazon, it's a black Lenovo one with extra padding for my 15.6-inch laptop, cost me around $40",
+   "entity": "user",
+   "slot": "laptop_bag",
+   "value": "black Lenovo laptop bag with extra padding for 15.6-inch laptop",
+   "claim": "The user owns a black Lenovo laptop bag with extra padding for a 15.6-inch laptop purchased from Amazon for around $40.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-15",
+   "value_tags": [
+    "laptop protection",
+    "tech accessory"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain003-d1abbcfb/s2#r4",
+   "source_span": "Do you think a sleeve would provide enough protection if I accidentally spill coffee on my laptop again?",
+   "entity": "user",
+   "slot": "laptop_incident_history",
+   "value": "spilled coffee on laptop previously",
+   "claim": "The user has previously spilled coffee on their laptop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "accident history"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain003-d1abbcfb/s3#r0",
+   "source_span": "I've picked up urban sketching, just me, a pen and a little notebook wandering around town",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "urban sketching",
+   "claim": "The user has taken up urban sketching as a weekend hobby.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "Saturdays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "creative hobby",
+    "artistic activity"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain003-d1abbcfb/s3#r1",
+   "source_span": "Got a cheap fountain pen that bleeds a bit through the paper, might need something better",
+   "entity": "user",
+   "slot": "sketching_pen",
+   "value": "cheap fountain pen that bleeds through paper",
+   "claim": "The user uses a cheap fountain pen for sketching that bleeds through the paper.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "art supply"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain003-d1abbcfb/s4#r0",
+   "source_span": "I've been craving sweet potato fries a lot lately, and I've even made them at home three times, trying out different seasonings each time",
+   "entity": "user",
+   "slot": "food_craving",
+   "value": "sweet potato fries",
+   "claim": "The user has been craving sweet potato fries and has made them at home three times with different seasonings.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "savory snack",
+    "homemade cooking"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain003-d1abbcfb/s5#r2",
+   "source_span": "Can you suggest a simple \"first hour\" routine that doesn't involve my phone at all, and includes breakfast—something I can realistically stick to on weekdays?",
+   "entity": "user",
+   "slot": "morning_routine_interest",
+   "value": "phone-free first hour routine with breakfast on weekdays",
+   "claim": "The user is interested in establishing a morning routine that excludes phone use for the first hour and includes breakfast on weekdays.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "weekdays",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "wellness habit",
+    "routine planning"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain003-d1abbcfb/s6#r0",
+   "source_span": "I'm looking for some help with finding a similar silver necklace to the one my grandmother gave me when I was 18",
+   "entity": "user",
+   "slot": "sentimental_jewelry",
+   "value": "silver necklace with small pendant from grandmother",
+   "claim": "The user received a silver necklace with a small pendant as a gift from their grandmother when they were 18.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "heirloom",
+    "jewelry"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain003-d1abbcfb/s6#r2",
+   "source_span": "The pendant was a small, delicate heart shape. I'm not sure about the chain style, but it was pretty thin and dainty. As for the silver type, I'm sure it was sterling silver because my grandmother always told me to take good care of it since it was high-quality.",
+   "entity": "user",
+   "slot": "sentimental_jewelry_details",
+   "value": "small delicate heart-shaped pendant, thin dainty chain, sterling silver",
+   "claim": "The user's grandmother's necklace has a small delicate heart-shaped pendant, a thin dainty chain, and is made of sterling silver.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "jewelry material",
+    "jewelry style"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain003-d1abbcfb/s7#r2",
+   "source_span": "I've been using a white jig recently and it's been working pretty well for me, caught 7 bass with my buddy Alex at Lake Michigan last weekend",
+   "entity": "user",
+   "slot": "fishing_activity",
+   "value": "ice fishing at Lake Michigan",
+   "claim": "The user went ice fishing at Lake Michigan with their buddy Alex and caught 7 bass using a white jig.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fishing hobby",
+    "outdoor activity"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain003-d1abbcfb/s7#r2",
+   "source_span": "buddy Alex",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Alex",
+   "claim": "The user has a friend named Alex.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "personal relationship"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain003-d1abbcfb/s8#r0",
+   "source_span": "I've been doing pretty well with preparing my own snacks like homemade granola bars and roasted vegetables - I've been snacking on those all week, actually",
+   "entity": "user",
+   "slot": "snacking_habit",
+   "value": "homemade granola bars and roasted vegetables",
+   "claim": "The user has been preparing and snacking on homemade granola bars and roasted vegetables.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "healthy snacking",
+    "homemade food"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain003-d1abbcfb/s8#r4",
+   "source_span": "I've roasted broccoli and Brussels sprouts before, they're delicious! I've also been trying to experiment with different seasonings for my roasted vegetables, like paprika and garlic powder",
+   "entity": "user",
+   "slot": "roasted_vegetable_varieties",
+   "value": "broccoli and Brussels sprouts with paprika and garlic powder seasoning",
+   "claim": "The user roasts broccoli and Brussels sprouts and experiments with seasonings like paprika and garlic powder.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vegetable preparation",
+    "healthy cooking"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain003-d1abbcfb/s9#r0",
+   "source_span": "I recently saw a nice one at the Under Armour outlet store on April 22nd, but it was still a bit pricey even with the discount",
+   "entity": "user",
+   "slot": "shopping_location",
+   "value": "Under Armour outlet store",
+   "claim": "The user visited an Under Armour outlet store and viewed a gym bag.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-22",
+   "value_tags": [
+    "retail shopping"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain003-d1abbcfb/s9#r2",
+   "source_span": "I'm looking to spend around $50-$70 for the new bag, and I'd like it to be similar in size to my current one. I'd prefer a bag with multiple compartments and pockets to keep my gear organized, and something that's water-resistant would be great. I've had issues with my current bag getting wet when I've had to put my sweaty clothes in it",
+   "entity": "user",
+   "slot": "gym_bag_preference",
+   "value": "$50-70, multiple compartments, water-resistant",
+   "claim": "The user wants a gym bag priced $50-70 with multiple compartments and water-resistant material.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness gear",
+    "water resistance"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain003-d1abbcfb/s10#r0",
+   "source_span": "I've been using La Mer and Drunk Elephant products, which are great for my skin, but I'm concerned about the environmental impact of all the packaging waste",
+   "entity": "user",
+   "slot": "skincare_brand",
+   "value": "La Mer and Drunk Elephant",
+   "claim": "The user currently uses La Mer and Drunk Elephant skincare products.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "luxury skincare",
+    "personal care"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain003-d1abbcfb/s11#r4",
+   "source_span": "I've been following a vegan diet for three months now, and it's been amazing to explore all the different plant-based alternatives to dairy products",
+   "entity": "user",
+   "slot": "diet_type",
+   "value": "vegan",
+   "claim": "The user has been following a vegan diet for three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "dietary restriction",
+    "plant-based"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain003-d1abbcfb/s12#r0",
+   "source_span": "I'm wondering if you have any tips on how to get my kitten, Luna, more comfortable with nail trimming",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Luna",
+   "claim": "The user has a kitten named Luna.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet ownership"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain003-d1abbcfb/s12#r0",
+   "source_span": "I started applying flea and tick prevention medication to her today",
+   "entity": "user",
+   "slot": "pet_health_care",
+   "value": "flea and tick prevention medication for Luna",
+   "claim": "The user applies flea and tick prevention medication to their kitten Luna.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "pet health"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain003-d1abbcfb/s13#r0",
+   "source_span": "I just got a great experience with Chanel recently, I bought a new handbag from them for my sister's birthday, and it was totally worth it",
+   "entity": "user",
+   "slot": "luxury_brand_purchase",
+   "value": "Chanel handbag for sister's birthday",
+   "claim": "The user purchased a Chanel handbag as a birthday gift for their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "luxury purchase",
+    "gift giving"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain003-d1abbcfb/s13#r2",
+   "source_span": "I spent around $3,000 on the Chanel bag for my sister",
+   "entity": "user",
+   "slot": "luxury_purchase_amount",
+   "value": "$3,000",
+   "claim": "The user spent approximately $3,000 on the Chanel handbag for their sister.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "luxury spending"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain003-d1abbcfb/s14#r0",
+   "source_span": "I cleaned and seasoned my cast-iron skillet last weekend, and it's been performing flawlessly - I made an amazing seared steak with garlic butter on it last Sunday",
+   "entity": "user",
+   "slot": "cookware",
+   "value": "cast-iron skillet",
+   "claim": "The user owns and maintains a cast-iron skillet for cooking.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking equipment"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain003-d1abbcfb/s15#r0",
+   "source_span": "I've done Mount Tamalpais recently",
+   "entity": "user",
+   "slot": "hiking_location",
+   "value": "Mount Tamalpais",
+   "claim": "The user has recently hiked Mount Tamalpais.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hiking",
+    "outdoor recreation"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain003-d1abbcfb/s15#r0",
+   "source_span": "I'm planning a solo day hike this weekend and I'm looking for some recommendations on trails around the Bay Area",
+   "entity": "user",
+   "slot": "hiking_preference",
+   "value": "solo day hikes in Bay Area",
+   "claim": "The user prefers solo day hikes and is interested in Bay Area trails.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hiking preference",
+    "outdoor activity"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain003-d1abbcfb/s15#r0",
+   "source_span": "especially after that camping trip I went on a few weeks ago in Yosemite",
+   "entity": "user",
+   "slot": "recent_trip",
+   "value": "camping trip to Yosemite",
+   "claim": "The user recently went on a camping trip to Yosemite.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "outdoor adventure"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain003-d1abbcfb/s15#r4",
+   "source_span": "I'm already planning my next trip, which will be a backpacking trip to the Sierra Nevada mountains in September",
+   "entity": "user",
+   "slot": "future_trip",
+   "value": "backpacking trip to Sierra Nevada mountains",
+   "claim": "The user is planning a backpacking trip to the Sierra Nevada mountains in September for 3-4 days.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-09",
+   "value_tags": [
+    "travel planning",
+    "backpacking"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain003-d1abbcfb/s16#r1",
+   "source_span": "Weekends are all about sourdough baking now — I named the starter Gerald and I feed him every Friday night",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "sourdough baking",
+   "claim": "The user bakes sourdough bread every weekend with a starter named Gerald that is fed every Friday night.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "weekends",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking hobby",
+    "artisan bread"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain003-d1abbcfb/s16#r2",
+   "source_span": "The crumb comes out dense as a brick, I reckon I'm under-proofing it",
+   "entity": "user",
+   "slot": "sourdough_challenge",
+   "value": "dense crumb, under-proofing issue",
+   "claim": "The user's sourdough bread has a dense crumb and suspects under-proofing is the cause.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking technique"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain003-d1abbcfb/s17#r0",
+   "source_span": "I recently got a new airbrush and compressor, and I'm excited to use it on my next project, a 1/48 scale P-51 Mustang. By the way, I've built five models so far, including a 1/48 F-16 Fighting Falcon, a 1/24 Ford Mustang, and a 1/12 scale Yamaha FZR600 motorcycle",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "scale model building",
+   "claim": "The user builds scale models, having completed five including aircraft and vehicles.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby",
+    "detailed craftsmanship"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain003-d1abbcfb/s17#r0",
+   "source_span": "I recently got a new airbrush and compressor",
+   "entity": "user",
+   "slot": "modeling_equipment",
+   "value": "airbrush and compressor",
+   "claim": "The user owns a new airbrush and compressor for model building.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hobby equipment"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain003-d1abbcfb/s18#r2",
+   "source_span": "I'm definitely a morning person, most productive between 9:00 AM and 12:00 PM. I tend to feel a bit sluggish around 3:00 PM, but a short break usually helps",
+   "entity": "user",
+   "slot": "productivity_pattern",
+   "value": "most productive 9:00 AM - 12:00 PM, energy dip at 3:00 PM",
+   "claim": "The user is most productive between 9:00 AM and 12:00 PM and experiences an energy dip around 3:00 PM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work habit",
+    "circadian rhythm"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain003-d1abbcfb/s19#r2",
+   "source_span": "I remember when my sister was born, I was 12 years old, and now she's a grown adult",
+   "entity": "user",
+   "slot": "sibling_age_relation",
+   "value": "user was 12 when sister was born",
+   "claim": "The user was 12 years old when their sister was born.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family relationship"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain003-d1abbcfb/s20#r0",
+   "source_span": "I've been having some issues with my laptop's battery life lately, especially when running resource-intensive projects",
+   "entity": "user",
+   "slot": "laptop_issue",
+   "value": "poor battery life with resource-intensive projects",
+   "claim": "The user experiences poor battery life on their laptop when running resource-intensive projects.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "tech problem"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain003-d1abbcfb/s21#r0",
+   "source_span": "I keep my location services turned off for most apps by default",
+   "entity": "user",
+   "slot": "location_services_setting",
+   "value": "location services disabled for most apps",
+   "claim": "The user keeps location services disabled for most apps on their phone.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "privacy preference"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain003-d1abbcfb/s22#r0",
+   "source_span": "My grandma, who's a Portuguese citizen, visited us last month and brought up the topic of getting a Portuguese passport for me and my siblings",
+   "entity": "user",
+   "slot": "grandmother_citizenship",
+   "value": "Portuguese citizen",
+   "claim": "The user's grandmother is a Portuguese citizen.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family ancestry"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain003-d1abbcfb/s22#r0",
+   "source_span": "I'm considering getting a Portuguese passport",
+   "entity": "user",
+   "slot": "passport_interest",
+   "value": "Portuguese passport",
+   "claim": "The user is considering obtaining a Portuguese passport through descent.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel document",
+    "heritage"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain003-d1abbcfb/s23#r2",
+   "source_span": "I come from a family with 3 sisters",
+   "entity": "user",
+   "slot": "sibling_count",
+   "value": "3 sisters",
+   "claim": "The user has 3 sisters.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family composition"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain003-d1abbcfb/s23#r2",
+   "source_span": "my professional network is more male-dominated",
+   "entity": "user",
+   "slot": "professional_network_composition",
+   "value": "male-dominated",
+   "claim": "The user's professional network is predominantly male.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional relationship"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain003-d1abbcfb/s25#r2",
+   "source_span": "I keep a dedicated shelf stocked with about five days' worth of canned food and bottled water",
+   "entity": "user",
+   "slot": "emergency_preparedness",
+   "value": "5 days of canned food and bottled water",
+   "claim": "The user maintains an emergency supply of 5 days worth of canned food and bottled water.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "emergency preparedness"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain003-d1abbcfb/s26#r2",
+   "source_span": "My mom loves gardening, so I was thinking of getting her something related to that. She's also been talking about trying out new recipes, so maybe something for cooking as well",
+   "entity": "user",
+   "slot": "mother_interests",
+   "value": "gardening and cooking",
+   "claim": "The user's mother enjoys gardening and cooking.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "family relationship"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain003-d1abbcfb/s27#r0",
+   "source_span": "I just turned 32 years old last month",
+   "entity": "user",
+   "slot": "age",
+   "value": "32",
+   "claim": "The user is 32 years old.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "demographic"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain003-d1abbcfb/s27#r0",
+   "source_span": "I've always wanted to visit Italy",
+   "entity": "user",
+   "slot": "travel_interest",
+   "value": "Italy",
+   "claim": "The user has always wanted to visit Italy.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel destination"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain003-d1abbcfb/s27#r2",
+   "source_span": "I think I'd love to visit Rome and Florence",
+   "entity": "user",
+   "slot": "italy_cities_interest",
+   "value": "Rome and Florence",
+   "claim": "The user is interested in visiting Rome and Florence in Italy.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel destination"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain003-d1abbcfb/s27#r4",
+   "source_span": "For my future trip when I'm 60, I think Tuscany's countryside sounds amazing. I've always wanted to stay in a villa and explore the rolling hills and vineyards",
+   "entity": "user",
+   "slot": "future_travel_goal",
+   "value": "Tuscany villa stay at age 60",
+   "claim": "The user plans to visit Tuscany and stay in a villa at age 60 to explore the countryside and vineyards.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2045",
+   "value_tags": [
+    "long-term travel goal"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain003-d1abbcfb/s28#r0",
+   "source_span": "Gerald is hibernating at the back of the fridge, poor lad",
+   "entity": "user",
+   "slot": "sourdough_starter_status",
+   "value": "hibernating in fridge",
+   "claim": "The user's sourdough starter Gerald is currently hibernating in the refrigerator.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking paused"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain003-d1abbcfb/s28#r1",
+   "source_span": "I signed up for a course down at the harbour and now I spend every Saturday morning sea kayaking out past the breakwater",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "sea kayaking",
+   "claim": "The user takes a sea kayaking course and kayaks every Saturday morning.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "Saturday mornings",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "water sport",
+    "outdoor activity"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain003-d1abbcfb/s28#r2",
+   "source_span": "My shoulders are wrecked but I've never slept better in my life",
+   "entity": "user",
+   "slot": "physical_impact",
+   "value": "sore shoulders from kayaking, improved sleep",
+   "claim": "The user experiences sore shoulders from kayaking but reports improved sleep quality.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "physical health",
+    "wellness"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain003-d1abbcfb/s28#r3",
+   "source_span": "Wetsuit or drysuit for the colder months? I get cold really easily",
+   "entity": "user",
+   "slot": "cold_sensitivity",
+   "value": "gets cold easily",
+   "claim": "The user is sensitive to cold and needs thermal protection gear for water activities.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "colder months",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "physical trait"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain003-d1abbcfb/s29#r2",
+   "source_span": "Gift: Silver necklace with pendant for sister's birthday\\n* Price: $70",
+   "entity": "user",
+   "slot": "gift_given",
+   "value": "silver necklace with pendant to sister",
+   "claim": "The user gave their sister a silver necklace with a pendant as a birthday gift for $70.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gift giving",
+    "jewelry"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain003-d1abbcfb/s30#r0",
+   "source_span": "I attended the holiday market in downtown on the following weekend after Black Friday and found some great unique gifts",
+   "entity": "user",
+   "slot": "shopping_activity",
+   "value": "holiday market shopping downtown after Black Friday",
+   "claim": "The user attended a downtown holiday market the weekend after Black Friday and purchased unique gifts.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "seasonal shopping"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain003-d1abbcfb/s31#r1",
+   "source_span": "I still remember the chocolate cake I baked for my sister's birthday four weeks ago - it was a huge hit!",
+   "entity": "user",
+   "slot": "baking_activity",
+   "value": "chocolate cake for sister's birthday",
+   "claim": "The user baked a chocolate cake for their sister's birthday approximately four weeks prior.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking",
+    "celebration"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain003-d1abbcfb/s31#r2",
+   "source_span": "my blueberry oat muffins have been a favorite",
+   "entity": "user",
+   "slot": "favorite_baked_good",
+   "value": "blueberry oat muffins",
+   "claim": "The user has successfully made blueberry oat muffins that have become a favorite.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking",
+    "favorite recipe"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain003-d1abbcfb/s31#r4",
+   "source_span": "I made a batch two weeks ago for a potluck dinner and they were a hit",
+   "entity": "user",
+   "slot": "baking_activity",
+   "value": "sugar cookies for potluck dinner",
+   "claim": "The user made sugar cookies two weeks prior for a potluck dinner.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "baking",
+    "social gathering"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain003-d1abbcfb/s32#r0",
+   "source_span": "we had a 7-day family road trip there in February. We did a lot of driving and hiking, but not camping for this time",
+   "entity": "user",
+   "slot": "family_trip",
+   "value": "7-day Utah road trip in February with driving and hiking",
+   "claim": "The user took a 7-day family road trip to Utah in February that included driving and hiking but not camping.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02",
+   "value_tags": [
+    "family travel",
+    "outdoor adventure"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain003-d1abbcfb/s32#r0",
+   "source_span": "I'm planning a trip to Moab, Utah",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "Moab, Utah",
+   "claim": "The user is planning a trip to Moab, Utah.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [
+    "r58"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel planning"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain003-d1abbcfb/s32#r2",
+   "source_span": "I'm interested in off-roading and was wondering if you could recommend some easy trails for a beginner like me",
+   "entity": "user",
+   "slot": "outdoor_interest",
+   "value": "off-roading for beginners",
+   "claim": "The user is interested in off-roading as a beginner.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "adventure activity"
+   ]
+  }
+ ],
+ "usage_in": 21284,
+ "usage_out": 10029
+}

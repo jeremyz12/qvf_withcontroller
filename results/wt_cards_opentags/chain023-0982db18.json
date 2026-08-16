@@ -1,0 +1,1157 @@
+{
+ "uid": "chain023-0982db18",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain023-0982db18/s0#r0",
+   "source_span": "I've been taking lessons with Coach Thompson for three weeks now",
+   "entity": "user",
+   "slot": "tennis_coach",
+   "value": "Coach Thompson",
+   "claim": "User has been taking tennis lessons with Coach Thompson for three weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports instructor"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain023-0982db18/s0#r0",
+   "source_span": "I used to play volleyball with friends at the recreation center every Thursday evening for about two hours",
+   "entity": "user",
+   "slot": "volleyball_activity",
+   "value": "recreation center volleyball, Thursday evenings, two hours, with friends",
+   "claim": "User used to play volleyball with friends at the recreation center every Thursday evening for about two hours.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "recreational sport",
+    "social activity"
+   ]
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain023-0982db18/s1#r0",
+   "source_span": "I've mostly given up on the local buses for getting across town, simply because the subway schedules are much more consistent",
+   "entity": "user",
+   "slot": "commute_mode_across_town",
+   "value": "subway (preferred over buses)",
+   "claim": "User has switched from buses to subway for getting across town due to more consistent schedules.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "urban transit",
+    "commute mode"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain023-0982db18/s1#r2",
+   "source_span": "I'm in NYC—usually taking the subway from Queens into Midtown",
+   "entity": "user",
+   "slot": "commute_route",
+   "value": "Queens to Midtown, NYC, via subway",
+   "claim": "User's main commute is from Queens to Midtown in NYC via subway.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "NYC transit",
+    "commute destination"
+   ]
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain023-0982db18/s1#r4",
+   "source_span": "I'm mostly on the E or F from Jackson Heights/Roosevelt Ave",
+   "entity": "user",
+   "slot": "preferred_subway_lines",
+   "value": "E or F lines from Jackson Heights/Roosevelt Ave",
+   "claim": "User primarily uses the E or F subway lines from Jackson Heights/Roosevelt Ave station.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "NYC transit",
+    "specific subway line"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain023-0982db18/s2#r0",
+   "source_span": "I've been growing them in my herb garden on my balcony and they're doing great",
+   "entity": "user",
+   "slot": "herb_garden",
+   "value": "balcony herb garden with basil and parsley",
+   "claim": "User grows an herb garden on their balcony with basil and parsley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "gardening hobby",
+    "home growing"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain023-0982db18/s2#r0",
+   "source_span": "I canned tomatoes from my own garden today",
+   "entity": "user",
+   "slot": "home_food_preservation",
+   "value": "canned tomatoes from own garden",
+   "claim": "User canned tomatoes from their own garden.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "food preservation",
+    "home gardening"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain023-0982db18/s3#r0",
+   "source_span": "my new year thing is i'm trying to actually write in the mornings instead of doomscrolling",
+   "entity": "user",
+   "slot": "morning_routine_goal",
+   "value": "morning writing instead of doomscrolling",
+   "claim": "User's New Year goal is to write in the mornings instead of doomscrolling.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025",
+   "value_tags": [
+    "New Year resolution",
+    "writing habit",
+    "productivity goal"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain023-0982db18/s3#r1",
+   "source_span": "my go-to spot these days is Molinari Coffee Roasters, they open at 6 and nobody talks to me there which is perfect",
+   "entity": "user",
+   "slot": "coffee_shop_routine",
+   "value": "Molinari Coffee Roasters, opens at 6am, quiet environment",
+   "claim": "User's go-to coffee shop is Molinari Coffee Roasters, which opens at 6am and provides a quiet atmosphere for writing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "favorite café",
+    "work-from-coffee-shop"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain023-0982db18/s3#r2",
+   "source_span": "the cortado is like two euros fifty which honestly feels illegal in a good way",
+   "entity": "user",
+   "slot": "coffee_order_preference",
+   "value": "cortado at €2.50",
+   "claim": "User regularly orders a cortado at Molinari Coffee Roasters for €2.50.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "espresso drink",
+    "European pricing"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain023-0982db18/s4#r2",
+   "source_span": "I've been doing my Sunday runs for 6 weeks now, and I'm starting to see some great improvements in my fitness level",
+   "entity": "user",
+   "slot": "sunday_running_habit",
+   "value": "30-minute Sunday runs for 6 weeks with fitness improvements",
+   "claim": "User has been doing 30-minute Sunday runs for 6 weeks and is seeing improvements in fitness level.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "weekly exercise",
+    "running routine"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain023-0982db18/s4#r4",
+   "source_span": "Can you help me add a block of time for my daily water intake reminders? I want to make sure I'm drinking at least 8 glasses of water a day.",
+   "entity": "user",
+   "slot": "daily_water_intake_goal",
+   "value": "at least 8 glasses per day",
+   "claim": "User aims to drink at least 8 glasses of water per day.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "hydration goal",
+    "health habit"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain023-0982db18/s5#r0",
+   "source_span": "I've been binge-watching it for the past two weeks and just finished Season 3 last night - I've been averaging 4-5 episodes per night",
+   "entity": "user",
+   "slot": "current_tv_binge",
+   "value": "Stranger Things, Season 3, 4-5 episodes per night for two weeks",
+   "claim": "User binge-watched Stranger Things Seasons 1-3 over two weeks, averaging 4-5 episodes per night.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sci-fi series",
+    "binge-watching"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain023-0982db18/s6#r0",
+   "source_span": "I've flown into O'Hare before, actually just last month on January 28th on United Airlines from Boston - the first class upgrade was a nice surprise",
+   "entity": "user",
+   "slot": "recent_flight_experience",
+   "value": "United Airlines Boston to Chicago O'Hare on 2025-01-28, first class upgrade",
+   "claim": "User flew from Boston to Chicago O'Hare on United Airlines on January 28, 2025 with a first class upgrade.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-01-28",
+   "value_tags": [
+    "air travel",
+    "premium service"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain023-0982db18/s6#r2",
+   "source_span": "I'm actually attending a business conference at the Hyatt Regency O'Hare",
+   "entity": "user",
+   "slot": "upcoming_business_trip",
+   "value": "business conference at Hyatt Regency O'Hare, Chicago",
+   "claim": "User is attending a business conference at the Hyatt Regency O'Hare in Chicago.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "business travel",
+    "conference"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain023-0982db18/s7#r0",
+   "source_span": "I recently got a beautiful silver necklace from Tiffany's for my sister's 30th birthday, which cost around $200",
+   "entity": "user",
+   "slot": "gift_purchased",
+   "value": "silver necklace from Tiffany's, ~$200, for sister's 30th birthday",
+   "claim": "User purchased a silver necklace from Tiffany's for approximately $200 as a gift for their sister's 30th birthday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "luxury jewelry",
+    "gift-giving"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain023-0982db18/s8#r0",
+   "source_span": "I've been with my current company for a while now, and I'm thinking about how far I've come - it's crazy that I've been working here for 4 years and 3 months alrea",
+   "entity": "user",
+   "slot": "current_job_tenure",
+   "value": "4 years and 3 months (as of mid-March 2025)",
+   "claim": "User has been working at their current company for 4 years and 3 months as of March 18, 2025.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03",
+   "value_tags": [
+    "employment milestone"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain023-0982db18/s8#r2",
+   "source_span": "The launch date for the product is 3 months from now, and the main objective is to generate leads and increase brand awareness. We'll be using social media, email, and content marketing.",
+   "entity": "user",
+   "slot": "current_marketing_project",
+   "value": "product launch marketing campaign, 3 months out, social media/email/content marketing, team of 4",
+   "claim": "User is working on a 3-month marketing campaign for a product launch using social media, email, and content marketing with a team of 4.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work project",
+    "marketing role"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain023-0982db18/s9#r0",
+   "source_span": "I attended Sunday mass at St. Mary's Church yesterday and heard a thought-provoking sermon on forgiveness and compassion",
+   "entity": "user",
+   "slot": "religious_practice",
+   "value": "Sunday mass at St. Mary's Church",
+   "claim": "User attends Sunday mass at St. Mary's Church.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "religious activity",
+    "church attendance"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain023-0982db18/s9#r2",
+   "source_span": "I've been trying to maintain a daily prayer routine using the Lectio Divina method to reflect on Bible passages",
+   "entity": "user",
+   "slot": "spiritual_practice",
+   "value": "daily Lectio Divina prayer routine with Bible passage reflection",
+   "claim": "User maintains a daily prayer routine using the Lectio Divina method to reflect on Bible passages.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "spiritual practice",
+    "contemplative prayer"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain023-0982db18/s10#r0",
+   "source_span": "I'm still feeling energized from my last family trip to Hawaii five months ago",
+   "entity": "user",
+   "slot": "recent_family_trip",
+   "value": "Hawaii family trip approximately 5 months prior (around November 2024)",
+   "claim": "User took a family trip to Hawaii approximately 5 months ago (around November 2024) and is still feeling energized from it.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024-11",
+   "value_tags": [
+    "vacation",
+    "family travel"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain023-0982db18/s10#r0",
+   "source_span": "I'm planning a solo trip to Costa Rica",
+   "entity": "user",
+   "slot": "planned_trip",
+   "value": "solo trip to Costa Rica, hiking Cerro Chirripó and Corcovado National Park",
+   "claim": "User is planning a solo trip to Costa Rica with interest in hiking Cerro Chirripó and visiting Corcovado National Park.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel plans",
+    "adventure trip"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain023-0982db18/s11#r0",
+   "source_span": "I just organized my garage last weekend and got rid of a bunch of old tools and boxes, and even fixed a broken shelf that was driving me crazy",
+   "entity": "user",
+   "slot": "recent_home_organization",
+   "value": "garage organization, decluttering old tools and boxes, fixed broken shelf",
+   "claim": "User recently organized their garage, decluttered old tools and boxes, and fixed a broken shelf.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home maintenance",
+    "decluttering"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain023-0982db18/s12#r0",
+   "source_span": "one of them was a one-day digital marketing workshop at a coworking space near my apartment",
+   "entity": "user",
+   "slot": "recent_workshop_attended",
+   "value": "one-day digital marketing workshop at coworking space near apartment",
+   "claim": "User attended a one-day digital marketing workshop at a coworking space near their apartment.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "professional development",
+    "workshop"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain023-0982db18/s12#r2",
+   "source_span": "the facilitator, Alex, shared some valuable insights on how to grow your online presence. He provided us with some useful templates and resources to get started with our own marketing strategies",
+   "entity": "user",
+   "slot": "workshop_facilitator_impact",
+   "value": "Alex taught digital marketing, online presence growth, provided templates and resources",
+   "claim": "User learned from workshop facilitator Alex who taught digital marketing strategy and provided templates and resources for growing online presence.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "learning outcome",
+    "marketing knowledge"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain023-0982db18/s13#r2",
+   "source_span": "I think it's in two weeks, I remember my teammate saying something about it",
+   "entity": "user",
+   "slot": "soccer_game_frequency",
+   "value": "every two weeks with coworkers",
+   "claim": "User plays soccer with coworkers approximately every two weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "workplace sports",
+    "team sport"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain023-0982db18/s13#r4",
+   "source_span": "I recently set a personal best time in a charity 5K run with a time of 27:12",
+   "entity": "user",
+   "slot": "5k_running_record",
+   "value": "personal best 27:12 in charity 5K run",
+   "claim": "User set a personal best time of 27:12 in a charity 5K run.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "running achievement",
+    "personal record"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain023-0982db18/s14#r0",
+   "source_span": "I just attended a book reading and discussion event at a local bookstore with a meet-up group for book enthusiasts",
+   "entity": "user",
+   "slot": "book_club_activity",
+   "value": "book reading and discussion at local bookstore with book enthusiast meet-up group",
+   "claim": "User attends a book club that meets at a local bookstore for reading and discussion events.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "book club",
+    "social reading activity"
+   ]
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain023-0982db18/s15#r2",
+   "source_span": "I've been considering getting a lightweight waterproof jacket that can serve as both a windbreaker and a raincoat, similar to the one I recently purchased for my hikes and city walks",
+   "entity": "user",
+   "slot": "outdoor_clothing",
+   "value": "lightweight waterproof jacket for hiking and city walks",
+   "claim": "User owns a lightweight waterproof jacket used for hiking and city walks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "outdoor gear",
+    "waterproof clothing"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain023-0982db18/s15#r0",
+   "source_span": "I'm planning a trip to Europe in June and I need to pack lightly due to the airline's strict baggage restrictions",
+   "entity": "user",
+   "slot": "planned_europe_trip",
+   "value": "Europe trip in June, carry-on only due to baggage restrictions",
+   "claim": "User is planning a trip to Europe in June with strict carry-on baggage constraints.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06",
+   "value_tags": [
+    "travel plans",
+    "minimalist packing"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain023-0982db18/s16#r0",
+   "source_span": "my morning routine got hijacked because the office moved across the harbour",
+   "entity": "user",
+   "slot": "office_relocation",
+   "value": "office moved across harbour",
+   "claim": "User's office relocated across the harbour, disrupting their morning routine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "workplace change",
+    "commute disruption"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain023-0982db18/s16#r1",
+   "source_span": "I've basically adopted Foghorn Espresso Bar as my new regular, it's a two minute walk from the new building",
+   "entity": "user",
+   "slot": "coffee_shop_routine",
+   "value": "Foghorn Espresso Bar, two-minute walk from new office",
+   "claim": "User now regularly goes to Foghorn Espresso Bar, which is a two-minute walk from their relocated office.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "favorite café",
+    "work-from-coffee-shop"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain023-0982db18/s16#r2",
+   "source_span": "they do this iced filter with a splash of oat that I now think about at 11pm",
+   "entity": "user",
+   "slot": "coffee_order_preference",
+   "value": "iced filter with splash of oat milk",
+   "claim": "User's go-to order at Foghorn Espresso Bar is an iced filter coffee with a splash of oat milk.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "espresso drink",
+    "oat milk"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain023-0982db18/s17#r0",
+   "source_span": "I recently had one appraised and found out it's a rare piece from the Royal Copenhagen factory, dating back to the 1860s",
+   "entity": "user",
+   "slot": "collectible_item",
+   "value": "Royal Copenhagen vase from 1860s, rare piece, recently appraised",
+   "claim": "User owns a rare Royal Copenhagen vase from the 1860s that was recently appraised.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1860s",
+   "value_tags": [
+    "antique",
+    "collectible",
+    "porcelain"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain023-0982db18/s20#r0",
+   "source_span": "I just got back from a long trip from Istanbul to Los Angeles with Turkish Airlines today",
+   "entity": "user",
+   "slot": "recent_flight",
+   "value": "Turkish Airlines Istanbul to Los Angeles, long-haul flight",
+   "claim": "User recently flew Turkish Airlines from Istanbul to Los Angeles.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "international travel",
+    "long-haul flight"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain023-0982db18/s20#r2",
+   "source_span": "I was seated in an aisle seat, and the flight attendant was really friendly",
+   "entity": "user",
+   "slot": "flight_experience_notes",
+   "value": "aisle seat, friendly flight attendant",
+   "claim": "User was seated in an aisle seat and had a positive experience with a friendly flight attendant on their Turkish Airlines flight.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel experience",
+    "airline service"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain023-0982db18/s20#r0",
+   "source_span": "I'm planning a trip to Europe in April and I'm wondering if you can help me find some good hotels in Frankfurt",
+   "entity": "user",
+   "slot": "planned_trip_frankfurt",
+   "value": "Frankfurt trip in April, city center hotel, ~€150/night, gym and Wi-Fi required",
+   "claim": "User is planning a trip to Frankfurt in April with hotel preferences of city center location, around €150/night budget, gym and free Wi-Fi.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04",
+   "value_tags": [
+    "travel plans",
+    "business/leisure travel"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain023-0982db18/s21#r0",
+   "source_span": "I recently attended a local production of \"The Phantom of the Opera\" at the city opera house about three weeks ago",
+   "entity": "user",
+   "slot": "theater_attendance",
+   "value": "The Phantom of the Opera at city opera house, approximately 3 weeks prior",
+   "claim": "User recently attended a live production of The Phantom of the Opera at their city's opera house about three weeks ago.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "theater",
+    "live performance",
+    "musical"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain023-0982db18/s21#r4",
+   "source_span": "I've been enjoying \"The Ensemblist\" podcast with my friend Emma",
+   "entity": "user",
+   "slot": "podcast_listening_habit",
+   "value": "The Ensemblist podcast, listened to with friend Emma",
+   "claim": "User listens to The Ensemblist podcast, often with friend Emma.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "musical theater podcast",
+    "social listening"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain023-0982db18/s22#r0",
+   "source_span": "I've been volunteering at a literary festival in my city recently, where I helped set up the venue and assisted with crowd control during the keynote speaker's talk. The speaker, Rachel Kushner, was amazing",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "literary festival volunteer, venue setup and crowd control, attended Rachel Kushner keynote",
+   "claim": "User volunteered at a local literary festival, helping with venue setup and crowd control, and attended author Rachel Kushner's keynote speech.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteer work",
+    "literary event"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain023-0982db18/s23#r0",
+   "source_span": "I actually wrote a 500-word story on a Saturday afternoon about a character who discovers a hidden world within their reflection",
+   "entity": "user",
+   "slot": "creative_writing",
+   "value": "500-word story about character discovering hidden world in reflection",
+   "claim": "User wrote a 500-word story on a Saturday afternoon about a character discovering a hidden world within their reflection.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "creative writing",
+    "speculative fiction"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain023-0982db18/s24#r0",
+   "source_span": "I recently helped out at the \"Walk for a Cure\" event and it was really rewarding",
+   "entity": "user",
+   "slot": "volunteer_charity_event",
+   "value": "Walk for a Cure volunteer",
+   "claim": "User volunteered at the Walk for a Cure charity event.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteer work",
+    "charity event"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain023-0982db18/s24#r2",
+   "source_span": "I attended a charity gala at the Hilton hotel recently, and it was a great experience. The rotary club organized it to raise funds for education in underprivileged communities, and I ended up bidding on a painting and winning it",
+   "entity": "user",
+   "slot": "charity_gala_attendance",
+   "value": "Rotary Club charity gala at Hilton, benefiting education in underprivileged communities, won painting in auction",
+   "claim": "User attended a Rotary Club charity gala at the Hilton to raise funds for education in underprivileged communities and won a painting in an auction.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "charity event",
+    "fundraiser",
+    "art collecting"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain023-0982db18/s26#r0",
+   "source_span": "I just finished eating the fresh strawberries I bought yesterday, and they were so sweet",
+   "entity": "user",
+   "slot": "recent_food_purchase",
+   "value": "fresh strawberries",
+   "claim": "User recently purchased and enjoyed fresh strawberries.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fresh produce",
+    "sweet fruit"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain023-0982db18/s26#r4",
+   "source_span": "I'm glad I stocked up on avocados at Aldi last Friday, they were only 50 cents each",
+   "entity": "user",
+   "slot": "grocery_shopping",
+   "value": "avocados from Aldi at 50 cents each",
+   "claim": "User purchased avocados from Aldi at 50 cents each last Friday.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "grocery shopping",
+    "produce",
+    "budget"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain023-0982db18/s27#r0",
+   "source_span": "I've been meaning to join a recreational volleyball team, which would be a great way to meet new people who share similar interests",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "recreational volleyball team membership goal",
+   "claim": "User is interested in joining a recreational volleyball team to meet new people and play the sport.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "team sport",
+    "social recreation"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain023-0982db18/s27#r2",
+   "source_span": "I'm located in the city center, and I'd say I'm a beginner/intermediate player. I'm open to playing in a co-ed team or women's team, and I'm available to play on weeknights or weekends",
+   "entity": "user",
+   "slot": "volleyball_skill_level",
+   "value": "beginner/intermediate, city center location, flexible weeknight/weekend schedule",
+   "claim": "User is a beginner/intermediate volleyball player located in the city center with flexible weeknight and weekend availability.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "recreational sports",
+    "team sport"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain023-0982db18/s28#r0",
+   "source_span": "I'm thinking of getting a custom-made necklace with a charm representing my astrological sign, Scorpio",
+   "entity": "user",
+   "slot": "astrological_sign",
+   "value": "Scorpio",
+   "claim": "User's astrological sign is Scorpio.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "astrology",
+    "personal identity"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain023-0982db18/s28#r0",
+   "source_span": "I recently got my grandmother's old pearl earrings resized at a jewelry shop on 20th February",
+   "entity": "user",
+   "slot": "jewelry_maintenance",
+   "value": "grandmother's pearl earrings resized on 2025-02-20",
+   "claim": "User had their grandmother's pearl earrings resized at a jewelry shop on February 20, 2025.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-20",
+   "value_tags": [
+    "jewelry",
+    "family heirloom",
+    "repair"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain023-0982db18/s28#r2",
+   "source_span": "I've been wearing a silver necklace with a tiny star pendant almost daily since I bought it from a local boutique on 15th February",
+   "entity": "user",
+   "slot": "regular_jewelry_worn",
+   "value": "silver necklace with tiny star pendant, from local boutique, worn almost daily",
+   "claim": "User wears a silver necklace with a tiny star pendant almost daily, purchased from a local boutique on February 15, 2025.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-15",
+   "value_tags": [
+    "silver jewelry",
+    "daily accessory"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain023-0982db18/s28#r4",
+   "source_span": "I've been meaning to replace a silver stud that I lost on 1st March during a brunch with friends",
+   "entity": "user",
+   "slot": "lost_jewelry",
+   "value": "silver stud earring lost on 2025-03-01 during brunch",
+   "claim": "User lost a silver stud earring on March 1, 2025 during a brunch with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-03-01",
+   "value_tags": [
+    "jewelry",
+    "loss"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain023-0982db18/s29#r0",
+   "source_span": "I've been enjoying psychological thrillers like \"The Silent Patient\" by Alex Michaelides, which I finished just in time for our book club meeting on February 10th",
+   "entity": "user",
+   "slot": "book_club_meeting",
+   "value": "book club meeting on February 10th, read The Silent Patient",
+   "claim": "User's book club met on February 10th to discuss The Silent Patient by Alex Michaelides.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-10",
+   "value_tags": [
+    "book club",
+    "psychological thriller"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain023-0982db18/s29#r4",
+   "source_span": "I recently finished \"The 7 Habits of Highly Effective People\" by Stephen Covey, and I found it really helpful in reflecting on my goals and priorities",
+   "entity": "user",
+   "slot": "nonfiction_read",
+   "value": "The 7 Habits of Highly Effective People by Stephen Covey",
+   "claim": "User recently finished reading The 7 Habits of Highly Effective People by Stephen Covey and found it helpful.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "self-help",
+    "personal development"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain023-0982db18/s30#r0",
+   "source_span": "so I finally caved and got a loyalty card at Pigeon & Pine Café, which makes it official, that's my spot now",
+   "entity": "user",
+   "slot": "coffee_shop_routine",
+   "value": "Pigeon & Pine Café, loyalty card member",
+   "claim": "User now regularly visits Pigeon & Pine Café and has obtained a loyalty card, making it their official go-to coffee spot.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r32"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "favorite café",
+    "regular customer"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain023-0982db18/s30#r1",
+   "source_span": "it's the one with the big communal table and the terrible jazz playlist, but the pastries are unreal",
+   "entity": "user",
+   "slot": "pigeon_pine_cafe_features",
+   "value": "big communal table, jazz playlist, exceptional pastries",
+   "claim": "Pigeon & Pine Café has a large communal table, a jazz playlist, and excellent pastries.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "café ambiance",
+    "pastries"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain023-0982db18/s30#r2",
+   "source_span": "also they let me stay for three hours on a Saturday without giving me the look",
+   "entity": "user",
+   "slot": "work_environment_preference",
+   "value": "café with accommodating extended seating policy on weekends",
+   "claim": "User appreciates that Pigeon & Pine Café allows them to stay for three hours on Saturdays without judgment.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work-from-café",
+    "customer hospitality"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain023-0982db18/s30#r3",
+   "source_span": "I think I'm just a person who needs a big table to think, turns out",
+   "entity": "user",
+   "slot": "working_style_preference",
+   "value": "needs a big table for thinking and work",
+   "claim": "User has discovered that they need a big table in order to think and work effectively.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work environment",
+    "productivity"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain023-0982db18/s31#r0",
+   "source_span": "I've had a lot of success with them in my garden, starting with a few varieties that are commonly used in cooking, which did surprisingly well",
+   "entity": "user",
+   "slot": "herb_garden_varieties",
+   "value": "various cooking herbs grown successfully on balcony",
+   "claim": "User grows various cooking herbs in their balcony garden with good success.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home gardening",
+    "herbs"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain023-0982db18/s32#r0",
+   "source_span": "I'm planning a business trip to New York next week and I want to make sure I pack everything I need",
+   "entity": "user",
+   "slot": "planned_business_trip",
+   "value": "New York business trip next week, formal event",
+   "claim": "User is planning a business trip to New York next week that includes a formal event.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "business travel",
+    "formal event"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain023-0982db18/s32#r0",
+   "source_span": "I still remember my last business trip to Chicago when I forgot to pack a belt, and it was a real hassle",
+   "entity": "user",
+   "slot": "past_business_trips",
+   "value": "Chicago business trip, forgot belt, learned lesson about packing",
+   "claim": "User had a previous business trip to Chicago where they forgot to pack a belt, which taught them about careful packing.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "business travel",
+    "packing lessons"
+   ]
+  }
+ ],
+ "usage_in": 20911,
+ "usage_out": 9898
+}

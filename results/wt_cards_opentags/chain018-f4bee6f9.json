@@ -1,0 +1,1156 @@
+{
+ "uid": "chain018-f4bee6f9",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "chain018-f4bee6f9/s0#r0",
+   "source_span": "I just realized I managed to cook 6 days in a row last week, which is a new record for me!",
+   "entity": "user",
+   "slot": "cooking_frequency",
+   "value": "6 days in a row",
+   "claim": "User cooked 6 days consecutively, a personal record.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking_achievement",
+    "high_frequency"
+   ]
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "chain018-f4bee6f9/s1#r0",
+   "source_span": "I'm planning a birthday party for my nephew Lucas, who was born on the 15th of March",
+   "entity": "Lucas",
+   "slot": "birthdate",
+   "value": "March 15",
+   "claim": "Lucas's birthday is on March 15th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": []
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "chain018-f4bee6f9/s2#r0",
+   "source_span": "I've been using an old wooden box to store my jewelry, it's been really convenient",
+   "entity": "user",
+   "slot": "jewelry_storage",
+   "value": "old wooden box",
+   "claim": "User stores jewelry in an old wooden box.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "storage_solution",
+    "convenience"
+   ]
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "chain018-f4bee6f9/s2#r2",
+   "source_span": "my wooden box is made of mahogany and has a peculiar smell to it, which I've grown quite fond of",
+   "entity": "user",
+   "slot": "jewelry_storage_material",
+   "value": "mahogany",
+   "claim": "User's jewelry storage box is made of mahogany.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": []
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "chain018-f4bee6f9/s3#r0",
+   "source_span": "my Volvo V70 wagon just hit 240k km and it still runs like a champ",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Volvo V70 wagon",
+   "claim": "User owns a Volvo V70 wagon with 240k km on the odometer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vehicle_type",
+    "high_mileage"
+   ]
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "chain018-f4bee6f9/s3#r2",
+   "source_span": "I mostly haul camping gear and a kayak on the roof so I need the space",
+   "entity": "user",
+   "slot": "vehicle_use",
+   "value": "hauling camping gear and kayak",
+   "claim": "User primarily uses the Volvo wagon to haul camping gear and kayak on the roof.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "outdoor_recreation",
+    "utility_use"
+   ]
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "chain018-f4bee6f9/s4#r0",
+   "source_span": "my brother's graduation, which is coming up in a few weeks",
+   "entity": "brother",
+   "slot": "life_event",
+   "value": "graduation",
+   "claim": "User's brother has an upcoming graduation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "milestone"
+   ]
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "chain018-f4bee6f9/s5#r2",
+   "source_span": "My Instagram account is focused on photography, and I currently have around 150 followers",
+   "entity": "user",
+   "slot": "instagram_focus",
+   "value": "photography",
+   "claim": "User's Instagram account focuses on photography with approximately 150 followers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social_media",
+    "creative"
+   ]
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "chain018-f4bee6f9/s5#r2",
+   "source_span": "I typically post photos, and I try to post at least 3 times a week",
+   "entity": "user",
+   "slot": "instagram_posting_frequency",
+   "value": "at least 3 times a week",
+   "claim": "User posts on Instagram at least 3 times per week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "posting_consistency",
+    "high_frequency"
+   ]
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "chain018-f4bee6f9/s5#r4",
+   "source_span": "posts on Tuesdays and Thursdays perform better",
+   "entity": "user",
+   "slot": "instagram_best_posting_days",
+   "value": "Tuesdays and Thursdays",
+   "claim": "User's Instagram posts perform better on Tuesdays and Thursdays.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "posting_strategy",
+    "engagement"
+   ]
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "chain018-f4bee6f9/s6#r0",
+   "source_span": "I studied at a university in California that shares its name with the city it's located in",
+   "entity": "user",
+   "slot": "education",
+   "value": "university in California with city name match",
+   "claim": "User attended a university in California that shares its name with its city.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "education",
+    "California"
+   ]
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "chain018-f4bee6f9/s8#r0",
+   "source_span": "I have a Bachelor's degree in Business Administration with a concentration in Marketing from the University of Calif",
+   "entity": "user",
+   "slot": "education",
+   "value": "Bachelor's degree in Business Administration with Marketing concentration from University of California Berkeley",
+   "claim": "User has a Bachelor's degree in Business Administration with a Marketing concentration from UC Berkeley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "education",
+    "degree",
+    "marketing"
+   ]
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "chain018-f4bee6f9/s8#r0",
+   "source_span": "I've been working in digital marketing for a while now",
+   "entity": "user",
+   "slot": "job_field",
+   "value": "digital marketing",
+   "claim": "User works in digital marketing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "employment",
+    "marketing"
+   ]
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "chain018-f4bee6f9/s8#r2",
+   "source_span": "I typically work 40 hours a week, and sometimes up to 50 hours during peak campaign seasons",
+   "entity": "user",
+   "slot": "work_hours",
+   "value": "40 hours weekly, up to 50 during peak seasons",
+   "claim": "User typically works 40 hours per week, with up to 50 hours during peak campaign seasons.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work_schedule",
+    "variable_intensity"
+   ]
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "chain018-f4bee6f9/s7#r0",
+   "source_span": "I'm training for a cycling event on June 1st",
+   "entity": "user",
+   "slot": "fitness_goal",
+   "value": "cycling event on June 1st",
+   "claim": "User is training for a cycling event scheduled for June 1st.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-06-01",
+   "value_tags": [
+    "fitness_event",
+    "cycling"
+   ]
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "chain018-f4bee6f9/s7#r0",
+   "source_span": "I recently participated in a 5km charity run on February 20th and managed to finish with a personal best time",
+   "entity": "user",
+   "slot": "fitness_achievement",
+   "value": "personal best time in 5km charity run on February 20th",
+   "claim": "User finished a 5km charity run on February 20th with a personal best time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-20",
+   "value_tags": [
+    "fitness_achievement",
+    "running",
+    "charity"
+   ]
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "chain018-f4bee6f9/s7#r2",
+   "source_span": "I did that before my 5km charity run on February 20th by having a big plate of spaghetti at Bella Italia the night before",
+   "entity": "user",
+   "slot": "carb_loading_food",
+   "value": "spaghetti at Bella Italia",
+   "claim": "User carb-loaded with a plate of spaghetti from Bella Italia before a 5km charity run.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "carb_loading",
+    "Italian_cuisine",
+    "pre_event_meal"
+   ]
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "chain018-f4bee6f9/s9#r0",
+   "source_span": "I'm planning a trip to Paris in May",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "trip to Paris in May",
+   "claim": "User is planning a trip to Paris in May.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05",
+   "value_tags": [
+    "travel",
+    "international"
+   ]
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "chain018-f4bee6f9/s9#r0",
+   "source_span": "my flight from JFK to CDG",
+   "entity": "user",
+   "slot": "travel_origin_destination",
+   "value": "JFK to CDG (Paris)",
+   "claim": "User's flight is from JFK to CDG.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel",
+    "flight"
+   ]
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "chain018-f4bee6f9/s9#r2",
+   "source_span": "my flight is usually delayed by 15 minutes",
+   "entity": "user",
+   "slot": "flight_delay_pattern",
+   "value": "usually delayed by 15 minutes",
+   "claim": "User's flights are typically delayed by 15 minutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "travel_pattern",
+    "inconvenience"
+   ]
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "chain018-f4bee6f9/s10#r0",
+   "source_span": "I've been leaving the overhead lights in the kitchen and dining room on for way too long",
+   "entity": "user",
+   "slot": "energy_waste_habit",
+   "value": "leaving overhead lights on in kitchen and dining room",
+   "claim": "User tends to leave overhead lights on for extended periods in the kitchen and dining room.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "energy_waste",
+    "habit"
+   ]
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "chain018-f4bee6f9/s10#r2",
+   "source_span": "I've already started turning off the overhead lights in the kitchen and dining room when not in use",
+   "entity": "user",
+   "slot": "energy_saving_behavior",
+   "value": "turning off overhead lights in kitchen and dining room when not in use",
+   "claim": "User has started turning off overhead lights in kitchen and dining room when not in use.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r21"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "energy_conservation",
+    "behavior_change"
+   ]
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "chain018-f4bee6f9/s11#r0",
+   "source_span": "I've been shopping online a lot more frequently in the past three months",
+   "entity": "user",
+   "slot": "online_shopping_frequency",
+   "value": "frequent in past three months",
+   "claim": "User has been shopping online frequently over the past three months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shopping_habit",
+    "recent_behavior"
+   ]
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "chain018-f4bee6f9/s12#r2",
+   "source_span": "I was actually at a Dispatch concert, which is more on the folk/rock side",
+   "entity": "user",
+   "slot": "concert_attended",
+   "value": "Dispatch concert",
+   "claim": "User attended a Dispatch concert.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "folk_rock",
+    "live_music"
+   ]
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "chain018-f4bee6f9/s12#r0",
+   "source_span": "I just got back from a concert on August 20th, it was an amazing show at the Red Rocks Amphitheater in Colorado",
+   "entity": "user",
+   "slot": "concert_venue",
+   "value": "Red Rocks Amphitheater in Colorado",
+   "claim": "User attended a concert at Red Rocks Amphitheater in Colorado on August 20th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "iconic_venue",
+    "Colorado",
+    "live_music"
+   ]
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "chain018-f4bee6f9/s13#r0",
+   "source_span": "I have a bunch of photos from my 22nd birthday party at a trendy bar downtown",
+   "entity": "user",
+   "slot": "age",
+   "value": "22 years old",
+   "claim": "User is 22 years old (based on birthday party reference).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-05-02",
+   "value_tags": [
+    "age"
+   ]
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "chain018-f4bee6f9/s13#r2",
+   "source_span": "my friends surprised me with the party at the trendy bar",
+   "entity": "user",
+   "slot": "birthday_party_type",
+   "value": "surprise party at trendy bar downtown",
+   "claim": "User's friends surprised user with a birthday party at a trendy downtown bar.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "celebration",
+    "social_event"
+   ]
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "chain018-f4bee6f9/s14#r0",
+   "source_span": "I just attended my little cousin Emma's preschool graduation about two months ago",
+   "entity": "Emma",
+   "slot": "relation_to_user",
+   "value": "little cousin",
+   "claim": "Emma is user's little cousin.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": []
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "chain018-f4bee6f9/s15#r0",
+   "source_span": "I attended a gala at the downtown Marriott hotel for the Children's Hospital on February 26th and donated $100 to the event",
+   "entity": "user",
+   "slot": "charity_event_attendance",
+   "value": "Children's Hospital gala at downtown Marriott on February 26th, donated $100",
+   "claim": "User attended a Children's Hospital gala at the downtown Marriott on February 26th and donated $100.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02-26",
+   "value_tags": [
+    "charity",
+    "philanthropy",
+    "fundraising"
+   ]
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "chain018-f4bee6f9/s15#r2",
+   "source_span": "I was also involved in a charity 5K run/walk recently, where I helped with registration and handed out water to the participants",
+   "entity": "user",
+   "slot": "charity_event_volunteer",
+   "value": "5K run/walk volunteering (registration and water distribution)",
+   "claim": "User volunteered at a charity 5K run/walk, helping with registration and distributing water.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "volunteer_work",
+    "community_service"
+   ]
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "chain018-f4bee6f9/s16#r0",
+   "source_span": "I've been cooking Korean dishes at home a lot lately, at least twice a week for the past three weeks",
+   "entity": "user",
+   "slot": "cooking_cuisine_frequency",
+   "value": "Korean dishes, at least twice a week for past three weeks",
+   "claim": "User has been cooking Korean dishes at least twice weekly for the past three weeks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking_habit",
+    "Korean_cuisine",
+    "high_frequency"
+   ]
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "chain018-f4bee6f9/s16#r0",
+   "source_span": "I've been using an old wooden box to store my jewelry",
+   "entity": "user",
+   "slot": "cooking_ingredients_on_hand",
+   "value": "kimchi and gochujang",
+   "claim": "User regularly has kimchi and gochujang available for cooking.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "Korean_ingredients",
+    "pantry_staples"
+   ]
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "chain018-f4bee6f9/s17#r0",
+   "source_span": "I've been eating alone a lot lately - about 4-5 times a week",
+   "entity": "user",
+   "slot": "eating_alone_frequency",
+   "value": "4-5 times a week",
+   "claim": "User eats alone 4-5 times per week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social_isolation",
+    "meal_frequency"
+   ]
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "chain018-f4bee6f9/s19#r0",
+   "source_span": "the wagon finally died on the highway, so I traded up and drove home a Mazda CX-5 yesterday",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Mazda CX-5",
+   "claim": "User replaced their Volvo V70 wagon with a Mazda CX-5.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vehicle_upgrade",
+    "SUV"
+   ]
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "chain018-f4bee6f9/s19#r1",
+   "source_span": "it's the first car I've owned with a backup camera, feels like cheating",
+   "entity": "user",
+   "slot": "vehicle_features",
+   "value": "backup camera",
+   "claim": "User's Mazda CX-5 is their first car with a backup camera.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "vehicle_technology",
+    "safety_feature"
+   ]
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "chain018-f4bee6f9/s20#r0",
+   "source_span": "I start playing recreational basketball again today",
+   "entity": "user",
+   "slot": "sports_activity",
+   "value": "recreational basketball",
+   "claim": "User is resuming recreational basketball.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "recreation"
+   ]
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "chain018-f4bee6f9/s21#r0",
+   "source_span": "I've been pretty consistent with my gym routine, attending Pilates on Monday evenings and HIIT on Saturday mornings, in addition to a few other days",
+   "entity": "user",
+   "slot": "gym_routine",
+   "value": "Pilates on Monday evenings, HIIT on Saturday mornings, plus additional days",
+   "claim": "User follows a consistent gym routine with Pilates on Mondays, HIIT on Saturdays, and other workout days.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness_routine",
+    "consistent_exercise"
+   ]
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "chain018-f4bee6f9/s21#r4",
+   "source_span": "I already have a Fitbit, so I might use that to track my workouts and water intake",
+   "entity": "user",
+   "slot": "fitness_device",
+   "value": "Fitbit",
+   "claim": "User owns a Fitbit and uses it to track workouts and water intake.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "fitness_tracking",
+    "wearable"
+   ]
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "chain018-f4bee6f9/s22#r0",
+   "source_span": "I've been using a lot of recipes from the New York Times cooking app, which I subscribed to a few months ago",
+   "entity": "user",
+   "slot": "cooking_app_subscription",
+   "value": "New York Times cooking app",
+   "claim": "User has a subscription to the New York Times cooking app.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "subscription_service",
+    "cooking_resource"
+   ]
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "chain018-f4bee6f9/s23#r0",
+   "source_span": "I tend to interrupt my female colleagues more often",
+   "entity": "user",
+   "slot": "communication_pattern",
+   "value": "tendency to interrupt female colleagues",
+   "claim": "User has noticed a tendency to interrupt female colleagues more frequently.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "workplace_behavior",
+    "communication"
+   ]
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "chain018-f4bee6f9/s23#r0",
+   "source_span": "I've been making a conscious effort to listen more actively and let everyone finish their thoughts before responding",
+   "entity": "user",
+   "slot": "communication_improvement",
+   "value": "active listening and letting colleagues finish speaking",
+   "claim": "User is actively working on listening more and allowing colleagues to complete their thoughts.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r40"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "behavior_improvement",
+    "active_listening"
+   ]
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "chain018-f4bee6f9/s24#r0",
+   "source_span": "I've gotten into a habit where I just stay inside the house for the bulk of the day",
+   "entity": "user",
+   "slot": "indoor_behavior",
+   "value": "staying inside the house for most of the day",
+   "claim": "User tends to stay indoors for most of the day.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sedentary_behavior",
+    "indoor_tendency"
+   ]
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "chain018-f4bee6f9/s25#r0",
+   "source_span": "I've been using my slow cooker nonstop since I got it, making chili and stews for the whole family",
+   "entity": "user",
+   "slot": "kitchen_appliance_usage",
+   "value": "slow cooker for chili and stews",
+   "claim": "User frequently uses a slow cooker to make chili and stews for family.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking_method",
+    "family_meals"
+   ]
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "chain018-f4bee6f9/s26#r0",
+   "source_span": "I got back on track on April 24 and have been consistent since then",
+   "entity": "user",
+   "slot": "fitness_restart_date",
+   "value": "April 24",
+   "claim": "User restarted and became consistent with their fitness routine on April 24.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-24",
+   "value_tags": [
+    "fitness_milestone",
+    "restart"
+   ]
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "chain018-f4bee6f9/s26#r0",
+   "source_span": "I've been pretty consistent with my routine lately",
+   "entity": "user",
+   "slot": "fitness_consistency",
+   "value": "consistent since April 24",
+   "claim": "User has maintained fitness consistency since April 24.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "consistency",
+    "fitness_dedication"
+   ]
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "chain018-f4bee6f9/s27#r0",
+   "source_span": "I recently saw a nice one at the Under Armour outlet store on April 22nd, but it was still a bit pricey even with the discount",
+   "entity": "user",
+   "slot": "shopping_experience",
+   "value": "browsed gym bag at Under Armour outlet on April 22nd",
+   "claim": "User viewed a gym bag at an Under Armour outlet store on April 22nd.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-04-22",
+   "value_tags": [
+    "shopping",
+    "fitness_gear"
+   ]
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "chain018-f4bee6f9/s28#r0",
+   "source_span": "I've been enjoying my new Wi-Fi router, which has been providing a strong connection throughout my home for three months now",
+   "entity": "user",
+   "slot": "home_device",
+   "value": "Wi-Fi router",
+   "claim": "User has owned a new Wi-Fi router for three months with strong home coverage.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "home_technology",
+    "internet_connectivity"
+   ]
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "chain018-f4bee6f9/s30#r0",
+   "source_span": "I went electric — picked up a Kia EV6 last weekend",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Kia EV6",
+   "claim": "User purchased a Kia EV6 electric vehicle.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r34"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "electric_vehicle",
+    "eco_friendly",
+    "vehicle_upgrade"
+   ]
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "chain018-f4bee6f9/s30#r1",
+   "source_span": "installing a level 2 charger in the garage next month, the electrician quoted me a lot",
+   "entity": "user",
+   "slot": "home_charging_installation",
+   "value": "Level 2 charger installation in garage",
+   "claim": "User is installing a Level 2 EV charger in the garage.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "EV_infrastructure",
+    "home_improvement"
+   ]
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "chain018-f4bee6f9/s30#r3",
+   "source_span": "I lost like 25% this week",
+   "entity": "user",
+   "slot": "ev_range_experience",
+   "value": "25% range loss in cold weather",
+   "claim": "User experienced 25% range loss in cold weather with the Kia EV6.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "EV_performance",
+    "cold_weather",
+    "vehicle_challenge"
+   ]
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "chain018-f4bee6f9/s31#r0",
+   "source_span": "I'm planning to play tennis with my friends at the local park this Sunday, like we do every other week",
+   "entity": "user",
+   "slot": "recreational_activity",
+   "value": "tennis at local park every other week",
+   "claim": "User plays tennis with friends at the local park every other week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "sports",
+    "social_recreation",
+    "routine"
+   ]
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "chain018-f4bee6f9/s31#r2",
+   "source_span": "I'm in 95123",
+   "entity": "user",
+   "slot": "location_zip_code",
+   "value": "95123",
+   "claim": "User lives in zip code 95123 (San Jose, CA area).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "location",
+    "San_Jose"
+   ]
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "chain018-f4bee6f9/s32#r0",
+   "source_span": "I've been working as a data analyst at a mid-sized company in New York City",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "data analyst",
+   "claim": "User works as a data analyst at a mid-sized company in New York City.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "employment",
+    "data_analysis"
+   ]
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "chain018-f4bee6f9/s32#r0",
+   "source_span": "I've been working as a data analyst at a mid-sized company in New York City",
+   "entity": "user",
+   "slot": "work_location",
+   "value": "New York City",
+   "claim": "User works at a mid-sized company in New York City.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "work_location",
+    "NYC"
+   ]
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "chain018-f4bee6f9/s29#r0",
+   "source_span": "my mom. She's 75 years old and has been recovering from hip replacement surgery",
+   "entity": "mom",
+   "slot": "age",
+   "value": "75 years old",
+   "claim": "User's mother is 75 years old and recovering from hip replacement surgery.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "age",
+    "health_condition"
+   ]
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "chain018-f4bee6f9/s5#r4",
+   "source_span": "I've been experimenting with different hashtags, like #travelphotography, #wanderlust, and #adventuretime",
+   "entity": "user",
+   "slot": "instagram_hashtags",
+   "value": "#travelphotography, #wanderlust, #adventuretime",
+   "claim": "User experiments with travel and adventure-themed hashtags on Instagram.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "social_media_strategy",
+    "hashtags"
+   ]
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "chain018-f4bee6f9/s5#r0",
+   "source_span": "I recently started using a new hashtag in February to increase my followers and engagement",
+   "entity": "user",
+   "slot": "instagram_strategy_change",
+   "value": "new hashtag strategy started in February",
+   "claim": "User started using new hashtags in February to boost engagement and followers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2025-02",
+   "value_tags": [
+    "social_media_strategy",
+    "growth_tactic"
+   ]
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "chain018-f4bee6f9/s0#r0",
+   "source_span": "I'm looking to mix up my cooking routine and try some new protein-packed meals",
+   "entity": "user",
+   "slot": "cooking_goal",
+   "value": "new protein-packed recipes without pasta or rice",
+   "claim": "User wants to explore new protein-rich recipes that exclude pasta and rice.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "cooking_goal",
+    "dietary_preference",
+    "protein_focused"
+   ]
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "chain018-f4bee6f9/s4#r2",
+   "source_span": "I've been trying to take advantage of sales and discounts",
+   "entity": "user",
+   "slot": "shopping_approach",
+   "value": "looking for sales and discounts",
+   "claim": "User actively seeks out sales and discounts when shopping.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "shopping_habit",
+    "frugality"
+   ]
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "chain018-f4bee6f9/s12#r2",
+   "source_span": "I've already listened to some of The 1975's songs and I really like them",
+   "entity": "user",
+   "slot": "music_preference",
+   "value": "The 1975",
+   "claim": "User enjoys listening to The 1975.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "value_tags": [
+    "music_taste",
+    "indie_pop"
+   ]
+  }
+ ],
+ "usage_in": 20770,
+ "usage_out": 8719
+}
