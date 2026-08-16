@@ -47,8 +47,15 @@ from scripts.boundary_run import (_norm_val, _RE_PIT_ANSWER,  # noqa: E402
 OOO_IN = ROOT / "data" / "wsc_ooo.jsonl"
 
 _RE_CURRENT = re.compile(r"current .+? is (.+?) \(since ")
-_RE_FL_FIRST = re.compile(r"^First .+?: (.+?) \(from ")
-_RE_FL_LAST = re.compile(r"most recent: (.+?) \(since ")
+# 2026-08-16 阶段三修复:first_last 的 gold 是 (value, date) 二元组(见
+# boundary_gold.py op_first_last),但旧正则只抓 value,导致
+# extract_answer 返回裸字符串,answers_agree 拿它与 gold 的 [value,date]
+# 列表比较必然恒假(str != list)——first_last_first/_last 两个算子的
+# seq_agree_gold/shuf_agree_gold 此前对全部题恒为 0,是脚本 bug 不是系统
+# 答错。现在补抓 date,连同 value 一起作为二元组返回,对齐
+# boundary_run.py 的 longest 算子先例(同样是 (value, date) 二元组比较)。
+_RE_FL_FIRST = re.compile(r"^First .+?: (.+?) \(from ([^)]+)\)")
+_RE_FL_LAST = re.compile(r"most recent: (.+?) \(since ([^)]+)\)")
 _RE_COUNT_BEFORE = re.compile(r"had (\d+) different")
 
 
@@ -82,10 +89,10 @@ def extract_answer(op: str, derived: List[str]):
         return (int(m.group(1)), text) if m else ("UNPARSED", text)
     if op == "first_last_first":
         m = _RE_FL_FIRST.search(text)
-        return (m.group(1), text) if m else ("UNPARSED", text)
+        return ((m.group(1), m.group(2)), text) if m else ("UNPARSED", text)
     if op == "first_last_last":
         m = _RE_FL_LAST.search(text)
-        return (m.group(1), text) if m else ("UNPARSED", text)
+        return ((m.group(1), m.group(2)), text) if m else ("UNPARSED", text)
     if op == "count_before":
         m = _RE_COUNT_BEFORE.search(text)
         return (int(m.group(1)), text) if m else ("UNPARSED", text)
@@ -100,6 +107,13 @@ def extract_answer(op: str, derived: List[str]):
 
 
 def answers_agree(a, b) -> bool:
+    # first_last_first/first_last_last: (value, date) 二元组,value 走
+    # _norm_val 规整(大小写/空白),date 精确比较——对齐 boundary_run.py
+    # 的 longest 算子先例。gold 从 JSON 读入是 list,系统答案是 tuple,
+    # 先各自转 list 再逐位比较,避免 tuple != list 的假阴性。
+    if (isinstance(a, (tuple, list)) and isinstance(b, (tuple, list))
+            and len(a) == 2 and len(b) == 2):
+        return _norm_val(a[0]) == _norm_val(b[0]) and a[1] == b[1]
     if isinstance(a, str) and isinstance(b, str) and a not in (
             EMPTY_CHAIN, BEFORE_EARLIEST) and b not in (
             EMPTY_CHAIN, BEFORE_EARLIEST):
