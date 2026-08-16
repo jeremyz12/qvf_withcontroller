@@ -48,6 +48,11 @@ _CARD_KEYS = int(os.environ.get("QVF_CARD_KEYS", "0") or 0)
 # 与 =1 互斥选其一。默认 0 = 冻结行为,提示词与载荷逐字节不变。
 _CARD_TAGS = int(os.environ.get("QVF_CARD_TAGS", "0") or 0)
 
+# QVF_CARD_TEMP0=1:建卡调用(_catalog())显式传 temperature=0.0(与读取侧
+# client.messages.create 的 temperature=0.0 对齐)。默认 0 = 冻结行为,
+# 完全不传 temperature 参数(与旗标引入前逐字节一致,即当前生产行为)。
+_CARD_TEMP0 = int(os.environ.get("QVF_CARD_TEMP0", "0") or 0)
+
 
 # ── 写入时:目录化抽取(查询无关) ──────────────────────────
 class CatalogExtraction(BaseModel):
@@ -255,6 +260,9 @@ def write_phase(data_path: str, limit_items: int = 0,
         def _catalog(batch, depth=0):
             """建卡一批;输出截断/解析失败时对半分批递归(卡片密度自适应)。"""
             try:
+                _kw = {}
+                if _CARD_TEMP0:  # 旗标关时不传该键,调用逐字节等同旗标引入前
+                    _kw["temperature"] = 0.0
                 resp = client.messages.parse(
                     model=MODEL, max_tokens=16000,
                     system=[{"type": "text",
@@ -263,6 +271,7 @@ def write_phase(data_path: str, limit_items: int = 0,
                     messages=[{"role": "user", "content":
                                "MEMORY ROUNDS (JSON):\n" + json.dumps(batch, ensure_ascii=False)}],
                     output_format=CatalogExtraction,
+                    **_kw,
                 )
                 cat = resp.parsed_output
                 u = resp.usage
