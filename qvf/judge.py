@@ -78,6 +78,11 @@ def _judge_user_prompt(
 class JudgeResult:
     correct: bool
     reason: str
+    # 08-16 新增(数据完整性审查 blocking 项):判官侧 token 用量此前从未落盘,
+    # 导致成本主张只覆盖建卡与答题两侧,判官侧只能估算。新字段带默认值,
+    # 对既有调用方(只读 .correct/.reason)完全向后兼容。
+    usage_input_tokens: Optional[int] = None
+    usage_output_tokens: Optional[int] = None
 
 
 class ClaudeJudge:
@@ -92,6 +97,9 @@ class ClaudeJudge:
         self._client = client
         if not self.mock and self._client is None:
             self._client = anthropic.Anthropic()
+        # 累计用量:任何跑批脚本可在结束时读 judge.total_usage 出实测判官成本,
+        # 无需改逐题处理逻辑。
+        self.total_usage = {"input_tokens": 0, "output_tokens": 0, "calls": 0}
 
     def judge(
         self,
@@ -124,9 +132,17 @@ class ClaudeJudge:
                     messages=[{"role": "user", "content": user_prompt}],
                     output_format=JudgeVerdict,
                 )
+                u = getattr(api_response, "usage", None)
+                u_in = getattr(u, "input_tokens", None) if u else None
+                u_out = getattr(u, "output_tokens", None) if u else None
+                self.total_usage["input_tokens"] += u_in or 0
+                self.total_usage["output_tokens"] += u_out or 0
+                self.total_usage["calls"] += 1
                 verdict: JudgeVerdict = api_response.parsed_output
                 if verdict is not None:
-                    return JudgeResult(correct=verdict.correct, reason=verdict.reason)
+                    return JudgeResult(correct=verdict.correct, reason=verdict.reason,
+                                       usage_input_tokens=u_in,
+                                       usage_output_tokens=u_out)
                 last_error = RuntimeError("parsed_output is None")
             except Exception as e:  # noqa: BLE001 — degenerate outputs raise ValidationError
                 last_error = e
