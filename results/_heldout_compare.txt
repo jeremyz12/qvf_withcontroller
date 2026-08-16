@@ -1,0 +1,44 @@
+wikiP551000-Q19845625
+  v42       : True None card=['netherlands', 'france', 'united kingdom'] src=['netherlands', 'france', 'united kingdom']
+  frozen_ctl: True None card=['netherlands', 'france', 'united kingdom']
+  h2        : False wrong_value_or_order card=['the netherlands', 'france', 'the united kingdom']
+wikiP551001-Q20667184
+  v42       : False extra_value card=['farmingdale', 'tokyo', 'iowa', 'isla de la juventud', 'lake helen'] src=['farmingdale', 'iowa', 'isla de la juventud', 'lake helen']
+  frozen_ctl: False wrong_value_or_order card=['farmingdale', 'tokyo', 'isla de la juventud', 'lake helen']
+  h2        : False extra_value card=['farmingdale', 'tokyo', 'iowa', 'isla de la juventud', 'lake helen']
+wikiP551002-Q107297
+  v42       : False extra_value card=['schönberg', 'paris', 'metz', 'three rooms above a bakery', 'cairo'] src=['schönberg', 'paris', 'metz', 'cairo']
+  frozen_ctl: True None card=['schönberg', 'paris', 'metz', 'cairo']
+  h2        : True None card=['schönberg', 'paris', 'metz', 'cairo']
+wikiP551003-Q20512700
+  v42       : False extra_value card=['yerevan', 'tokyo', 'uzbekistan', 'new york', 'moscow'] src=['yerevan', 'uzbekistan', 'moscow']
+  frozen_ctl: False extra_value card=['yerevan', 'tokyo', 'uzbekistan', 'moscow']
+  h2        : False extra_value card=['yerevan', 'tokyo', 'uzbekistan', 'moscow']
+wikiP551004-Q42324811
+  v42       : True None card=['buddenbrookhaus', 'eimsbüttel', 'kaufingerstraße'] src=['buddenbrookhaus', 'eimsbüttel', 'kaufingerstraße']
+  frozen_ctl: False wrong_value_or_order card=['buddenbrookhaus', 'eimsbüttel', 'kaufingerstraße, lübeck']
+  h2        : False wrong_value_or_order card=['buddenbrookhaus', 'eimsbüttel', 'kaufingerstraße, lübeck']
+wikiP551005-Q42324799
+  v42       : False extra_value card=['buddenbrookhaus', 'raleigh, north carolina', 'amsterdam', 'new apartment three months prior', 'breite straße'] src=['buddenbrookhaus', 'amsterdam', 'breite straße']
+  frozen_ctl: False extra_value card=['buddenbrookhaus', 'amsterdam', 'new apartment', 'breite straße']
+  h2        : False extra_value card=['buddenbrookhaus', 'amsterdam', 'new apartment', 'breite straße']
+wikiP551006-Q57870878
+  v42       : False extra_value card=['sens', "plot of land inherited from grandmother's estate", 'troyes', 'paris', 'le chesnay'] src=['sens', 'troyes', 'paris', 'le chesnay']
+  frozen_ctl: True None card=['sens', 'troyes', 'paris', 'le chesnay']
+  h2        : True None card=['sens', 'troyes', 'paris', 'le chesnay']
+wikiP551007-Q9153879
+  v42       : False extra_value card=['koropets', 'chicago', '5 acre property with small cabin', 'horodok', '1 bedroom, 1 bathroom', 'lviv'] src=['koropets', 'horodok', 'lviv']
+  frozen_ctl: False extra_value card=['koropets', '5 acre property with small cabin', 'horodok', 'lviv']
+  h2        : False extra_value card=['koropets', '5 acre property with cabin', 'horodok', 'lviv']
+wikiP551008-Q29918442
+  v42       : True None card=['san francisco', 'mountain view', 'berlin'] src=['san francisco', 'mountain view', 'berlin']
+  frozen_ctl: False extra_value card=['san francisco', '92101 (san diego)', 'mountain view', '92101 (san diego)', 'berlin']
+  h2        : True None card=['san francisco', 'mountain view', 'berlin']
+wikiP551009-Q5321987
+  v42       : False extra_value card=['frampton on severn', 'queens, nyc', 'birmingham', 'london', 'landlady serves supper at 7 pm', 'pudsey'] src=['frampton on severn', 'birmingham', 'london', 'pudsey']
+  frozen_ctl: False extra_value card=['frampton on severn', 'birmingham', 'living with sibling', 'london', 'landlord/landlady serves supper at 7 pm', 'pudsey']
+  h2        : False extra_value card=['frampton on severn', 'us (for uc berkeley studies)', 'birmingham', 'london', 'pudsey']
+wikiP551010-Q17362765
+  v42       : False extra_value card=['dresden', 'san francisco bay area', 'berlin', 'senftenberg'] src=['dresden', 'berlin', 'senftenberg']
+  frozen_ctl: True None card=['dresden', 'berlin', 'senftenberg']
+  h2        : False extra_value card=['dresden', 'vancouver', 'berlin', 'senftenberg']

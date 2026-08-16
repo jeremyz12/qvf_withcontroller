@@ -1,0 +1,197 @@
+{
+ "uid": "wikiP108014-Q56648183",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108014-Q56648183/s1#r0",
+   "source_span": "I recently got a court order approving my name change on February 10th, and I'm trying to update all my accounts to reflect my new name, Wilson",
+   "entity": "user",
+   "slot": "legal_name",
+   "value": "Wilson",
+   "claim": "User's legal name changed to Wilson by court order on February 10th.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-02-10",
+   "owner": "user",
+   "slot_class": "other:legal_name"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108014-Q56648183/s6#r1",
+   "source_span": "So today I officially started at University of California, San Diego",
+   "entity": "user",
+   "slot": "position",
+   "value": "position at University of California, San Diego",
+   "claim": "User officially started a position at University of California, San Diego.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-10-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108014-Q56648183/s6#r1",
+   "source_span": "So today I officially started at University of California, San Diego",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of California, San Diego",
+   "claim": "User's employer is University of California, San Diego.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2012-10-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108014-Q56648183/s7#r0",
+   "source_span": "I officially started as a research fellow at CERN today",
+   "entity": "user",
+   "slot": "position",
+   "value": "research fellow at CERN",
+   "claim": "User officially started as a research fellow at CERN.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2013-06-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108014-Q56648183/s7#r0",
+   "source_span": "I officially started as a research fellow at CERN today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "CERN",
+   "claim": "User's employer is CERN.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2013-06-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108014-Q56648183/s12#r2",
+   "source_span": "I recently installed an SSD in my new laptop and it's made a huge difference in performance. I'm really happy with my new laptop, which I got after selling my old HP Pavilion for $200.",
+   "entity": "user",
+   "slot": "device",
+   "value": "new laptop",
+   "claim": "User has a new laptop with an installed SSD.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108014-Q56648183/s12#r4",
+   "source_span": "I got a Dell Inspiron 15 5000, and it's been a huge upgrade from my old HP Pavilion.",
+   "entity": "user",
+   "slot": "device_model",
+   "value": "Dell Inspiron 15 5000",
+   "claim": "User's new laptop is a Dell Inspiron 15 5000.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108014-Q56648183/s13#r0",
+   "source_span": "I just set up a new area for my kitten Luna to explore",
+   "entity": "Luna",
+   "slot": "owner",
+   "value": "user",
+   "claim": "User owns a kitten named Luna.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108014-Q56648183/s28#r0",
+   "source_span": "I officially started today as a postdoctoral researcher at the Massachusetts Institute of Technology",
+   "entity": "user",
+   "slot": "position",
+   "value": "postdoctoral researcher at the Massachusetts Institute of Technology",
+   "claim": "User officially started as a postdoctoral researcher at the Massachusetts Institute of Technology.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2016-07-15",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108014-Q56648183/s28#r0",
+   "source_span": "I officially started today as a postdoctoral researcher at the Massachusetts Institute of Technology",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Massachusetts Institute of Technology",
+   "claim": "User's employer is the Massachusetts Institute of Technology.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2016-07-15",
+   "owner": "user",
+   "slot_class": "employer"
+  }
+ ],
+ "usage_in": 21362,
+ "usage_out": 1701
+}
