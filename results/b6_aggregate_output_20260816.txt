@@ -1,0 +1,14 @@
+=== per-rep summary ===
+results/card_quality_b6_rep1.jsonl: n=50 exact=39/50=0.7800 micro_P=0.9641 micro_R=0.9148 macro_P=0.8913 macro_R=0.9133
+results/card_quality_b6_rep2.jsonl: n=50 exact=34/50=0.6800 micro_P=0.9718 micro_R=0.7841 macro_P=0.8320 macro_R=0.7967
+results/card_quality_b6_rep3.jsonl: n=50 exact=32/50=0.6400 micro_P=0.9530 micro_R=0.8068 macro_P=0.8377 macro_R=0.8053
+
+=== t-interval (n=3 reps, df=2) ===
+exact_match_rate: vals=['0.7800', '0.6800', '0.6400'] mean=0.7000 sd=0.0721 95%CI=(0.5209,0.8791)  half_width_pp=17.91
+value_micro_precision: vals=['0.9641', '0.9718', '0.9530'] mean=0.9630 sd=0.0095 95%CI=(0.9395,0.9865)  half_width_pp=2.35
+value_micro_recall: vals=['0.9148', '0.7841', '0.8068'] mean=0.8352 sd=0.0698 95%CI=(0.6618,1.0087)  half_width_pp=17.35
+value_macro_precision: vals=['0.8913', '0.8320', '0.8377'] mean=0.8537 sd=0.0327 95%CI=(0.7723,0.9350)  half_width_pp=8.13
+value_macro_recall: vals=['0.9133', '0.7967', '0.8053'] mean=0.8384 sd=0.0650 95%CI=(0.6769,0.9999)  half_width_pp=16.15
+
+=== uid-level bootstrap (B=5000, resample uids within each rep, average across reps) ===
+n_common_uids=50 boot_mean=0.7000 95%CI=(0.6000,0.7933)

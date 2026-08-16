@@ -100,9 +100,9 @@
 5. STALE/CAPA 同团队,措辞要经得起这组人挑刺;QVF 不声称覆盖隐式冲突
 6. LoCoMo 统计用 ACL 版数字;TReMu 是多选题、与我们开放作答对比须注明格式差异
 7. 复现 PRA 基线须注明"以 stated_date 代 version serial 的适配复现"
-8. 待补查:ACL 2026 已出现 APEX-MEM(含 temporal reasoning)、Semantic XPath、MAGMA——赛道快速拥挤,投稿前需再扫一轮
-9. TempQuestions 是唯一未直接打开 PDF 的(ACM 403,经 Semantic Scholar API+同作者论文交叉印证);引其正文细节前人工下载核对
-10. A-TMA/StateAuditor 的 § 编号与阈值细节引用前人工再核对 PDF 一遍(本轮为 HTML/摘要页核实)
+8. ~~待补查:ACL 2026 已出现 APEX-MEM(含 temporal reasoning)、Semantic XPath、MAGMA~~ **08-16 已扫描,见五.3**——APEX-MEM(ACL 2026 主会)为本档目前机制最接近 QVF 的近邻,新增分界句
+9. ~~TempQuestions 是唯一未直接打开 PDF 的~~ **08-16 已通过同作者(Abujabal)博士论文第五章拿到全文级细节,见五.2**——论文正文(TEQUILA/CIKM 2018 章节,与 TempQuestions/WWW 2018 同一基准同一作者组)完整复现了基准构建方法与四类分类法,不再是仅摘要级
+10. ~~A-TMA/StateAuditor 的 § 编号与阈值细节引用前人工再核对 PDF 一遍~~ **08-16 已过 HTML 全文逐条核对,见五.1**——原判决全部准确,无需改判
 
 ## 四、BibTeX 全集
 
@@ -144,4 +144,55 @@
 @inproceedings{pan2025secom, author={Zhuoshi Pan and Qianhui Wu and Huiqiang Jiang and Xufang Luo and Hao Cheng and Dongsheng Li and Yuqing Yang and Chin-Yew Lin and H. Vicky Zhao and Lili Qiu and Jianfeng Gao}, title={{SeCom}: On Memory Construction and Retrieval for Personalized Conversational Agents}, booktitle={Proceedings of ICLR}, year={2025}}
 @inproceedings{wang2025mplus, author={Yu Wang and Dmitry Krotov and Yuanzhe Hu and Yifan Gao and Wangchunshu Zhou and Julian J. McAuley and Dan Gutfreund and Rog{\'e}rio Feris and Zexue He}, title={{M+}: Extending {MemoryLLM} with Scalable Long-Term Memory}, booktitle={Proceedings of ICML}, year={2025}}
 @misc{menick2022gophercite, author={Jacob Menick and Maja Trebacz and Vladimir Mikulik and John Aslanides and Francis Song and Martin Chadwick and Mia Glaese and Susannah Young and Lucy Campbell-Gillingham and Geoffrey Irving and Nat McAleese}, title={Teaching Language Models to Support Answers with Verified Quotes}, year={2022}, eprint={2203.11147}, archivePrefix={arXiv}, note={arXiv preprint}}
+@misc{banerjee2026apexmem, title={{APEX-MEM}: Agentic Semi-Structured Memory with Temporal Reasoning for Long-Term Conversational {AI}}, author={Banerjee, Pratyay and Moshtaghi, Masud and Subramanian, Shivashankar and Misra, Amita and Chadha, Ankit}, booktitle={Proceedings of ACL (Volume 1: Long Papers)}, year={2026}, note={ACL Anthology 2026.acl-long.749; arXiv:2604.14362}}
+@inproceedings{jiang2026magma, title={{MAGMA}: A Multi-Graph based Agentic Memory Architecture for {AI} Agents}, author={Jiang, Dongming and Li, Yi and Li, Guanpeng and Li, Bingzhe}, booktitle={Proceedings of ACL (Volume 1: Long Papers)}, pages={36848--36865}, year={2026}, note={ACL Anthology 2026.acl-long.1709; arXiv:2601.03236}}
+@inproceedings{liu2026semanticxpath, title={Semantic {XPath}: Structured Agentic Memory Access for Conversational {AI}}, author={Liu, Yifan Simon and Wu, Ruifan and Gallagher, Liam and Liang, Jiazhou and Toroghi, Armin and Sanner, Scott}, booktitle={Proceedings of ACL 2026: System Demonstrations}, year={2026}, note={ACL Anthology 2026.acl-demo.28; arXiv:2603.01160}}
 ```
+
+## 五、08-16 尽调收尾(B5,三件事收尾)
+
+### 五.1 A-TMA / StateAuditor 章节细节复核(HTML 全文,非摘要页)
+
+方法:WebFetch 直接打开 `arxiv.org/html/2607.01935v2` 与 `arxiv.org/html/2608.01619v1`(此前仅核到摘要/metadata 页),逐条对照本档分界句所依据的机制描述。
+
+**A-TMA(2607.01935)—原判决全部准确,逐条核对结果:**
+- 查询画像规则计数、四类:原文 §4.4 明述"a lightweight rule based query profiler before ranking, not a classifier or an LLM",按词法线索计数分入 current/historical/transition/neutral 四类(附录 A.8 给出计数决胜规则)——**与档案措辞一致**。
+- 打标证据交 LLM 直答:§4.5 QA 序列化器把标签向量 λ∈{cur, hist, tran, link, raw} 嵌入提示词交答题模型,**无算子编译、无管线级路由**——**与档案措辞一致**。
+- 隔离消融数字:附录 A.7 Table 5(3 个 LTP profile,240 探针,A-Mem 宿主)—— Full A-TMA 0.883 QA Acc. vs 宿主基线 0.825;−Retrieval Controller 降至 0.817,−QA Label 降至 0.825(与宿主基线打平,说明 QA 标签是增益主因)。**档案原句"该隔离消融(−Retrieval Controller/−QA Label,0.883 vs 宿主 0.825)"应理解为"Full 与宿主对照 0.883/0.825,两项消融各自定位增益来源"——数字准确,表述可更精确但不构成错误**。
+
+**StateAuditor(2608.01619)—原判决全部准确,逐条核对结果:**
+- 答后审计:§3 Problem Setup 原文"a draft d∼G(M,q) from the memory-augmented generator G, the audit produces P={(pj,vj,cj,bj)}"——确认在生成**之后**对草稿做审计,而非答前介入。
+- 引用校验阈值:§4.4"Each quotation must match at least 80% of its content tokens within a single rendered memory entry"——**≥80% token 重合、非逐字**,与档案措辞一致。
+- 无冲突样本过度重写率:§6.4/Figure 4,"the post-hoc-selected repair-only policy...rewrites 3% of conflict-free examples vs. 80%"——**全量 VTA 系统在无冲突样本上触发重写 80%**,repair-only 变体仅 3%(论文推荐 repair-only 为部署默认)。与档案措辞一致。
+- 答前无 premise_check:§4.5 明述用确定性规则而非模型生成指令("We use deterministic rules because model-generated directives frequently asked for confirmation..."),但该规则仍作用于**生成后**的草稿修补,不介入生成前——与档案"QVF 的 premise_check 在答前"分界句一致。
+
+**结论:两篇此前的 HTML/摘要页核实均准确,无需改判,分界句维持原样。**
+
+### 五.2 TempQuestions 正文细节(全文级确认,非仅摘要)
+
+ACM 页面(`dl.acm.org/doi/fullHtml/10.1145/3184558.3191536`)与 ResearchGate 页面本次复测仍均返回 403,直接拿正式 WWW 2018 Companion 版式 PDF 未果。改路:定位到同一基准同一作者组的**姊妹全文**——Abujabal 博士论文(Saarland University,2019,`publikationen.sulb.uni-saarland.de/bitstream/20.500.11880/27438/1/abujabal_phd_thesis_final_2019_05_10.pdf`)第五章即 TEQUILA(CIKM 2018)工作,该章完整复现了 TempQuestions 基准的构造方法、四类分类法定义与分布表(WWW 2018 Companion 版是同一基准的资源型短文,构造方法与分类法在两篇论文间共享)。用 `pdftotext` 抽取全文后核对:
+
+- 基准规模与来源:1,271 题,取自 Free917(917 对)+ WebQuestions(5,810 对)+ ComplexQuestions(2,100 对),经时序检测算法初筛后人工剔除 245 条非时序题(论文 §5.5.1)。
+- **四类分类法(Table 5.3)确认为**:explicit(344)、implicit(209)、temporal answer(393)、ordinal constraint(155)(各来源分项数字见原表,合计 1,364>1,271 因部分题多标签)。
+- **分类法中确认缺席"同属主属性历史序列聚合"题型**:Table 5.4 的四类示例("who won the state of texas in 2008?" / "who was the president after jfk died?" / "what years did the knicks win the championship?" / "who was the first coach of the bucaneers?")均为单值提取或有序筛选,没有"列出/统计某实体某属性历次取值"一类——**与档案原判决一致**。
+- **我方引用只用到摘要级内容,现已升级为全文级确认**:档案原引用点(1,271 题规模、四类分类法、缺"历史序列聚合"题型)全部在这份姊妹全文中逐字核实,原判决无需修改。
+
+**标注**:严格意义上仍未拿到 WWW 2018 Companion 版本身的 PDF(ACM 403 拦爬虫依旧);但由于 TempQuestions 的构造方法论、分类法与分布统计是与 TEQUILA(CIKM 2018,同作者组、同基准)共享的同一套内容,且已从后者全文逐字核实,故档案对 TempQuestions 正文细节的引用**不再是仅摘要级**,可视为全文级确认。若审稿人要求 WWW 2018 Companion 版本身的 PDF 页码,仍需人工从图书馆代查。
+
+### 五.3 ACL 2026 新近邻扫描(APEX-MEM / Semantic XPath / MAGMA)
+
+逐个 WebSearch 定位 + WebFetch 全文核实机制,判断是否比 A-TMA 更危险。
+
+| 论文 | 编号 | venue(已核) | 机制 | 与 QVF 的重叠 | 与 QVF 的分野 | 危险度(相对 A-TMA) |
+|---|---|---|---|---|---|---|
+| APEX-MEM | 2604.14362 ✔ | **ACL 2026 主会**(2026.acl-long.749,Amazon) | 属性图+仅追加存储+多工具检索代理(ReAct 式循环调用 SchemaViewer/EntityLookup/GraphSQL/Search);GraphSQL 支持只读 SQL 的 SELECT/JOIN/AGGREGATE/TEMPORAL 查询,由 LLM 在循环中临场生成 SQL 文本 | 都会产出结构化查询(SQL vs JSON 计划)、都对聚合/join 类问题有专门通路、GraphSQL 执行本身是确定性代码(非 LLM 心算) | **SQL 由 LLM 临场生成,非从闭集算子词表按路由编译**——无固定算子清单、无生成前的合法性校验、循环无保证终止步数;冲突消解=检索到双版本按时间戳交 LLM 自行择取,**无答前 premise_check**;**无管线级路由**(是否调用/调用几轮由代理自行摸索,全部查询走同一多工具循环,论文未报告 token 成本);单时态戳(§3 起止区间+锚定事件时间戳,非严格双时态 ingestion/event 分离) | **高于 A-TMA**——本轮新扫描中机制最贴近"编译执行"范式的近邻,需新分界句(见下) |
+| MAGMA | 2601.03236 ✔ | **ACL 2026 主会**(2026.acl-long.1709) | 四正交视图图(语义/时序/因果/实体),时序图 §3.2 定义为按时间戳严格排序的**线性链**(τ_i<τ_j 的有序对),检索=LLM 驱动的自适应遍历策略(§3.3 动态转移分数),取回子图后交 LLM 生成叙述并自由推理作答 | 都显式建了"时序"维度的图/结构 | 时序图**仅线性时间戳链,无 bitemporal 有效期区间、无 supersession/superseded-by 链**;聚合(如"几个孩子")由 LLM 读取子图**心算**得出,**无确定性计数/时长算子**;**无 premise_check**;**无管线级路由**(所有查询走同一多图遍历流程) | **不高于 A-TMA**——仍是"检索+LLM 心算"范式(同 Engram/Zep/MAGMA 一类),纯检索式读取范畴内,不构成比 A-TMA 更强的反例 |
+| Semantic XPath | 2603.01160 ✔ | **ACL 2026 系统演示(demo track,非主会)**(2026.acl-demo.28) | 树形结构化记忆(话题/实体/属性层级)+ XPath 风格查询语言,结构匹配+语义相关性打分;Version 节点保留修订历史(版本分支,旧数据不覆盖) | 都有"保留历史版本、不覆盖旧数据"的写入侧设计 | **无时间维度语义**——Version 节点只追踪"哪次编辑产生了新版本",不存时间戳/有效期区间,**无法回答"变了几次/持续多久/某时点是什么"类时序聚合问题**;XPath 查询由 LLM 临场生成,无算子闭集;**无 premise_check**;论文定位是"结构化访问效率"(176.7% 优于 flat-RAG、仅 9.1% token),不是时序推理系统 | **明显低于 A-TMA**——非时序推理近邻,只是写入侧"保历史版本"理念的又一例证,可并入既有"Zep/Mem0/Engram 类保时间线但读取无查询条件化"的反面证据簇,不必单独立分界句 |
+
+**结论:APEX-MEM 构成本次尽调发现的、比 A-TMA 更危险的近邻,需新增分界句**(MAGMA、Semantic XPath 危险度不超过已有近邻,沿用既有分界句框架即可,不新增独立分界句)。
+
+**APEX-MEM 分界句草稿(待审,建议入 D 组"编译-执行范式近邻"或单列一行)**:
+
+> "同期最接近的会议论文是 APEX-MEM(ACL 2026 主会):其多工具检索代理在 ReAct 式循环中调用只读 SQL 接口(GraphSQL),能生成含 JOIN/AGGREGATE/TEMPORAL 的结构化查询,执行本身是确定性代码;但该 SQL 由语言模型在检索循环中临场生成,并非从封闭算子词表经路由编译得到——没有固定的算子清单与生成前合法性校验,循环步数无保证上限,冲突消解依赖模型在检索到的多版本证据间自行择取而非答前的确定性前提纠错,且全部查询走同一条多工具循环、无按问题类型分派的管线级路由,论文也未报告端到端 token 成本。QVF 与其一线之隔:问题先经路由分类落入闭集算子(计数/时长/定点/首末/join/premise_check 等)再由代码而非语言模型执行,执行阶段零 LLM 介入、premise_check 前置于生成而非事后由模型兼顾。"
+
+**限定词纪律**:三篇均为 2026 年论文,标注 concurrent/ACL 2026(APEX-MEM、MAGMA 为主会;Semantic XPath 为 demo track,不可误写成主会)。

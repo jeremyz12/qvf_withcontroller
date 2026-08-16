@@ -43,6 +43,7 @@ boundary / repeat)。设计动机:显式题把锚值逐字写进问句,稠密检
 from __future__ import annotations
 
 import argparse
+import ast
 import json
 import re
 import zlib
@@ -100,6 +101,43 @@ def _slot_family(slot: str) -> str:
     return "position"
 
 
+# B1 bug fix (2026-08-16): turns 在数据文件里以 str(dict) 序列化存储,字面
+# 以 "{'role': 'user', 'content': ..." 开头。旧代码直接对 str(turn) 做正则,
+# 而 _FAMILY_TERMS["position"] 含裸词 role —— 于是每一条 turn 都会在序列化
+# 结构键上命中 position 家族,与任一常见转变词(如 "start")共现于同一
+# split 出的"句子"里即被判噪声,导致 position 家族(P39/任职域)条目
+# 100% 被剔除。修复:先把 turn 还原成 dict 只取 content 字段文本再匹配,
+# 不再对序列化结构本身(role/content 等 JSON 键)匹配。
+# 复验时发现:部分会话记录在渲染阶段按定长截断,截断点常落在字符串
+# 字面量中间(如 P39_ext 数据里 400/44 条目命中此情形),使 str(dict)
+# 序列化不再是合法 Python 字面量,ast.literal_eval 会抛异常 —— 若直接
+# 退化回原始字符串,残留的 "{'role': ..., 'content': " 前缀仍带着字面
+# 键 role,原 bug 复现。因此加一道正则前缀剥离作为截断专用兜底:只剥
+# 已确认的 role/content 包装前缀,不触碰其后的正文;chain state_span
+# 本身以明文存储、不带该包装(不匹配此正则),原样放行不误伤。
+_TURN_WRAPPER_RE = re.compile(
+    r"""^\{\s*['"]role['"]\s*:\s*['"][a-zA-Z]+['"]\s*,\s*"""
+    r"""['"]content['"]\s*:\s*['"]""")
+
+
+def _turn_text(turn) -> str:
+    """取 turn 的会话正文;turns 既可能是已解析的 dict,也可能是
+    str(dict) 序列化字符串(现有数据文件的实际存储形式,含被截断的
+    情形)。优先用 ast.literal_eval 精确还原出 content 字段;解析失败
+    时退化为正则剥前缀(见 _TURN_WRAPPER_RE);两者都不适用(纯文本
+    turn,无 role/content 包装)则原样返回。"""
+    if isinstance(turn, dict):
+        return str(turn.get("content", turn))
+    s = str(turn)
+    try:
+        obj = ast.literal_eval(s)
+    except (ValueError, SyntaxError):
+        return _TURN_WRAPPER_RE.sub("", s, count=1)
+    if isinstance(obj, dict) and "content" in obj:
+        return str(obj["content"])
+    return s
+
+
 def noise_interference(entry: dict) -> bool:
     spans = [str(step.get("state_span", ""))
              for step in entry.get("chain", [])]
@@ -107,7 +145,7 @@ def noise_interference(entry: dict) -> bool:
     fam_re = re.compile(_FAMILY_TERMS[fam], re.IGNORECASE)
     for sess in entry.get("sessions", []):
         for turn in sess.get("turns", []):
-            t = str(turn)
+            t = _turn_text(turn)  # B1 fix: content only, not the raw dict repr
             if any(sp and sp[:60] in t for sp in spans):
                 continue
             for sent in re.split(r"[.!?\n]", t):

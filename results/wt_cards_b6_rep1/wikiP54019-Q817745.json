@@ -1,0 +1,282 @@
+{
+ "uid": "wikiP54019-Q817745",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54019-Q817745/s0#r1",
+   "source_span": "I've officially signed with Schalke 04",
+   "entity": "user",
+   "slot": "team",
+   "value": "Schalke 04",
+   "claim": "The user officially signed with Schalke 04.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2001-01-01",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54019-Q817745/s9#r0",
+   "source_span": "my Samsung Galaxy S22 Ultra, which I recently bought for $1,200",
+   "entity": "user",
+   "slot": "device",
+   "value": "Samsung Galaxy S22 Ultra",
+   "claim": "The user owns a Samsung Galaxy S22 Ultra.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54019-Q817745/s9#r2",
+   "source_span": "I'll try out those methods to transfer my data from my old iPhone 11 to my new S22 Ultra",
+   "entity": "user",
+   "slot": "device",
+   "value": "iPhone 11",
+   "claim": "The user previously owned an iPhone 11.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54019-Q817745/s9#r4",
+   "source_span": "I've been using my new iPad Air to watch videos during my daily commute",
+   "entity": "user",
+   "slot": "device",
+   "value": "iPad Air",
+   "claim": "The user owns an iPad Air.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54019-Q817745/s10#r1",
+   "source_span": "as of today I'm officially a player for 1. FC Union Berlin",
+   "entity": "user",
+   "slot": "team",
+   "value": "1. FC Union Berlin",
+   "claim": "The user officially became a player for 1. FC Union Berlin.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2004-01-01",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54019-Q817745/s12#r0",
+   "source_span": "I'm preparing for my semester abroad at the University of California, Berkeley",
+   "entity": "user",
+   "slot": "position",
+   "value": "semester abroad student at University of California, Berkeley",
+   "claim": "The user is preparing for a semester abroad at University of California, Berkeley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54019-Q817745/s12#r0",
+   "source_span": "I submitted my application to the exchange program on February 10th and got accepted on March 20th",
+   "entity": "user",
+   "slot": "location",
+   "value": "University of California, Berkeley",
+   "claim": "The user was accepted to the exchange program at University of California, Berkeley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2004-03-20",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP54019-Q817745/s14#r1",
+   "source_span": "as of today I've signed with VfR Aalen, they're my new team",
+   "entity": "user",
+   "slot": "team",
+   "value": "VfR Aalen",
+   "claim": "The user officially signed with VfR Aalen.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2005-01-01",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP54019-Q817745/s15#r0",
+   "source_span": "I sold 20 jars at the farmer's market at the town square three weeks ago",
+   "entity": "user",
+   "slot": "position",
+   "value": "jam seller at farmer's market",
+   "claim": "The user sells homemade strawberry jam at the farmer's market.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP54019-Q817745/s19#r0",
+   "source_span": "I've been listening to audiobooks during my daily commute to work, which is about an hour and a half each way",
+   "entity": "user",
+   "slot": "position",
+   "value": "employed (commute 1.5 hours each way)",
+   "claim": "The user is employed with a daily commute of approximately 1.5 hours each way.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP54019-Q817745/s20#r0",
+   "source_span": "I've been watching a lot of gaming streams on Twitch, especially during my lunch breaks at work",
+   "entity": "user",
+   "slot": "location",
+   "value": "workplace",
+   "claim": "The user works at a location where they have lunch breaks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP54019-Q817745/s23#r1",
+   "source_span": "I've officially joined Sportfreunde Lotte as of today",
+   "entity": "user",
+   "slot": "team",
+   "value": "Sportfreunde Lotte",
+   "claim": "The user officially joined Sportfreunde Lotte.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2009-01-01",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "wikiP54019-Q817745/s24#r0",
+   "source_span": "my black leather boots from Zara - I paid $120 for them",
+   "entity": "user",
+   "slot": "device",
+   "value": "black leather boots from Zara",
+   "claim": "The user owns black leather boots from Zara purchased for $120.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "wikiP54019-Q817745/s25#r2",
+   "source_span": "My current external hard drive is a 2TB Western Digital unit that connects via USB-C. I'm using a MacBook Pro with macOS",
+   "entity": "user",
+   "slot": "device",
+   "value": "MacBook Pro",
+   "claim": "The user owns a MacBook Pro.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "wikiP54019-Q817745/s32#r1",
+   "source_span": "Rot-Weiss Essen is my new team",
+   "entity": "user",
+   "slot": "team",
+   "value": "Rot-Weiss Essen",
+   "claim": "The user officially joined Rot-Weiss Essen.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence"
+   ],
+   "stated_date": "2013-01-01",
+   "owner": "user",
+   "slot_class": "team"
+  }
+ ],
+ "usage_in": 21766,
+ "usage_out": 2473
+}
