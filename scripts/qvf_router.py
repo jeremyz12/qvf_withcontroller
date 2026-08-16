@@ -45,6 +45,14 @@ _CARDS_KEYED = os.environ.get("QVF_CARDS_KEYED", "")
 #   字符串归一命中即可入组(不含嵌入级)。两旗标默认 0 = 冻结行为不变。
 _OPEN_SLOT = int(os.environ.get("QVF_OPEN_SLOT", "0") or 0)
 _OPEN_KEYS = int(os.environ.get("QVF_OPEN_KEYS", "0") or 0)
+# QVF_LLM_INTENT=1:事件算术判定从关键词正则升级为 LLM 意图分类(独立缓存,
+#   不动 focus 缓存)。默认 0 = 走 _EVENT_ARITH_RE,冻结行为逐字节不变。
+#   动因(去耦合原则1 + 08-16 实测):正则 _EVENT_ARITH_RE 在语义上确属事件
+#   算术的 624 条盲写改写题上命中率仅 16.2%(longest / count_before 两类为
+#   0%),"how often""on how many occasions""stayed the longest"等自然表述
+#   全部漏检——关键词路由对改写脆弱,是审计标记的 high 风险项。
+_LLM_INTENT = int(os.environ.get("QVF_LLM_INTENT", "0") or 0)
+INTENT_CACHE_F = Path(r"results/router_intent_cache.json")
 
 # 聚焦槽位文本 → 规范 slot_class 的别名表(小写子串命中;命中多类时取键深
 # 最高者)。类目与 CATALOG_PROMPT_V4 的闭集一致。
@@ -194,6 +202,54 @@ def focus_of(bench, qid, question):
     return out
 
 
+_INTENT_PROMPT = (
+    "You classify a single user question about their own history.\n"
+    "Answer YES if answering it requires ARITHMETIC OVER EVENTS — counting how "
+    "many times something changed, how many distinct values there were, how "
+    "long a state lasted, which value lasted longest, or the span between two "
+    "events.\n"
+    "Answer NO if it asks for a STATE VALUE — what something is now, what it "
+    "was on a given date, the sequence of values, or whether a premise about a "
+    "value still holds.\n"
+    "Reply with exactly one word: YES or NO."
+)
+
+intent_cache = (json.loads(INTENT_CACHE_F.read_text(encoding="utf-8"))
+                if INTENT_CACHE_F.exists() else {})
+
+
+def intent_of(bench, qid, question):
+    """QVF_LLM_INTENT=1 时的事件算术判定(独立缓存,不污染 focus 缓存)。
+
+    返回 True = 事件算术题。调用失败保守返回 False(= 不直通,走常规路由),
+    与正则未命中时的行为一致,故失败不改变分派方向。"""
+    key = f"{bench}|{qid}"
+    if key in intent_cache:
+        return bool(intent_cache[key])
+    val = False
+    for _ in range(3):
+        try:
+            resp = client.messages.create(
+                model=MODEL, max_tokens=4, system=_INTENT_PROMPT,
+                messages=[{"role": "user", "content": question or ""}])
+            txt = "".join(b.text for b in resp.content
+                          if getattr(b, "type", "") == "text").strip().upper()
+            if txt.startswith("YES") or txt.startswith("NO"):
+                val = txt.startswith("YES")
+                break
+        except Exception:  # noqa: BLE001
+            continue
+    intent_cache[key] = val
+    return val
+
+
+def is_event_arith(question, bench="", qid=""):
+    """事件算术判定的统一入口:旗标关=原正则(逐字节等价),开=LLM 意图。"""
+    if _LLM_INTENT:
+        return intent_of(bench, qid, question or "")
+    return bool(_EVENT_ARITH_RE.search(question or ""))
+
+
 def _keyed_depth(recs, slot, question=None):
     """QVF_ROUTER_KEYS=1:按 (owner, slot_class) 分组的键控链深。
     返回 None = 不可键控(卡片无 slot_class / 聚焦槽位无类命中),调用方
@@ -312,11 +368,11 @@ def route(uid, focus):
     return "wt" if depth >= 3 else "rt"
 
 
-def route_v2(uid, focus, question=""):
+def route_v2(uid, focus, question="", bench="", qid=""):
     """旗标路由(QVF_ROUTER_KEYS / QVF_GATE_V2 至少其一开启时使用):
     返回 (route, keyed_depth)。GATE_V2 关闭时决策规则与 route() 完全一致,
-    仅链深计算可能走键控路径。"""
-    if _GATE_V2 and _EVENT_ARITH_RE.search(question or ""):
+    仅链深计算可能走键控路径。事件算术判定见 is_event_arith()。"""
+    if _GATE_V2 and is_event_arith(question, bench, qid):
         return "direct", None  # 事件算术(时长/计数):卡片裁决无增益,直读
     if focus["scope"] == "unclear" and not focus["presupposed"]:
         return "direct", None
@@ -410,18 +466,29 @@ def main():
         # 整体测量口径:只要求兜底臂(direct)在场;路由臂缺行走降级链
         # (wt 仅部分覆盖的场次=冷库语义;P39 原卷仍限 test-52 由 wt 行天然决定)
         qs = [x for x in qs if x[1] in arms["direct"]]
-        if name == "wiki-P39":  # dev-5 隔离:P39 原卷仍只评 test-52
-            qs = [x for x in qs if x[1] in arms["wt"]]
+        # dev/test 隔离:切分由数据层 split 字段声明(见 data/*.json 的
+        # it["split"]∈{"dev","test"});未标注 split 的卷全部参评。
+        # 【去耦合记录 08-16】原实现为 `if name == "wiki-P39": qs = [x for x
+        # in qs if x[1] in arms["wt"]]`,即用"哪些行恰好存在于 wt 结果文件里"
+        # 反推测试集——切分本身正当(P39 dev-5/test-52),但以结果文件定义
+        # 测试集形式上等同 cherry-picking。改为数据层显式声明,并由
+        # scripts/verify_split_parity.py 证明两者产生的题集逐 qid 相同。
+        _split = {it["uid"]: it.get("split", "test") for it in items}
+        if any(v != "test" for v in _split.values()):
+            qs = [x for x in qs if _split.get(x[0], "test") == "test"]
         with ThreadPoolExecutor(max_workers=8) as ex:
             focuses = list(ex.map(lambda x: focus_of(name, x[1], x[2]), qs))
         CACHE_F.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
+        if _LLM_INTENT:
+            INTENT_CACHE_F.write_text(json.dumps(intent_cache, ensure_ascii=False),
+                                      encoding="utf-8")
         dist = Counter()
         fallback = 0
         missing = 0
         correct = 0
         for (uid, qid, _q), fo in zip(qs, focuses):
             if v2_active:
-                r, kd = route_v2(uid, fo, _q)
+                r, kd = route_v2(uid, fo, _q, name, qid)
                 dist[r] += 1
                 pick, res = r, None
                 if r == "prompt":
