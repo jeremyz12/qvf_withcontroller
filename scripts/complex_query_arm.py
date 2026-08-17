@@ -71,6 +71,15 @@ _FAIL_CLOSED = int(os.environ.get("QVF_FAIL_CLOSED", "0") or 0)
 # 嵌入软匹配)。默认 0 = 冻结行为,_tagged() 逐字节不变(纯字符串相等)。
 # 只延迟 import tag_lattice(旗标关时零副作用、不读 results/tag_lattice.json)。
 _TAG_LATTICE = int(os.environ.get("QVF_TAG_LATTICE", "0") or 0)
+# QVF_COMPILE_SPEC=1(T4 去耦合):COMPILE_PROMPT 的 6 个 few-shot 与
+# gen_wikistate_complex 出题模板逐字/同构(耦合审计 20260815 最高危项,
+# n-gram containment 量化见 results/compile_spec_decoupling_20260816.md)。
+# 旗标开:平面编译改走 COMPILE_PROMPT_SPEC —— few-shot 替换为 11 算子的
+# 指称语义表(复用 study_logs/QVF_methods_formalization_20260814.md §4),
+# 至多保留 2 个域外(非考场)示例。默认 0 = 冻结行为,COMPILE_PROMPT 逐
+# 字节不变,compile_plan() 走原分支。只影响平面编译器;QVF_ALGEBRA=1 时
+# 该旗标不生效(算子表达式编译器用独立的 ALGEBRA_COMPILE_PROMPT)。
+_COMPILE_SPEC = int(os.environ.get("QVF_COMPILE_SPEC", "0") or 0)
 
 # 与 scripts/qvf_router.py 的 SLOT_ALIASES 逐字一致(复制而非导入:qvf_router
 # 模块级即创建 anthropic 客户端并读聚焦缓存,独立跑批器不背这些副作用)。
@@ -192,6 +201,80 @@ A: {"op": "join_at_change", "slot": "employer", "slot2": "residence", "date": nu
 """
 
 
+# ── T4 去耦合(QVF_COMPILE_SPEC=1):规范文档版编译提示词 ──────────
+# 与 COMPILE_PROMPT 的 JSON 输出契约、字段规则逐字一致;唯一区别是把
+# "Examples:" 的 6 个与出题模板逐字/同构的 few-shot(n-gram containment
+# 量化见 results/compile_spec_decoupling_20260816.md,#1-4 fwd=rev=1.000
+# 逐字同构,#5-6 fwd=1.000)换成 11 算子的指称语义表(内容对应
+# study_logs/QVF_methods_formalization_20260814.md §4 的 chain/区间定义,
+# 译为编译模型可读的英文规范而非重抄该文件),外加至多 2 个域外
+# (medication/dosage、园艺 gardening —— 均不出现在 SLOT_ALIASES /
+# CLOSED_TAGS / SUB_TAGS / 任何出题模板)示例,仅作 JSON 格式演示。
+COMPILE_PROMPT_SPEC = """\
+You compile a user's question about their own personal history into ONE
+small query plan for a dated personal-state record store. Output STRICT
+JSON only, exactly this object and nothing else:
+{"op": "<one of: current | point_in_time | trajectory | premise_check |
+count_changes | longest | count_before | first_last | tag_filter |
+tag_trend | join_at_change>", "slot": <str|null>, "slot2": <str|null>,
+"date": <str|null>, "tag": <str|null>, "presupposed": <str|null>,
+"anchor_index": <int|null>}
+
+Denotational semantics. Every attribute the user has ever stated a value
+for forms a dated CHAIN of states: chain(slot) = <(v_1, t_1), ..., (v_m,
+t_m)>, t_1 < t_2 < ... < t_m, consecutive values distinct. Value v_i is
+in force over the right-open interval [t_i, t_{i+1}) (the last value's
+interval is open-ended: [t_m, +inf)). Tags are an orthogonal label on any
+stated fact, independent of slot chains. Pick the op whose semantics
+below matches the question, and fill only the fields that op needs;
+leave the rest null.
+
+- current -> v_m: the value in force now.
+- point_in_time(date) -> v_i such that t_i <= date < t_{i+1}; a date
+  before t_1 means "earlier than any known state". Fill date.
+- trajectory -> the full ordered chain <(v_1,t_1), ..., (v_m,t_m)>.
+- premise_check(presupposed) -> if presupposed equals some past v_i
+  (i<m) and differs from v_m, the premise is STALE (report presupposed's
+  valid interval and v_m); if presupposed equals v_m, the premise HOLDS.
+  Fill presupposed with the value the question asserts.
+- count_changes -> m-1, the number of transitions in the chain.
+- count_before(date) -> the number of transitions at or before date
+  (equivalently: the count of distinct values held strictly before
+  date). Fill date.
+- first_last -> (v_1, t_1) together with (v_m, t_m): the first-ever
+  value and the most recent value.
+- longest -> argmax_v of total closed-interval duration summed over all
+  segments holding v (the open final segment is excluded).
+- tag_filter(tag) -> every stated fact (any slot) whose tag set contains
+  tag, each with its date. Fill tag verbatim as the question names it.
+- tag_trend(tag) -> every stated fact tagged tag, bucketed by year, to
+  characterize whether that topic changed over time. Fill tag verbatim.
+- join_at_change(slot, slot2; anchor) -> resolve anchor time t* as the
+  date the ANCHOR attribute's chain transitioned to a target value,
+  named either by VALUE (fill presupposed with that value) or by
+  ORDINAL position in the anchor chain (fill anchor_index, 1-based:
+  "my second X" -> 2); then answer point_in_time(t*) on the OTHER
+  attribute's chain (slot2). slot = the anchor attribute (the one whose
+  change the question refers to); slot2 = the attribute being asked
+  about at that moment.
+
+Field rules: slot is a short concrete attribute noun phrase, never an
+abstraction like 'history' or 'timeline'; slot2 (join_at_change only)
+follows the same rules as slot; tag is copied verbatim from the question;
+anchor_index (join_at_change only) is a 1-based integer used only for
+ordinal anchors; unused fields are null.
+
+Examples (format demonstration only -- match the semantics above, not
+the surface wording of these two questions):
+Q: Have I ever mentioned anything about 园艺 (gardening)? Tell me what
+and when.
+A: {"op": "tag_filter", "slot": null, "date": null, "tag": "园艺", "presupposed": null}
+Q: When I switched to my third medication, what was my dosage at that
+time?
+A: {"op": "join_at_change", "slot": "medication", "slot2": "dosage", "date": null, "tag": null, "presupposed": null, "anchor_index": 3}
+"""
+
+
 # ── ③ READ:日常助手读者(逐字节复用 framing_arm 修正框定基线) ──
 READER_SYSTEM = (
     "You are the user's personal AI assistant. You will be shown excerpts "
@@ -208,13 +291,17 @@ def _client():
 
 def compile_plan(client, question: str):
     """一次 haiku 编译调用(重试 3 次);返回 (plan_dict, in_tok, out_tok, ok)。
-    全部失败时回落 op=current 的空计划(ok=False),流程不中断。"""
+    全部失败时回落 op=current 的空计划(ok=False),流程不中断。
+    QVF_COMPILE_SPEC=1:system 换 COMPILE_PROMPT_SPEC(规范文档版,见旗标
+    注释);默认 0 时 _prompt is COMPILE_PROMPT,本函数其余逻辑逐字节
+    不变。"""
+    _prompt = COMPILE_PROMPT_SPEC if _COMPILE_SPEC else COMPILE_PROMPT
     tin = tout = 0
     for _ in range(3):
         try:
             resp = client.messages.parse(
                 model=MODEL, max_tokens=400, temperature=0.0,
-                system=[{"type": "text", "text": COMPILE_PROMPT,
+                system=[{"type": "text", "text": _prompt,
                          "cache_control": {"type": "ephemeral"}}],
                 messages=[{"role": "user", "content": question}],
                 output_format=CompiledPlan,

@@ -48,10 +48,23 @@ _CARD_KEYS = int(os.environ.get("QVF_CARD_KEYS", "0") or 0)
 # 与 =1 互斥选其一。默认 0 = 冻结行为,提示词与载荷逐字节不变。
 _CARD_TAGS = int(os.environ.get("QVF_CARD_TAGS", "0") or 0)
 
-# QVF_CARD_TEMP0=1:建卡调用(_catalog())显式传 temperature=0.0(与读取侧
-# client.messages.create 的 temperature=0.0 对齐)。默认 0 = 冻结行为,
-# 完全不传 temperature 参数(与旗标引入前逐字节一致,即当前生产行为)。
-_CARD_TEMP0 = int(os.environ.get("QVF_CARD_TEMP0", "0") or 0)
+# QVF_CARD_TEMP0:建卡调用(_catalog())是否显式传 temperature=0.0(与读取侧
+# client.messages.create 的 temperature=0.0 对齐)。
+#
+# 08-17 正式采纳决策(results/temperature_adoption_20260816.md):诊断阶段
+# (results/card_temperature_diagnosis_20260816.md)显示固定 temperature=0
+# 使建卡方差 σ 从 7.21pp 降到 3.85pp(降 46.5%,未达预注册"减半"门槛,
+# 归因假设"方差主要来自温度"因此被否定);但零成本反向核查(同批 48 道
+# S5 题,v42 归档卡片库 vs 3 轮 temperature=0 卡片库,纯代码 execute_plan
+# 执行对拍,0 次 LLM 调用)显示 **0 例反向影响**(0/48"归档库对、temp0 库
+# 错"),且 3 个 temp0 轮次逐题结果 100% 相互一致(0/48 分歧),另有 15/48
+# 净修复且三轮同向——因此自本次改动起默认改为 1(固定温度)。
+# 默认 1 = 建卡调用显式传 temperature=0.0(新默认生产行为,自 08-17 起)。
+# 设为 0 = 旧行为,完全不传 temperature 参数(旗标引入前逐字节一致)——
+# **保留此选项专门用于复现旗标引入前的历史结果**;历史归档卡片库(如
+# wt_cards_v42/v43/v5held 等,08-17 之前建成)均在未固定温度下建成,
+# 与新建的默认 temperature=0 卡片库不可混用于同一对照实验。
+_CARD_TEMP0 = int(os.environ.get("QVF_CARD_TEMP0", "1") or 0)
 
 
 # ── 写入时:目录化抽取(查询无关) ──────────────────────────
@@ -261,7 +274,8 @@ def write_phase(data_path: str, limit_items: int = 0,
             """建卡一批;输出截断/解析失败时对半分批递归(卡片密度自适应)。"""
             try:
                 _kw = {}
-                if _CARD_TEMP0:  # 旗标关时不传该键,调用逐字节等同旗标引入前
+                if _CARD_TEMP0:  # 默认 1:传 temperature=0.0;QVF_CARD_TEMP0=0
+                                  # 时不传该键,调用逐字节等同旗标引入前(复现历史结果用)
                     _kw["temperature"] = 0.0
                 resp = client.messages.parse(
                     model=MODEL, max_tokens=16000,
