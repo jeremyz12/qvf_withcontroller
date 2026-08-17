@@ -21,3 +21,8 @@ data/locomo_full.json
 # 本地临时
 *.log
 node_modules/
+
+# 08-16 仓库卫生:可重建的嵌入缓存,94.55MB 逼近 GitHub 100MB 硬上限
+# 本地文件保留,仅取消版本跟踪(可随时 git add -f 加回)
+results/tag_lattice_embed_cache.json
+results/*_embed_cache.json
