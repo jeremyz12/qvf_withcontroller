@@ -66,6 +66,56 @@ _CARD_TAGS = int(os.environ.get("QVF_CARD_TAGS", "0") or 0)
 # 与新建的默认 temperature=0 卡片库不可混用于同一对照实验。
 _CARD_TEMP0 = int(os.environ.get("QVF_CARD_TEMP0", "1") or 0)
 
+# ── 08-17 自下而上审计查出的三处写入侧缺陷,各配一个旗标,默认 0 ────────
+# 三者关时 write_phase 的行为与旗标引入前逐字节一致(输出字典不增键)。
+#
+# QVF_CARD_RENUMBER=1:跨批 record_id 重编号。
+#   缺陷:分批建卡时模型每批都从 "r1" 重新编号,而 `recs.extend(br)` 直接
+#   拼接,不做任何重编号 → 同 uid 内 record_id 大量碰撞。实测
+#   results/wt_cards:694 文件 / 65,774 条中 24,942 条(37.9%)碰撞,
+#   最坏单个文件 349 条都叫 "r1"。而 read_phase 用 record_id 作并查集
+#   节点 id(见 :463-475),碰撞会把不同事实折叠成同一节点——离线复算
+#   显示连通分量 30→8、最大分量 31/108→94/108,"抗污染分量"实际失效。
+#   仅影响需要多批的库:wt_cards_v42 碰撞 0.0%、v43 0.5%,而
+#   LME-KU 38.7% / LME-TR 34.7% / STALE-50 52.8%。
+#
+# QVF_CARD_VERIFY_SPAN=1:机械校验逐字锚点(违约只打标记,不删)。
+#   =2:同时剔除违约卡片。
+#   缺陷:建卡契约 Rule 1 要求 source_span 是该 memory 文本的逐字连续
+#   子串,但建卡路径上没有任何一行代码校验它。该约束是可机械检验的。
+#
+# QVF_CARD_FAIL_LOUD=1:把终态失败的批次数落盘。=2:有失败即抛异常不落盘。
+#   缺陷:`_catalog()` 递归到底失败后只打印一行就 return [], 0, 0,
+#   外层不检查照常写出一个"成功的"卡片文件并永久缓存(:251 存在即跳过);
+#   read_phase 对缺失/空卡片库又是静默当成"没有卡片"继续跑分。实测
+#   results/wt_cards 有 2 个 0 卡文件各烧掉约 142k input token,且都在
+#   results/wtqvf3_lmetr.jsonl 里被当作 mode="wt_qvf" 计了分。
+_CARD_RENUMBER = int(os.environ.get("QVF_CARD_RENUMBER", "0") or 0)
+_CARD_VERIFY_SPAN = int(os.environ.get("QVF_CARD_VERIFY_SPAN", "0") or 0)
+_CARD_FAIL_LOUD = int(os.environ.get("QVF_CARD_FAIL_LOUD", "0") or 0)
+
+
+def _renumber_batch(recs, bi):
+    """给一批卡片的 record_id 加批次前缀,并在同批内重映射关系边目标。
+
+    关系边只可能指向同批内的记录(模型一次只看见一批),因此同批统一加
+    前缀是完备的:批内引用继续命中,跨批引用本来就是悬空的(read_phase
+    :469 的 `if tgt in by_rid` 会静默丢弃),重编号不改变其悬空性质。
+    """
+    if not recs:
+        return recs
+    out = []
+    for r in recs:
+        r = dict(r)
+        old = r.get("record_id")
+        if old:
+            r["record_id"] = f"b{bi}#{old}"
+        tgts = r.get("relation_target_record_ids")
+        if tgts:
+            r["relation_target_record_ids"] = [f"b{bi}#{t}" for t in tgts]
+        out.append(r)
+    return out
+
 
 # ── 写入时:目录化抽取(查询无关) ──────────────────────────
 class CatalogExtraction(BaseModel):
@@ -305,16 +355,54 @@ def write_phase(data_path: str, limit_items: int = 0,
                 return r1 + r2, i1 + i2, o1 + o2
 
         recs, item_in, item_out = [], 0, 0
+        _failed_batches = _span_bad = _span_missing = 0
         for bi, batch in enumerate(batches):
             br, bi_in, bi_out = _catalog(batch)
             item_in += bi_in
             item_out += bi_out
+            # 失败签名:_catalog 终态失败路径返回 ([], 0, 0);而成功的空批
+            # 一定有 input_tokens > 0。故 (not br and bi_in == 0) 精确识别失败。
+            if not br and bi_in == 0:
+                _failed_batches += 1
+            if _CARD_RENUMBER and len(batches) > 1:
+                br = _renumber_batch(br, bi)
             recs.extend(br)
+        if _CARD_VERIFY_SPAN:
+            _txt = {p["memory_id"]: p["text"] for p in payload}
+            _all = "\n".join(p["text"] for p in payload)
+            for r in recs:
+                sp = (r.get("source_span") or "").strip()
+                if not sp:
+                    continue
+                if sp in _txt.get(r.get("source_memory_id"), ""):
+                    continue
+                _span_bad += 1
+                if sp not in _all:      # 改写或编造:全库都找不到这句话
+                    _span_missing += 1
+                r["source_span_verbatim"] = False
+            if _CARD_VERIFY_SPAN >= 2:
+                recs = [r for r in recs
+                        if r.get("source_span_verbatim") is not False]
+        if _CARD_FAIL_LOUD >= 2 and _failed_batches:
+            raise RuntimeError(
+                f"[{uid}] {_failed_batches}/{len(batches)} catalog batches "
+                f"failed terminally; refusing to cache a partial card library "
+                f"(QVF_CARD_FAIL_LOUD=2)")
         tot_in += item_in
         tot_out += item_out
+        _extra = {}
+        if _CARD_RENUMBER:
+            _extra["record_id_renumbered"] = True
+        if _CARD_VERIFY_SPAN:
+            _extra["span_violations"] = _span_bad
+            _extra["span_not_in_history"] = _span_missing
+            _extra["span_verify_mode"] = _CARD_VERIFY_SPAN
+        if _CARD_FAIL_LOUD:
+            _extra["failed_batches"] = _failed_batches
+            _extra["n_batches"] = len(batches)
         out_f.write_text(json.dumps(
             {"uid": uid, "records": recs,
-             "usage_in": item_in, "usage_out": item_out},
+             "usage_in": item_in, "usage_out": item_out, **_extra},
             ensure_ascii=False, indent=1), encoding="utf-8")
         print(f"[{uid}] {len(recs)} cards ({len(batches)} batch), "
               f"in={item_in} out={item_out} ({time.time()-t0:.0f}s)", flush=True)
