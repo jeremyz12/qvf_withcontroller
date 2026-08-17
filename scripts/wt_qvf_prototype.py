@@ -94,6 +94,11 @@ _CARD_RENUMBER = int(os.environ.get("QVF_CARD_RENUMBER", "0") or 0)
 _CARD_VERIFY_SPAN = int(os.environ.get("QVF_CARD_VERIFY_SPAN", "0") or 0)
 _CARD_FAIL_LOUD = int(os.environ.get("QVF_CARD_FAIL_LOUD", "0") or 0)
 
+# QVF_JUDGE_USAGE=1:把判官侧 token 用量逐行落盘(ClaudeJudge 自 08-16 起已
+# 返回 usage_input_tokens/usage_output_tokens,但 read_phase 从未写出)。
+# 默认 0 = 输出行不增键,与旗标引入前逐字节一致。
+_JUDGE_USAGE = int(os.environ.get("QVF_JUDGE_USAGE", "0") or 0)
+
 
 def _renumber_batch(recs, bi):
     """给一批卡片的 record_id 加批次前缀,并在同批内重映射关系边目标。
@@ -691,9 +696,14 @@ def read_phase(data_path: str, out_path: str, limit_items: int = 0,
         }
         if _FAIL_CLOSED and cards and not notes:
             row["wt_fail_closed"] = True  # 卡片在场但零裁决产出:显式降级标记
+        if _JUDGE_USAGE:
+            row["judge_input_tokens"] = v.usage_input_tokens
+            row["judge_output_tokens"] = v.usage_output_tokens
         fout.write(json.dumps(row, ensure_ascii=False) + "\n")
         fout.flush()
     fout.close()
+    if _JUDGE_USAGE:
+        print(f"JUDGE TOTAL USAGE: {judge.total_usage}")
     print("READ PHASE DONE")
 
 
