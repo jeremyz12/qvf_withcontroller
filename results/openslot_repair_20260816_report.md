@@ -41,6 +41,11 @@
 - 编译臂两床(150 行):haiku 318,524 in / 12,274 out ≈ $0.38;判官 opus ~120 判 ≈ $2-3(估);嵌入 93 个新短语(text-embedding-3-small,缓存落盘 `results/open_slot_embed_cache.json` 111→204)<$0.01;路由重跑/重放/回归零 LLM。
 - **本轮合计 ≈ $3-4 ≤ $15 预算**(含残余补跑 $2.4 记账后总账 ≈ $6)。
 
+> **⚠️ 08-17 更正**:"判官 opus ~120 判 ≈ $2-3(估)"为纯量级猜测。08-17 判官成本
+> 实测(155 次,均价 **$0.003078/次**)给出跨域代理值 **~120 判 ≈ $0.29**,本轮合计
+> 相应下修至 **≈ $0.7**。**诚实标注**:该单价为跨域/跨臂代理值,非本域直接实测;
+> "~120 判"的行数本身未被独立复核。依据:results/judge_cost_measured_20260816.md 3.2。
+
 ## 产物
 
 `results/openslot_repair_20260816_{s5_arm_P26,s5_arm_P69,s5_combined_P26,s5_combined_P69,routes_P69,router_P69,oldS5_regression,board}.jsonl` + 两份 .log + 本报告。
