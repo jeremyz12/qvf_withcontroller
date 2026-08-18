@@ -126,6 +126,8 @@ def _words(t: dict) -> List[str]:
     return _WORD.findall(t["q"].lower())
 
 
+DEFAULT_CHAINS = ["word1", "word2", "word3", "word3>word2>word1"]
+
 FEATURES: Dict[str, Callable[[dict], str]] = {
     "word1": lambda t: " ".join(_words(t)[:1]) or "<empty>",
     "word2": lambda t: " ".join(_words(t)[:2]) or "<empty>",
@@ -190,8 +192,14 @@ def _pick(d: Dict[str, List], arms: Sequence[str], min_sup: int,
 def lexical_router(rows: List[dict], arms: Sequence[str], feat: str,
                    seeds: Sequence[int] = tuple(range(5)), folds: int = 2,
                    min_sup: int = 10, slack: float = 0.01) -> dict:
-    """uid 级 K 折留出的零 LLM 路由。**所有行都计入分母**，不可用臂按 resolve() 回落。"""
-    fn = FEATURES[feat]
+    """uid 级 K 折留出的零 LLM 路由。**所有行都计入分母**，不可用臂按 resolve() 回落。
+
+    `feat` 可以是单个特征名，也可以是用 `>` 连起来的**回落链**（如 `word3>word2>word1`）：
+    测试时按链序找第一个支持度够的桶，全链落空才退到全局选臂。动机：细粒度桶命中率低
+    （word3 单用时 52.6% 的题落不到桶里），层级回落让细桶只在它真有数据时才生效。
+    """
+    chain = feat.split(">")
+    fns = [FEATURES[c] for c in chain]
     n = len(rows)
     accs, toks, fbs = [], [], []
     uids = sorted({t["uid"] for t in rows})
@@ -205,24 +213,32 @@ def lexical_router(rows: List[dict], arms: Sequence[str], feat: str,
         for f in range(folds):
             tr = [t for t in rows if assign[t["uid"]] != f]
             te = [t for t in rows if assign[t["uid"]] == f]
-            st: Dict[str, Dict[str, List]] = collections.defaultdict(
-                lambda: {a: [0, 0, 0.0] for a in arms})
+            sts: List[Dict[str, Dict[str, List]]] = [
+                collections.defaultdict(lambda: {a: [0, 0, 0.0] for a in arms})
+                for _ in fns]
             gd = {a: [0, 0, 0.0] for a in arms}
             for t in tr:
-                bk = fn(t)
+                for lv, fn in enumerate(fns):
+                    bk = fn(t)
+                    for a in arms:
+                        if has(t, a):
+                            sts[lv][bk][a][0] += ok(t, a)
+                            sts[lv][bk][a][1] += 1
+                            sts[lv][bk][a][2] += tok(t, a)
                 for a in arms:
                     if has(t, a):
-                        st[bk][a][0] += ok(t, a)
-                        st[bk][a][1] += 1
-                        st[bk][a][2] += tok(t, a)
                         gd[a][0] += ok(t, a)
                         gd[a][1] += 1
                         gd[a][2] += tok(t, a)
-            table = {bk: p for bk, d in st.items()
-                     if (p := _pick(d, arms, min_sup, slack))}
+            tables = [{bk: p for bk, d in st.items()
+                       if (p := _pick(d, arms, min_sup, slack))} for st in sts]
             glob = _pick(gd, arms, 1, slack)
             for t in te:
-                want = table.get(fn(t))
+                want = None
+                for lv, fn in enumerate(fns):
+                    want = tables[lv].get(fn(t))
+                    if want is not None:
+                        break
                 if want is None:
                     fb += 1
                     want = glob
@@ -301,7 +317,7 @@ def run(triples: str, qtext: Optional[str], seeds: int, folds: int,
                 "tok": v_tok, "score": score_of(v_acc, v_tok), "zero_llm": False,
                 "n": n, "fallback_rate": 0.0, "acc_spread": 0.0}
 
-    feats = [only_feature] if only_feature else [f for f in FEATURES if f != "const"]
+    feats = [only_feature] if only_feature else DEFAULT_CHAINS
     strategies: List[dict] = []
     if qtext:
         for arms in (ARMS, NO_RT):
@@ -335,7 +351,8 @@ def main() -> int:
     ap.add_argument("--no-qtext", action="store_true")
     ap.add_argument("--seeds", type=int, default=5)
     ap.add_argument("--folds", type=int, default=2)
-    ap.add_argument("--feature", default=None, choices=sorted(FEATURES))
+    ap.add_argument("--feature", default=None,
+                    help="特征名，或用 > 连接的回落链，如 word3>word2>word1")
     ap.add_argument("--emit", default=None)
     ap.add_argument("--metric", choices=["score", "tok", "acc", "none"], default="none")
     a = ap.parse_args()

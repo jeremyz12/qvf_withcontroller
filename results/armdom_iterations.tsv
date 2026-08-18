@@ -1,2 +1,3 @@
 iter	change	score	acc	tok	spread	decision	note
 0	baseline: word2 lexical router, no-rt, same-denominator	70.8166	71.88	2135	0.402	baseline	oracle_no_rt=78.804 ceiling
+1	hierarchical backoff word3>word2>word1	71.3239	72.33	2010	0.541	keep	fallback 23.6%->3.4%; beats factory on BOTH acc and tok
