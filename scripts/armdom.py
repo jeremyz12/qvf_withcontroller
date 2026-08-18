@@ -168,6 +168,7 @@ FEATURES: Dict[str, Callable[[dict], str]] = {
     "word1": lambda t: " ".join(_words(t)[:1]) or "<empty>",
     "word2": lambda t: " ".join(_words(t)[:2]) or "<empty>",
     "word3": lambda t: " ".join(_words(t)[:3]) or "<empty>",
+    "word4": lambda t: " ".join(_words(t)[:4]) or "<empty>",
     "wh": _wh_key,
     "agg": _agg_key,
     "len": lambda t: f"len{min(len(_words(t)) // 4, 6)}",
@@ -300,6 +301,101 @@ def lexical_router(rows: List[dict], arms: Sequence[str], feat: str,
             "score_by_seed": [round(x, 4) for x in per_seed],
             "fallback_rate": mean(fbs),
             "acc_by_seed": [round(x * 100, 2) for x in accs]}
+
+
+def shrinkage_router(rows: List[dict], arms: Sequence[str], levels: Sequence[str],
+                     k: float = 20.0, seeds: Sequence[int] = tuple(range(20)),
+                     folds: int = 2, slack: float = 0.01) -> dict:
+    """层级收缩路由（经验贝叶斯式）。
+
+    动机（实测，见 results/armdom_iterations.tsv 迭代 7）：细分桶 **in-sample** 上界很高
+    （skel 2,820 桶达 77.59 分，逐题 oracle 78.80），但留出只有 71.65——瓶颈是每桶样本
+    太少（2,820 桶摊 4,633 行），硬回落只能把支持不足的桶整个丢掉，信息随之丢掉。
+
+    收缩不丢桶：从最粗层到最细层逐层把子桶估计向父桶估计拉，权重按支持度
+        p_shrunk = (n_b * p_b + k * p_parent) / (n_b + k)
+    支持度大的细桶几乎保留自身估计，支持度小的细桶退化成父桶——是 `min_sup` 硬阈值的
+    连续版本。k 越大越保守。准确率与成本各自独立收缩，选臂规则不变（准确率在 slack 内
+    取最便宜）。
+    """
+    fns = [FEATURES[l] for l in levels]
+    n = len(rows)
+    accs, toks = [], []
+    uids = sorted({t["uid"] for t in rows})
+    for s in seeds:
+        rnd = random.Random(s)
+        u = uids[:]
+        rnd.shuffle(u)
+        assign = {x: i % folds for i, x in enumerate(u)}
+        c = tt = 0.0
+        for f in range(folds):
+            tr = [t for t in rows if assign[t["uid"]] != f]
+            te = [t for t in rows if assign[t["uid"]] == f]
+            # 每层每桶每臂的 (命中数, 计数, token 和)
+            lv_stat: List[Dict[str, Dict[str, List]]] = []
+            for fn in fns:
+                st: Dict[str, Dict[str, List]] = collections.defaultdict(
+                    lambda: {a: [0, 0, 0.0] for a in arms})
+                for t in tr:
+                    bk = fn(t)
+                    for a in arms:
+                        if has(t, a):
+                            st[bk][a][0] += ok(t, a)
+                            st[bk][a][1] += 1
+                            st[bk][a][2] += tok(t, a)
+                lv_stat.append(st)
+            # 全局先验
+            root = {a: [0, 0, 0.0] for a in arms}
+            for t in tr:
+                for a in arms:
+                    if has(t, a):
+                        root[a][0] += ok(t, a)
+                        root[a][1] += 1
+                        root[a][2] += tok(t, a)
+            prior = {a: ((root[a][0] / root[a][1]) if root[a][1] else 0.0,
+                         (root[a][2] / root[a][1]) if root[a][1] else 0.0)
+                     for a in arms}
+
+            def shrunk(t: dict) -> Dict[str, Tuple[float, float]]:
+                cur = dict(prior)
+                for lv, fn in enumerate(fns):
+                    d = lv_stat[lv].get(fn(t))
+                    if not d:
+                        continue
+                    nxt = {}
+                    for a in arms:
+                        hit, cnt, tks = d[a]
+                        pa, ca = cur[a]
+                        if cnt <= 0:
+                            nxt[a] = (pa, ca)
+                        else:
+                            w = cnt / (cnt + k)
+                            nxt[a] = (w * (hit / cnt) + (1 - w) * pa,
+                                      w * (tks / cnt) + (1 - w) * ca)
+                    cur = nxt
+                return cur
+
+            for t in te:
+                est = shrunk(t)
+                best = max(v[0] for v in est.values())
+                want = min([a for a in arms if est[a][0] >= best - slack],
+                           key=lambda a: est[a][1])
+                a = resolve(t, want)
+                if a is None:
+                    continue
+                c += ok(t, a)
+                tt += tok(t, a)
+        accs.append(c / n)
+        toks.append(tt / n)
+    mean = lambda x: sum(x) / len(x)
+    acc, tk = mean(accs), mean(toks)
+    per_seed = [score_of(a, t) for a, t in zip(accs, toks)]
+    return {"feature": f"shrink[{'>'.join(levels)}]k={k}", "arms": list(arms), "n": n,
+            "acc": acc, "tok": tk, "score": score_of(acc, tk),
+            "acc_spread": max(accs) - min(accs),
+            "score_spread": max(per_seed) - min(per_seed),
+            "score_by_seed": [round(x, 4) for x in per_seed],
+            "fallback_rate": 0.0, "acc_by_seed": [round(x * 100, 2) for x in accs]}
 
 
 def constant_strategy(rows: List[dict], arm: str) -> dict:
