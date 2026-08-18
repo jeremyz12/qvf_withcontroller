@@ -111,6 +111,26 @@ def _memories(entry: dict) -> List[MemoryItem]:
 
 
 # ── ② READ:带日期誊录渲染(framing_arm._fmt 同款) ─────────────
+# QVF_WARN_INSTRUCTION=1:切换为提示词臂(warned_direct)。
+# 指令**不在此处抄写**,而是运行时用 AST 从 scripts/run_decisive_stale.py 取出
+# 同名字面量——跨卷可比性要求一字不改,构造上保证而非靠人工核对。
+_WARN_ARM = int(os.environ.get("QVF_WARN_INSTRUCTION", "0") or 0)
+
+
+def _warn_instruction() -> str:
+    """从 run_decisive_stale.py 读出 _WARN_INSTRUCTION 字面量(不 import 该模块,
+    避免其模块级副作用)。取不到即抛错——宁可跑不起来,也不要用一条近似的指令
+    产出一份看起来可比、实际不可比的成绩。"""
+    import ast
+    src = (Path(__file__).resolve().parent / "run_decisive_stale.py").read_text(
+        encoding="utf-8")
+    for node in ast.parse(src).body:
+        if isinstance(node, ast.Assign) and any(
+                getattr(t, "id", None) == "_WARN_INSTRUCTION" for t in node.targets):
+            return ast.literal_eval(node.value)
+    raise RuntimeError("run_decisive_stale.py 里找不到 _WARN_INSTRUCTION")
+
+
 def reader_content(query, memories, query_date=None) -> str:
     """与 scripts/framing_arm.py 的 _fmt 逐位一致(冒烟按 AST 提取原件断言
     输出逐字节相等)。"""
@@ -203,13 +223,17 @@ def run(data_paths: List[str], questions_path: str, out_path: str,
 
         # ② 读者(只见带日期誊录 + 日期 + 问题;gold 绝不进此调用)
         qdate = _query_date(entry, q["question"])
+        # QVF_WARN_INSTRUCTION=1:提示词臂(warned_direct)。逐字复用
+        # scripts/run_decisive_stale._WARN_INSTRUCTION,并遵守该臂的两条口径:
+        # 检索仍用**原问题**(指令不进检索),指令只追加到传给读者的问题。
+        # 默认 0 时 reader_content 的入参与旗标引入前逐字节相同。
+        _rq = q["question"] + _warn_instruction() if _WARN_ARM else q["question"]
         rr = client.messages.create(
             model=MODEL, max_tokens=READER_MAX_TOKENS, temperature=0.0,
             system=[{"type": "text", "text": READER_SYSTEM,
                      "cache_control": {"type": "ephemeral"}}],
             messages=[{"role": "user",
-                       "content": reader_content(q["question"], retrieved,
-                                                 qdate)}],
+                       "content": reader_content(_rq, retrieved, qdate)}],
         )
         answer = "".join(b.text for b in rr.content if b.type == "text")
 
@@ -224,7 +248,8 @@ def run(data_paths: List[str], questions_path: str, out_path: str,
             n_ok += bool(jc)
 
         row = {
-            "question_id": qid, "mode": "wsc_direct", "uid": uid,
+            "question_id": qid,
+            "mode": "warned_direct" if _WARN_ARM else "wsc_direct", "uid": uid,
             "question_type": q.get("qtype"), "question": q["question"],
             "gold_answer": gold, "answer": answer,
             "retrieved_memory_ids": [m.memory_id for m in retrieved],
