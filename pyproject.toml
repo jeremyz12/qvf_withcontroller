@@ -1,0 +1,18 @@
+[project]
+name = "armdom"
+version = "0.1.0"
+description = "Arm dominance audit and zero-LLM routing for multi-strategy memory/RAG systems"
+readme = "armdom/README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+armdom = "armdom.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["armdom"]

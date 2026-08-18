@@ -9,3 +9,4 @@ iter	change	score	acc	tok	spread	decision	note
 9	per-store online adaptation (prequential, bandit-honest)	71.9083	72.86	1910	NA	keep	+0.2606 t=5.07 17/20; pure-store signal NEGATIVE, only complements text routing
 10-12	combine text chain + per-store	72.0384	72.96	1846	NA	keep	word3>word2>wh + k=10 best; +0.391 vs text-only t=6.74 19/20
 13-15	per-bench robustness + cold-start profile	71.9859	72.91	1852	0.738	final	integrated into armdom.py; 9/15 benches win on score; NOT universal
+pkg	standalone armdom package (core/features/ingest/audit/cli)	71.9859	72.91	1852	NA	ship	verified bit-identical to scripts/armdom.py on QVF data; 2 bugs found+fixed during extraction (q/question field mismatch collapsed all buckets; silent dup-qid merge dropped 340 rows)
