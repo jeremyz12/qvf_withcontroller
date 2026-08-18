@@ -7,6 +7,7 @@ import json
 import sys
 
 from .audit import audit
+from .fit import fit_from_logs
 
 
 def main(argv=None) -> int:
@@ -24,7 +25,25 @@ def main(argv=None) -> int:
     a.add_argument("--emit", default=None)
     a.add_argument("--metric", choices=["score", "acc", "tok"], default=None,
                    help="print one number only (for CI / iteration loops)")
+    f = sub.add_parser("fit", help="拟合并导出可部署路由表(全量拟合,零 LLM)")
+    f.add_argument("logs")
+    f.add_argument("--out", required=True)
+    f.add_argument("--drop-arm", action="append", default=[])
+    f.add_argument("--chain", default=None)
+    f.add_argument("--k-store", type=float, default=10.0)
     ns = ap.parse_args(argv)
+
+    if ns.cmd == "fit":
+        t = fit_from_logs(ns.logs, ns.drop_arm, ns.chain, ns.k_store)
+        with open(ns.out, "w", encoding="utf-8") as fh:
+            json.dump(t, fh, ensure_ascii=False, indent=1)
+        n = sum(len(l["table"]) for l in t["levels"])
+        print(f"fitted on {t['n_fit']} rows | arms {t['arms']} | "
+              f"chain {'>'.join(t['chain'])} | {n} buckets | global={t['global']}")
+        for l in t["levels"]:
+            print(f"  {l['feature']:8s} {len(l['table']):5d} buckets")
+        print(f"wrote {ns.out}")
+        return 0
 
     r = audit(ns.logs, ns.seeds, ns.folds, ns.token_weight, ns.drop_arm, ns.chain)
     b = r["best"]

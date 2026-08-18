@@ -292,7 +292,7 @@ def combined_router(rows: List[dict], arms: Sequence[str],
     """
     fns = [features[c] for c in chain.split(">")]
     n = len(rows)
-    accs, toks = [], []
+    accs, toks, arm_fbs = [], [], []
     uids = sorted({t["uid"] for t in rows})
     for s in seeds:
         rnd = random.Random(s)
@@ -300,6 +300,7 @@ def combined_router(rows: List[dict], arms: Sequence[str],
         rnd.shuffle(u)
         assign = {x: i % folds for i, x in enumerate(u)}
         c = tt = 0.0
+        arm_fb = 0
         for f in range(folds):
             tr = [t for t in rows if assign[t["uid"]] != f]
             te = [t for t in rows if assign[t["uid"]] == f]
@@ -356,6 +357,7 @@ def combined_router(rows: List[dict], arms: Sequence[str],
                     run[a][2] += tok(t, a)
         accs.append(c / n)
         toks.append(tt / n)
+        arm_fbs.append(arm_fb / n)
     mean = lambda x: sum(x) / len(x)
     acc, tk = mean(accs), mean(toks)
     per_seed = [score_of(a, t) for a, t in zip(accs, toks)]
@@ -364,7 +366,8 @@ def combined_router(rows: List[dict], arms: Sequence[str],
             "acc_spread": max(accs) - min(accs),
             "score_spread": max(per_seed) - min(per_seed),
             "score_by_seed": [round(x, 4) for x in per_seed],
-            "fallback_rate": 0.0, "acc_by_seed": [round(x * 100, 2) for x in accs]}
+            "fallback_rate": 0.0, "arm_unavailable_rate": mean(arm_fbs),
+            "acc_by_seed": [round(x * 100, 2) for x in accs]}
 
 
 def constant_strategy(rows: List[dict], arm: str) -> dict:

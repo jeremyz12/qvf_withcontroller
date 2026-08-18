@@ -1,0 +1,792 @@
+{
+ "chain": [
+  "word3",
+  "word2",
+  "wh"
+ ],
+ "arms": [
+  "prompt",
+  "direct",
+  "wt"
+ ],
+ "fallback_order": [
+  "prompt",
+  "direct",
+  "wt",
+  "rt"
+ ],
+ "global": "wt",
+ "k_store": 10.0,
+ "slack": 0.02,
+ "min_sup": 10,
+ "levels": [
+  {
+   "feature": "word3",
+   "table": {
+    "since i'm on": {
+     "arm": "wt",
+     "acc": 0.7333,
+     "tok": 2451.1,
+     "n": 15
+    },
+    "can you walk": {
+     "arm": "wt",
+     "acc": 0.9024,
+     "tok": 3136.7,
+     "n": 82
+    },
+    "back on 2025": {
+     "arm": "wt",
+     "acc": 0.8795,
+     "tok": 2367.4,
+     "n": 83
+    },
+    "what am i": {
+     "arm": "direct",
+     "acc": 0.9,
+     "tok": 746.2,
+     "n": 10
+    },
+    "can you help": {
+     "arm": "wt",
+     "acc": 0.9091,
+     "tok": 2443.6,
+     "n": 11
+    },
+    "walk me through": {
+     "arm": "wt",
+     "acc": 0.875,
+     "tok": 2775.9,
+     "n": 24
+    },
+    "where am i": {
+     "arm": "direct",
+     "acc": 0.9333,
+     "tok": 1175.9,
+     "n": 15
+    },
+    "what kind of": {
+     "arm": "prompt",
+     "acc": 0.7143,
+     "tok": 826.0,
+     "n": 91
+    },
+    "how has my": {
+     "arm": "wt",
+     "acc": 0.8534,
+     "tok": 2988.8,
+     "n": 307
+    },
+    "based on the": {
+     "arm": "prompt",
+     "acc": 0.5547,
+     "tok": 2029.6,
+     "n": 494
+    },
+    "since the user": {
+     "arm": "prompt",
+     "acc": 0.5474,
+     "tok": 2264.9,
+     "n": 369
+    },
+    "i m trying": {
+     "arm": "prompt",
+     "acc": 0.6719,
+     "tok": 2152.1,
+     "n": 64
+    },
+    "i want to": {
+     "arm": "direct",
+     "acc": 0.6571,
+     "tok": 5273.0,
+     "n": 35
+    },
+    "i m planning": {
+     "arm": "prompt",
+     "acc": 0.8049,
+     "tok": 2280.1,
+     "n": 41
+    },
+    "given that the": {
+     "arm": "prompt",
+     "acc": 0.6154,
+     "tok": 2232.0,
+     "n": 13
+    },
+    "i ve been": {
+     "arm": "direct",
+     "acc": 0.72,
+     "tok": 4959.9,
+     "n": 25
+    },
+    "i need to": {
+     "arm": "direct",
+     "acc": 0.625,
+     "tok": 4996.5,
+     "n": 16
+    },
+    "i m thinking": {
+     "arm": "prompt",
+     "acc": 0.45,
+     "tok": 1880.6,
+     "n": 20
+    },
+    "today is 1994": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2523.9,
+     "n": 10
+    },
+    "what position did": {
+     "arm": "wt",
+     "acc": 0.8438,
+     "tok": 2579.2,
+     "n": 96
+    },
+    "today is 2010": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1020.4,
+     "n": 18
+    },
+    "today is 2022": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2533.4,
+     "n": 20
+    },
+    "today is 2014": {
+     "arm": "direct",
+     "acc": 0.9,
+     "tok": 910.1,
+     "n": 10
+    },
+    "today is 1995": {
+     "arm": "wt",
+     "acc": 0.9375,
+     "tok": 2418.8,
+     "n": 16
+    },
+    "today is 2015": {
+     "arm": "prompt",
+     "acc": 0.8125,
+     "tok": 1074.2,
+     "n": 16
+    },
+    "today is 1998": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2499.1,
+     "n": 16
+    },
+    "today is 2008": {
+     "arm": "direct",
+     "acc": 1.0,
+     "tok": 952.4,
+     "n": 14
+    },
+    "today is 2012": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1050.6,
+     "n": 10
+    },
+    "today is 2004": {
+     "arm": "direct",
+     "acc": 1.0,
+     "tok": 909.6,
+     "n": 10
+    },
+    "today is 2019": {
+     "arm": "wt",
+     "acc": 0.95,
+     "tok": 2546.6,
+     "n": 20
+    },
+    "today is 2011": {
+     "arm": "wt",
+     "acc": 0.9,
+     "tok": 2413.8,
+     "n": 20
+    },
+    "today is 2018": {
+     "arm": "direct",
+     "acc": 0.9091,
+     "tok": 901.2,
+     "n": 22
+    },
+    "today is 2007": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2440.6,
+     "n": 16
+    },
+    "today is 2017": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1072.0,
+     "n": 10
+    },
+    "today is 1997": {
+     "arm": "prompt",
+     "acc": 0.7,
+     "tok": 1095.9,
+     "n": 10
+    },
+    "today is 2021": {
+     "arm": "direct",
+     "acc": 1.0,
+     "tok": 896.9,
+     "n": 22
+    },
+    "today is 2016": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1080.6,
+     "n": 14
+    },
+    "today is 1859": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2443.2,
+     "n": 12
+    },
+    "today is 2001": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2450.6,
+     "n": 14
+    },
+    "today is 2006": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2438.3,
+     "n": 20
+    },
+    "today is 2005": {
+     "arm": "prompt",
+     "acc": 0.8333,
+     "tok": 1075.8,
+     "n": 12
+    },
+    "what employer did": {
+     "arm": "wt",
+     "acc": 0.9,
+     "tok": 2616.1,
+     "n": 120
+    },
+    "today is 2013": {
+     "arm": "direct",
+     "acc": 1.0,
+     "tok": 872.6,
+     "n": 16
+    },
+    "today is 2003": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1025.5,
+     "n": 10
+    },
+    "today is 2009": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1031.2,
+     "n": 12
+    },
+    "today is 1999": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 1024.2,
+     "n": 10
+    },
+    "today is 2023": {
+     "arm": "wt",
+     "acc": 0.8889,
+     "tok": 2482.4,
+     "n": 18
+    },
+    "today is 2020": {
+     "arm": "wt",
+     "acc": 1.0,
+     "tok": 2490.8,
+     "n": 18
+    },
+    "today is 2002": {
+     "arm": "direct",
+     "acc": 1.0,
+     "tok": 886.4,
+     "n": 14
+    },
+    "what team did": {
+     "arm": "wt",
+     "acc": 0.962,
+     "tok": 2579.3,
+     "n": 79
+    },
+    "today is 2024": {
+     "arm": "prompt",
+     "acc": 0.9375,
+     "tok": 1049.6,
+     "n": 16
+    },
+    "what residence did": {
+     "arm": "wt",
+     "acc": 0.8182,
+     "tok": 2508.0,
+     "n": 11
+    },
+    "how many days": {
+     "arm": "prompt",
+     "acc": 0.9167,
+     "tok": 2887.8,
+     "n": 36
+    },
+    "how many weeks": {
+     "arm": "prompt",
+     "acc": 0.6667,
+     "tok": 2856.8,
+     "n": 12
+    },
+    "what is the": {
+     "arm": "prompt",
+     "acc": 0.7273,
+     "tok": 1378.6,
+     "n": 33
+    },
+    "what was the": {
+     "arm": "prompt",
+     "acc": 0.8929,
+     "tok": 1174.6,
+     "n": 28
+    },
+    "what type of": {
+     "arm": "prompt",
+     "acc": 0.88,
+     "tok": 855.0,
+     "n": 50
+    },
+    "what did maria": {
+     "arm": "wt",
+     "acc": 0.9231,
+     "tok": 2331.8,
+     "n": 13
+    },
+    "what activity did": {
+     "arm": "direct",
+     "acc": 0.8182,
+     "tok": 594.7,
+     "n": 11
+    },
+    "how often does": {
+     "arm": "prompt",
+     "acc": 0.7857,
+     "tok": 781.6,
+     "n": 14
+    },
+    "what are the": {
+     "arm": "direct",
+     "acc": 0.5,
+     "tok": 601.2,
+     "n": 12
+    },
+    "what did john": {
+     "arm": "direct",
+     "acc": 0.625,
+     "tok": 635.1,
+     "n": 16
+    },
+    "what did audrey": {
+     "arm": "direct",
+     "acc": 0.8,
+     "tok": 690.4,
+     "n": 10
+    },
+    "when did john": {
+     "arm": "prompt",
+     "acc": 0.7241,
+     "tok": 783.9,
+     "n": 29
+    },
+    "what did calvin": {
+     "arm": "direct",
+     "acc": 1.0,
+     "tok": 626.1,
+     "n": 10
+    },
+    "i ve got": {
+     "arm": "direct",
+     "acc": 0.8,
+     "tok": 4650.5,
+     "n": 10
+    },
+    "i m about": {
+     "arm": "direct",
+     "acc": 0.7,
+     "tok": 4696.7,
+     "n": 10
+    },
+    "when did caroline": {
+     "arm": "prompt",
+     "acc": 0.9375,
+     "tok": 880.2,
+     "n": 16
+    },
+    "when did melanie": {
+     "arm": "prompt",
+     "acc": 0.8333,
+     "tok": 790.6,
+     "n": 12
+    },
+    "when did maria": {
+     "arm": "direct",
+     "acc": 0.7,
+     "tok": 609.9,
+     "n": 10
+    },
+    "what does john": {
+     "arm": "direct",
+     "acc": 0.9,
+     "tok": 715.3,
+     "n": 10
+    },
+    "when did james": {
+     "arm": "direct",
+     "acc": 0.7,
+     "tok": 568.6,
+     "n": 10
+    }
+   }
+  },
+  {
+   "feature": "word2",
+   "table": {
+    "since i'm": {
+     "arm": "wt",
+     "acc": 0.7805,
+     "tok": 2480.8,
+     "n": 41
+    },
+    "can you": {
+     "arm": "wt",
+     "acc": 0.901,
+     "tok": 3055.2,
+     "n": 101
+    },
+    "back on": {
+     "arm": "wt",
+     "acc": 0.8721,
+     "tok": 2369.9,
+     "n": 86
+    },
+    "what am": {
+     "arm": "direct",
+     "acc": 0.9,
+     "tok": 746.2,
+     "n": 10
+    },
+    "what's my": {
+     "arm": "direct",
+     "acc": 0.9167,
+     "tok": 688.5,
+     "n": 12
+    },
+    "since the": {
+     "arm": "prompt",
+     "acc": 0.543,
+     "tok": 2261.6,
+     "n": 372
+    },
+    "walk me": {
+     "arm": "wt",
+     "acc": 0.875,
+     "tok": 2775.9,
+     "n": 24
+    },
+    "which city": {
+     "arm": "prompt",
+     "acc": 0.5,
+     "tok": 720.5,
+     "n": 10
+    },
+    "where am": {
+     "arm": "direct",
+     "acc": 0.9333,
+     "tok": 1175.9,
+     "n": 15
+    },
+    "what was": {
+     "arm": "prompt",
+     "acc": 0.7636,
+     "tok": 1222.5,
+     "n": 55
+    },
+    "what kind": {
+     "arm": "prompt",
+     "acc": 0.7143,
+     "tok": 826.0,
+     "n": 91
+    },
+    "how has": {
+     "arm": "wt",
+     "acc": 0.8553,
+     "tok": 3037.1,
+     "n": 311
+    },
+    "based on": {
+     "arm": "prompt",
+     "acc": 0.5535,
+     "tok": 2027.0,
+     "n": 495
+    },
+    "i just": {
+     "arm": "prompt",
+     "acc": 0.5,
+     "tok": 2367.7,
+     "n": 12
+    },
+    "i m": {
+     "arm": "prompt",
+     "acc": 0.6417,
+     "tok": 2154.1,
+     "n": 187
+    },
+    "i want": {
+     "arm": "direct",
+     "acc": 0.641,
+     "tok": 5318.0,
+     "n": 39
+    },
+    "i need": {
+     "arm": "direct",
+     "acc": 0.6,
+     "tok": 4938.2,
+     "n": 20
+    },
+    "given that": {
+     "arm": "prompt",
+     "acc": 0.6154,
+     "tok": 2232.0,
+     "n": 13
+    },
+    "i ve": {
+     "arm": "direct",
+     "acc": 0.7297,
+     "tok": 4907.1,
+     "n": 37
+    },
+    "today is": {
+     "arm": "prompt",
+     "acc": 0.9395,
+     "tok": 1031.4,
+     "n": 612
+    },
+    "what position": {
+     "arm": "wt",
+     "acc": 0.8438,
+     "tok": 2579.2,
+     "n": 96
+    },
+    "what employer": {
+     "arm": "wt",
+     "acc": 0.9,
+     "tok": 2616.1,
+     "n": 120
+    },
+    "what team": {
+     "arm": "wt",
+     "acc": 0.962,
+     "tok": 2579.3,
+     "n": 79
+    },
+    "what residence": {
+     "arm": "wt",
+     "acc": 0.8182,
+     "tok": 2508.0,
+     "n": 11
+    },
+    "how many": {
+     "arm": "prompt",
+     "acc": 0.8208,
+     "tok": 2431.0,
+     "n": 106
+    },
+    "which event": {
+     "arm": "prompt",
+     "acc": 1.0,
+     "tok": 2693.4,
+     "n": 10
+    },
+    "what is": {
+     "arm": "prompt",
+     "acc": 0.72,
+     "tok": 1043.8,
+     "n": 100
+    },
+    "who did": {
+     "arm": "prompt",
+     "acc": 0.8,
+     "tok": 1057.6,
+     "n": 10
+    },
+    "what did": {
+     "arm": "prompt",
+     "acc": 0.784,
+     "tok": 785.6,
+     "n": 162
+    },
+    "where did": {
+     "arm": "prompt",
+     "acc": 0.84,
+     "tok": 894.8,
+     "n": 25
+    },
+    "how long": {
+     "arm": "prompt",
+     "acc": 0.7692,
+     "tok": 2884.8,
+     "n": 13
+    },
+    "when did": {
+     "arm": "direct",
+     "acc": 0.7384,
+     "tok": 679.6,
+     "n": 172
+    },
+    "how often": {
+     "arm": "prompt",
+     "acc": 0.7647,
+     "tok": 1070.5,
+     "n": 17
+    },
+    "what type": {
+     "arm": "prompt",
+     "acc": 0.88,
+     "tok": 855.0,
+     "n": 50
+    },
+    "what new": {
+     "arm": "prompt",
+     "acc": 0.5833,
+     "tok": 981.2,
+     "n": 12
+    },
+    "how does": {
+     "arm": "direct",
+     "acc": 0.9412,
+     "tok": 625.1,
+     "n": 34
+    },
+    "what are": {
+     "arm": "direct",
+     "acc": 0.5357,
+     "tok": 629.9,
+     "n": 28
+    },
+    "what does": {
+     "arm": "prompt",
+     "acc": 0.8769,
+     "tok": 831.3,
+     "n": 65
+    },
+    "why did": {
+     "arm": "direct",
+     "acc": 0.9167,
+     "tok": 665.5,
+     "n": 36
+    },
+    "what activity": {
+     "arm": "direct",
+     "acc": 0.75,
+     "tok": 625.4,
+     "n": 16
+    },
+    "how did": {
+     "arm": "direct",
+     "acc": 0.8298,
+     "tok": 669.1,
+     "n": 47
+    },
+    "what has": {
+     "arm": "prompt",
+     "acc": 0.7,
+     "tok": 762.6,
+     "n": 10
+    },
+    "which country": {
+     "arm": "direct",
+     "acc": 0.7,
+     "tok": 553.9,
+     "n": 10
+    }
+   }
+  },
+  {
+   "feature": "wh",
+   "table": {
+    "what": {
+     "arm": "wt",
+     "acc": 0.7103,
+     "tok": 2579.2,
+     "n": 1239
+    },
+    "other": {
+     "arm": "wt",
+     "acc": 0.776,
+     "tok": 2941.8,
+     "n": 1277
+    },
+    "which": {
+     "arm": "prompt",
+     "acc": 0.6688,
+     "tok": 1215.2,
+     "n": 154
+    },
+    "how": {
+     "arm": "wt",
+     "acc": 0.7741,
+     "tok": 3459.4,
+     "n": 571
+    },
+    "where": {
+     "arm": "prompt",
+     "acc": 0.8438,
+     "tok": 1078.1,
+     "n": 64
+    },
+    "who": {
+     "arm": "prompt",
+     "acc": 0.7561,
+     "tok": 936.7,
+     "n": 41
+    },
+    "when": {
+     "arm": "direct",
+     "acc": 0.7382,
+     "tok": 674.5,
+     "n": 191
+    },
+    "why": {
+     "arm": "direct",
+     "acc": 0.9348,
+     "tok": 678.7,
+     "n": 46
+    }
+   }
+  }
+ ],
+ "prior": {
+  "prompt": {
+   "acc": 0.6538,
+   "tok": 1390.0
+  },
+  "direct": {
+   "acc": 0.5871,
+   "tok": 2129.1
+  },
+  "wt": {
+   "acc": 0.7256,
+   "tok": 2873.3
+  }
+ },
+ "n_fit": 4633
+}

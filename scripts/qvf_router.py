@@ -368,6 +368,32 @@ def route(uid, focus):
     return "wt" if depth >= 3 else "rt"
 
 
+# QVF_ROUTER_LEXICAL=<路由表.json>:改用零 LLM 词法路由 + 按库在线自适应,
+# 并**跳过聚焦调用**(这正是省下的那次在线 LLM 调用 —— focus_of 的输出只喂
+# route_v2,不喂任何一条臂,见本文件 :363-381)。表由 `armdom fit` 产出。
+# 未设置(默认)时不加载任何东西,focuses 照常计算、route_v2 照常调用,
+# 与本旗标引入前逐字节等价。
+# 已知偏差(须同页写明):本 harness 不记录逐题 token,故按库自适应的成本项
+# 用表里的先验 tok 代替运行均值。成本项只在 slack 内做同分裁决、不影响准确率
+# 自适应,但这意味着此处决策与 armdom 离线评估可能在极少数并列桶上不同。
+_LEXICAL_TABLE_PATH = os.environ.get("QVF_ROUTER_LEXICAL", "")
+_LEX_TABLE = None
+_LEX_ROUTERS = {}
+
+
+def _lex_router(uid):
+    """按库一个 StoreRouter 实例(前瞻 + bandit 由该类结构强制)。"""
+    global _LEX_TABLE
+    if _LEX_TABLE is None:
+        import json as _json
+        _LEX_TABLE = _json.loads(
+            Path(_LEXICAL_TABLE_PATH).read_text(encoding="utf-8"))
+    if uid not in _LEX_ROUTERS:
+        from armdom.fit import StoreRouter
+        _LEX_ROUTERS[uid] = StoreRouter(_LEX_TABLE)
+    return _LEX_ROUTERS[uid]
+
+
 def route_v2(uid, focus, question="", bench="", qid=""):
     """旗标路由(QVF_ROUTER_KEYS / QVF_GATE_V2 至少其一开启时使用):
     返回 (route, keyed_depth)。GATE_V2 关闭时决策规则与 route() 完全一致,
@@ -476,8 +502,11 @@ def main():
         _split = {it["uid"]: it.get("split", "test") for it in items}
         if any(v != "test" for v in _split.values()):
             qs = [x for x in qs if _split.get(x[0], "test") == "test"]
-        with ThreadPoolExecutor(max_workers=8) as ex:
-            focuses = list(ex.map(lambda x: focus_of(name, x[1], x[2]), qs))
+        if _LEXICAL_TABLE_PATH:
+            focuses = [None] * len(qs)   # 词法路由不需要聚焦 —— 省下的就是这次调用
+        else:
+            with ThreadPoolExecutor(max_workers=8) as ex:
+                focuses = list(ex.map(lambda x: focus_of(name, x[1], x[2]), qs))
         CACHE_F.write_text(json.dumps(cache, ensure_ascii=False), encoding="utf-8")
         if _LLM_INTENT:
             INTENT_CACHE_F.write_text(json.dumps(intent_cache, ensure_ascii=False),
@@ -487,8 +516,14 @@ def main():
         missing = 0
         correct = 0
         for (uid, qid, _q), fo in zip(qs, focuses):
-            if v2_active:
-                r, kd = route_v2(uid, fo, _q, name, qid)
+            if v2_active or _LEXICAL_TABLE_PATH:
+                # 只换**路由决策的来源**;下游的臂解析/降级/计分一行不改,
+                # 这样出问题时能确定是路由的锅而不是别处。
+                if _LEXICAL_TABLE_PATH:
+                    _sr = _lex_router(uid)
+                    r, kd = _sr.pick(_q), None
+                else:
+                    r, kd = route_v2(uid, fo, _q, name, qid)
                 dist[r] += 1
                 pick, res = r, None
                 if r == "prompt":
@@ -507,6 +542,9 @@ def main():
                             pick = "direct"
                     res = arms[pick].get(qid, False)
                 correct += bool(res)
+                if _LEXICAL_TABLE_PATH and pick:
+                    # bandit:只回填**实际跑过**的那条臂;没跑的臂线上观测不到。
+                    _sr.observe(pick, bool(res), None)
                 if route_f:
                     route_f.write(json.dumps(
                         {"bench": name, "uid": uid, "qid": qid,

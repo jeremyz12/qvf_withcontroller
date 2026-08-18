@@ -105,14 +105,36 @@ On a four-arm long-term-memory system (4,633 questions, 1,037 stores, 15 corpora
 
 | | factory router | armdom config | delta |
 |---|---|---|---|
-| accuracy | 72.24% | 72.91% | +0.67 pp |
-| tokens/question | 3,439 | 1,852 | **−46.1%** |
+| tokens/question | 3,439 | 1,841–1,875 | **−45.5% to −46.5%** |
 | online LLM routing calls | 1 per question | **0** | — |
+| accuracy | 72.24% | 70.29%–72.82% | **−1.95 pp to +0.58 pp** |
 
-**Most of that came from deleting one arm, not from smarter routing.** The deleted arm cost
-7.8–16.4× the tokens of its alternatives for +0.17 pp. Per-corpus, the final config beats the
+**The token saving is robust; the accuracy change is not established.** The accuracy range is
+not noise — it is the gap between two policies for the 5.2% of questions where the router picks
+an arm that has no archived result (see the arm-unavailability section above). Until those
+questions are actually run, the accuracy effect is unmeasured, and the honest claim is
+"same accuracy or slightly worse, at 46% of the tokens."
+
+**Most of the token saving came from deleting one arm, not from smarter routing.** The deleted
+arm cost 7.8–16.4× the tokens of its alternatives for +0.17 pp. Per-corpus, the config beats the
 factory router on 9 of 15 corpora — the gains concentrate where the factory router was sending
 questions to the expensive arm, and three corpora lose 4.3–4.6 pp. Report both numbers.
+
+## ⚠ 未跑过的臂:一个必须由你决定的口径
+
+日志里某道题没有某条臂的结果时,有两种含义,armdom 分不出来:
+
+1. **该臂在这道题上不适用**——回落到别的臂是正确行为
+2. **实验没跑它**——它的真实表现是**未知**,不是"回落臂的表现"
+
+armdom 默认按 (1) 处理(`FALLBACK_ORDER` 回落),并在结果里报
+`arm_unavailable_rate`。**这个数不为零时,分数是有条件的**:参考数据集上
+路由 5.2% 的题落在这里,把准确率结论从 **+0.58pp** 拉到 **−1.95pp**
+(悲观口径:未跑过的臂一律记为答错),而 token 节省在两种口径下都稳定在 −45~46%。
+
+**报分时必须同页给出 `arm_unavailable_rate` 和两种口径下的区间**,否则你会
+把一个未测量的洞报成一个确定的收益。这个洞是本工具在真实接线时才暴露出来的
+(离线评估自己看不见它)。
 
 ## What armdom will not tell you
 
