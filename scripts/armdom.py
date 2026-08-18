@@ -398,6 +398,97 @@ def shrinkage_router(rows: List[dict], arms: Sequence[str], levels: Sequence[str
             "fallback_rate": 0.0, "acc_by_seed": [round(x * 100, 2) for x in accs]}
 
 
+def combined_router(rows: List[dict], arms: Sequence[str], chain: str = "word3>word2>wh",
+                    k_store: float = 10.0, slack: float = 0.02, min_sup: int = 10,
+                    seeds: Sequence[int] = tuple(range(20)), folds: int = 2) -> dict:
+    """题面回落链 + **按库(uid)在线自适应**。当前最佳可部署策略。
+
+    为什么加按库自适应（实测，迭代 9/10-12）：记忆系统服务的是**持久的库**，同一个库会
+    被反复提问；而已有的轻量路由工作（arXiv 2604.03455 / 2606.02581 / 2604.09019）全部
+    是无状态的逐查询路由。按库累积"哪条臂在这个库上有效"，在题面路由之上再拿 +0.39 分
+    （20 种子配对 t=6.74，19/20 一致）。**纯库信号单独用是负的**——它是补充，不是替代。
+
+    两条部署诚实性约束，都已写进实现：
+      1. **前瞻性（prequential）**：每题只用该 uid 此前已答题的结果，不使用任何未来信息。
+      2. **bandit 约束**：只观测**被选中那条臂**的结果——部署时看不到没跑的臂会怎样。
+    """
+    fns = [FEATURES[c] for c in chain.split(">")]
+    n = len(rows)
+    accs, toks = [], []
+    uids = sorted({t["uid"] for t in rows})
+    for s in seeds:
+        rnd = random.Random(s)
+        u = uids[:]
+        rnd.shuffle(u)
+        assign = {x: i % folds for i, x in enumerate(u)}
+        c = tt = 0.0
+        for f in range(folds):
+            tr = [t for t in rows if assign[t["uid"]] != f]
+            te = [t for t in rows if assign[t["uid"]] == f]
+            glob = {a: [0, 0, 0.0] for a in arms}
+            sts = [collections.defaultdict(lambda: {a: [0, 0, 0.0] for a in arms})
+                   for _ in fns]
+            for t in tr:
+                for lv, fn in enumerate(fns):
+                    bk = fn(t)
+                    for a in arms:
+                        if has(t, a):
+                            sts[lv][bk][a][0] += ok(t, a)
+                            sts[lv][bk][a][1] += 1
+                            sts[lv][bk][a][2] += tok(t, a)
+                for a in arms:
+                    if has(t, a):
+                        glob[a][0] += ok(t, a)
+                        glob[a][1] += 1
+                        glob[a][2] += tok(t, a)
+            prior = {a: ((glob[a][0] / glob[a][1]) if glob[a][1] else 0.0,
+                         (glob[a][2] / glob[a][1]) if glob[a][1] else 0.0) for a in arms}
+            by_uid: Dict[str, List[dict]] = collections.defaultdict(list)
+            for t in te:
+                by_uid[t["uid"]].append(t)
+            for _uid, qs in by_uid.items():
+                run = {a: [0, 0, 0.0] for a in arms}   # 该库的在线累积（只含已选中的臂）
+                for t in qs:
+                    base = dict(prior)
+                    for lv, fn in enumerate(fns):
+                        d = sts[lv].get(fn(t))
+                        if d:
+                            cand = {a: (d[a][0] / d[a][1], d[a][2] / d[a][1])
+                                    for a in arms if d[a][1] >= min_sup}
+                            if cand:
+                                base = {**base, **cand}
+                                break
+                    est = {}
+                    for a in arms:
+                        hit, cnt, tks = run[a]
+                        pa, ca = base[a]
+                        w = cnt / (cnt + k_store) if cnt else 0.0
+                        est[a] = ((w * (hit / cnt) + (1 - w) * pa) if cnt else pa,
+                                  (w * (tks / cnt) + (1 - w) * ca) if cnt else ca)
+                    best = max(v[0] for v in est.values())
+                    want = min([a for a in arms if est[a][0] >= best - slack],
+                               key=lambda a: est[a][1])
+                    a = resolve(t, want)
+                    if a is None:
+                        continue
+                    c += ok(t, a)
+                    tt += tok(t, a)
+                    run[a][0] += ok(t, a)      # bandit：只更新被选中的臂
+                    run[a][1] += 1
+                    run[a][2] += tok(t, a)
+        accs.append(c / n)
+        toks.append(tt / n)
+    mean = lambda x: sum(x) / len(x)
+    acc, tk = mean(accs), mean(toks)
+    per_seed = [score_of(a, t) for a, t in zip(accs, toks)]
+    return {"feature": f"{chain}+store(k={k_store})", "arms": list(arms), "n": n,
+            "acc": acc, "tok": tk, "score": score_of(acc, tk),
+            "acc_spread": max(accs) - min(accs),
+            "score_spread": max(per_seed) - min(per_seed),
+            "score_by_seed": [round(x, 4) for x in per_seed],
+            "fallback_rate": 0.0, "acc_by_seed": [round(x * 100, 2) for x in accs]}
+
+
 def constant_strategy(rows: List[dict], arm: str) -> dict:
     """常数臂，**同分母**：该臂不可用的行按 resolve() 回落，回落计入分数。"""
     n = len(rows)
@@ -464,6 +555,11 @@ def run(triples: str, qtext: Optional[str], seeds: int, folds: int,
                 r["strategy"] = f"{f}·{'含rt' if 'rt' in arms else '无rt'}"
                 r["zero_llm"] = True
                 strategies.append(r)
+    if qtext:
+        r = combined_router(rows, NO_RT, seeds=tuple(range(max(seeds, 20))))
+        r["strategy"] = "★最终: word3>word2>wh + 按库自适应"
+        r["zero_llm"] = True
+        strategies.append(r)
     for a in ARMS:
         r = constant_strategy(rows, a)
         r["strategy"] = f"常数 {a}"

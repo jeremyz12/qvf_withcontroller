@@ -6,3 +6,6 @@ iter	change	score	acc	tok	spread	decision	note
 3-6	sweep: min_sup x slack x folds x chain depth	71.6477	72.62	1941	NA	partial	only slack=0.02 helps (+0.090 t=2.68 13/20); min_sup=10 already optimal; chains exhausted
 7	diagnose: in-sample bucket ceiling vs heldout	NA	NA	NA	NA	diagnostic	skel in-sample 77.59 vs heldout 71.65 -> bottleneck is statistical (2820 buckets/4633 rows), not features; cascade dead (is_abstention 0/4482)
 8	hierarchical shrinkage (empirical Bayes)	71.7760	72.73	1915	NA	weak-keep	only deepest chain k=5 helps (+0.128 t=2.58 15/20); 16/20 configs WORSE -> shrinkage hypothesis largely refuted
+9	per-store online adaptation (prequential, bandit-honest)	71.9083	72.86	1910	NA	keep	+0.2606 t=5.07 17/20; pure-store signal NEGATIVE, only complements text routing
+10-12	combine text chain + per-store	72.0384	72.96	1846	NA	keep	word3>word2>wh + k=10 best; +0.391 vs text-only t=6.74 19/20
+13-15	per-bench robustness + cold-start profile	71.9859	72.91	1852	0.738	final	integrated into armdom.py; 9/15 benches win on score; NOT universal
