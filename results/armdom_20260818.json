@@ -1,0 +1,1972 @@
+{
+ "join_stats": {
+  "triples": 5511,
+  "exact": 1720,
+  "prefix": 2913,
+  "ambiguous": 22,
+  "no_text": 856,
+  "joined": 4633
+ },
+ "n_rows": 4633,
+ "baseline": {
+  "strategy": "出厂 v4.2 四臂路由(含在线 LLM 聚焦)",
+  "acc": 0.7224260738182603,
+  "tok": 3439.01856248651,
+  "score": 70.52309810058279,
+  "zero_llm": false,
+  "n": 4633,
+  "fallback_rate": 0.0,
+  "acc_spread": 0.0,
+  "on_frontier": false
+ },
+ "dominance": [
+  {
+   "dominated_arm": "direct",
+   "by_arm": "rt",
+   "n": 4588,
+   "a_acc": 58.48,
+   "b_acc": 65.3,
+   "a_tok": 2142,
+   "b_tok": 22861,
+   "dominated_overall": false,
+   "benches_dominated": 0,
+   "benches_total": 14,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": 4.17,
+     "tok_ratio": 0.15
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": false,
+     "d_acc_pp": -3.15,
+     "tok_ratio": 0.09
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": -0.53,
+     "tok_ratio": 0.05
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1229,
+     "dominated": false,
+     "d_acc_pp": 2.85,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "STALE-full",
+     "n": 1200,
+     "dominated": false,
+     "d_acc_pp": 1.33,
+     "tok_ratio": 0.19
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": 12.26,
+     "tok_ratio": 0.05
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": 14.47,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": 6.67,
+     "tok_ratio": 0.19
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": 22.46,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": 19.12,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": 14.42,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": 11.36,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": 18.9,
+     "tok_ratio": 0.03
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": 8.55,
+     "tok_ratio": 0.03
+    }
+   ]
+  },
+  {
+   "dominated_arm": "direct",
+   "by_arm": "wt",
+   "n": 3583,
+   "a_acc": 64.11,
+   "b_acc": 72.56,
+   "a_tok": 1388,
+   "b_tok": 2873,
+   "dominated_overall": false,
+   "benches_dominated": 1,
+   "benches_total": 15,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": -12.5,
+     "tok_ratio": 1.15
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": true,
+     "d_acc_pp": 6.3,
+     "tok_ratio": 1.04
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": -11.05,
+     "tok_ratio": 0.27
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1230,
+     "dominated": false,
+     "d_acc_pp": -10.0,
+     "tok_ratio": 0.26
+    },
+    {
+     "bench": "STALE-full",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -4.67,
+     "tok_ratio": 1.05
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": 16.51,
+     "tok_ratio": 0.3
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": 20.61,
+     "tok_ratio": 0.28
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -4.0,
+     "tok_ratio": 1.05
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": 38.41,
+     "tok_ratio": 0.37
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": 29.41,
+     "tok_ratio": 0.37
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": 37.98,
+     "tok_ratio": 0.36
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": 32.39,
+     "tok_ratio": 0.36
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": 34.76,
+     "tok_ratio": 0.36
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": 11.18,
+     "tok_ratio": 0.36
+    },
+    {
+     "bench": "wiki-P551",
+     "n": 44,
+     "dominated": false,
+     "d_acc_pp": 6.82,
+     "tok_ratio": 0.34
+    }
+   ]
+  },
+  {
+   "dominated_arm": "direct",
+   "by_arm": "prompt",
+   "n": 4633,
+   "a_acc": 58.71,
+   "b_acc": 65.38,
+   "a_tok": 2129,
+   "b_tok": 1390,
+   "dominated_overall": true,
+   "benches_dominated": 4,
+   "benches_total": 15,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": true,
+     "d_acc_pp": 13.89,
+     "tok_ratio": 2.38
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": true,
+     "d_acc_pp": 23.62,
+     "tok_ratio": 2.26
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": 0.53,
+     "tok_ratio": 0.83
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1230,
+     "dominated": false,
+     "d_acc_pp": 0.81,
+     "tok_ratio": 0.81
+    },
+    {
+     "bench": "STALE-full",
+     "n": 1200,
+     "dominated": true,
+     "d_acc_pp": 12.5,
+     "tok_ratio": 2.12
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": 5.66,
+     "tok_ratio": 0.84
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": 3.07,
+     "tok_ratio": 0.47
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": true,
+     "d_acc_pp": 19.33,
+     "tok_ratio": 2.13
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": 3.62,
+     "tok_ratio": 0.89
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": 5.39,
+     "tok_ratio": 0.89
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": 9.62,
+     "tok_ratio": 0.88
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": 0.0,
+     "tok_ratio": 0.88
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": 6.1,
+     "tok_ratio": 0.88
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": 3.29,
+     "tok_ratio": 0.88
+    },
+    {
+     "bench": "wiki-P551",
+     "n": 44,
+     "dominated": false,
+     "d_acc_pp": 9.09,
+     "tok_ratio": 0.86
+    }
+   ]
+  },
+  {
+   "dominated_arm": "rt",
+   "by_arm": "direct",
+   "n": 4588,
+   "a_acc": 65.3,
+   "b_acc": 58.48,
+   "a_tok": 22861,
+   "b_tok": 2142,
+   "dominated_overall": false,
+   "benches_dominated": 2,
+   "benches_total": 14,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": -4.17,
+     "tok_ratio": 6.62
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": true,
+     "d_acc_pp": 3.15,
+     "tok_ratio": 10.54
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": true,
+     "d_acc_pp": 0.53,
+     "tok_ratio": 22.1
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1229,
+     "dominated": false,
+     "d_acc_pp": -2.85,
+     "tok_ratio": 24.8
+    },
+    {
+     "bench": "STALE-full",
+     "n": 1200,
+     "dominated": false,
+     "d_acc_pp": -1.33,
+     "tok_ratio": 5.25
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": -12.26,
+     "tok_ratio": 21.52
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": -14.47,
+     "tok_ratio": 22.69
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -6.67,
+     "tok_ratio": 5.31
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": -22.46,
+     "tok_ratio": 27.68
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": -19.12,
+     "tok_ratio": 28.15
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": -14.42,
+     "tok_ratio": 27.52
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": -11.36,
+     "tok_ratio": 27.3
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": -18.9,
+     "tok_ratio": 28.9
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": -8.55,
+     "tok_ratio": 29.3
+    }
+   ]
+  },
+  {
+   "dominated_arm": "rt",
+   "by_arm": "wt",
+   "n": 3538,
+   "a_acc": 72.53,
+   "b_acc": 72.36,
+   "a_tok": 22378,
+   "b_tok": 2879,
+   "dominated_overall": false,
+   "benches_dominated": 9,
+   "benches_total": 14,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": -16.67,
+     "tok_ratio": 7.64
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": true,
+     "d_acc_pp": 9.45,
+     "tok_ratio": 10.93
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": -10.53,
+     "tok_ratio": 5.9
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1229,
+     "dominated": false,
+     "d_acc_pp": -12.86,
+     "tok_ratio": 6.36
+    },
+    {
+     "bench": "STALE-full",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -10.67,
+     "tok_ratio": 5.45
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": true,
+     "d_acc_pp": 4.25,
+     "tok_ratio": 6.36
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": true,
+     "d_acc_pp": 6.14,
+     "tok_ratio": 6.34
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -10.67,
+     "tok_ratio": 5.57
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": true,
+     "d_acc_pp": 15.94,
+     "tok_ratio": 10.2
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": true,
+     "d_acc_pp": 10.29,
+     "tok_ratio": 10.3
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": true,
+     "d_acc_pp": 23.56,
+     "tok_ratio": 9.83
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": true,
+     "d_acc_pp": 21.02,
+     "tok_ratio": 9.76
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": true,
+     "d_acc_pp": 15.85,
+     "tok_ratio": 10.41
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": true,
+     "d_acc_pp": 2.63,
+     "tok_ratio": 10.41
+    }
+   ]
+  },
+  {
+   "dominated_arm": "rt",
+   "by_arm": "prompt",
+   "n": 4588,
+   "a_acc": 65.3,
+   "b_acc": 65.13,
+   "a_tok": 22861,
+   "b_tok": 1394,
+   "dominated_overall": false,
+   "benches_dominated": 5,
+   "benches_total": 14,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": true,
+     "d_acc_pp": 9.72,
+     "tok_ratio": 15.78
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": true,
+     "d_acc_pp": 26.77,
+     "tok_ratio": 23.79
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": true,
+     "d_acc_pp": 1.05,
+     "tok_ratio": 18.27
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1229,
+     "dominated": false,
+     "d_acc_pp": -2.03,
+     "tok_ratio": 20.21
+    },
+    {
+     "bench": "STALE-full",
+     "n": 1200,
+     "dominated": true,
+     "d_acc_pp": 11.17,
+     "tok_ratio": 11.15
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": -6.6,
+     "tok_ratio": 18.0
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": -11.4,
+     "tok_ratio": 10.56
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": true,
+     "d_acc_pp": 12.67,
+     "tok_ratio": 11.32
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": -18.84,
+     "tok_ratio": 24.6
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": -13.73,
+     "tok_ratio": 24.98
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": -4.81,
+     "tok_ratio": 24.24
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": -11.36,
+     "tok_ratio": 23.95
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": -12.8,
+     "tok_ratio": 25.53
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": -5.26,
+     "tok_ratio": 25.88
+    }
+   ]
+  },
+  {
+   "dominated_arm": "wt",
+   "by_arm": "direct",
+   "n": 3583,
+   "a_acc": 72.56,
+   "b_acc": 64.11,
+   "a_tok": 2873,
+   "b_tok": 1388,
+   "dominated_overall": false,
+   "benches_dominated": 2,
+   "benches_total": 15,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": 12.5,
+     "tok_ratio": 0.87
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": false,
+     "d_acc_pp": -6.3,
+     "tok_ratio": 0.96
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": true,
+     "d_acc_pp": 11.05,
+     "tok_ratio": 3.74
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1230,
+     "dominated": true,
+     "d_acc_pp": 10.0,
+     "tok_ratio": 3.9
+    },
+    {
+     "bench": "STALE-full",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": 4.67,
+     "tok_ratio": 0.95
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": -16.51,
+     "tok_ratio": 3.38
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": -20.61,
+     "tok_ratio": 3.58
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": 4.0,
+     "tok_ratio": 0.95
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": -38.41,
+     "tok_ratio": 2.71
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": -29.41,
+     "tok_ratio": 2.73
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": -37.98,
+     "tok_ratio": 2.8
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": -32.39,
+     "tok_ratio": 2.8
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": -34.76,
+     "tok_ratio": 2.78
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": -11.18,
+     "tok_ratio": 2.81
+    },
+    {
+     "bench": "wiki-P551",
+     "n": 44,
+     "dominated": false,
+     "d_acc_pp": -6.82,
+     "tok_ratio": 2.9
+    }
+   ]
+  },
+  {
+   "dominated_arm": "wt",
+   "by_arm": "rt",
+   "n": 3538,
+   "a_acc": 72.36,
+   "b_acc": 72.53,
+   "a_tok": 2879,
+   "b_tok": 22378,
+   "dominated_overall": false,
+   "benches_dominated": 0,
+   "benches_total": 14,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": 16.67,
+     "tok_ratio": 0.13
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": false,
+     "d_acc_pp": -9.45,
+     "tok_ratio": 0.09
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": 10.53,
+     "tok_ratio": 0.17
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1229,
+     "dominated": false,
+     "d_acc_pp": 12.86,
+     "tok_ratio": 0.16
+    },
+    {
+     "bench": "STALE-full",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": 10.67,
+     "tok_ratio": 0.18
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": -4.25,
+     "tok_ratio": 0.16
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": -6.14,
+     "tok_ratio": 0.16
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": 10.67,
+     "tok_ratio": 0.18
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": -15.94,
+     "tok_ratio": 0.1
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": -10.29,
+     "tok_ratio": 0.1
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": -23.56,
+     "tok_ratio": 0.1
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": -21.02,
+     "tok_ratio": 0.1
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": -15.85,
+     "tok_ratio": 0.1
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": -2.63,
+     "tok_ratio": 0.1
+    }
+   ]
+  },
+  {
+   "dominated_arm": "wt",
+   "by_arm": "prompt",
+   "n": 3583,
+   "a_acc": 72.56,
+   "b_acc": 69.33,
+   "a_tok": 2873,
+   "b_tok": 1154,
+   "dominated_overall": false,
+   "benches_dominated": 7,
+   "benches_total": 15,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": true,
+     "d_acc_pp": 26.39,
+     "tok_ratio": 2.06
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": true,
+     "d_acc_pp": 17.32,
+     "tok_ratio": 2.18
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": true,
+     "d_acc_pp": 11.58,
+     "tok_ratio": 3.09
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1230,
+     "dominated": true,
+     "d_acc_pp": 10.81,
+     "tok_ratio": 3.18
+    },
+    {
+     "bench": "STALE-full",
+     "n": 150,
+     "dominated": true,
+     "d_acc_pp": 23.33,
+     "tok_ratio": 2.03
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": -10.85,
+     "tok_ratio": 2.83
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": -17.54,
+     "tok_ratio": 1.67
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": true,
+     "d_acc_pp": 23.33,
+     "tok_ratio": 2.03
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": -34.78,
+     "tok_ratio": 2.41
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": -24.02,
+     "tok_ratio": 2.43
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": -28.37,
+     "tok_ratio": 2.47
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": -32.39,
+     "tok_ratio": 2.45
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": -28.66,
+     "tok_ratio": 2.45
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": -7.89,
+     "tok_ratio": 2.49
+    },
+    {
+     "bench": "wiki-P551",
+     "n": 44,
+     "dominated": true,
+     "d_acc_pp": 2.27,
+     "tok_ratio": 2.49
+    }
+   ]
+  },
+  {
+   "dominated_arm": "prompt",
+   "by_arm": "direct",
+   "n": 4633,
+   "a_acc": 65.38,
+   "b_acc": 58.71,
+   "a_tok": 1390,
+   "b_tok": 2129,
+   "dominated_overall": false,
+   "benches_dominated": 0,
+   "benches_total": 15,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": -13.89,
+     "tok_ratio": 0.42
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": false,
+     "d_acc_pp": -23.62,
+     "tok_ratio": 0.44
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": -0.53,
+     "tok_ratio": 1.21
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1230,
+     "dominated": false,
+     "d_acc_pp": -0.81,
+     "tok_ratio": 1.23
+    },
+    {
+     "bench": "STALE-full",
+     "n": 1200,
+     "dominated": false,
+     "d_acc_pp": -12.5,
+     "tok_ratio": 0.47
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": -5.66,
+     "tok_ratio": 1.2
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": -3.07,
+     "tok_ratio": 2.15
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -19.33,
+     "tok_ratio": 0.47
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": -3.62,
+     "tok_ratio": 1.13
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": -5.39,
+     "tok_ratio": 1.13
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": -9.62,
+     "tok_ratio": 1.14
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": 0.0,
+     "tok_ratio": 1.14
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": -6.1,
+     "tok_ratio": 1.13
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": -3.29,
+     "tok_ratio": 1.13
+    },
+    {
+     "bench": "wiki-P551",
+     "n": 44,
+     "dominated": false,
+     "d_acc_pp": -9.09,
+     "tok_ratio": 1.17
+    }
+   ]
+  },
+  {
+   "dominated_arm": "prompt",
+   "by_arm": "rt",
+   "n": 4588,
+   "a_acc": 65.13,
+   "b_acc": 65.3,
+   "a_tok": 1394,
+   "b_tok": 22861,
+   "dominated_overall": false,
+   "benches_dominated": 0,
+   "benches_total": 14,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": -9.72,
+     "tok_ratio": 0.06
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": false,
+     "d_acc_pp": -26.77,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": -1.05,
+     "tok_ratio": 0.05
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1229,
+     "dominated": false,
+     "d_acc_pp": 2.03,
+     "tok_ratio": 0.05
+    },
+    {
+     "bench": "STALE-full",
+     "n": 1200,
+     "dominated": false,
+     "d_acc_pp": -11.17,
+     "tok_ratio": 0.09
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": 6.6,
+     "tok_ratio": 0.06
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": 11.4,
+     "tok_ratio": 0.09
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -12.67,
+     "tok_ratio": 0.09
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": 18.84,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": 13.73,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": 4.81,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": 11.36,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": 12.8,
+     "tok_ratio": 0.04
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": 5.26,
+     "tok_ratio": 0.04
+    }
+   ]
+  },
+  {
+   "dominated_arm": "prompt",
+   "by_arm": "wt",
+   "n": 3583,
+   "a_acc": 69.33,
+   "b_acc": 72.56,
+   "a_tok": 1154,
+   "b_tok": 2873,
+   "dominated_overall": false,
+   "benches_dominated": 0,
+   "benches_total": 15,
+   "per_bench": [
+    {
+     "bench": "LME-KU",
+     "n": 72,
+     "dominated": false,
+     "d_acc_pp": -26.39,
+     "tok_ratio": 0.48
+    },
+    {
+     "bench": "LME-TR",
+     "n": 127,
+     "dominated": false,
+     "d_acc_pp": -17.32,
+     "tok_ratio": 0.46
+    },
+    {
+     "bench": "LoCoMo",
+     "n": 190,
+     "dominated": false,
+     "d_acc_pp": -11.58,
+     "tok_ratio": 0.32
+    },
+    {
+     "bench": "LoCoMo-full",
+     "n": 1230,
+     "dominated": false,
+     "d_acc_pp": -10.81,
+     "tok_ratio": 0.31
+    },
+    {
+     "bench": "STALE-full",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -23.33,
+     "tok_ratio": 0.49
+    },
+    {
+     "bench": "chain-212",
+     "n": 212,
+     "dominated": false,
+     "d_acc_pp": 10.85,
+     "tok_ratio": 0.35
+    },
+    {
+     "bench": "confirm-228",
+     "n": 228,
+     "dominated": false,
+     "d_acc_pp": 17.54,
+     "tok_ratio": 0.6
+    },
+    {
+     "bench": "stale-150",
+     "n": 150,
+     "dominated": false,
+     "d_acc_pp": -23.33,
+     "tok_ratio": 0.49
+    },
+    {
+     "bench": "wiki-P108-ext",
+     "n": 276,
+     "dominated": false,
+     "d_acc_pp": 34.78,
+     "tok_ratio": 0.41
+    },
+    {
+     "bench": "wiki-P108-w2",
+     "n": 204,
+     "dominated": false,
+     "d_acc_pp": 24.02,
+     "tok_ratio": 0.41
+    },
+    {
+     "bench": "wiki-P39",
+     "n": 208,
+     "dominated": false,
+     "d_acc_pp": 28.37,
+     "tok_ratio": 0.41
+    },
+    {
+     "bench": "wiki-P39-ext",
+     "n": 176,
+     "dominated": false,
+     "d_acc_pp": 32.39,
+     "tok_ratio": 0.41
+    },
+    {
+     "bench": "wiki-P54-ext",
+     "n": 164,
+     "dominated": false,
+     "d_acc_pp": 28.66,
+     "tok_ratio": 0.41
+    },
+    {
+     "bench": "wiki-P54-w2",
+     "n": 152,
+     "dominated": false,
+     "d_acc_pp": 7.89,
+     "tok_ratio": 0.4
+    },
+    {
+     "bench": "wiki-P551",
+     "n": 44,
+     "dominated": false,
+     "d_acc_pp": -2.27,
+     "tok_ratio": 0.4
+    }
+   ]
+  }
+ ],
+ "strategies": [
+  {
+   "feature": "word1",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7210446794733434,
+   "tok": 7695.48702784373,
+   "score": 68.25672443341247,
+   "acc_spread": 0.00388517159507884,
+   "score_spread": 0.2857272825383177,
+   "fallback_rate": 0.03406000431685733,
+   "acc_by_seed": [
+    72.11,
+    72.18,
+    72.01,
+    71.92,
+    72.31
+   ],
+   "strategy": "word1·含rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word2",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7208720051802289,
+   "tok": 4344.693934815454,
+   "score": 69.91485355061515,
+   "acc_spread": 0.004532700194258665,
+   "score_spread": 0.25338053097347313,
+   "fallback_rate": 0.2359162529678394,
+   "acc_by_seed": [
+    72.05,
+    71.92,
+    72.01,
+    72.09,
+    72.37
+   ],
+   "strategy": "word2·含rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word3",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7005827757392618,
+   "tok": 3835.554413986618,
+   "score": 68.14050036693287,
+   "acc_spread": 0.004532700194258554,
+   "score_spread": 0.4163371465572965,
+   "fallback_rate": 0.5256637168141592,
+   "acc_by_seed": [
+    69.87,
+    70.04,
+    70.11,
+    70.32,
+    69.95
+   ],
+   "strategy": "word3·含rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word1",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.6968702784372975,
+   "tok": 2250.766976041442,
+   "score": 68.56164435570903,
+   "acc_spread": 0.006691128858191231,
+   "score_spread": 0.610792898769688,
+   "fallback_rate": 0.03406000431685733,
+   "acc_by_seed": [
+    69.54,
+    70.02,
+    69.95,
+    69.35,
+    69.57
+   ],
+   "strategy": "word1·无rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word2",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.718843082236132,
+   "tok": 2135.330757608461,
+   "score": 70.81664284480897,
+   "acc_spread": 0.004532700194258665,
+   "score_spread": 0.4016976041441893,
+   "fallback_rate": 0.2359162529678394,
+   "acc_by_seed": [
+    72.11,
+    71.66,
+    71.85,
+    71.83,
+    71.96
+   ],
+   "strategy": "word2·无rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word3",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.6984243470753292,
+   "tok": 2505.78156701921,
+   "score": 68.58954392402332,
+   "acc_spread": 0.003237642995898904,
+   "score_spread": 0.33021703000213165,
+   "fallback_rate": 0.5256637168141592,
+   "acc_by_seed": [
+    69.83,
+    69.85,
+    69.74,
+    70.06,
+    69.74
+   ],
+   "strategy": "word3·无rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:direct",
+   "arms": [
+    "direct"
+   ],
+   "n": 4633,
+   "acc": 0.5870925965896827,
+   "tok": 2129.1197927908484,
+   "score": 57.64469976257285,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "常数 direct",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:rt",
+   "arms": [
+    "rt"
+   ],
+   "n": 4633,
+   "acc": 0.655514785236348,
+   "tok": 22648.62119576948,
+   "score": 54.22716792575006,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.009712928987696956,
+   "acc_by_seed": [],
+   "strategy": "常数 rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:wt",
+   "arms": [
+    "wt"
+   ],
+   "n": 4633,
+   "acc": 0.6788258148068206,
+   "tok": 2719.4914742067776,
+   "score": 66.52283574357867,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.226635009712929,
+   "acc_by_seed": [],
+   "strategy": "常数 wt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:prompt",
+   "arms": [
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.6537880423052018,
+   "tok": 1389.9892078566804,
+   "score": 64.68380962659185,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "常数 prompt",
+   "zero_llm": true,
+   "on_frontier": true
+  }
+ ],
+ "ceilings": [
+  {
+   "feature": "oracle:direct+rt+wt+prompt",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.8262464925534211,
+   "tok": 2289.5376645801857,
+   "score": 81.47988042305201,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "oracle:direct+rt+wt+prompt",
+   "zero_llm": true,
+   "on_frontier": true
+  },
+  {
+   "feature": "oracle:direct+wt+prompt",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7955968055255774,
+   "tok": 1511.5374487373192,
+   "score": 78.80391182818907,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "oracle:direct+wt+prompt",
+   "zero_llm": true,
+   "on_frontier": true
+  }
+ ],
+ "best": {
+  "feature": "word2",
+  "arms": [
+   "direct",
+   "wt",
+   "prompt"
+  ],
+  "n": 4633,
+  "acc": 0.718843082236132,
+  "tok": 2135.330757608461,
+  "score": 70.81664284480897,
+  "acc_spread": 0.004532700194258665,
+  "score_spread": 0.4016976041441893,
+  "fallback_rate": 0.2359162529678394,
+  "acc_by_seed": [
+   72.11,
+   71.66,
+   71.85,
+   71.83,
+   71.96
+  ],
+  "strategy": "word2·无rt",
+  "zero_llm": true,
+  "on_frontier": false
+ },
+ "frontier": [
+  {
+   "feature": "oracle:direct+rt+wt+prompt",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.8262464925534211,
+   "tok": 2289.5376645801857,
+   "score": 81.47988042305201,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "oracle:direct+rt+wt+prompt",
+   "zero_llm": true,
+   "on_frontier": true
+  },
+  {
+   "feature": "oracle:direct+wt+prompt",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7955968055255774,
+   "tok": 1511.5374487373192,
+   "score": 78.80391182818907,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "oracle:direct+wt+prompt",
+   "zero_llm": true,
+   "on_frontier": true
+  },
+  {
+   "feature": "word2",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.718843082236132,
+   "tok": 2135.330757608461,
+   "score": 70.81664284480897,
+   "acc_spread": 0.004532700194258665,
+   "score_spread": 0.4016976041441893,
+   "fallback_rate": 0.2359162529678394,
+   "acc_by_seed": [
+    72.11,
+    71.66,
+    71.85,
+    71.83,
+    71.96
+   ],
+   "strategy": "word2·无rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "strategy": "出厂 v4.2 四臂路由(含在线 LLM 聚焦)",
+   "acc": 0.7224260738182603,
+   "tok": 3439.01856248651,
+   "score": 70.52309810058279,
+   "zero_llm": false,
+   "n": 4633,
+   "fallback_rate": 0.0,
+   "acc_spread": 0.0,
+   "on_frontier": false
+  },
+  {
+   "feature": "word2",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7208720051802289,
+   "tok": 4344.693934815454,
+   "score": 69.91485355061515,
+   "acc_spread": 0.004532700194258665,
+   "score_spread": 0.25338053097347313,
+   "fallback_rate": 0.2359162529678394,
+   "acc_by_seed": [
+    72.05,
+    71.92,
+    72.01,
+    72.09,
+    72.37
+   ],
+   "strategy": "word2·含rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word3",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.6984243470753292,
+   "tok": 2505.78156701921,
+   "score": 68.58954392402332,
+   "acc_spread": 0.003237642995898904,
+   "score_spread": 0.33021703000213165,
+   "fallback_rate": 0.5256637168141592,
+   "acc_by_seed": [
+    69.83,
+    69.85,
+    69.74,
+    70.06,
+    69.74
+   ],
+   "strategy": "word3·无rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word1",
+   "arms": [
+    "direct",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.6968702784372975,
+   "tok": 2250.766976041442,
+   "score": 68.56164435570903,
+   "acc_spread": 0.006691128858191231,
+   "score_spread": 0.610792898769688,
+   "fallback_rate": 0.03406000431685733,
+   "acc_by_seed": [
+    69.54,
+    70.02,
+    69.95,
+    69.35,
+    69.57
+   ],
+   "strategy": "word1·无rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word1",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7210446794733434,
+   "tok": 7695.48702784373,
+   "score": 68.25672443341247,
+   "acc_spread": 0.00388517159507884,
+   "score_spread": 0.2857272825383177,
+   "fallback_rate": 0.03406000431685733,
+   "acc_by_seed": [
+    72.11,
+    72.18,
+    72.01,
+    71.92,
+    72.31
+   ],
+   "strategy": "word1·含rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "word3",
+   "arms": [
+    "direct",
+    "rt",
+    "wt",
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.7005827757392618,
+   "tok": 3835.554413986618,
+   "score": 68.14050036693287,
+   "acc_spread": 0.004532700194258554,
+   "score_spread": 0.4163371465572965,
+   "fallback_rate": 0.5256637168141592,
+   "acc_by_seed": [
+    69.87,
+    70.04,
+    70.11,
+    70.32,
+    69.95
+   ],
+   "strategy": "word3·含rt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:wt",
+   "arms": [
+    "wt"
+   ],
+   "n": 4633,
+   "acc": 0.6788258148068206,
+   "tok": 2719.4914742067776,
+   "score": 66.52283574357867,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.226635009712929,
+   "acc_by_seed": [],
+   "strategy": "常数 wt",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:prompt",
+   "arms": [
+    "prompt"
+   ],
+   "n": 4633,
+   "acc": 0.6537880423052018,
+   "tok": 1389.9892078566804,
+   "score": 64.68380962659185,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "常数 prompt",
+   "zero_llm": true,
+   "on_frontier": true
+  },
+  {
+   "feature": "const:direct",
+   "arms": [
+    "direct"
+   ],
+   "n": 4633,
+   "acc": 0.5870925965896827,
+   "tok": 2129.1197927908484,
+   "score": 57.64469976257285,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.0,
+   "acc_by_seed": [],
+   "strategy": "常数 direct",
+   "zero_llm": true,
+   "on_frontier": false
+  },
+  {
+   "feature": "const:rt",
+   "arms": [
+    "rt"
+   ],
+   "n": 4633,
+   "acc": 0.655514785236348,
+   "tok": 22648.62119576948,
+   "score": 54.22716792575006,
+   "acc_spread": 0.0,
+   "score_spread": 0.0,
+   "fallback_rate": 0.009712928987696956,
+   "acc_by_seed": [],
+   "strategy": "常数 rt",
+   "zero_llm": true,
+   "on_frontier": false
+  }
+ ]
+}
