@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import argparse
+import collections as _collections
 import json
 import os
 import re
@@ -30,6 +31,7 @@ import anthropic  # noqa: E402
 from pydantic import BaseModel, Field  # noqa: E402
 
 from eval.stale_chain_dataset import load_stale_chain  # noqa: E402
+from qvf import datenorm as _datenorm  # noqa: E402
 from qvf.engine_bridge import ExtractedRecord  # noqa: E402
 from qvf.judge import ClaudeJudge  # noqa: E402
 
@@ -98,6 +100,29 @@ _CARD_FAIL_LOUD = int(os.environ.get("QVF_CARD_FAIL_LOUD", "0") or 0)
 # 返回 usage_input_tokens/usage_output_tokens,但 read_phase 从未写出)。
 # 默认 0 = 输出行不增键,与旗标引入前逐字节一致。
 _JUDGE_USAGE = int(os.environ.get("QVF_JUDGE_USAGE", "0") or 0)
+
+# QVF_DATE_STRICT=1:日期咽喉点校验 + 相对时间表达解析(见 qvf/datenorm.py)。
+# 默认 0 = 与旗标引入前逐字节一致(_rec_date 原样透传)。
+#
+# 08-18 去特调诊断的三条更正(推翻此前记载,以本条为准):
+#  ① "306 条未补零(如 2019-3)"**不可复现**——全 30 库 40,088 条带日期记录中
+#     `YYYY-M` / `YYYY-MM-D` 形态 **0 条**;
+#  ② **裸字符串比较在合规输入上不是缺陷**——实际出现的 10,422 种合规日期串,
+#     字符串序 vs 日历序 54,303,831 对中 **0 对不一致**;
+#  ③ 段数>3 的 15 条不是垃圾,是**日期区间/多日期串**(如
+#     `2025-02-20 to 2025-02-25`),`_pdate` 返 None 而 `_rec_date` 返真值。
+# 故缺陷不在比较函数,在**咽喉点不校验返回值是不是日期**。真实违约形态
+# 按频次:April(61) / March(38) / 04-15(33) / January(33) / 1920s(31) /
+# 02-10(56,被解析成 0002-10-01) / 06(23)。合规率 96.00%,
+# `_pdate`→None 3.10%,公元 1000 年前荒谬日 0.90%。
+_DATE_STRICT = int(os.environ.get("QVF_DATE_STRICT", "0") or 0)
+DATE_STATS = _collections.Counter()   # 可观测性:规范化原因分布
+
+# QVF_SLOT_STRICT=1:槽位合并收严为"词集合完全相同"(详见 _slot_match 注释)。
+# 默认 0 = 逐字节等价。**须同页写明的代价**:收严后链数增加、平均链深下降,
+# 而路由用链深做键控判断 → 更多题会降级到 prompt/direct 臂,整体分数可能下降。
+# 该下降是**修正而非退步**:若那些链原本只因误并才显得深,深度信号一直在骗人。
+_SLOT_STRICT = int(os.environ.get("QVF_SLOT_STRICT", "0") or 0)
 
 
 def _renumber_batch(recs, bi):
@@ -361,6 +386,7 @@ def write_phase(data_path: str, limit_items: int = 0,
 
         recs, item_in, item_out = [], 0, 0
         _failed_batches = _span_bad = _span_missing = 0
+        _span_repaired = _span_ambig = 0
         for bi, batch in enumerate(batches):
             br, bi_in, bi_out = _catalog(batch)
             item_in += bi_in
@@ -384,8 +410,25 @@ def write_phase(data_path: str, limit_items: int = 0,
                 _span_bad += 1
                 if sp not in _all:      # 改写或编造:全库都找不到这句话
                     _span_missing += 1
+                    r["source_span_verbatim"] = False
+                    continue
+                # 原文在库内、只是 source_memory_id 指错(实测占违约的 14.98%,
+                # 而全库找不到的只占 12.49%)。=2 会把这一档连同编造卡一起丢掉,
+                # 等于把 15% 的好卡片当垃圾扔。=3 改为**机械溯源修复**:
+                # 在库内搜该 span 的真实出处并改挂。
+                if _CARD_VERIFY_SPAN >= 3:
+                    hits = [p["memory_id"] for p in payload if sp in p["text"]]
+                    if len(hits) == 1:
+                        r["source_memory_id"] = hits[0]
+                        r["source_span_repaired"] = True
+                        _span_repaired += 1
+                        continue
+                    # 多处命中:归属真实歧义。带猜测的归属比没有归属更坏,
+                    # 且改 memory 会连带改 _rec_date 的会话日期回退值、进而
+                    # 改变链序 —— 猜错的代价是静默污染链序。故一律不修。
+                    _span_ambig += 1
                 r["source_span_verbatim"] = False
-            if _CARD_VERIFY_SPAN >= 2:
+            if _CARD_VERIFY_SPAN == 2:
                 recs = [r for r in recs
                         if r.get("source_span_verbatim") is not False]
         if _CARD_FAIL_LOUD >= 2 and _failed_batches:
@@ -402,6 +445,9 @@ def write_phase(data_path: str, limit_items: int = 0,
             _extra["span_violations"] = _span_bad
             _extra["span_not_in_history"] = _span_missing
             _extra["span_verify_mode"] = _CARD_VERIFY_SPAN
+            if _CARD_VERIFY_SPAN >= 3:
+                _extra["span_repaired"] = _span_repaired
+                _extra["span_ambiguous"] = _span_ambig
         if _CARD_FAIL_LOUD:
             _extra["failed_batches"] = _failed_batches
             _extra["n_batches"] = len(batches)
@@ -465,17 +511,51 @@ def _norm(s: str) -> str:
 
 
 def _slot_match(a: str, b: str) -> bool:
+    """槽位名是否指同一属性。QVF_SLOT_STRICT=0(默认)时逐字节等价于旧行为。
+
+    旧规则第三支"共享词数 ≥ min(词数)−1"对两个二词槽位退化成"共享 1 词
+    即同槽"。实测(wt_cards_v43 前 80 uid / 101,870 组不同槽位)**2,708 组
+    (2.7%)被误判同槽**,而误判形态高度一致——**中心词相同、修饰语不同**:
+        device_preference ↔ diet_preference     (preference)
+        fitness_activity  ↔ commute_activity    (activity)
+        income_event      ↔ family_event        (event)
+        backup_routine    ↔ bedtime_routine     (routine)
+    英语复合名词里中心词给类别、修饰语指定是哪一个属性,**所以"中心词相同"
+    恰恰是失败模式本身,不能作为合并依据**。=1 时改为:词集合完全相同
+    (允许语序不同,如 job title ↔ title job),仅共享部分词不再判同槽;
+    精确相等与互为子串两支保留(employer ↔ current employer 仍合并)。
+    """
     a, b = _norm(a), _norm(b)
     if not a or not b:
         return False
     if a == b or a in b or b in a:
         return True
     aw, bw = set(a.split()), set(b.split())
+    if _SLOT_STRICT:
+        return aw == bw
     return len(aw & bw) >= max(1, min(len(aw), len(bw)) - 1) and bool(aw & bw)
 
 
 def _rec_date(rec: dict, mem_dates: dict) -> str:
-    return rec.get("stated_date") or mem_dates.get(rec.get("source_memory_id", ""), "")
+    """日期咽喉点。QVF_DATE_STRICT=0(默认)时与旗标引入前逐字节一致。
+
+    =1 时:先把返回值规范成合规形态(见 qvf/datenorm.py 的六条语义决定),
+    不可解析则回退会话日期,**绝不透传**系统自己解析不了的串。
+    诊断依据:`_chain()` 按真值入链而 WINDOW/ASOF 按 `_pdate is not None`
+    可见,两个判据不同 → wt_cards_v42 实测 216 条"幽灵记录"占链位却对点查
+    隐形,其中 121 条在链尾,直接污染 `current`(实测输出 `since 'March 19'`)。
+    """
+    raw = rec.get("stated_date") or mem_dates.get(rec.get("source_memory_id", ""), "")
+    if not _DATE_STRICT:
+        return raw
+    sess = mem_dates.get(rec.get("source_memory_id", ""), "")
+    norm, why = _datenorm.normalize(raw, sess)
+    DATE_STATS[why] += 1
+    if norm:
+        return norm
+    fb, _ = _datenorm.normalize(sess, None)
+    DATE_STATS["fallback_ok" if fb else "fallback_fail"] += 1
+    return fb or ""
 
 
 def read_phase(data_path: str, out_path: str, limit_items: int = 0,

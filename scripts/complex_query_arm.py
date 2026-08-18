@@ -42,7 +42,9 @@ load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 import anthropic  # noqa: E402
 from pydantic import BaseModel, Field  # noqa: E402
 
+import collections as _collections  # noqa: E402
 from qvf import config  # noqa: E402
+from qvf import datenorm as _datenorm  # noqa: E402
 from qvf.judge import ClaudeJudge  # noqa: E402
 from scripts.gen_wikistate_complex import parse_partial_date  # noqa: E402
 from scripts.wt_qvf_prototype import _norm, _slot_match  # noqa: E402
@@ -63,6 +65,11 @@ _CARDS_KEYED = os.environ.get("QVF_CARDS_KEYED", "")
 # QVF_FAIL_CLOSED=1:execute 后证据包为空时不再交读者猜 —— 跳过读者调用,
 #   行记 fail_closed=true(answer 空、judge_correct=null),由跑批侧转直读臂
 #   或弃答。
+# QVF_DATE_STRICT=1:日期咽喉点校验 + 相对时间表达解析(见 qvf/datenorm.py
+# 与 wt_qvf_prototype 的同名旗标注释)。默认 0 = 逐字节等价。
+_DATE_STRICT = int(os.environ.get("QVF_DATE_STRICT", "0") or 0)
+DATE_STATS = _collections.Counter()
+
 _OPEN_SLOT = int(os.environ.get("QVF_OPEN_SLOT", "0") or 0)
 _OPEN_KEYS = int(os.environ.get("QVF_OPEN_KEYS", "0") or 0)
 _FAIL_CLOSED = int(os.environ.get("QVF_FAIL_CLOSED", "0") or 0)
@@ -338,8 +345,23 @@ def _load_records(uid: str) -> List[dict]:
 
 
 def _rec_date(rec: dict, mem_dates: dict) -> str:
-    return rec.get("stated_date") or mem_dates.get(
+    """日期咽喉点。QVF_DATE_STRICT=0(默认)时与旗标引入前逐字节一致。
+
+    =1 时把返回值规范成合规形态(qvf/datenorm.py),不可解析则回退会话
+    日期,绝不透传。诊断依据见 wt_qvf_prototype._rec_date 的同名注释。
+    """
+    raw = rec.get("stated_date") or mem_dates.get(
         rec.get("source_memory_id", ""), "")
+    if not _DATE_STRICT:
+        return raw
+    sess = mem_dates.get(rec.get("source_memory_id", ""), "")
+    norm, why = _datenorm.normalize(raw, sess)
+    DATE_STATS[why] += 1
+    if norm:
+        return norm
+    fb, _ = _datenorm.normalize(sess, None)
+    DATE_STATS["fallback_ok" if fb else "fallback_fail"] += 1
+    return fb or ""
 
 
 def _pdate(s: str):
