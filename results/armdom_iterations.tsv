@@ -1,3 +1,5 @@
 iter	change	score	acc	tok	spread	decision	note
 0	baseline: word2 lexical router, no-rt, same-denominator	70.8166	71.88	2135	0.402	baseline	oracle_no_rt=78.804 ceiling
 1	hierarchical backoff word3>word2>word1	71.3239	72.33	2010	0.541	keep	fallback 23.6%->3.4%; beats factory on BOTH acc and tok
+2	semantic features (wh/agg/len/skel/w2agg) + chains	71.5951	72.58	1977	0.513	keep	best=word3>word2>wh; fallback 0.2%; gain within seed spread -> need paired test
+2b	paired test @20 seeds confirms iter1+2	71.5575	72.55	1990	1.129	confirm	vs word2 t=16.24 20/20; vs iter1 t=8.62 20/20

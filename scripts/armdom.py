@@ -126,12 +126,53 @@ def _words(t: dict) -> List[str]:
     return _WORD.findall(t["q"].lower())
 
 
-DEFAULT_CHAINS = ["word1", "word2", "word3", "word3>word2>word1"]
+DEFAULT_CHAINS = [
+    "word2", "word3>word2>word1",
+    "wh", "agg", "len",
+    "word3>word2>agg", "word3>word2>wh", "word3>word2>word1>agg",
+    "w2agg>word2>word1", "skel>word2>word1",
+]
+
+_WH = ("what", "when", "where", "who", "whom", "whose", "which", "how", "why")
+# 聚合/时序意图词：这些词标记的是"要对状态链做什么"，而非"问哪个实体"，
+# 因此比表层首词更接近路由真正需要的信号（哪条臂能做这种计算）。
+_AGG = {
+    "count": ("how many", "how many times", "number of", "count"),
+    "dur": ("how long", "duration", "longest", "shortest"),
+    "order": ("first", "last", "before", "after", "then", "previously", "originally"),
+    "current": ("currently", "current", "now", "these days", "still", "at the moment"),
+    "change": ("change", "changed", "switch", "switched", "move", "moved", "used to"),
+}
+_ENT = re.compile(r"(?:[0-9]+|[A-Z][a-z]+)")
+
+
+def _agg_key(t: dict) -> str:
+    q = t["q"].lower()
+    hit = [k for k, ws in _AGG.items() if any(w in q for w in ws)]
+    return "+".join(hit) if hit else "none"
+
+
+def _wh_key(t: dict) -> str:
+    for w in _words(t)[:4]:
+        if w in _WH:
+            return w
+    return "other"
+
+
+def _skel(t: dict) -> str:
+    """题面骨架：掩掉数字与专名，只留模板形状。同一模板的不同实体应共享路由决策。"""
+    return " ".join(_ENT.sub("<e>", t["q"]).lower().split()[:6]) or "<empty>"
+
 
 FEATURES: Dict[str, Callable[[dict], str]] = {
     "word1": lambda t: " ".join(_words(t)[:1]) or "<empty>",
     "word2": lambda t: " ".join(_words(t)[:2]) or "<empty>",
     "word3": lambda t: " ".join(_words(t)[:3]) or "<empty>",
+    "wh": _wh_key,
+    "agg": _agg_key,
+    "len": lambda t: f"len{min(len(_words(t)) // 4, 6)}",
+    "skel": _skel,
+    "w2agg": lambda t: " ".join(_words(t)[:2]) + "|" + _agg_key(t),
     "const": lambda t: "<all>",
 }
 
@@ -252,10 +293,11 @@ def lexical_router(rows: List[dict], arms: Sequence[str], feat: str,
         fbs.append(fb / n)
     mean = lambda x: sum(x) / len(x)
     acc, tk = mean(accs), mean(toks)
+    per_seed = [score_of(a, t) for a, t in zip(accs, toks)]
     return {"feature": feat, "arms": list(arms), "n": n, "acc": acc, "tok": tk,
             "score": score_of(acc, tk), "acc_spread": max(accs) - min(accs),
-            "score_spread": max(score_of(a, t) for a, t in zip(accs, toks))
-                            - min(score_of(a, t) for a, t in zip(accs, toks)),
+            "score_spread": max(per_seed) - min(per_seed),
+            "score_by_seed": [round(x, 4) for x in per_seed],
             "fallback_rate": mean(fbs),
             "acc_by_seed": [round(x * 100, 2) for x in accs]}
 
