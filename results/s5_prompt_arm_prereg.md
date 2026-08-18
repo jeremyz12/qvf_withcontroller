@@ -36,3 +36,9 @@
 3. token 与 $ 实测
 4. `longest_tenure` 的 gold 已知有缺陷(HANDOFF §5.6:接回真实 end 后 55/92 gold 被推翻),
    故该题型的三臂比较只在"同一份有缺陷 gold"下有效,不得单独引用其绝对值
+
+## 嵌入后端的实测确认(开跑前补,2026-08-18)
+产物不记后端,而 `_retriever_cls()` 默认 `ollama`——若选错,对照即失效
+(本项目实测换嵌入值 −2.67pp)。故用归档的 `retrieved_memory_ids` 反查:
+以 `QVF_EMBED_BACKEND=openai` 复现直读臂的检索,4/4 题**顺序全同、10/10 命中**。
+结论:直读臂使用 OpenAI 嵌入,本次提示词臂同样以 `QVF_EMBED_BACKEND=openai` 运行。
