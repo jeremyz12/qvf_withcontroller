@@ -124,6 +124,19 @@ DATE_STATS = _collections.Counter()   # 可观测性:规范化原因分布
 # 该下降是**修正而非退步**:若那些链原本只因误并才显得深,深度信号一直在骗人。
 _SLOT_STRICT = int(os.environ.get("QVF_SLOT_STRICT", "0") or 0)
 
+# QVF_CARD_MODEL:**只作用于建卡调用 _catalog()** 的抽取模型,不影响聚焦
+# (:605)与读者(:757)—— 那两处仍用 MODEL。默认值等于 MODEL,故不设时
+# 与旗标引入前逐字节一致。
+#
+# 动机:写入侧质量是全系统的地基(实测 c₁ = P(判对 | 链全对) = 99.6%,
+# 即单算子上"抽取正确 ⇒ 答案正确"几乎充分),而该地基当前是 70.0%
+# CI[52.1, 87.9],真实语料上逐字锚点违约 28.26%。**但"这 30% 的损耗是模型
+# 不够强,还是契约本身的极限"从未被测过**——归档里 extractor_model=opus
+# 只出现在 3 个文件,无成规模对照。读取侧换大模型已有同题证据表明无效
+# (212 题上 haiku-4-5 在所有配置下均不劣于 gpt-5-mini;84 题难题上
+# gpt-5 与 sonnet-5 同为个位数),但**写入侧这一格是空白**。
+_CARD_MODEL = os.environ.get("QVF_CARD_MODEL", "") or MODEL
+
 
 def _renumber_batch(recs, bi):
     """给一批卡片的 record_id 加批次前缀,并在同批内重映射关系边目标。
@@ -358,7 +371,7 @@ def write_phase(data_path: str, limit_items: int = 0,
                                   # 时不传该键,调用逐字节等同旗标引入前(复现历史结果用)
                     _kw["temperature"] = 0.0
                 resp = client.messages.parse(
-                    model=MODEL, max_tokens=16000,
+                    model=_CARD_MODEL, max_tokens=16000,
                     system=[{"type": "text",
                              "text": _catalog_prompt(),
                              "cache_control": {"type": "ephemeral"}}],
