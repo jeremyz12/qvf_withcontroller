@@ -776,6 +776,97 @@ if _ALGEBRA:
 
 
 # ── ③ READ:证据包 → 日常口吻回答 ────────────────────────────
+# QVF_READER_MODE:把"选择"与"计算"拆成两个可分别测量的臂(默认 "" = 现行行为,
+# 逐字节等价)。动机:现行编译臂在同一步里既做 query 条件下的记忆选择,又执行
+# 算子并把**算好的结论**写进 derived(见 execute_plan 各分支,point_in_time 分支
+# 里字面写着 "This IS the answer."),因此无法区分收益来自"选对了记忆"还是
+# "代码替读者算了"。
+#   ""         现行:证据行 + 计算结论行
+#   "filter"   只给证据行,**不给任何计算结论** —— 测"选择"本身值多少
+#   "usability" 给证据行 + **逐条可用性标注**(可用/已被取代/尚未生效/转变证据),
+#              标注**不含任何聚合结果** —— 测"告诉读者哪些记忆可用"值多少
+_READER_MODE = os.environ.get("QVF_READER_MODE", "")
+
+
+def _reader_derived(plan: dict, recs: List[dict], mem_dates: dict,
+                    question: str, derived: List[str]) -> List[str]:
+    """按 QVF_READER_MODE 决定交给读者的第二段内容。默认原样返回 derived,
+    故旗标未设时 reader_content 的入参与本旗标引入前逐字节相同。"""
+    if _READER_MODE == "filter":
+        return []
+    if _READER_MODE == "usability":
+        lines = usability_lines(plan, recs, mem_dates, question)
+        _assert_no_leak(lines)
+        return lines
+    return derived
+
+
+def usability_lines(plan: dict, recs: List[dict], mem_dates: dict,
+                    question: str = "") -> List[str]:
+    """逐条记忆的 query 条件可用性标注。纯代码、零 LLM、不含任何聚合结果。
+
+    与 execute_plan 复用同一套 `_select_pool` / `_chain` / `_rec_date`,所以标注
+    描述的正是执行器真正会用到的那批记录——这是"把选择判断交给读者"而不是
+    "替读者执行"的最小改动。
+
+    **禁止泄露答案**:本函数只输出每条记录相对查询日期/算子的角色,绝不输出
+    计数、时长、胜出值等任何聚合量。调用方另有机械断言复核(见 _assert_no_leak)。
+    """
+    op = plan.get("op") or "current"
+    slot = plan.get("slot") or ""
+    chain = _chain(_select_pool(recs, slot, mem_dates, question), mem_dates)
+    if not chain:
+        return [f"No dated record for {slot or 'the asked attribute'} is "
+                f"available for this query."]
+    lab = _label(chain[-1])
+    dates = [_rec_date(r, mem_dates) for r in chain]
+    qd = _pdate(plan.get("date") or "")
+    out: List[str] = []
+    for i, r in enumerate(chain):
+        v = str(r.get("value", ""))
+        d = dates[i]
+        nxt = dates[i + 1] if i + 1 < len(chain) else None
+        if op in ("current", "premise_check"):
+            role = ("usable — this is the state in force now"
+                    if i == len(chain) - 1 else
+                    f"superseded — replaced on {nxt}")
+        elif op == "point_in_time":
+            pd = _pdate(d)
+            if qd is None or pd is None:
+                role = "usability undetermined — date could not be parsed"
+            elif pd > qd:
+                role = "unusable — recorded after the asked date"
+            elif nxt and _pdate(nxt) is not None and _pdate(nxt) <= qd:
+                role = f"superseded — replaced on {nxt}, before the asked date"
+            else:
+                role = "usable — its validity interval covers the asked date"
+        elif op == "count_before":
+            pd = _pdate(d)
+            role = ("usable — it falls before the asked date"
+                    if qd is not None and pd is not None and pd < qd
+                    else "unusable — it does not fall before the asked date")
+        else:   # count_changes / trajectory / longest / first_last
+            role = ("usable transition evidence — it marks one state of "
+                    f"{lab} and its start date")
+        out.append(f"[{d}] {lab} = {v} — {role}")
+    out.append("Use ONLY the records marked usable, together with their dates, "
+               "to answer. Nothing above states the answer; you must work it "
+               "out from the usable records yourself.")
+    return out
+
+
+_LEAK_PAT = re.compile(
+    r"changed \d+ time|Held longest|This IS the answer|\d+ days|distinct value", re.I)
+
+
+def _assert_no_leak(lines: List[str]) -> None:
+    """机械断言:可用性标注里不得出现任何聚合结果。宁可跑不起来,也不要产出
+    一份'标注里已经含答案'的成绩——那会把这个臂变成 executor 的换皮。"""
+    for l in lines:
+        if _LEAK_PAT.search(l):
+            raise RuntimeError(f"可用性标注疑似泄露聚合结果: {l[:120]!r}")
+
+
 def reader_content(ev: List[str], derived: List[str], qdate: str,
                    question: str) -> str:
     lines = ["EXCERPTS FROM YOUR PAST CONVERSATIONS WITH THE USER:"]
@@ -931,8 +1022,11 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
             system=[{"type": "text", "text": READER_SYSTEM,
                      "cache_control": {"type": "ephemeral"}}],
             messages=[{"role": "user",
-                       "content": reader_content(ev, derived, qdate,
-                                                 q["question"])}],
+                       "content": reader_content(
+                           ev, _reader_derived(plan, _load_records(uid),
+                                               mem_dates, q["question"],
+                                               derived),
+                           qdate, q["question"])}],
         )
         answer = "".join(b.text for b in rr.content if b.type == "text")
 
