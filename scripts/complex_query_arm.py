@@ -787,6 +787,58 @@ if _ALGEBRA:
 #              标注**不含任何聚合结果** —— 测"告诉读者哪些记忆可用"值多少
 _READER_MODE = os.environ.get("QVF_READER_MODE", "")
 
+# QVF_EMPTY_EVIDENCE_DIRECT=1:空证据不交读者猜、也不只打 fail-closed 标记,
+# 而是**当场改走直读并照常判分**。依据(三个语料的 $0 归档重放,见
+# results/set_vs_replacement_prereg.md):P69 21.3→65.3 / 集合孪生批 37.2→73.9
+# (反超纯直读 72.3)/ 替换孪生批 57.4→64.2。QVF_FAIL_CLOSED 只标记不回答,
+# "臂答必不劣于直读"因此一直不成立;本旗标是它的完成形。默认 0,关时逐字节等价。
+_EMPTY_DIRECT = int(os.environ.get("QVF_EMPTY_EVIDENCE_DIRECT", "0") or 0)
+
+# QVF_OP_ROUTE=1:编译出的 op 为 current/premise_check(当前值类)时整题改走
+# 直读。依据(冻结规则跨语料迁移重放):当前值类直读 95.5%/72.3% vs 编译臂
+# 68.2%/更低——该类答案在单条原始记录里,检索命中率实测 98%,任何有损中间层
+# 只有下行风险。与 QVF_EMPTY_EVIDENCE_DIRECT 组合即重放里 +6.4~+7.4pp 的
+# 冻结规则策略(题型路由的 wt 分支跨脚本,暂不在本文件实现,如实记录)。
+_OP_ROUTE = int(os.environ.get("QVF_OP_ROUTE", "0") or 0)
+
+_DIRECT_CACHE: dict = {}
+
+
+def _direct_fallback(entry, uid, question, client):
+    """直读回退:与 scripts/wsc_direct_arm 同口径(同检索器/同读者系统提示词/
+    同 top-k),检索器按 uid 缓存。惰性导入,旗标关时本函数不会被调用。"""
+    from scripts.wsc_direct_arm import READER_SYSTEM as _sys
+    from scripts.wsc_direct_arm import TOP_K as _k
+    from scripts.wsc_direct_arm import _memories, _retriever_cls
+    from scripts.wsc_direct_arm import reader_content as _rc
+    if uid not in _DIRECT_CACHE:
+        mems = _memories(entry)
+        _DIRECT_CACHE[uid] = _retriever_cls()(mems) if mems else None
+    retr = _DIRECT_CACHE[uid]
+    retrieved = retr.retrieve(question, top_k=_k) if retr else []
+    qdate = _query_date(entry, question)
+    rr = client.messages.create(
+        model=MODEL, max_tokens=1000, temperature=0.0,
+        system=[{"type": "text", "text": _sys,
+                 "cache_control": {"type": "ephemeral"}}],
+        messages=[{"role": "user", "content": _rc(question, retrieved, qdate)}],
+    )
+    answer = "".join(b.text for b in rr.content if b.type == "text")
+    return answer, rr.usage.input_tokens, rr.usage.output_tokens
+
+
+def _routed_row(qid, uid, q, plan, ok, c_in, c_out, answer, d_in, d_out,
+                jc, jr, routed, t0, evidence_n):
+    return {
+        "question_id": qid, "mode": "complex_arm", "uid": uid,
+        "question_type": q.get("qtype"), "question": q["question"],
+        "gold_answer": q.get("gold"), "answer": answer,
+        "plan": plan, "compile_ok": ok, "evidence_n": evidence_n,
+        "usage_input_tokens": c_in + d_in, "usage_output_tokens": c_out + d_out,
+        "judge_correct": jc, "judge_reason": jr, "routed": routed,
+        "reader_model": MODEL, "latency_s": round(time.time() - t0, 2),
+    }
+
 
 def _reader_derived(plan: dict, recs: List[dict], mem_dates: dict,
                     question: str, derived: List[str]) -> List[str]:
@@ -973,6 +1025,29 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
 
         # ① 编译(只见问题)
         plan, c_in, c_out, ok = compile_plan(client, q["question"])
+        # ①' QVF_OP_ROUTE=1:当前值类整题改走直读(依据见旗标注释)
+        if _OP_ROUTE and ok and (plan or {}).get("op") in ("current",
+                                                           "premise_check"):
+            answer, d_in, d_out = _direct_fallback(entry, uid, q["question"],
+                                                   client)
+            gold = q.get("gold")
+            if gold is None:
+                jc, jr = None, "gold=null: judged separately via rubric"
+                n_null += 1
+            else:
+                v = judge.judge(q["question"], str(gold), answer, q.get("qtype"))
+                jc, jr = v.correct, v.reason
+                n_ok += bool(jc)
+            fout.write(json.dumps(_routed_row(
+                qid, uid, q, plan, ok, c_in, c_out, answer, d_in, d_out,
+                jc, jr, "op_current_to_direct", t0, None),
+                ensure_ascii=False) + "\n")
+            fout.flush()
+            n_run += 1
+            print(f"[{qid}] op={plan.get('op')} -> DIRECT(op_route) "
+                  f"judge={jc} ({time.time() - t0:.1f}s)", flush=True)
+            continue
+
         # ② 纯代码执行(代数臂:类型检查拒绝按 qvf_algebra 文档契约由调用方
         # 接住,记 wellformed=False 并降级为空证据包,不中断跑批;平面臂
         # execute_plan 从不抛出此类异常,故本 try/except 对旗标关时的输出
@@ -987,6 +1062,28 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
                 f"[compile rejected: {type(e).__name__}: {e}] The compiled "
                 f"query plan could not be executed; say the requested "
                 f"lookup could not be resolved."]
+        # ②'0 QVF_EMPTY_EVIDENCE_DIRECT=1:空证据当场改走直读并照常判分
+        if _EMPTY_DIRECT and not ev:
+            answer, d_in, d_out = _direct_fallback(entry, uid, q["question"],
+                                                   client)
+            gold = q.get("gold")
+            if gold is None:
+                jc, jr = None, "gold=null: judged separately via rubric"
+                n_null += 1
+            else:
+                v = judge.judge(q["question"], str(gold), answer, q.get("qtype"))
+                jc, jr = v.correct, v.reason
+                n_ok += bool(jc)
+            fout.write(json.dumps(_routed_row(
+                qid, uid, q, plan, ok, c_in, c_out, answer, d_in, d_out,
+                jc, jr, "empty_to_direct", t0, 0),
+                ensure_ascii=False) + "\n")
+            fout.flush()
+            n_run += 1
+            print(f"[{qid}] op={plan.get('op')} ev=0 -> DIRECT(empty) "
+                  f"judge={jc} ({time.time() - t0:.1f}s)", flush=True)
+            continue
+
         # ②' fail-closed:空证据包不交读者猜,显式降级标记(跑批侧转直读臂
         #    或弃答;judge_correct=null 不计入本臂判分)
         if _FAIL_CLOSED and not ev:
