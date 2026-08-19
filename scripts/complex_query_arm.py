@@ -672,9 +672,25 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
     dates = [_rec_date(r, mem_dates) for r in chain]
     values = [str(r.get("value", "")) for r in chain]
 
+    # QVF_SET_SEMANTICS=1:链上多数记录 slot_cardinality=='set' 时,current /
+    # point_in_time / count_changes 切换集合语义(累积,早先项仍成立)。
+    # 依据:实验 C(集合批把累积当替换算,卡片臂 −11.70pp)与成员过滤器 C1
+    # 分裂判决(集合批的病在装配不在成员)。默认 0 时本变量恒 False,
+    # 下方全部 set_mode 分支不可达,替换语义逐字节不变。
+    set_mode = _SET_SEM and (
+        sum(1 for r in chain if r.get("slot_cardinality") == "set")
+        > len(chain) / 2)
+
     if op in ("current", "premise_check"):
-        derived.append(f"The user's current {label} is {values[-1]} "
-                       f"(since {dates[-1]}).")
+        if set_mode:
+            items = "; ".join(f"{v} (added {d})" for v, d in zip(values, dates))
+            derived.append(
+                f"The user's {label} is an ACCUMULATING attribute — earlier "
+                f"items remain true. Current full set ({len(values)} items): "
+                f"{items}.")
+        else:
+            derived.append(f"The user's current {label} is {values[-1]} "
+                           f"(since {dates[-1]}).")
         pv = _norm(plan.get("presupposed") or "")
         if op == "premise_check" and pv:
             stale = next(
@@ -699,20 +715,34 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
                 f"The asked date predates every known state of {label}; the "
                 f"earliest known state is {values[0]} from {dates[0]}.")
         else:
-            until = (f", unchanged until {dates[gi + 1]}"
-                     if gi + 1 < len(chain) else "")
-            derived.append(
-                f"On {plan.get('date')}, the user's {label} was {values[gi]} "
-                f"(recorded {dates[gi]}{until}). This IS the answer.")
+            if set_mode:
+                had = "; ".join(f"{v} (added {d})"
+                                for v, d in zip(values[:gi + 1], dates[:gi + 1]))
+                derived.append(
+                    f"As of {plan.get('date')}, the user had accumulated "
+                    f"{gi + 1} {label} item(s): {had}. Earlier items remain "
+                    f"true — this attribute accumulates.")
+            else:
+                until = (f", unchanged until {dates[gi + 1]}"
+                         if gi + 1 < len(chain) else "")
+                derived.append(
+                    f"On {plan.get('date')}, the user's {label} was {values[gi]} "
+                    f"(recorded {dates[gi]}{until}). This IS the answer.")
     elif op == "trajectory":
         seq = " -> ".join(f"{v} (from {d})" for v, d in zip(values, dates))
         derived.append(f"Full evolution of the user's {label}: {seq}. "
                        f"Give the complete ordered history.")
     elif op == "count_changes":
-        n = len(chain) - 1
-        derived.append(
-            f"The user's {label} changed {n} time(s) — {len(chain)} "
-            f"successive states: " + " -> ".join(values) + ".")
+        if set_mode:
+            derived.append(
+                f"The user's {label} is an accumulating attribute with "
+                f"{len(chain)} distinct item(s) in total: "
+                + "; ".join(values) + ". Count of items, not changes.")
+        else:
+            n = len(chain) - 1
+            derived.append(
+                f"The user's {label} changed {n} time(s) — {len(chain)} "
+                f"successive states: " + " -> ".join(values) + ".")
     elif op == "longest":
         # 与 gen_wikistate_complex S5a 同口径:仅闭区间,同值多段按值累加。
         per_value: dict = {}
@@ -800,6 +830,10 @@ _EMPTY_DIRECT = int(os.environ.get("QVF_EMPTY_EVIDENCE_DIRECT", "0") or 0)
 # 只有下行风险。与 QVF_EMPTY_EVIDENCE_DIRECT 组合即重放里 +6.4~+7.4pp 的
 # 冻结规则策略(题型路由的 wt 分支跨脚本,暂不在本文件实现,如实记录)。
 _OP_ROUTE = int(os.environ.get("QVF_OP_ROUTE", "0") or 0)
+
+# QVF_SET_SEMANTICS=1:slot_cardinality 的下游分叉(见 execute_plan 内注释与
+# results/membership_filter_prereg.md 追加预注册)。默认 0,关时逐字节等价。
+_SET_SEM = int(os.environ.get("QVF_SET_SEMANTICS", "0") or 0)
 
 _DIRECT_CACHE: dict = {}
 
