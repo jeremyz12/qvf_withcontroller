@@ -57,7 +57,12 @@ from qvf.retrieval import MemoryItem  # noqa: E402
 # (QVF_ADAPTER_MODEL,默认 haiku-4-5),max_tokens/temperature 同值。
 MODEL = config.DEFAULT_ADAPTER_MODEL
 READER_MAX_TOKENS = 1000
-TOP_K = 10  # 与 run_decisive_stale.TOP_K 同值
+# QVF_TOP_K:覆盖检索深度,用于 **token 预算匹配基线**(默认 10,与
+# run_decisive_stale.TOP_K 同值,不设时逐字节等价)。
+# 动机:arXiv 2606.15017 实测"预算匹配的 vanilla 基线追平或超过三种记忆增强法";
+# QVF 在 S5 上花 2.15x token(2069 vs 962),若把这些 token 还给直读(更深检索)
+# 就能追平,则结构化机制的增益是**预算差**而非机制差。这是唯一能推翻主张的实验。
+TOP_K = int(os.environ.get("QVF_TOP_K", "10") or 10)
 
 _TODAY_RE = re.compile(r"\(Today is ([0-9][0-9-]*)\.?\)")
 
