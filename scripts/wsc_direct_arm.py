@@ -57,6 +57,12 @@ from qvf.retrieval import MemoryItem  # noqa: E402
 # (QVF_ADAPTER_MODEL,默认 haiku-4-5),max_tokens/temperature 同值。
 MODEL = config.DEFAULT_ADAPTER_MODEL
 READER_MAX_TOKENS = 1000
+# QVF_FULL_CONTEXT=1:跳过检索,**整库记忆(带日期誊录,按时序)全部进读者**。
+# 全口径基线:token 匹配臂 A/B 只匹配了读取侧,而含建卡摊销的全口径为
+# 9,372 tok/题(Fable-5 审阅发现 ②);整库入上下文是无需外推的天然全口径
+# 对照 —— 读者拿到全部信息,预算即整库。默认 0 时检索路径逐字节不变。
+_FULL_CONTEXT = int(os.environ.get("QVF_FULL_CONTEXT", "0") or 0)
+
 # QVF_TOP_K:覆盖检索深度,用于 **token 预算匹配基线**(默认 10,与
 # run_decisive_stale.TOP_K 同值,不设时逐字节等价)。
 # 动机:arXiv 2606.15017 实测"预算匹配的 vanilla 基线追平或超过三种记忆增强法";
@@ -220,11 +226,14 @@ def run(data_paths: List[str], questions_path: str, out_path: str,
         entry = entries.get(uid, {})
 
         # ① 稠密检索(问题原文,top-10;检索器按 uid 缓存,嵌入只算一次)
-        if uid not in retr_cache:
-            mems = _memories(entry)
-            retr_cache[uid] = retr_cls(mems) if mems else None
-        retr = retr_cache[uid]
-        retrieved = retr.retrieve(q["question"], top_k=TOP_K) if retr else []
+        if _FULL_CONTEXT:
+            retrieved = _memories(entry)   # 整库按时序;零检索零嵌入
+        else:
+            if uid not in retr_cache:
+                mems = _memories(entry)
+                retr_cache[uid] = retr_cls(mems) if mems else None
+            retr = retr_cache[uid]
+            retrieved = retr.retrieve(q["question"], top_k=TOP_K) if retr else []
 
         # ② 读者(只见带日期誊录 + 日期 + 问题;gold 绝不进此调用)
         qdate = _query_date(entry, q["question"])
@@ -254,7 +263,8 @@ def run(data_paths: List[str], questions_path: str, out_path: str,
 
         row = {
             "question_id": qid,
-            "mode": "warned_direct" if _WARN_ARM else "wsc_direct", "uid": uid,
+            "mode": ("full_context_direct" if _FULL_CONTEXT else
+                     ("warned_direct" if _WARN_ARM else "wsc_direct")), "uid": uid,
             "question_type": q.get("qtype"), "question": q["question"],
             "gold_answer": gold, "answer": answer,
             "retrieved_memory_ids": [m.memory_id for m in retrieved],
