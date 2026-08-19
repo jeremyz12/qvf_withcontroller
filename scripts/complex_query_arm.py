@@ -815,6 +815,10 @@ if _ALGEBRA:
 #   "filter"   只给证据行,**不给任何计算结论** —— 测"选择"本身值多少
 #   "usability" 给证据行 + **逐条可用性标注**(可用/已被取代/尚未生效/转变证据),
 #              标注**不含任何聚合结果** —— 测"告诉读者哪些记忆可用"值多少
+#   "raw_select" 同一 `_select_pool` 选集,但交给读者的是**来源原文轮**(直读
+#              渲染 [session_date] 原始文本,无槽位标签/值抽取/相邻合并/卫生化)
+#              —— 测"纯选择"下界,把规范化/排序/去重从 "filter" 的增益里剥出去
+#              (预注册:results/raw_select_prereg.md,先于本旗标运行提交)
 _READER_MODE = os.environ.get("QVF_READER_MODE", "")
 
 # QVF_EMPTY_EVIDENCE_DIRECT=1:空证据不交读者猜、也不只打 fail-closed 标记,
@@ -880,11 +884,42 @@ def _reader_derived(plan: dict, recs: List[dict], mem_dates: dict,
     故旗标未设时 reader_content 的入参与本旗标引入前逐字节相同。"""
     if _READER_MODE == "filter":
         return []
+    if _READER_MODE == "raw_select":
+        return []
     if _READER_MODE == "usability":
         lines = usability_lines(plan, recs, mem_dates, question)
         _assert_no_leak(lines)
         return lines
     return derived
+
+
+def raw_select_lines(plan: dict, recs: List[dict], mem_dates: dict,
+                     entry: dict, question: str = "") -> List[str]:
+    """QVF_READER_MODE=raw_select 的证据构造:与执行器同一 `_select_pool`
+    选集(plan.slot;join 题并入 slot2),但交给读者的是**来源原文轮**——
+    直读格式 [session_date] 原始文本,按会话时序,同一轮只出现一次;
+    无槽位标签、无值抽取、无相邻同值合并、无计数卫生化。纯代码、零 LLM。"""
+    slots = [plan.get("slot") or ""]
+    if plan.get("slot2"):
+        slots.append(str(plan.get("slot2")))
+    mids: List[str] = []
+    for s in slots:
+        for r in _select_pool(recs, s, mem_dates, question):
+            mid = str(r.get("source_memory_id") or "")
+            if mid and mid not in mids:
+                mids.append(mid)
+    turns: dict = {}
+    for si, sess in enumerate(entry.get("sessions", [])):
+        for ri, t in enumerate(sess.get("turns", [])):
+            turns[f"{entry['uid']}/s{si}#r{ri}"] = (str(sess.get("date", "")), t)
+    lines: List[str] = []
+    for mid in sorted(mids, key=lambda m: turns.get(m, ("", ""))[0]):
+        d, t = turns.get(mid, ("", None))
+        if t is None:
+            continue
+        txt = t.get("content", "") if isinstance(t, dict) else str(t)
+        lines.append(f"[{d or 'undated'}] {txt}")
+    return lines[:EVIDENCE_CAP]
 
 
 def usability_lines(plan: dict, recs: List[dict], mem_dates: dict,
@@ -1096,6 +1131,10 @@ def run(data_paths: List[str], questions_path: Optional[str], out_path: str,
                 f"[compile rejected: {type(e).__name__}: {e}] The compiled "
                 f"query plan could not be executed; say the requested "
                 f"lookup could not be resolved."]
+        # ②''raw_select:证据行替换为同一选集的原文轮(旗标关时本分支不触发)
+        if _READER_MODE == "raw_select" and wellformed:
+            ev = raw_select_lines(plan, _load_records(uid), mem_dates, entry,
+                                  q["question"])
         # ②'0 QVF_EMPTY_EVIDENCE_DIRECT=1:空证据当场改走直读并照常判分
         if _EMPTY_DIRECT and not ev:
             answer, d_in, d_out = _direct_fallback(entry, uid, q["question"],
