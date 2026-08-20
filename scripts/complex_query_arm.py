@@ -751,11 +751,19 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
             if parsed[i] is not None and parsed[i + 1] is not None:
                 per_value[values[i]] = (per_value.get(values[i], 0)
                                         + (parsed[i + 1] - parsed[i]).days)
+        # QVF_TENURE_ASOF=1:末段计入(旗标关时本分支不触发,下方输出逐字节不变)
+        if _TENURE_ASOF:
+            _m = _TODAY_RE.search(question or "")
+            _tq = _pdate(_m.group(1)) if _m else None
+            if _tq is not None and parsed and parsed[-1] is not None \
+                    and _tq > parsed[-1]:
+                per_value[values[-1]] = (per_value.get(values[-1], 0)
+                                         + (_tq - parsed[-1]).days)
         if per_value:
             best = max(per_value.values())
             winners = [v for v, d in per_value.items() if d == best]
             derived.append(
-                f"Held longest (closed intervals only): {winners[0]} "
+                f"Held longest ({'as-of-today intervals' if _TENURE_ASOF else 'closed intervals only'}): {winners[0]} "
                 f"({best} days). Closed days per value: "
                 + json.dumps(per_value, ensure_ascii=False) + ".")
         else:
@@ -838,6 +846,11 @@ _OP_ROUTE = int(os.environ.get("QVF_OP_ROUTE", "0") or 0)
 # QVF_SET_SEMANTICS=1:slot_cardinality 的下游分叉(见 execute_plan 内注释与
 # results/membership_filter_prereg.md 追加预注册)。默认 0,关时逐字节等价。
 _SET_SEM = int(os.environ.get("QVF_SET_SEMANTICS", "0") or 0)
+
+# QVF_TENURE_ASOF=1:longest 算子把末段(末起始→题面 Today)计入末值——
+# "现任即最长"变体题暴露的闭区间约定边界(编译臂 2.5%,预注册
+# results/tenure_asof_variant_prereg.md)。默认 0,关时逐字节等价。
+_TENURE_ASOF = int(os.environ.get("QVF_TENURE_ASOF", "0") or 0)
 
 _DIRECT_CACHE: dict = {}
 
