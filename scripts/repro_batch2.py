@@ -73,7 +73,7 @@ class Mem0System:
 
     def search(self, uid, query):
         try:
-            r = self.m.search(query, user_id=uid, limit=10)
+            r = self.m.search(query, filters={"user_id": uid}, limit=10)
             hits = r.get("results", r) if isinstance(r, dict) else r
             return [f"- {json.dumps(h.get('memory', h), ensure_ascii=False)[:300]}"
                     for h in hits]
@@ -140,8 +140,7 @@ class ObsRagSystem(SumRagSystem):
     def ingest(self, uid, sessions):
         obs = []
         for s in sessions:
-            text = "
-".join(str(t)[:400] for t in s.get("turns", [])[:6])
+            text = "\n".join(str(t)[:400] for t in s.get("turns", [])[:6])
             for attempt in range(3):
                 try:
                     r = self.client.messages.create(
@@ -151,9 +150,7 @@ class ObsRagSystem(SumRagSystem):
                                    "this chat session: short standalone "
                                    "assertions, one per line, each prefixed "
                                    f"with the session date {s.get('date','?')}."
-                                   " Keep every name, date and number.
-
-"
+                                   " Keep every name, date and number.\n\n"
                                    + text}])
                     txt = "".join(b.text for b in r.content if b.type == "text")
                     obs += [(s.get("date", "?"), ln.strip("- ").strip())
@@ -188,8 +185,7 @@ class TimelineSystem:
     def ingest(self, uid, sessions):
         lines = []
         for s in sessions:
-            text = "
-".join(str(t)[:400] for t in s.get("turns", [])[:6])
+            text = "\n".join(str(t)[:400] for t in s.get("turns", [])[:6])
             for attempt in range(3):
                 try:
                     r = self.client.messages.create(
@@ -199,9 +195,7 @@ class TimelineSystem:
                                    "session: '[date] what happened / what "
                                    "changed for the user'. Use the session "
                                    f"date {s.get('date','?')} unless the text "
-                                   "states another date.
-
-" + text}])
+                                   "states another date.\n\n" + text}])
                     lines.append("".join(b.text for b in r.content
                                          if b.type == "text").strip())
                     break
