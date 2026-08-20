@@ -106,8 +106,8 @@ return 读者(ev)
 
 | 算法 | 关掉它 = 哪个臂 | 单独价值 |
 |---|---|---|
-| 2 筛选 | raw_select(同选集原文轮) | 纯选择 +17.0(p=0.009) |
-| 2 规范化 | filter-only vs raw_select | +9.0 |
+| 2 筛选 | raw_select(同选集原文轮) | 纯选择 +12.7(p<1e-5,全 418) |
+| 2 规范化 | filter-only vs raw_select | +5.7(p=0.008,全 418) |
 | 3 过滤 | 编译臂(未过滤) vs 过滤后 | 污染语料 +21.8(干净条目 +34.7) |
 | 4 认证 | usability vs filter-only | +11.2(p≈5e-8) |
 | 5 计算 | 编译 vs usability | +6.5(p=4.9e-5,集中时长类 +28.2) |
