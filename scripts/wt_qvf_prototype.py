@@ -71,6 +71,12 @@ _CARD_TEMP0 = int(os.environ.get("QVF_CARD_TEMP0", "1") or 0)
 # ── 08-17 自下而上审计查出的三处写入侧缺陷,各配一个旗标,默认 0 ────────
 # 三者关时 write_phase 的行为与旗标引入前逐字节一致(输出字典不增键)。
 #
+# QVF_CARD_ABS_DATE=1:建卡收尾把空 stated_date 回填为来源会话的绝对日期
+# (标记 stated_date_from_session),消除读取侧对"位置型 memory_id→会话日期"
+# 回填的依赖(时序敏感性实验伪影轮暴露的脆弱性,预注册
+# results/card_abs_date_prereg.md)。默认 0,关时逐字节等价。
+_CARD_ABS_DATE = int(os.environ.get("QVF_CARD_ABS_DATE", "0") or 0)
+
 # QVF_CARD_RENUMBER=1:跨批 record_id 重编号。
 #   缺陷:分批建卡时模型每批都从 "r1" 重新编号,而 `recs.extend(br)` 直接
 #   拼接,不做任何重编号 → 同 uid 内 record_id 大量碰撞。实测
@@ -449,9 +455,22 @@ def write_phase(data_path: str, limit_items: int = 0,
                 f"[{uid}] {_failed_batches}/{len(batches)} catalog batches "
                 f"failed terminally; refusing to cache a partial card library "
                 f"(QVF_CARD_FAIL_LOUD=2)")
+        # 旗标关时本分支不触发,输出逐字节不变
+        if _CARD_ABS_DATE:
+            _pdates = {p["memory_id"]: p["date"] for p in payload}
+            _abs_filled = 0
+            for r in recs:
+                if not str(r.get("stated_date") or "").strip():
+                    _d = _pdates.get(r.get("source_memory_id"), "")
+                    if _d:
+                        r["stated_date"] = _d
+                        r["stated_date_from_session"] = True
+                        _abs_filled += 1
         tot_in += item_in
         tot_out += item_out
         _extra = {}
+        if _CARD_ABS_DATE:
+            _extra["abs_date_filled"] = _abs_filled
         if _CARD_RENUMBER:
             _extra["record_id_renumbered"] = True
         if _CARD_VERIFY_SPAN:
