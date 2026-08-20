@@ -52,7 +52,11 @@ class Mem0System:
 
     def __init__(self):
         from mem0 import Memory
-        self.m = Memory()          # 出厂默认:openai LLM + text-embedding-3-small
+        # v2.0.16 出厂默认 LLM 拒绝 temperature<1(o系列);按其论文时代
+        # 文档默认钉 gpt-4o-mini(temperature 支持),embedder 保持默认
+        # text-embedding-3-small。偏离如实入档(prereg 附录)。
+        self.m = Memory.from_config({"llm": {"provider": "openai",
+            "config": {"model": "gpt-4o-mini", "temperature": 0.1}}})
 
     def ingest(self, uid, sessions):
         for s in sessions:
@@ -127,11 +131,95 @@ class SumRagSystem:
             return []
 
 
+class ObsRagSystem(SumRagSystem):
+    """LoCoMo 官方最优 RAG 配方:逐会话抽 observations,top-5 检索。
+    (论文原句:top 5 relevant observations 优于纯对话日志 ~5%)"""
+    name = "obsrag"
+    TOPK = 5
+
+    def ingest(self, uid, sessions):
+        obs = []
+        for s in sessions:
+            text = "
+".join(str(t)[:400] for t in s.get("turns", [])[:6])
+            for attempt in range(3):
+                try:
+                    r = self.client.messages.create(
+                        model=READER_MODEL, max_tokens=300, temperature=0.0,
+                        messages=[{"role": "user", "content":
+                                   "Extract OBSERVATIONS about the user from "
+                                   "this chat session: short standalone "
+                                   "assertions, one per line, each prefixed "
+                                   f"with the session date {s.get('date','?')}."
+                                   " Keep every name, date and number.
+
+"
+                                   + text}])
+                    txt = "".join(b.text for b in r.content if b.type == "text")
+                    obs += [(s.get("date", "?"), ln.strip("- ").strip())
+                            for ln in txt.splitlines() if ln.strip()]
+                    break
+                except Exception:  # noqa: BLE001
+                    time.sleep(3)
+        class _M:
+            def __init__(self, c, d):
+                self.content, self.metadata = c, {"session_date": d}
+                self.memory_id = d
+        mems = [_M(o, d) for d, o in obs]
+        self.stores[uid] = (self._retr_cls(mems), [o for _, o in obs])
+
+    def search(self, uid, query):
+        retr, _ = self.stores.get(uid, (None, None))
+        if retr is None:
+            return []
+        hits = retr.retrieve(query, top_k=self.TOPK)
+        return [f"- {h.content[:300]}" for h in hits]
+
+
+class TimelineSystem:
+    """TReMu 式时间线记忆:逐会话生成带日期的 timeline memo,无嵌入检索,
+    全时间线直接交给读者(提示式,镜像其 memo+timeline 设计)。"""
+    name = "timeline"
+
+    def __init__(self):
+        self.client = anthropic.Anthropic()
+        self.stores: dict = {}
+
+    def ingest(self, uid, sessions):
+        lines = []
+        for s in sessions:
+            text = "
+".join(str(t)[:400] for t in s.get("turns", [])[:6])
+            for attempt in range(3):
+                try:
+                    r = self.client.messages.create(
+                        model=READER_MODEL, max_tokens=200, temperature=0.0,
+                        messages=[{"role": "user", "content":
+                                   "Write ONE timeline memo line for this chat "
+                                   "session: '[date] what happened / what "
+                                   "changed for the user'. Use the session "
+                                   f"date {s.get('date','?')} unless the text "
+                                   "states another date.
+
+" + text}])
+                    lines.append("".join(b.text for b in r.content
+                                         if b.type == "text").strip())
+                    break
+                except Exception:  # noqa: BLE001
+                    time.sleep(3)
+        self.stores[uid] = lines
+
+    def search(self, uid, query):
+        return [f"- {ln[:300]}" for ln in self.stores.get(uid, [])]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--system", choices=["mem0", "sumrag"], required=True)
+    ap.add_argument("--system", choices=["mem0", "sumrag", "obsrag", "timeline"],
+                    required=True)
     a = ap.parse_args()
-    sysm = Mem0System() if a.system == "mem0" else SumRagSystem()
+    sysm = {"mem0": Mem0System, "sumrag": SumRagSystem,
+            "obsrag": ObsRagSystem, "timeline": TimelineSystem}[a.system]()
     out_p = ROOT / f"results/wsc_s5_{sysm.name}.jsonl"
     done = set()
     if out_p.exists():

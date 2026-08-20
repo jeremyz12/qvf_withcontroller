@@ -16,3 +16,13 @@
 预期区间(可证伪,基于 LangMem 40.0 与直读 51.7 同子集):两系统预计 35–60%;
 若任一 ≥ filter-only(70.0 同子集)→ 如实报并复核我方口径。
 成本:Mem0 摄入 ~$1 + 摘要 harness ~$0.5 + 评测 ~$0.5。
+
+## 附录(2026-08-21):批 3 扩充与 Mem0 配置偏离
+
+- Mem0 v2.0.16 出厂默认 LLM 拒绝 temperature<1(400 错,36 行垃圾已删重跑);
+  按其论文时代文档默认钉 gpt-4o-mini(temp 0.1),embedder 仍为默认 text-embedding-3-small;
+- 新增系统 C:**obs-RAG(LoCoMo 官方最优配方)**——逐会话抽 observations,top-5 检索
+  (论文:top-5 observations 优于纯对话日志);
+- 新增系统 D:**timeline(TReMu 式)**——逐会话带日期 timeline memo,无嵌入,全时间线直读;
+- Graphiti:需本地 neo4j(17687)服务,当前 DOWN,待基础设施后补;
+- 同 15 库 60 题、同读者判官协议不变。
