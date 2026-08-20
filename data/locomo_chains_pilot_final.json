@@ -1,0 +1,2415 @@
+{
+ "summary": {
+  "chains": 96,
+  "multi_value_chains": 65,
+  "provenance": "r1(regex candidates)+r2(observation-assisted) union, slot-canonicalized, span/date mechanically validated"
+ },
+ "chains": [
+  {
+   "conv": "conv-26",
+   "speaker": "caroline",
+   "slot": "adoption_process_stage",
+   "elements": [
+    {
+     "value": "attended an adoption council meeting; determined to adopt",
+     "date": "2023-07-15",
+     "state_span": "Last Friday I went to a council meeting for adoption",
+     "turn_id": "session_8#8"
+    },
+    {
+     "value": "beginning the adoption chapter after passing agency interviews",
+     "date": "2023-10-13",
+     "state_span": "I'm stoked to start this new chapter",
+     "turn_id": "session_17#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "caroline",
+   "slot": "activist_group_membership",
+   "elements": [
+    {
+     "value": "member of a new LGBTQ activist group",
+     "date": "2023-07-20",
+     "state_span": "I just joined a new LGBTQ activist group last Tues",
+     "turn_id": "session_10#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "melanie",
+   "slot": "figurine_collection",
+   "elements": [
+    {
+     "value": "newly bought figurines",
+     "date": "2023-10-22",
+     "state_span": "These figurines I bought yesterday",
+     "turn_id": "session_19#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-30",
+   "speaker": "jon",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "banker (just lost the job)",
+     "date": "2023-01-20",
+     "state_span": "Lost my job as a banker yesterday",
+     "turn_id": "session_1#1"
+    },
+    {
+     "value": "starting own business",
+     "date": "2023-01-20",
+     "state_span": "I'm gonna take a shot at starting my own business",
+     "turn_id": "session_1#1"
+    },
+    {
+     "value": "dance studio owner",
+     "date": "2023-01-20",
+     "state_span": "I'm starting a dance studio",
+     "turn_id": "session_1#3"
+    },
+    {
+     "value": "banker (just lost job)",
+     "date": "2023-01-20",
+     "state_span": "Lost my job as a banker yesterday",
+     "turn_id": "session_1#1"
+    },
+    {
+     "value": "starting own dance studio business",
+     "date": "2023-01-20",
+     "state_span": "I'm starting a dance studio 'cause I'm passionate about dancing",
+     "turn_id": "session_1#3"
+    },
+    {
+     "value": "running his own dance studio",
+     "date": "2023-02-08",
+     "state_span": "I love running my own studio",
+     "turn_id": "session_5#3"
+    },
+    {
+     "value": "took a temp job while seeking investors",
+     "date": "2023-07-21",
+     "state_span": "I got a temp job to help cover expenses while I look for investors",
+     "turn_id": "session_18#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-30",
+   "speaker": "gina",
+   "slot": "business",
+   "elements": [
+    {
+     "value": "clothing store owner (launched ad campaign)",
+     "date": "2023-01-29",
+     "state_span": "I just launched an ad campaign for my clothing store",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "launched an ad campaign for the store",
+     "date": "2023-01-29",
+     "state_span": "I just launched an ad campaign for my clothing store in hopes of growing the business",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "got a wholesaler to say yes, expanding",
+     "date": "2023-02-01",
+     "state_span": "I emailed some wholesalers and one replied and said yes today!",
+     "turn_id": "session_3#1"
+    },
+    {
+     "value": "working on online store, collab with local artist",
+     "date": "2023-02-08",
+     "state_span": "I've been working hard on my online store",
+     "turn_id": "session_5#4"
+    },
+    {
+     "value": "online clothes store officially open",
+     "date": "2023-03-16",
+     "state_span": "My online clothes store is open!",
+     "turn_id": "session_6#5"
+    },
+    {
+     "value": "online clothing store owner",
+     "date": "2023-03-23",
+     "state_span": "my online clothing store has been a roller coaster but rewarding",
+     "turn_id": "session_7#1"
+    },
+    {
+     "value": "online store owner running promotions",
+     "date": "2023-04-03",
+     "state_span": "I got some new offers and promotions going on my online store",
+     "turn_id": "session_8#3"
+    },
+    {
+     "value": "running offers and promotions on the online store",
+     "date": "2023-04-03",
+     "state_span": "I got some new offers and promotions going on my online store to try and bring in new customers",
+     "turn_id": "session_8#3"
+    },
+    {
+     "value": "online clothing store owner",
+     "date": "2023-04-25",
+     "state_span": "I started my own online clothing store not so long ago",
+     "turn_id": "session_10#1"
+    },
+    {
+     "value": "released a limited edition line",
+     "date": "2023-06-21",
+     "state_span": "I made a limited edition line last week",
+     "turn_id": "session_16#2"
+    },
+    {
+     "value": "built a new ordering website",
+     "date": "2023-07-21",
+     "state_span": "Last week, I built a new website for customers to make orders",
+     "turn_id": "session_18#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "john",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "kickboxing",
+     "date": "2022-12-17",
+     "state_span": "I'm doing kickboxing",
+     "turn_id": "session_1#3"
+    },
+    {
+     "value": "taekwondo",
+     "date": "2022-12-22",
+     "state_span": "I'm off to do some taekwondo",
+     "turn_id": "session_2#27"
+    },
+    {
+     "value": "weekend yoga class",
+     "date": "2023-04-07",
+     "state_span": "I started a weekend yoga class with a colleague",
+     "turn_id": "session_10#0"
+    },
+    {
+     "value": "family boot camps",
+     "date": "2023-05-04",
+     "state_span": "I just started going to boot camps with my fam last month",
+     "turn_id": "session_13#2"
+    },
+    {
+     "value": "promoted at work",
+     "date": "2023-06-16",
+     "state_span": "I got promoted at work",
+     "turn_id": "session_19#5"
+    },
+    {
+     "value": "working in new job",
+     "date": "2023-07-22",
+     "state_span": "I'm really enjoying my new job",
+     "turn_id": "session_25#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "john",
+   "slot": "fitness_class",
+   "elements": [
+    {
+     "value": "weekend yoga class",
+     "date": "2023-04-07",
+     "state_span": "I started a weekend yoga class with a colleague",
+     "turn_id": "session_10#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "john",
+   "slot": "volunteering",
+   "elements": [
+    {
+     "value": "fire-fighting brigade member",
+     "date": "2023-07-31",
+     "state_span": "I just joined a fire-fighting brigade",
+     "turn_id": "session_26#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "volunteering",
+   "elements": [
+    {
+     "value": "volunteer at homeless shelter",
+     "date": "2023-04-10",
+     "state_span": "the homeless shelter I volunteer at",
+     "turn_id": "session_11#9"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "accessory",
+   "elements": [
+    {
+     "value": "cross necklace",
+     "date": "2023-04-10",
+     "state_span": "I bought a cross necklace",
+     "turn_id": "session_11#9"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "adopted shelter puppy",
+     "date": "2023-08-13",
+     "state_span": "I just adopted this cute pup from a shelter last week",
+     "turn_id": "session_31#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-42",
+   "speaker": "joanna",
+   "slot": "writing_group_membership",
+   "elements": [
+    {
+     "value": "member of a writers group",
+     "date": "2022-04-21",
+     "state_span": "I just joined a writers group",
+     "turn_id": "session_9#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-42",
+   "speaker": "nate",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "turtles, owned 3 years",
+     "date": "2022-01-23",
+     "state_span": "I've had them for 3 years now",
+     "turn_id": "session_2#11"
+    },
+    {
+     "value": "Max (newly adopted pet)",
+     "date": "2022-05-20",
+     "state_span": "I just got a new addition to the family, this is Max!",
+     "turn_id": "session_12#2"
+    },
+    {
+     "value": "added adopted dog Max",
+     "date": "2022-05-20",
+     "state_span": "I just got a new addition to the family, this is Max!",
+     "turn_id": "session_12#2"
+    },
+    {
+     "value": "new tank for his fish/pets",
+     "date": "2022-08-22",
+     "state_span": "my little dudes got a new tank",
+     "turn_id": "session_19#2"
+    },
+    {
+     "value": "turtles got a new bigger tank",
+     "date": "2022-08-22",
+     "state_span": "my little dudes got a new tank!",
+     "turn_id": "session_19#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "marital_status",
+   "elements": [
+    {
+     "value": "newly married",
+     "date": "2023-10-02",
+     "state_span": "It was so beautiful having everyone celebrating with us",
+     "turn_id": "session_12#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "club_membership",
+   "elements": [
+    {
+     "value": "hiking club member (newly joined)",
+     "date": "2023-10-02",
+     "state_span": "Some of my hiking club friends came even though I just joined!",
+     "turn_id": "session_12#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "tim",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "started learning piano",
+     "date": "2023-08-21",
+     "state_span": "I've also started learning how to play the piano",
+     "turn_id": "session_8#11"
+    },
+    {
+     "value": "plays movie theme on piano",
+     "date": "2023-08-21",
+     "state_span": "I love playing different songs on the piano",
+     "turn_id": "session_8#13"
+    },
+    {
+     "value": "fantasy / Harry Potter fandom",
+     "date": "2023-10-13",
+     "state_span": "my passion for fantasy stuff",
+     "turn_id": "session_13#0"
+    },
+    {
+     "value": "reading",
+     "date": "2024-01-02",
+     "state_span": "I will always love reading",
+     "turn_id": "session_27#14"
+    }
+   ]
+  },
+  {
+   "conv": "conv-44",
+   "speaker": "andrew",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "Financial Analyst",
+     "date": "2023-03-27",
+     "state_span": "I started a new job as a Financial Analyst last week",
+     "turn_id": "session_1#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-44",
+   "speaker": "andrew",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "no pets",
+     "date": "2023-03-27",
+     "state_span": "No, no pets right now.",
+     "turn_id": "session_1#11"
+    },
+    {
+     "value": "searching for a dog to adopt",
+     "date": "2023-05-06",
+     "state_span": "I've been looking for a doggo to adopt",
+     "turn_id": "session_5#0"
+    },
+    {
+     "value": "searching, contacting landlords",
+     "date": "2023-05-06",
+     "state_span": "Finding a pet-friendly place to live has been tough",
+     "turn_id": "session_5#4"
+    },
+    {
+     "value": "still searching, no luck",
+     "date": "2023-06-02",
+     "state_span": "I'm still on the hunt, but it's tough finding a pet-friendly spot in the city",
+     "turn_id": "session_7#7"
+    },
+    {
+     "value": "still can't find a rental",
+     "date": "2023-07-03",
+     "state_span": "Still can't seem to find any dog-friendly spots to rent.",
+     "turn_id": "session_10#1"
+    },
+    {
+     "value": "puppy named Toby",
+     "date": "2023-07-11",
+     "state_span": "meet Toby, my puppy",
+     "turn_id": "session_12#0"
+    },
+    {
+     "value": "Toby is a German Shepherd",
+     "date": "2023-08-04",
+     "state_span": "He's a German Shepherd",
+     "turn_id": "session_14#18"
+    },
+    {
+     "value": "still searching",
+     "date": "2023-09-06",
+     "state_span": "Nah, still working on that.",
+     "turn_id": "session_18#18"
+    },
+    {
+     "value": "adopted another pup from a shelter",
+     "date": "2023-10-19",
+     "state_span": "I recently adopted another pup from a shelter",
+     "turn_id": "session_24#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-44",
+   "speaker": "audrey",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "three dogs: Pepper, Precious, Panda",
+     "date": "2023-03-27",
+     "state_span": "Their names are Pepper, Precious and Panda",
+     "turn_id": "session_1#6"
+    },
+    {
+     "value": "adopted a puppy named Pixie",
+     "date": "2023-04-02",
+     "state_span": "We adopted another puppy called Pixie",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "adopted a fourth puppy, Pixie",
+     "date": "2023-04-02",
+     "state_span": "We adopted another puppy called Pixie",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "tattoos of her dogs on her arm",
+     "date": "2023-04-16",
+     "state_span": "I got tattoos of them on my arm",
+     "turn_id": "session_3#25"
+    },
+    {
+     "value": "four dogs",
+     "date": "2023-05-11",
+     "state_span": "taking care of my four doggies",
+     "turn_id": "session_6#1"
+    },
+    {
+     "value": "positive reinforcement training workshop",
+     "date": "2023-05-11",
+     "state_span": "It was a positive reinforcement training class and I wanted to give it a shot",
+     "turn_id": "session_6#3"
+    },
+    {
+     "value": "dog training course",
+     "date": "2023-07-03",
+     "state_span": "I'm taking a dog training course",
+     "turn_id": "session_10#0"
+    },
+    {
+     "value": "four dogs",
+     "date": "2023-07-27",
+     "state_span": "My four fur babies are more important to me than anything",
+     "turn_id": "session_13#3"
+    },
+    {
+     "value": "agility classes",
+     "date": "2023-08-04",
+     "state_span": "I just started agility classes with my pups at a dog park",
+     "turn_id": "session_14#1"
+    },
+    {
+     "value": "another tattoo of all four dogs",
+     "date": "2023-08-16",
+     "state_span": "I got another tattoo of my four dogs on my arm",
+     "turn_id": "session_15#0"
+    },
+    {
+     "value": "dog grooming course",
+     "date": "2023-08-19",
+     "state_span": "I took a dog grooming course",
+     "turn_id": "session_16#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-44",
+   "speaker": "audrey",
+   "slot": "home",
+   "elements": [
+    {
+     "value": "new place with a bigger backyard",
+     "date": "2023-06-26",
+     "state_span": "I got a new place with a bigger backyard for the pooches",
+     "turn_id": "session_9#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "metal detector (beach detecting)",
+     "date": "2022-03-20",
+     "state_span": "I bought a metal detector and walk along the beaches looking for something worthwhile.",
+     "turn_id": "session_2#9"
+    },
+    {
+     "value": "metal detecting on beaches",
+     "date": "2022-03-20",
+     "state_span": "I bought a metal detector and walk along the beaches",
+     "turn_id": "session_2#9"
+    },
+    {
+     "value": "playing drums",
+     "date": "2022-03-27",
+     "state_span": "I play drums too!",
+     "turn_id": "session_3#2"
+    },
+    {
+     "value": "chess",
+     "date": "2022-07-22",
+     "state_span": "I just started playing chess to get better at strategy",
+     "turn_id": "session_17#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "blog",
+   "elements": [
+    {
+     "value": "started a coding blog",
+     "date": "2022-06-16",
+     "state_span": "Last week, I started my blog about coding.",
+     "turn_id": "session_14#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "books_bookcase",
+   "elements": [
+    {
+     "value": "bookcase almost full of new books",
+     "date": "2022-06-16",
+     "state_span": "I bought a lot of new books, and now my bookcase is almost completely filled!",
+     "turn_id": "session_14#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "freelance programming",
+     "date": "2022-04-29",
+     "state_span": "taking on some freelance programming to hone my coding skills",
+     "turn_id": "session_8#1"
+    },
+    {
+     "value": "got dream job, starting next month",
+     "date": "2022-06-13",
+     "state_span": "I finally got my dream job!",
+     "turn_id": "session_13#2"
+    },
+    {
+     "value": "IT job of 3 years (left)",
+     "date": "2022-08-06",
+     "state_span": "recently left my IT job after 3 years",
+     "turn_id": "session_18#0"
+    },
+    {
+     "value": "new job",
+     "date": "2022-08-06",
+     "state_span": "And now with this new job, I am happy about my decision. I am loving the new job!",
+     "turn_id": "session_18#0"
+    },
+    {
+     "value": "left IT job of 3 years, started new job",
+     "date": "2022-08-06",
+     "state_span": "recently left my IT job after 3 years",
+     "turn_id": "session_18#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "gaming_setup",
+   "elements": [
+    {
+     "value": "new devices and refurbished gaming desk",
+     "date": "2022-08-21",
+     "state_span": "I bought some new devices and refurbished my gaming desk.",
+     "turn_id": "session_20#8"
+    },
+    {
+     "value": "new gaming equipment: headphones",
+     "date": "2022-09-04",
+     "state_span": "I bought some new gaming equipment to improve my skills. For example, new headphones.",
+     "turn_id": "session_23#7"
+    },
+    {
+     "value": "Sennheiser headphones and Logitech mouse",
+     "date": "2022-09-04",
+     "state_span": "I chose headphones from Sennheiser.",
+     "turn_id": "session_23#9"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "business",
+   "elements": [
+    {
+     "value": "startup making portable smokers",
+     "date": "2022-09-20",
+     "state_span": "Yesterday I started a new startup - portable smokers.",
+     "turn_id": "session_25#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "gaming_console",
+   "elements": [
+    {
+     "value": "new cutting-edge gaming system",
+     "date": "2022-03-27",
+     "state_span": "I just got a new cutting-edge gaming system and the graphics are incredible.",
+     "turn_id": "session_3#7"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "two dogs: Max and Daisy",
+     "date": "2022-03-17",
+     "state_span": "Max and Daisy",
+     "turn_id": "session_1#13"
+    },
+    {
+     "value": "two dogs",
+     "date": "2022-03-20",
+     "state_span": "My two dogs are the best pals ever",
+     "turn_id": "session_2#14"
+    },
+    {
+     "value": "adopted pup named Ned",
+     "date": "2022-04-12",
+     "state_span": "I adopted a pup from a shelter in Stamford last week",
+     "turn_id": "session_5#0"
+    },
+    {
+     "value": "adopted third dog, a pup named Ned",
+     "date": "2022-04-12",
+     "state_span": "I adopted a pup from a shelter in Stamford last week",
+     "turn_id": "session_5#0"
+    },
+    {
+     "value": "three dogs",
+     "date": "2022-08-10",
+     "state_span": "my three dogs",
+     "turn_id": "session_19#11"
+    },
+    {
+     "value": "dog Ned",
+     "date": "2022-08-26",
+     "state_span": "His name's Ned and he's been awesome since I adopted him.",
+     "turn_id": "session_21#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "book_purchase",
+   "elements": [
+    {
+     "value": "adventure book with fantasy novels",
+     "date": "2022-04-29",
+     "state_span": "three days ago I bought myself an adventure book with fantasy novels and cool arts",
+     "turn_id": "session_8#10"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "course",
+   "elements": [
+    {
+     "value": "course combining gaming and programming",
+     "date": "2022-06-13",
+     "state_span": "I recently started a course that combines my passion for gaming and programming.",
+     "turn_id": "session_13#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "travel_plan",
+   "elements": [
+    {
+     "value": "trip to Toronto",
+     "date": "2022-07-09",
+     "state_span": "I bought air tickets to Toronto, and I’m leaving the day after tomorrow evening",
+     "turn_id": "session_16#8"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "relationship",
+   "elements": [
+    {
+     "value": "Detroit",
+     "date": "2023-01-27",
+     "state_span": "We played the game \"Detroit\" on the console",
+     "turn_id": "session_2#25"
+    },
+    {
+     "value": "Walking Dead",
+     "date": "2023-01-27",
+     "state_span": "We are planning to play \"Walking Dead\" next Saturday.",
+     "turn_id": "session_2#29"
+    },
+    {
+     "value": "in a relationship for three years, not married",
+     "date": "2023-02-25",
+     "state_span": "We're not married yet but we've been together for three years",
+     "turn_id": "session_7#6"
+    },
+    {
+     "value": "It takes two",
+     "date": "2023-07-09",
+     "state_span": "we love playing \"It takes two\" together",
+     "turn_id": "session_15#9"
+    },
+    {
+     "value": "Battlefield 1",
+     "date": "2023-08-21",
+     "state_span": "We were given a new game for the console last week, it is Battlefield 1.",
+     "turn_id": "session_20#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "Susie, adopted two years ago",
+     "date": "2023-08-01",
+     "state_span": "I adopted her two years ago when I was feeling lonely and wanted some company.",
+     "turn_id": "session_16#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "aquarium",
+   "elements": [
+    {
+     "value": "new aquarium for Seraphim",
+     "date": "2023-06-26",
+     "state_span": "new aquarium that I bought the day before yesterday",
+     "turn_id": "session_14#3"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "gaming_console",
+   "elements": [
+    {
+     "value": "console bought as gift for partner",
+     "date": "2023-08-19",
+     "state_span": "I bought a console for my partner as a gift on the 17th",
+     "turn_id": "session_19#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "studies",
+   "elements": [
+    {
+     "value": "engineering studies ongoing",
+     "date": "2023-08-19",
+     "state_span": "Engineering studies are still going strong too",
+     "turn_id": "session_19#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "deborah",
+   "slot": "yoga_equipment",
+   "elements": [
+    {
+     "value": "new yoga props",
+     "date": "2023-03-28",
+     "state_span": "I bought new props for the yoga class",
+     "turn_id": "session_11#1"
+    },
+    {
+     "value": "candle for yoga atmosphere",
+     "date": "2023-03-28",
+     "state_span": "I also bought this candle for the atmosphere and to improve my yoga practice",
+     "turn_id": "session_11#3"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "deborah",
+   "slot": "running_group",
+   "elements": [
+    {
+     "value": "started a running group with Anna",
+     "date": "2023-07-09",
+     "state_span": "I started a running group with Anna",
+     "turn_id": "session_15#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "deborah",
+   "slot": "community_project",
+   "elements": [
+    {
+     "value": "started community cleanup project",
+     "date": "2023-08-01",
+     "state_span": "I just started a project for a cleanup in our community",
+     "turn_id": "session_16#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "deborah",
+   "slot": "marital_status",
+   "elements": [
+    {
+     "value": "married",
+     "date": "2023-09-15",
+     "state_span": "It's where I got married",
+     "turn_id": "session_28#10"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "sam",
+   "slot": "diet_routine",
+   "elements": [
+    {
+     "value": "started a new diet and exercise routine",
+     "date": "2023-08-27",
+     "state_span": "I started a new diet and exercise routine last Monday",
+     "turn_id": "session_9#0"
+    },
+    {
+     "value": "lapsed and bought unhealthy snacks",
+     "date": "2023-10-14",
+     "state_span": "I gave in and bought some unhealthy snacks",
+     "turn_id": "session_13#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "sam",
+   "slot": "phone",
+   "elements": [
+    {
+     "value": "new phone with malfunctioning navigation app",
+     "date": "2023-10-06",
+     "state_span": "frustrated lately with my new phone",
+     "turn_id": "session_11#14"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "evan",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "laid off, job hunting",
+     "date": "2023-11-09",
+     "state_span": "I'm currently on the hunt for a new job",
+     "turn_id": "session_16#11"
+    },
+    {
+     "value": "lost job in company downsizing",
+     "date": "2023-11-09",
+     "state_span": "I lost my job last month",
+     "turn_id": "session_16#9"
+    },
+    {
+     "value": "job hunting",
+     "date": "2023-11-09",
+     "state_span": "I'm currently on the hunt for a new job",
+     "turn_id": "session_16#11"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "evan",
+   "slot": "vehicle",
+   "elements": [
+    {
+     "value": "old Prius broke down, repaired and sold",
+     "date": "2023-05-18",
+     "state_span": "My old prius broke down, decided to get it repaired and sell it",
+     "turn_id": "session_1#3"
+    },
+    {
+     "value": "new Prius",
+     "date": "2023-05-18",
+     "state_span": "I just got back from a trip with my family in my new Prius",
+     "turn_id": "session_1#1"
+    },
+    {
+     "value": "new Prius (broken down)",
+     "date": "2023-12-05",
+     "state_span": "my new Prius, the one I just bought, broke down",
+     "turn_id": "session_18#0"
+    },
+    {
+     "value": "new Prius broke down",
+     "date": "2023-12-05",
+     "state_span": "my new Prius, the one I just bought, broke down",
+     "turn_id": "session_18#0"
+    },
+    {
+     "value": "Prius back on the road, minor accident",
+     "date": "2023-12-31",
+     "state_span": "We took the Prius for a long drive to the mountains last weekend",
+     "turn_id": "session_22#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "evan",
+   "slot": "relationship",
+   "elements": [
+    {
+     "value": "met a Canadian woman",
+     "date": "2023-08-07",
+     "state_span": "I met this awesome Canadian woman",
+     "turn_id": "session_5#0"
+    },
+    {
+     "value": "new significant other",
+     "date": "2023-08-13",
+     "state_span": "I just got back from a rad vacay with my new SO in Canada",
+     "turn_id": "session_6#0"
+    },
+    {
+     "value": "partner pregnant",
+     "date": "2023-12-09",
+     "state_span": "my partner is pregnant",
+     "turn_id": "session_19#0"
+    },
+    {
+     "value": "married",
+     "date": "2023-12-26",
+     "state_span": "got married last week",
+     "turn_id": "session_21#1"
+    },
+    {
+     "value": "told extended family about marriage",
+     "date": "2024-01-06",
+     "state_span": "My partner and I told our extended fam about our marriage yesterday",
+     "turn_id": "session_23#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "evan",
+   "slot": "diet",
+   "elements": [
+    {
+     "value": "new diet: two ginger snaps a day",
+     "date": "2024-01-06",
+     "state_span": "I've started a new diet—limiting myself to just two ginger snaps a day",
+     "turn_id": "session_23#14"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "calvin",
+   "slot": "vehicle",
+   "elements": [
+    {
+     "value": "new luxury car",
+     "date": "2023-03-26",
+     "state_span": "I just got a new car",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "got a new luxury car",
+     "date": "2023-03-26",
+     "state_span": "I just got a new car",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "car damaged in accident",
+     "date": "2023-06-21",
+     "state_span": "I had a lil car accident last Friday",
+     "turn_id": "session_9#0"
+    },
+    {
+     "value": "car repaired and running",
+     "date": "2023-07-07",
+     "state_span": "the car's fixed and going strong",
+     "turn_id": "session_10#1"
+    },
+    {
+     "value": "Ferrari serviced",
+     "date": "2023-08-03",
+     "state_span": "I just took my Ferrari for a service",
+     "turn_id": "session_12#0"
+    },
+    {
+     "value": "Ferrari",
+     "date": "2023-10-15",
+     "state_span": "I got a new Ferrari",
+     "turn_id": "session_23#15"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "calvin",
+   "slot": "home",
+   "elements": [
+    {
+     "value": "new mansion",
+     "date": "2023-03-23",
+     "state_span": "my new mansion",
+     "turn_id": "session_1#2"
+    },
+    {
+     "value": "place flooded",
+     "date": "2023-05-16",
+     "state_span": "my place got flooded",
+     "turn_id": "session_6#2"
+    },
+    {
+     "value": "living in Japanese mansion",
+     "date": "2023-07-07",
+     "state_span": "living in my Japanese mansion",
+     "turn_id": "session_10#5"
+    },
+    {
+     "value": "converting mansion into recording studio",
+     "date": "2023-07-21",
+     "state_span": "transform a Japanese mansion into a recording studio",
+     "turn_id": "session_11#3"
+    },
+    {
+     "value": "new place",
+     "date": "2023-08-14",
+     "state_span": "I had the opportunity to explore my new place",
+     "turn_id": "session_14#3"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "dave",
+   "slot": "blog",
+   "elements": [
+    {
+     "value": "blog on car mods",
+     "date": "2023-11-02",
+     "state_span": "I recently started a blog on car mods",
+     "turn_id": "session_28#7"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "dave",
+   "slot": "camera",
+   "elements": [
+    {
+     "value": "vintage camera",
+     "date": "2023-11-17",
+     "state_span": "my new vintage camera that I bought this month",
+     "turn_id": "session_30#4"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "melanie",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "a dog and a cat (Luna & Oliver)",
+     "date": "2023-07-12",
+     "state_span": "We've got a pup and a kitty",
+     "turn_id": "session_7#15"
+    },
+    {
+     "value": "added a second cat, Bailey",
+     "date": "2023-08-23",
+     "state_span": "we got another cat named Bailey too",
+     "turn_id": "session_13#3"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "melanie",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "signed up for a pottery class",
+     "date": "2023-07-03",
+     "state_span": "I just signed up for a pottery class yesterday",
+     "turn_id": "session_5#3"
+    },
+    {
+     "value": "took kids to a pottery workshop",
+     "date": "2023-07-15",
+     "state_span": "Last Fri I finally took my kids to a pottery workshop",
+     "turn_id": "session_8#1"
+    },
+    {
+     "value": "actively making pieces in pottery class",
+     "date": "2023-08-25",
+     "state_span": "I made it in pottery class yesterday",
+     "turn_id": "session_14#3"
+    },
+    {
+     "value": "on break from pottery due to injury",
+     "date": "2023-10-13",
+     "state_span": "Last month I got hurt and had to take a break from pottery",
+     "turn_id": "session_17#7"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "caroline",
+   "slot": "adoption_process",
+   "elements": [
+    {
+     "value": "researching adoption agencies",
+     "date": "2023-05-25",
+     "state_span": "Researching adoption agencies",
+     "turn_id": "session_2#7"
+    },
+    {
+     "value": "chose an LGBTQ+ friendly agency",
+     "date": "2023-05-25",
+     "state_span": "I chose them 'cause they help LGBTQ+ folks with adoption",
+     "turn_id": "session_2#11"
+    },
+    {
+     "value": "attended an adoption council meeting",
+     "date": "2023-07-15",
+     "state_span": "Last Friday I went to a council meeting for adoption",
+     "turn_id": "session_8#8"
+    },
+    {
+     "value": "applied to adoption agencies",
+     "date": "2023-08-23",
+     "state_span": "I applied to adoption agencies",
+     "turn_id": "session_13#0"
+    },
+    {
+     "value": "consulting a mentor for adoption advice",
+     "date": "2023-10-13",
+     "state_span": "I just contacted my mentor for adoption advice",
+     "turn_id": "session_17#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "caroline",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "interested in counseling or mental health work",
+     "date": "2023-05-08",
+     "state_span": "I'm keen on counseling or working in mental health",
+     "turn_id": "session_1#10"
+    },
+    {
+     "value": "narrowing focus to counseling trans people; attended workshop",
+     "date": "2023-06-27",
+     "state_span": "I'm thinking of working with trans people, helping them accept themselves and supporting their mental health",
+     "turn_id": "session_4#12"
+    },
+    {
+     "value": "still exploring counseling and mental health jobs",
+     "date": "2023-07-12",
+     "state_span": "I'm still looking into counseling and mental health jobs",
+     "turn_id": "session_7#4"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "caroline",
+   "slot": "lgbtq_community_involvement",
+   "elements": [
+    {
+     "value": "joined a mentorship program for LGBTQ youth",
+     "date": "2023-07-17",
+     "state_span": "I joined a mentorship program for LGBTQ youth",
+     "turn_id": "session_9#1"
+    },
+    {
+     "value": "joined LGBTQ activist group 'Connected LGBTQ Activists'",
+     "date": "2023-07-20",
+     "state_span": "I just joined a new LGBTQ activist group last Tues",
+     "turn_id": "session_10#2"
+    },
+    {
+     "value": "volunteering at an LGBTQ+ youth center",
+     "date": "2023-08-28",
+     "state_span": "I've been chasing my ambitions and had the chance to volunteer at an LGBTQ+ youth center",
+     "turn_id": "session_15#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "melanie",
+   "slot": "musical_instrument",
+   "elements": [
+    {
+     "value": "playing violin during me-time",
+     "date": "2023-05-25",
+     "state_span": "running, reading, or playing my violin",
+     "turn_id": "session_2#4"
+    },
+    {
+     "value": "plays clarinet",
+     "date": "2023-08-28",
+     "state_span": "I play clarinet",
+     "turn_id": "session_15#25"
+    }
+   ]
+  },
+  {
+   "conv": "conv-26",
+   "speaker": "caroline",
+   "slot": "musical_instrument",
+   "elements": [
+    {
+     "value": "learning piano",
+     "date": "2023-07-03",
+     "state_span": "just learning the piano",
+     "turn_id": "session_5#4"
+    },
+    {
+     "value": "plays acoustic guitar (5 years)",
+     "date": "2023-08-28",
+     "state_span": "I started playing acoustic guitar about five years ago",
+     "turn_id": "session_15#20"
+    }
+   ]
+  },
+  {
+   "conv": "conv-30",
+   "speaker": "jon",
+   "slot": "dance_studio_status",
+   "elements": [
+    {
+     "value": "hunting for a location",
+     "date": "2023-01-29",
+     "state_span": "I'm on the hunt for the ideal spot for my dance studio",
+     "turn_id": "session_2#3"
+    },
+    {
+     "value": "still searching for a place",
+     "date": "2023-02-01",
+     "state_span": "I'm still searching for a place to open my dance studio",
+     "turn_id": "session_3#0"
+    },
+    {
+     "value": "location search still tricky",
+     "date": "2023-02-04",
+     "state_span": "Searching for a dance studio location has been tricky",
+     "turn_id": "session_4#8"
+    },
+    {
+     "value": "expanding studio's social media and hosting a competition",
+     "date": "2023-04-03",
+     "state_span": "I'm expanding my dance studio's social media presence and offering workshops and classes to local schools and centers",
+     "turn_id": "session_8#12"
+    },
+    {
+     "value": "grand opening the next day",
+     "date": "2023-06-19",
+     "state_span": "The official opening night is tomorrow.",
+     "turn_id": "session_15#4"
+    },
+    {
+     "value": "studio on shaky ground",
+     "date": "2023-07-21",
+     "state_span": "The dance studio is on tenuous grounds right now",
+     "turn_id": "session_18#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-30",
+   "speaker": "gina",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "lost job at Door Dash",
+     "date": "2023-01-20",
+     "state_span": "I also lost my job at Door Dash this month",
+     "turn_id": "session_1#2"
+    },
+    {
+     "value": "owner of her own clothing store",
+     "date": "2023-01-29",
+     "state_span": "Starting my own store and taking risks is both scary and rewarding",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "interviewed for a design internship",
+     "date": "2023-05-11",
+     "state_span": "I had an interview for a design internship yesterday",
+     "turn_id": "session_11#13"
+    },
+    {
+     "value": "accepted for a fashion internship",
+     "date": "2023-05-27",
+     "state_span": "I just got accepted for a fashion internship",
+     "turn_id": "session_12#0"
+    },
+    {
+     "value": "part-time fashion department role at an international company",
+     "date": "2023-05-27",
+     "state_span": "It's part-time position in the fashion department of an international company.",
+     "turn_id": "session_12#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "john",
+   "slot": "military_aptitude_test_status",
+   "elements": [
+    {
+     "value": "failed the test",
+     "date": "2023-01-01",
+     "state_span": "I failed the military aptitude test recently",
+     "turn_id": "session_3#10"
+    },
+    {
+     "value": "retook with great results",
+     "date": "2023-03-06",
+     "state_span": "Last week I retook the aptitude test with some great results",
+     "turn_id": "session_8#17"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "john",
+   "slot": "political_pursuit",
+   "elements": [
+    {
+     "value": "hoping to get into local politics",
+     "date": "2022-12-17",
+     "state_span": "I'm really hoping to get into local politics",
+     "turn_id": "session_1#5"
+    },
+    {
+     "value": "running for office again",
+     "date": "2023-02-25",
+     "state_span": "I'm running for office again",
+     "turn_id": "session_7#1"
+    },
+    {
+     "value": "considering policymaking after graduating",
+     "date": "2023-04-02",
+     "state_span": "I'm considering going into policymaking",
+     "turn_id": "session_9#5"
+    },
+    {
+     "value": "blogging about politics",
+     "date": "2023-04-18",
+     "state_span": "I've been blogging about politics and the government",
+     "turn_id": "session_12#0"
+    },
+    {
+     "value": "decided to run for office again",
+     "date": "2023-05-06",
+     "state_span": "I decided to run for office again",
+     "turn_id": "session_14#0"
+    },
+    {
+     "value": "veterans support petition project",
+     "date": "2023-05-20",
+     "state_span": "Been real busy tackling a project to support military veterans",
+     "turn_id": "session_15#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "john",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "dog Max died",
+     "date": "2023-06-03",
+     "state_span": "we had to say goodbye to Max",
+     "turn_id": "session_17#0"
+    },
+    {
+     "value": "considering adopting a rescue dog",
+     "date": "2023-06-03",
+     "state_span": "We're considering adopting a rescue dog",
+     "turn_id": "session_17#10"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "aerial yoga",
+     "date": "2022-12-17",
+     "state_span": "Just started doing aerial yoga",
+     "turn_id": "session_1#2"
+    },
+    {
+     "value": "creative writing class",
+     "date": "2023-02-25",
+     "state_span": "I took a creative writing class recently",
+     "turn_id": "session_7#0"
+    },
+    {
+     "value": "poetry class",
+     "date": "2023-04-02",
+     "state_span": "I've been taking a poetry class lately",
+     "turn_id": "session_9#0"
+    },
+    {
+     "value": "joined a gym",
+     "date": "2023-06-16",
+     "state_span": "I joined a gym last week",
+     "turn_id": "session_19#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "volunteering_commitment",
+   "elements": [
+    {
+     "value": "homeless shelter",
+     "date": "2022-12-17",
+     "state_span": "Been busy volunteering at the homeless shelter",
+     "turn_id": "session_1#2"
+    },
+    {
+     "value": "still volunteering at homeless shelter",
+     "date": "2023-04-18",
+     "state_span": "I'm still volunteering at the homeless shelter",
+     "turn_id": "session_12#17"
+    },
+    {
+     "value": "added local dog shelter monthly",
+     "date": "2023-06-03",
+     "state_span": "I just started volunteering at a local dog shelter once a month",
+     "turn_id": "session_17#11"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "vehicle",
+   "elements": [
+    {
+     "value": "donated old car to shelter",
+     "date": "2022-12-22",
+     "state_span": "I donated my old car to a homeless shelter I volunteer at yesterday",
+     "turn_id": "session_2#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-41",
+   "speaker": "maria",
+   "slot": "community/faith_group",
+   "elements": [
+    {
+     "value": "joined a nearby church",
+     "date": "2023-05-06",
+     "state_span": "I joined a nearby church",
+     "turn_id": "session_14#9"
+    },
+    {
+     "value": "camping with church friends",
+     "date": "2023-06-12",
+     "state_span": "Some friends from church and I went camping last weekend",
+     "turn_id": "session_18#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-42",
+   "speaker": "nate",
+   "slot": "video_game_tournament_wins",
+   "elements": [
+    {
+     "value": "won first tournament",
+     "date": "2022-01-21",
+     "state_span": "I won my first video game tournament last week",
+     "turn_id": "session_1#2"
+    },
+    {
+     "value": "won second tournament (Street Fighter)",
+     "date": "2022-05-02",
+     "state_span": "Last week I won my second tournament!",
+     "turn_id": "session_10#3"
+    },
+    {
+     "value": "won fourth tournament",
+     "date": "2022-07-10",
+     "state_span": "I won my fourth video game tournament on Friday!",
+     "turn_id": "session_17#0"
+    },
+    {
+     "value": "won international tournament",
+     "date": "2022-08-22",
+     "state_span": "I won an international tournament yesterday",
+     "turn_id": "session_19#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-42",
+   "speaker": "joanna",
+   "slot": "writing_project",
+   "elements": [
+    {
+     "value": "finished first full screenplay",
+     "date": "2022-01-23",
+     "state_span": "I finally finished my first full screenplay",
+     "turn_id": "session_2#2"
+    },
+    {
+     "value": "started second screenplay",
+     "date": "2022-02-25",
+     "state_span": "I just started writing another one",
+     "turn_id": "session_4#9"
+    },
+    {
+     "value": "finished second script",
+     "date": "2022-03-18",
+     "state_span": "I wrapped up my second script",
+     "turn_id": "session_5#0"
+    },
+    {
+     "value": "submitted recent screenplay to film contest",
+     "date": "2022-06-24",
+     "state_span": "I just got done submitting my recent screenplay to a film contest",
+     "turn_id": "session_16#0"
+    },
+    {
+     "value": "started writing a book",
+     "date": "2022-07-10",
+     "state_span": "I actually started on a book recently",
+     "turn_id": "session_17#13"
+    }
+   ]
+  },
+  {
+   "conv": "conv-42",
+   "speaker": "nate",
+   "slot": "dairy-free_dessert_teaching",
+   "elements": [
+    {
+     "value": "started teaching people to make dairy-free desserts",
+     "date": "2022-08-14",
+     "state_span": "I started teaching people how to make this",
+     "turn_id": "session_18#7"
+    },
+    {
+     "value": "taught vegan ice cream on his own cooking show",
+     "date": "2022-09-14",
+     "state_span": "I got to teach people vegan ice cream recipes on my own cooking show",
+     "turn_id": "session_21#3"
+    }
+   ]
+  },
+  {
+   "conv": "conv-42",
+   "speaker": "joanna",
+   "slot": "hiking",
+   "elements": [
+    {
+     "value": "found a new hiking trail in hometown",
+     "date": "2022-04-17",
+     "state_span": "I found an awesome hiking trail in my hometown yesterday",
+     "turn_id": "session_8#3"
+    },
+    {
+     "value": "considers herself an expert hiker",
+     "date": "2022-05-12",
+     "state_span": "I think I am an expert hiker now",
+     "turn_id": "session_11#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "team_signing",
+   "elements": [
+    {
+     "value": "signed with a new team",
+     "date": "2023-05-21",
+     "state_span": "I just signed with a new team - excited for the season!",
+     "turn_id": "session_1#2"
+    },
+    {
+     "value": "Minnesota Wolves",
+     "date": "2023-05-21",
+     "state_span": "The Minnesota Wolves! I can't wait to play with them!",
+     "turn_id": "session_1#4"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "endorsement_deals",
+   "elements": [
+    {
+     "value": "exploring endorsements",
+     "date": "2023-06-15",
+     "state_span": "I'm exploring endorsement opportunities",
+     "turn_id": "session_2#1"
+    },
+    {
+     "value": "considering Nike and Under Armour",
+     "date": "2023-06-15",
+     "state_span": "I'm currently considering sports brands like Nike and Under Armour",
+     "turn_id": "session_2#3"
+    },
+    {
+     "value": "talks with big names",
+     "date": "2023-07-16",
+     "state_span": "I'm getting somewhere with endorsements. I've talked to some big names",
+     "turn_id": "session_3#8"
+    },
+    {
+     "value": "signed Nike deal, in talks with Gatorade",
+     "date": "2023-07-16",
+     "state_span": "I just signed up Nike for a basketball shoe and gear deal. I'm also in talks with Gatorade about a potential sponsorship.",
+     "turn_id": "session_3#12"
+    },
+    {
+     "value": "looking into more endorsements",
+     "date": "2023-09-21",
+     "state_span": "Off the court, I'm also looking into more endorsements",
+     "turn_id": "session_11#16"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "relationship",
+   "elements": [
+    {
+     "value": "married last week",
+     "date": "2023-10-02",
+     "state_span": "My girlfriend and I had an amazing and emotional wedding ceremony last week.",
+     "turn_id": "session_12#1"
+    },
+    {
+     "value": "wife - European vacation",
+     "date": "2023-11-06",
+     "state_span": "my wife and I just left for our European vacation",
+     "turn_id": "session_16#13"
+    },
+    {
+     "value": "wife - European road trip",
+     "date": "2023-11-11",
+     "state_span": "My wife and I were road tripping out on the European coastline",
+     "turn_id": "session_17#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "team_role",
+   "elements": [
+    {
+     "value": "shooting guard",
+     "date": "2023-05-21",
+     "state_span": "I'm a shooting guard for the team",
+     "turn_id": "session_1#6"
+    },
+    {
+     "value": "mentoring younger players",
+     "date": "2023-10-17",
+     "state_span": "I'm now mentoring the younger players on my team",
+     "turn_id": "session_14#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "physical_condition",
+   "elements": [
+    {
+     "value": "found a new gym, training",
+     "date": "2023-08-21",
+     "state_span": "I found a new gym to stay on my b-ball game",
+     "turn_id": "session_8#0"
+    },
+    {
+     "value": "injured",
+     "date": "2023-11-16",
+     "state_span": "it's been a tough week for me with this injury",
+     "turn_id": "session_18#1"
+    },
+    {
+     "value": "recovering slowly",
+     "date": "2023-11-21",
+     "state_span": "It's been tough, but I'm staying positive and taking it slow",
+     "turn_id": "session_19#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "tim",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "joined fantasy literature forum",
+     "date": "2023-06-15",
+     "state_span": "Last night I joined a fantasy literature forum",
+     "turn_id": "session_2#0"
+    },
+    {
+     "value": "writing articles for online magazine",
+     "date": "2023-08-02",
+     "state_span": "I'm writing articles about fantasy novels for an online mag",
+     "turn_id": "session_4#0"
+    },
+    {
+     "value": "writing more articles",
+     "date": "2023-08-11",
+     "state_span": "I have been writing more articles",
+     "turn_id": "session_6#5"
+    },
+    {
+     "value": "writing a fantasy novel",
+     "date": "2023-10-21",
+     "state_span": "I'm in the middle of fantasy novel",
+     "turn_id": "session_15#2"
+    },
+    {
+     "value": "stuck on a plot twist",
+     "date": "2023-11-06",
+     "state_span": "Last week, I had a huge writing issue - got stuck on a plot twist",
+     "turn_id": "session_16#0"
+    },
+    {
+     "value": "story based on UK experiences didn't work out",
+     "date": "2023-11-21",
+     "state_span": "I tried writing a story based on my experiences in the UK, but it didn't go the way I wanted",
+     "turn_id": "session_19#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "tim",
+   "slot": "harry_potter_project_collab",
+   "elements": [
+    {
+     "value": "discussing collaborations for fan project",
+     "date": "2023-05-21",
+     "state_span": "Been discussing collaborations for a Harry Potter fan project I am working on",
+     "turn_id": "session_1#1"
+    },
+    {
+     "value": "talked with friend to figure out ideas",
+     "date": "2023-05-21",
+     "state_span": "Last week I talked to my friend who is a fan of Harry Potter and we're figuring out ideas",
+     "turn_id": "session_1#13"
+    },
+    {
+     "value": "met fan in California",
+     "date": "2023-07-16",
+     "state_span": "I had a nice chat with a Harry Potter fan in California",
+     "turn_id": "session_3#1"
+    },
+    {
+     "value": "skyped with CA fan about collab",
+     "date": "2023-08-09",
+     "state_span": "Just skyped with that Harry Potter fan I met in CA",
+     "turn_id": "session_5#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "tim",
+   "slot": "travel_plans",
+   "elements": [
+    {
+     "value": "planning Universal Studios trip next month",
+     "date": "2023-08-31",
+     "state_span": "have you been to Universal Studios? Planning a trip there next month",
+     "turn_id": "session_10#8"
+    },
+    {
+     "value": "attended Harry Potter conference in the UK",
+     "date": "2023-10-13",
+     "state_span": "Last week I went to a Harry Potter conference in the UK",
+     "turn_id": "session_13#0"
+    },
+    {
+     "value": "visited a castle in the UK",
+     "date": "2023-11-16",
+     "state_span": "I went to a castle during my trip to the UK last Friday",
+     "turn_id": "session_18#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-43",
+   "speaker": "john",
+   "slot": "current_reading",
+   "elements": [
+    {
+     "value": "reading an inspiring book",
+     "date": "2023-08-02",
+     "state_span": "I've been reading this inspiring book, it reminds me to keep dreaming",
+     "turn_id": "session_4#9"
+    },
+    {
+     "value": "finally picked up a book",
+     "date": "2023-10-17",
+     "state_span": "I haven't had much time to read, but after we talked I finally picked up a book",
+     "turn_id": "session_14#22"
+    },
+    {
+     "value": "finished a fantasy series",
+     "date": "2023-11-11",
+     "state_span": "I just finished this amazing fantasy series",
+     "turn_id": "session_17#8"
+    }
+   ]
+  },
+  {
+   "conv": "conv-44",
+   "speaker": "andrew",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "rock climbing",
+     "date": "2023-06-13",
+     "state_span": "my friends and I took a rock climbing class",
+     "turn_id": "session_8#0"
+    },
+    {
+     "value": "cooking",
+     "date": "2023-07-03",
+     "state_span": "I've been getting into cooking more and trying out new recipes",
+     "turn_id": "session_10#11"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "john",
+   "slot": "current_game_being_played",
+   "elements": [
+    {
+     "value": "CS:GO",
+     "date": "2022-03-27",
+     "state_span": "I played my favorite CS:GO game in an intense tournament",
+     "turn_id": "session_3#10"
+    },
+    {
+     "value": "new sci-fi RPG",
+     "date": "2022-04-12",
+     "state_span": "I'm playing this new RPG that has a really cool story and world",
+     "turn_id": "session_5#3"
+    },
+    {
+     "value": "AC Valhalla",
+     "date": "2022-04-29",
+     "state_span": "I'm currently playing AC Valhalla",
+     "turn_id": "session_8#19"
+    },
+    {
+     "value": "The Witcher 3",
+     "date": "2022-08-10",
+     "state_span": "I'm playing \"The Witcher 3\"!",
+     "turn_id": "session_19#6"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "current_game_/_genre",
+   "elements": [
+    {
+     "value": "The Witcher 3",
+     "date": "2022-03-17",
+     "state_span": "I'm totally into The Witcher 3 right now",
+     "turn_id": "session_1#3"
+    },
+    {
+     "value": "Apex Legends",
+     "date": "2022-04-04",
+     "state_span": "I've been playing my favourite game called Apex Legends with my team",
+     "turn_id": "session_4#15"
+    },
+    {
+     "value": "strategy games (Civilization VI)",
+     "date": "2022-04-29",
+     "state_span": "I'm trying out some strategy games",
+     "turn_id": "session_8#20"
+    }
+   ]
+  },
+  {
+   "conv": "conv-47",
+   "speaker": "james",
+   "slot": "countries_visited",
+   "elements": [
+    {
+     "value": "Italy, Turkey, Mexico",
+     "date": "2022-04-20",
+     "state_span": "Besides Italy, I was also in Turkey and Mexico",
+     "turn_id": "session_6#13"
+    },
+    {
+     "value": "Canada (Toronto, Vancouver)",
+     "date": "2022-07-09",
+     "state_span": "I bought air tickets to Toronto",
+     "turn_id": "session_16#8"
+    },
+    {
+     "value": "added Greenland (Nuuk)",
+     "date": "2022-07-22",
+     "state_span": "The city of Nuuk",
+     "turn_id": "session_17#21"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "engineering student with robotics project from professor",
+     "date": "2023-02-01",
+     "state_span": "My engineering professor gave us a huge robotics project",
+     "turn_id": "session_3#0"
+    },
+    {
+     "value": "in engineering school",
+     "date": "2023-02-25",
+     "state_span": "Balancing engineering school",
+     "turn_id": "session_7#0"
+    },
+    {
+     "value": "intern at an engineering firm",
+     "date": "2023-06-06",
+     "state_span": "I'm interning at a well-known engineering firm.",
+     "turn_id": "session_13#4"
+    },
+    {
+     "value": "still busy with the internship",
+     "date": "2023-06-26",
+     "state_span": "Been super hectic with internship and stuff",
+     "turn_id": "session_14#1"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "current_engineering_project",
+   "elements": [
+    {
+     "value": "robotics project",
+     "date": "2023-02-01",
+     "state_span": "My engineering professor gave us a huge robotics project",
+     "turn_id": "session_3#0"
+    },
+    {
+     "value": "breakthrough on the project",
+     "date": "2023-03-28",
+     "state_span": "On Friday I had a breakthrough with my engineering project",
+     "turn_id": "session_11#0"
+    },
+    {
+     "value": "project finished",
+     "date": "2023-06-06",
+     "state_span": "I finally wrapped that up last month",
+     "turn_id": "session_13#0"
+    },
+    {
+     "value": "aerial surveillance prototype",
+     "date": "2023-08-12",
+     "state_span": "a prototype that could revolutionize aerial surveillance",
+     "turn_id": "session_17#9"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "jolene",
+   "slot": "time_management_method",
+   "elements": [
+    {
+     "value": "Pomodoro Technique",
+     "date": "2023-03-22",
+     "state_span": "I'm using the Pomodoro Technique - 25 minutes work, 5-minute break",
+     "turn_id": "session_10#3"
+    },
+    {
+     "value": "bullet journal",
+     "date": "2023-08-16",
+     "state_span": "started using a bullet journal",
+     "turn_id": "session_18#2"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "deborah",
+   "slot": "fitness/running_activity",
+   "elements": [
+    {
+     "value": "first solo morning jog in nearby park",
+     "date": "2023-02-25",
+     "state_span": "yesterday I went for a morning jog for the first time in a nearby park",
+     "turn_id": "session_7#17"
+    },
+    {
+     "value": "started a running group with Anna",
+     "date": "2023-07-09",
+     "state_span": "I started a running group with Anna",
+     "turn_id": "session_15#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-48",
+   "speaker": "deborah",
+   "slot": "community_initiative",
+   "elements": [
+    {
+     "value": "neighborhood yoga class",
+     "date": "2023-03-13",
+     "state_span": "I started this yoga class in the neighborhood",
+     "turn_id": "session_9#2"
+    },
+    {
+     "value": "community cleanup fundraising project",
+     "date": "2023-08-01",
+     "state_span": "I just started a project for a cleanup in our community and have been trying to raise funds for it",
+     "turn_id": "session_16#0"
+    },
+    {
+     "value": "meditation guide for yoga retreat",
+     "date": "2023-08-12",
+     "state_span": "I made a meditation guide for my yoga retreat",
+     "turn_id": "session_17#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "evan",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "self-taught watercolor painter for a few years",
+     "date": "2023-05-24",
+     "state_span": "I've been doing it for a few years now",
+     "turn_id": "session_2#10"
+    },
+    {
+     "value": "enrolled in painting classes",
+     "date": "2023-08-19",
+     "state_span": "I also started taking a painting classes few days ago",
+     "turn_id": "session_8#11"
+    },
+    {
+     "value": "painting published in an exhibition",
+     "date": "2023-12-17",
+     "state_span": "helped me get this painting published in the exhibition",
+     "turn_id": "session_20#16"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "evan",
+   "slot": "knee_injury",
+   "elements": [
+    {
+     "value": "twisted knee, swimming to stay active",
+     "date": "2023-08-27",
+     "state_span": "Twisted my knee last Friday and it's really painful",
+     "turn_id": "session_9#1"
+    },
+    {
+     "value": "re-injured knee playing basketball",
+     "date": "2023-10-06",
+     "state_span": "messed up my knee playing b-ball with the kids",
+     "turn_id": "session_11#1"
+    },
+    {
+     "value": "in physical therapy, light exercises",
+     "date": "2023-10-06",
+     "state_span": "PT has helped some",
+     "turn_id": "session_11#3"
+    },
+    {
+     "value": "back at the gym gaining strength",
+     "date": "2023-10-17",
+     "state_span": "was just at the gym yesterday. Gaining strength!",
+     "turn_id": "session_14#7"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "sam",
+   "slot": "fitness_routine",
+   "elements": [
+    {
+     "value": "plans to start the gym",
+     "date": "2023-07-27",
+     "state_span": "Starting tomorrow, I will go to the gym and exercise regularly",
+     "turn_id": "session_4#14"
+    },
+    {
+     "value": "on a diet, living healthier",
+     "date": "2023-08-19",
+     "state_span": "I'm on a diet and living healthier",
+     "turn_id": "session_8#0"
+    },
+    {
+     "value": "new diet and exercise routine",
+     "date": "2023-08-27",
+     "state_span": "I started a new diet and exercise routine last Monday",
+     "turn_id": "session_9#0"
+    },
+    {
+     "value": "Weight Watchers coach",
+     "date": "2023-11-09",
+     "state_span": "I'm a Weight Watchers coach in my group now",
+     "turn_id": "session_16#0"
+    },
+    {
+     "value": "morning running",
+     "date": "2023-12-26",
+     "state_span": "I've started to enjoy running in the mornings",
+     "turn_id": "session_21#8"
+    },
+    {
+     "value": "hiking trips with friends",
+     "date": "2023-12-31",
+     "state_span": "just took my friends on an epic hiking trip last Friday",
+     "turn_id": "session_22#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-49",
+   "speaker": "sam",
+   "slot": "diet_habits",
+   "elements": [
+    {
+     "value": "still eating soda and candy",
+     "date": "2023-06-06",
+     "state_span": "Still enjoying my soda and candy",
+     "turn_id": "session_3#3"
+    },
+    {
+     "value": "reducing soda and candy",
+     "date": "2023-07-27",
+     "state_span": "I'm reducing my soda and candy intake",
+     "turn_id": "session_4#6"
+    },
+    {
+     "value": "cooking class healthy recipes",
+     "date": "2023-08-15",
+     "state_span": "The cooking class has been great, I've learned awesome recipes",
+     "turn_id": "session_7#3"
+    },
+    {
+     "value": "relapsed, bought unhealthy snacks",
+     "date": "2023-10-14",
+     "state_span": "I gave in and bought some unhealthy snacks",
+     "turn_id": "session_13#1"
+    },
+    {
+     "value": "attending Weight Watchers meetings",
+     "date": "2023-12-05",
+     "state_span": "I attended a Weight Watchers meeting yesterday",
+     "turn_id": "session_18#5"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "dave",
+   "slot": "job",
+   "elements": [
+    {
+     "value": "opened own car maintenance shop",
+     "date": "2023-05-01",
+     "state_span": "I finally opened my own car maintenance shop",
+     "turn_id": "session_4#0"
+    },
+    {
+     "value": "teaming up with a local garage",
+     "date": "2023-05-03",
+     "state_span": "I'm teaming up with a local garage",
+     "turn_id": "session_5#0"
+    },
+    {
+     "value": "car shop opened last week",
+     "date": "2023-05-16",
+     "state_span": "I opened my car shop last week",
+     "turn_id": "session_6#7"
+    },
+    {
+     "value": "selected for car mod workshop",
+     "date": "2023-08-11",
+     "state_span": "I got picked for a car mod workshop",
+     "turn_id": "session_13#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "calvin",
+   "slot": "album_project",
+   "elements": [
+    {
+     "value": "meeting creative team for album",
+     "date": "2023-06-09",
+     "state_span": "Met with the creative team for my album yesterday",
+     "turn_id": "session_8#0"
+    },
+    {
+     "value": "shooting music video for new album",
+     "date": "2023-08-31",
+     "state_span": "I started shooting a video for my new album",
+     "turn_id": "session_16#5"
+    },
+    {
+     "value": "album released",
+     "date": "2023-09-13",
+     "state_span": "My album finally dropped on the 11th",
+     "turn_id": "session_18#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "calvin",
+   "slot": "pet",
+   "elements": [
+    {
+     "value": "in Tokyo, Japan",
+     "date": "2023-05-16",
+     "state_span": "I took that pic in Tokyo last night",
+     "turn_id": "session_6#14"
+    },
+    {
+     "value": "booked flight to Boston",
+     "date": "2023-09-02",
+     "state_span": "I booked a flight ticket to Boston last week",
+     "turn_id": "session_17#5"
+    },
+    {
+     "value": "in Boston",
+     "date": "2023-10-04",
+     "state_span": "Yesterday I met with some incredible artists in Boston",
+     "turn_id": "session_21#0"
+    }
+   ]
+  },
+  {
+   "conv": "conv-50",
+   "speaker": "dave",
+   "slot": "hobby",
+   "elements": [
+    {
+     "value": "joined a rock band",
+     "date": "2023-06-21",
+     "state_span": "I recently joined a rock band and have been practicing guitar",
+     "turn_id": "session_9#17"
+    },
+    {
+     "value": "rehearsing with the band",
+     "date": "2023-09-15",
+     "state_span": "My band and I were jamming",
+     "turn_id": "session_19#0"
+    }
+   ]
+  }
+ ]
+}
