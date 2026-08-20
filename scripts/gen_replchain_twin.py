@@ -106,9 +106,26 @@ the same topic (different names, places, brands, values, writing style).
 """
 
 #: 累积语言黑名单(与集合侧的替换黑名单互为镜像;机械校验,不靠人眼)
-_FORBIDDEN_ACCUM = ("also picked up", "on top of that", "still doing",
-                    "added another", "to the rotation", "as well as my",
-                    "in addition to")
+#: 2026-08-20 泄漏审计修复(results/twin_leak_audit_20260820.md):旧短语表漏放
+#: 词干级线索(also/another/still…),实测 21/127 后续状态残留;升级为词干正则,
+#: 覆盖度与集合侧词表配平。旧短语表保留在正则内(短语含其词干)。
+import re as _re
+_FORBIDDEN_ACCUM_RE = _re.compile(
+    r"\b(also|another|as well|plus|and now|on top of|in addition)\b|\bstill\b",
+    _re.I)
+
+
+def _xvalue_errors(ch) -> list[str]:
+    """跨状态值提及机械禁令(泄漏审计 (b):单会话提及 ≥2 个链值 → 计数/当前值
+    题可单会话直答)。任一状态的会话文本提及其他状态的值即不合格。"""
+    vals = [s.value.strip().lower() for s in ch]
+    errs = []
+    for i, s in enumerate(ch):
+        blob = " ".join(s.session_turns).lower()
+        others = [v for j, v in enumerate(vals) if j != i and v and v in blob]
+        if others:
+            errs.append(f"cross-state value mention in state {i}: {others[:2]}")
+    return errs
 
 
 def validate(item: ReplItem) -> list[str]:
@@ -130,9 +147,11 @@ def validate(item: ReplItem) -> list[str]:
             errs.append(f"value not inside span {i}")
         if i > 0:
             blob = " ".join(s.session_turns).lower()
-            hit = [w for w in _FORBIDDEN_ACCUM if w in blob]
+            hit = _FORBIDDEN_ACCUM_RE.findall(blob)
             if hit:
-                errs.append(f"accumulation language in state {i}: {hit}")
+                errs.append(f"accumulation language in state {i}: "
+                            f"{[h for h in hit if h][:3]}")
+    errs += _xvalue_errors(ch)
     gi = item.point_gold_index
     if not (0 <= gi < len(ch)):
         errs.append("point gold index range")

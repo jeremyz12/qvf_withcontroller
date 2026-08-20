@@ -113,8 +113,25 @@ the same topic (different names, places, brands, values, writing style).
 """
 
 #: 替换语言黑名单 —— 出现即判该条目不合格(机械校验,不靠人眼)
-_FORBIDDEN = ("switched", "switching", "moved", "instead of", "replaced",
-              "gave up", "quit", "dropped", "no longer", "used to")
+#: 2026-08-20 泄漏审计修复:升级为词干正则并与替换侧词表配平;
+#: 新增跨状态值提及禁令(实测 18/47 条目单会话可直答计数题,+2.66pp 反超
+#: 全部来自该子集——见 results/twin_leak_audit_20260820.md)。
+import re as _re
+_FORBIDDEN_RE = _re.compile(
+    r"\b(switch(ed|ing)?|mov(ed|ing)|instead of|replac(e|ed|ing)|gave up|"
+    r"quit|dropp(ed|ing)|no longer|used to|swap(ped|ping)?|done with)\b", _re.I)
+
+
+def _xvalue_errors(ch) -> list[str]:
+    """跨状态值提及机械禁令(与替换侧同一实现,镜像复制)。"""
+    vals = [s.value.strip().lower() for s in ch]
+    errs = []
+    for i, s in enumerate(ch):
+        blob = " ".join(s.session_turns).lower()
+        others = [v for j, v in enumerate(vals) if j != i and v and v in blob]
+        if others:
+            errs.append(f"cross-state value mention in state {i}: {others[:2]}")
+    return errs
 
 
 def validate(item: SetItem) -> list[str]:
@@ -136,9 +153,11 @@ def validate(item: SetItem) -> list[str]:
         # 累积语义:后续状态的会话里不得出现替换措辞
         if i > 0:
             blob = " ".join(s.session_turns).lower()
-            hit = [w for w in _FORBIDDEN if w in blob]
+            hit = _FORBIDDEN_RE.findall(blob)
             if hit:
-                errs.append(f"replacement language in state {i}: {hit}")
+                errs.append(f"replacement language in state {i}: "
+                            f"{[h[0] if isinstance(h, tuple) else h for h in hit][:3]}")
+    errs += _xvalue_errors(ch)
     gi = item.point_gold_index
     if not (0 <= gi < len(ch)):
         errs.append("point gold index range")
