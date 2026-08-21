@@ -139,7 +139,7 @@ def gold_present_value(chain_present, pid=None):
 
 
 # ── 抽样(确定性:族内 chain_id 排序等距,无随机数)──────────
-def cmd_sample():
+def _scan_eligible():
     index = {f: [] for f in FAMS}
     off = 0
     with open(DATA, "rb") as fh:
@@ -153,18 +153,94 @@ def cmd_sample():
             except Exception:  # noqa: BLE001
                 pass
             off += ln
+    return index
+
+
+def _write_offsets(offsets, out_path):
+    with open(DATA, "rb") as fh, open(out_path, "w", encoding="utf-8") as out:
+        for o in offsets:
+            fh.seek(o)
+            out.write(fh.readline().decode("utf-8").strip() + "\n")
+
+
+def cmd_sample(per_fam=PER_FAM, out_path=PILOT):
+    index = _scan_eligible()
     picked_offsets = []
     for f in FAMS:
         rows = sorted(index[f])
         n = len(rows)
-        idxs = sorted({i * n // PER_FAM for i in range(PER_FAM)})
+        idxs = sorted({i * n // per_fam for i in range(per_fam)})
         picked_offsets += [rows[i][1] for i in idxs]
         print(f"{f}: eligible {n}, picked {len(idxs)}")
-    with open(DATA, "rb") as fh, open(PILOT, "w", encoding="utf-8") as out:
-        for o in picked_offsets:
-            fh.seek(o)
-            out.write(fh.readline().decode("utf-8").strip() + "\n")
-    print(f"wrote {len(picked_offsets)} chains -> {PILOT}")
+    _write_offsets(picked_offsets, out_path)
+    print(f"wrote {len(picked_offsets)} chains -> {out_path}")
+
+
+# ── r2 知识探针(prereg: chrono_qvf_pilot_r2_prereg.md)────────
+POOL = ROOT / "data/chronoscope/probe_pool.jsonl"
+PROBE_OUT = ROOT / "data/chronoscope/probe_results.jsonl"
+PILOT_R2 = ROOT / "data/chronoscope/pilot60_r2.jsonl"
+
+
+def cmd_probe(pool_per_fam=600, workers=8):
+    if not POOL.exists():
+        cmd_sample(per_fam=pool_per_fam, out_path=POOL)
+    sys.path.insert(0, str(ROOT))
+    from dotenv import load_dotenv
+    load_dotenv(ROOT / ".env")
+    import anthropic
+    from concurrent.futures import ThreadPoolExecutor
+    client = anthropic.Anthropic()
+    chains = [json.loads(l) for l in open(POOL, encoding="utf-8")]
+    done = set()
+    if PROBE_OUT.exists():
+        done = {json.loads(l)["chain_id"] for l in open(PROBE_OUT, encoding="utf-8")}
+    todo = [c for c in chains if c["chain_id"] not in done]
+    fh = open(PROBE_OUT, "a", encoding="utf-8")
+
+    def one(c):
+        t = sorted((dict(t, turn_index=t.get("turn_index", i))
+                    for i, t in enumerate(c["turns"])),
+                   key=lambda x: x["turn_index"])[0]
+        pred, ti, to = _call(client, [{"role": "user", "content": t["question"]}])
+        return {"chain_id": c["chain_id"], "family": c["family"],
+                "question": t["question"], "gold": t["answer"],
+                "pred": pred.strip(), "correct": is_match(pred, t["answer"])}
+
+    n_done = 0
+    with ThreadPoolExecutor(max_workers=workers) as ex:
+        for row in ex.map(one, todo):
+            fh.write(json.dumps(row, ensure_ascii=False) + "\n")
+            fh.flush()
+            n_done += 1
+            if n_done % 100 == 0:
+                print(f"probed {n_done}/{len(todo)}", flush=True)
+    rows = [json.loads(l) for l in open(PROBE_OUT, encoding="utf-8")]
+    ok = sum(r["correct"] for r in rows)
+    print(f"probe done: {ok}/{len(rows)} pass ({ok/len(rows)*100:.1f}%)")
+
+
+def cmd_sample2():
+    passed = {json.loads(l)["chain_id"]
+              for l in open(PROBE_OUT, encoding="utf-8")
+              if json.loads(l)["correct"]}
+    chains = [json.loads(l) for l in open(POOL, encoding="utf-8")]
+    by_fam = {f: [] for f in FAMS}
+    for c in chains:
+        if c["chain_id"] in passed:
+            by_fam[c["family"]].append(c)
+    out = open(PILOT_R2, "w", encoding="utf-8")
+    total = 0
+    for f in FAMS:
+        rows = sorted(by_fam[f], key=lambda c: c["chain_id"])
+        n = len(rows)
+        take = min(PER_FAM, n)
+        idxs = sorted({i * n // take for i in range(take)}) if take else []
+        for i in idxs:
+            out.write(json.dumps(rows[i], ensure_ascii=False) + "\n")
+        total += len(idxs)
+        print(f"{f}: passed {n}, took {len(idxs)}")
+    print(f"wrote {total} chains -> {PILOT_R2}")
 
 
 # ── 跑臂 ─────────────────────────────────────────────────────
@@ -183,15 +259,17 @@ def _call(client, messages):
     return "", 0, 0
 
 
-def cmd_run(arm):
+def cmd_run(arm, tag=""):
     sys.path.insert(0, str(ROOT))
     from dotenv import load_dotenv
     load_dotenv(ROOT / ".env")
     import anthropic
     client = anthropic.Anthropic()
 
-    chains = [json.loads(l) for l in open(PILOT, encoding="utf-8")]
-    out_p = ROOT / f"results/chrono_pilot_{arm}.jsonl"
+    pilot_p = PILOT_R2 if tag == "r2" else PILOT
+    chains = [json.loads(l) for l in open(pilot_p, encoding="utf-8")]
+    suffix = f"_{tag}" if tag else ""
+    out_p = ROOT / f"results/chrono_pilot{suffix}_{arm}.jsonl"
     done = set()
     if out_p.exists():
         done = {(json.loads(l)["chain_id"], json.loads(l)["turn_index"])
@@ -277,10 +355,11 @@ def _mcnemar(b, cnt):
     return min(1.0, p)
 
 
-def cmd_analyze():
+def cmd_analyze(tag=""):
+    suffix = f"_{tag}" if tag else ""
     arms = {}
     for a in ("a0", "a1", "a2", "a3"):
-        p = ROOT / f"results/chrono_pilot_{a}.jsonl"
+        p = ROOT / f"results/chrono_pilot{suffix}_{a}.jsonl"
         if p.exists():
             arms[a] = {(r["chain_id"], r["turn_index"]): r
                        for r in (json.loads(l) for l in open(p, encoding="utf-8"))}
@@ -314,17 +393,23 @@ def cmd_analyze():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["sample", "run", "analyze"])
+    ap.add_argument("cmd", choices=["sample", "run", "analyze",
+                                    "probe", "sample2"])
     ap.add_argument("--arm", choices=["a0", "a1", "a2", "a3"])
+    ap.add_argument("--tag", default="")
     a = ap.parse_args()
     if a.cmd == "sample":
         cmd_sample()
+    elif a.cmd == "probe":
+        cmd_probe()
+    elif a.cmd == "sample2":
+        cmd_sample2()
     elif a.cmd == "run":
         if not a.arm:
             sys.exit("--arm required")
-        cmd_run(a.arm)
+        cmd_run(a.arm, a.tag)
     else:
-        cmd_analyze()
+        cmd_analyze(a.tag)
 
 
 if __name__ == "__main__":
