@@ -245,11 +245,18 @@ def cmd_sample2():
 
 # ── 跑臂 ─────────────────────────────────────────────────────
 def _call(client, messages):
+    # sonnet-5 弃用 temperature(带上即 400)且默认输出 thinking 块——
+    # 预算给 1024、只取 text 块;haiku 保持 temp=0/max 32 与 r1/r2 逐字节一致
+    kw = {"max_tokens": 32}
+    if "haiku" in READER_MODEL:
+        kw["temperature"] = 0.0
+    else:
+        kw["max_tokens"] = 1024
     for attempt in range(4):
         try:
             r = client.messages.create(
-                model=READER_MODEL, max_tokens=32, temperature=0.0,
-                system=SYS, messages=messages)
+                model=READER_MODEL,
+                system=SYS, messages=messages, **kw)
             txt = "".join(b.text for b in r.content if b.type == "text")
             return txt, r.usage.input_tokens, r.usage.output_tokens
         except Exception as e:  # noqa: BLE001
@@ -266,7 +273,7 @@ def cmd_run(arm, tag=""):
     import anthropic
     client = anthropic.Anthropic()
 
-    pilot_p = PILOT_R2 if tag == "r2" else PILOT
+    pilot_p = PILOT_R2 if tag in ("r2", "r3") else PILOT
     chains = [json.loads(l) for l in open(pilot_p, encoding="utf-8")]
     suffix = f"_{tag}" if tag else ""
     out_p = ROOT / f"results/chrono_pilot{suffix}_{arm}.jsonl"
@@ -397,7 +404,11 @@ def main():
                                     "probe", "sample2"])
     ap.add_argument("--arm", choices=["a0", "a1", "a2", "a3"])
     ap.add_argument("--tag", default="")
+    ap.add_argument("--model", default="")
     a = ap.parse_args()
+    if a.model:
+        global READER_MODEL
+        READER_MODEL = a.model
     if a.cmd == "sample":
         cmd_sample()
     elif a.cmd == "probe":
