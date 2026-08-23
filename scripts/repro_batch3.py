@@ -46,6 +46,12 @@ Apply, in order:
 End with exactly one final line:
 ANSWER: <the specific value or decision the question asks for>"""
 
+PLAIN_PROMPT = """Answer the question based on the conversation transcript. Reply with only the answer.
+
+## Question: {question}
+
+## Conversation transcript: {transcript}"""
+
 CTRL_PROMPT = """You are answering a question about a long conversation.
 
 ## Question: {question}
@@ -62,12 +68,20 @@ End with exactly one final line:
 ANSWER: <the specific value or decision the question asks for>"""
 
 
-def render_transcript(sessions) -> str:
+def render_transcript(sessions, shuffle_uid: str = "") -> str:
     """全部会话按日期排序,轮次全局连续编号;会话间插日期行(与其他臂的
-    日期可得性对齐);400k 字符尾部截断照抄 F.3(WikiState 远不触发)。"""
+    日期可得性对齐);400k 字符尾部截断照抄 F.3(WikiState 远不触发)。
+    shuffle_uid 非空时:会话呈现顺序按 SHA-256(uid+date) 确定性乱序
+    (与 11.8 乱序对照同法),日期行原样保留。"""
+    import hashlib
+    if shuffle_uid:
+        key = lambda x: hashlib.sha256(  # noqa: E731
+            (shuffle_uid + x.get("date", "")).encode()).hexdigest()
+    else:
+        key = lambda x: x.get("date", "")  # noqa: E731
     lines = []
     n = 0
-    for s in sorted(sessions, key=lambda x: x.get("date", "")):
+    for s in sorted(sessions, key=key):
         lines.append(f"--- session date: {s.get('date', 'undated')} ---")
         for t in s.get("turns", []):
             n += 1
@@ -93,9 +107,11 @@ def parse_answer(raw: str):
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--system", choices=["smw", "smwctrl"], required=True)
+    ap.add_argument("--system", choices=["smw", "smwctrl", "smwplain",
+                                         "smwshuf"], required=True)
     a = ap.parse_args()
-    prompt_tpl = SMW_PROMPT if a.system == "smw" else CTRL_PROMPT
+    prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT,
+                  "smwctrl": CTRL_PROMPT, "smwplain": PLAIN_PROMPT}[a.system]
 
     entries = {}
     for v in VOLS:
@@ -114,7 +130,9 @@ def main() -> int:
         qs = [q for q in by_uid[uid] if q["qid"] not in done]
         if not qs or uid not in entries:
             continue
-        transcript = render_transcript(entries[uid].get("sessions", []))
+        transcript = render_transcript(
+            entries[uid].get("sessions", []),
+            shuffle_uid=uid if a.system == "smwshuf" else "")
         for q in qs:
             t0 = time.time()
             content = prompt_tpl.format(question=q["question"],
