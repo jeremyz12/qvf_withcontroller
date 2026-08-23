@@ -96,6 +96,26 @@ def render_transcript(sessions, shuffle_uid: str = "") -> str:
     return out[-TAIL_GUARD:] if len(out) > TAIL_GUARD else out
 
 
+def render_card_ledger(uid: str, entry: dict) -> str:
+    """smoc 臂:卡片账目替代原文 transcript。日期经 _mem_dates 映射
+    (与执行器同口径);按日期排序,格式见 opt_batch1_prereg。"""
+    from complex_query_arm import _mem_dates
+    cards_p = Path(r"D:\ZZL_cluade/results/wt_cards_v42") / f"{uid}.json"
+    recs = json.loads(cards_p.read_text(encoding="utf-8")).get("records", [])
+    md = _mem_dates(entry)
+    rows = []
+    for r in recs:
+        d = r.get("stated_date") or md.get(r.get("source_memory_id", ""), "")
+        rows.append((d or "9999", r))
+    rows.sort(key=lambda x: x[0])
+    lines = []
+    for n, (d, r) in enumerate(rows, 1):
+        span = (r.get("source_span") or "")[:120]
+        lines.append(f'[entry {n}] {d if d != "9999" else "undated"} | '
+                     f'{r.get("slot", "?")}: {r.get("value", "?")} — "{span}"')
+    return "\n".join(lines)
+
+
 def parse_answer(raw: str):
     """末行 ANSWER: 解析;无则取末非空行并记协议偏差。"""
     ans_lines = [l for l in raw.splitlines() if l.strip().upper().startswith("ANSWER:")]
@@ -108,9 +128,11 @@ def parse_answer(raw: str):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--system", choices=["smw", "smwctrl", "smwplain",
-                                         "smwshuf"], required=True)
+                                         "smwshuf", "smoc"], required=True)
+    ap.add_argument("--full", action="store_true",
+                    help="全 418 题(105 库);默认 15 库 60 题抽样")
     a = ap.parse_args()
-    prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT,
+    prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
                   "smwctrl": CTRL_PROMPT, "smwplain": PLAIN_PROMPT}[a.system]
 
     entries = {}
@@ -118,6 +140,8 @@ def main() -> int:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
+    if a.full:
+        picked = sorted(by_uid)  # 全量 105 库/418 题;已跑行靠 resume 跳过
     client = anthropic.Anthropic()
     judge = ClaudeJudge()
     out_p = ROOT / f"results/wsc_s5_{a.system}.jsonl"
@@ -130,9 +154,12 @@ def main() -> int:
         qs = [q for q in by_uid[uid] if q["qid"] not in done]
         if not qs or uid not in entries:
             continue
-        transcript = render_transcript(
-            entries[uid].get("sessions", []),
-            shuffle_uid=uid if a.system == "smwshuf" else "")
+        if a.system == "smoc":
+            transcript = render_card_ledger(uid, entries[uid])
+        else:
+            transcript = render_transcript(
+                entries[uid].get("sessions", []),
+                shuffle_uid=uid if a.system == "smwshuf" else "")
         for q in qs:
             t0 = time.time()
             content = prompt_tpl.format(question=q["question"],
