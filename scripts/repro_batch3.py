@@ -136,18 +136,20 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--system", choices=["smw", "smwctrl", "smwplain",
                                          "smwshuf", "smoc", "smocshuf",
-                                         "smoctwin", "smocrep"], required=True)
+                                         "smoctwin", "smocrep",
+                                         "smoctwinmf"], required=True)
     ap.add_argument("--full", action="store_true",
                     help="全 418 题(105 库);默认 15 库 60 题抽样")
     a = ap.parse_args()
     prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
                   "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
-                  "smocrep": SMW_PROMPT,
+                  "smocrep": SMW_PROMPT, "smoctwinmf": SMW_PROMPT,
                   "smwctrl": CTRL_PROMPT, "smwplain": PLAIN_PROMPT}[a.system]
-    CARD_ARMS = {"smoc", "smocshuf", "smoctwin", "smocrep"}
+    CARD_ARMS = {"smoc", "smocshuf", "smoctwin", "smocrep", "smoctwinmf"}
+    TWIN_ARMS = {"smoctwin", "smoctwinmf"}
 
     entries = {}
-    if a.system == "smoctwin":  # 孪生污染考场:另一套语料/题源/卡片库
+    if a.system in ("smoctwin", "smoctwinmf"):  # 孪生考场:另一套语料/题源/卡片库
         for e in json.loads((ROOT / "data/replchain_50.json"
                              ).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
@@ -180,8 +182,9 @@ def main() -> int:
         if a.system in CARD_ARMS:
             transcript = render_card_ledger(
                 uid, entries[uid],
-                cards_dir=(r"D:\ZZL_cluade/results/wt_cards_twinC_repl"
-                           if a.system == "smoctwin" else ""),
+                cards_dir={"smoctwin": r"D:\ZZL_cluade/results/wt_cards_twinC_repl",
+                           "smoctwinmf": r"D:\ZZL_cluade/results/wt_cards_twinC_repl_mf",
+                           }.get(a.system, ""),
                 shuffle=(a.system == "smocshuf"))
         else:
             transcript = render_transcript(
