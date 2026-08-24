@@ -96,18 +96,25 @@ def render_transcript(sessions, shuffle_uid: str = "") -> str:
     return out[-TAIL_GUARD:] if len(out) > TAIL_GUARD else out
 
 
-def render_card_ledger(uid: str, entry: dict) -> str:
+def render_card_ledger(uid: str, entry: dict, cards_dir: str = "",
+                       shuffle: bool = False) -> str:
     """smoc 臂:卡片账目替代原文 transcript。日期经 _mem_dates 映射
     (与执行器同口径);按日期排序,格式见 opt_batch1_prereg。"""
+    import hashlib
     from complex_query_arm import _mem_dates
-    cards_p = Path(r"D:\ZZL_cluade/results/wt_cards_v42") / f"{uid}.json"
+    base = cards_dir or r"D:\ZZL_cluade/results/wt_cards_v42"
+    cards_p = Path(base) / f"{uid}.json"
     recs = json.loads(cards_p.read_text(encoding="utf-8")).get("records", [])
     md = _mem_dates(entry)
     rows = []
     for r in recs:
         d = r.get("stated_date") or md.get(r.get("source_memory_id", ""), "")
         rows.append((d or "9999", r))
-    rows.sort(key=lambda x: x[0])
+    if shuffle:  # 乱序判别臂:条目顺序打乱,日期字段原样保留
+        rows.sort(key=lambda x: hashlib.sha256(
+            (uid + str(x[1].get("record_id", ""))).encode()).hexdigest())
+    else:
+        rows.sort(key=lambda x: x[0])
     lines = []
     for n, (d, r) in enumerate(rows, 1):
         span = (r.get("source_span") or "")[:120]
@@ -128,20 +135,36 @@ def parse_answer(raw: str):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--system", choices=["smw", "smwctrl", "smwplain",
-                                         "smwshuf", "smoc"], required=True)
+                                         "smwshuf", "smoc", "smocshuf",
+                                         "smoctwin", "smocrep"], required=True)
     ap.add_argument("--full", action="store_true",
                     help="全 418 题(105 库);默认 15 库 60 题抽样")
     a = ap.parse_args()
     prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
+                  "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
+                  "smocrep": SMW_PROMPT,
                   "smwctrl": CTRL_PROMPT, "smwplain": PLAIN_PROMPT}[a.system]
+    CARD_ARMS = {"smoc", "smocshuf", "smoctwin", "smocrep"}
 
     entries = {}
-    for v in VOLS:
-        for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
+    if a.system == "smoctwin":  # 孪生污染考场:另一套语料/题源/卡片库
+        for e in json.loads((ROOT / "data/replchain_50.json"
+                             ).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
-    picked, by_uid = sample_stores()
-    if a.full:
-        picked = sorted(by_uid)  # 全量 105 库/418 题;已跑行靠 resume 跳过
+        by_uid = {}
+        for r in (json.loads(l) for l in open(
+                ROOT / "results/twinC_repl_direct.jsonl", encoding="utf-8")):
+            by_uid.setdefault(r["uid"], []).append(
+                {"qid": r["question_id"], "qtype": r["question_type"],
+                 "question": r["question"], "gold": r["gold_answer"]})
+        picked = sorted(by_uid)
+    else:
+        for v in VOLS:
+            for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
+                entries.setdefault(e["uid"], e)
+        picked, by_uid = sample_stores()
+        if a.full:
+            picked = sorted(by_uid)  # 全量 105 库;已跑行靠 resume 跳过
     client = anthropic.Anthropic()
     judge = ClaudeJudge()
     out_p = ROOT / f"results/wsc_s5_{a.system}.jsonl"
@@ -154,8 +177,12 @@ def main() -> int:
         qs = [q for q in by_uid[uid] if q["qid"] not in done]
         if not qs or uid not in entries:
             continue
-        if a.system == "smoc":
-            transcript = render_card_ledger(uid, entries[uid])
+        if a.system in CARD_ARMS:
+            transcript = render_card_ledger(
+                uid, entries[uid],
+                cards_dir=(r"D:\ZZL_cluade/results/wt_cards_twinC_repl"
+                           if a.system == "smoctwin" else ""),
+                shuffle=(a.system == "smocshuf"))
         else:
             transcript = render_transcript(
                 entries[uid].get("sessions", []),
