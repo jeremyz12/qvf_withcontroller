@@ -140,6 +140,8 @@ def main() -> int:
                                          "smoctwinmf"], required=True)
     ap.add_argument("--full", action="store_true",
                     help="全 418 题(105 库);默认 15 库 60 题抽样")
+    ap.add_argument("--twin-seed", default="main", choices=["main", "s21", "s22"],
+                    help="孪生臂的种子批(2c 并池用)")
     a = ap.parse_args()
     prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
                   "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
@@ -150,12 +152,16 @@ def main() -> int:
 
     entries = {}
     if a.system in ("smoctwin", "smoctwinmf"):  # 孪生考场:另一套语料/题源/卡片库
-        for e in json.loads((ROOT / "data/replchain_50.json"
-                             ).read_text(encoding="utf-8")):
+        seed_cfg = {
+            "main": ("data/replchain_50.json", "results/twinC_repl_direct.jsonl"),
+            "s21": ("data/replchain_s21_p10.json", "results/s21_repl_direct.jsonl"),
+            "s22": ("data/replchain_s22_p10.json", "results/s22_repl_direct.jsonl"),
+        }[a.twin_seed]
+        for e in json.loads((ROOT / seed_cfg[0]).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
         by_uid = {}
         for r in (json.loads(l) for l in open(
-                ROOT / "results/twinC_repl_direct.jsonl", encoding="utf-8")):
+                ROOT / seed_cfg[1], encoding="utf-8")):
             by_uid.setdefault(r["uid"], []).append(
                 {"qid": r["question_id"], "qtype": r["question_type"],
                  "question": r["question"], "gold": r["gold_answer"]})
@@ -169,7 +175,8 @@ def main() -> int:
             picked = sorted(by_uid)  # 全量 105 库;已跑行靠 resume 跳过
     client = anthropic.Anthropic()
     judge = ClaudeJudge()
-    out_p = ROOT / f"results/wsc_s5_{a.system}.jsonl"
+    seed_sfx = "" if a.twin_seed == "main" else f"_{a.twin_seed}"
+    out_p = ROOT / f"results/wsc_s5_{a.system}{seed_sfx}.jsonl"
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in open(out_p, encoding="utf-8")}
@@ -182,9 +189,14 @@ def main() -> int:
         if a.system in CARD_ARMS:
             transcript = render_card_ledger(
                 uid, entries[uid],
-                cards_dir={"smoctwin": r"D:\ZZL_cluade/results/wt_cards_twinC_repl",
-                           "smoctwinmf": r"D:\ZZL_cluade/results/wt_cards_twinC_repl_mf",
-                           }.get(a.system, ""),
+                cards_dir=({
+                    ("smoctwin", "main"): r"D:\ZZL_cluade/results/wt_cards_twinC_repl",
+                    ("smoctwinmf", "main"): r"D:\ZZL_cluade/results/wt_cards_twinC_repl_mf",
+                    ("smoctwin", "s21"): r"D:\ZZL_cluade/results/wt_cards_s21_repl",
+                    ("smoctwinmf", "s21"): r"D:\ZZL_cluade/results/wt_cards_s21_repl_mf",
+                    ("smoctwin", "s22"): r"D:\ZZL_cluade/results/wt_cards_s22_repl",
+                    ("smoctwinmf", "s22"): r"D:\ZZL_cluade/results/wt_cards_s22_repl_mf",
+                }.get((a.system, a.twin_seed), "")),
                 shuffle=(a.system == "smocshuf"))
         else:
             transcript = render_transcript(
