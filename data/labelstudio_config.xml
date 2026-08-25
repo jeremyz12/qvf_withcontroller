@@ -1,0 +1,19 @@
+<View>
+  <Style>
+    .gold-box{background:#eef3e8;border-radius:6px;padding:8px 12px;font-size:16px}
+  </Style>
+  <Header value="题型:$qtype   |   编号:$item_id"/>
+  <Text name="q" value="$question"/>
+  <View className="gold-box">
+    <Header size="4" value="标准答案(gold):$gold"/>
+  </View>
+  <HyperText name="chain" value="$chain_html"/>
+  <Header size="4" value="按上方状态链与约定,标准答案是否正确?"/>
+  <Choices name="verdict" toName="q" choice="single" required="true">
+    <Choice value="一致" hotkey="1"/>
+    <Choice value="不一致" hotkey="2"/>
+    <Choice value="不确定" hotkey="3"/>
+  </Choices>
+  <Header size="5" value="备注(「不一致」时请写一句为什么;对约定本身有异议也写这里)"/>
+  <TextArea name="note" toName="q" rows="2" maxSubmissions="1"/>
+</View>
