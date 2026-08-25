@@ -130,3 +130,20 @@ DeepWeaver leftover 巡检;HiGram 协同改写对照。
 - 考生批 4:Graphiti(FalkorDB 路线,**不再等 neo4j**,只需启动 Docker Desktop)+ cognee,先各抽 1 库估摄入成本;
 - 考场批 1:MemOps(白送 P5 自强)→ TRACE(吐旧值率)→ LongMemEval 时序子集(oracle 冒烟先行);
 - 人工闸不变:gold 评分页、LoCoMo 抽查;neo4j 闸由 FalkorDB 绕行**解除**。
+
+## 交接清单(2026-08-25 关机前快照)
+
+**已收口**:优化批 1-7 全部;考生批 8/8b 四新考生入表(BM25 13.3/txtai 53.3/
+lgstore 55.0/A-MEM 43.3);v2 题集三臂定稿表;Label Studio 本地就绪(60 题,
+labelstudio_data2,HOWTO 在档);评分 artifact 页在线。
+
+**下次开机队列(按优先级)**:
+1. MemStrata 式台账考生(战略最重:天花板测量对照臂,prereg 已在 repro_batch4b);
+2. cognee(已装)/ LightRAG 考生;
+3. Graphiti——需先启动 Docker Desktop(一次点击);
+4. VPS 部署(路 3)——等用户提供服务器 IP + SSH 私钥路径(购物清单已发);
+5. cloudflared 公网隧道(路 1 备选)——等用户点头下载;
+6. 评分数据回收后:一致率/Fleiss' κ 计算(artifact 页导出 或 Label Studio 导出);
+7. 材料同步:两天全部新结论(smoc 87.80/v2 表/过滤证实/三药/十系统表)入 deck 与讲稿。
+
+**重启 Label Studio 命令**在 study_logs/labelstudio_HOWTO.md。
