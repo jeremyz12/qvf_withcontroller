@@ -142,6 +142,9 @@ def main() -> int:
                     help="全 418 题(105 库);默认 15 库 60 题抽样")
     ap.add_argument("--twin-seed", default="main", choices=["main", "s21", "s22"],
                     help="孪生臂的种子批(2c 并池用)")
+    ap.add_argument("--cards-dir", default="", help="覆盖卡片目录(P② 注入实验用)")
+    ap.add_argument("--out", default="", help="覆盖输出文件路径")
+    ap.add_argument("--uids-file", default="", help="只跑该文件(每行一个 uid)中的库")
     a = ap.parse_args()
     prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
                   "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
@@ -176,7 +179,12 @@ def main() -> int:
     client = anthropic.Anthropic()
     judge = ClaudeJudge()
     seed_sfx = "" if a.twin_seed == "main" else f"_{a.twin_seed}"
-    out_p = ROOT / f"results/wsc_s5_{a.system}{seed_sfx}.jsonl"
+    out_p = (ROOT / a.out) if a.out else \
+        ROOT / f"results/wsc_s5_{a.system}{seed_sfx}.jsonl"
+    if a.uids_file:
+        keep = {l.strip() for l in open(ROOT / a.uids_file, encoding="utf-8")
+                if l.strip()}
+        picked = [u for u in picked if u in keep] or sorted(keep & set(by_uid))
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in open(out_p, encoding="utf-8")}
@@ -189,7 +197,7 @@ def main() -> int:
         if a.system in CARD_ARMS:
             transcript = render_card_ledger(
                 uid, entries[uid],
-                cards_dir=({
+                cards_dir=a.cards_dir or ({
                     ("smoctwin", "main"): r"D:\ZZL_cluade/results/wt_cards_twinC_repl",
                     ("smoctwinmf", "main"): r"D:\ZZL_cluade/results/wt_cards_twinC_repl_mf",
                     ("smoctwin", "s21"): r"D:\ZZL_cluade/results/wt_cards_s21_repl",
