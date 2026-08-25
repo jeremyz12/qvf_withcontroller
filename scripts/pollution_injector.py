@@ -30,6 +30,11 @@ def main() -> int:
     ap.add_argument("--data", nargs="*", default=[],
                     help="语料卷:补 stated_date 为空的卡的日期(会话日期映射,"
                          "与读取侧 _mem_dates 同口径)")
+    ap.add_argument("--restrict", default="",
+                    help="只从该文件(每行一个 uid)里选注入库")
+    ap.add_argument("--primary-only", action="store_true",
+                    help="只注入各库主槽位(语料卷 entry.slot 对应的 slot_class)"
+                         "——过滤器只审主槽位池,题目也只问主槽位")
     a = ap.parse_args()
     mem_dates: dict = {}
     if a.data:
@@ -44,6 +49,15 @@ def main() -> int:
     outd.mkdir(parents=True, exist_ok=True)
 
     files = sorted(p.name for p in src.glob("*.json"))
+    entry_slot: dict = {}
+    if a.data:
+        for v in a.data:
+            for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
+                entry_slot[e["uid"]] = e.get("slot", "")
+    if a.restrict:
+        allow = {l.strip() for l in open(ROOT / a.restrict, encoding="utf-8")
+                 if l.strip()}
+        files = [f for f in files if f[:-5] in allow]
     n = len(files)
     picked = sorted({files[i * n // a.n_stores] for i in range(a.n_stores)})
     stores = {f: json.loads((src / f).read_text(encoding="utf-8"))
@@ -75,6 +89,10 @@ def main() -> int:
         # 也允许无 stated_date 的组:日期取自 source_memory_id 序号无从得,跳过
         cand_cls = sorted([c for c, g in groups.items() if len(g) >= 2],
                           key=lambda c: h(f + c))
+        if a.primary_only:
+            ps = (entry_slot.get(f[:-5]) or "").lower()
+            cand_cls = [c for c in cand_cls
+                        if ps and (ps in c.lower() or c.lower() in ps)]
         injected = 0
         inj_log = []
         for cls in cand_cls:
@@ -88,33 +106,45 @@ def main() -> int:
             if not foreign:
                 continue
             foreign.sort(key=lambda t: h(f + cls + t[0]))
-            fv, sf = foreign[0]
-            # 日期:插在链中段(第 1 与第 2 条真卡日期的字典序中点近似:
-            # 取第 1 条日期 + 后缀 -15 无效;改为取两条之间按天数中点)
-            d1, d2 = g[0].get("_eff_date"), g[1].get("_eff_date")
-            try:
-                from datetime import date, timedelta
-                a1 = date.fromisoformat(d1[:10])
-                a2 = date.fromisoformat(d2[:10])
-                mid = a1 + (a2 - a1) / 2
-                mid_s = mid.isoformat()
-            except Exception:  # noqa: BLE001
-                continue
-            base = g[0]
-            fake = copy.deepcopy(stores[f]["records"][0].__class__(base))
-            fake = {k: v for k, v in base.items() if k != "_eff_date"}
-            fake = copy.deepcopy(fake)
-            fake["record_id"] = f"inj{injected}_{h(f + cls)[:8]}"
-            fake["value"] = fv
-            fake["stated_date"] = mid_s
-            fake["claim"] = f"The user's {cls} changed to {fv}."
-            fake["source_span"] = base.get("source_span", "")  # 锚点袭用真卡:
-            # 语义角色判断才能识破(值与原句不符),溯源信号全满分——
-            # 与保真度审计"伪卡锚点是真的"发现同构
-            recs.append(fake)
-            injected += 1
-            inj_log.append({"cls": cls, "value": fv, "date": mid_s,
-                            "from": sf})
+            # 去重外值,每类注满余量:不同外值 × 轮转链窗口
+            seen_fv = set()
+            uniq_foreign = []
+            for fv, sf in foreign:
+                k2 = fv.strip().lower()
+                if k2 not in seen_fv:
+                    seen_fv.add(k2)
+                    uniq_foreign.append((fv, sf))
+            from datetime import date as _date
+            wi = 0
+            for fv, sf in uniq_foreign:
+                if injected >= a.k:
+                    break
+                # 轮转窗口:第 wi 与 wi+1 条真卡之间的中点
+                win = wi % (len(g) - 1)
+                wi += 1
+                d1 = g[win].get("_eff_date")
+                d2 = g[win + 1].get("_eff_date")
+                try:
+                    a1 = _date.fromisoformat(d1[:10])
+                    a2 = _date.fromisoformat(d2[:10])
+                    if (a2 - a1).days < 2:
+                        continue
+                    mid_s = (a1 + (a2 - a1) / 2).isoformat()
+                except Exception:  # noqa: BLE001
+                    continue
+                base = g[win]
+                fake = copy.deepcopy(
+                    {k: v for k, v in base.items() if k != "_eff_date"})
+                fake["record_id"] = f"inj{injected}_{h(f + cls + fv)[:8]}"
+                fake["value"] = fv
+                fake["stated_date"] = mid_s
+                fake["claim"] = f"The user's {cls} changed to {fv}."
+                fake["source_span"] = base.get("source_span", "")
+                # 锚点袭用真卡:溯源信号全满分,只有语义角色判断能识破
+                recs.append(fake)
+                injected += 1
+                inj_log.append({"cls": cls, "value": fv, "date": mid_s,
+                                "from": sf})
         d["records"] = recs
         (outd / f).write_text(json.dumps(d, ensure_ascii=False),
                               encoding="utf-8")
