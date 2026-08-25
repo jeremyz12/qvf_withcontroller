@@ -206,6 +206,24 @@ CATALOG_PROMPT_V4 = CATALOG_PROMPT + """\
    same real-world attribute must share the same slot_class.
 """
 
+# QVF_SLOT_VOCAB=<json路径>(默认空 = 关,字节等价):P① 受控槽位本体。
+# 开启时把 V4 第 7 条的 other:<short-noun> 自由造词替换为固定枚举——
+# 词表从考场真值链 slot 字段机械导出(预注册 opt_batch6_prereg P①)。
+_SLOT_VOCAB = os.environ.get("QVF_SLOT_VOCAB", "")
+if _SLOT_VOCAB:
+    import json as _json
+    _vocab = _json.loads(open(_SLOT_VOCAB, encoding="utf-8").read())
+    _enum = " | ".join(_vocab)
+    CATALOG_PROMPT_V4 = CATALOG_PROMPT + f"""\
+6. owner: who the state belongs to — 'user' when the memory speaks in the
+   first person (diary/chat voice), otherwise the person's name exactly as
+   the text names them. Empty only if genuinely unclear.
+7. slot_class: the normalized attribute category, EXACTLY one of:
+   {_enum}
+   Choose the closest one; use other ONLY when nothing fits. Records about
+   the same real-world attribute must share the same slot_class.
+"""
+
 
 # TAGS 规则(QVF_CARD_TAGS=1 时启用):在所选基底提示词(有 KEYS 则 V4,
 # 否则原版)之上仅追加这一条 value_tags 规则;其余指令与 source_span 逐字
