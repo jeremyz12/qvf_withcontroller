@@ -145,6 +145,8 @@ def main() -> int:
     ap.add_argument("--cards-dir", default="", help="覆盖卡片目录(P② 注入实验用)")
     ap.add_argument("--out", default="", help="覆盖输出文件路径")
     ap.add_argument("--uids-file", default="", help="只跑该文件(每行一个 uid)中的库")
+    ap.add_argument("--questions-file", default="",
+                    help="题源 jsonl(uid/qid/qtype/question/gold),替代默认 418 抽样")
     a = ap.parse_args()
     prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
                   "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
@@ -173,9 +175,16 @@ def main() -> int:
         for v in VOLS:
             for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
                 entries.setdefault(e["uid"], e)
-        picked, by_uid = sample_stores()
-        if a.full:
-            picked = sorted(by_uid)  # 全量 105 库;已跑行靠 resume 跳过
+        if a.questions_file:
+            by_uid = {}
+            for q in (json.loads(l) for l in open(ROOT / a.questions_file,
+                                                  encoding="utf-8")):
+                by_uid.setdefault(q["uid"], []).append(q)
+            picked = sorted(by_uid)
+        else:
+            picked, by_uid = sample_stores()
+            if a.full:
+                picked = sorted(by_uid)  # 全量 105 库;已跑行靠 resume 跳过
     client = anthropic.Anthropic()
     judge = ClaudeJudge()
     seed_sfx = "" if a.twin_seed == "main" else f"_{a.twin_seed}"
@@ -195,6 +204,22 @@ def main() -> int:
         if not qs or uid not in entries:
             continue
         if a.system in CARD_ARMS:
+            try:
+                transcript = render_card_ledger(
+                    uid, entries[uid],
+                    cards_dir=a.cards_dir or ({
+                        ("smoctwin", "main"): r"D:\ZZL_cluade/results/wt_cards_twinC_repl",
+                        ("smoctwinmf", "main"): r"D:\ZZL_cluade/results/wt_cards_twinC_repl_mf",
+                        ("smoctwin", "s21"): r"D:\ZZL_cluade/results/wt_cards_s21_repl",
+                        ("smoctwinmf", "s21"): r"D:\ZZL_cluade/results/wt_cards_s21_repl_mf",
+                        ("smoctwin", "s22"): r"D:\ZZL_cluade/results/wt_cards_s22_repl",
+                        ("smoctwinmf", "s22"): r"D:\ZZL_cluade/results/wt_cards_s22_repl_mf",
+                    }.get((a.system, a.twin_seed), "")),
+                    shuffle=(a.system == "smocshuf"))
+            except FileNotFoundError:
+                print(f"[{uid}] no card file, skipped", flush=True)
+                continue
+        elif False:
             transcript = render_card_ledger(
                 uid, entries[uid],
                 cards_dir=a.cards_dir or ({
