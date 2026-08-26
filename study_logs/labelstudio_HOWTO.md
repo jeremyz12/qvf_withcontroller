@@ -35,12 +35,15 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
 # 公网部署版(2026-08-26,Vultr Sydney)
 
 - **地址:http://149.28.167.100**(60 题项目已导入,与本地版同源同序)
-- 2026-08-26 增强:每题新增可折叠 "Raw data" 面板,内含各锚点所在的**原始用户
-  消息全文**(带会话日期,逐字引自 wikistate_full_ALL.json 的 sessions)——评审
-  可核对锚点未被断章取义;重建脚本 `scripts/build_labelstudio_raw.py`
-  (读 labelstudio_tasks_en.json + gold_rating ITEMS + full_ALL sessions,
-  产出含 raw_text 字段的任务集;推送脚本模式:delete_tasks → PATCH config → import,
-  有标注时自动中止)
+- 2026-08-26 增强 v2:链条改为**真 HTML 表格**(HyperText 渲染),每题下方常显
+  "RAW MEMORY" 滚动盒 = 该角色**全部会话的全部用户消息逐字全文**(33-35 会话,
+  锚点句黄色高亮、所在会话带 anchor #k 徽章;助手回复省略——状态宣告只出现在
+  用户消息)。重建脚本 `scripts/build_labelstudio_html.py`
+  - 技术要点:HyperText 在 iframe 里渲染,config 的 Style 进不去 → `<style>`
+    必须嵌在任务数据 HTML 里;LS 按 iframe 文档 scrollHeight 定高 → 滚动要放在
+    **内层 div**(.scrollbox max-height:440px),放 body 上会把 iframe 撑到全文高;
+    LS 的 Collapse 面板里放 HyperText 会在隐藏时量高(150px 固定)→ 弃用 Collapse
+  - 推送模式:delete_tasks → PATCH config → import(有标注自动中止)
 - 管理员账号同 labelstudio_admin.txt;容器 `labelstudio` 自动重启,数据持久在
   服务器 /opt/labelstudio/data(本机关机不影响收数据)
 - 组员参与:发地址 → 组员 Sign Up 注册 → 进项目 Label All Tasks

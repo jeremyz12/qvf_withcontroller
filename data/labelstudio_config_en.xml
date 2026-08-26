@@ -1,17 +1,11 @@
 <View>
-  <Style>.gold-box{background:#eef3e8;border-radius:6px;padding:8px 12px;font-size:16px}
-  .chain-box{font-family:monospace;white-space:pre;overflow-x:auto;background:#f4f6fb;border-radius:6px;padding:10px;font-size:12.5px}
-  .raw-box{font-family:monospace;white-space:pre-wrap;background:#fbf7ef;border-radius:6px;padding:10px;font-size:12px;line-height:1.5}</Style>
+  <Style>.gold-box{background:#eef3e8;border-radius:6px;padding:8px 12px;font-size:16px}</Style>
   <Header value="Type: $qtype   |   ID: $item_id"/>
   <Text name="q" value="$question"/>
   <View className="gold-box"><Header size="4" value="Gold answer: $gold"/></View>
-  <View className="chain-box"><Text name="chain" value="$chain_text"/></View>
-  <Collapse>
-    <Panel value="Raw data — original user messages containing each anchor (click to expand)">
-      <View className="raw-box"><Text name="raw" value="$raw_text"/></View>
-    </Panel>
-  </Collapse>
-  <Header size="4" value="Given the state chain and the convention above, is the gold answer correct? (Use the raw data to check the anchors are not taken out of context.)"/>
+  <HyperText name="chain" value="$chain_html" inline="false"/>
+  <HyperText name="raw" value="$raw_html" inline="false"/>
+  <Header size="4" value="Given the state chain and the convention above, is the gold answer correct? (Use the raw memory box to check the anchors in context and to look for state declarations the chain may have missed.)"/>
   <Choices name="verdict" toName="q" choice="single" required="true">
     <Choice value="Correct" hotkey="1"/>
     <Choice value="Incorrect" hotkey="2"/>
