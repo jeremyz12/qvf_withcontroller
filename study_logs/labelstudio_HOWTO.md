@@ -45,7 +45,27 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
     LS 的 Collapse 面板里放 HyperText 会在隐藏时量高(150px 固定)→ 弃用 Collapse
   - 推送模式:delete_tasks → PATCH config → import(有标注自动中止)
 
-## 三组并行设计(2026-08-27 终版:堵独立性漏洞)
+## 自建核验站(2026-08-27 最终版:弃用 Label Studio)
+
+- **动因**:LS 社区版无法隐藏他人标注(用户实测+源码核查),三组并行也只是缓解;
+  用户裁定自建。
+- **实现**:`rateapp/app.py`(Flask+SQLite,单文件)部署于 VPS
+  `/opt/rateapp`(systemd 服务 rateapp,Caddy 反代 rate.wikistate.org → 127.0.0.1:8081);
+  LS 容器已停用(数据留存 /opt/labelstudio/data,restart=no)。
+- **机制**:专属链接制(无注册无密码,capability URL)——`/r/<token>` 每人固定分配
+  ~56 题(149 题 × 每题恰 3 个不同的人 = 447 份,gen_assignments.py 确定性生成+断言校验);
+  页面复用 LS 版的 chain_html/raw_html 渲染;1/2/3 快捷键;选 2/3 强制留言;
+  **答案不可改**(首次提交为准);逐题计时;随时断点续做。
+  **独立性物理隔离:评审只能看到自己的题,他人答案在系统里无入口。**
+- **admin 面板**:`/admin/<token>`(只读)——每人完成数/用时中位/最后活跃 + 全局覆盖
+  (几题已收满3份);60 秒自动刷新。
+- **链接清单**:rateapp/rater_links.txt(gitignored;含 admin、user1-8、TEST 试用链接);
+  人数变更:重跑 `python rateapp/gen_assignments.py --raters N` → scp appdata.json →
+  服务器删 rate.db → systemctl restart rateapp。
+- **收数**:ssh 取 /opt/rateapp/rate.db(answers 表:rater/item/verdict/note/ms/ts),
+  按 item 跨评审合并算 κ;催化剂钥匙仍在 data/labelstudio_chainproj_map.json。
+
+## 旧·三组并行设计(2026-08-27,已被自建站取代;LS 三项目已随停用废弃)
 
 - **动因**:社区版无角色权限,任何成员可在数据表格中查看他人标注(用户实测证实;
   源码核查确认无"隐藏他人标注"开关,那是企业版功能)——单项目每题收 3 份的设计下,
