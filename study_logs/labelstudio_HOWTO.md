@@ -45,15 +45,18 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
     LS 的 Collapse 面板里放 HyperText 会在隐藏时量高(150px 固定)→ 弃用 Collapse
   - 推送模式:delete_tasks → PATCH config → import(有标注自动中止)
 
-## 双项目设计(2026-08-26 定稿)
+## 单项目设计(2026-08-26 终版:用户裁定只留一个项目,6 评审)
 
-- **项目 1「WikiState Gold-Answer Verification」**(校准轮):60 题分层抽样,
-  全员全重叠,报 Fleiss' κ + 分题型错误率;minimum 待人数定后设(= 评审人数)
-- **项目 3「WikiState Chain Verification (full coverage)」**(覆盖轮):
+- **项目 3「WikiState Chain Verification (full coverage)」**:
   144 链全覆盖 + **5 道催化剂题**(注入错误的链,类型:日期偏移/删行/值互换/
   伪造锚点/伪造加行),共 149 题,中性编号 chain-001..149;
-  每题收 2 份(maximum_annotations=2),随机出题(Uniform sampling),
-  英文指南挂在项目 Instructions;报原始一致率 + Krippendorff's α + 催化剂通过率
+  **每题收 3 份**(maximum_annotations=3,6 人时每人 ≈75 题 ≈2-2.5h),
+  随机出题(Uniform sampling),英文指南挂在项目 Instructions;
+  报 Fleiss' κ(每题恰 3 人,合规)+ 原始一致率 + 催化剂通过率
+- 原项目 1(60 题金答案校准轮)已从服务器删除(0 标注,无损;任务集与配置
+  留档 data/labelstudio_tasks_en.json + labelstudio_config_en.xml,可随时重建)。
+  题级金答案的正确性改由推导保证:链经人工验证 + 算子为代码计算 + 约定已写进
+  题面(v2 考场)并经批 3/数据集审计核过
 - **催化剂题答案钥匙**:data/labelstudio_chainproj_map.json(id→uid/catch/注入
   说明,仅本地,勿导入 LS);构建脚本 scripts/build_labelstudio_chains.py
 - 测试账号 test01(见 labelstudio_admin.txt):试点/演示用,统计时剔除其标注
