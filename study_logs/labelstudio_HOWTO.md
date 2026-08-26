@@ -35,6 +35,12 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
 # 公网部署版(2026-08-26,Vultr Sydney)
 
 - **地址:http://149.28.167.100**(60 题项目已导入,与本地版同源同序)
+- 2026-08-26 增强:每题新增可折叠 "Raw data" 面板,内含各锚点所在的**原始用户
+  消息全文**(带会话日期,逐字引自 wikistate_full_ALL.json 的 sessions)——评审
+  可核对锚点未被断章取义;重建脚本 `scripts/build_labelstudio_raw.py`
+  (读 labelstudio_tasks_en.json + gold_rating ITEMS + full_ALL sessions,
+  产出含 raw_text 字段的任务集;推送脚本模式:delete_tasks → PATCH config → import,
+  有标注时自动中止)
 - 管理员账号同 labelstudio_admin.txt;容器 `labelstudio` 自动重启,数据持久在
   服务器 /opt/labelstudio/data(本机关机不影响收数据)
 - 组员参与:发地址 → 组员 Sign Up 注册 → 进项目 Label All Tasks
