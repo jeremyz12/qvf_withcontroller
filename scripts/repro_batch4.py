@@ -228,17 +228,67 @@ class MemStrataSystem:
             return []
 
 
+class CogneeSystem:
+    """cognee:LLM 知识图谱抽取路线。add→cognify 建图,search 取 CHUNKS
+    (只要素材不要它自答,喂我方同款读者保持同台)。全嵌入式默认存储。"""
+    name = "cognee"
+
+    def __init__(self):
+        import asyncio
+        import os
+        os.environ.setdefault("LLM_API_KEY", os.environ.get("OPENAI_API_KEY", ""))
+        os.environ.setdefault("LLM_MODEL", "gpt-4o-mini")
+        os.environ.setdefault("EMBEDDING_API_KEY", os.environ.get("OPENAI_API_KEY", ""))
+        import cognee
+        self._c = cognee
+        self._run = asyncio.run
+
+    def ingest(self, uid, sessions):
+        c = self._c
+
+        async def go():
+            for s in sessions:
+                await c.add(sess_text(s), dataset_name=uid)
+            await c.cognify(datasets=[uid])
+        self._run(go())
+
+    def search(self, uid, query):
+        c = self._c
+        from cognee import SearchType
+
+        async def go():
+            return await c.search(query_text=query,
+                                  query_type=SearchType.CHUNKS,
+                                  datasets=[uid], top_k=10)
+        try:
+            res = self._run(go())
+            out = []
+            for r in res:  # 1.5.x:每 dataset 一个 dict,chunks 在 search_result
+                items = r.get("search_result", [r]) if isinstance(r, dict) else [r]
+                for it in items:
+                    t = it.get("text") or it.get("content") or str(it)                         if isinstance(it, dict) else str(it)
+                    out.append(f"- {str(t)[:400]}")
+            return out[:10]
+        except Exception as e:  # noqa: BLE001
+            print(f"[{uid}] search fail: {type(e).__name__}: {str(e)[:80]}",
+                  flush=True)
+            return []
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--system", choices=["txtai", "lgstore", "amem", "bm25", "mstrata"],
+    ap.add_argument("--system", choices=["txtai", "lgstore", "amem", "bm25", "mstrata", "cognee"],
                     required=True)
     ap.add_argument("--limit-stores", type=int, default=0,
                     help="只跑前 N 库(抽样先行)")
+    ap.add_argument("--questions-file", default="",
+                    help="题源 jsonl(uid/qid/qtype/question/gold);仍限 15 库抽样交集")
+    ap.add_argument("--out-suffix", default="", help="输出文件后缀")
     a = ap.parse_args()
     sysm = {"txtai": TxtaiSystem, "lgstore": LgStoreSystem,
             "amem": AmemSystem, "bm25": Bm25System,
-            "mstrata": MemStrataSystem}[a.system]()
-    out_p = ROOT / f"results/wsc_s5_{sysm.name}.jsonl"
+            "mstrata": MemStrataSystem, "cognee": CogneeSystem}[a.system]()
+    out_p = ROOT / f"results/wsc_s5_{sysm.name}{a.out_suffix}.jsonl"
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in open(out_p, encoding="utf-8")}
@@ -247,6 +297,11 @@ def main() -> int:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
+    if a.questions_file:
+        by_uid = {}
+        for q in (json.loads(l) for l in open(ROOT / a.questions_file, encoding="utf-8")):
+            by_uid.setdefault(q["uid"], []).append(q)
+        picked = [u for u in picked if u in by_uid]
     if a.limit_stores:
         picked = picked[:a.limit_stores]
     client = anthropic.Anthropic()
