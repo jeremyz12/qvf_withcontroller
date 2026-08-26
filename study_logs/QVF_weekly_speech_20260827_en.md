@@ -1,6 +1,6 @@
 # QVF Weekly Report — Speech Script (Aug 27, 2026, English)
 
-> Pairs with study_logs/QVF_weekly_20260827_en.pptx (14 slides). ~12–14 minutes at
+> Pairs with study_logs/QVF_weekly_20260827_en.pptx (16 slides). ~14–16 minutes at
 > a normal pace. Bracketed lines are presenter notes, not to be read aloud.
 
 ---
@@ -85,7 +85,20 @@ Longest tenure is closed-interval day arithmetic. The point: once the chain is
 right, temporal reasoning degenerates into array operations. That's the whole
 design bet — and it's why answers are auditable and repairable.
 
-## Slide 8 — v2 Ladder (60s)
+## Slide 8 — One Question's Journey (45s)
+
+Let me run the pipeline once more, from the data's point of view. Fifty thousand
+characters of raw chat become seventy-eight cards at write time. When a question
+arrives it is compiled into a two-field plan; cards are selected and date-sorted;
+the membership filter ejects stray cards — seventy-five of them in last week's
+batch; chaining leaves four rows, one per real transition; the executor computes
+the number — and the answer is fixed right there; the reader model only phrases
+it. Fifty thousand characters, seventy-eight cards, four rows, one number, one
+sentence. Only noise is ever dropped, determinism rises toward the answer, and
+every intermediate is saved to disk — that is what auditable physically means,
+and why last week's repair could localize its target.
+
+## Slide 9 — v2 Ladder (60s)
 
 Main results on the cleaned arena — 576 questions, same reader, same judge,
 paired tests. Reading down: plain retrieval forty-eight point six; organizing
@@ -99,7 +112,7 @@ One footnote for rigor: the seventy-eight point eight includes this week's
 repair; the plus-ten margin was measured pre-repair. And please note — v1 and
 v2 absolute scores are not comparable; v2 is deliberately harder.
 
-## Slide 9 — Sixteen Systems (45s)
+## Slide 10 — Sixteen Systems (45s)
 
 The landscape table. Most commercial memory products score below plain
 retrieval on state questions — Mem0 at twenty-seven, LangMem at forty, A-MEM at
@@ -111,7 +124,24 @@ Two rows are dagger-marked and excluded from comparative claims where we
 couldn't separate integration issues from genuine failure — that's the honesty
 standard we borrowed from the field.
 
-## Slide 10 — Shuffle Ladder (45s)
+## Slide 11 — Concurrent Work: StateMem (60s)
+
+On August twentieth a concurrent paper appeared — StateMem — same lane, worth
+addressing head-on. Three differences. Framing: they treat validity as a
+property of the memory — avoid answering with superseded states; we formalize
+it as a function of the memory-query pair — half of our benchmark requires
+superseded states as evidence, a question class their benchmark barely
+contains. Mechanism: theirs works at answer time; ours builds write-time
+structure and lets code execute. Measurement: their transferable component —
+the reading protocol — we cite verbatim and evaluate fully: it is the strongest
+non-QVF configuration on our arena, eighty-four point five; the same protocol
+over our ledger reaches statistically the same accuracy at one fifth the read
+cost, and is shuffle-robust — the value sits in storage structure, not reading
+instructions. Their benchmark is described as released but no public repository
+exists yet, so full cross-evaluation is pending; we measured everything
+measurable today, and a data request is drafted.
+
+## Slide 12 — Shuffle Ladder (45s)
 
 Our cleanest single experiment. Same content, same dates — we only shuffle the
 order of entries. Reading the full transcript directly: minus forty-eight
@@ -122,7 +152,7 @@ zero. The code path: immune, because sorted-by-date doesn't care about input
 order. Each level of structure removes a level of order dependence — temporal
 awareness moved from context order into date fields.
 
-## Slide 11 — Cost (45s)
+## Slide 13 — Cost (45s)
 
 Cost in the most intuitive unit: what a hundred correct-ish answers buy.
 Baseline retrieval: forty-nine correct for thirteen cents — cheap, and wrong
@@ -135,7 +165,7 @@ eight times cheaper in total dollars — but it is capped at fifty percent
 accuracy at any budget. We checked at fifteen times the budget: no gain.
 Accuracy is not purchasable.
 
-## Slide 12 — WikiState v2 (40s)
+## Slide 14 — WikiState v2 (40s)
 
 The arena itself. Chains come from Wikidata property histories of real people,
 rendered into dated first-person chat sessions with verbatim anchor sentences;
@@ -145,7 +175,7 @@ answer skew, an open-segment shortcut, and a wording ambiguity — and fixed all
 three in v2. The audit-and-repair story goes into the paper; it's more credible
 than claiming a perfect benchmark.
 
-## Slide 13 — Human Verification Platform (45s)
+## Slide 15 — Human Verification Platform (45s)
 
 And the last mile of dataset credibility is now live: rate dot wikistate dot
 org. Every one of the 144 chains gets verified by three independent raters, who
@@ -155,7 +185,7 @@ missed. Five planted-error catch trials measure attention rather than assuming
 it. About sixty items, two hours per rater, eight raters, recruiting now. The
 output is Fleiss' kappa, agreement rates, and an adjudicated dataset v2.1.
 
-## Slide 14 — Boundaries & Next (40s)
+## Slide 16 — Boundaries & Next (40s)
 
 The honest half, stated before anyone asks. v1 and v2 absolute numbers are not
 comparable. Natural-corpus chain extraction is not solved — our own audit on
