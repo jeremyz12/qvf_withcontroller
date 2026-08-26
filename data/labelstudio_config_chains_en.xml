@@ -1,0 +1,14 @@
+<View>
+  <Header value="Chain ID: $item_id   |   Slot: $slot"/>
+  <Header size="4" value="Does the state chain below correctly and completely represent the persona's '$slot' history as stated in the raw session log?"/>
+  <HyperText name="chain" value="$chain_html" inline="false"/>
+  <HyperText name="raw" value="$raw_html" inline="false"/>
+  <Header size="4" value="Check all four: (1) every anchor sentence really appears in the log; (2) each DATE matches the date of the session containing its anchor; (3) each VALUE matches what its anchor sentence says; (4) no state change stated in the log is missing from the chain."/>
+  <Choices name="verdict" toName="chain" choice="single" required="true">
+    <Choice value="Correct and complete" hotkey="1"/>
+    <Choice value="Has errors" hotkey="2"/>
+    <Choice value="Unsure" hotkey="3"/>
+  </Choices>
+  <Header size="5" value="If 'Has errors' or 'Unsure': say which row(s) and what is wrong (e.g., 'row #2 date mismatch', 'a change around 1995 is missing', 'row #3 anchor not found in log')"/>
+  <TextArea name="note" toName="chain" rows="2" maxSubmissions="1"/>
+</View>

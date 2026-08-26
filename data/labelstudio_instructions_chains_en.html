@@ -1,0 +1,11 @@
+<h3>WikiState Chain Verification — Annotator Guide</h3>
+<p><b>Background.</b> We built a benchmark where a persona's life events (employer, position, team, residence) are told to an AI assistant across many chat sessions. From each persona's chat log we extracted a <b>state chain</b>: the dated sequence of values for one slot (e.g., employer: Caltech 1985 &rarr; CERN 1989 &rarr; Cambridge 1995). Your job is to check, for each item, that the chain is a <b>faithful summary of the raw log</b> shown below it.</p>
+<p><b>For every item, check four things:</b></p>
+<ol>
+<li><b>Anchor exists</b> — each SOURCE SENTENCE really appears in the log (they are highlighted in yellow where found; if a row's sentence has no highlight anywhere, that is a red flag — search the log to confirm).</li>
+<li><b>Date matches</b> — each row's DATE matches the date of the session containing its anchor (session dates are the brown headers). A date like 1995-00-00 means "1995, month/day unknown" — that is fine as long as the year matches.</li>
+<li><b>Value matches</b> — each row's VALUE is what its anchor sentence actually says (not a different organization/city/team).</li>
+<li><b>Nothing missing</b> — scan the log for any OTHER clear statement that the persona started/moved/joined something new for this slot that is NOT in the chain. Casual mentions, plans, and hypotheticals do not count — only clear declarations of an actual change.</li>
+</ol>
+<p><b>Verdicts.</b> <i>Correct and complete</i> = all four checks pass. <i>Has errors</i> = any check fails (say which row and what, in the notes). <i>Unsure</i> = genuinely ambiguous after checking (say why).</p>
+<p><b>Rules.</b> Work alone; do not discuss items with other annotators until everyone has finished. Use only the "Label All Tasks" button. Expect roughly 1.5–2 minutes per item.</p>

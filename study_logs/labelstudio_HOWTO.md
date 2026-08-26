@@ -44,6 +44,21 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
     **内层 div**(.scrollbox max-height:440px),放 body 上会把 iframe 撑到全文高;
     LS 的 Collapse 面板里放 HyperText 会在隐藏时量高(150px 固定)→ 弃用 Collapse
   - 推送模式:delete_tasks → PATCH config → import(有标注自动中止)
+
+## 双项目设计(2026-08-26 定稿)
+
+- **项目 1「WikiState Gold-Answer Verification」**(校准轮):60 题分层抽样,
+  全员全重叠,报 Fleiss' κ + 分题型错误率;minimum 待人数定后设(= 评审人数)
+- **项目 3「WikiState Chain Verification (full coverage)」**(覆盖轮):
+  144 链全覆盖 + **5 道催化剂题**(注入错误的链,类型:日期偏移/删行/值互换/
+  伪造锚点/伪造加行),共 149 题,中性编号 chain-001..149;
+  每题收 2 份(maximum_annotations=2),随机出题(Uniform sampling),
+  英文指南挂在项目 Instructions;报原始一致率 + Krippendorff's α + 催化剂通过率
+- **催化剂题答案钥匙**:data/labelstudio_chainproj_map.json(id→uid/catch/注入
+  说明,仅本地,勿导入 LS);构建脚本 scripts/build_labelstudio_chains.py
+- 测试账号 test01(见 labelstudio_admin.txt):试点/演示用,统计时剔除其标注
+- 流程:试点(作者自测)→ 发邀请链接 → 评审先做项目 1 再做项目 3 →
+  API 拉取 → 统计 → 分歧裁决 → 数据集 v2 修正
 - 管理员账号同 labelstudio_admin.txt;容器 `labelstudio` 自动重启,数据持久在
   服务器 /opt/labelstudio/data(本机关机不影响收数据)
 - 组员参与:发地址 → 组员 Sign Up 注册 → 进项目 Label All Tasks
