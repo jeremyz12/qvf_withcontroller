@@ -123,6 +123,89 @@ def render_card_ledger(uid: str, entry: dict, cards_dir: str = "",
     return "\n".join(lines)
 
 
+def render_ledger_plus(uid: str, entry: dict, t_q: str,
+                       roles: bool = False, calc: bool = False,
+                       cards_dir: str = "") -> str:
+    """批 9 账目增强:在 smoc 账目上机械注入认证角色(算法4)与/或
+    槽位汇总块(算法5,断言臂设计)。t_q = 题面日期;纯代码零 LLM。"""
+    from complex_query_arm import _mem_dates
+    from datetime import date as _date
+
+    def pd(x):
+        import re as _re
+        m0 = _re.search(r"(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?", str(x))
+        if not m0:
+            return None
+        y = int(m0.group(1))
+        mo = int(m0.group(2) or 1) or 1
+        dd = int(m0.group(3) or 1) or 1
+        try:
+            return _date(y, min(max(mo, 1), 12), min(max(dd, 1), 28))
+        except ValueError:
+            return None
+    base = cards_dir or r"D:\ZZL_cluade/results/wt_cards_v42"
+    recs = json.loads((Path(base) / f"{uid}.json").read_text(
+        encoding="utf-8")).get("records", [])
+    md = _mem_dates(entry)
+    rows = []
+    for r in recs:
+        d = (r.get("stated_date") or "").strip() or             md.get(r.get("source_memory_id", ""), "")
+        if d:
+            rows.append((d, r))
+    rows.sort(key=lambda x: x[0])
+    tq = pd(t_q) or _date(2100, 1, 1)
+    # 槽位组:(owner, slot_class or slot)
+    groups: dict = {}
+    for i, (d, r) in enumerate(rows):
+        key = ((r.get("owner") or ""), r.get("slot_class") or r.get("slot") or "")
+        groups.setdefault(key, []).append(i)
+    role_of = {}
+    if roles:
+        for key, idxs in groups.items():
+            seq = [(rows[i][0], i) for i in idxs]
+            seq.sort()
+            for j, (d, i) in enumerate(seq):
+                di = pd(d)
+                dnext = pd(seq[j + 1][0]) if j + 1 < len(seq) else None
+                if di and di > tq:
+                    role_of[i] = "not-yet-active"
+                elif dnext and dnext <= tq:
+                    role_of[i] = "superseded"
+                else:
+                    role_of[i] = "current"
+    lines = []
+    for n, (i, (d, r)) in enumerate(zip(range(len(rows)), rows), 1):
+        span = (r.get("source_span") or "")[:120]
+        tail = f'  [role: {role_of.get(i, "?")}]' if roles else ""
+        lines.append(f'[entry {n}] {d} | {r.get("slot", "?")}: '
+                     f'{r.get("value", "?")} — "{span}"{tail}')
+    if calc:
+        lines.append("")
+        lines.append("[computed slot summaries — derived by code from the "
+                     "entries above, as of " + t_q + "]")
+        for key, idxs in sorted(groups.items()):
+            seq = sorted((rows[i][0], (rows[i][1].get("value") or "").strip())
+                         for i in idxs)
+            seq = [(d, v) for d, v in seq if v and pd(d) and pd(d) <= tq]
+            if len(seq) < 2:
+                continue
+            merged = [seq[0]]
+            for d, v in seq[1:]:
+                if v.lower() != merged[-1][1].lower():
+                    merged.append((d, v))
+            per = {}
+            for j, (d, v) in enumerate(merged):
+                end = pd(merged[j + 1][0]) if j + 1 < len(merged) else tq
+                st = pd(d)
+                if st and end and end > st:
+                    per[v] = per.get(v, 0) + (end - st).days
+            distinct = len({v.lower() for _, v in merged})
+            longest = max(per, key=per.get) if per else "?"
+            lines.append(f"  {key[1]}: {distinct} distinct values; "
+                         f"{len(merged) - 1} changes; longest-held: {longest}")
+    return "\n".join(lines)
+
+
 def parse_answer(raw: str):
     """末行 ANSWER: 解析;无则取末非空行并记协议偏差。"""
     ans_lines = [l for l in raw.splitlines() if l.strip().upper().startswith("ANSWER:")]
@@ -136,8 +219,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--system", choices=["smw", "smwctrl", "smwplain",
                                          "smwshuf", "smoc", "smocshuf",
-                                         "smoctwin", "smocrep",
-                                         "smoctwinmf"], required=True)
+                                         "smoctwin", "smocrep", "smoctwinmf",
+                                         "smocr", "smocc", "smocrc"], required=True)
     ap.add_argument("--full", action="store_true",
                     help="全 418 题(105 库);默认 15 库 60 题抽样")
     ap.add_argument("--twin-seed", default="main", choices=["main", "s21", "s22"],
@@ -151,8 +234,11 @@ def main() -> int:
     prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
                   "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
                   "smocrep": SMW_PROMPT, "smoctwinmf": SMW_PROMPT,
+                  "smocr": SMW_PROMPT, "smocc": SMW_PROMPT, "smocrc": SMW_PROMPT,
                   "smwctrl": CTRL_PROMPT, "smwplain": PLAIN_PROMPT}[a.system]
     CARD_ARMS = {"smoc", "smocshuf", "smoctwin", "smocrep", "smoctwinmf"}
+    PERQ_ARMS = {"smocr": (True, False), "smocc": (False, True),
+                 "smocrc": (True, True)}
     TWIN_ARMS = {"smoctwin", "smoctwinmf"}
 
     entries = {}
@@ -203,7 +289,9 @@ def main() -> int:
         qs = [q for q in by_uid[uid] if q["qid"] not in done]
         if not qs or uid not in entries:
             continue
-        if a.system in CARD_ARMS:
+        if a.system in PERQ_ARMS:
+            transcript = None  # 逐题渲染(角色/汇总依赖题面日期)
+        elif a.system in CARD_ARMS:
             try:
                 transcript = render_card_ledger(
                     uid, entries[uid],
@@ -237,6 +325,14 @@ def main() -> int:
                 shuffle_uid=uid if a.system == "smwshuf" else "")
         for q in qs:
             t0 = time.time()
+            if a.system in PERQ_ARMS:
+                import re as _re
+                m = _re.search(r"(?:Today is |before )([0-9]{4}-[0-9]{2}-[0-9]{2}|[0-9]{4}-[0-9]{2}|[0-9]{4})",
+                               q["question"])
+                tq = (m.group(1) if m else "2100-01-01")
+                ro, ca = PERQ_ARMS[a.system]
+                transcript = render_ledger_plus(uid, entries[uid], tq,
+                                                roles=ro, calc=ca)
             content = prompt_tpl.format(question=q["question"],
                                         transcript=transcript)
             raw, ti, to = "", 0, 0
