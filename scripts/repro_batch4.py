@@ -145,15 +145,99 @@ class AmemSystem:
             return []
 
 
+class MemStrataSystem:
+    """MemStrata 式确定性 (s,r,o) 双时序台账(按论文方法节复刻,提示词自写,
+    对外标注"MemStrata 式")。写入:每会话一次 haiku 三元组抽取 → (s,r) 键
+    查活跃断言:异 object 取代(旧行关闭)、同 object 强化、无键新存。
+    读取:仅活跃行(superseded 丢弃,照论文默认)+ openai 嵌入 top-10。
+    预注册预测:当前值类强、聚合类塌——valid:S×Q 天花板的实测形态。"""
+    name = "mstrata"
+
+    def __init__(self):
+        import anthropic as _a
+        self.client = _a.Anthropic()
+        from qvf.retrieval import OpenAIDenseRetriever
+        self._retr_cls = OpenAIDenseRetriever
+        self.stores: dict = {}
+
+    def _extract(self, text, date):
+        prompt = (
+            "Extract user-state facts from this chat session as JSON array of "
+            "triples: [{\"s\": subject, \"r\": relation, \"o\": object}]. "
+            "Rules: subject is 'user' for first-person statements; relation is "
+            "a short normalized attribute name (e.g. employer, team, "
+            "residence, diet); two sentences that differ only in the value "
+            "MUST produce the same s and r; o is the value only, never "
+            "embedded in s or r. Output ONLY the JSON array.\n\n" + text)
+        for attempt in range(3):
+            try:
+                r = self.client.messages.create(
+                    model=READER_MODEL, max_tokens=500, temperature=0.0,
+                    messages=[{"role": "user", "content": prompt}])
+                raw = "".join(b.text for b in r.content if b.type == "text")
+                i, j = raw.find("["), raw.rfind("]")
+                return json.loads(raw[i:j + 1]) if i >= 0 else []
+            except Exception:  # noqa: BLE001
+                time.sleep(3)
+        return []
+
+    def ingest(self, uid, sessions):
+        ledger = []  # rows: {s,r,o,valid_from,valid_to,superseded}
+        active = {}  # (s_norm, r_norm) -> row
+        for s in sessions:
+            date = s.get("date", "")
+            for t in self._extract(sess_text(s), date):
+                try:
+                    key = (str(t["s"]).strip().lower(),
+                           str(t["r"]).strip().lower())
+                    o = str(t["o"]).strip()
+                except Exception:  # noqa: BLE001
+                    continue
+                if not o:
+                    continue
+                cur = active.get(key)
+                if cur is not None and cur["o"].lower() == o.lower():
+                    continue  # 强化,无操作
+                if cur is not None:  # 取代:旧行关闭
+                    cur["valid_to"] = date
+                    cur["superseded"] = True
+                row = {"s": key[0], "r": key[1], "o": o,
+                       "valid_from": date, "valid_to": None,
+                       "superseded": False}
+                ledger.append(row)
+                active[key] = row
+        rows = [r for r in ledger if not r["superseded"]]  # 论文默认读路径
+
+        class _M:
+            def __init__(self, c, d):
+                self.content, self.metadata = c, {"session_date": d}
+                self.memory_id = d
+        mems = [_M(f"[since {r['valid_from']}] {r['s']} {r['r']}: {r['o']}",
+                   r["valid_from"]) for r in rows]
+        self.stores[uid] = (self._retr_cls(mems) if mems else None,
+                            len(ledger), len(rows))
+
+    def search(self, uid, query):
+        retr, tot, act = self.stores.get(uid, (None, 0, 0))
+        if retr is None:
+            return []
+        try:
+            hits = retr.retrieve(query, top_k=10)
+            return [f"- {h.content[:300]}" for h in hits]
+        except Exception:  # noqa: BLE001
+            return []
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--system", choices=["txtai", "lgstore", "amem", "bm25"],
+    ap.add_argument("--system", choices=["txtai", "lgstore", "amem", "bm25", "mstrata"],
                     required=True)
     ap.add_argument("--limit-stores", type=int, default=0,
                     help="只跑前 N 库(抽样先行)")
     a = ap.parse_args()
     sysm = {"txtai": TxtaiSystem, "lgstore": LgStoreSystem,
-            "amem": AmemSystem, "bm25": Bm25System}[a.system]()
+            "amem": AmemSystem, "bm25": Bm25System,
+            "mstrata": MemStrataSystem}[a.system]()
     out_p = ROOT / f"results/wsc_s5_{sysm.name}.jsonl"
     done = set()
     if out_p.exists():
