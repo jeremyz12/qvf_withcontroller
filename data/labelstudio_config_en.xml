@@ -1,15 +1,16 @@
 <View>
-  <Style>.gold-box{background:#eef3e8;border-radius:6px;padding:8px 12px;font-size:16px}</Style>
+  <Style>.gold-box{background:#eef3e8;border-radius:6px;padding:8px 12px;font-size:16px}
+  .chain-box{font-family:monospace;white-space:pre;overflow-x:auto;background:#f4f6fb;border-radius:6px;padding:10px;font-size:12.5px}</Style>
   <Header value="Type: $qtype   |   ID: $item_id"/>
   <Text name="q" value="$question"/>
   <View className="gold-box"><Header size="4" value="Gold answer: $gold"/></View>
-  <HyperText name="chain" value="$chain_html"/>
+  <View className="chain-box"><Text name="chain" value="$chain_text"/></View>
   <Header size="4" value="Given the state chain and the convention above, is the gold answer correct?"/>
   <Choices name="verdict" toName="q" choice="single" required="true">
     <Choice value="Correct" hotkey="1"/>
     <Choice value="Incorrect" hotkey="2"/>
     <Choice value="Unsure" hotkey="3"/>
   </Choices>
-  <Header size="5" value="Notes (please explain briefly if you chose Incorrect — including if you disagree with the convention itself)"/>
+  <Header size="5" value="Notes (explain briefly if Incorrect — including if you disagree with the convention itself)"/>
   <TextArea name="note" toName="q" rows="2" maxSubmissions="1"/>
 </View>
