@@ -275,9 +275,122 @@ class CogneeSystem:
             return []
 
 
+class GraphitiSystem:
+    """Graphiti(getzep):时序知识图谱,FalkorDB 后端(docker 单容器),
+    LLM=haiku 抽取,嵌入=openai。add_episode 每集多次 LLM 调用——抽样先行。"""
+    name = "graphiti"
+
+    def __init__(self):
+        import asyncio
+        self._loop = asyncio.new_event_loop()
+        from graphiti_core import Graphiti
+        from graphiti_core.driver.falkordb_driver import FalkorDriver
+        from graphiti_core.llm_client.anthropic_client import AnthropicClient
+        from graphiti_core.llm_client.config import LLMConfig
+        driver = FalkorDriver(host="localhost", port=6379)
+        self.g = Graphiti(graph_driver=driver,
+                          llm_client=AnthropicClient(config=LLMConfig(
+                              model="claude-haiku-4-5",
+                              small_model="claude-haiku-4-5")))
+        self._loop.run_until_complete(self.g.build_indices_and_constraints())
+
+    def ingest(self, uid, sessions):
+        from graphiti_core.nodes import EpisodeType
+        from datetime import datetime, timezone
+
+        async def go():
+            for i, s in enumerate(sessions):
+                d = (s.get("date") or "2000-01-01")[:10].replace("-00", "-01")
+                try:
+                    rt = datetime.fromisoformat(d).replace(tzinfo=timezone.utc)
+                except ValueError:
+                    rt = datetime(2000, 1, 1, tzinfo=timezone.utc)
+                for attempt in range(3):
+                    try:
+                        await self.g.add_episode(
+                            name=f"{uid}-s{i}", episode_body=sess_text(s),
+                            source_description="chat session",
+                            reference_time=rt, source=EpisodeType.message,
+                            group_id=uid)
+                        break
+                    except Exception as e:  # noqa: BLE001
+                        print(f"[{uid}] ep{i} retry {attempt}: "
+                              f"{type(e).__name__}: {str(e)[:80]}", flush=True)
+                        time.sleep(3)
+        self._loop.run_until_complete(go())
+
+    def search(self, uid, query):
+        async def go():
+            return await self.g.search(query, group_ids=[uid], num_results=10)
+        try:
+            edges = self._loop.run_until_complete(go())
+            out = []
+            for e in edges:
+                fact = getattr(e, "fact", None) or str(e)
+                va = getattr(e, "valid_at", None)
+                out.append(f"- {fact}" + (f" (valid_at: {va})" if va else ""))
+            return out[:10]
+        except Exception as e:  # noqa: BLE001
+            print(f"[{uid}] search fail: {type(e).__name__}: {str(e)[:80]}",
+                  flush=True)
+            return []
+
+
+class LightRagSystem:
+    """LightRAG(HKU):graph-RAG 家族;gpt-4o-mini 建图,openai 嵌入;
+    only_need_context=True 只取素材喂我方读者(同台)。抽样先行。"""
+    name = "lightrag"
+
+    def __init__(self):
+        import asyncio
+        self._loop = asyncio.new_event_loop()
+        self.stores: dict = {}
+
+    def ingest(self, uid, sessions):
+        import os
+        from lightrag import LightRAG
+        from lightrag.llm.openai import gpt_4o_mini_complete, openai_embed
+        wd = str(ROOT / "scratchpad" / "lightrag" / uid)
+        os.makedirs(wd, exist_ok=True)
+
+        async def go():
+            rag = LightRAG(working_dir=wd,
+                           llm_model_func=gpt_4o_mini_complete,
+                           embedding_func=openai_embed)
+            await rag.initialize_storages()
+            try:
+                from lightrag.kg.shared_storage import initialize_pipeline_status
+                await initialize_pipeline_status()
+            except Exception:  # noqa: BLE001
+                pass
+            await rag.ainsert([sess_text(s) for s in sessions])
+            return rag
+        self.stores[uid] = self._loop.run_until_complete(go())
+
+    def search(self, uid, query):
+        from lightrag import QueryParam
+        rag = self.stores.get(uid)
+        if rag is None:
+            return []
+
+        async def go():
+            return await rag.aquery(query, param=QueryParam(
+                mode="hybrid", only_need_context=True, top_k=10))
+        try:
+            ctx = self._loop.run_until_complete(go())
+            txt = str(ctx or "").strip()
+            # 其原生证据形态 = 完整结构化上下文包(实体/关系/原文块),
+            # 整包交付,上限 8000 字符(截断伪影教训:只取前10行=表头)
+            return [txt[:8000]] if txt else []
+        except Exception as e:  # noqa: BLE001
+            print(f"[{uid}] search fail: {type(e).__name__}: {str(e)[:80]}",
+                  flush=True)
+            return []
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--system", choices=["txtai", "lgstore", "amem", "bm25", "mstrata", "cognee"],
+    ap.add_argument("--system", choices=["txtai", "lgstore", "amem", "bm25", "mstrata", "cognee", "graphiti", "lightrag"],
                     required=True)
     ap.add_argument("--limit-stores", type=int, default=0,
                     help="只跑前 N 库(抽样先行)")
@@ -287,7 +400,8 @@ def main() -> int:
     a = ap.parse_args()
     sysm = {"txtai": TxtaiSystem, "lgstore": LgStoreSystem,
             "amem": AmemSystem, "bm25": Bm25System,
-            "mstrata": MemStrataSystem, "cognee": CogneeSystem}[a.system]()
+            "mstrata": MemStrataSystem, "cognee": CogneeSystem,
+            "graphiti": GraphitiSystem, "lightrag": LightRagSystem}[a.system]()
     out_p = ROOT / f"results/wsc_s5_{sysm.name}{a.out_suffix}.jsonl"
     done = set()
     if out_p.exists():
