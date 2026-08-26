@@ -29,3 +29,17 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
 "60 项分层抽样,N 名标注者每题独立核对(Label Studio),标注指南含四条
 判分约定与两条争议约定专问;报告一致率与 Fleiss' κ;不一致项经作者裁决并
 在数据集 v2 中修正(见 dataset audit)。"
+
+---
+
+# 公网部署版(2026-08-26,Vultr Sydney)
+
+- **地址:http://149.28.167.100**(60 题项目已导入,与本地版同源同序)
+- 管理员账号同 labelstudio_admin.txt;容器 `labelstudio` 自动重启,数据持久在
+  服务器 /opt/labelstudio/data(本机关机不影响收数据)
+- 组员参与:发地址 → 组员 Sign Up 注册 → 进项目 Label All Tasks
+- **必做设置**:项目 Settings → Annotation → Annotations per task (minimum) 设为
+  组员人数(默认 1,不改算不了一致性)
+- 域名/HTTPS:买好域名后加 Caddy 反代(找 Claude,10 分钟)
+- 服务器运维:ssh -i ~/.ssh/wikistate_vps root@149.28.167.100;
+  重启容器:docker restart labelstudio
