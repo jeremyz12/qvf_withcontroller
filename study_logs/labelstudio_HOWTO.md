@@ -54,6 +54,11 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
   of the authors; independent-annotator agreement measured on a 20-item overlap";
 - 生成器 rateapp/gen_assignments_3p.py(复用 admin token 与题集,seed=20260828);
   数据集发放前全检:144 链 542 行锚点逐字/日期格式/非降序 全过(2026-08-28)。
+- **分析协议(收数前预注册)**:主指标 = 重叠 20 题上两位 senior 的 Cohen's κ;
+  辅助 = author-vs-senior 全量一致率、催化剂逐人通过率(author 5/senior 各 3)、
+  裁决后数据集错误率(144 链二项 CI)。**裁决规则**:任一独立评审判
+  Has errors/Unsure 即进裁决清单,以其批注逐条对照原文裁决;author 标注作
+  第一遍参考而非否决票;重叠题上两 senior 的分歧单独裁决并单独报告。
 
 ## 自建核验站(2026-08-27 最终版:弃用 Label Studio)
 
