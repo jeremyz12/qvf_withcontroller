@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -22,7 +23,9 @@ import anthropic
 from qvf.judge import ClaudeJudge
 from repro_batch2 import sample_stores, VOLS, ROOT  # 同一抽样与数据卷
 
-READER_MODEL = "claude-haiku-4-5"
+READER_MODEL = os.environ.get("QVF_READER_MODEL", "claude-haiku-4-5")
+# 批16 读者升级用:默认值即冻结配置;覆盖时逐行 usage 照记,截断自查见 prereg。
+READER_MAXTOK = int(os.environ.get("QVF_READER_MAXTOK", "800"))
 TAIL_GUARD = 400_000  # 字符,照抄 F.3
 
 # ── 附录 F.1 逐字提示词 ──────────────────────────────────────
@@ -115,6 +118,36 @@ def render_card_ledger(uid: str, entry: dict, cards_dir: str = "",
             (uid + str(x[1].get("record_id", ""))).encode()).hexdigest())
     else:
         rows.sort(key=lambda x: x[0])
+    # 批14 视图门控(QVF_LEDGER_VIEW= ''|slot|slim;默认空=原整本视图,零改动)。
+    # 语义逐字镜像批13抽样脚本 ledger_slim_probe.render:slot/slot_class 子串匹配,
+    # 命中 <2 行回退整本;其余属性折叠为单行索引。乱序臂不适用。
+    view = "" if shuffle else os.environ.get("QVF_LEDGER_VIEW", "")
+    if view in ("slot", "slim"):
+        s = (entry.get("slot") or "").lower()
+        hit = lambda r: (s in (r.get("slot_class") or "").lower()  # noqa: E731
+                         or s in (r.get("slot") or "").lower())
+        picked = [(d, r) for d, r in rows if hit(r)]
+        if len(picked) >= 2:
+            rest = [(d, r) for d, r in rows if not hit(r)]
+            lines = []
+            for n, (d, r) in enumerate(picked, 1):
+                date = d if d != "9999" else "undated"
+                if view == "slim":
+                    lines.append(f'[entry {n}] {date} | '
+                                 f'{r.get("slot", "?")}: {r.get("value", "?")}')
+                else:
+                    span = (r.get("source_span") or "")[:120]
+                    lines.append(f'[entry {n}] {date} | {r.get("slot", "?")}: '
+                                 f'{r.get("value", "?")} — "{span}"')
+            if rest:
+                from collections import Counter
+                cnt = Counter((r.get("slot") or "?") for _, r in rest)
+                lines.append("[other attributes on file, collapsed: "
+                             + ", ".join(f"{k}({v})" for k, v in cnt.most_common())
+                             + "]")
+            return "\n".join(lines)
+        print(f"[{uid}] view={view}: <2 slot rows, fallback to full ledger",
+              flush=True)
     lines = []
     for n, (d, r) in enumerate(rows, 1):
         span = (r.get("source_span") or "")[:120]
@@ -338,9 +371,11 @@ def main() -> int:
             raw, ti, to = "", 0, 0
             for attempt in range(3):
                 try:
-                    r = client.messages.create(
-                        model=READER_MODEL, max_tokens=800, temperature=0.0,
-                        messages=[{"role": "user", "content": content}])
+                    kw = dict(model=READER_MODEL, max_tokens=READER_MAXTOK,
+                              messages=[{"role": "user", "content": content}])
+                    if READER_MODEL.startswith("claude-haiku"):
+                        kw["temperature"] = 0.0  # sonnet-5 拒收 temperature(存档陷阱)
+                    r = client.messages.create(**kw)
                     raw = "".join(b.text for b in r.content if b.type == "text")
                     ti, to = r.usage.input_tokens, r.usage.output_tokens
                     break
