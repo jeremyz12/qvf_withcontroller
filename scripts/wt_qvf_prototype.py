@@ -324,6 +324,20 @@ _V5_VARIANTS = {
     "h1h2": _V5_RULE_H1 + _V5_RULE_H2,
 }
 
+# QVF_CARD_CONDVAL=1(批 20):条件绑定偏好保值规则——外场 MemConflict
+# conditional 盲区(卡片把"如果 X 则 Y"压平成 Y)的治疗臂。默认 0 时
+# _catalog_prompt 输出逐字节不变。
+_CARD_CONDVAL = int(os.environ.get("QVF_CARD_CONDVAL", "0") or 0)
+_CONDVAL_RULE = """\
+CONDITION-PRESERVING VALUES: when a stated preference or state applies
+only under an explicit condition ("when/if/for/during/on ..." etc.),
+KEEP that condition inside the value itself — e.g. value "window seat
+(on long-haul flights)" rather than "window seat"; "tea (weekday
+mornings)" rather than "tea". If two statements differ only in their
+binding condition, record them as SEPARATE records (different
+conditions coexist) rather than as one superseding the other.
+"""
+
 
 def _catalog_prompt() -> str:
     """当前生效的建卡提示词。旗标全关时返回 CATALOG_PROMPT 本体(逐字节
@@ -339,6 +353,8 @@ def _catalog_prompt() -> str:
     if _CARD_V5:
         variant = _V5_VARIANTS.get(_CARD_V5_VARIANT, _V5_RULE_H1)
         base = base + variant
+    if _CARD_CONDVAL:
+        base = base + _CONDVAL_RULE
     return base
 
 
