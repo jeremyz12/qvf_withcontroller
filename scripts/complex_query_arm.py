@@ -739,10 +739,23 @@ def execute_plan(plan: dict, recs: List[dict], mem_dates: dict,
                 f"{len(chain)} distinct item(s) in total: "
                 + "; ".join(values) + ". Count of items, not changes.")
         else:
-            n = len(chain) - 1
+            chain_c, vals_c = chain, values
+            # QVF_COUNT_ASOF=1(批 18):按题面 (Today is X.) 截断,只数
+            # Today(含)之前的转移——与 gold 的 as-of 口径对齐;日期升序下
+            # 截断即取前缀,相邻合并性质不受影响。旗标关时本分支不触发,
+            # 输出逐字节不变。
+            if _COUNT_ASOF:
+                _m = _TODAY_RE.search(question or "")
+                _tq = _pdate(_m.group(1)) if _m else None
+                if _tq is not None:
+                    k = sum(1 for d in dates
+                            if _pdate(d) is not None and _pdate(d) <= _tq)
+                    if k:
+                        chain_c, vals_c = chain[:k], values[:k]
+            n = len(chain_c) - 1
             derived.append(
-                f"The user's {label} changed {n} time(s) — {len(chain)} "
-                f"successive states: " + " -> ".join(values) + ".")
+                f"The user's {label} changed {n} time(s) — {len(chain_c)} "
+                f"successive states: " + " -> ".join(vals_c) + ".")
     elif op == "longest":
         # 与 gen_wikistate_complex S5a 同口径:仅闭区间,同值多段按值累加。
         per_value: dict = {}
@@ -851,6 +864,9 @@ _SET_SEM = int(os.environ.get("QVF_SET_SEMANTICS", "0") or 0)
 # "现任即最长"变体题暴露的闭区间约定边界(编译臂 2.5%,预注册
 # results/tenure_asof_variant_prereg.md)。默认 0,关时逐字节等价。
 _TENURE_ASOF = int(os.environ.get("QVF_TENURE_ASOF", "0") or 0)
+# QVF_COUNT_ASOF=1:count_changes 按题面 Today 截断后再数(批 18 修复;
+# 默认 0 = 全链计数,逐字节等同旗标引入前)。
+_COUNT_ASOF = int(os.environ.get("QVF_COUNT_ASOF", "0") or 0)
 
 _DIRECT_CACHE: dict = {}
 
