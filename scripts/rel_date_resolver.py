@@ -64,8 +64,11 @@ def main() -> int:
                        None)
             if hit is None:
                 continue
-            sess_d = pd(r.get("stated_date") or
-                        md.get(r.get("source_memory_id", ""), ""))
+            # 回推基准 = 会话日期(可靠全日期);stated_date 仅兜底——
+            # 建卡器对相对短语自发做月级解析("2024-04"),天级信息只在
+            # 会话日期里。
+            sess_d = pd(md.get(r.get("source_memory_id", ""), "")) or \
+                pd(r.get("stated_date") or "")
             if sess_d is None:
                 continue
             r["stated_date"] = hit[1](sess_d).isoformat()
