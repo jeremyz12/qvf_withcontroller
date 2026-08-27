@@ -45,6 +45,16 @@ Fleiss' κ(≥3 人)、被质疑题清单与备注汇总,并与 artifact 评分�
     LS 的 Collapse 面板里放 HyperText 会在隐藏时量高(150px 固定)→ 弃用 Collapse
   - 推送模式:delete_tasks → PATCH config → import(有标注自动中止)
 
+## 三人定稿分配(2026-08-28,launch 配置)
+
+- **author** 149 题全量(角色=第一遍全检+分歧裁决,**不计入独立评审**);
+- **senior1/senior2** 各 85/84 题 = 各自半区 + **20 条重叠集**(两位独立评审共同题,
+  产出不含作者的 Cohen's κ);催化剂 5 道:author 全见,两位 senior 各遇 3 道;
+- 论文口径:"every chain verified by the first author and ≥1 annotator independent
+  of the authors; independent-annotator agreement measured on a 20-item overlap";
+- 生成器 rateapp/gen_assignments_3p.py(复用 admin token 与题集,seed=20260828);
+  数据集发放前全检:144 链 542 行锚点逐字/日期格式/非降序 全过(2026-08-28)。
+
 ## 自建核验站(2026-08-27 最终版:弃用 Label Studio)
 
 - **动因**:LS 社区版无法隐藏他人标注(用户实测+源码核查),三组并行也只是缓解;
