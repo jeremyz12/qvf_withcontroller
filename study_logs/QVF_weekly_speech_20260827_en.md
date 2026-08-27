@@ -219,3 +219,10 @@ itself is frozen, the evidence is complete. Thank you — happy to take question
 - **LME numbers?** Temporal-reasoning subset +12.8 (p=0.01) with built-in
   placebo; knowledge-update ties the strongest baseline; cite with the
   Aug-17 configuration note.
+
+- **Why not just use a stronger reader?** We measured it: under the real retrieval
+  budget, swapping haiku for sonnet-5 DROPS the baseline from 48.6 to 41.5
+  (paired p = 0.008). The bottleneck is evidence supply, not reader intelligence —
+  no model can count transitions that retrieval never fetched. Strong readers only
+  pay off under full-context feeding, whose cost grows linearly with memory; the
+  ledger delivers the evidence to any reader at 1/3 to 1/5.5 of that cost.
