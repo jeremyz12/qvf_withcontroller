@@ -26,7 +26,8 @@ load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 import requests  # noqa: E402
 from qvf.judge import ClaudeJudge  # noqa: E402
-from repro_batch3 import SMW_PROMPT, parse_answer, render_card_ledger  # noqa: E402
+from repro_batch3 import (PLAIN_PROMPT, SMW_PROMPT, parse_answer,  # noqa: E402
+                          render_card_ledger, render_transcript)
 from ext_direct_arm import (READER_SYSTEM, _memories, _query_date,  # noqa: E402
                             _retriever_cls, reader_content)
 
@@ -36,6 +37,20 @@ _THINK = re.compile(r"<think>.*?</think>", re.S)
 def call_reader(reader: str, system: str, user: str):
     kind, model = reader.split(":", 1)
     t0 = time.time()
+    if kind == "anthropic":
+        import anthropic
+        cli = call_reader._ant = getattr(call_reader, "_ant", None) or \
+            anthropic.Anthropic()
+        kw = dict(model=model, max_tokens=800,
+                  messages=[{"role": "user", "content": user}])
+        if system:
+            kw["system"] = system
+        if model.startswith("claude-haiku"):
+            kw["temperature"] = 0.0
+        r = cli.messages.create(**kw)
+        txt = "".join(b.text for b in r.content if b.type == "text")
+        return txt, r.usage.input_tokens, r.usage.output_tokens, \
+            time.time() - t0
     if kind == "openai":
         from openai import OpenAI
         cli = call_reader._oai = getattr(call_reader, "_oai", None) or OpenAI()
@@ -62,7 +77,8 @@ def call_reader(reader: str, system: str, user: str):
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reader", required=True)
-    ap.add_argument("--arm", choices=["smoc", "direct"], required=True)
+    ap.add_argument("--arm", choices=["smoc", "direct", "fullplain",
+                                      "closedbook"], required=True)
     ap.add_argument("--questions", required=True)
     ap.add_argument("--data", default="data/wikistate_full_ALL.json")
     ap.add_argument("--cards-dir", default="results/wt_cards_v43_20260828")
@@ -91,6 +107,21 @@ def main() -> int:
             sys_p = ""
             user = SMW_PROMPT.format(question=q["question"],
                                      transcript=led[uid])
+        elif a.arm == "closedbook":
+            # 闭卷基线:零上下文,纯参数知识答题——量化"化名+长尾闸"后的
+            # 参数泄漏上限(基准论文标准行)。
+            sys_p = ""
+            user = ("Answer the question from your own knowledge. If you "
+                    "cannot know the answer, give your best guess.\n\n"
+                    f"Question: {q['question']}")
+        elif a.arm == "fullplain":
+            # 全文裸读:整段对话按日期序原样入上下文 + 纯问答提示(repro_batch3
+            # PLAIN_PROMPT 逐字),即"把全部当成上下文然后提问"。
+            if uid not in led:
+                led[uid] = render_transcript(entries[uid].get("sessions", []))
+            sys_p = ""
+            user = PLAIN_PROMPT.format(question=q["question"],
+                                       transcript=led[uid])
         else:
             if uid not in retr:
                 retr[uid] = retr_cls(_memories(entries[uid]))
