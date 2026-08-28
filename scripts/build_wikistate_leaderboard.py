@@ -10,9 +10,9 @@ ROOT = Path(r"D:\ZZL_cluade")
 
 SECTIONS = [
     ("v2 主考场(576 题,haiku 读者;店版本标注)", [
-        ("直读 top-10 检索", "results/wsc_v2_direct.jsonl", ""),
-        ("filter(纯选择)", "results/wsc_v2_filter.jsonl", ""),
-        ("usability(+认证)", "results/wsc_v2_usability.jsonl", ""),
+        ("直读 top-10 检索", "results/wsc_v2_direct.jsonl", "批28:格式伪影约+4pp,归一语料 44.3"),
+        ("filter(纯选择)", "results/wsc_v2_filter.jsonl", "v42 店"),
+        ("usability(+认证)", "results/wsc_v2_usability.jsonl", "v42 店"),
         ("编译臂(代码执行)", "results/wsc_v2_compile.jsonl", "v42 店"),
         ("smw(引用协议+原文全文)", "results/wsc_v2_smw.jsonl", ""),
         ("smoc(账目读法)", "results/wsc_v2_smoc.jsonl", "v42 店"),
@@ -56,7 +56,7 @@ SECTIONS = [
         ("qwen3:14b(开源本地)· smoc", "results/lb_qwen14b_smoc.jsonl", "60 题抽样,v43 店"),
     ]),
     ("全文喂入与污染上限(v2 576)", [
-        ("haiku-4.5 · 全文裸读", "results/wsc_v2_smwplain.jsonl", "同信息无结构 = −34.0 vs 账目"),
+        ("haiku-4.5 · 全文裸读", "results/wsc_v2_smwplain.jsonl", "批28:归一语料 56.4(+4.2,格式反噬)"),
         ("gpt-5-mini · 全文裸读", "results/wsc_v2_fullplain_gpt5mini.jsonl", "推理模型当场重算,零空答"),
         ("gpt-4.1-mini · 全文裸读", "results/wsc_v2_fullplain_gpt41mini.jsonl", "判别格:同档非推理(在跑)"),
         ("gpt-5-nano · 全文裸读", "results/wsc_v2_fullplain_gpt5nano.jsonl", "判别格:小推理(在跑)"),
