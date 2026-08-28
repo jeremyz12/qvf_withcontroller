@@ -55,6 +55,14 @@ SECTIONS = [
         ("gpt-5-mini · smoc", "results/wsc_v2_smoc_v43_gpt5mini.jsonl", "v43 店;空答 23/576=4.0%(推理截断)"),
         ("qwen3:14b(开源本地)· smoc", "results/lb_qwen14b_smoc.jsonl", "60 题抽样,v43 店"),
     ]),
+    ("全文喂入与污染上限(v2 576)", [
+        ("haiku-4.5 · 全文裸读", "results/wsc_v2_smwplain.jsonl", "同信息无结构 = −34.0 vs 账目"),
+        ("gpt-5-mini · 全文裸读", "results/wsc_v2_fullplain_gpt5mini.jsonl", "推理模型当场重算,零空答"),
+        ("gpt-4.1-mini · 全文裸读", "results/wsc_v2_fullplain_gpt41mini.jsonl", "判别格:同档非推理(在跑)"),
+        ("gpt-5-nano · 全文裸读", "results/wsc_v2_fullplain_gpt5nano.jsonl", "判别格:小推理(在跑)"),
+        ("haiku-4.5 · 闭卷(零上下文)", "results/wsc_v2_closedbook_haiku.jsonl", "污染上限"),
+        ("gpt-5-mini · 闭卷(零上下文)", "results/wsc_v2_closedbook_gpt5mini.jsonl", "污染上限(推理猜测)"),
+    ]),
 ]
 
 
