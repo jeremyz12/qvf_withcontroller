@@ -49,6 +49,12 @@ _CARD_KEYS = int(os.environ.get("QVF_CARD_KEYS", "0") or 0)
 # QVF_CARD_TAGS=2(阶段二):同一字段改用完全开放标签规则(无固定类目表),
 # 与 =1 互斥选其一。默认 0 = 冻结行为,提示词与载荷逐字节不变。
 _CARD_TAGS = int(os.environ.get("QVF_CARD_TAGS", "0") or 0)
+# QVF_CARD_BY_SESSION=1(批 22 时机臂):建卡批边界改为**会话边界**
+# (逐会话一次调用 = 部署形态);默认 0 = 320k 字符贪心打包,逐字节不变。
+_CARD_BY_SESSION = int(os.environ.get("QVF_CARD_BY_SESSION", "0") or 0)
+# QVF_CARD_INCR=1(批 22 时机臂,隐含逐会话):每次调用前附"已建账目摘要",
+# 提示词追加 _INCR_RULE(去重/取代意识)。默认 0 逐字节不变。
+_CARD_INCR = int(os.environ.get("QVF_CARD_INCR", "0") or 0)
 
 # QVF_CARD_TEMP0:建卡调用(_catalog())是否显式传 temperature=0.0(与读取侧
 # client.messages.create 的 temperature=0.0 对齐)。
@@ -324,6 +330,30 @@ _V5_VARIANTS = {
     "h1h2": _V5_RULE_H1 + _V5_RULE_H2,
 }
 
+# 批 22 范围臂:全槽状态宣告门槛(H2 的证据杆从 employer/position 推广到
+# 所有槽类;经 QVF_CARD_V5_VARIANT=h3 启用)。
+_V5_RULE_H3 = """\
+STATE-DECLARATION BAR (all slots): create a record ONLY when the
+source_span asserts a STANDING STATE of the user — present-tense
+self-identification ("I am/have/live/work/prefer ..."), or an explicit
+start/change/end declaration ("I now ...", "I've started/moved/switched
+...", "my X is now ..."). A one-off activity, a single event, a plan, a
+hypothetical, or someone else's state is NOT a state declaration — skip
+it. This generalizes the employer/position evidence bar to every slot
+class; all other coverage rules stay unchanged.
+"""
+_V5_VARIANTS["h3"] = _V5_RULE_H3
+
+# 批 22 时机臂:增量建卡的账目意识规则(QVF_CARD_INCR=1 时追加)。
+_INCR_RULE = """\
+EXISTING LEDGER AWARENESS: the user message may begin with EXISTING STATE
+CARDS built from earlier sessions. Treat them as already recorded: do NOT
+re-emit a card for a state they already carry unless the CURRENT rounds
+declare a change/update to it. Every record you emit must still quote its
+source_span verbatim from the CURRENT memory rounds only — never from the
+existing-card list.
+"""
+
 # QVF_CARD_CONDVAL=1(批 20):条件绑定偏好保值规则——外场 MemConflict
 # conditional 盲区(卡片把"如果 X 则 Y"压平成 Y)的治疗臂。默认 0 时
 # _catalog_prompt 输出逐字节不变。
@@ -355,6 +385,8 @@ def _catalog_prompt() -> str:
         base = base + variant
     if _CARD_CONDVAL:
         base = base + _CONDVAL_RULE
+    if _CARD_INCR:
+        base = base + _INCR_RULE
     return base
 
 
@@ -391,32 +423,48 @@ def write_phase(data_path: str, limit_items: int = 0,
         # 卡片密度极高的内容(如逐行事实库)可用环境变量调小批预算。
         import os as _os
         CH_BUDGET = int(_os.environ.get("QVF_CATALOG_BUDGET", "320000"))
-        batches, cur, cur_len = [], [], 0
-        for p in payload:
-            plen = len(p["text"]) + 60
-            if cur and cur_len + plen > CH_BUDGET:
+        if _CARD_BY_SESSION or _CARD_INCR:
+            # 批 22 时机臂:批边界 = 会话边界(payload 本身按会话序)。
+            batches, cur, _sid_prev = [], [], None
+            for p in payload:
+                sid = p["memory_id"].split("/", 1)[1].split("#", 1)[0]
+                if cur and sid != _sid_prev:
+                    batches.append(cur)
+                    cur = []
+                cur.append(p)
+                _sid_prev = sid
+            if cur:
                 batches.append(cur)
-                cur, cur_len = [], 0
-            cur.append(p)
-            cur_len += plen
-        if cur:
-            batches.append(cur)
+        else:
+            batches, cur, cur_len = [], [], 0
+            for p in payload:
+                plen = len(p["text"]) + 60
+                if cur and cur_len + plen > CH_BUDGET:
+                    batches.append(cur)
+                    cur, cur_len = [], 0
+                cur.append(p)
+                cur_len += plen
+            if cur:
+                batches.append(cur)
         t0 = time.time()
 
-        def _catalog(batch, depth=0):
-            """建卡一批;输出截断/解析失败时对半分批递归(卡片密度自适应)。"""
+        def _catalog(batch, depth=0, digest=""):
+            """建卡一批;输出截断/解析失败时对半分批递归(卡片密度自适应)。
+            digest 非空(QVF_CARD_INCR)时在用户内容前附已建账目摘要。"""
             try:
                 _kw = {}
                 if _CARD_TEMP0:  # 默认 1:传 temperature=0.0;QVF_CARD_TEMP0=0
                                   # 时不传该键,调用逐字节等同旗标引入前(复现历史结果用)
                     _kw["temperature"] = 0.0
+                _user = ("EXISTING STATE CARDS (from earlier sessions):\n"
+                         + digest + "\n\n" if digest else "") + \
+                    "MEMORY ROUNDS (JSON):\n" + json.dumps(batch, ensure_ascii=False)
                 resp = client.messages.parse(
                     model=_CARD_MODEL, max_tokens=16000,
                     system=[{"type": "text",
                              "text": _catalog_prompt(),
                              "cache_control": {"type": "ephemeral"}}],
-                    messages=[{"role": "user", "content":
-                               "MEMORY ROUNDS (JSON):\n" + json.dumps(batch, ensure_ascii=False)}],
+                    messages=[{"role": "user", "content": _user}],
                     output_format=CatalogExtraction,
                     **_kw,
                 )
@@ -433,15 +481,21 @@ def write_phase(data_path: str, limit_items: int = 0,
                           f"{len(batch)} rounds skipped", flush=True)
                     return [], 0, 0
                 mid = len(batch) // 2
-                r1, i1, o1 = _catalog(batch[:mid], depth + 1)
-                r2, i2, o2 = _catalog(batch[mid:], depth + 1)
+                r1, i1, o1 = _catalog(batch[:mid], depth + 1, digest)
+                r2, i2, o2 = _catalog(batch[mid:], depth + 1, digest)
                 return r1 + r2, i1 + i2, o1 + o2
 
         recs, item_in, item_out = [], 0, 0
         _failed_batches = _span_bad = _span_missing = 0
         _span_repaired = _span_ambig = 0
         for bi, batch in enumerate(batches):
-            br, bi_in, bi_out = _catalog(batch)
+            _dig = ""
+            if _CARD_INCR and recs:
+                _dig = "\n".join(
+                    f'{r.get("slot", "?")}: {r.get("value", "?")} '
+                    f'({r.get("stated_date") or "undated"})'
+                    for r in recs[-80:])
+            br, bi_in, bi_out = _catalog(batch, digest=_dig)
             item_in += bi_in
             item_out += bi_out
             # 失败签名:_catalog 终态失败路径返回 ([], 0, 0);而成功的空批
