@@ -25,8 +25,12 @@ from dotenv import load_dotenv  # noqa: E402
 load_dotenv(r"D:\ZZL_cluade\.env")
 import anthropic  # noqa: E402
 
+import os
+
 CLIENT = anthropic.Anthropic()
-MODEL = "claude-haiku-4-5"
+# 批 28 判官稳健性:QVF_ARENA_JUDGE_MODEL 覆盖(gpt- 前缀走 OpenAI 栈);
+# 覆盖时输出文件加 .j2 后缀避免与主判官产物混写。默认行为不变。
+MODEL = os.environ.get("QVF_ARENA_JUDGE_MODEL", "claude-haiku-4-5")
 
 STALE_CRIT = {
     "dim1_state_resolution":
@@ -84,7 +88,8 @@ def main() -> int:
     meta_by_qid = {json.loads(l)["qid"]: json.loads(l)["meta"]
                    for l in open(a.probe, encoding="utf-8") if l.strip()}
     rows = [json.loads(l) for l in open(a.inp, encoding="utf-8")]
-    outp = Path(a.inp).with_suffix(".rejudged.jsonl")
+    sfx = ".rejudged.jsonl" if not MODEL.startswith("gpt") else ".rejudged.j2.jsonl"
+    outp = Path(a.inp).with_suffix(sfx)
     done = set()
     if outp.exists():
         done = {json.loads(l)["question_id"] for l in open(outp, encoding="utf-8")}
@@ -98,10 +103,19 @@ def main() -> int:
         verdict = None
         for attempt in range(3):
             try:
-                r = CLIENT.messages.create(
-                    model=MODEL, max_tokens=8, temperature=0.0,
-                    messages=[{"role": "user", "content": prompt}])
-                txt = "".join(b.text for b in r.content if b.type == "text").upper()
+                if MODEL.startswith("gpt"):
+                    from openai import OpenAI
+                    cli = main._oai = getattr(main, "_oai", None) or OpenAI()
+                    rr = cli.chat.completions.create(
+                        model=MODEL, max_completion_tokens=16,
+                        messages=[{"role": "user", "content": prompt}])
+                    txt = (rr.choices[0].message.content or "").upper()
+                else:
+                    r = CLIENT.messages.create(
+                        model=MODEL, max_tokens=8, temperature=0.0,
+                        messages=[{"role": "user", "content": prompt}])
+                    txt = "".join(b.text for b in r.content
+                                  if b.type == "text").upper()
                 verdict = "PASS" in txt and "FAIL" not in txt
                 break
             except Exception as e:  # noqa: BLE001
