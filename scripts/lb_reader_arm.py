@@ -64,10 +64,20 @@ def call_reader(reader: str, system: str, user: str):
     if kind == "ollama":
         msgs = ([{"role": "system", "content": system}] if system else []) + \
             [{"role": "user", "content": user}]
-        r = requests.post("http://localhost:11434/api/chat", json={
+        import os as _os
+        payload = {
             "model": model, "messages": msgs, "stream": False,
             "options": {"temperature": 0, "num_ctx": 12288,
-                        "num_predict": 1200}}, timeout=600).json()
+                        "num_predict": int(_os.environ.get(
+                            "QVF_OLLAMA_NUMPREDICT", "1200"))}}
+        if _os.environ.get("QVF_OLLAMA_NOTHINK") == "1":
+            payload["think"] = False  # 思考型本地模型关思考(qwen3.5 空答教训)
+        r = requests.post("http://localhost:11434/api/chat", json=payload,
+                          timeout=600).json()
+        if "error" in r and "think" in str(r.get("error", "")):
+            payload.pop("think", None)  # 模型不支持 think 参数则回退
+            r = requests.post("http://localhost:11434/api/chat",
+                              json=payload, timeout=600).json()
         txt = _THINK.sub("", (r.get("message") or {}).get("content", "")).strip()
         return txt, r.get("prompt_eval_count", 0), r.get("eval_count", 0), \
             r.get("total_duration", 0) / 1e9
@@ -78,7 +88,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reader", required=True)
     ap.add_argument("--arm", choices=["smoc", "direct", "fullplain",
-                                      "closedbook"], required=True)
+                                      "closedbook", "ledgerplain"],
+                    required=True)
     ap.add_argument("--questions", required=True)
     ap.add_argument("--data", default="data/wikistate_full_ALL.json")
     ap.add_argument("--cards-dir", default="results/wt_cards_v43_20260828")
@@ -107,6 +118,16 @@ def main() -> int:
             sys_p = ""
             user = SMW_PROMPT.format(question=q["question"],
                                      transcript=led[uid])
+        elif a.arm == "ledgerplain":
+            # 协议税判别臂:同一账目 + 裸问答提示(无两段式协议)——
+            # 分离"账目内容价值"与"协议跟随成本"。
+            if uid not in led:
+                led[uid] = render_card_ledger(uid, entries[uid],
+                                              cards_dir=a.cards_dir)
+            sys_p = ""
+            user = PLAIN_PROMPT.format(question=q["question"],
+                                       transcript="Dated memory ledger of "
+                                       "the user:\n" + led[uid])
         elif a.arm == "closedbook":
             # 闭卷基线:零上下文,纯参数知识答题——量化"化名+长尾闸"后的
             # 参数泄漏上限(基准论文标准行)。
