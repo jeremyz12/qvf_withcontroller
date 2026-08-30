@@ -17,6 +17,7 @@ SECTIONS = [
         ("smw(引用协议+原文全文)", "results/wsc_v2_smw.jsonl", ""),
         ("smoc(账目读法)", "results/wsc_v2_smoc.jsonl", "v42 店"),
         ("smoc", "results/wsc_v2_smoc_v43.jsonl", "v43 店(点估计,簇稳健 CI 跨零,主口径 82.64)"),
+        ("smoc(归一店,批 28b)", "results/b28b_smoc_fmt_full.jsonl", "写侧格式稳健:vs v42 打平(簇 CI 跨零);归一弱读者抬升 +25.7,p=7.3e-25"),
         ("smoc 槽位投影(经济档)", "results/wsc_v2_smoc_slot.jsonl", "v42 店"),
         ("smoc 投影去锚(判负档)", "results/wsc_v2_smoc_slim.jsonl", "v42 店"),
         ("smoc 槽位投影(经济档)", "results/wsc_v2_smoc_v43_slot.jsonl", "v43 店;回退 21.5%"),
