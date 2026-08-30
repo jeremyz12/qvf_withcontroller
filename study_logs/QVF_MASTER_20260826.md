@@ -260,7 +260,7 @@ results/write_side_scout_20260828.md,16 篇)。
 (p=0.008)——强读者救不了穷证据;富结构(smoc v43):haiku 86.28 ≈
 sonnet-5 85.59(截断 5%)> gpt-5-mini 78.6(空答 4%),qwen3:14b 68.3@60
 ——弱读者已近饱和。**杠杆在证据结构,不在读者强度。**
-全榜单:results/wikistate_leaderboard_20260828.md(38 行,acc/token/延迟全记)。
+全榜单:results/wikistate_leaderboard_20260828.md(08-30 起 8 表 ~78 行,acc/token/延迟全记;行数随批次增长以文件为准)。
 
 ## F. 批次日志增补(12-25 一行版)
 
