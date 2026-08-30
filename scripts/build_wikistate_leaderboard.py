@@ -63,6 +63,38 @@ SECTIONS = [
         ("haiku-4.5 · 闭卷(零上下文)", "results/wsc_v2_closedbook_haiku.jsonl", "污染上限"),
         ("gpt-5-mini · 闭卷(零上下文)", "results/wsc_v2_closedbook_gpt5mini.jsonl", "污染上限(推理猜测)"),
     ]),
+    ("协议适配律(账目 × 提示词;v2 576 除注明)", [
+        ("haiku · 账目+F.1协议", "results/wsc_v2_smoc_v43.jsonl", "v43 店"),
+        ("haiku · 账目+裸提示", "results/wsc_v2_ledgerplain_haiku.jsonl", "协议效应 +10.9 p<1e-6"),
+        ("gpt-5-mini · 账目+F.1协议", "results/wsc_v2_smoc_v43_gpt5mini.jsonl", "空答4%"),
+        ("gpt-5-mini · 账目+裸提示", "results/wsc_v2_ledgerplain_gpt5mini.jsonl", "协议效应 −3.5 p=0.012"),
+    ]),
+    ("开源本地面板(60 题探针,direct→裸账目)", [
+        ("deepseek-r1:8b · 直读", "results/oss_deepseek-r1_8b_direct.jsonl", "本地推理"),
+        ("deepseek-r1:8b · 裸账目", "results/oss_deepseek-r1_8b_ledgerplain.jsonl", "+26.7 p=0.009 唯一显著"),
+        ("deepseek-r1:14b · 直读", "results/oss_deepseek-r1_14b_direct.jsonl", ""),
+        ("deepseek-r1:14b · 裸账目", "results/oss_deepseek-r1_14b_ledgerplain.jsonl", "+13.3"),
+        ("qwen3:14b · 直读", "results/lb_qwen14b_direct.jsonl", "上代,思考"),
+        ("qwen3:14b · 裸账目", "results/lb_qwen14b_ledgerplain.jsonl", "+16.7 p=0.076;开源最高 71.7"),
+        ("qwen3:8b · 直读", "results/lb_qwen8b_direct.jsonl", ""),
+        ("qwen3:8b · 裸账目", "results/lb_qwen8b_ledgerplain.jsonl", "+1.7 平"),
+        ("qwen3.5:9b · 直读", "results/oss_qwen3_5_9b_direct.jsonl", "关思考,0.4s"),
+        ("qwen3.5:9b · 裸账目", "results/oss_qwen3_5_9b_ledgerplain.jsonl", "+1.7 平"),
+        ("qwen3.5:4b · 直读", "results/oss_qwen3_5_4b_direct.jsonl", "关思考,0.3s"),
+        ("qwen3.5:4b · 裸账目", "results/oss_qwen3_5_4b_ledgerplain.jsonl", "0.0 平"),
+        ("gemma3:12b · 直读", "results/oss_gemma3_12b_direct.jsonl", ""),
+        ("gemma3:12b · 裸账目", "results/oss_gemma3_12b_ledgerplain.jsonl", "+13.3"),
+        ("gemma3:4b · 直读", "results/oss_gemma3_4b_direct.jsonl", ""),
+        ("gemma3:4b · 裸账目", "results/oss_gemma3_4b_ledgerplain.jsonl", "−13.3 消化门槛"),
+        ("phi4:14b · 直读", "results/oss_phi4_14b_direct.jsonl", ""),
+        ("phi4:14b · 裸账目", "results/oss_phi4_14b_ledgerplain.jsonl", "+15.0 p=0.078"),
+    ]),
+    ("规模轴(批27,归一口径;账目按构造恒定~86@2.9K)", [
+        ("haiku 全文 L1(42K tok)", "results/b27_full_haiku_L1.jsonl", "基线56.42(14K)"),
+        ("haiku 全文 L2(104K tok)", "results/b27_full_haiku_L2.jsonl", "崩落"),
+        ("gpt-5-mini 全文 L1", "results/b27_full_gpt_L1.jsonl", "基线85.07"),
+        ("gpt-5-mini 全文 L2", "results/b27_full_gpt_L2.jsonl", "思考tok+65%仍坠"),
+    ]),
 ]
 
 
