@@ -59,3 +59,23 @@ surfaces both accounts on 98.3% of items at read time (vs 14.2% closed-book
 for the same reader); transplanting ElephantBench's conditional-completeness
 metric K onto STALE reveals that answer-completeness, unlike correctness,
 is governed by the read-side prompt rather than the store."
+
+## 29c 终判(2026-08-31):一句话引述修复判负——两协议叠加压垮弱读者
+
+| STALE 120 | C | P | F | K | arena 正确轴 |
+|---|---|---|---|---|---|
+| smoc(原) | 23.3 | 30.8 | 45.8 | 43.1 | **61.7** |
+| smoc+引述(29c) | 33.3 | 19.2 | 47.5 | **63.5** | **50.8** |
+| direct(参照) | 42.5 | 15.8 | 41.7 | 72.9 | 46.7 |
+
+- 表达轴大幅改善(K +20.4,与 direct 差距 29.8→9.4pp,配对 p 0.0008→0.15
+  不再显著)但 **C1 未过线**(63.5 < 72.9−5);
+- **C2 判负且是主败因**:arena 正确轴 61.7→50.8(−10.9,远破 −5 线)。
+  机制:引述要求与 F.1 协议争夺同一输出预算——协议偏差 STALE 3→**72**/120、
+  COND →22/40,格式打架直接伤答案质量;
+- COND:C 32.5→37.5、K→75.0(p=0.049 仍逊 direct);
+- **判读:协议适配律第四显形——弱读者的协议容量约一条;两条叠加=双输。**
+  修复方向改为 29d 候选(二选一,不叠加):①把"新旧值"字段并入 F.1 答案
+  格式本体(改协议不加协议);②外场读法弃 F.1 用裸提示+引述(裸账目在
+  gpt/qwen 上本就更优,haiku 外场未测裸+引述)。29d 未跑,待令;
+- 正确轴主张(+15.0)口径不变:引用原 smoc 行,29c 臂不入主表。
