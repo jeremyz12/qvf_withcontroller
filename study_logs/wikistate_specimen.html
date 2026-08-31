@@ -1,0 +1,214 @@
+<title>WikiState 数据标本</title>
+<style>
+:root{
+  --bg:#F7F9FC; --surface:#FFFFFF; --ink:#1B2340; --muted:#66718C;
+  --line:#DEE4F2; --navy:#1E2761; --navy-soft:#EAF0FB;
+  --chain:#1F7A4D; --chain-soft:#E7F3EC; --trap:#C24A4A; --trap-soft:#F9ECEC;
+  --mono-bg:#F0F3FA;
+}
+:root:not([data-theme="light"]){}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10152A; --surface:#171E38; --ink:#E9EDF9; --muted:#939DBC;
+    --line:#2B3457; --navy:#AEBCE8; --navy-soft:#1D2547;
+    --chain:#4CC08A; --chain-soft:#16301F; --trap:#E38A8A; --trap-soft:#3A2224;
+    --mono-bg:#1F2745;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10152A; --surface:#171E38; --ink:#E9EDF9; --muted:#939DBC;
+  --line:#2B3457; --navy:#AEBCE8; --navy-soft:#1D2547;
+  --chain:#4CC08A; --chain-soft:#16301F; --trap:#E38A8A; --trap-soft:#3A2224;
+  --mono-bg:#1F2745;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:system-ui,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;
+  font-size:15px; line-height:1.75;
+}
+.wrap{max-width:880px; margin:0 auto; padding:48px 24px 80px}
+.serif{font-family:Georgia,"Noto Serif SC","Songti SC","SimSun",serif}
+.mono{font-family:ui-monospace,Consolas,"Courier New",monospace; font-variant-numeric:tabular-nums}
+h1{font-size:34px; line-height:1.25; margin:0 0 6px; text-wrap:balance; color:var(--navy)}
+h2{font-size:21px; margin:56px 0 6px; text-wrap:balance; color:var(--navy)}
+h2 .no{color:var(--muted); font-size:14px; letter-spacing:.12em; margin-right:10px}
+.sub{color:var(--muted); margin:0 0 18px}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 0}
+.chip{font-size:12px; letter-spacing:.04em; padding:3px 10px; border:1px solid var(--line);
+  border-radius:999px; color:var(--muted); background:var(--surface)}
+.chip b{color:var(--ink); font-weight:600}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px}
+.duo{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:18px}
+@media (max-width:640px){.duo{grid-template-columns:1fr}}
+.duo .card h3{margin:0 0 6px; font-size:15px}
+.duo .card p{margin:0; color:var(--muted); font-size:13.5px}
+.eyec{font-size:11px; letter-spacing:.14em; color:var(--muted); text-transform:uppercase}
+/* 时间轴 */
+.tl{margin-top:18px; border-left:2px solid var(--chain); padding-left:22px; display:flex; flex-direction:column; gap:18px}
+.tl .node{position:relative}
+.tl .node::before{content:""; position:absolute; left:-29px; top:7px; width:12px; height:12px;
+  border-radius:50%; background:var(--chain); border:2px solid var(--bg)}
+.tl .d{color:var(--chain); font-weight:600; font-size:13px}
+.tl .v{font-weight:650; font-size:16px}
+.tl .q{color:var(--muted); font-size:13px; margin-top:2px}
+.tl .q::before{content:"锚点 "; font-size:11px; letter-spacing:.1em; color:var(--chain)}
+/* 会话网格 */
+.grid34{display:grid; grid-template-columns:repeat(auto-fill,minmax(64px,1fr)); gap:6px; margin-top:16px}
+.cell{border:1px solid var(--line); background:var(--surface); border-radius:6px;
+  padding:6px 4px 4px; text-align:center}
+.cell .n{font-size:10px; color:var(--muted)}
+.cell .dt{font-size:10.5px; color:var(--muted)}
+.cell.gold{border-color:var(--chain); background:var(--chain-soft)}
+.cell.gold .n,.cell.gold .dt{color:var(--chain); font-weight:600}
+.legend{display:flex; gap:18px; margin-top:10px; font-size:12.5px; color:var(--muted)}
+.dot{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:baseline}
+/* 会话对照 */
+.sess{margin-top:16px}
+.sess .card{margin-top:12px}
+.turn{padding:8px 12px; border-left:3px solid var(--line); margin:8px 0; color:var(--muted); font-size:13.5px}
+.turn.decl{border-left-color:var(--chain); background:var(--chain-soft); color:var(--ink)}
+.turn.decl b{color:var(--chain)}
+.tag{display:inline-block; font-size:11px; letter-spacing:.06em; padding:2px 9px; border-radius:999px; font-weight:600}
+.tag.gold{background:var(--chain-soft); color:var(--chain)}
+.tag.noise{background:var(--mono-bg); color:var(--muted)}
+.tag.trap{background:var(--trap-soft); color:var(--trap)}
+/* 题目卡 */
+.qgrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px}
+@media (max-width:640px){.qgrid{grid-template-columns:1fr}}
+.qcard{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.qcard .qt{font-size:12px; letter-spacing:.08em; color:var(--muted); margin-bottom:6px}
+.qcard .qq{font-size:14px; margin:0 0 8px}
+.gold-ans{font-size:13px; background:var(--mono-bg); border-radius:6px; padding:6px 10px; overflow-x:auto}
+.gold-ans::before{content:"金答案 "; font-size:11px; letter-spacing:.1em; color:var(--chain); font-weight:700}
+/* 推导条 */
+.bars{margin-top:10px; display:flex; flex-direction:column; gap:6px}
+.bar{display:grid; grid-template-columns:150px 1fr 88px; gap:10px; align-items:center; font-size:12.5px}
+.bar .trk{height:10px; border-radius:5px; background:var(--mono-bg); overflow:hidden}
+.bar .fil{height:100%; border-radius:5px; background:var(--line)}
+.bar.win .fil{background:var(--chain)}
+.bar.win .lb,.bar.win .val{color:var(--chain); font-weight:650}
+.bar .lb{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--muted)}
+.bar .val{color:var(--muted); text-align:right}
+.note{margin-top:44px; border-top:1px solid var(--line); padding-top:16px; color:var(--muted); font-size:13px}
+.note b{color:var(--ink)}
+mark{background:transparent; color:var(--chain); font-weight:700}
+</style>
+
+<div class="wrap">
+  <div class="eyec">WikiState · 一条数据的完整解剖</div>
+  <h1 class="serif">一个虚拟用户的记忆库,长这样</h1>
+  <p class="sub">条目 <span class="mono">wikiP108000</span> —— 状态序列取自真实人物(Wikidata <span class="mono">Q59200022</span>)的雇主履历(CC0),载体为合成对话。</p>
+  <div class="chips">
+    <span class="chip">槽位 <b>employer 雇主</b></span>
+    <span class="chip">会话 <b>34 个</b></span>
+    <span class="chip">状态宣告 <b>4 次</b></span>
+    <span class="chip">链长 <b>4 段</b></span>
+    <span class="chip">题目 <b>4 探针 + 4 聚合</b></span>
+  </div>
+
+  <div class="duo">
+    <div class="card">
+      <h3>系统看到的</h3>
+      <p>只有 34 个会话的原始文本。没有链、没有标注、没有提示哪句是宣告——和真实产品一样。</p>
+    </div>
+    <div class="card">
+      <h3>评测者攥着的</h3>
+      <p>真值状态链(下方绿轴)。用来机械导出金答案,以及在系统答错时判定:错在建库,还是错在执行。</p>
+    </div>
+  </div>
+
+  <h2 class="serif"><span class="no mono">Ⅰ</span>真值链 · 评测者私有</h2>
+  <p class="sub">四段真实履历,值将逐字植入对话(锚点句)。</p>
+  <div class="tl">
+    <div class="node"><div class="d mono">1985-11-01</div><div class="v">California Institute of Technology</div>
+      <div class="q">“I officially started as a research fellow at the California Institute of Technology this month”</div></div>
+    <div class="node"><div class="d mono">1989-06-01</div><div class="v">CERN</div>
+      <div class="q">“Officially started at CERN today”</div></div>
+    <div class="node"><div class="d mono">1995-10-01</div><div class="v">University of Cambridge</div>
+      <div class="q">“as of today I've officially started at the University of Cambridge”</div></div>
+    <div class="node"><div class="d mono">1998-09-01</div><div class="v">University of Birmingham</div>
+      <div class="q">“I've officially started as a lecturer at the University of Birmingham today”</div></div>
+  </div>
+
+  <h2 class="serif"><span class="no mono">Ⅱ</span>会话库 · 系统看到的全部</h2>
+  <p class="sub">34 个会话里只有 4 个含状态宣告(绿),其余 30 个是生活闲聊干扰。系统的第一道题:把绿的认出来。</p>
+  <div class="grid34" id="grid"></div>
+  <div class="legend">
+    <span><span class="dot" style="background:var(--chain)"></span>含状态宣告(4)</span>
+    <span><span class="dot" style="background:var(--line)"></span>干扰会话(30)</span>
+  </div>
+
+  <div class="sess">
+    <div class="card">
+      <span class="tag gold">金会话 · 1989-06-01</span>
+      <div class="turn">Right, first day done and I'm shattered — the drive over was fine but I got completely turned around in the corridors this morning…</div>
+      <div class="turn decl"><b>Officially started at CERN today</b>, so please update my details — new badge, new office, new everything. Payroll paperwork is apparently going in tomorrow.</div>
+      <div class="turn">Also remind me tonight to ring the landlord about the water heater in the flat, it's been lukewarm since Tuesday…</div>
+      <div class="turn">One more: the seminar list for next week — flag anything on electroweak measurements…</div>
+      <p style="margin:10px 0 0; font-size:13px; color:var(--muted)">宣告只占四轮中的一句,埋在迷路、房东、热水器和研讨会之间。</p>
+    </div>
+    <div class="card">
+      <span class="tag noise">干扰会话 · 1985-01-01</span>
+      <div class="turn">user: I'm having a bit of a slow start today and need some help staying organized. Can you recommend some productivity apps or tools…</div>
+      <div class="turn">assistant: I'm happy to help you get back on track! Firstly, kudos to you for getting a head start on household chores…</div>
+      <p style="margin:10px 0 0; font-size:13px; color:var(--muted)">与雇主完全无关——但检索器不知道。</p>
+    </div>
+  </div>
+
+  <h2 class="serif"><span class="no mono">Ⅲ</span>探针题 · 四个维度各一道</h2>
+  <div class="qgrid">
+    <div class="qcard"><div class="qt">当前值</div>
+      <p class="qq">(Today is 1998-09-01.) What's my current employer these days?</p>
+      <div class="gold-ans mono">University of Birmingham</div></div>
+    <div class="qcard"><div class="qt">过期前提 <span class="tag trap">陷阱</span></div>
+      <p class="qq">Since my employer is University of Cambridge, what would typically be relevant…?</p>
+      <div class="gold-ans">前提已过期:剑桥任期止于 1998-08-31,现雇主为伯明翰。<b>顺着前提答 = 判错</b>,必须先纠正。</div></div>
+    <div class="qcard"><div class="qt">某日状态</div>
+      <p class="qq">What employer did I have on 1987-08-16?</p>
+      <div class="gold-ans mono">California Institute of Technology</div></div>
+    <div class="qcard"><div class="qt">变化历程</div>
+      <p class="qq">How has my career progressed over time — which positions, in order?</p>
+      <div class="gold-ans mono" style="font-size:12px">Caltech → CERN → Cambridge → Birmingham</div></div>
+  </div>
+
+  <h2 class="serif"><span class="no mono">Ⅳ</span>聚合题 · 金答案由代码从链上算出,零人工</h2>
+  <div class="qgrid">
+    <div class="qcard" style="grid-column:1 / -1">
+      <div class="qt">最长任期</div>
+      <p class="qq">(Today is 1998-09-01.) Which employer did I hold the longest?</p>
+      <div class="bars">
+        <div class="bar"><span class="lb mono">Caltech</span><span class="trk"><span class="fil" style="width:57%"></span></span><span class="val mono">1,308 天</span></div>
+        <div class="bar win"><span class="lb mono">CERN</span><span class="trk"><span class="fil" style="width:100%"></span></span><span class="val mono">2,313 天 ✓</span></div>
+        <div class="bar"><span class="lb mono">Cambridge</span><span class="trk"><span class="fil" style="width:46%"></span></span><span class="val mono">1,066 天</span></div>
+        <div class="bar"><span class="lb mono">Birmingham</span><span class="trk"><span class="fil" style="width:1%"></span></span><span class="val mono">末段 0 天*</span></div>
+      </div>
+      <p style="margin:8px 0 0; font-size:12px; color:var(--muted)">*约定:Today = 末链日期,末段闭区间为 0;区间长度 = 相邻起始日之差,代码直接比较。</p>
+    </div>
+    <div class="qcard"><div class="qt">变更次数</div>
+      <p class="qq">How many times did I change my employer?</p>
+      <div class="gold-ans mono">3 &nbsp;<span style="color:var(--muted)">= 链长 4 − 1</span></div></div>
+    <div class="qcard"><div class="qt">某日前计数</div>
+      <p class="qq">How many different employer values did I have before 1992-07-31?</p>
+      <div class="gold-ans mono">2 &nbsp;<span style="color:var(--muted)">= |{Caltech, CERN}|</span></div></div>
+  </div>
+
+  <div class="note">
+    <b>为什么这套结构值得建:</b>系统答错任何一题时,评测者把系统建的卡片链与Ⅰ的真值链一比,
+    立即分辨「库建错了」还是「链对但算错了」——这就是链条件测量。
+    公开对话基准没有Ⅰ(状态链标注字段实测全空),所以只能测总分,错误无法归因。
+  </div>
+</div>
+
+<script>
+(function(){
+  var gold={2:"1989-06",11:"1985-11",26:"1995-10",33:"1998-09"};
+  var g=document.getElementById("grid");
+  for(var i=0;i<34;i++){
+    var c=document.createElement("div");
+    c.className="cell"+(gold[i]!==undefined?" gold":"");
+    c.innerHTML='<div class="n mono">s'+(i+1)+'</div><div class="dt mono">'+(gold[i]!==undefined?gold[i]:"·")+"</div>";
+    g.appendChild(c);
+  }
+})();
+</script>

@@ -48,6 +48,7 @@ QVF_ALGEBRA=1 时把 execute_plan / COMPILE_PROMPT / CompiledPlan 重绑到
 from __future__ import annotations
 
 import json
+import os
 from typing import List, Literal, Optional, Union
 
 from pydantic import BaseModel, Field
@@ -62,6 +63,23 @@ from scripts.wt_qvf_prototype import _norm
 
 _AGG_FNS = ("count_changes", "distinct_ordered", "argmax_dur", "by_year",
             "count_elements")
+
+# QVF_RENDER_ANCHORS=1(渲染修复,S8 一次性测根因诊断,见
+# results/wsc_s8_report_20260816.md 三"根因诊断"节):_render_direct 的
+# Value 分支(直接表达式路径,11 算子宏不经过这里)此前只把 WINDOW 出的
+# 窗内子链放进证据包,不像平面臂 _render_join 那样把双锚点记录本身也
+# 放进去——读者看不到"锚点事件确实发生过"的直接证据,触发拒答倾向
+# (WINDOW_2ANCHOR∘COUNT 未见 split 1/23=4.3%,纯代码执行与编译均已验证
+# 正确,是证据包设计遗漏,非编译/执行 bug)。旗标开:eval_expr 对 WINDOW
+# 表达式额外记录被 before_slot/after_slot 命中的锚点记录(不影响窗内容
+# 本身的计算,_in_window 判据逐字节不变);_render_direct 的 Value 分支
+# 在窗锚点存在时把它们并入证据(去重,已在窗内子链中出现的锚点不重复
+# 添加)。默认 0 = 冻结行为:eval_expr 仍会计算这两个锚点记录(纯 Python
+# 值,零 LLM/零 IO 副作用,不改变任何既有返回字段的值),但 _render_direct
+# 从不读取它们,渲染出的 ev/derived 逐字节不变。旗标只影响“直接表达式路径”
+# (plan 带 "expr" 才会进 _render_direct);11 算子宏路径(_render_chain_op/
+# _render_join/_render_tag)完全不导入本旗标,逐字节不受影响。
+_RENDER_ANCHORS = int(os.environ.get("QVF_RENDER_ANCHORS", "0") or 0)
 
 # dev round 2(seen split 复核发现):WINDOW 原文档只有单侧 before(字面日期)
 # 一种界。S8 WINDOW∘COUNT/WINDOW_2ANCHOR∘COUNT 需要双侧界,且界常由另一
@@ -210,15 +228,19 @@ def check_expr(e, depth: int = 1) -> str:
 
 def _resolve_bound(literal, slot, value, index, recs, mem_dates, question):
     """WINDOW 单侧界解析(dev round 2 新增,零递归 —— 界锚以标量字段描述,
-    自行选池+定位,不占用树深度预算)。返回 (requested, date|None):
+    自行选池+定位,不占用树深度预算)。返回 (requested, date|None, rec|None):
     requested=False 表示该侧未设界(WINDOW 求值时应放行,与旧版单侧
     before-only 语义逐字节兼容);requested=True 但 date=None 表示界已声明
     但无法解析(字面日期解析失败,或 slot 锚值/序数未命中)——旧版对此的
-    行为是整侧判负(该侧界内容清空),这里原样保留。"""
+    行为是整侧判负(该侧界内容清空),这里原样保留。第三个返回值 rec 是
+    命中的锚点记录本身(literal 日期界或未命中时为 None)——QVF_RENDER_
+    ANCHORS=1(见旗标注释)时 _render_direct 用它把锚点证据并入证据包;
+    旗标关时调用方从不读取该值,不影响任何既有输出(_in_window 判据只用
+    前两个返回值,逐字节不变)。"""
     if literal:
-        return True, _pdate(literal)
+        return True, _pdate(literal), None
     if not slot:
-        return False, None
+        return False, None, None
     apool = _select_pool(recs, slot, mem_dates, question)
     achain = _chain(apool, mem_dates)
     if isinstance(index, int) and not isinstance(index, bool):
@@ -228,16 +250,17 @@ def _resolve_bound(literal, slot, value, index, recs, mem_dates, question):
         # 一侧,不必为越界的另一侧编造锚(NTH∘CMP_DUR 的"第一 vs 第二"
         # 只需 before_index=3,不必为不存在的"第 0 个"填 after_index)。
         if 1 <= index <= len(achain):
-            return True, _pdate(_rec_date(achain[index - 1], mem_dates))
-        return False, None
+            arec = achain[index - 1]
+            return True, _pdate(_rec_date(arec, mem_dates)), arec
+        return False, None, None
     if value:
         pv = _norm(value)
         arec = next((r for r in achain
                      if pv and (pv in _norm(r.get("value", ""))
                                 or _norm(r.get("value", "")) in pv)), None)
         return True, (_pdate(_rec_date(arec, mem_dates))
-                      if arec is not None else None)
-    return True, None
+                      if arec is not None else None), arec
+    return True, None, None
 
 
 # ── 递归解释器(纯代码,零 LLM)────────────────────────────────
@@ -267,11 +290,11 @@ def eval_expr(e, recs: List[dict], mem_dates: dict, question: str = "") -> dict:
             self_slot if getattr(e, "before_index", None) is not None else None)
         after_slot = getattr(e, "after_slot", None) or (
             self_slot if getattr(e, "after_index", None) is not None else None)
-        b_req, qd = _resolve_bound(
+        b_req, qd, b_rec = _resolve_bound(
             e.before, before_slot,
             getattr(e, "before_value", None), getattr(e, "before_index", None),
             recs, mem_dates, question)
-        a_req, qa = _resolve_bound(
+        a_req, qa, a_rec = _resolve_bound(
             e.after, after_slot,
             getattr(e, "after_value", None), getattr(e, "after_index", None),
             recs, mem_dates, question)
@@ -285,7 +308,10 @@ def eval_expr(e, recs: List[dict], mem_dates: dict, question: str = "") -> dict:
         sub = [r for r in chain
                if _pdate(_rec_date(r, mem_dates)) is not None
                and _in_window(_pdate(_rec_date(r, mem_dates)))]
-        return {"type": "Chain", "chain": sub, "qd": qd, "qa": qa, "of": ofn}
+        # b_rec/a_rec(QVF_RENDER_ANCHORS 用,见旗标注释)只在 *_slot 锚
+        # 命中时非 None;旗标关时这两个键从未被 _render_direct 读取。
+        return {"type": "Chain", "chain": sub, "qd": qd, "qa": qa, "of": ofn,
+                "before_anchor_rec": b_rec, "after_anchor_rec": a_rec}
     if p == "PICK":
         if e.value is not None:
             pv = _norm(e.value)
@@ -623,7 +649,22 @@ def _render_direct(node: dict, mem_dates: dict):
         # 沿 of 一路下钻到叶——AGG(WINDOW(...)) 的证据须与窗内结论一致,
         # 否则读者会看到窗外记录,与"计算结论 IS the answer"的指示冲突。
         src = node.get("of") or {}
-        ev = [_line(r, mem_dates) for r in src.get("chain", base_chain(node))]
+        win_chain = src.get("chain", base_chain(node))
+        ev = [_line(r, mem_dates) for r in win_chain]
+        # QVF_RENDER_ANCHORS=1(见旗标注释,S8 根因诊断):src 若来自 WINDOW
+        # 且窗界由 *_slot 锚定(before_anchor_rec/after_anchor_rec 非
+        # None),把锚点记录本身也并入证据——去重(锚点记录若恰好已在窗内
+        # 子链中,不重复添加;比较用 id() 而非值相等,同一 dict 对象在
+        # chain/anchor 两处被引用时天然相等)。旗标关时本段完全不执行,
+        # ev 与旗标关时逐字节相同。
+        if _RENDER_ANCHORS:
+            win_ids = {id(r) for r in win_chain}
+            anchor_lines = [
+                _line(r, mem_dates)
+                for r in (src.get("before_anchor_rec"),
+                         src.get("after_anchor_rec"))
+                if r is not None and id(r) not in win_ids]
+            ev = anchor_lines + ev
         derived.append(
             f"Computed {node['fn']} over the dated records above: "
             + json.dumps(node["data"], ensure_ascii=False)

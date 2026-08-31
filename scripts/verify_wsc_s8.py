@@ -12,11 +12,12 @@
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from datetime import date
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -54,7 +55,8 @@ def _load_single_index() -> Dict[Tuple[str, str], dict]:
     return idx
 
 
-def _load_cross_index() -> Dict[Tuple[str, str], dict]:
+def _load_cross_index(
+        multi_files: Optional[List[str]] = None) -> Dict[Tuple[str, str], dict]:
     """(uid, source) -> {"a": {...}, "b": {...}} for dual-chain worlds.
 
     Keyed by every (uid, file) pair found, independent of any noise/monotonic
@@ -62,9 +64,12 @@ def _load_cross_index() -> Dict[Tuple[str, str], dict]:
     from (rows land on whichever file the generator's per-uid fallback
     picked), so verification just needs to load that same raw chain, not
     re-derive the fallback choice itself.
+
+    multi_files: 覆盖 MULTI_FILES 的来源列表(v2 复核追加渲染的新文件用;
+    不传时行为与 v1 逐字节一致)。
     """
     idx: Dict[Tuple[str, str], dict] = {}
-    for f in MULTI_FILES:
+    for f in (multi_files if multi_files is not None else MULTI_FILES):
         for e in json.loads((ROOT / f).read_text(encoding="utf-8")):
             c2 = e.get("chain2") or {}
             ca, cb = e.get("chain") or [], c2.get("chain") or []
@@ -267,10 +272,19 @@ def check_row(row: dict, singles: dict, crosses: dict) -> str | None:
 
 
 def main() -> int:
-    rows = [json.loads(l) for l in ROWS.read_text(encoding="utf-8")
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--rows", default=str(ROWS), help="待复核的 jsonl 路径")
+    ap.add_argument("--extra-multi", nargs="*", default=[],
+                    help="追加到 MULTI_FILES 的跨槽位来源文件(需与生成时"
+                         "一致;不传时 v1 行为逐字节不变)")
+    args = ap.parse_args()
+    rows_path = Path(args.rows)
+    multi_files = MULTI_FILES + list(args.extra_multi)
+
+    rows = [json.loads(l) for l in rows_path.read_text(encoding="utf-8")
             .splitlines() if l.strip()]
     singles = _load_single_index()
-    crosses = _load_cross_index()
+    crosses = _load_cross_index(multi_files)
 
     mismatches = []
     by_combo_n: Dict[str, int] = {}

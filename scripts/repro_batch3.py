@@ -49,6 +49,29 @@ Apply, in order:
 End with exactly one final line:
 ANSWER: <the specific value or decision the question asks for>"""
 
+# 批 14 缓存排布确认变体(QVF_PROMPT_QLAST=1):同一 F.1 措辞,仅把
+# Question 节移到 transcript 之后(稳定前缀在前,动态题面在后)。默认 0
+# 时不选用,SMW_PROMPT 逐字节不变。
+SMW_PROMPT_QLAST = """You are answering a question about a long conversation using state tracing.
+
+## Conversation transcript: {transcript}
+
+## Question: {question}
+
+Work in TWO sections, in order:
+
+## Section 1 -- State trace (under 250 words):
+List, in chronological order, every turn that establishes, updates, or supersedes the entities the question asks about ([turn N] speaker: what changed). Include standing rules that govern the decision AND the most recent stated value of every input those rules apply to (amounts, quantities, dates, thresholds) -- even if mentioned only once or in passing; scan for them before concluding an input is unknown. Note derived values whose inputs later changed. End with the current operative value of each relevant entity. Commit to the trace BEFORE answering.
+
+## Section 2 -- Resolution and answer:
+Apply, in order:
+(1) later supersedes earlier;
+(2) standing rules outrank past one-off instances -- apply the rule to CURRENT inputs;
+(3) recompute derived values from current inputs, never reuse stale cached numbers;
+(4) a fact is only retired if actually superseded or expired.
+End with exactly one final line:
+ANSWER: <the specific value or decision the question asks for>"""
+
 PLAIN_PROMPT = """Answer the question based on the conversation transcript. Reply with only the answer.
 
 ## Question: {question}
@@ -264,7 +287,9 @@ def main() -> int:
     ap.add_argument("--questions-file", default="",
                     help="题源 jsonl(uid/qid/qtype/question/gold),替代默认 418 抽样")
     a = ap.parse_args()
-    prompt_tpl = {"smw": SMW_PROMPT, "smwshuf": SMW_PROMPT, "smoc": SMW_PROMPT,
+    _QLAST = int(os.environ.get("QVF_PROMPT_QLAST", "0") or 0)
+    _SMWP = SMW_PROMPT_QLAST if _QLAST else SMW_PROMPT
+    prompt_tpl = {"smw": _SMWP, "smwshuf": _SMWP, "smoc": _SMWP,
                   "smocshuf": SMW_PROMPT, "smoctwin": SMW_PROMPT,
                   "smocrep": SMW_PROMPT, "smoctwinmf": SMW_PROMPT,
                   "smocr": SMW_PROMPT, "smocc": SMW_PROMPT, "smocrc": SMW_PROMPT,

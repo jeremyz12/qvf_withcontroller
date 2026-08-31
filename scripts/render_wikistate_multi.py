@@ -50,6 +50,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import random
 import re
 import sys
@@ -61,11 +62,26 @@ ROOT = Path(__file__).resolve().parent.parent
 # ── 与既有线一致的常量 ───────────────────────────────────────
 UA = {"User-Agent": "QVF-research/0.1 (academic; zenglin0813@gmail.com)"}
 API = "https://www.wikidata.org/w/api.php"
-MODEL = "claude-opus-5"          # 同 wikistate_render.MODEL
+# S8 补齐 (2026-08-17): 闲聊只是禁语筛过的平庸日常填充,不需要 opus 的
+# 生成质量;改用 haiku-4-5(同 build_tag_lattice.py 的记账口径)把这条
+# 渲染线的边际成本压到可忽略,为"多渲染候选换更多干净跨槽位世界"腾预算。
+# 不再断言与 wikistate_render.MODEL 一致(该脚本仍用 opus,互不影响)。
+MODEL = os.environ.get("QVF_S8_RENDER_MODEL", "claude-haiku-4-5")
 MIN_CHAIN = 3                    # 同 scrape 线口径
 STALE_FILE = ROOT / "data" / "stale_T1_T2_400_FULL.json"
 NOUN = {"P39": "position", "P54": "team", "P108": "employer",
         "P551": "residence"}
+
+# 成本记账(list price,未计缓存折扣;仅用于跑批后如实报告实测,不影响
+# 任何渲染/生成逻辑)。Haiku 4.5 公开单价(每百万 token,美元)。
+_PRICE_HAIKU_IN = 1.00
+_PRICE_HAIKU_OUT = 5.00
+USAGE = {"chatter_in": 0, "chatter_out": 0, "chatter_calls": 0}
+
+
+def usage_cost_usd() -> float:
+    return (USAGE["chatter_in"] / 1e6 * _PRICE_HAIKU_IN
+            + USAGE["chatter_out"] / 1e6 * _PRICE_HAIKU_OUT)
 
 # 确定性宣告模板(state_span;值逐字嵌入)。措辞刻意避开其它槽位家族的
 # 触发词(见 gen_wikistate_complex._FAMILY_TERMS),宣告句本身经 span
@@ -191,6 +207,12 @@ def make_llm_propose(client):
                     name=name, date=date, k=k)}],
                 output_format=ChatterTurns,
             )
+            try:
+                USAGE["chatter_in"] += int(resp.usage.input_tokens)
+                USAGE["chatter_out"] += int(resp.usage.output_tokens)
+                USAGE["chatter_calls"] += 1
+            except Exception:  # noqa: BLE001
+                pass
             cand = resp.parsed_output
             return [str(t) for t in cand.turns] if cand else None
         except Exception as e:  # noqa: BLE001
@@ -237,12 +259,33 @@ def render_entry(cand, labels, propose, rng, stale, noise_n=30):
     chain_a = build(ca, noun_a, secondary=False)
     chain_b = build(cb, noun_b, secondary=True)
 
-    # STALE 噪声(同 wikistate_render:12 项×前5会话×前5轮,截400,洗牌)
+    # STALE 噪声(同 wikistate_render:前5会话×前5轮,截400,洗牌)。
+    # B2 fix (2026-08-17): 自家宣告句与 LLM 闲聊都已过禁语筛(_BAN_RE /
+    # chatter_errors),但原逻辑对混入的真实 STALE 语料本身未筛——这是
+    # dual-family 干扰筛低通过率的主因(wsc_s8.meta 记录的 4/13 清洁世界,
+    # 复核后确认噪声泄漏几乎全部来自这里而非自家生成内容)。改为:候选池
+    # 先用 _BAN_RE(取 content 字段判定,避免 B1 同款 role/content 结构键
+    # 误伤)+ 两条链值字面剔除,洗牌来源顺序后逐项累积,直到候选量充分
+    # 富余或源池耗尽,再洗牌截取 noise_n 条。
+    def _distractor_text(turn) -> str:
+        if isinstance(turn, dict):
+            return str(turn.get("content", turn))
+        return str(turn)
+
     pool = []
-    for s_it in rng.sample(stale, min(12, len(stale))):
+    stale_shuffled = list(stale)
+    rng.shuffle(stale_shuffled)
+    for s_it in stale_shuffled:
         for sess in (s_it.get("haystack_session") or [])[:5]:
-            turns = sess if isinstance(sess, list) else [str(sess)]
-            pool.append([str(t)[:400] for t in turns[:5]])
+            turns = (sess if isinstance(sess, list) else [str(sess)])[:5]
+            content = " ".join(_distractor_text(t) for t in turns)
+            if _BAN_RE.search(content):
+                continue
+            if any(lb and lb.lower() in content.lower() for lb in banned):
+                continue
+            pool.append([str(t)[:400] for t in turns])
+        if len(pool) >= max(noise_n * 3, 60):
+            break
     rng.shuffle(pool)
     distractors = pool[:noise_n]
     y0 = min(int(ca[0]["start"][:4]), int(cb[0]["start"][:4]))
@@ -309,6 +352,9 @@ def run_render(candidates_path, out_path, limit, noise_n):
     outp.write_text(json.dumps(out, ensure_ascii=False, indent=1),
                     encoding="utf-8")
     print(f"RENDERED {len(out)}/{len(cands)} entries -> {outp}")
+    print(f"USAGE model={MODEL} calls={USAGE['chatter_calls']} "
+          f"in={USAGE['chatter_in']} out={USAGE['chatter_out']} "
+          f"cost_usd={usage_cost_usd():.4f} (list price, no cache discount)")
 
 
 # ── --smoke:零网络零 API 自检(渲染器 + S6 生成器)────────────

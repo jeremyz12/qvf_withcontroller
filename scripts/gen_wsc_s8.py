@@ -30,6 +30,7 @@ noise_interference;跨槽位条目双家族联筛,同 gen_s6)。
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 import zlib
@@ -159,11 +160,15 @@ def load_single() -> List[dict]:
     return out
 
 
-def load_cross() -> List[dict]:
+def load_cross(multi_files: Optional[List[str]] = None) -> List[dict]:
     """跨槽位可用世界:双链严格递增 + 双家族干扰筛;同 uid 优先取
-    multi_big(orchestrator 列名文件),其世界不干净时回落 P108_P551。"""
+    multi_big(orchestrator 列名文件),其世界不干净时回落 P108_P551。
+
+    multi_files: 覆盖 MULTI_FILES 的来源列表(v2 用来追加渲染补齐后的新
+    文件,不传时行为与 v1 逐字节一致)。"""
+    files = multi_files if multi_files is not None else MULTI_FILES
     picked: Dict[str, dict] = {}
-    for f in MULTI_FILES:
+    for f in files:
         for e in json.loads((ROOT / f).read_text(encoding="utf-8")):
             if e["uid"] in picked:
                 continue
@@ -718,9 +723,22 @@ def select(cands: List[dict], cap: int, count_type: bool) -> List[dict]:
     return picked
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> None:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--extra-multi", nargs="*", default=[],
+                    help="追加到 MULTI_FILES 的跨槽位来源文件(不传时 v1 "
+                         "行为逐字节不变);传入时与 MULTI_FILES 拼接,"
+                         "顺序在后 —— 同 uid 仍以先出现者(MULTI_FILES 原顺"
+                         "序)优先,追加文件只补 MULTI_FILES 里没有的 uid。")
+    ap.add_argument("--out", default=str(OUT), help="输出 jsonl 路径")
+    ap.add_argument("--meta", default=str(META), help="输出 meta json 路径")
+    args = ap.parse_args(argv)
+    out_path = Path(args.out)
+    meta_path = Path(args.meta)
+    multi_files = MULTI_FILES + list(args.extra_multi)
+
     singles = load_single()
-    crosses = load_cross()
+    crosses = load_cross(multi_files)
     print(f"usable single entries: {len(singles)}  "
           f"cross worlds: {len(crosses)} "
           f"({[w['uid'] for w in crosses]})")
@@ -763,8 +781,8 @@ def main() -> None:
     qids = [r["qid"] for r in rows]
     assert len(qids) == len(set(qids)), "qid collision"
 
-    OUT.parent.mkdir(parents=True, exist_ok=True)
-    with OUT.open("w", encoding="utf-8") as fh:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8") as fh:
         for r in rows:
             fh.write(json.dumps(r, ensure_ascii=False) + "\n")
 
@@ -782,19 +800,33 @@ def main() -> None:
         "split": SPLIT,
         "n_seen": sum(1 for r in rows if r["split"] == "seen"),
         "n_unseen": sum(1 for r in rows if r["split"] == "unseen"),
-        "sources": SINGLE_FILES + MULTI_FILES,
+        "sources": SINGLE_FILES + multi_files,
+        "cross_worlds_used": [w["uid"] for w in crosses],
+        "n_cross_worlds": len(crosses),
         "source_deviation": (
+            "wikistate_full_multi_P108_P551.json added beyond the task's "
+            "listed files: only 2/13 multi_big entries pass the S5-protocol "
+            "dual-family noise screen; the P108_P551 renders of the same "
+            "uids contribute 2 more clean worlds (4 cross worlds total) in "
+            "v1. v2 additionally renders the 9 previously-unrendered "
+            "P108_P551 candidates plus re-renders all 22 with a fixed "
+            "distractor pipeline (STALE noise pre-screened for family/"
+            "transition leak terms before mixing, in "
+            "wikistate_full_multi_P108_P551_v2.json) -> more clean worlds, "
+            "see n_cross_worlds/cross_worlds_used above." if multi_files
+            != MULTI_FILES else
             "wikistate_full_multi_P108_P551.json added beyond the task's "
             "listed files: only 2/13 multi_big entries pass the S5-protocol "
             "dual-family noise screen; the P108_P551 renders of the same "
             "uids contribute 2 more clean worlds (4 cross worlds total)."),
         "count_deviations": deviations,
         "count_deviation_note": (
-            "NTH∘JOIN_T and JOIN_T∘WINDOW are cross-slot-only combos; with "
-            "4 clean dual-chain worlds the ambiguity rules (boundary "
-            "coincidence / before-first-start / repeated anchor values) "
-            "hard-cap their yields below the 24-30 spec. Reported as-is; "
-            "no rule was relaxed to inflate counts."),
+            "NTH∘JOIN_T and JOIN_T∘WINDOW are cross-slot-only combos; yield "
+            "is hard-capped by the number of clean dual-chain worlds "
+            "(dual-family noise screen) times the per-world ambiguity "
+            "rules (boundary coincidence / before-first-start / repeated "
+            "anchor values / unique-winner-segment requirement). Reported "
+            "as-is; no rule was relaxed to inflate counts."),
         "gold_method": (
             "pure code from chain structure; ambiguous cases skipped "
             "(boundary coincidence, ties, repeated anchor values, "
@@ -807,10 +839,10 @@ def main() -> None:
             "(decoupling principle: examples may not come from gen "
             "templates)"),
     }
-    META.write_text(json.dumps(meta, ensure_ascii=False, indent=2),
-                    encoding="utf-8")
-    print(f"total={len(rows)} -> {OUT}")
-    print(f"meta -> {META}")
+    meta_path.write_text(json.dumps(meta, ensure_ascii=False, indent=2),
+                         encoding="utf-8")
+    print(f"total={len(rows)} -> {out_path}")
+    print(f"meta -> {meta_path}")
 
 
 def cand_wc_cross_all(crosses: List[dict]) -> List[dict]:
