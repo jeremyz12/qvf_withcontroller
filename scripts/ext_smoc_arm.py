@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -88,6 +89,13 @@ def main() -> int:
             continue
         t0 = time.time()
         content = SMW_PROMPT.format(question=q["question"], transcript=transcript)
+        if os.environ.get("QVF_LEDGER_CITE") == "1":
+            # 批 29c:表达完整轴修复——引述账目行并显式给出新旧值
+            content += ("\n\nAdditional requirement: quote the specific "
+                        "ledger entries (verbatim) that support your answer; "
+                        "if the relevant state changed over time, explicitly "
+                        "state both the earlier value and the current value "
+                        "(e.g., 'previously X, now Y').")
         raw, ti, to = "", 0, 0
         for attempt in range(3):
             try:

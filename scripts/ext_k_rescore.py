@@ -84,7 +84,11 @@ def main() -> int:
         ("stale", "direct", "results/ext_stale_direct_b19.rejudged.jsonl"),
         ("cond", "smoc", "results/ext_memconflict_smoc_b20_cond.jsonl"),
         ("cond", "direct", "results/ext_memconflict_direct_b20.jsonl"),
+        ("stale", "smoc_cite", "results/ext_stale_smoc_b19_cite.jsonl"),
+        ("cond", "smoc_cite",
+         "results/ext_memconflict_smoc_b20_cond_cite.jsonl"),
     ]
+    jobs = [(k, a, p) for k, a, p in jobs if (ROOT / p).exists()]
     grades = {}
     unmatched = 0
     for kind, arm, path in jobs:
@@ -118,7 +122,7 @@ def main() -> int:
             r["grade"]
     print(f"\n未回连 STALE 行: {unmatched}")
     for kind in ("stale", "cond"):
-        for arm in ("smoc", "direct"):
+        for arm in ("smoc", "direct", "smoc_cite"):
             g = grades.get((kind, arm), {})
             n = len(g)
             c = sum(1 for v in g.values() if v == "complete") / max(n, 1) * 100
@@ -127,9 +131,10 @@ def main() -> int:
             k = c / max(c + p, 1e-9) * 100
             print(f"{kind:5s} {arm:6s} n={n} C={c:.1f} P={p:.1f} F={f:.1f} "
                   f"K={k:.1f}")
-        pv = mcnemar(grades.get((kind, "smoc"), {}),
-                     grades.get((kind, "direct"), {}))
-        print(f"{kind:5s} smoc-vs-direct complete 配对 McNemar p={pv:.4f}")
+        for a in ("smoc", "smoc_cite"):
+            pv = mcnemar(grades.get((kind, a), {}),
+                         grades.get((kind, "direct"), {}))
+            print(f"{kind:5s} {a}-vs-direct complete 配对 McNemar p={pv:.4f}")
     return 0
 
 

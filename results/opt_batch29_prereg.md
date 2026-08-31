@@ -46,3 +46,13 @@
 
 两实验判官均为 gpt-5-mini(与读者 haiku 异家族);统计:双臂配对 McNemar
 (以 complete 为二值事件);60/120/40 均探针帽,不外推。
+
+## 29c 修正案(2026-08-31,发跑前注册):表达轴读法修复
+
+- 干预:ext_smoc_arm 读法加环境门控 QVF_LEDGER_CITE=1,在 F.1 协议后追加
+  一句:"引述支持答案的账目行;若相关状态随时间变化,同时给出早先值与当前
+  值('previously X, now Y')"。冻结件 repro_batch3 不动。
+- 重跑:STALE b19 smoc 120 + COND b20 smoc 40(同店同题同读者);
+- 判据(写死):C1 表达轴 = 修后 smoc K ≥ direct K − 5pp(STALE);
+  C2 正确轴不回退 = arena 判官通过率 ≥ 61.7 − 5pp;两条都过才算修复成立;
+  COND C 改善幅度照报不设线。预算 ≤$3。
