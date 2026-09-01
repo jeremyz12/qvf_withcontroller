@@ -1,0 +1,733 @@
+[
+ {
+  "uid": "wikiP39014-Q5218291",
+  "quote_head": "I'm struggling to get motivated to do ta",
+  "verdict": "REJECT",
+  "why": "槽位是 position(议会席位/公职)。原文只说\"我对工作提不起劲,和我现在的工作有关\",全程无任何职位名称、无机构、无就任/离任事件,属于纯隐含在职而无值无转移。读者无法据此数出一个新的 position 值,四道题(变几次/某日期前几个值/最久/首末)答案不变。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39014-Q5218291",
+  "quote_head": "I'm always looking to expand my knowledg",
+  "verdict": "REJECT",
+  "why": "这是兴趣/学习表述(想扩展数据科学与机器学习知识、求推荐播客与在线课程),既非职位断言也非就职声明。与 position 槽位(第14-18届议会议员)完全无关,属于\"愿望/在学\"类,判准明确列为 REJECT。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39014-Q5218291",
+  "quote_head": "I've been taking the 7:45 am train from ",
+  "verdict": "REJECT",
+  "why": "通勤习惯陈述(每天坐 7:45 火车去 downtown、参加公司拼车、同事 Rachel)。只隐含\"有工作\",没有任何职位值,也没有职位转移。与链中议员席位不构成第二个可数值,不影响任何一道题。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39014-Q5218291",
+  "quote_head": "Speaking of weddings, our team lead, Emi",
+  "verdict": "REJECT",
+  "why": "讲的是他人(团队负责人 Emily)四月要结婚,是他人的角色与他人的事件;对用户自身只隐含\"在某团队里\",无职位名称、无生效日期。判准中\"他人的工作\"与\"纯隐含在职无值无转移\"双重命中。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108022-Q53509286",
+  "quote_head": "I start taking a course on 'Art Apprecia",
+  "verdict": "REJECT",
+  "why": "槽位是 employer。原文是以学生身份去社区大学上一门\"艺术鉴赏\"选修课(上下文全是印象派艺术问答),不是受雇于该校。判准明确把\"在读学位/课程\"列为 REJECT。金标链 CMU(2004)→Stanford(2008)→NIU(2011) 不受影响。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108043-Q79201145",
+  "quote_head": "I'm particularly interested in learning ",
+  "verdict": "REJECT",
+  "why": "用户自述\"Senior Software Engineer\"、想晋升\"within my company\",但通篇不给任何雇主名称,也没有入职/离职事件,是纯隐含在职而无值无转移;上下文是欧洲旅行/技术会议闲聊。四道题都需要可枚举的雇主值:计数不增(无转移点)、首末值不变、最久值不变。虽与三天前链行 University of Fribourg 语气不一致,但读者拿不到第二个可命名雇主,不会给出不同答案。拿不准从严 REJECT。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39033-Q5331705",
+  "quote_head": "I'm actually looking forward to discussi",
+  "verdict": "REJECT",
+  "why": "槽位 position 的取值是公职(第4/5/6/8届议会议员、Berkshire/Brecknockshire 高级治安官)。\"开始参加每周查经小组\"是业余宗教活动的参与,不是任何意义上的 position held,读者绝不会把它与议员/治安官并列计数。属于与该槽位无关的内容。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551002-Q107297",
+  "quote_head": "I'm thinking of staying in Waikiki for m",
+  "verdict": "REJECT",
+  "why": "槽位 residence。原文是夏威夷旅游行程规划——\"打算住在 Waikiki\"配浮潜团与餐厅推荐,既是计划(thinking of)又是旅行下榻,不是迁居。判准把\"疑问/计划\"和旅行明确排除。金标 Schönberg→Paris→Metz→Cairo 的次数、时长、首末答案均不受影响。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108023-Q58326057",
+  "quote_head": "By the way, I've already taken some cour",
+  "verdict": "REJECT",
+  "why": "槽位 employer,链为 LBNL/UCSD/Scripps/Leipzig 四段科研任职。此句是列举已修的在线课程与一个 Data Science 专项证书(Coursera 式 'specialization from Johns Hopkins'),属学历/证书而非任职断言,既无'入职/开始'转移动词也无雇主状态。属判准中'在读学位/课程'一类,直接 REJECT。"
+ },
+ {
+  "uid": "wikiP108023-Q58326057",
+  "quote_head": "Two weeks is a great amount of time to e",
+  "verdict": "REJECT",
+  "why": "此为助手复述用户'classes start at UBC'的搬家闲聊(用户原句是搬去温哥华、开学前两周玩)。是在读学生身份,不是雇主状态断言;判准明确把'在读学位'列为 REJECT。且引文本身是助手回声,不构成新的事实口吻断言。"
+ },
+ {
+  "uid": "wikiP108023-Q58326057",
+  "quote_head": "I'm moving to Melbourne soon to start my",
+  "verdict": "REJECT",
+  "why": "'去墨尔本读硕士 + 申请学生签证'是入学/搬家,非受雇。判准把在读学位明确排除;认真读者计 employer 变更次数时不会把'读硕士'当作一次雇主取值。REJECT。"
+ },
+ {
+  "uid": "wikiP108023-Q58326057",
+  "quote_head": "Speaking of research, I just completed m",
+  "verdict": "REJECT",
+  "why": "'刚写完硕士论文'只隐含曾在某校就读,且 implied_value 是无名的'a university',既不可识别也无转移。属'纯隐含在职/在读而无值无转移',REJECT。"
+ },
+ {
+  "uid": "wikiP108044-Q73300218",
+  "quote_head": "I'm trying to plan a social media campai",
+  "verdict": "REJECT",
+  "why": "槽位 employer,链为七段医学/大学任职。此句只是求助'替某地方环保组织做社媒方案',机构未具名('a local environmental organization'),无入职表述,可为志愿或临时项目。属'纯隐含在职而无值无转移'+机构不可识别,REJECT。"
+ },
+ {
+  "uid": "wikiP39016-Q5538488",
+  "quote_head": "I like the idea of a welcome series. Can",
+  "verdict": "REJECT",
+  "why": "槽位 position,链为 18/19/20 届英国议会议员。'我的品牌使命与可持续承诺'是电商闲聊,'品牌主'不是该槽位口径下的职位取值,也没有任何就任/卸任转移。与槽位无关,REJECT(与扫描器此前被驳的'Flickr 摄影俱乐部本周会员'同类过报)。"
+ },
+ {
+  "uid": "wikiP39016-Q5538488",
+  "quote_head": "I'm also thinking of getting some fencin",
+  "verdict": "REJECT",
+  "why": "'修北牧场围栏'只涉财产/日常事务,既非职位取值也无就任表述,与 position 槽位无关。REJECT。"
+ },
+ {
+  "uid": "wikiP39016-Q5538488",
+  "quote_head": "I'm looking to plan out my summer schedu",
+  "verdict": "REJECT",
+  "why": "'暑期选修网课、课业进度'是在读学生闲聊,判准明确把在读学位/课程排除,且'student'不是该链的职位口径取值。REJECT。"
+ },
+ {
+  "uid": "wikiP39034-Q11803195",
+  "quote_head": "I attended the morning prayer service at",
+  "verdict": "REJECT",
+  "why": "槽位 position,链为 11–18 届议员与 High Sheriff of Suffolk。'今天去 St. Mary's 参加晨祷、听 Father John 布道'是一次性出席事件,出席者不是职位;无就任/卸任、无任期。与槽位无关,REJECT。"
+ },
+ {
+  "uid": "wikiP551003-Q20512700",
+  "quote_head": "I'm looking for some recommendations on ",
+  "verdict": "REJECT",
+  "why": "槽位 residence,链为 Yerevan/Uzbekistan/Moscow。此句只是求推荐东京素食餐厅、说自己想多尝日料,全文无'住在东京/搬到东京';同库同类填充多为旅行规划。断章取义式过报,REJECT。"
+ },
+ {
+  "uid": "wikiP551003-Q20512700",
+  "quote_head": "I flew back to New York on June 24th.",
+  "verdict": "REJECT",
+  "why": "上下文是'刚从 LA 长途旅行回来,准备去巴黎、从 JFK 出发'。这是行程叙述,不是居住状态断言:无'搬到/我家在/新住处'一类转移或状态语,只有'飞回'的间接暗示。属'纯隐含居住而无值无转移';且助手当场声明不知道用户所在地,未作事实口吻复述。按默认 REJECT 处理。"
+ },
+ {
+  "uid": "wikiP551003-Q20512700",
+  "quote_head": "I just signed up for a museum membership",
+  "verdict": "REJECT",
+  "why": "办布鲁克林博物馆会员卡只能间接暗示'常来',连'住在布鲁克林'都未说出口,更无搬迁表述。纯隐含居住、无值无转移,REJECT。"
+ },
+ {
+  "uid": "wikiP108009-Q64855331",
+  "quote_head": "I'm moving to the US soon to start my Ma",
+  "verdict": "REJECT",
+  "why": "槽位=employer。这句是(a)未来计划(\"moving soon\"/\"starting this fall\",同段还说\"我被UC Berkeley录取了\"),(b)在读学位而非雇佣关系——读硕士不是被伯克利雇用。判准明确把\"计划/愿望/在读学位\"列为REJECT。链中三行(SFU博后2006/KIT博后2010/马来亚大学高级讲师2013)不受影响,认真的读者不会因此把\"UC Berkeley\"计入雇主取值,四道题(次数/某日前不同值/最久/首末)答案不变。"
+ },
+ {
+  "uid": "wikiP108034-Q37640706",
+  "quote_head": "I'm still getting used to living in Toky",
+  "verdict": "REJECT",
+  "why": "槽位=employer。全句只有\"住东京、上班通勤方便\",既没有任何可识别的雇主(连\"某机构\"都没有),也没有任何雇佣起止/转移。这正是判准点名的\"纯隐含在职或居住而无值无转移\"。扫描器自填的implied_value \"An employer in Tokyo\"是它自己造的,不是文本断言。雇主计数/时长/首末均不变。"
+ },
+ {
+  "uid": "wikiP39006-Q5220520",
+  "quote_head": "I recently went live on YouTube for the ",
+  "verdict": "REJECT",
+  "why": "槽位=position(P39,担任的职务/公职;链为Antrim高级治安官、第3/第4届北爱议会议员)。\"第一次在YouTube开直播、涨了20个订阅\"是业余活动,不是就任任何职务,也没有任职起止。与该槽位无关,四道题不受影响。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "By the way, I'm taking a break from volu",
+  "verdict": "REJECT",
+  "why": "槽位=position(链为英国第32-36届议会议员)。当天在儿童医院慈善晚宴做志愿者是一次性活动,不是就任职务,无任职期间/转移。与该槽位无关,议员任期计数与时长不受影响。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I'm trying to create content for my Inst",
+  "verdict": "REJECT",
+  "why": "槽位=position。\"想给自己的Instagram做促进STEM性别平等的内容\"是个人爱好/意图表述,没有断言担任任何职务,也没有起止日期。扫描器把\"content creator\"当成职位属于过度解读。四道题答案不变。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "By the way, I usually work 40 hours a we",
+  "verdict": "REJECT",
+  "why": "槽位=position。\"我一般每周工作40小时\"只是工作强度陈述,无任何职务取值、无转移,典型的\"纯隐含在职而无值无转移\",判准直接归入REJECT。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "That's why I spent so much time in Chica",
+  "verdict": "REJECT",
+  "why": "槽位=position。\"在芝加哥开了很多会\"只是行程/差旅描述,没有任何职务名称或任职转移。属于与槽位无关的内容,议员任期链不受影响。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I just submitted my thesis proposal on A",
+  "verdict": "REJECT",
+  "why": "槽位=position。提交学位论文开题=在读学位,判准明列为REJECT;且不是担任职务,无起止。四道题答案不变。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I've been on a plant-based diet for 9 mo",
+  "verdict": "REJECT",
+  "why": "槽位=position。饮食习惯与职务槽位完全无关,扫描器自己都承认这是\"lifestyle choice rather than a traditional job position\"。断章取义式过报。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I'm planning a road trip to explore the ",
+  "verdict": "REJECT",
+  "why": "槽位=position。驾照续期/计划自驾游既是计划又与职务无关,不构成任何职务取值。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I've been doing yoga for 10 weeks now, a",
+  "verdict": "REJECT",
+  "why": "槽位=position。练瑜伽10周是个人锻炼时长陈述,与担任职务无关,不产生任何职务取值或转移。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I just started taking fitness classes at",
+  "verdict": "REJECT",
+  "why": "槽位=position。在社区中心上健身课是消费/爱好行为,不是担任职务,与该槽位无关。"
+ },
+ {
+  "uid": "wikiP39028-Q21557444",
+  "quote_head": "I'm thinking of starting my own business",
+  "verdict": "REJECT",
+  "why": "槽位=position。\"在考虑自己创业\"是明确的计划/愿望(下一轮还在问怎么做竞争策略),判准明列计划为REJECT,且并未就任任何职务。"
+ },
+ {
+  "uid": "wikiP39041-Q636368",
+  "quote_head": "I start playing tennis with a friend eve",
+  "verdict": "REJECT",
+  "why": "槽位=position(链为英国第49/50届议员、自民党党鞭、第52/53届议员、上议院议员)。每周五和朋友打网球是业余活动,不是职务,无任职转移。与该槽位无关。"
+ },
+ {
+  "uid": "wikiP39041-Q636368",
+  "quote_head": "I started taking guitar lessons again a ",
+  "verdict": "REJECT",
+  "why": "槽位=position。重新开始上吉他课是爱好,不构成任何职务取值,也无任职起止。四道题答案不变。"
+ },
+ {
+  "uid": "wikiP551010-Q17362765",
+  "quote_head": "I'll check out The Piano Works in Farrin",
+  "verdict": "REJECT",
+  "why": "槽位=residence(链:Dresden 1923→Berlin 1957→Senftenberg 1961)。上下文是当天去温布利看演唱会后找钢琴酒吧,\"离我当前位置近\"只说明当下人在伦敦(出行/观演),不是居住地断言,更无搬迁转移。认真的读者不会因此新增一个居住地取值,搬家次数/最久/首末均不变。"
+ },
+ {
+  "uid": "wikiP551010-Q17362765",
+  "quote_head": "I'm looking for some concert recommendat",
+  "verdict": "REJECT",
+  "why": "槽位=residence。全段是求推荐费城的演出、提到刚看完Wells Fargo Center的演出、还计划去DC看演出,只有本地活动的隐含在场,没有任何\"我住在费城/我搬到费城\"的第一人称居住断言,也无搬迁日期。属于\"纯隐含居住而无值无转移\",按默认REJECT。"
+ },
+ {
+  "uid": "wikiP551010-Q17362765",
+  "quote_head": "I'm planning a road trip to Berkeley soo",
+  "verdict": "REJECT",
+  "why": "槽位=residence。这是出行计划,扫描器自己填的implied_value都是\"Not Berkeley\"并承认\"does not assert a specific residence value\"——没有取值就不可能改变任何一道题。"
+ },
+ {
+  "uid": "wikiP551010-Q17362765",
+  "quote_head": "By the way, I booked a one-way flight fr",
+  "verdict": "REJECT",
+  "why": "槽位=residence。这是本组最接近的一条,但仍是未完成的计划:当天只是订了单程机票、说\"officially committed to this big move\",人还在hometown,住处还只\"narrow down到Fairview的两套公寓\",两周后才开学(UBC在读学位场景)。没有\"as of today X是我的住处\"式的状态断言,也没有搬迁完成日期。判准把计划/在读学位明列为REJECT,且拿不准即REJECT,故不动语料。"
+ },
+ {
+  "uid": "wikiP108014-Q56648183",
+  "quote_head": "Speaking of weddings, our team lead, Emi",
+  "verdict": "REJECT",
+  "why": "只提到\"我们的 team lead Emily 四月结婚\",是纯粹的在职隐含:没有任何雇主名、没有入职/离职日期、没有状态转移。金标 employer 链为 UCSD(2012-10)/CERN(2013-06)/MIT(2016-07),认真的读者不会因为\"有个组长\"就多数出一个雇主值,四道题(变几次/某日期前几个值/持续最久/首末值)答案不变。属判准中\"纯隐含在职而无值无转移\"。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108014-Q56648183",
+  "quote_head": "I'm struggling to get motivated to do ta",
+  "verdict": "REJECT",
+  "why": "整段是职场倦怠/求助内容,\"my current job\"\"meltdown at work\"同样只隐含在职,通篇未出现任何机构名或\"我换到了X\"式转移。该时点(2014-02)落在金标 CERN 区间(2013-06 至 2016-07)内,与链中行相容。不改变计数、时长或首末值。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108040-Q57038615",
+  "quote_head": "I'm looking for some recipe suggestions ",
+  "verdict": "REJECT",
+  "why": "\"给单位的 cultural potluck 找菜谱\"只说明当时在某处上班,全会话(含助手回复)只出现 coworkers 泛称,无任何可识别机构、无起止日期。金标首行为 Henry Ford Hospital(1988-07),该句不产生一个可数的新雇主值,\"第一个值\"与\"变了几次\"均不受影响。属纯在职隐含。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39012-Q6767617",
+  "quote_head": "I've also been active in a Slack group f",
+  "verdict": "REJECT",
+  "why": "槽位 position 的金标值全是\"member of the 49th–54th Parliament of the United Kingdom\"。用户只说\"我在一个自由撰稿人的 Slack 群里挺活跃\",这是线上社群成员身份,不是第一人称的任职断言(没有\"我从X起做自由撰稿人\"),也没有任何日期或转移。助手回复里的 \"as a freelance writer\" 是助手的松散推断措辞,非事实口吻的状态复述。2000-02 落在第52届议会(1997-05 至 2001-06)区间内与链相容,四题答案不变。这是本组最接近边界的一条,按\"拿不准就 REJECT\"处理。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39012-Q6767617",
+  "quote_head": "I also recently started a Facebook group",
+  "verdict": "REJECT",
+  "why": "\"新建了一个独立摇滚爱好者的 Facebook 群\"是业余社群管理,与 P39\"担任职位\"槽位无关,不构成议会席位链上的任何一个值,也无日期区间冲突。扫描器把\"群主/管理员\"当成 position 属过度泛化。四题答案不变。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39031-Q6224958",
+  "quote_head": "I'm working on my Master's thesis, and I",
+  "verdict": "REJECT",
+  "why": "\"正在写硕士论文\"属判准明列的\"在读学位\",不是 position 槽位的状态值。金标全为议会届次(14–18 届及上议院),1848-12 落在第15届议会(1847-07 至 1852-07)区间内。不新增值、不改时长、不动首末。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39031-Q6224958",
+  "quote_head": "I'd like to focus on my current projects",
+  "verdict": "REJECT",
+  "why": "\"收尾 Johnson 客户、带新团队、带教 Alex\"是泛化的待办事项描述,没有给出任何职位名称,也没有\"从某日起担任某职\"的转移语。扫描器由\"带团队\"倒推出\"manager or team lead\"属推断而非文本断言。与议会席位链无冲突,四题答案不变。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39031-Q6224958",
+  "quote_head": "I recently had a conversation with a dat",
+  "verdict": "REJECT",
+  "why": "\"在 YPN 交流会上和某数据科学家聊过\"只是出席一次活动,既非职位也非任职断言;\"YPN 会员\"是扫描器自行推断。与 position 槽位无关,1858-02 落在第17届议会(1857-03 至 1859-04)区间内。四题答案不变。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551000-Q19845625",
+  "quote_head": "I'm actually volunteering at the SXSW mu",
+  "verdict": "REJECT",
+  "why": "\"今天在 Austin 的 SXSW 做志愿者\"是节庆出行/临时在场,不是居住地断言:没有\"搬到\"\"住在\"\"我的新住所\"这类转移语,也没有起止时间。金标 residence 为 Netherlands(1991-01)/France(2004-03)/UK(2007-03),1998-12 处在 Netherlands 区间内。认真的读者不会把\"去某地当志愿者\"计为一次居住地变更,变更次数/最久值/首末值均不变。(另注:该会话日期 1998-12 与 SXSW 实际三月档期矛盾,是典型填充噪声。)",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551000-Q19845625",
+  "quote_head": "I've been taking the 7:15 AM bus from my",
+  "verdict": "REJECT",
+  "why": "\"这三周每天坐 7:15 的公交从公寓到市中心\"只隐含居住,未给出任何地名或新的居住地值,且与上一 session(2007-03 迁入 United Kingdom)完全相容——属于\"同一状态换说法、日期区间相容\"。扫描器自己在 reason 里也承认\"does not specify a new city value distinct from the chain entry\"。四题答案不变。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39029-Q5341608",
+  "quote_head": "I'm feeling a bit overwhelmed with my sc",
+  "verdict": "REJECT",
+  "why": "业余爱好活动,非 position 槽位值。用户只说社区剧团《悲惨世界》排演日程忙、音响与换景出问题,全程未声称担任任何职务头衔,也无任职起止/转移。金标 position 链为 15-19 届英国议会议员;读者回答'职位变了几次/首末值'不会把'参加社区剧团排练'算作一个 position 值。"
+ },
+ {
+  "uid": "wikiP39029-Q5341608",
+  "quote_head": "By the way, I was a bridesmaid at the we",
+  "verdict": "REJECT",
+  "why": "婚礼上当伴娘是一次性私人角色,不是 position 槽位的状态值,更无任职区间可言。与议会席位链完全不同指、不冲突,不会改变任何一道题的答案。"
+ },
+ {
+  "uid": "wikiP39029-Q5341608",
+  "quote_head": "Two weeks is a great amount of time to e",
+  "verdict": "REJECT",
+  "why": "双重排除:①这是搬去温哥华后'开学前'的计划性陈述(classes start at UBC 尚未发生);②即使成立也只是在读学生身份,判准明确把'在读学位'列为 REJECT。无职位头衔、无转移,不影响计数/时长/首末。"
+ },
+ {
+  "uid": "wikiP39029-Q5341608",
+  "quote_head": "I recently started writing my own jokes ",
+  "verdict": "REJECT",
+  "why": "开放麦上台试讲段子属业余爱好与技能练习(整段在问如何提升脱口秀技巧),没有任何职务/职位断言,也无起止时间。与议会 position 链无关,读者不会因此多数一个值。"
+ },
+ {
+  "uid": "wikiP108010-Q53284080",
+  "quote_head": "I just sold 20 potted herb plants at the",
+  "verdict": "REJECT",
+  "why": "集市摆摊卖盆栽香草属副业/爱好叙事,既未点名任何雇主实体,也未声称离开或加入某单位(链中 2008-10 Syracuse University 在任)。判准要求'另一状态+可识别+有转移';此处只有一次销售事件与'扩产品线'的设想,读者计 employer 变更次数时不会插入一次变更。"
+ },
+ {
+  "uid": "wikiP108010-Q53284080",
+  "quote_head": "I earned $100 in tips last Saturday at t",
+  "verdict": "REJECT",
+  "why": "在市集活动上拿到 100 美元小费是收入事件,不是雇主状态。全无雇主名称、无入职/离职表述,与链中 2013-10 CERN 在任并不矛盾(不同指且不构成同槽位赋值),不改变任何一道题答案。"
+ },
+ {
+  "uid": "wikiP108010-Q53284080",
+  "quote_head": "I've also been thinking about selling my",
+  "verdict": "REJECT",
+  "why": "原文是 'I've also been thinking about selling my art at more local events'——愿望/计划句,扫描器把它读成既成事实属断章取义。判准明确把计划/愿望列为 REJECT,且'卖画'也不构成雇主赋值。"
+ },
+ {
+  "uid": "wikiP108035-Q39407125",
+  "quote_head": "I'm trying to get organized for the comm",
+  "verdict": "REJECT",
+  "why": "社区剧团出演 Éponine 是业余演出参与,不是受雇关系:无雇主实体、无薪酬/任职表述、无起止。金标 employer 链(UEPB→UNIVASF→Paris Cité)在 2010-07 处于 UNIVASF 任内,读者不会因此判定雇主发生一次变更。"
+ },
+ {
+  "uid": "wikiP108035-Q39407125",
+  "quote_head": "I'm actually volunteering at the SXSW mu",
+  "verdict": "REJECT",
+  "why": "明说是 volunteering(志愿服务)且限于当天音乐节,非受雇状态,也没有替代链中在任雇主的意思。属'纯活动叙事无值无转移',计数/时长/首末均不受影响。"
+ },
+ {
+  "uid": "wikiP39007-Q862272",
+  "quote_head": "I helped organize a film festival in Jul",
+  "verdict": "REJECT",
+  "why": "'helped organize / responsible for curating'描述的是一次性社区活动的义务性协助,不是 P39 意义上担任的职位,也无任职头衔与起止区间。金标链为法官/州众议员/州参议员/联邦众议员;1994 年该用户处于 State Senate 任内,这段不构成同槽位另一状态,不改变任何答案。"
+ },
+ {
+  "uid": "wikiP39043-Q13391423",
+  "quote_head": "I'm leading a new project called Nova, w",
+  "verdict": "REJECT",
+  "why": "'带一个叫 Nova 的新项目'是工作任务描述,不是职位赋值:未给出任何职务名称、任命或起止,仅隐含在职。判准把'纯隐含在职而无值无转移'列为 REJECT。金标链(Tui 主教→Tui-Vigo 主教→西班牙军队总代牧)不会因此多出一个值。"
+ },
+ {
+  "uid": "wikiP39043-Q13391423",
+  "quote_head": "I've been advised to develop my skills i",
+  "verdict": "REJECT",
+  "why": "原句是'被建议提升技能以便将来可能晋升到 Technical Lead 或 Architect',纯粹是未来可能性/计划,连当前职位名称都没有说出。扫描器自己也承认'current position itself is not specified'——无值即无从改变计数/时长/首末,判准下必 REJECT。"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote_head": "I've been living here since March, so I'",
+  "verdict": "REJECT",
+  "why": "填充会话(2007-11-18)只谈在东京居住与请\"coworkers\"吃饭,全程未出现任何雇主名称或可识别机构,也无\"入职/离职\"转移语。属判准明列的\"纯隐含在职或居住而无值无转移\"。扫描器把居住地当雇主推断(\"An employer in Tokyo\"),是断章推理而非断言。认真读者数 employer 仍只有 Ohio State/Fermilab/Zurich 三值。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108028-Q58315304",
+  "quote_head": "Okay, big news day — I've officially sta",
+  "verdict": "REJECT",
+  "why": "该句出自 sessions[25],date=2003-00-00 且 chain_index=1,正是金标链第2行本身(span=\"I've officially started at Saarland University\")。扫描器把金标状态句当成了链外候选,自指重复。",
+  "gold_impact": "无(即金标行)"
+ },
+ {
+  "uid": "wikiP108028-Q58315304",
+  "quote_head": "Okay, so today's the day — I officially",
+  "verdict": "REJECT",
+  "why": "该句出自 sessions[31],date=2006-00-00 且 chain_index=2,正是金标链第3行本身(span=\"I officially started as a researcher at the University of Göttingen\")。同为自指重复。",
+  "gold_impact": "无(即金标行)"
+ },
+ {
+  "uid": "wikiP108046-Q37831543",
+  "quote_head": "I've been meaning to tackle it for weeks",
+  "verdict": "REJECT",
+  "why": "整段是整理衣柜+周二拳击课的闲聊,唯一涉工内容是\"after a long day of work\"——纯隐含在职,无雇主值、无转移。且 1990-01 落在金标 Addenbrooke's Hospital(1988-08 起)区间内,与链相容。扫描器自己给的 implied_value 就是\"Unknown employer\",按定义不可识别。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39019-Q13529938",
+  "quote_head": "Our team consisted of the project leader",
+  "verdict": "REJECT",
+  "why": "句子描述的是 Tech Expo 展台团队的构成(项目负责人、CEO、两名产品专员),从头到尾没有把任何职位归给用户自己——用户只说\"our team\",未自称 project leader 或 product specialist。无第一人称职位断言、无就任/卸任转移,且与议会席位可并存。属\"引文断章取义\"。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39036-Q15039950",
+  "quote_head": "I'm currently leading a team of engineer",
+  "verdict": "REJECT",
+  "why": "\"leading a team of engineers\"是找项目管理工具时的现代职场背景描述:无职位名称、无起止/就任转移,现在时且与议员身份可并存,不构成 position 槽位的\"另一个状态\"。这是全库填充普遍存在的现代通用职场噪声,若计入则几乎每条都被判污染;认真读者数 position 仍是16/17/18届议会三值。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39036-Q15039950",
+  "quote_head": "I typically work 40 hours a week, and so",
+  "verdict": "REJECT",
+  "why": "只是在问网课时间投入时提到每周工时与\"peak campaign seasons\",连职位名都没有,\"marketing professional\"完全是扫描器的二次推断。无值、无转移,典型纯隐含在职。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39036-Q15039950",
+  "quote_head": "I'm trying to get organized for the comm",
+  "verdict": "REJECT",
+  "why": "社区剧团《悲惨世界》里演 Éponine 是业余爱好角色,不是 P39(职务/公职)槽位的状态值;与议员身份无冲突亦无覆盖。按判准属\"与该槽位无关的内容\"。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551007-Q9153879",
+  "quote_head": "I'm in the city center, and I'm open to ",
+  "verdict": "REJECT",
+  "why": "\"I'm in the city center\"是对助手\"你在哪个城市?\"的部分回答,用户始终未给出城市名(助手随后又追问一次仍未得到)。无可识别地名=无值,更无迁居转移;与 1927 起的 Koropets 相容。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551007-Q9153879",
+  "quote_head": "I recently attended a cultural event at ",
+  "verdict": "REJECT",
+  "why": "参加印度使馆的排灯节活动只是一次活动出席,推不出居住地,更未给出任何地名。扫描器自己在 reason 里都写\"vague and may not constitute a clear distinct residence claim\"。纯推断,断章取义。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551007-Q9153879",
+  "quote_head": "I helped organize a film festival in Jul",
+  "verdict": "REJECT",
+  "why": "\"a venue in my neighborhood\"只有\"我家附近\"这种指示性表述,没有任何可识别地名;同段还提到去纽约电影节看首映(旅行,非居住)。无值、无迁居转移,与 1937 起的 Horodok 相容。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108008-Q53283502",
+  "quote_head": "As a senior account manager, effective p",
+  "verdict": "REJECT",
+  "why": "槽位是 employer(链:Tsinghua 2013 / LPT 2016 / CERN 2018)。这句是助手在 2013-07-16 会话开头的开场白，且'senior account manager'是职务称谓而非雇主名，全会话没有出现任何机构名。四道题都问雇主值(变几次/某日期前几个不同雇主/哪个雇主最久/首末雇主)，没有雇主值就无法进入计数。属于'纯隐含在职而无值无转移'。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108008-Q53283502",
+  "quote_head": "Speaking of research, I just completed m",
+  "verdict": "REJECT",
+  "why": "完成硕士论文是学位/学业里程碑，属判准明列的 REJECT 类('在读学位')。且未指名任何雇主机构，2014-12 位于 Tsinghua 区间内也无雇主转移信号。对 employer 的四道题零影响。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP108030-Q67469956",
+  "quote_head": "I've been living in Tokyo for about 5 mo",
+  "verdict": "REJECT",
+  "why": "槽位是 employer(ITEP 2010-01 / Syracuse 2016-04 / CERN 2022-03)，这句只谈居住地东京，是 residence 内容，与本条目槽位无关。全会话围绕素食餐厅与日语课，没有任何雇主名或入职/离职表述。扫描器自己也承认'no employer is specified'。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39003-Q6248447",
+  "quote_head": "I actually wake up at 6:15 AM on weekday",
+  "verdict": "REJECT",
+  "why": "槽位是 position(第一院 1964 / 瑞典议会 1971 / 欧洲委员会议会大会代表 1974)。'my team'/'team meeting'/'before getting ready for work' 只是隐含在职，没有任何职位名称、任命或卸任。判准明列'纯隐含在职而无值无转移'即 REJECT。且议员本身也开会，与链中状态并不冲突。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39023-Q18527003",
+  "quote_head": "I received the news I had been waiting f",
+  "verdict": "REJECT",
+  "why": "'我升职了'没有给出任何职位名，不满足 CONFIRMED 要求的'可识别'状态值；首末值与最长持续值都不受影响，计数题也无法凭一个无名职位落笔。且同段文本与 wikiP108008-Q53283502 的 2013-07-16 会话逐字相同(同一段填充复用)，是通用填充而非本链状态断言。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39023-Q18527003",
+  "quote_head": "I just completed my master's thesis in c",
+  "verdict": "REJECT",
+  "why": "学位完成属判准明列的 REJECT 类；没有职位名、没有就任/卸任，对 position 的计数/时长/首末四题均无落点。该段同样与 wikiP108008 的 2014-12-26 会话逐字复用，是通用填充。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39040-Q16066414",
+  "quote_head": "I just started taking English classes at",
+  "verdict": "REJECT",
+  "why": "在社区大学上英语课是在读课程，属判准明列的 REJECT 类('在读学位/课程')，不是 position 槽位的状态值，也无任何任命或转移。四道题问的是议会席位值，不受影响。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39040-Q16066414",
+  "quote_head": "since my new commute to work takes 45 mi",
+  "verdict": "REJECT",
+  "why": "只提通勤时长，纯隐含在职，无职位名、无就任日期、无转移，判准明列 REJECT。整段会话是塔霍湖自驾与播客推荐，与 position 槽位无关。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39040-Q16066414",
+  "quote_head": "I'd like to make sure that's included.",
+  "verdict": "REJECT",
+  "why": "该会话全篇是健身日程安排，这句是要求把力量训练排进计划的偏好表述，完全不涉及职位。扫描器自身在 reason 里就写明'This is not a position assertion... Should not be included'，属明显过报。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39040-Q16066414",
+  "quote_head": "I'm preparing for my first trade show on",
+  "verdict": "REJECT",
+  "why": "这是为 6 月 1 日展会做准备的计划性叙述，配合'参加过创业工作坊'，只是隐含有生意，从未以事实口吻断言任何职位名或就任时间。判准要求'可识别'的另一状态值且有转移，这里两者皆无；且'preparing for'属计划类，默认 REJECT。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551009-Q5321987",
+  "quote_head": "I actually checked out the contemporary ",
+  "verdict": "REJECT",
+  "why": "槽位是 residence(Frampton on Severn 1872 / Birmingham 1885 / London 1887 / Pudsey 1890)。原文明写'on a solo trip'——一次看展旅行，不是迁居；判准明列旅行/他人搬家类 REJECT。没有'搬到/定居纽约'之类的居住断言，四道题的居住值序列不受影响。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP551009-Q5321987",
+  "quote_head": "I actually checked out the contemporary ",
+  "verdict": "REJECT",
+  "why": "1879-11-21 会话与 1873-06-08 会话逐字相同(同一段填充被复用两次)，仍然是'solo trip'看展，属旅行而非居住状态断言。同上，对 residence 的计数/时长/首末四题零影响。",
+  "gold_impact": "无"
+ },
+ {
+  "uid": "wikiP39013-Q592596",
+  "quote_head": "I've been trying to improve my Japanese ",
+  "verdict": "CONFIRMED",
+  "why": "第一人称事实口吻断言持续教职:『my students at the language school in Roppongi』——定指『the language school in Roppongi』+『我的学生』=用户当前在该语言学校任教,非疑问/非计划/非他人。链(1752 titular archbishop / 1754 Hradec Králové 主教 / 1764 布拉格总主教)在1760无任何行覆盖此状态。关键佐证:results/contamination_confirmed_20260901.json 中本 uid 已有一条 tier-A 确认注入,值正是『English teacher at a language school in Roppongi』(原句 'my daily commute to Roppongi for my English teaching job, which I started about 4 months ago',v2.3 已删除,本次全库grep确认已不存在)。即本句是同一被确认污染状态的换措辞回声,幸存于 31-D 机械规则之外,不是扫描器过报。",
+  "gold_impact": "打中『变了几次』与『哪个值持续最久』两道题,并波及 dim5 轨迹题。金标 dim5='titular archbishop -> Hradec Králové 主教 -> 布拉格总主教'(3值/2次变更);认真读者会在1760处补入第4个值(某语言学校教师),变更数 2->3。更硬的伤害在时长题:金标最长任期是 Hradec Králové 主教 1754-1764 共10年,该句把这段区间从中截断/插入另一状态,最长值可能改判。首末值(titular archbishop / 布拉格总主教)不受影响,dim4(1752-12-31)与 dim1(1764)不受影响。"
+ },
+ {
+  "uid": "wikiP39032-Q1716798",
+  "quote_head": "By the way, I was a bridesmaid at the we",
+  "verdict": "REJECT",
+  "why": "『伴娘』是一次性婚礼仪式角色,不是 P39 意义上的职位状态,与议员/上院议员槽位无关,无任何值、无任期、无转移。认真读者绝不会把 bridesmaid 插进『50届议会->51届->52届->上议院』的职位序列。扫描器把『position』当字面词义匹配,典型过报。",
+  "gold_impact": "无。四道题(1987-10-22点时值、2001当前值、轨迹、变更次数)全不受影响。"
+ },
+ {
+  "uid": "wikiP551001-Q20667184",
+  "quote_head": "I'm thinking of hosting a dinner party f",
+  "verdict": "REJECT",
+  "why": "整段(全5轮已通读)只有『请给我在东京找食材的建议』『给同事办晚宴』『我在日本料理课上学过』——是求助问句+活动描述,用户从未第一人称断言居所('我住在东京'/'我搬到东京'一类均不存在;对照已确认注入的 wikiP551009 'I'm in NYC—usually taking the subway from Queens into Midtown' 才是断言式)。属规则明列的『疑问/纯隐含居住而无转移』。全库grep确认本 uid 仅此一处提东京,无东京线索串联、无迁居陈述。链行为显式『settled in Farmingdale』『Iowa is now my new residence』,认真读者不会据一次买菜提问在 Farmingdale(1853-1874)期内插一个东京居所。",
+  "gold_impact": "无。dim4 问 1863-07-03(早于本条 1867)=Farmingdale 不变;dim1(1924)=Lake Helen 不变;轨迹 Farmingdale->Iowa->Isla de la Juventud->Lake Helen 与变更次数不变。"
+ },
+ {
+  "uid": "wikiP108019-Q41470166",
+  "quote_head": "I'm preparing for my semester abroad at ",
+  "verdict": "REJECT",
+  "why": "『preparing for my semester abroad』『exchange students at UC Berkeley』是交换生在读身份+未来计划(还在订机票、办签证),规则明列『计划/在读学位』一律 REJECT;且学生注册不是 employer 状态,无雇佣断言、无入职转移。",
+  "gold_impact": "无。employer 轨迹(Perugia->NIH->Harvard)、变更次数、dim4(1997-07-02=Perugia)、dim1(2005=Harvard)全不变。"
+ },
+ {
+  "uid": "wikiP108019-Q41470166",
+  "quote_head": "I've been watching a lot of gaming strea",
+  "verdict": "REJECT",
+  "why": "『during my lunch breaks at work』只是纯隐含在职,不给任何雇主值、不含入职/离职转移;且 2003 年金标本就在 NIH 任期内(2000-2004),与链中该行完全相容,属同指而非新状态。规则明列『纯隐含在职而无值无转移』。",
+  "gold_impact": "无。四道题答案均不变。"
+ },
+ {
+  "uid": "wikiP108019-Q41470166",
+  "quote_head": "Our team consisted of the project leader",
+  "verdict": "REJECT",
+  "why": "只描述某次 Tech Expo 的参展团队构成(项目负责人/CEO/产品专员),用户既未说自己的岗位,也未说雇主是谁,更无任何入职或换东家的转移陈述——无值可填、不可识别为一个具体状态。对照已确认的 KEEP_B 型(wikiP108031『my supervisor's name is Rachel, and I'm still getting used to my new role』)之所以成立,是因为它明说了『新角色』这一转移;本句没有。企业味与 NIH 语境不搭只是氛围不一致,不构成同槽位状态断言;拿不准按默认 REJECT。",
+  "gold_impact": "无。认真读者无法据此在轨迹里补入一个值,变更次数与首末值(Perugia / Harvard)、dim4(1997=Perugia)、dim1(2005=Harvard)均不变。"
+ },
+ {
+  "uid": "wikiP108042-Q43665860",
+  "quote_head": "I'm preparing for an upcoming trade show",
+  "verdict": "REJECT",
+  "why": "『为纽约展会准备我的产品演示』——只是一次活动筹备,未指名任何机构、未陈述本人职位、无入职/离职转移,属纯隐含在职而无值。该 user turn 还是已知 400 字符截断产物,其余四轮(互动展台/排行榜)与雇主槽位完全无关。全库grep本 uid 其余轮次也无任何雇主断言(2007-04-25『mentoring a junior colleague Alex』同样无值无转移)。",
+  "gold_impact": "无。employer 轨迹(Newcastle->South Australian Health->Adelaide)、变更次数、dim4(2007-07-02=Newcastle)、dim1(2011=Adelaide)全不变。"
+ },
+ {
+  "uid": "wikiP39020-Q11801663",
+  "quote_head": "I just got back from the Downtown Farmer",
+  "verdict": "REJECT",
+  "why": "槽位 position 的链是公职(11th Parliament -> 12th Parliament -> High Sheriff of Hampshire)。用户说的是在 Downtown Farmers' Market 卖自制肥皂蜡烛、并筹备 Summer Fest 的副业摊位,这不是一个 position 值,只是业余买卖活动。认真的读者不会把'集市摊贩'写进职位轨迹,计数/时长/首末均不受影响。属于'与该槽位无关的内容'。"
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote_head": "I actually wake up at 6:15 AM on weekday",
+  "verdict": "REJECT",
+  "why": "只出现'work''team meeting',全程没有任何雇主名或可识别机构,也没有入职/离职转移。2005-01-07 落在链中 Instituto de Física de Cantabria(2003-02-01~2007-12-31)区间内,'要去上班'与该行完全相容。扫描器的理由本身把时间线算错了(它以为 2005 在 IFCA 结束之后)。属于'纯隐含在职而无值无转移'。"
+ },
+ {
+  "uid": "wikiP108029-Q28320577",
+  "quote_head": "I've been working professionally for 10 ",
+  "verdict": "REJECT",
+  "why": "'工作了 10 年''希望明年升 senior developer'——没有任何雇主名,升职还是愿望/计划(hoping to)。2002-02-09 落在链中 University of Oxford(1997-06-01 起)区间内,并不冲突。无值、无转移、含愿望,双重命中 REJECT 条款。"
+ },
+ {
+  "uid": "wikiP39000-Q4976518",
+  "quote_head": "I'm trying to get organized for the comm",
+  "verdict": "REJECT",
+  "why": "社区剧团《悲惨世界》里演 Éponine 是业余演出角色,不是 P39 意义上的 position。该条目的链全是瑞典议会及委员会席位;认真的读者不会把'社区剧团演员'并入职位轨迹或计数。属于'与该槽位无关的内容'。"
+ },
+ {
+  "uid": "wikiP39000-Q4976518",
+  "quote_head": "I'm actually volunteering at the SXSW mu",
+  "verdict": "REJECT",
+  "why": "在 SXSW 音乐节当志愿者是一次性无偿活动,不是可进入 position 轨迹的职位值,也没有任何就任/卸任转移。与议会席位链无冲突,四道题答案不变。"
+ },
+ {
+  "uid": "wikiP39038-Q7528194",
+  "quote_head": "By the way, we just had a birthday celeb",
+  "verdict": "REJECT",
+  "why": "只说到'我的团队''给团队成员过生日切蛋糕',没有任何职位名称、机构名或转移。链是 15th/16th/17th Parliament 席位,这句既给不出新值也不与任何行冲突。属于'纯隐含在职而无值无转移'。"
+ },
+ {
+  "uid": "wikiP39038-Q7528194",
+  "quote_head": "I already fit in meditation and a gym se",
+  "verdict": "REJECT",
+  "why": "与 wikiP108003 同一段填充文本('6:15 起床/冥想/健身/team meeting'),纯粹的'我要上班'。扫描器自己的 reason 就写明'no specific position title is given',自我否证。无值无转移,REJECT。"
+ },
+ {
+  "uid": "wikiP551008-Q29918442",
+  "quote_head": "I flew with them from New York to Dubai ",
+  "verdict": "REJECT",
+  "why": "'从纽约飞迪拜'只是一次航班的出发地,不是居住地断言;出发机场与 residence 无必然关系,也没有任何搬家/居住表述。1 月 12 日那趟航班与链中 San Francisco(2006 起)完全可以并存。属于引文断章取义 + 无值无转移。"
+ },
+ {
+  "uid": "wikiP551008-Q29918442",
+  "quote_head": "I've been trying to improve my Japanese ",
+  "verdict": "CONFIRMED",
+  "why": "同一 session(2008-11-15)里用户以第一人称事实口吻两处把自己定位在东京:①'my students at the language school in Roppongi'(六本木的语言学校有'我的学生'=常驻授课),②同 session 末turn'visiting other cities like Kobe or Osaka on the way back to Tokyo'(黄金周关西游'回东京'=以东京为家)。这是一个具名、可识别的居住地 Tokyo,链中 San Francisco(2006-00-00)~Mountain View(2017-00-00)整段无任何行覆盖东京,也无法与 SF 同指(日本国内出行'回东京'不是从 SF 出发的旅行)。这正是填充 session 自带 STALE 人设(东京英语教师)撞进金标链的典型污染型态。",
+  "gold_impact": "打'变了几次/轨迹'与'哪个值持续最久'两道题。轨迹题金标 San Francisco -> Mountain View -> Berlin(3 值 2 次变化);认真的读者读到 2008 年人在东京教书、要'回东京',会写成 San Francisco -> Tokyo -> (回)San Francisco/Mountain View -> Berlin,值数与变化次数由 3/2 变 4/3 起。时长题金标最久 = San Francisco(2006~2017 约 11 年);插入 2008 年的东京会把这 11 年劈成两段,最久值可能改判为 Mountain View 或劈后的 SF 残段,读者更可能直接判为无法确定。'某日期前有几个不同值'若切点在 2008 之后同样多算一个值。首末两端(SF/Berlin)不受影响。"
+ },
+ {
+  "uid": "wikiP551008-Q29918442",
+  "quote_head": "Now, let's find some charity runs and cy",
+  "verdict": "REJECT",
+  "why": "92101 是助手凭空幻觉出来的:助手先问'能告诉我你的城市或邮编吗',用户根本没回答(只说自己跑过 5K),助手随后自顾自地按 92101 检索。这不是'助手复述'用户的断言,而是助手编造且用户从未确认的地点。用户方零居住表述,认真的读者会当作助手错误而非居住地变更。"
+ },
+ {
+  "uid": "wikiP551008-Q29918442",
+  "quote_head": "I've searched for art studios in the 921",
+  "verdict": "REJECT",
+  "why": "与上一条同型:2018-04-01 助手再次索要城市/邮编,用户答非所问(只谈画画放松),助手又自行套用 92101 检索 North Park 画室。同样是助手未经用户确认的幻觉地点,非用户第一人称断言,不改变 residence 的计数/时长/首末答案。"
+ },
+ {
+  "uid": "wikiP108012-Q61996585",
+  "quote_head": "I take the 7:15 AM train to work every w",
+  "verdict": "REJECT",
+  "why": "纯隐含在职:只谈通勤成本(7:15火车/20天/月票),全程无任何雇主值、无入职或离职转移。1998-02-09 落在链行1(University of Leeds, 1993起)任期内,与金标相容。扫描器所谓“1994-2003之间的另一个雇主状态”是把通勤当雇主,属断章取义。dim4 问 1998-01-01 雇主,读者读完这段仍只能答 Leeds。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP108012-Q61996585",
+  "quote_head": "I usually take the light rail in the mor",
+  "verdict": "REJECT",
+  "why": "同上,纯通勤陈述,无雇主值、无转移。2006-06-11 落在链行2(Institute of Cancer Research, 2003起)任期内。整段是“公交vs开车vs骑车”的泛问答,与 employer 槽位无关。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP108012-Q61996585",
+  "quote_head": "I've been snacking on nuts a lot lately,",
+  "verdict": "REJECT",
+  "why": "零食话题里的“working from home”只是工作地点/形式的顺带一提,无雇主值、无转移;2014-10-13 与链行3(UAMS,2014-07起)完全相容,可视作同一在职状态的换说法。扫描器 reason 自己写的是“could indicate a different arrangement or employer”——纯推测,不是断言。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP108037-Q59198601",
+  "quote_head": "I'm struggling to get motivated to do ta",
+  "verdict": "REJECT",
+  "why": "只有“my current job”这一纯隐含在职表述,无任何机构、无岗位、无入离职转移;整段是职业倦怠/生产力求助。扫描器称“1975-04 至 1981-04 是链的空档”属事实错误:链行1(INSERM)自 1973-09-01 起且无终止行,1977-09-02 正落其任期内,与金标相容。dim4 问的是 1975-03-02,更不受影响。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP39008-Q266078",
+  "quote_head": "I've been trying to improve my Japanese ",
+  "verdict": "CONFIRMED",
+  "why": "用户第一人称事实口吻的同槽位状态断言:“for my students at the language school in Roppongi”=本人当时在六本木一家语言学校任教(值可识别:语言学校教师@六本木,机构不必具名)。非疑问/非计划/非他人,链中七行全为议会席位,无任何行与之同指。该条目此前已在 results/contamination_confirmed_20260901.json 中以同一值 Tier A 定罪(被删句“I've been getting more comfortable with my daily commute to Roppongi for my English teaching job, which I started about 4 months ago.”),本句是同一会话簇残留的换措辞回声,删句后值仍可完整还原,属 31-C 所述“回声未清干净”,不是扫描器新造。",
+  "gold_impact": "主打 dim4_point_in_time:“What position did I have on 2012-10-16?” 金标=member of the 55th Parliament。该会话日期 2012-11-15 是距探针日最近的一场,认真读者据此会答“在六本木语言学校教书/语言学校教师”,与金标不同。次打 dim5_trajectory:会在 55th→56th 之间插入一个“语言学校教师”值,破坏金标四值有序序列。"
+ },
+ {
+  "uid": "wikiP39008-Q266078",
+  "quote_head": "I received the news I had been waiting f",
+  "verdict": "REJECT",
+  "why": "命名句“I just got a promotion to senior account manager”已在前几刀删除,残留只剩“I got the promotion”,无职位名、无机构,助手回复也未复述任何头衔——值不可识别。四道探针中:dim1(2019-12-12 现任)、dim2、dim4(2012-10-16)均不受 2016 年一次无名晋升影响;dim5 要求给出有序的“值”序列,读者无值可插。属“有转移但无值”的边缘件,按默认 REJECT/宁缺毋滥处理;若后续要一刀切清干净可顺带删,但不构成金标冲突。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP39008-Q266078",
+  "quote_head": "Speaking of research, I just completed m",
+  "verdict": "REJECT",
+  "why": "学位/学业陈述(刚完成计算机硕士论文、NLP 研究经历、备考 GRE),判准明列“在读/学位”一律 REJECT;学位不是 position 值,且“已完成”不构成在任状态。会话日 2019-12-26 晚于 dim1 的“Today is 2019-12-12”,也晚于最后一条链行,不改任何一道题。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP39030-Q6265172",
+  "quote_head": "I helped organize a film festival in Jul",
+  "verdict": "REJECT",
+  "why": "一次性过去活动叙述(“helped organize”“was responsible for curating”),是志愿/爱好性质的单场活动,不是被任命或持续担任的职位,无机构、无任期、无转移。链中七行为议会席位与 High Sheriff 任命,该句与 position 槽位不同类。dim4 问 1864-10-22、dim1 问 1892,均不受 1871 一次影展帮忙影响;认真读者不会把它列进 position 轨迹。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP39030-Q6265172",
+  "quote_head": "I actually just volunteered at the Local",
+  "verdict": "REJECT",
+  "why": "单次周末志愿+紧接着询问“有没有其他志愿或实习机会”(疑问/愿望),既无职位值也无任期转移,判准双重命中 REJECT 项。与 1885-11-24 起的第23届议会状态并不冲突,不改任何一道题。",
+  "gold_impact": ""
+ },
+ {
+  "uid": "wikiP54027-Q16228153",
+  "quote_head": "I'm excited to play with my colleagues f",
+  "verdict": "CONFIRMED",
+  "why": "这是一次未清干净的删除:命名句被删后,同一 2010-08-27 会话里助手首轮仍以事实口吻复述“Congratulations on starting your recreational soccer league!”,用户随后两轮回声“I'm excited to play with my colleagues from work”“Since I'm playing with my colleagues from work, I want to make sure I'm contributing to the team's success… my teammates during the game”。判准允许“助手复述”,三处合起来把同槽位状态(与同事组成的娱乐级足球队队员,球队未具名但角色可识别)完整还原,链中三行皆为职业自行车队,无行同指。该 uid 的同一状态此前已在 contamination_confirmed_20260901.json 中经 opus_sweep 定为 Tier A(被删句“I just started playing in a recreational soccer league with my colleagues from work today”),故非扫描器新造,而是残留物。",
+  "gold_impact": "主打 dim5_trajectory(队伍/生涯有序序列,金标 Lotto Intermarché Ladies -> Cyclelive Plus–Zannata -> Lensworld-Kuota):2010-08-27 恰落在链行1(2008)与链行2(2012)之间,认真读者会在两者之间插入一支 2010 年的“同事足球队”,把三值序列变成四值。次要风险在“换过几次队/某日期前有几个不同值”类计数题上多计一次。dim4(2008-12-31)与 dim1(2014)不受影响。"
+ }
+]
