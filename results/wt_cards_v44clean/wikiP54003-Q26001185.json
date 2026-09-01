@@ -23,7 +23,7 @@
    "entity": "user",
    "slot": "residence",
    "value": "Tokyo",
-   "claim": "The user has been living in Tokyo for about 5 months.",
+   "claim": "The user has been living in Tokyo for approximately 5 months.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -44,7 +44,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2016-01"
   },
   {
    "record_id": "r4",
@@ -59,7 +59,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2016-01"
   },
   {
    "record_id": "r5",
@@ -74,7 +74,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2016-01"
   },
   {
    "record_id": "r6",
@@ -89,7 +89,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2016-05"
   },
   {
    "record_id": "r7",
@@ -98,13 +98,13 @@
    "entity": "user",
    "slot": "bedtime_routine_start",
    "value": "10:30 PM",
-   "claim": "The user targets 10:30 PM to start unwinding every night.",
+   "claim": "The user targets 10:30 PM to start their bedtime routine.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2016-09"
   },
   {
    "record_id": "r8",
@@ -119,7 +119,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2017-02-12"
+   "stated_date": "2017-02"
   },
   {
    "record_id": "r9",
@@ -134,7 +134,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2017-06-08"
+   "stated_date": "2017-06"
   },
   {
    "record_id": "r10",
@@ -143,13 +143,13 @@
    "entity": "user",
    "slot": "book_read",
    "value": "The Nightingale by Kristin Hannah",
-   "claim": "The user finished reading The Nightingale by Kristin Hannah on February 10th.",
+   "claim": "The user finished reading The Nightingale by Kristin Hannah on February 10th after 3 weeks.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2017-02-10"
+   "stated_date": "2017-02"
   },
   {
    "record_id": "r11",
@@ -164,7 +164,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2017-06"
   },
   {
    "record_id": "r12",
@@ -179,7 +179,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2017-10-08"
+   "stated_date": "2017-10"
   },
   {
    "record_id": "r13",
@@ -194,7 +194,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2018-03"
   },
   {
    "record_id": "r14",
@@ -203,7 +203,7 @@
    "entity": "user",
    "slot": "dance_shoes",
    "value": "dance shoes",
-   "claim": "The user recently purchased dance shoes.",
+   "claim": "The user recently acquired dance shoes.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -218,13 +218,13 @@
    "entity": "user",
    "slot": "5k_personal_best",
    "value": "37 minutes",
-   "claim": "The user's personal best time for a 5K run is 37 minutes.",
+   "claim": "The user's personal best 5K time is 37 minutes.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2018-07"
   },
   {
    "record_id": "r16",
@@ -232,14 +232,14 @@
    "source_span": "I'm currently doing 3 runs a week, with one longer run on the weekends",
    "entity": "user",
    "slot": "running_schedule",
-   "value": "3 runs per week with one longer run on weekends",
+   "value": "3 runs per week with one longer weekend run",
    "claim": "The user runs 3 times per week with one longer run on weekends.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2018-07"
   },
   {
    "record_id": "r17",
@@ -269,7 +269,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2018-10-10"
+   "stated_date": "2018-10"
   },
   {
    "record_id": "r19",
@@ -278,7 +278,7 @@
    "entity": "user",
    "slot": "costco_membership",
    "value": "Costco",
-   "claim": "The user shops at Costco.",
+   "claim": "The user shops at Costco and purchased fruit there.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -291,9 +291,9 @@
    "source_memory_id": "wikiP54003-Q26001185/s13#r0",
    "source_span": "I recently spent $150 on a high-end one",
    "entity": "user",
-   "slot": "skincare_spending",
+   "slot": "moisturizer_purchase",
    "value": "high-end moisturizer for $150",
-   "claim": "The user spent $150 on a high-end moisturizer.",
+   "claim": "The user purchased a high-end moisturizer for $150.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -306,9 +306,9 @@
    "source_memory_id": "wikiP54003-Q26001185/s13#r0",
    "source_span": "I bought a luxury brand for $200",
    "entity": "user",
-   "slot": "perfume_spending",
-   "value": "luxury perfume for $200",
-   "claim": "The user spent $200 on a luxury brand perfume.",
+   "slot": "perfume_purchase",
+   "value": "luxury brand perfume for $200",
+   "claim": "The user purchased a luxury brand perfume for $200.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -322,14 +322,14 @@
    "source_span": "I have combination skin",
    "entity": "user",
    "slot": "skin_type",
-   "value": "combination skin",
+   "value": "combination",
    "claim": "The user has combination skin.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2019-04"
   },
   {
    "record_id": "r23",
@@ -344,7 +344,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2019"
+   "stated_date": "2019-04"
   },
   {
    "record_id": "r24",
@@ -359,16 +359,16 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2019-01-25"
+   "stated_date": "2019-01"
   },
   {
    "record_id": "r25",
    "source_memory_id": "wikiP54003-Q26001185/s15#r0",
    "source_span": "we actually went on a ski trip to Whistler Blackcomb in March",
    "entity": "user",
-   "slot": "family_vacation",
+   "slot": "vacation",
    "value": "ski trip to Whistler Blackcomb",
-   "claim": "The user went on a ski trip to Whistler Blackcomb in March with family.",
+   "claim": "The user went on a ski trip to Whistler Blackcomb in March.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -383,7 +383,7 @@
    "entity": "user",
    "slot": "vacation_accommodation",
    "value": "condo in Upper Village with private hot tub",
-   "claim": "The user stayed at a condo in the Upper Village with a private hot tub and mountain view.",
+   "claim": "The user stayed at a condo in the Upper Village with a private hot tub and mountain views.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -475,7 +475,7 @@
    "entity": "user",
    "slot": "residence",
    "value": "New York",
-   "claim": "The user lives in New York and returned from a trip to LA on June 24th.",
+   "claim": "The user lives in New York and returned from LA on June 24th.",
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
@@ -483,7 +483,7 @@
    ],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2020-06-24"
+   "stated_date": "2020-06"
   },
   {
    "record_id": "r33",
@@ -498,17 +498,17 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2020-09"
   },
   {
    "record_id": "r34",
-   "source_memory_id": "wikiP54003-Q26001185/s21#r0",
-   "source_span": "I'm having some issues with my wireless mouse",
+   "source_memory_id": "wikiP54003-Q26001185/s21#r2",
+   "source_span": "I'm trying to reduce waste and be more environmentally friendly",
    "entity": "user",
-   "slot": "computer_device",
-   "value": "wireless mouse",
-   "claim": "The user has a wireless mouse that is having issues.",
-   "slot_cardinality": "set",
+   "slot": "environmental_values",
+   "value": "environmentally conscious",
+   "claim": "The user values environmental sustainability and tries to reduce waste.",
+   "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
@@ -518,59 +518,27 @@
   {
    "record_id": "r35",
    "source_memory_id": "wikiP54003-Q26001185/s21#r2",
-   "source_span": "I'm thinking of getting one with a rechargeable battery",
+   "source_span": "my backpack has been doing great - it's super comfo",
    "entity": "user",
-   "slot": "computer_device",
-   "value": "wireless mouse with rechargeable battery",
-   "claim": "The user is planning to purchase a wireless mouse with a rechargeable battery.",
-   "slot_cardinality": "set",
-   "temporal_relation": "replacement",
-   "relation_target_record_ids": [
-    "r34"
-   ],
+   "slot": "backpack",
+   "value": "comfortable backpack",
+   "claim": "The user has a comfortable backpack they use regularly.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2020-09"
   },
   {
    "record_id": "r36",
-   "source_memory_id": "wikiP54003-Q26001185/s21#r2",
-   "source_span": "my backpack has been doing great - it's super comfo",
-   "entity": "user",
-   "slot": "backpack",
-   "value": "comfortable backpack",
-   "claim": "The user has a comfortable backpack.",
-   "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": ""
-  },
-  {
-   "record_id": "r37",
    "source_memory_id": "wikiP54003-Q26001185/s22#r0",
    "source_span": "I started my garden about 6 weeks ago",
    "entity": "user",
-   "slot": "gardening_activity",
-   "value": "started garden",
-   "claim": "The user started a garden about 6 weeks ago.",
+   "slot": "gardening",
+   "value": "home garden",
+   "claim": "The user started a home garden.",
    "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2021-01"
-  },
-  {
-   "record_id": "r38",
-   "source_memory_id": "wikiP54003-Q26001185/s22#r4",
-   "source_span": "I recently had an issue with aphids on my tomato plants, and I found a natural way to get rid of them using neem oil and soap solution",
-   "entity": "user",
-   "slot": "gardening_method",
-   "value": "neem oil and soap solution for pest control",
-   "claim": "The user uses neem oil and soap solution for natural pest control in the garden.",
-   "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
@@ -578,7 +546,7 @@
    "stated_date": "2021-02"
   },
   {
-   "record_id": "r39",
+   "record_id": "r37",
    "source_memory_id": "wikiP54003-Q26001185/s23#r0",
    "source_span": "I just got back from a trip and I was glad I packed my portable charger",
    "entity": "user",
@@ -593,37 +561,52 @@
    "stated_date": "2021-02"
   },
   {
-   "record_id": "r40",
+   "record_id": "r38",
    "source_memory_id": "wikiP54003-Q26001185/s23#r2",
    "source_span": "I'm actually planning to use packing cubes again for this trip, which has been a game-changer for me",
    "entity": "user",
    "slot": "travel_gear",
    "value": "packing cubes",
-   "claim": "The user uses packing cubes for organizing luggage when traveling.",
+   "claim": "The user uses packing cubes for organizing luggage.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2021-02"
   },
   {
-   "record_id": "r41",
+   "record_id": "r39",
    "source_memory_id": "wikiP54003-Q26001185/s24#r0",
    "source_span": "I just got back from a gallery opening in the city today and picked up a beautiful abstract piece from a local artist - it's now proudly displayed above my sofa",
    "entity": "user",
    "slot": "art_collection",
    "value": "abstract piece from local artist",
-   "claim": "The user purchased an abstract piece from a local artist and displays it above their sofa.",
+   "claim": "The user purchased and displays an abstract artwork above their sofa.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2021-06-11"
+   "stated_date": "2021-06"
   },
   {
-   "record_id": "r42",
+   "record_id": "r40",
+   "source_memory_id": "wikiP54003-Q26001185/s25#r2",
+   "source_span": "a bedtime around 10:30",
+   "entity": "user",
+   "slot": "bedtime",
+   "value": "10:30 PM",
+   "claim": "The user targets a bedtime of 10:30 PM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2021-10"
+  },
+  {
+   "record_id": "r41",
    "source_memory_id": "wikiP54003-Q26001185/s26#r1",
    "source_span": "I've signed with Mayenne-Monbana-MyPie, so that's official now!",
    "entity": "user",
@@ -640,13 +623,13 @@
    "stated_date": "2022"
   },
   {
-   "record_id": "r43",
-   "source_memory_id": "wikiP54003-Q26001185/s26#r3",
-   "source_span": "buy a French SIM, renew my passport photos, and find out whether the flat I'm looking at actually has a washing machine",
+   "record_id": "r42",
+   "source_memory_id": "wikiP54003-Q26001185/s26#r0",
+   "source_span": "I've got a physio call at some point",
    "entity": "user",
-   "slot": "residence_plan",
-   "value": "considering flat with washing machine",
-   "claim": "The user is looking at a flat and considering whether it has a washing machine.",
+   "slot": "healthcare_provider",
+   "value": "physio",
+   "claim": "The user has a physiotherapist.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -655,11 +638,11 @@
    "stated_date": "2022"
   },
   {
-   "record_id": "r44",
+   "record_id": "r43",
    "source_memory_id": "wikiP54003-Q26001185/s27#r0",
    "source_span": "my 5-day road trip to the mountains with friends three weeks ago",
    "entity": "user",
-   "slot": "travel_activity",
+   "slot": "vacation",
    "value": "5-day road trip to mountains with friends",
    "claim": "The user took a 5-day road trip to the mountains with friends.",
    "slot_cardinality": "set",
@@ -670,7 +653,7 @@
    "stated_date": "2022-03"
   },
   {
-   "record_id": "r45",
+   "record_id": "r44",
    "source_memory_id": "wikiP54003-Q26001185/s27#r2",
    "source_span": "I attended a friend's wedding in the city today",
    "entity": "user",
@@ -682,31 +665,16 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2022-03-20"
+   "stated_date": "2022-03"
   },
   {
-   "record_id": "r46",
+   "record_id": "r45",
    "source_memory_id": "wikiP54003-Q26001185/s27#r2",
    "source_span": "I was thinking of trying out that vegetarian restaurant near the venue again, \"Green Scene\"",
    "entity": "user",
    "slot": "restaurant_preference",
    "value": "Green Scene vegetarian restaurant",
-   "claim": "The user enjoys the vegetarian restaurant Green Scene.",
-   "slot_cardinality": "set",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": ""
-  },
-  {
-   "record_id": "r47",
-   "source_memory_id": "wikiP54003-Q26001185/s27#r4",
-   "source_span": "that quaint little cafe, \"Sunny Side Up\", we stopped by on our way back from the mountains",
-   "entity": "user",
-   "slot": "restaurant_preference",
-   "value": "Sunny Side Up cafe",
-   "claim": "The user enjoyed visiting Sunny Side Up cafe on the way back from the mountains.",
+   "claim": "The user enjoys dining at Green Scene, a vegetarian restaurant.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -715,13 +683,28 @@
    "stated_date": "2022-03"
   },
   {
-   "record_id": "r48",
+   "record_id": "r46",
+   "source_memory_id": "wikiP54003-Q26001185/s27#r4",
+   "source_span": "I'm thinking of going back to that quaint little cafe, \"Sunny Side Up\", we stopped by on our way back from the mountains",
+   "entity": "user",
+   "slot": "restaurant_preference",
+   "value": "Sunny Side Up cafe",
+   "claim": "The user enjoyed visiting Sunny Side Up cafe during their mountain trip.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2022-03"
+  },
+  {
+   "record_id": "r47",
    "source_memory_id": "wikiP54003-Q26001185/s28#r0",
    "source_span": "I recently bought a few new winter clothing items, including a coat and a pair of boots that I got for $80",
    "entity": "user",
    "slot": "clothing_purchase",
    "value": "winter coat and boots for $80",
-   "claim": "The user purchased a winter coat and boots for $80.",
+   "claim": "The user purchased winter clothing including a coat and boots for $80.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -730,22 +713,22 @@
    "stated_date": "2022-07"
   },
   {
-   "record_id": "r49",
+   "record_id": "r48",
    "source_memory_id": "wikiP54003-Q26001185/s29#r2",
    "source_span": "when my sister was born, I was 12 years old, and now she's a grown adult",
    "entity": "user",
    "slot": "family_relation",
    "value": "sister",
-   "claim": "The user has a sister who is now a grown adult.",
+   "claim": "The user has a sister who is now an adult; the user was 12 when she was born.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": ""
+   "stated_date": "2022-11"
   },
   {
-   "record_id": "r50",
+   "record_id": "r49",
    "source_memory_id": "wikiP54003-Q26001185/s30#r0",
    "source_span": "I was at the gym on Tuesday, and I got some helpful tips from a personal trainer there",
    "entity": "user",
@@ -760,30 +743,45 @@
    "stated_date": "2023-04"
   },
   {
-   "record_id": "r51",
+   "record_id": "r50",
    "source_memory_id": "wikiP54003-Q26001185/s31#r0",
    "source_span": "official as of today I'm riding for Lifeplus Wahoo",
    "entity": "user",
    "slot": "cycling_team",
    "value": "Lifeplus Wahoo",
-   "claim": "The user is riding for Lifeplus Wahoo.",
+   "claim": "The user signed with Lifeplus Wahoo.",
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
-    "r42"
+    "r41"
    ],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2023-07-01"
+   "stated_date": "2023-07"
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "wikiP54003-Q26001185/s31#r3",
+   "source_span": "block out Tuesday morning for the dentist",
+   "entity": "user",
+   "slot": "healthcare_provider",
+   "value": "dentist",
+   "claim": "The user has a dentist appointment on Tuesday morning.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2023-07"
   },
   {
    "record_id": "r52",
    "source_memory_id": "wikiP54003-Q26001185/s32#r0",
    "source_span": "I've been trying to get back into swimming by doing laps at my local pool 1-2 times a week",
    "entity": "user",
-   "slot": "swimming_activity",
-   "value": "swimming laps 1-2 times per week",
-   "claim": "The user swims laps at a local pool 1-2 times per week.",
+   "slot": "swimming_practice",
+   "value": "1-2 times per week at local pool",
+   "claim": "The user swims at their local pool 1-2 times per week.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -812,24 +810,9 @@
    "source_span": "my most popular post, a photo of my morning coffee routine, got 127 likes",
    "entity": "user",
    "slot": "social_media_presence",
-   "value": "Instagram with morning coffee routine posts",
-   "claim": "The user posts on Instagram, with a popular post about morning coffee routine getting 127 likes.",
+   "value": "Instagram with morning coffee routine content",
+   "claim": "The user posts on Instagram, with a popular post about their morning coffee routine receiving 127 likes.",
    "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2023-12"
-  },
-  {
-   "record_id": "r55",
-   "source_memory_id": "wikiP54003-Q26001185/s33#r4",
-   "source_span": "I've been experimenting with posting more frequently on Twitter",
-   "entity": "user",
-   "slot": "social_media_presence",
-   "value": "Twitter with frequent posts and weekly chats",
-   "claim": "The user posts frequently on Twitter and participates in weekly chats.",
-   "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
@@ -837,6 +820,6 @@
    "stated_date": "2023-12"
   }
  ],
- "usage_in": 20988,
- "usage_out": 7290
+ "usage_in": 20953,
+ "usage_out": 7133
 }

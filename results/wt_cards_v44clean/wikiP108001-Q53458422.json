@@ -10,7 +10,7 @@
    "value": "postdoctoral researcher",
    "claim": "The user started as a postdoctoral researcher.",
    "slot_cardinality": "single",
-   "temporal_relation": "replacement",
+   "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
@@ -25,7 +25,7 @@
    "value": "Ohio State University",
    "claim": "The user works at Ohio State University.",
    "slot_cardinality": "single",
-   "temporal_relation": "replacement",
+   "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
@@ -38,13 +38,13 @@
    "entity": "user",
    "slot": "living_room_lamp",
    "value": "modern design lamp with bright light",
-   "claim": "The user replaced their living room lamp three weeks ago with a modern design lamp that provides brighter light.",
+   "claim": "The user replaced their living room lamp with a new modern design lamp that provides brighter light.",
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2003-01-01"
+   "stated_date": "2003-01"
   },
   {
    "record_id": "r4",
@@ -53,13 +53,13 @@
    "entity": "user",
    "slot": "podcast_listening_habit",
    "value": "completed How I Built This series (20 episodes)",
-   "claim": "The user finished listening to all 20 episodes of the How I Built This podcast over the past month.",
+   "claim": "The user finished listening to all 20 episodes of the How I Built This podcast.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2003-03-17"
+   "stated_date": "2003-03"
   },
   {
    "record_id": "r5",
@@ -68,13 +68,13 @@
    "entity": "user",
    "slot": "team_size",
    "value": "4 team members",
-   "claim": "The user has four team members helping with a presentation.",
+   "claim": "The user has 4 team members helping with a presentation.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2003-05-06"
+   "stated_date": "2003-05"
   },
   {
    "record_id": "r6",
@@ -89,7 +89,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2004-06-08"
+   "stated_date": "2004-06"
   },
   {
    "record_id": "r7",
@@ -104,12 +104,12 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2004-06-08"
+   "stated_date": "2004-06"
   },
   {
    "record_id": "r8",
    "source_memory_id": "wikiP108001-Q53458422/s4#r4",
-   "source_span": "the distance between my home and office is around 10 miles",
+   "source_span": "My bus agency is the city transit, and the distance between my home and office is around 10 miles",
    "entity": "user",
    "slot": "commute_distance",
    "value": "10 miles",
@@ -119,7 +119,7 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2004-06-08"
+   "stated_date": "2004-06"
   },
   {
    "record_id": "r9",
@@ -128,8 +128,8 @@
    "entity": "user",
    "slot": "education_degree",
    "value": "Bachelor's degree in Business Administration",
-   "claim": "The user completed a Bachelor's degree in Business Administration from the University of Michigan in May 2017.",
-   "slot_cardinality": "set",
+   "claim": "The user completed a Bachelor's degree in Business Administration.",
+   "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
@@ -144,7 +144,7 @@
    "slot": "education_institution",
    "value": "University of Michigan",
    "claim": "The user attended the University of Michigan.",
-   "slot_cardinality": "set",
+   "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
@@ -153,36 +153,21 @@
   },
   {
    "record_id": "r11",
-   "source_memory_id": "wikiP108001-Q53458422/s5#r4",
-   "source_span": "having a supportive academic community and mentors played a significant role in my decision to pursue a Master's degree",
-   "entity": "user",
-   "slot": "education_plans",
-   "value": "pursuing Master's degree",
-   "claim": "The user is pursuing or plans to pursue a Master's degree.",
-   "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2004-08-24"
-  },
-  {
-   "record_id": "r12",
    "source_memory_id": "wikiP108001-Q53458422/s6#r0",
    "source_span": "I just got this backpack three weeks ago and it's been a great purchase, only $60 and it's really good quality",
    "entity": "user",
    "slot": "backpack",
    "value": "new backpack ($60)",
-   "claim": "The user recently purchased a backpack for $60 three weeks ago.",
+   "claim": "The user recently purchased a backpack for $60.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2004-10-13"
+   "stated_date": "2004-10"
   },
   {
-   "record_id": "r13",
+   "record_id": "r12",
    "source_memory_id": "wikiP108001-Q53458422/s7#r4",
    "source_span": "I've been waking up at 7:30 AM every day to fit in a quick 10-minute meditation session before getting ready for work",
    "entity": "user",
@@ -196,25 +181,25 @@
    ],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2005-01-04"
+   "stated_date": "2005-01"
   },
   {
-   "record_id": "r14",
+   "record_id": "r13",
    "source_memory_id": "wikiP108001-Q53458422/s7#r4",
    "source_span": "I've been waking up at 7:30 AM every day to fit in a quick 10-minute meditation session before getting ready for work",
    "entity": "user",
    "slot": "meditation_habit",
    "value": "10-minute daily meditation",
-   "claim": "The user does a 10-minute meditation session every day.",
+   "claim": "The user has a daily 10-minute meditation habit.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2005-01-04"
+   "stated_date": "2005-01"
   },
   {
-   "record_id": "r15",
+   "record_id": "r14",
    "source_memory_id": "wikiP108001-Q53458422/s8#r0",
    "source_span": "I've been putting in a lot of work on my business plan lately, staying up late every night to get everything just right",
    "entity": "user",
@@ -226,25 +211,25 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2005-03-20"
+   "stated_date": "2005-03"
   },
   {
-   "record_id": "r16",
+   "record_id": "r15",
    "source_memory_id": "wikiP108001-Q53458422/s9#r0",
    "source_span": "I've already used two more coupons from them, in addition to the initial welcome offer",
    "entity": "user",
    "slot": "bed_bath_beyond_coupons_used",
    "value": "3 coupons (initial welcome + 2 additional)",
-   "claim": "The user has used three coupons from Bed Bath & Beyond.",
+   "claim": "The user has used 3 coupons from Bed Bath & Beyond.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2005-11-15"
+   "stated_date": "2005-11"
   },
   {
-   "record_id": "r17",
+   "record_id": "r16",
    "source_memory_id": "wikiP108001-Q53458422/s10#r0",
    "source_span": "I just completed my first one two months ago on January 20th",
    "entity": "user",
@@ -259,13 +244,13 @@
    "stated_date": "2006-01-20"
   },
   {
-   "record_id": "r18",
+   "record_id": "r17",
    "source_memory_id": "wikiP108001-Q53458422/s10#r2",
    "source_span": "I was recently promoted to a senior role in my company on February 1st",
    "entity": "user",
    "slot": "job_title",
    "value": "senior role",
-   "claim": "The user was promoted to a senior role in their company.",
+   "claim": "The user was promoted to a senior role.",
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
@@ -276,7 +261,7 @@
    "stated_date": "2006-02-01"
   },
   {
-   "record_id": "r19",
+   "record_id": "r18",
    "source_memory_id": "wikiP108001-Q53458422/s11#r0",
    "source_span": "I just got rid of an algae bloom last weekend after weeks of battling it",
    "entity": "user",
@@ -284,44 +269,44 @@
    "value": "algae bloom resolved",
    "claim": "The user resolved an algae bloom in their aquarium.",
    "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
+   "temporal_relation": "cessation",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2006-06-11"
+   "stated_date": "2006-06"
   },
   {
-   "record_id": "r20",
+   "record_id": "r19",
    "source_memory_id": "wikiP108001-Q53458422/s11#r2",
    "source_span": "My tank is a 20-gallon freshwater setup with a hang-on-back filter and a heater set to 76°F (24°C)",
    "entity": "user",
    "slot": "aquarium_setup",
    "value": "20-gallon freshwater with hang-on-back filter and heater",
-   "claim": "The user has a 20-gallon freshwater aquarium with a hang-on-back filter and heater set to 76°F.",
+   "claim": "The user has a 20-gallon freshwater aquarium with specific equipment.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2006-06-11"
+   "stated_date": "2006-06"
   },
   {
-   "record_id": "r21",
+   "record_id": "r20",
    "source_memory_id": "wikiP108001-Q53458422/s11#r2",
    "source_span": "I've also been monitoring the pH closely since I had a scare a few weeks ago when it dropped to 6",
    "entity": "user",
-   "slot": "aquarium_ph_history",
-   "value": "pH previously dropped to 6, now stable at 7.2",
-   "claim": "The user's aquarium pH previously dropped to 6 but is now stable at 7.2.",
+   "slot": "aquarium_ph_monitoring",
+   "value": "actively monitoring pH",
+   "claim": "The user actively monitors aquarium pH.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2006-06-11"
+   "stated_date": "2006-06"
   },
   {
-   "record_id": "r22",
+   "record_id": "r21",
    "source_memory_id": "wikiP108001-Q53458422/s12#r0",
    "source_span": "I just got an annual pass, so I'm planning to visit at least once a month",
    "entity": "user",
@@ -333,25 +318,25 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2006-08-27"
+   "stated_date": "2006-08"
   },
   {
-   "record_id": "r23",
+   "record_id": "r22",
    "source_memory_id": "wikiP108001-Q53458422/s13#r0",
-   "source_span": "I've had \"Slow Rush\" on repeat lately - I think I've listened to it 10 times in the past two weeks alone!",
+   "source_span": "I've had \"Slow Rush\" on repeat lately - I think I've listened to it 10 times in the past two weeks alone",
    "entity": "user",
    "slot": "music_listening_habit",
-   "value": "Tame Impala Slow Rush album (10 times in 2 weeks)",
-   "claim": "The user has listened to Tame Impala's Slow Rush album 10 times in the past two weeks.",
+   "value": "Tame Impala Slow Rush album",
+   "claim": "The user frequently listens to Tame Impala's Slow Rush album.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2007-01-07"
+   "stated_date": "2007-01"
   },
   {
-   "record_id": "r24",
+   "record_id": "r23",
    "source_memory_id": "wikiP108001-Q53458422/s15#r0",
    "source_span": "I've been living here since March",
    "entity": "user",
@@ -359,14 +344,14 @@
    "value": "Tokyo",
    "claim": "The user has been living in Tokyo since March.",
    "slot_cardinality": "single",
-   "temporal_relation": "replacement",
+   "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2007-03"
   },
   {
-   "record_id": "r25",
+   "record_id": "r24",
    "source_memory_id": "wikiP108001-Q53458422/s15#r2",
    "source_span": "I've learned how to make them in my Japanese cooking classes",
    "entity": "user",
@@ -378,10 +363,10 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2007-11-18"
+   "stated_date": "2007-11"
   },
   {
-   "record_id": "r26",
+   "record_id": "r25",
    "source_memory_id": "wikiP108001-Q53458422/s16#r0",
    "source_span": "I'm officially on staff at Fermilab now",
    "entity": "user",
@@ -398,7 +383,7 @@
    "stated_date": "2008"
   },
   {
-   "record_id": "r27",
+   "record_id": "r26",
    "source_memory_id": "wikiP108001-Q53458422/s16#r0",
    "source_span": "I'm officially on staff at Fermilab now",
    "entity": "user",
@@ -408,59 +393,59 @@
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
-    "r18"
+    "r17"
    ],
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2008"
   },
   {
-   "record_id": "r28",
+   "record_id": "r27",
    "source_memory_id": "wikiP108001-Q53458422/s18#r0",
    "source_span": "I've been trying to ride at least 50 miles a week",
    "entity": "user",
    "slot": "cycling_habit",
    "value": "50+ miles per week",
-   "claim": "The user rides at least 50 miles per week.",
+   "claim": "The user cycles at least 50 miles per week.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2008-04-25"
+   "stated_date": "2008-04"
   },
   {
-   "record_id": "r29",
+   "record_id": "r28",
    "source_memory_id": "wikiP108001-Q53458422/s19#r0",
    "source_span": "I'm planning to showcase my sculptures at a local art fair next month",
    "entity": "user",
    "slot": "hobby",
    "value": "sculpture",
-   "claim": "The user creates sculptures and plans to showcase them at an art fair.",
+   "claim": "The user creates sculptures.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2008-06-14"
+   "stated_date": "2008-06"
   },
   {
-   "record_id": "r30",
+   "record_id": "r29",
    "source_memory_id": "wikiP108001-Q53458422/s20#r2",
    "source_span": "if I skip my second cup I usually end up with a headache by midday and feel kind of foggy",
    "entity": "user",
    "slot": "caffeine_dependence",
    "value": "dependent on second cup of coffee",
-   "claim": "The user experiences headaches and fogginess if they skip their second cup of coffee.",
+   "claim": "The user experiences withdrawal symptoms when skipping their second cup of coffee.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2009-07-16"
+   "stated_date": "2009-07"
   },
   {
-   "record_id": "r31",
+   "record_id": "r30",
    "source_memory_id": "wikiP108001-Q53458422/s22#r0",
    "source_span": "My Dell Inspiron's storage is almost full and I haven't cleaned up my files since August 2022",
    "entity": "user",
@@ -472,15 +457,15 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2009-11-21"
+   "stated_date": "2009-11"
   },
   {
-   "record_id": "r32",
+   "record_id": "r31",
    "source_memory_id": "wikiP108001-Q53458422/s22#r0",
-   "source_span": "I bought in November 2021 for $25 - it's been super handy for transferring small files between computers",
+   "source_span": "I'm thinking of transferring some files to my 256GB USB flash drive, which I bought in November 2021 for $25",
    "entity": "user",
    "slot": "usb_flash_drive",
-   "value": "256GB USB flash drive ($25, purchased November 2021)",
+   "value": "256GB USB flash drive ($25)",
    "claim": "The user owns a 256GB USB flash drive purchased in November 2021 for $25.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
@@ -490,13 +475,13 @@
    "stated_date": "2021-11"
   },
   {
-   "record_id": "r33",
+   "record_id": "r32",
    "source_memory_id": "wikiP108001-Q53458422/s22#r2",
    "source_span": "my new 1TB Western Digital hard drive, which I got on March 2nd for $60",
    "entity": "user",
    "slot": "external_hard_drive",
-   "value": "1TB Western Digital hard drive ($60, purchased March 2nd)",
-   "claim": "The user owns a 1TB Western Digital hard drive purchased on March 2nd for $60.",
+   "value": "1TB Western Digital hard drive ($60)",
+   "claim": "The user owns a 1TB Western Digital external hard drive purchased on March 2nd for $60.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -505,84 +490,39 @@
    "stated_date": "2009-03-02"
   },
   {
-   "record_id": "r34",
-   "source_memory_id": "wikiP108001-Q53458422/s23#r2",
-   "source_span": "I've been doing meditation and reflection",
-   "entity": "user",
-   "slot": "meditation_practice",
-   "value": "regular meditation and reflection",
-   "claim": "The user practices meditation and reflection.",
-   "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2010-02-12"
-  },
-  {
-   "record_id": "r35",
-   "source_memory_id": "wikiP108001-Q53458422/s23#r4",
-   "source_span": "since I started my new job 6 months ago, I've been feeling more anxious about the future",
-   "entity": "user",
-   "slot": "job_start_date",
-   "value": "6 months before 2010-02-12",
-   "claim": "The user started a new job approximately 6 months before February 2010.",
-   "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2009-08"
-  },
-  {
-   "record_id": "r36",
-   "source_memory_id": "wikiP108001-Q53458422/s24#r0",
-   "source_span": "I just placed an order for skincare products from Sephora today",
-   "entity": "user",
-   "slot": "skincare_routine",
-   "value": "using Sephora skincare products",
-   "claim": "The user ordered skincare products from Sephora.",
-   "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2010-04-01"
-  },
-  {
-   "record_id": "r37",
+   "record_id": "r33",
    "source_memory_id": "wikiP108001-Q53458422/s25#r0",
    "source_span": "I've finished listening to three audiobooks in the past month",
    "entity": "user",
    "slot": "audiobook_listening_habit",
    "value": "3 audiobooks per month",
-   "claim": "The user listens to approximately three audiobooks per month.",
+   "claim": "The user listens to approximately 3 audiobooks per month.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2010-12-23"
+   "stated_date": "2010-12"
   },
   {
-   "record_id": "r38",
+   "record_id": "r34",
    "source_memory_id": "wikiP108001-Q53458422/s25#r2",
    "source_span": "I've already read it recently",
    "entity": "user",
    "slot": "book_read",
    "value": "The Nightingale by Kristin Hannah",
-   "claim": "The user recently read The Nightingale by Kristin Hannah.",
+   "claim": "The user has recently read The Nightingale by Kristin Hannah.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2010-12-23"
+   "stated_date": "2010-12"
   },
   {
-   "record_id": "r39",
+   "record_id": "r35",
    "source_memory_id": "wikiP108001-Q53458422/s26#r0",
-   "source_span": "I also incorporated strength training exercises on Mondays and Wednesdays to improve my overall endurance",
+   "source_span": "I also incorporated strength training exercises on Mondays and Wednesdays",
    "entity": "user",
    "slot": "workout_routine",
    "value": "strength training on Mondays and Wednesdays",
@@ -592,10 +532,10 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2011-05-03"
+   "stated_date": "2011-05"
   },
   {
-   "record_id": "r40",
+   "record_id": "r36",
    "source_memory_id": "wikiP108001-Q53458422/s26#r2",
    "source_span": "I'd like to make some adjustments to include my spin classes on Wednesdays and Sundays",
    "entity": "user",
@@ -604,15 +544,13 @@
    "claim": "The user takes spin classes on Wednesdays and Sundays.",
    "slot_cardinality": "single",
    "temporal_relation": "additive",
-   "relation_target_record_ids": [
-    "r39"
-   ],
+   "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2011-05-03"
+   "stated_date": "2011-05"
   },
   {
-   "record_id": "r41",
+   "record_id": "r37",
    "source_memory_id": "wikiP108001-Q53458422/s27#r0",
    "source_span": "I'm looking to get my rare 1960s Chanel No. 5 perfume bottle insured",
    "entity": "user",
@@ -624,12 +562,12 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2011-07-19"
+   "stated_date": "2011-07"
   },
   {
-   "record_id": "r42",
+   "record_id": "r38",
    "source_memory_id": "wikiP108001-Q53458422/s27#r0",
-   "source_span": "I recently acquired one, and I'm thinking of getting it insured as well",
+   "source_span": "I recently acquired one",
    "entity": "user",
    "slot": "collectible_item",
    "value": "first edition Harry Potter and the Philosopher's Stone",
@@ -639,25 +577,25 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2011-07-19"
+   "stated_date": "2011-07"
   },
   {
-   "record_id": "r43",
+   "record_id": "r39",
    "source_memory_id": "wikiP108001-Q53458422/s28#r0",
    "source_span": "I went to Walmart yesterday to buy some essentials and ended up spending $120",
    "entity": "user",
    "slot": "grocery_budget",
    "value": "approximately $100 per week",
-   "claim": "The user aims for a grocery budget of around $100 per week.",
+   "claim": "The user aims for a grocery budget of approximately $100 per week.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2011-09-08"
+   "stated_date": "2011-09"
   },
   {
-   "record_id": "r44",
+   "record_id": "r40",
    "source_memory_id": "wikiP108001-Q53458422/s29#r0",
    "source_span": "I just went through a court process recently, and it took about 3 weeks to get the court date",
    "entity": "user",
@@ -669,16 +607,33 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2012-02-15"
+   "stated_date": "2012-02"
   },
   {
-   "record_id": "r45",
+   "record_id": "r41",
    "source_memory_id": "wikiP108001-Q53458422/s30#r0",
    "source_span": "I officially started as a professor at the University of Zurich this month",
    "entity": "user",
    "slot": "employer",
    "value": "University of Zurich",
-   "claim": "The user started as a professor at the University of Zurich.",
+   "claim": "The user is a professor at the University of Zurich.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r25"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-08"
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "wikiP108001-Q53458422/s30#r0",
+   "source_span": "I officially started as a professor at the University of Zurich this month",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "professor",
+   "claim": "The user is a professor.",
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
@@ -689,41 +644,24 @@
    "stated_date": "2012-08"
   },
   {
-   "record_id": "r46",
-   "source_memory_id": "wikiP108001-Q53458422/s30#r0",
-   "source_span": "I officially started as a professor at the University of Zurich this month",
-   "entity": "user",
-   "slot": "job_title",
-   "value": "professor",
-   "claim": "The user is a professor.",
-   "slot_cardinality": "single",
-   "temporal_relation": "replacement",
-   "relation_target_record_ids": [
-    "r27"
-   ],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2012-08"
-  },
-  {
-   "record_id": "r47",
+   "record_id": "r43",
    "source_memory_id": "wikiP108001-Q53458422/s30#r0",
    "source_span": "I officially started as a professor at the University of Zurich this month",
    "entity": "user",
    "slot": "residence_city",
    "value": "Zurich",
-   "claim": "The user moved to Zurich.",
+   "claim": "The user is living in Zurich.",
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
-    "r24"
+    "r23"
    ],
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2012-08"
   },
   {
-   "record_id": "r48",
+   "record_id": "r44",
    "source_memory_id": "wikiP108001-Q53458422/s31#r0",
    "source_span": "I just started \"The Seven Husbands of Evelyn Hugo\" 2 weeks ago",
    "entity": "user",
@@ -735,24 +673,24 @@
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2012-10-10"
+   "stated_date": "2012-10"
   },
   {
-   "record_id": "r49",
+   "record_id": "r45",
    "source_memory_id": "wikiP108001-Q53458422/s32#r2",
-   "source_span": "I'm actually heading to the children's theater company today to attend my niece's acting showcase. She's been taking classes there",
+   "source_span": "I'm actually heading to the children's theater company today to attend my niece's acting showcase",
    "entity": "user",
    "slot": "family_relation",
-   "value": "has a niece taking acting classes",
-   "claim": "The user has a niece who is taking acting classes at a children's theater company.",
+   "value": "has a niece",
+   "claim": "The user has a niece who takes acting classes.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2012-12-26"
+   "stated_date": "2012-12"
   }
  ],
- "usage_in": 21349,
- "usage_out": 6838
+ "usage_in": 21279,
+ "usage_out": 6107
 }

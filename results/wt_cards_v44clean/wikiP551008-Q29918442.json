@@ -8,7 +8,7 @@
    "entity": "user",
    "slot": "residence_city",
    "value": "San Francisco",
-   "claim": "User moved to San Francisco.",
+   "claim": "User moved to San Francisco and now lives in an apartment there.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -18,27 +18,27 @@
   },
   {
    "record_id": "r2",
-   "source_memory_id": "wikiP551008-Q29918442/s1#r2",
-   "source_span": "I think 7:00 or 7:30 would be ideal for me to feel rested and refreshed",
+   "source_memory_id": "wikiP551008-Q29918442/s0#r1",
+   "source_span": "I need to call the internet company tomorrow morning",
    "entity": "user",
-   "slot": "preferred_wake_time",
-   "value": "7:00 or 7:30 AM",
-   "claim": "User prefers to wake up at 7:00 or 7:30 AM.",
+   "slot": "internet_provider_status",
+   "value": "needs installation",
+   "claim": "User needs to arrange internet installation with earliest window two weeks out.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2006-01-01"
+   "stated_date": "2006"
   },
   {
    "record_id": "r3",
    "source_memory_id": "wikiP551008-Q29918442/s1#r2",
-   "source_span": "I'm trying to get to bed around 10:30 PM every night",
+   "source_span": "I think 7:00 or 7:30 would be ideal for me to feel rested and refreshed",
    "entity": "user",
-   "slot": "target_bedtime",
-   "value": "10:30 PM",
-   "claim": "User aims to go to bed around 10:30 PM nightly.",
+   "slot": "preferred_wake_time",
+   "value": "7:00 or 7:30 AM",
+   "claim": "User prefers to wake up at 7:00 or 7:30 AM to feel rested and refreshed.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -48,6 +48,21 @@
   },
   {
    "record_id": "r4",
+   "source_memory_id": "wikiP551008-Q29918442/s1#r2",
+   "source_span": "I'm trying to get to bed around 10:30 PM every night",
+   "entity": "user",
+   "slot": "target_bedtime",
+   "value": "10:30 PM",
+   "claim": "User aims to go to bed around 10:30 PM every night.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2006-01-01"
+  },
+  {
+   "record_id": "r5",
    "source_memory_id": "wikiP551008-Q29918442/s1#r2",
    "source_span": "After stretching, I like to meditate for a bit and then have a healthy breakfast",
    "entity": "user",
@@ -62,7 +77,7 @@
    "stated_date": "2006-01-01"
   },
   {
-   "record_id": "r5",
+   "record_id": "r6",
    "source_memory_id": "wikiP551008-Q29918442/s1#r4",
    "source_span": "I like to meditate for 15 minutes on days when I wake up at 7:00 or 7:30",
    "entity": "user",
@@ -77,28 +92,13 @@
    "stated_date": "2006-01-01"
   },
   {
-   "record_id": "r6",
+   "record_id": "r7",
    "source_memory_id": "wikiP551008-Q29918442/s2#r0",
    "source_span": "I'm looking for some inspiration for my sculpting projects",
    "entity": "user",
    "slot": "hobby",
    "value": "sculpting",
-   "claim": "User has a hobby of sculpting.",
-   "slot_cardinality": "set",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2006-04-25"
-  },
-  {
-   "record_id": "r7",
-   "source_memory_id": "wikiP551008-Q29918442/s2#r4",
-   "source_span": "I recently started working with it in my sculpting class",
-   "entity": "user",
-   "slot": "sculpting_material",
-   "value": "soapstone",
-   "claim": "User recently started working with soapstone in sculpting class.",
+   "claim": "User has sculpting as a hobby and seeks inspiration for projects.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -108,10 +108,25 @@
   },
   {
    "record_id": "r8",
+   "source_memory_id": "wikiP551008-Q29918442/s2#r4",
+   "source_span": "I recently started working with it in my sculpting class",
+   "entity": "user",
+   "slot": "sculpting_material",
+   "value": "soapstone",
+   "claim": "User recently started working with soapstone in a sculpting class.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2006-04-25"
+  },
+  {
+   "record_id": "r9",
    "source_memory_id": "wikiP551008-Q29918442/s3#r0",
    "source_span": "I've started using a white noise machine to help me sleep better at night",
    "entity": "user",
-   "slot": "sleep_aid",
+   "slot": "sleep_aid_device",
    "value": "white noise machine",
    "claim": "User uses a white noise machine to improve sleep quality.",
    "slot_cardinality": "single",
@@ -122,7 +137,7 @@
    "stated_date": "2007-06-08"
   },
   {
-   "record_id": "r9",
+   "record_id": "r10",
    "source_memory_id": "wikiP551008-Q29918442/s3#r2",
    "source_span": "I've found that the \"rainfall\" setting is my favorite",
    "entity": "user",
@@ -137,7 +152,7 @@
    "stated_date": "2007-06-08"
   },
   {
-   "record_id": "r10",
+   "record_id": "r11",
    "source_memory_id": "wikiP551008-Q29918442/s3#r4",
    "source_span": "I've been using my Fitbit Charge 3 to track my sleep patterns",
    "entity": "user",
@@ -152,13 +167,13 @@
    "stated_date": "2007-06-08"
   },
   {
-   "record_id": "r11",
+   "record_id": "r12",
    "source_memory_id": "wikiP551008-Q29918442/s4#r4",
    "source_span": "I remember that Impressionist Masterpieces exhibit, it was on January 15th",
    "entity": "user",
    "slot": "museum_visit",
-   "value": "Impressionist Masterpieces exhibit at City Art Museum",
-   "claim": "User visited the Impressionist Masterpieces exhibit at City Art Museum on January 15th.",
+   "value": "City Art Museum - Impressionist Masterpieces exhibit",
+   "claim": "User visited City Art Museum's Impressionist Masterpieces exhibit on January 15th.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -167,12 +182,12 @@
    "stated_date": "2007-01-15"
   },
   {
-   "record_id": "r12",
+   "record_id": "r13",
    "source_memory_id": "wikiP551008-Q29918442/s5#r2",
    "source_span": "I flew with them from New York to Dubai on January 12th and had a great experience",
    "entity": "user",
    "slot": "travel_history",
-   "value": "New York to Dubai on Emirates Airlines",
+   "value": "New York to Dubai via Emirates Airlines",
    "claim": "User flew from New York to Dubai on Emirates Airlines on January 12th.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
@@ -182,7 +197,7 @@
    "stated_date": "2008-01-12"
   },
   {
-   "record_id": "r13",
+   "record_id": "r14",
    "source_memory_id": "wikiP551008-Q29918442/s6#r2",
    "source_span": "I've been trying to improve my Japanese language skills for my students at the language school in Roppongi",
    "entity": "user",
@@ -197,13 +212,13 @@
    "stated_date": "2008-11-15"
   },
   {
-   "record_id": "r14",
+   "record_id": "r15",
    "source_memory_id": "wikiP551008-Q29918442/s6#r2",
    "source_span": "my students at the language school in Roppongi",
    "entity": "user",
    "slot": "job_location",
    "value": "Roppongi",
-   "claim": "User works at a language school in Roppongi.",
+   "claim": "User works at a language school located in Roppongi.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -212,13 +227,13 @@
    "stated_date": "2008-11-15"
   },
   {
-   "record_id": "r15",
+   "record_id": "r16",
    "source_memory_id": "wikiP551008-Q29918442/s7#r0",
    "source_span": "I just got back from Outer Banks in North Carolina last week and loved it",
    "entity": "user",
    "slot": "travel_history",
    "value": "Outer Banks, North Carolina",
-   "claim": "User recently visited and enjoyed Outer Banks, North Carolina.",
+   "claim": "User recently visited and enjoyed Outer Banks in North Carolina.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -227,7 +242,7 @@
    "stated_date": "2009-04-22"
   },
   {
-   "record_id": "r16",
+   "record_id": "r17",
    "source_memory_id": "wikiP551008-Q29918442/s8#r0",
    "source_span": "I just stocked up on groceries at Walmart last Sunday and spent around $120",
    "entity": "user",
@@ -242,7 +257,7 @@
    "stated_date": "2009-07-19"
   },
   {
-   "record_id": "r17",
+   "record_id": "r18",
    "source_memory_id": "wikiP551008-Q29918442/s9#r0",
    "source_span": "I get home from work around 6:30 pm from Monday to Friday",
    "entity": "user",
@@ -257,7 +272,7 @@
    "stated_date": "2010-09-02"
   },
   {
-   "record_id": "r18",
+   "record_id": "r19",
    "source_memory_id": "wikiP551008-Q29918442/s10#r2",
    "source_span": "I've been using online resources like Magoosh and Khan Academy to prepare for the exam",
    "entity": "user",
@@ -272,7 +287,7 @@
    "stated_date": "2010-12-26"
   },
   {
-   "record_id": "r19",
+   "record_id": "r20",
    "source_memory_id": "wikiP551008-Q29918442/s10#r2",
    "source_span": "my research experience in natural language processing",
    "entity": "user",
@@ -287,13 +302,13 @@
    "stated_date": "2010-12-26"
   },
   {
-   "record_id": "r20",
+   "record_id": "r21",
    "source_memory_id": "wikiP551008-Q29918442/s10#r4",
    "source_span": "I just completed my master's thesis in computer science last week",
    "entity": "user",
-   "slot": "education",
-   "value": "Master's degree in Computer Science",
-   "claim": "User completed a master's thesis in computer science.",
+   "slot": "education_degree",
+   "value": "Master's in Computer Science",
+   "claim": "User completed a Master's degree in Computer Science.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -302,13 +317,13 @@
    "stated_date": "2010-12-26"
   },
   {
-   "record_id": "r21",
+   "record_id": "r22",
    "source_memory_id": "wikiP551008-Q29918442/s11#r0",
    "source_span": "I've been using a new body wash that I got last month from the sale at Target - it's the lavender scented one",
    "entity": "user",
    "slot": "body_wash_brand",
    "value": "lavender scented body wash from Target",
-   "claim": "User uses a lavender scented body wash purchased from Target.",
+   "claim": "User uses a lavender-scented body wash purchased from Target.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -317,7 +332,7 @@
    "stated_date": "2011-02-09"
   },
   {
-   "record_id": "r22",
+   "record_id": "r23",
    "source_memory_id": "wikiP551008-Q29918442/s12#r0",
    "source_span": "my great-grandmother's antique brooch is worth over $1,000 due to its rarity and condition",
    "entity": "user",
@@ -332,7 +347,7 @@
    "stated_date": "2011-05-06"
   },
   {
-   "record_id": "r23",
+   "record_id": "r24",
    "source_memory_id": "wikiP551008-Q29918442/s12#r0",
    "source_span": "I'm considering selling some of my antique items, including a vintage record player from the 1960s and an antique vase from the 1930s",
    "entity": "user",
@@ -347,7 +362,7 @@
    "stated_date": "2011-05-06"
   },
   {
-   "record_id": "r24",
+   "record_id": "r25",
    "source_memory_id": "wikiP551008-Q29918442/s12#r2",
    "source_span": "I'm considering selling my antique silverware from the 1800s",
    "entity": "user",
@@ -362,7 +377,7 @@
    "stated_date": "2011-05-06"
   },
   {
-   "record_id": "r25",
+   "record_id": "r26",
    "source_memory_id": "wikiP551008-Q29918442/s12#r4",
    "source_span": "I'm also considering selling my vintage typewriter from the 1950s",
    "entity": "user",
@@ -377,7 +392,7 @@
    "stated_date": "2011-05-06"
   },
   {
-   "record_id": "r26",
+   "record_id": "r27",
    "source_memory_id": "wikiP551008-Q29918442/s13#r0",
    "source_span": "I just got a promotion to senior account manager",
    "entity": "user",
@@ -387,14 +402,14 @@
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
-    "r13"
+    "r14"
    ],
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2012-07-16"
   },
   {
-   "record_id": "r27",
+   "record_id": "r28",
    "source_memory_id": "wikiP551008-Q29918442/s13#r2",
    "source_span": "I received the news I had been waiting for - I got the promotion three weeks after the interview with the VP of Marketing",
    "entity": "user",
@@ -409,13 +424,13 @@
    "stated_date": "2012-07-16"
   },
   {
-   "record_id": "r28",
+   "record_id": "r29",
    "source_memory_id": "wikiP551008-Q29918442/s14#r0",
    "source_span": "I've been to Sequoia before - during our road trip, we hiked the Congress Trail",
    "entity": "user",
    "slot": "travel_history",
-   "value": "Sequoia National Park, Congress Trail hike",
-   "claim": "User has visited Sequoia National Park and hiked the Congress Trail.",
+   "value": "Sequoia National Park - Congress Trail hike",
+   "claim": "User previously visited Sequoia National Park and hiked the Congress Trail.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -424,7 +439,22 @@
    "stated_date": "2012-10-13"
   },
   {
-   "record_id": "r29",
+   "record_id": "r30",
+   "source_memory_id": "wikiP551008-Q29918442/s14#r4",
+   "source_span": "We loved the scenic drives on our road trip when we stopped at Sequoia on the way to Yosemite",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "Sequoia National Park and Yosemite road trip",
+   "claim": "User took a road trip visiting Sequoia National Park and Yosemite.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-10-13"
+  },
+  {
+   "record_id": "r31",
    "source_memory_id": "wikiP551008-Q29918442/s15#r0",
    "source_span": "my cousin's wife Rachel came over to help us with the cleaning recently",
    "entity": "user",
@@ -439,13 +469,13 @@
    "stated_date": "2013-03-20"
   },
   {
-   "record_id": "r30",
+   "record_id": "r32",
    "source_memory_id": "wikiP551008-Q29918442/s16#r0",
    "source_span": "I just finished the seventh episode of the latest season and I'm hooked",
    "entity": "user",
    "slot": "tv_show_watching",
-   "value": "Stranger Things",
-   "claim": "User is watching Stranger Things and has completed the seventh episode of the latest season.",
+   "value": "Stranger Things - latest season",
+   "claim": "User is watching and enjoying the latest season of Stranger Things.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -454,7 +484,7 @@
    "stated_date": "2013-12-23"
   },
   {
-   "record_id": "r31",
+   "record_id": "r33",
    "source_memory_id": "wikiP551008-Q29918442/s16#r4",
    "source_span": "I've read \"The Wheel of Time\" series and loved it",
    "entity": "user",
@@ -469,13 +499,13 @@
    "stated_date": "2013-12-23"
   },
   {
-   "record_id": "r32",
+   "record_id": "r34",
    "source_memory_id": "wikiP551008-Q29918442/s18#r0",
    "source_span": "I just got back from the nearby nature reserve and I spot a pair of Ospreys nesting on a platform near the lake",
    "entity": "user",
    "slot": "hobby",
    "value": "birding",
-   "claim": "User has a hobby of birding and recently spotted Ospreys at a nearby nature reserve.",
+   "claim": "User enjoys birding and recently spotted Ospreys at a nearby nature reserve.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -484,7 +514,7 @@
    "stated_date": "2014-08-27"
   },
   {
-   "record_id": "r33",
+   "record_id": "r35",
    "source_memory_id": "wikiP551008-Q29918442/s19#r0",
    "source_span": "I've been quite active in volunteering lately, like at that bake sale on March 25th where I helped set up stalls and sold goods for the Cancer Support Group",
    "entity": "user",
@@ -499,7 +529,7 @@
    "stated_date": "2015-03-25"
   },
   {
-   "record_id": "r34",
+   "record_id": "r36",
    "source_memory_id": "wikiP551008-Q29918442/s19#r2",
    "source_span": "I recently participated in the \"Walk for Hunger\" event on April 15th",
    "entity": "user",
@@ -514,13 +544,13 @@
    "stated_date": "2015-04-15"
   },
   {
-   "record_id": "r35",
+   "record_id": "r37",
    "source_memory_id": "wikiP551008-Q29918442/s20#r0",
    "source_span": "I actually participated in a local theater production of \"Hamlet\" as an extra about 6 weeks ago",
    "entity": "user",
-   "slot": "hobby",
-   "value": "theater",
-   "claim": "User participated in a local theater production of Hamlet as an extra.",
+   "slot": "theater_activity",
+   "value": "Hamlet - extra",
+   "claim": "User participated as an extra in a local theater production of Hamlet.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -529,7 +559,7 @@
    "stated_date": "2015-10-10"
   },
   {
-   "record_id": "r36",
+   "record_id": "r38",
    "source_memory_id": "wikiP551008-Q29918442/s21#r0",
    "source_span": "I've been taking the 7:45 am train from my local station to downtown every weekday since the beginning of the month",
    "entity": "user",
@@ -544,28 +574,13 @@
    "stated_date": "2016-03-17"
   },
   {
-   "record_id": "r37",
+   "record_id": "r39",
    "source_memory_id": "wikiP551008-Q29918442/s21#r2",
    "source_span": "my colleague Rachel has agreed to carpool with me on Fridays",
    "entity": "user",
    "slot": "carpool_arrangement",
-   "value": "Rachel, Fridays",
+   "value": "Rachel - Fridays",
    "claim": "User carpools with colleague Rachel on Fridays.",
-   "slot_cardinality": "single",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "on Fridays",
-   "implies_stale_slots": [],
-   "stated_date": "2016-03-17"
-  },
-  {
-   "record_id": "r38",
-   "source_memory_id": "wikiP551008-Q29918442/s21#r4",
-   "source_span": "I've been reading a novel on my commute, and I'm currently on chapter 7",
-   "entity": "user",
-   "slot": "commute_activity",
-   "value": "reading a novel",
-   "claim": "User reads a novel during commute and is on chapter 7.",
    "slot_cardinality": "single",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -574,13 +589,28 @@
    "stated_date": "2016-03-17"
   },
   {
-   "record_id": "r39",
+   "record_id": "r40",
+   "source_memory_id": "wikiP551008-Q29918442/s21#r4",
+   "source_span": "I've been reading a novel on my commute, and I'm currently on chapter 7",
+   "entity": "user",
+   "slot": "commute_activity",
+   "value": "reading novel",
+   "claim": "User reads novels during commute.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016-03-17"
+  },
+  {
+   "record_id": "r41",
    "source_memory_id": "wikiP551008-Q29918442/s22#r2",
    "source_span": "I've done a few charity runs in the past, like the one last Sunday, where I completed the 5K in 35 minutes",
    "entity": "user",
-   "slot": "hobby",
-   "value": "running",
-   "claim": "User participates in charity runs and completed a 5K in 35 minutes.",
+   "slot": "charity_run_participation",
+   "value": "5K charity run - 35 minutes",
+   "claim": "User completed a 5K charity run in 35 minutes.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -589,7 +619,7 @@
    "stated_date": "2016-06-14"
   },
   {
-   "record_id": "r40",
+   "record_id": "r42",
    "source_memory_id": "wikiP551008-Q29918442/s23#r0",
    "source_span": "I just moved into my new place in Mountain View",
    "entity": "user",
@@ -606,11 +636,11 @@
    "stated_date": "2017"
   },
   {
-   "record_id": "r41",
+   "record_id": "r43",
    "source_memory_id": "wikiP551008-Q29918442/s24#r0",
    "source_span": "I just got back from FrightFest in London, where I attended a sneak peek screening of \"The Cabin in the Woods\" on August 12th",
    "entity": "user",
-   "slot": "travel_history",
+   "slot": "film_festival_attendance",
    "value": "FrightFest in London",
    "claim": "User attended FrightFest in London on August 12th.",
    "slot_cardinality": "set",
@@ -621,13 +651,13 @@
    "stated_date": "2017-08-12"
   },
   {
-   "record_id": "r42",
+   "record_id": "r44",
    "source_memory_id": "wikiP551008-Q29918442/s24#r2",
    "source_span": "It was my second festival in a month, following the Asian American",
    "entity": "user",
-   "slot": "travel_history",
+   "slot": "film_festival_attendance",
    "value": "Asian American film festival",
-   "claim": "User attended an Asian American film festival within a month before FrightFest.",
+   "claim": "User attended an Asian American film festival.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -636,22 +666,22 @@
    "stated_date": "2017-08-24"
   },
   {
-   "record_id": "r43",
+   "record_id": "r45",
    "source_memory_id": "wikiP551008-Q29918442/s25#r2",
    "source_span": "I remember posting about mine on Instagram on January 1st and it got 27 likes",
    "entity": "user",
-   "slot": "social_media_presence",
+   "slot": "social_media_platform",
    "value": "Instagram",
-   "claim": "User posts on Instagram about New Year's resolutions.",
+   "claim": "User posts on Instagram.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
    "condition": "",
    "implies_stale_slots": [],
-   "stated_date": "2018-01-01"
+   "stated_date": "2017-01-01"
   },
   {
-   "record_id": "r44",
+   "record_id": "r46",
    "source_memory_id": "wikiP551008-Q29918442/s26#r0",
    "source_span": "I recently inherited a set of 19th-century Chinese porcelain vases",
    "entity": "user",
@@ -666,7 +696,7 @@
    "stated_date": "2018-01-04"
   },
   {
-   "record_id": "r45",
+   "record_id": "r47",
    "source_memory_id": "wikiP551008-Q29918442/s26#r2",
    "source_span": "I recently found a vintage Rolex watch at an antique store",
    "entity": "user",
@@ -681,13 +711,13 @@
    "stated_date": "2018-01-04"
   },
   {
-   "record_id": "r46",
+   "record_id": "r48",
    "source_memory_id": "wikiP551008-Q29918442/s27#r0",
    "source_span": "I've been trying to paint 3-4 times a week lately, and it's been really helping me unwind",
    "entity": "user",
    "slot": "hobby",
-   "value": "painting",
-   "claim": "User paints 3-4 times per week as a hobby for relaxation.",
+   "value": "acrylic painting",
+   "claim": "User paints with acrylics 3-4 times per week as a hobby.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -696,13 +726,13 @@
    "stated_date": "2018-04-01"
   },
   {
-   "record_id": "r47",
+   "record_id": "r49",
    "source_memory_id": "wikiP551008-Q29918442/s28#r0",
    "source_span": "I recently painted the walls a lighter grey and got a new floor lamp",
    "entity": "user",
-   "slot": "home_decor",
-   "value": "light grey walls, new floor lamp",
-   "claim": "User painted walls light grey and purchased a new floor lamp.",
+   "slot": "home_decor_update",
+   "value": "lighter grey walls, new floor lamp",
+   "claim": "User painted walls lighter grey and purchased a new floor lamp.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -711,11 +741,11 @@
    "stated_date": "2019-06-11"
   },
   {
-   "record_id": "r48",
+   "record_id": "r50",
    "source_memory_id": "wikiP551008-Q29918442/s28#r0",
    "source_span": "the area rug I purchased from Overstock also has a cream color in its design",
    "entity": "user",
-   "slot": "home_decor",
+   "slot": "home_decor_update",
    "value": "cream-colored area rug from Overstock",
    "claim": "User purchased a cream-colored area rug from Overstock.",
    "slot_cardinality": "set",
@@ -726,7 +756,7 @@
    "stated_date": "2019-06-11"
   },
   {
-   "record_id": "r49",
+   "record_id": "r51",
    "source_memory_id": "wikiP551008-Q29918442/s29#r2",
    "source_span": "I got a free coupon from my last maintenance visit, so it only cost me $25 instead of the usual price",
    "entity": "user",
@@ -741,7 +771,22 @@
    "stated_date": "2019-09-08"
   },
   {
-   "record_id": "r50",
+   "record_id": "r52",
+   "source_memory_id": "wikiP551008-Q29918442/s29#r2",
+   "source_span": "I'm going to the nearby trail more often lately",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "biking",
+   "claim": "User bikes frequently at a nearby trail.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019-09-08"
+  },
+  {
+   "record_id": "r53",
    "source_memory_id": "wikiP551008-Q29918442/s30#r1",
    "source_span": "I've moved to Berlin",
    "entity": "user",
@@ -751,20 +796,20 @@
    "slot_cardinality": "single",
    "temporal_relation": "replacement",
    "relation_target_record_ids": [
-    "r40"
+    "r42"
    ],
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2020"
   },
   {
-   "record_id": "r51",
+   "record_id": "r54",
    "source_memory_id": "wikiP551008-Q29918442/s31#r0",
    "source_span": "I got my brown loafers polished on January 8th",
    "entity": "user",
    "slot": "shoe_collection",
    "value": "brown loafers",
-   "claim": "User owns brown loafers that were polished on January 8th.",
+   "claim": "User owns brown loafers.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -773,13 +818,13 @@
    "stated_date": "2020-01-08"
   },
   {
-   "record_id": "r52",
+   "record_id": "r55",
    "source_memory_id": "wikiP551008-Q29918442/s32#r0",
    "source_span": "I finally got around to setting up my home recording studio today",
    "entity": "user",
    "slot": "hobby",
-   "value": "music recording",
-   "claim": "User set up a home recording studio.",
+   "value": "acoustic guitar recording",
+   "claim": "User set up a home recording studio for acoustic guitar.",
    "slot_cardinality": "set",
    "temporal_relation": "equivalent",
    "relation_target_record_ids": [],
@@ -788,7 +833,7 @@
    "stated_date": "2020-11-18"
   },
   {
-   "record_id": "r53",
+   "record_id": "r56",
    "source_memory_id": "wikiP551008-Q29918442/s32#r2",
    "source_span": "I'm planning to record some blues songs",
    "entity": "user",
@@ -801,23 +846,8 @@
    "condition": "",
    "implies_stale_slots": [],
    "stated_date": "2020-11-18"
-  },
-  {
-   "record_id": "r54",
-   "source_memory_id": "wikiP551008-Q29918442/s32#r4",
-   "source_span": "I've been focusing on learning new chord progressions and fingerpicking patterns for my acoustic guitar",
-   "entity": "user",
-   "slot": "hobby",
-   "value": "acoustic guitar",
-   "claim": "User plays acoustic guitar and is learning chord progressions and fingerpicking patterns.",
-   "slot_cardinality": "set",
-   "temporal_relation": "equivalent",
-   "relation_target_record_ids": [],
-   "condition": "",
-   "implies_stale_slots": [],
-   "stated_date": "2020-11-18"
   }
  ],
- "usage_in": 21128,
- "usage_out": 7282
+ "usage_in": 21115,
+ "usage_out": 7544
 }
