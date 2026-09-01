@@ -121,3 +121,43 @@ first_vs_last +1.4。
 状态漏进人设。任何"真实语料混音做干扰项"的基准都要过这一关。
 补救规则(已实施,可复现):干扰会话必须经过"目标槽位第一人称/第二人称
 状态措辞"过滤闸;本基准的过滤规则见 scripts/build_corpus_v23.py。
+
+---
+
+## 九、人工核验第一份背书(senior2 完成 84/84,2026-08-31)
+
+**senior2 独立复现了同一现象**,且用词与机器审计一致:
+> "Missing position change on 1824-07-16: **promoted to Senior Account Manager**"
+> "Missing position change around 1840-03: **started first job as a Software...**"
+> "A position change is missing: in 2016, the persona says **I just got a p...**"
+
+### 人机一致性(非对照题 81 条)
+
+| 机器判定 | n | senior2 判 errors | 比例 |
+|---|---|---|---|
+| 污染链 | 29 | 4 | **13.8%** |
+| 干净链 | 52 | 1 | 1.9% |
+
+**富集 7.2×,Fisher 双尾 p=0.0528**(边际显著,n 小)。方向明确:人类独立
+标出的错误集中落在机器标记的污染链上。
+
+### 三条必须一起说的限定
+
+1. **中位用时 29 秒/题**,而每题需读 ~50K 字符原文——senior2 在**速览**。
+   故其 "errors" 判定是强证据(速览下仍能发现),"correct" 判定是弱证据
+   (灵敏度低,不能用来否定机器发现);
+2. **对照题 2/3 命中**:date_shift 与 delete_row 抓到,fabricate_anchor
+   (伪造 'AC Milan' 锚句)判为 correct 漏掉——与速览一致(核对锚句需要
+   回查原文);
+3. **机器有假阴性**:chain-050(wikiP39001)被 senior2 抓到"promoted to
+   senior role"漏检,而机器审计未标记。查因:v2.3 机械规则写的是
+   `(got|was) promoted`,漏了 "was **recently** promoted" 这种插入副词的
+   写法。**已修**(允许 recently/just/finally/officially),第三刀由 71 句
+   增至 73 句,chain-050 残余归零。
+
+### 判读
+
+人工核验首份数据**支持**污染判定的方向,但样本量与速览深度都不足以定量
+背书"47/144"这个规模。author 的 149 题(全库覆盖、可慢读)仍是主口径升级
+的必要条件。senior1 尚未开始(0/85),κ 一致率因此仍无法计算——**两位
+senior 的重叠集是 κ 的唯一来源**。

@@ -24,7 +24,7 @@ from build_corpus_v21 import expand_sentence, unwrap  # noqa: E402
 
 JOB = (r"engineer|manager|analyst|specialist|teacher|designer|developer"
        r"|consultant|scientist|entrepreneur")
-WORK = (r"\bmy job\b|\bnew (job|role|position)\b|\b(got|was) promoted\b"
+WORK = (r"\bmy job\b|\bnew (job|role|position)\b|\b(got|was|been|were) (recently |just |finally |officially )?promoted\b"
         r"|\bi work (at|for|as)\b|\bi'm (a|an) [a-z ]{0,25}(" + JOB + r")\b"
         r"|\bi started (at|working|my new)\b|\bmy (current )?role as\b"
         r"|\bsince i started (my )?(new )?(job|role|work)\b")
