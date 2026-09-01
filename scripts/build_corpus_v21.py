@@ -52,14 +52,18 @@ def unwrap(t):
         return t.get("role", "user"), t.get("content"), \
             (lambda new, _t=t: {**_t, "content": new})
     s = str(t)
-    if s.lstrip().startswith("{") and "'role'" in s[:40]:
-        try:
-            d = ast.literal_eval(s)
-            if isinstance(d, dict) and isinstance(d.get("content"), str):
-                return d.get("role", "user"), d["content"], \
-                    (lambda new, _d=d: str({**_d, "content": new}))
-        except (ValueError, SyntaxError):
-            pass
+    # 本语料 45% 的 dict 型 turn 在 400 字符处被截断 → 非法字面量,
+    # ast 解析必失败,故用正则拆壳(闭合与截断两种形态都要能回写)。
+    m = re.match(r"^(\{'role':\s*'[a-z]+',\s*'content':\s*)([\"'])(.*)$",
+                 s, re.S)
+    if m:
+        head, q, rest = m.group(1), m.group(2), m.group(3)
+        closed = rest.endswith(q + "}")
+        body = rest[:-2] if closed else rest
+        role = re.search(r"'role':\s*'([a-z]+)'", head).group(1)
+        tail = (q + "}") if closed else ""
+        return role, body, (lambda new, h=head, _q=q, tl=tail:
+                            f"{h}{_q}{new}{tl}")
     return "user", s, (lambda new: new)
 
 

@@ -89,11 +89,18 @@ def user_log(entry: dict) -> str:
 
 
 def main() -> int:
+    global OUT
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--data", default="data/wikistate_full_ALL.json")
+    ap.add_argument("--out", default=str(OUT))
+    ap.add_argument("--uids", default="")
     a = ap.parse_args()
-    data = json.loads((ROOT / "data/wikistate_full_ALL.json")
-                      .read_text(encoding="utf-8"))
+    OUT = Path(a.out)
+    data = json.loads((ROOT / a.data).read_text(encoding="utf-8"))
+    if a.uids:
+        keep = set(Path(a.uids).read_text(encoding="utf-8").split(","))
+        data = [e for e in data if e["uid"] in keep]
     done = {json.loads(l)["uid"] for l in open(OUT, encoding="utf-8")} \
         if OUT.exists() else set()
     fh = open(OUT, "a", encoding="utf-8")
