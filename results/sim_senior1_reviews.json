@@ -1,0 +1,565 @@
+[
+ {
+  "item": "chain-006",
+  "verdict": "correct",
+  "note": "Checked all 33 sessions (uid wikiP108038-Q37830162). Only three first-person employer statements exist and all three are in the chain with the right dates: 1991-11-01 'today is officially my first day at Kovai Medical Center and Hospital' (session dated 1991-11-01), 2004-08-01 'I officially started today at the Genome Institute of Singapore', and 2012-09-01 'Officially started as a postdoctoral research fellow at University of Michigan today'. Nothing else in the small-talk sessions names an employer (the 1994 'team-building activity' and 2001 'soccer game with my coworkers' chats mention work but never an employer), so the 1991->2004 gap is genuine, not a missed row. Order and values match the anchors.",
+  "classes": []
+ },
+ {
+  "item": "chain-026",
+  "verdict": "correct",
+  "note": "uid wikiP39003-Q6248447, slot position. Three office statements in the log, all three represented: 1964 'as of today I'm a member of the First Chamber' (session dated 1964-00-00), 1971-01-11 'as of today I'm officially a member of the Swedish Riksdag', 1974-05-06 'I've taken up the post as Representative of the Parliamentary Assembly of the Council of Europe'. Every other session is unrelated chit-chat (Tokyo restaurants, salsa shoes, Instagram hashtags) with no office claim, and the values/dates line up with the anchor sentences.",
+  "classes": []
+ },
+ {
+  "item": "chain-046",
+  "verdict": "correct",
+  "note": "uid wikiP39043-Q13391423. All three appointments are captured with correct dates: 1944-07-10 'I have been appointed bishop of Tui', 1959 'I've been appointed Bishop of Tui-Vigo' (session dated 1959-00-00, no day given, which the row reflects), 1969-02-18 'I've been named General Vicar of the Spanish Armies'. I did consider the 1949 and 1965 filler sessions where the speaker says 'I'm a Senior Software Engineer at TechCorp' and mentions a possible 'Technical Lead or Architect position' - I do not count these: they are boilerplate distractor chatter (the same generic sessions recur across other personas) and a hypothetical career aspiration, not this persona's held office. Chain is complete as-is.",
+  "classes": []
+ },
+ {
+  "item": "chain-061",
+  "verdict": "correct",
+  "note": "uid wikiP39013-Q592596. Three ecclesiastical appointments, all present and in order: 1752 'I've been made titular archbishop', 1754 'I have been made Roman Catholic Bishop of Hradec Kralove', 1764 'I have been made Roman Catholic Archbishop of Prague'. Each row's date matches the session that carries its anchor (1752-00-00, 1754-00-00, 1764-00-00 - year-only, as in the source). No other session asserts a position; the 1760 'English teaching job in Roppongi' session is unrelated filler chatter and names no office for this persona.",
+  "classes": []
+ },
+ {
+  "item": "chain-080",
+  "verdict": "correct",
+  "note": "uid wikiP54020-Q98594955, slot team, 6 rows. All six signings appear in the log and all six are in the chain, in the right order and with the right years: 2010 Cykling Odense, 2013 Hedensted Cykelklub, 2015 Horsens Amator Cykleklub ('I'm riding for Horsens Amator Cykleklub now, that's my new team'), 2017 Team Kvickly Odder Junior, 2021 Team ColoQuick, 2024 Airtox-Carl Ras ('I'm riding for Airtox-Carl Ras from today'). I specifically looked at the 2017->2021 gap: sessions 18-25 are all unrelated (movies, budgeting, Arabic lessons) and contain no team change, so no row is missing.",
+  "classes": []
+ },
+ {
+  "item": "chain-097",
+  "verdict": "correct",
+  "note": "uid wikiP108024-Q60644344. Three employer statements, all in the chain with matching month-precision dates: 2002-10 'Southampton General Hospital is my new employer as of this month', 2003-10 'I've started a research post at the MRC Lifecourse Epidemiology Unit, so that's my new employer as of this month', 2006-10 'I've started at Christchurch Hospital this week' (session dated 2006-10-00). The 2003 move after only a year is genuinely what the log says. No other session names an employer.",
+  "classes": []
+ },
+ {
+  "item": "chain-120",
+  "verdict": "correct",
+  "note": "uid wikiP108013-Q41591689. Three employer starts, all captured: 1991-04-01 'I've just started at the Institute of Psychiatry, Psychology and Neuroscience', 1995-09-01 'I've started at the University of Nottingham today', 2000-10-01 'as of today I've started at the University of Cambridge'. Each anchor sits in a session with exactly that date. The 1999 session mentioning 'my English teaching job... in Roppongi' is generic filler with no named employer and is not this persona's history, so it is not a missed state.",
+  "classes": []
+ },
+ {
+  "item": "chain-136",
+  "verdict": "correct",
+  "note": "uid wikiP108006-Q67650882. Three employer statements, all present with correct dates: 2014-07-14 'I officially started today as a postdoctoral researcher at the Institute of Physics, Johannes Gutenberg-University Mainz', 2016-12-16 'I officially started at the Institute of High Energy Physics today', 2019-04-01 'today I officially started at CERN'. Values match the anchors, chronological order is right, and no other session (all hobby/shopping chatter) asserts a further employer.",
+  "classes": []
+ },
+ {
+  "item": "chain-014",
+  "verdict": "correct",
+  "note": "Slot residence (uid wikiP551010-Q17362765). All three rows check out against the log: 1923-00-00 Dresden ('I've moved and Dresden is now my residence'), 1957-00-00 Berlin and 1961-00-00 Senftenberg all appear verbatim in the sessions dated exactly those dates, in that order, and no fourth residence is asserted anywhere. The Vancouver material in the 1937-11-18 session is a stated plan ('I'm moving to Vancouver soon'), and the London/Philly/Bay-Area mentions in the small-talk sessions are trips or venue chatter, so I did not count them as residence states.",
+  "evidence_quote": "Make a note: as of today Senftenberg is my new residence, so update anything that still lists the old address.",
+  "classes": []
+ },
+ {
+  "item": "chain-031",
+  "verdict": "correct",
+  "note": "Slot team (uid wikiP54001-Q16225986). Four rows, four matching sessions: Team PCW on 2007-01-01, Selle Italia Ghezzi on 2007-07-01, A.R. Monex Women's Pro Cycling Team on 2010-00-00, RusVelo Women's Team on 2013-00-00 - each anchor sentence is present word-for-word on the stated date, dates are in order and no later team is named. The 2010-02-12 chit-chat line about 'my new job 6 months ago' names no team and is not a team state, so it is not a gap.",
+  "evidence_quote": "Okay, big news first: I'm officially riding for RusVelo Women's Team this season.",
+  "classes": []
+ },
+ {
+  "item": "chain-051",
+  "verdict": "errors",
+  "note": "Slot position (uid wikiP39011-Q5581581). Row #7 (1958-00-00, 'deputy director', anchor 'quick update: as of this week it's officially deputy director for me') is a fabricated row - neither the string 'deputy director' nor anything resembling that quote occurs anywhere in the session log, and there is no 1958-00-00 session at all; the only 1958 session is 1958-04-25, which is small talk about gift ideas for the persona's family. The genuine sequence runs 1957-00-00 Chief of Army straight to 1963-00-00 First Adjutant. The other seven rows (1943 military attache, 1946 second-in-command, 1950 regiment commander, 1953 school commander, 1955 Commander of Western Military Command, 1957 Chief of Army, 1963 First Adjutant) match their sessions verbatim and on the right dates. Because the invented row inserts a post that never held, it changes the answer to any question about the persona's post between 1957 and 1963.",
+  "evidence_quote": "Well, it's official as of today: I've been appointed Chief of Army.",
+  "classes": [
+   "extra_row"
+  ]
+ },
+ {
+  "item": "chain-068",
+  "verdict": "correct",
+  "note": "Slot employer (uid wikiP108041-Q39272929). Three rows, all confirmed: International Agency for Research on Cancer on 1995-11-01, Armand-Frappier Sante Biotechnologie Research Centre on 1999-07-01, London School of Hygiene and Tropical Medicine on 2002-07-01 - each anchor appears verbatim in the session carrying that exact date, values and order match, and no other employer is asserted in any of the 30 filler sessions.",
+  "evidence_quote": "Right, big day — first day at my new job: I've officially started at the London School of Hygiene and Tropical Medicine today.",
+  "classes": []
+ },
+ {
+  "item": "chain-086",
+  "verdict": "correct",
+  "note": "Slot team (uid wikiP54030-Q27238382). All five rows verify: Mutua Levante 2011-00-00, Elevate–Webiplex Pro Cycling 2017-00-00, Team California 2019-01-01, DC Bank Pro Cycling Team 2019-08-08, L39ION of Los Angeles 2021-00-00. Note the two 2019 rows are correctly ordered (Team California in January, DC Bank in August) and both anchors are present on their own dates. The 2014-11-18 'living in Tokyo' remark is a residence detail, not a team, so it is out of scope for this slot.",
+  "evidence_quote": "Okay, the big news: I signed and I'm officially riding for DC Bank Pro Cycling Team starting now.",
+  "classes": []
+ },
+ {
+  "item": "chain-106",
+  "verdict": "correct",
+  "note": "Slot employer (uid wikiP108015-Q53953422). Four rows, each matched to the right session and the right value: Autonomous University of Barcelona 1985-09-01, CERN 1991-01-01, University of Barcelona 1997-01-01, Lawrence Berkeley National Laboratory 2001-02-01. The 1991 anchor really does name CERN and the 1997 anchor really does name the University of Barcelona, so the ordering is right. The 1991-08-27 mention of working on a Master's thesis is a degree in progress, not an employer.",
+  "evidence_quote": "Anyway, big news to file away: I've started as a researcher at the University of Barcelona, so please point all my work reminders there from now on.",
+  "classes": []
+ },
+ {
+  "item": "chain-126",
+  "verdict": "errors",
+  "note": "Slot employer (uid wikiP108015-Q53953422 - same log as chain-106). Rows #2 and #3 have their values swapped relative to their own anchor sentences. Row #2 is dated 1991-01-01 with value 'University of Barcelona', but its quoted anchor is the CERN sentence from the 1991-01-01 session; row #3 is dated 1997-01-01 with value 'CERN', but its anchor is the University of Barcelona sentence from the 1997-01-01 session. The log is unambiguous: CERN starts 1991-01-01 and the University of Barcelona starts 1997-01-01. As displayed, the chain would give the wrong employer for the entire 1991-2001 span. Rows #1 (1985-09-01 Autonomous University of Barcelona) and #4 (2001-02-01 Lawrence Berkeley National Laboratory) are fine.",
+  "evidence_quote": "Big news to file away: as of today I'm officially a fellow at CERN, so that's my new employer.",
+  "classes": [
+   "value_error",
+   "order_or_supersession_error"
+  ]
+ },
+ {
+  "item": "chain-145",
+  "verdict": "correct",
+  "note": "Slot residence (uid wikiP551006-Q57870878). Four rows, all confirmed against sessions with matching dates: Sens 1848-00-00, Troyes 1890-00-00, Paris 1923-00-00, Le Chesnay 1938-00-00; anchors are verbatim, values agree with the anchors and the order is chronological with no gap. The 1877-02-15 Tokyo/Shibuya material is a trip and the 1857-10-10 vacation-home talk is a plan for an inherited plot, so neither is a residence change.",
+  "evidence_quote": "Officially, as of today, I now reside in Paris.",
+  "classes": []
+ },
+ {
+  "item": "chain-021",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "I've been working as a data analyst at a mid-sized company in New York City",
+  "note": "Slot=employer. All three rows check out against the log: 2007-10-00 IFCA (\"I've officially started at the Instituto de Física de Cantabria\", session dated 2007-10-00), 2014-09-01 Tel Aviv University (\"I'm officially starting today as a postdoctoral researcher at Tel Aviv University\"), 2017-05-01 CERN (\"today I officially started at CERN\"). Anchors are verbatim and each sits in the session whose date the row shows; order and supersession are right. One thing I checked and dismissed: the 2012-09-05 chat says \"I've been working as a data analyst at a mid-sized company in New York City\", but that is unnamed generic small-talk filler inconsistent with the physicist persona, not a nameable employer state, so I would not add a row for it."
+ },
+ {
+  "item": "chain-039",
+  "verdict": "correct",
+  "classes": [],
+  "note": "Slot=position. Six rows, each matching a session: 1983-06-09 49th Parliament (\"I'm now a member of the 49th Parliament of the United Kingdom, representing Stoke-on-Trent Central\"), 1987-06-11 50th, 1992-04-09 51st, 1997-05-01 52nd, 2001-06-07 53rd, 2005-05-05 54th. Every anchor appears verbatim in the session carrying the row's date, values are in the right order with no swap, and I found no other position claim (no minister/shadow/whip/committee role) anywhere in the 36 sessions."
+ },
+ {
+  "item": "chain-055",
+  "verdict": "correct",
+  "classes": [],
+  "note": "Slot=position. 1865-07-11 19th Parliament (\"I'm returned as a member of the 19th Parliament of the United Kingdom\"), 1878-08-03 21st Parliament (\"As of today I'm officially a member of the 21st Parliament of the United Kingdom\"), 1878-12-29 House of Lords (\"I'm now a member of the House of Lords\") — all three verbatim at the matching session dates, and the Lords move correctly supersedes the Commons seat. The 19th-to-21st jump looks odd historically, but the log genuinely contains no 20th-Parliament statement (I checked the 1874-75 sessions, e.g. 1875-01-07, which are pure filler), so the chain is complete with respect to what is stated."
+ },
+ {
+  "item": "chain-076",
+  "verdict": "correct",
+  "classes": [],
+  "note": "Slot=employer. 1991-00-00 Stanford University School of Medicine (\"I've officially joined Stanford University School of Medicine\"), 1993-00-00 TU Dresden (\"I just started as a research associate at TU Dresden\"), 1994-00-00 SUNY Albany (\"I've officially started at the State University of New York at Albany\"). All three anchors are verbatim in the sessions dated 1991-00-00, 1993-00-00 and 1994-00-00 respectively; values and sequence are correct and no fourth employer is asserted anywhere in the 33 sessions."
+ },
+ {
+  "item": "chain-093",
+  "verdict": "correct",
+  "classes": [],
+  "note": "Slot=position. All six rows verified: 1807-05-04 4th Parliament, 1812-10-05 5th, 1818-06-17 6th, 1825-00-00 High Sheriff of Berkshire (\"I've been appointed High Sheriff of Berkshire\"), 1826-06-07 8th Parliament, 1831-00-00 High Sheriff of Brecknockshire (\"I've been appointed High Sheriff of Brecknockshire\"). Each anchor is verbatim in the session bearing that exact date. The 6th-to-8th Parliament gap is not a defect: the 1820-06-11 session is ordinary chit-chat and contains no 7th-Parliament claim."
+ },
+ {
+  "item": "chain-111",
+  "verdict": "correct",
+  "classes": [],
+  "note": "Slot=team. 2013-00-00 Cykle Klubben Aarhus (\"I've signed with Cykle Klubben Aarhus, so that's my new team from this season\"), 2015-00-00 Team JS.dk, 2021-00-00 Team ColoQuick (\"I signed with Team ColoQuick\") — all verbatim in the sessions dated 2013-00-00, 2015-00-00 and 2021-00-00. No signing is mentioned in the 2016-2020 sessions, so the long gap reflects the log. The 2019-07-16 \"promotion to senior account manager ... suitable for my team\" and the 2015-11-15 English-teaching-job remark are filler about office work, not a sports team, so they do not belong in this slot."
+ },
+ {
+  "item": "chain-130",
+  "verdict": "correct",
+  "classes": [],
+  "note": "Slot=employer. 2003-00-00 Ohio State University (\"I just started as a postdoctoral researcher at Ohio State University\"), 2008-00-00 Fermilab (\"I'm officially on staff at Fermilab now\"), 2012-08-00 University of Zurich (\"I officially started as a professor at the University of Zurich this month\") — each verbatim in the session carrying that date, in the right order. The scattered filler lines about \"promoted to a senior role in my company on February 1st\" (2005-03-20) and \"since I started my new job 6 months ago\" name no employer and are not chainable states."
+ },
+ {
+  "item": "chain-017",
+  "verdict": "correct",
+  "note": "四行与原文逐字对上:1992 会话首句'I've officially started as a physician at the Klinikum der Johann Wolfgang Goethe-Universität Frankfurt';1994 Leipzig University;2001 University of Bonn;2007 Universität Ulm Medizinische Fakultät——四条锚句各自出现在日期完全相同的会话里,值也逐字在场。中间闲聊会话(网球/播客/鸡尾酒/2006-11-18 的贸易展)没有任何第一人称雇主陈述,2006-11-18 只提到'our company's approach to innovation',未点名任何雇主,属填充噪声不构成漏检。无多余行、无顺序问题。",
+  "evidence_quote": "Okay, quick brain dump before I lose the thread — I've started at the University of Bonn, and I need help keeping the first weeks from turning into chaos."
+ },
+ {
+  "item": "chain-036",
+  "verdict": "correct",
+  "note": "三行齐全且日期精确到日:2012-10-01 University of California, San Diego;2013-06-01 CERN('I officially started as a research fellow at CERN today');2016-07-15 MIT。三条锚句分别落在日期一致的会话中。2013-2016 之间的闲聊会话我逐条看过——2014-02-12 提到'a major meltdown at work'、2015-07-19 谈加拿大永久居留、2016-01-07 谈通勤火车,都没有点名任何新雇主,不构成漏检。",
+  "evidence_quote": "Okay, big day — I officially started as a research fellow at CERN today, and I'm still buzzing."
+ },
+ {
+  "item": "chain-053",
+  "verdict": "correct",
+  "note": "三届议员齐全:1859-04-28 第18届(锚句含'representing Tiverton')、1866-02-28 第19届、1868-11-17 第20届,三条锚句都逐字出现在同日期会话里。唯一可疑处是 1859-03-17 闲聊会话里的'my role as Senior Software Engineer... lead a team of five engineers',但这是填充语料的时代错乱污染(同段文字在本数据集其他条目里原样复用),不是这位19世纪议员的 position 状态,按规则不算漏检。",
+  "evidence_quote": "Well, it's official — as of today I'm a member of the 18th Parliament of the United Kingdom, representing Tiverton."
+ },
+ {
+  "item": "chain-070",
+  "verdict": "correct",
+  "note": "三行都对:2013 LV Brandenburg('as of this season I'm training for LV Brandenburg')、2015 LKT Team Brandenburg、2020 Team Lotto Kern-Haus Outlet Montabaur,锚句均逐字见于对应年份会话。2015→2020 之间跨度虽大,但这五年的会话全是相机/行李牌/素食/观鸟一类闲聊,没有任何换队陈述,所以就原文而言链是完整的,不能据此判漏检。",
+  "evidence_quote": "Okay, official as of today: I'm riding for Team Lotto Kern-Haus Outlet Montabaur."
+ },
+ {
+  "item": "chain-088",
+  "verdict": "correct",
+  "note": "四行全对,且 2017 年内两次换队的先后顺序正确:2017-01-01 Autoglas Wetteren(元旦会话),2017-08-22 Hitec Products-Fluid Control('I've officially signed and Hitec Products-Fluid Control is now my new team'),没有把过期值当现行。首尾 2013 Økern Cykle Klubb 与 2019 Andy Schleck Cycles-Immo Losch 同样逐字对上。2013-09-08 闲聊里的'new role as a senior account manager'是填充污染且属职务不属车队,不构成漏检。",
+  "evidence_quote": "Okay, big news day: I've officially signed and Hitec Products-Fluid Control is now my new team."
+ },
+ {
+  "item": "chain-109",
+  "verdict": "correct",
+  "note": "四行与原文一致:1974-02-28 第46届、1974-10-10 第47届(同年两次大选,日期分得清楚)、1992-04-09 第51届('I'll be taking my seat as a member of the 51st Parliament')、1997-10-03 上议院。第47届到第51届中间跳过了48/49/50届,我特意翻了 1979/1983/1987 年的会话——全是甜点、球鞋、播客一类闲聊,原文从未断言过这几届当选,所以就'原文所述'而言链是完整的。1989-04-25 的'new role as a senior account manager'是与另一条目共用的填充段落,不算状态。",
+  "evidence_quote": "Well, they've declared and I've done it — I'm now a member of the 46th Parliament of the United Kingdom."
+ },
+ {
+  "item": "chain-128",
+  "verdict": "correct",
+  "note": "四处居所齐全且顺序正确:1872 Frampton on Severn、1885 Birmingham、1887 London、1890 Pudsey,四条锚句都逐字出现在日期相同的会话中,搬家性质(第一人称'taken up residence'/'is my new residence')明确。1874-11-15 的'moving to the US soon to start my Master's program at UC Berkeley'属计划+在读学位,1882-03-17 的'I'm in NYC... subway from Queens into Midtown'是时代错乱的填充闲聊而非迁居声明,按判定标准都不报错。",
+  "evidence_quote": "So it's official: London is now my new residence, and I'd like the address book updated before the letters start piling up at the old place."
+ },
+ {
+  "item": "chain-016",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Big news — I've officially started as a research fellow with South Australian Health",
+  "note": "All three employer rows are anchored in the log and dated to the right sessions: 2007 University of Newcastle (\"I've officially started at the University of Newcastle this year\"), 2009 South Australian Health, 2011 University of Adelaide (\"I've officially started as a research fellow at the University of Adelaide\"). No fourth employer is asserted anywhere else. I checked the 2007-04-25 chit-chat (\"a new role as a senior account manager\") and the 2011-12-26 mention of a Master's from the University of Illinois — the first names a job title, not an employer, and the second is a degree, so neither is a missing state."
+ },
+ {
+  "item": "chain-035",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "we've moved in, and Breite Straße is now our address",
+  "note": "The three residences match their sessions exactly: 1835 Buddenbrookhaus (\"the Buddenbrookhaus is now our home\"), 1846 Amsterdam (\"Amsterdam is my new residence\"), 1857-03-01 Breite Straße. Two lines in the filler sessions caught my eye and I rejected both: 1836-06-08 \"I live in the city of Raleigh, North Carolina\" and 1851-09-05 \"since I moved to a new apartment three months ago\". The Raleigh sentence is boilerplate recycled verbatim into eight different personas' logs, and the 1851 line names no place at all, so neither is a residence state this chain fails to cover."
+ },
+ {
+  "item": "chain-052",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Big one for me though \" officially for Bissell as of today, so I want to start the season properly organised for once.",
+  "note": "All four teams line up with their sessions: 2011 PureBlack Racing, 2013-01-01 Bissell, 2014-01-01 SmartStop (\"as of today SmartStop is my new team\"), 2015-01-01 Budget Forklifts. The 2012 sessions are all off-topic filler (groceries, Fisherman's Wharf, the Industrial Revolution) with no team named, so the 2011→2013 gap reflects the log rather than a dropped row."
+ },
+ {
+  "item": "chain-069",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Okay, so today's the day — I officially started as a researcher at the University of Göttingen, and my desk still smells like fresh paint.",
+  "note": "Three employers, three matching sessions: 1991 Heidelberg University of Education (\"I've officially started at Heidelberg University of Education as of this week\"), 2003 Saarland University, 2006 University of Göttingen. The long 1992–2002 stretch is pure filler — the 1992-06-08 \"Digital Marketing Specialist\" turn and the 1992-09-08 \"Content Creator\" title change name no employer — so nothing is missing."
+ },
+ {
+  "item": "chain-087",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Big news to log: as of today I'm officially playing for the Dallas Rockets.",
+  "note": "Four signings, each in a New Year's Day session with the matching date: 1988-01-01 Orlando Lions, 1989-01-01 Dayton Dynamo, 1990-01-01 Dallas Rockets, 1995-01-01 Mesquite Kickers (\"I've signed on with the Mesquite Kickers\"). The 1990–1995 sessions never name another club — the UC Berkeley Master's turn on 1990-11-15 is a degree, not a team — so the chain is complete."
+ },
+ {
+  "item": "chain-107",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Big news to log: I've been returned as a member of the 3rd Parliament of the United Kingdom",
+  "note": "All five positions are verbatim in their own sessions and correctly dated: 1787 High Sheriff of Hampshire (\"I have been named High Sheriff of Hampshire\"), 1801 1st Parliament, 1802 2nd Parliament, 1806 3rd Parliament, 1807 4th Parliament (\"I've been returned as a member of the 4th Parliament of the United Kingdom\"). The order is chronological and no succession is out of sequence."
+ },
+ {
+  "item": "chain-127",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Big news though — as of this month I'm officially at Lawrence Livermore National Laboratory",
+  "note": "The three rows match sessions 1992-10 University of Fribourg (\"I've officially started as a lecturer at the University of Fribourg this month\"), 1994-10 University of Kentucky (\"I officially started at the University of Kentucky this morning\"), and 1998-04 Lawrence Livermore National Laboratory. I looked hard at 1997-02-09, where the user says \"I'm a Senior Software Engineer at TechCorp\" — that is recycled distractor dialogue (the same software-engineer persona also appears in the 1992-10-13 filler session and TechCorp turns up in another persona's log), and it contradicts the physicist persona of the state sessions, so I don't count it as a missed employer."
+ },
+ {
+  "item": "chain-147",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "Pois é, hoje é o primeiro dia: comecei oficialmente como professor na Universidade Federal do Vale do São Francisco.",
+  "note": "All three rows check out, including the two same-year Portuguese ones: 2004-04-05 Universidade Estadual da Paraíba (\"comecei hoje como professor na Universidade Estadual da Paraíba\"), 2004-09-13 Universidade Federal do Vale do São Francisco, and 2023-05-30 Paris Cité University (\"as of today I've officially started as a visiting researcher at Paris Cité University\"). The 2005–2022 sessions are all off-topic filler with no employer mentioned, so the long gap is faithful to the log."
+ },
+ {
+  "item": "chain-020",
+  "verdict": "correct",
+  "note": "All three rows check out against the log: the 1852-07-07 session says 'as of today I'm a member of the 16th Parliament of the United Kingdom', 1857-03-27 gives the 17th, 1859-04-28 the 18th — value, date and anchor line up in each case and no other session asserts a parliamentary seat. I did pause on the 1854-11-21 'I got promoted three months ago' / 1855-08-24 'Senior Software Engineer' asides, but that same paragraph appears verbatim in 17 other personas' logs, so it is filler-corpus boilerplate rather than this MP's position history, and a software job is not a P39 seat anyway.",
+  "evidence_quote": "as of today I'm a member of the 18th Parliament of the United Kingdom"
+ },
+ {
+  "item": "chain-038",
+  "verdict": "correct",
+  "note": "Farmingdale (1853), Iowa (1874), Isla de la Juventud (1909) and Lake Helen (1924) each have a dedicated session at exactly that date with the anchor present word-for-word ('Iowa is now my new residence', 'Lake Helen is now my new residence', etc.), and the order matches the moves described. The one line that gave me pause is 'I've been living here since March' in the Tokyo cooking session of 1867-11-18, but that whole session is shared distractor text — it appears verbatim in four different personas across four different slots — so I would not add it as a fifth residence state. Flagging it for the data owner rather than calling the chain wrong.",
+  "evidence_quote": "Iowa is now my new residence"
+ },
+ {
+  "item": "chain-054",
+  "verdict": "correct",
+  "note": "Three rows, three matching sessions: 2012 'I've officially signed with Kolding Bicycle Club as my new team for the season', 2021 'I'm officially riding for Team Sparekassen Danmark Aalborg now', 2022-08-01 'officially signed and racing for Rime Drali as of today'. Values and dates match the anchors, order is chronological, and none of the 30 filler sessions (board games, Netflix, skincare) mentions another team. The nine-year gap between 2012 and 2021 is a property of the source log, not a dropped row.",
+  "evidence_quote": "officially signed and racing for Rime Drali as of today"
+ },
+ {
+  "item": "chain-071",
+  "verdict": "correct",
+  "note": "Four rows, all confirmed: 1849-06-01 'I've taken my seat as a Member of the New South Wales Legislative Council', 1856-03-11 Legislative Assembly, 1869 'I've been made President of the Royal Philatelic Society London', 1897-10-01 'from today I am Agent-general for New South Wales'. Each anchor sits in a session carrying exactly the row's date, values are copied faithfully, and the Council-to-Assembly ordering is right. Nothing else in the log asserts another office.",
+  "evidence_quote": "from today I am Agent-general for New South Wales"
+ },
+ {
+  "item": "chain-090",
+  "verdict": "correct",
+  "note": "OCBC Singapore Continental Cycling Team (2012), Terengganu Cycling Team (2015) and Team Jayco AlUla (2021-08-01) each map to a session at that date with the quoted sentence present verbatim — 'I've signed with Team Jayco AlUla, so that's my new team from now on' is the 2021-08-01 session word-for-word. No superseded value is presented as current and no other team is named anywhere in the 33 sessions.",
+  "evidence_quote": "I've signed with Team Jayco AlUla, so that's my new team from now on"
+ },
+ {
+  "item": "chain-110",
+  "verdict": "correct",
+  "note": "Lawrence Berkeley National Laboratory (2001-08-01), University of Glasgow (2005-01-01) and University of Sydney (2007-01-01) all match: the Glasgow session is dated 2005-01-01 and reads 'I've started as a research fellow at the University of Glasgow', and the Sydney session of 2007-01-01 says 'as of today I'm officially on staff at the University of Sydney'. No fourth employer is asserted anywhere; the Raleigh and 'moved to a new apartment' lines are residence chit-chat from the shared filler corpus and irrelevant to the employer slot.",
+  "evidence_quote": "as of today I'm officially on staff at the University of Sydney"
+ },
+ {
+  "item": "chain-129",
+  "verdict": "correct",
+  "note": "All four rows are supported at the right dates: Henry Ford Hospital 1988-07, Leonard M. Miller School of Medicine 1989-07, National Cancer Institute 1992-04 ('I officially started this month as a research fellow...'), NIAID 1995-07 ('...as a clinical investigator...'). Values, month-precision dates and anchors all agree and the sequence is chronological. The 1992-09-08 'Senior Software Engineer' line is the same reused filler paragraph found in 17 other personas' logs, so it is not a missed employer for this clinician.",
+  "evidence_quote": "I officially started at Henry Ford Hospital this month"
+ },
+ {
+  "item": "chain-011",
+  "verdict": "correct",
+  "note": "All four team rows check out against the raw log: Keukens Redant (session dated 2017-00-00, \"I'm officially riding for Keukens Redant this season\"), Restore Cycling Team (2019-00-00), Wielerclub de Sprinters Malderen (2019-04-01), Duolar-Chevalmeire (2021-00-00). Each anchor sits verbatim in the session whose date the row reports, order matches the timeline, and no other team is named anywhere in the 34 sessions. The indoor-soccer-league chat (2018-07-16, \"I've been playing in an indoor soccer league\") names no club, so it does not add a state.",
+  "evidence_quote": "I've officially signed with Duolar-Chevalmeire, so that's my new team as of this season",
+  "classes": []
+ },
+ {
+  "item": "chain-030",
+  "verdict": "errors",
+  "note": "Missed state. The three rows shown (Yerevan 1914-00-00, Uzbekistan 1916-00-00, Moscow 1966-00-00) are each correctly anchored and dated, but the chain is incomplete: in the session dated 1914-01-01 the user states in the first person \"I've been living in Tokyo for about 5 months now\" (and goes on about taking Japanese lessons at a local language school there). That is a residence assertion about the persona, not about someone else, not a plan or a wish, and no row covers Tokyo at all. It changes the answer for any question about where the persona lived in 1914-1916. Everything else in the chain is fine.",
+  "evidence_quote": "I've been living in Tokyo for about 5 months now",
+  "classes": [
+   "missing_state"
+  ]
+ },
+ {
+  "item": "chain-050",
+  "verdict": "correct",
+  "note": "Riksdag 1985-10-18, Committee on Finance 1988-10-03, Committee on European Union Affairs 1998-10-13 all match their anchor sessions exactly by date and wording, and they are in the right order with no superseded value presented as current. The only other work-related remark is the 1988-04-22 filler session, \"I was recently promoted to a senior role in my company on February 1st\" - that names no office and is a corporate role rather than a held position, so I would not count it as a missing state for this slot.",
+  "evidence_quote": "as of this autumn I'm a member of the Swedish Riksdag",
+  "classes": []
+ },
+ {
+  "item": "chain-067",
+  "verdict": "correct",
+  "note": "Koropets 1927-00-00, Horodok 1937-00-00 and Lviv 1939-00-00 each appear verbatim in the session carrying that exact date, in the right sequence. I checked the filler sessions for hidden residence claims: the 1928-04-01 chat has \"I'm in the downtown area of Chicago\", but that states where the user is at that moment while asking about Saturday events, not where they live, and the 1937-08-27 apartment chat only says \"the city where I currently live\" with no city named. Neither is a specific enough state to add a row.",
+  "evidence_quote": "Horodok is my new residence as of this week",
+  "classes": []
+ },
+ {
+  "item": "chain-084",
+  "verdict": "correct",
+  "note": "All seven rows hold up: 18th Parliament 1864-02-09, 19th 1865-07-11, 20th 1872-03-11, 21st 1874-01-31, 22nd 1880-03-31, 23rd 1885-11-24, High Sheriff of Gloucestershire 1892-00-00. Every anchor is present word-for-word in the session with the matching date, the sequence is monotonic, and no parliament is skipped or swapped. The 1876-01-04 union-card session (\"I've held my card with the electrical workers' union\") is a membership, not an office, and the 1878-11-18 Tokyo session belongs to a different slot.",
+  "evidence_quote": "I've officially taken my seat today as a member of the 20th Parliament of the United Kingdom",
+  "classes": []
+ },
+ {
+  "item": "chain-104",
+  "verdict": "correct",
+  "note": "Syracuse University 2008-10-00, CERN 2013-10-00 and University of Geneva 2016-07-01 each match the anchor session and its date exactly, and the order is right. The 2010-11-15 session mentions \"my job as a marketing specialist\" but names no organisation, and the 2013-11-18 Vancouver session is about classes starting at UBC (studying, not employment), so neither adds a missing employer.",
+  "evidence_quote": "I officially started today as a research fellow at the University of Geneva",
+  "classes": []
+ },
+ {
+  "item": "chain-124",
+  "verdict": "correct",
+  "note": "European Southern Observatory 2006-10-01, Max Planck Institute for Solar System Research 2010-10-01, The Open University 2014-10-01 and University of Edinburgh 2018-10-01 all sit verbatim in sessions bearing those exact dates, in the correct order with no stale value carried forward. The only other work mentions are a job title without an employer (2017-08-24, \"a Marketing Specialist like myself\") and \"my colleagues from work\" in the 2016-08-27 soccer chat, neither of which names an employer.",
+  "evidence_quote": "as of today I'm officially a research fellow at The Open University",
+  "classes": []
+ },
+ {
+  "item": "chain-142",
+  "verdict": "errors",
+  "note": "Missed state. The three rows themselves are fine - Tsinghua University 2013-00-00, Laboratoire de physique theorique 2016-00-00, CERN 2018-00-00, each anchored verbatim in the correctly dated session. But the chain leaves a hole: in the session dated 2015-11-15 the user says \"my daily commute to Roppongi for my English teaching job, which I started about 4 months ago\" and later refers to \"my students at the language school in Roppongi\", with the assistant confirming it back (\"Congratulations on settling into your new job and commute!\"). That is a first-person employment state around mid-2015 to late 2015, a period the chain covers with Tsinghua, so it changes the answer to \"who employed the persona in late 2015\". The employer is described rather than proper-named, but the state is asserted plainly and no row covers it. Secondary, weaker signal in the same direction: the 2013-07-16 session, \"I just got a promotion to senior account manager\".",
+  "evidence_quote": "my daily commute to Roppongi for my English teaching job, which I started about 4 months ago",
+  "classes": [
+   "missing_state"
+  ]
+ },
+ {
+  "item": "chain-002",
+  "verdict": "correct",
+  "note": "Slot = residence. All four rows check out verbatim against the announcement sessions: Schönberg (session dated 1849-00-00), Paris (1851-00-00), Metz (1871-00-00), Cairo (1873-00-00), and each row's date matches the session its anchor sits in. I went through the other 30 sessions looking for a fifth residence: the 1851-04-01 San Francisco/Japan/LA talk is travel, the 1866-02-12 LA/SF hotel talk is a work trip, the 1872-08-27 Hawaii thread is a planned trip, and the 1865-09-05 'data analyst at a mid-sized company in New York City' is a workplace, not a stated move. No first-person residence claim is left uncovered, so the chain is complete and in order.",
+  "classes": []
+ },
+ {
+  "item": "chain-025",
+  "verdict": "correct",
+  "note": "Slot = team (cycling). Three rows, all anchored word-for-word: Anicolor/Campicarn in the 2011-00-00 session, W52–FC Porto in the 2016-00-00 session, Tavfer-Ovos Matinados-Mortágua in the 2019-00-00 session; dates line up with the sessions. The five-year gap between 2011 and 2016 bothered me so I re-read the filler in between — the only 'team' words there are the 2012-03-17 and 2014-08-24 'Senior Software Engineer... I now lead a team of five engineers', which is a work team, not a sports team, and the 2015-03-20 tennis at the community centre, which is recreational. Nothing missing, nothing spurious.",
+  "classes": []
+ },
+ {
+  "item": "chain-045",
+  "verdict": "correct",
+  "note": "Slot = team. Watersley R&D Cycling Team (2020-00-00), AG Insurance-Soudal Team (2022-00-00), Hitec Products-Fluid Control (2024-00-00) — each anchor is present verbatim in the session carrying that date, and the order 2020 -> 2022 -> 2024 matches the log. Scanned the remaining sessions for a fourth signing; the closest things are the 2024-11-18 move to Vancouver/UBC and various concert and hobby chatter, none of which state a team. Complete as shown.",
+  "classes": []
+ },
+ {
+  "item": "chain-058",
+  "verdict": "correct",
+  "note": "Slot = employer. Five rows and all five anchors are exact: UT Arlington (2003-00-00), Oklahoma (2005-00-00), Oklahoma State (2011-00-00), Nebraska–Lincoln (2012-08-00, the 'Lincoln Setup' session), UTEP (2020-08-01). Dates all match their sessions and the 2011 -> 2012-08 succession is right (the OSU line says 'this year', the UNL line says 'this month'). The senior-engineer promotion talk on 2011-11-21 and 2014-08-24 names no employer and reads as background chatter, and the Berkeley mention on 2005-05-06 is a degree, not an employer. Nothing missing.",
+  "classes": []
+ },
+ {
+  "item": "chain-079",
+  "verdict": "errors",
+  "note": "Missing row. The chain jumps University of Florida (2009-06-06) straight to University of Chicago (2012-09-03), but the session dated 2011-06-06 has the persona announcing a CERN job in the first person: 'Big one: as of today I'm officially employed by CERN, so I need to keep track of the onboarding stuff — badge photo, dosimeter briefing, and some Swiss residence permit form the HR person mentioned.' The surrounding turns corroborate a real relocation (flight from Sweden, empty flat near Geneva, IKEA near Geneva, French adapters), so this is a genuine employer state, not a plan or a wish. A row 2011-06-06 | CERN should sit between #1 and #2, which also means the displayed chain wrongly implies Florida ran until 2012. The other three rows (Florida 2009-06-06, Chicago 2012-09-03, UC Irvine 2018-10-10) are themselves correctly dated and anchored.",
+  "classes": [
+   "missing_state"
+  ],
+  "evidence_quote": "as of today I'm officially employed by CERN"
+ },
+ {
+  "item": "chain-095",
+  "verdict": "correct",
+  "note": "Slot = residence. San Francisco (2006-00-00), Mountain View (2017-00-00), Berlin (2020-00-00) — each anchor appears verbatim in the moving-day session with that date, and the sequence is right. Two things I checked before settling: the 2008-11-15 session mentions 'my daily commute to Roppongi for my English teaching job' and a trip back to Tokyo, and the user twice answers a location prompt with 'I'm in the 92101 zip code' (2016-06-14 and 2018-04-01, where the assistant replies about San Diego). Neither is a stated move — the first is a job/commute line, the second is a zip given in answer to 'what's your city or zip', and both sit in the same generic filler stream that elsewhere has this person as an NLP master's student, a senior account manager and a birder. I would not tax the chain for those, so I read it as complete.",
+  "classes": []
+ },
+ {
+  "item": "chain-118",
+  "verdict": "correct",
+  "note": "Slot = employer. UC Irvine (1985-09-01), Duke (1987-03-01), RIKEN Brain Science Institute (1989-00-00) — all three anchors are verbatim and each sits in the session bearing that exact date, including the two precise day-level dates. The March 1987 Duke line and the Ninth Street housing detail are consistent, and the 1989 RIKEN session's cerebellum-papers and station-in-the-rain details fit the move. Nothing else in the 33 sessions names an employer; the rest is hobby and shopping chatter. Complete.",
+  "classes": []
+ },
+ {
+  "item": "chain-135",
+  "verdict": "correct",
+  "note": "Slot = employer. Zhejiang University (1997-09-01), Texas A&M (2001-08-20), NC State (2002-12-21) — anchors exact, dates match their sessions, and the corroborating detail is consistent (College Station heat and the parking-permit line for the A&M row, calendar rebuild for the NC State row). The short 2001-08 to 2002-12 gap looked odd but the log genuinely records both starts. The 2000-10-13 'I haven't moved from this address in fifteen years' line is about residence, not employer, and belongs to the filler stream. No missing or extra rows.",
+  "classes": []
+ },
+ {
+  "item": "chain-001",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "as of today I'm officially a member of the 18th Parliament of the United Kingdom",
+  "note": "六行与原文六个自述会话逐一对上:1860-08-27 第18届、1865-07-11 第19届、1868-11-17 第20届、1874-01-31 第21届、1880-03-31 第22届、1896-00-00 High Sheriff of Wiltshire,锚句都在对应日期的会话里逐字存在。其余会话全是与职位无关的闲聊(1883-08-27 提到在读硕士论文,属在读学位不计),没有遗漏的第七个状态,也没有多余行。"
+ },
+ {
+  "item": "chain-022",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "I've signed with Levante Fuji Shizuoka, so I'm officially moving to Japan",
+  "note": "三行对应三个自述会话:2016-00-00 Terengganu Cycling Team、2022-00-00 Levante Fuji Shizuoka、2024-01-01 Nusantara-BYC,锚句与日期均吻合。2016→2022 之间的六年间隔在原文里确实没有第四支车队的第一人称陈述;2021-02-09 的'希望升 senior developer'和 2022-01-07 的'想读数据科学硕士'都是愿望/计划且与车队槽位无关,不算漏检。"
+ },
+ {
+  "item": "chain-041",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "today's officially my first day riding for the Citymesh-Customm Pro Cycling Team",
+  "note": "2016-00-00 GT Krush RebelLease、2020-00-00 Doltcini-Van Eyck-Proximus、2022-00-00 Citymesh-Customm Pro Cycling Team 三行,锚句逐字在对应日期会话中,值与锚句一致。其余 30 个会话为闲聊(社媒、旅行、收藏、剧团等),无任何其他车队归属的第一人称断言,也无助手复述。"
+ },
+ {
+  "item": "chain-056",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "I've signed with Airtox-Carl Ras, so it's official now",
+  "note": "2011-00-00 Roskilde Cykle Ring、2016-00-00 Roskilde Junior、2021-00-00 Airtox-Carl Ras 与原文 SESSION 0/16/30 一一对应,顺序未颠倒(2011 那条明确是 Cykle Ring,2016 那条明确是 Junior)。2013-06-11 提到'想加入业余排球队'只是打算且非该槽位,不构成漏检。"
+ },
+ {
+  "item": "chain-078",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "I officially start as faculty at Wayne State University School of Medicine today",
+  "note": "三行雇主与原文自述日一致:1990-08-15 Thomas Jefferson University、1995-08-01 Wayne State University School of Medicine、2009-06-01 Geisinger Health。1995→2009 的长间隔里通读全部闲聊会话(1999-10-10 只提到搬到东京住 Harajuku、通勤方便,属居住地不属雇主),没有第四个雇主陈述,也没有助手复述其他单位。"
+ },
+ {
+  "item": "chain-094",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "TotalEnergies is my new team as of today",
+  "note": "1995-00-00 Mutuelle de Seine-et-Marne、2000-00-00 TotalEnergies、2002-00-00 Oktos 三行,锚句在 SESSION 0/21/29 中逐字存在且日期相符。1997-03-17 出现的'our team lead, Emily'是同事语境、与骑行车队槽位无关,不作为漏检。"
+ },
+ {
+  "item": "chain-116",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "I've officially started at Peking University this month",
+  "note": "1997-11-01 University of Virginia(博后)、2000-11-01 University of Cambridge(博后研究员)、2009-09-00 Peking University 三行与原文自述会话完全吻合。2000→2009 的空档里逐条读过闲聊,2004-05-06 那句'I'm an entrepreneur with a focus on marketing'没有点出任何具体雇主名,无法构成一个可入链的状态值,故不判漏检。"
+ },
+ {
+  "item": "chain-134",
+  "verdict": "correct",
+  "classes": [],
+  "evidence_quote": "as of today I'm officially riding for Vini Fantini-BePink",
+  "note": "2017-00-00 Conceria Zabri–Fanini、2019-00-00 Aromitalia Vaiano、2024-04-01 Vini Fantini-BePink,三条锚句分别在 SESSION 0/9/29 中逐字出现,日期无篡改。2018-06-08 闲聊里的'Senior Software Engineer…lead a team of five engineers'是职务/带团队的说法,不是车队归属,与该槽位无关,不算遗漏状态。"
+ },
+ {
+  "item": "chain-009",
+  "verdict": "correct",
+  "note": "The three rows line up one-to-one with the only three first-person office announcements in the log — 1423-07-02 \"Roman Catholic Bishop of Palencia\", 1439-05-12 \"Roman Catholic Archbishop of Seville\", 1442-06-18 \"archbishop of Toledo\" — dates match the sessions the quotes come from, and no fourth office is claimed anywhere in the other 30 chat sessions (the \"Marketing Specialist like myself\" line on 1434-08-24 is off-persona filler, not a held office).",
+  "classes": []
+ },
+ {
+  "item": "chain-027",
+  "verdict": "correct",
+  "note": "All seven rows match their sessions verbatim and in order (1970-06-18 45th, 1979-05-03 48th, 1983-06-09 49th, 1987-06-11 50th, 1992-04-09 51st, 1997-05-01 52nd, 2001-06-07 53rd); I specifically checked the 1974 gap for the 46th/47th Parliaments and the 1974-09-02 session is only about breakfast and alarm clocks, so nothing is missing relative to the log.",
+  "classes": []
+ },
+ {
+  "item": "chain-047",
+  "verdict": "correct",
+  "note": "1978-06 University of Barcelona, 1980 National Center for Scientific Research and 1989 Spanish National Research Council each match their session's quote and date exactly, with no other employer asserted; the \"why I started Verde Fashion Co.\" aside on 1978-01-07 sits inside an email-marketing chat from an unrelated persona template and is not an employer state for this slot.",
+  "classes": []
+ },
+ {
+  "item": "chain-064",
+  "verdict": "correct",
+  "note": "Rows match the log exactly — 2019-01-01 \"as of today I'm officially riding for Team IBT-BH Carl Ras\", 2019-05-21 \"Waoo is my new team\", 2020 \"I've officially signed with Team ColoQuick\" — the two 2019 entries are in the right order, and the only other team-flavoured mention (Nike Run Club, 2019-07-19 running chat) is not a cycling team.",
+  "classes": []
+ },
+ {
+  "item": "chain-081",
+  "verdict": "correct",
+  "note": "2002 Berkeley postdoc, 2004 Oregon State University and 2010-01-01 University of Minnesota System each correspond to a distinct announcement session with matching date and wording, and nothing in the intervening 2005-2009 chat sessions (stamps, fitness hashtag, therapy) asserts another employer.",
+  "classes": []
+ },
+ {
+  "item": "chain-099",
+  "verdict": "correct",
+  "note": "The chain reproduces all three employer statements — 1988-08 junior doctor at Addenbrooke's Hospital, 1991-08 lecturer at University College London, 1997-11 Sheffield Medical School — with correct dates and no gap; the only other institution named in chat is a Buddhist meditation centre (1996-05-03), which is not employment.",
+  "classes": []
+ },
+ {
+  "item": "chain-121",
+  "verdict": "correct",
+  "note": "Four rows, four announcement sessions, correct chronological order: 2007 S.C. Michela Fanini, 2009 Gauss RDZ Ormu \"for this season\", 2009-06-09 Top Girls Fassa Bortolo, 2011 Aromitalia Vaiano; the \"onboarding my new team\" line on 2011-10-10 is office-job filler about colleagues, not a cycling team, so it is rightly excluded.",
+  "classes": []
+ },
+ {
+  "item": "chain-140",
+  "verdict": "correct",
+  "note": "2001 Lawrence Berkeley National Laboratory, 2008 UC San Diego postdoc, 2011 Scripps Institution of Oceanography and 2012 Leipzig University all match their sessions word-for-word and in date order; the 2007-07-16 \"promotion to senior account manager\" and the 2010-10-10 University of Melbourne master's plan name no employer for this persona and are correctly left out (a degree in progress is not employment).",
+  "classes": []
+ },
+ {
+  "item": "chain-010",
+  "verdict": "correct",
+  "note": "Checked all 34 sessions. The four rows map one-to-one onto the only four sessions where the persona declares a seat: 2013-05-02 (55th Parliament, South Shields polling day), 2015-05-07 (56th), 2017-06-08 (57th), 2019-12-12 (58th). Each anchor is verbatim in the session whose date the row carries, and no other session — including the chit-chat ones — contains a first-person or assistant-restated position claim. The 'marketing specialist on LinkedIn' aside on 2015-11-15 is generic filler, not a P39 office, so I did not count it as a missing state.",
+  "classes": [],
+  "evidence_quote": "as of tonight I'm a member of the 56th Parliament of the United Kingdom"
+ },
+ {
+  "item": "chain-028",
+  "verdict": "correct",
+  "note": "Three employers, three declaring sessions, all matched: 2002-07-15 University of Houston (postdoc start), 2003-02-01 Instituto de Física de Cantabria (declared in Spanish, in the moving-boxes session — easy to miss but the chain does have it), 2008-01-01 University of Oviedo (New Year session). Values agree with their anchors, dates agree with the session dates, ordering is chronological with no superseded value left standing. Nothing in the 30 filler sessions asserts another employer.",
+  "classes": [],
+  "evidence_quote": "desde hoy trabajo en el Instituto de Física de Cantabria"
+ },
+ {
+  "item": "chain-048",
+  "verdict": "correct",
+  "note": "The three offices — Member of the Parliament of Catalonia (1988-06-16), member of the Senate of Spain (1992-04-29), Member of the Congress of Deputies (1993-06-21) — each sit in the session bearing that exact date, and the values are not transposed (the Senate line is genuinely in the 1992-04-29 session, the Congress line in the 1993-06-21 session). The three anchors share near-identical wording, so I confirmed each against its own session rather than by string match alone. The 'Senior Software Engineer' remark on 1992-09-02 is unrelated filler, not a public office.",
+  "classes": [],
+  "evidence_quote": "as of today I'm officially a member of the Senate of Spain"
+ },
+ {
+  "item": "chain-066",
+  "verdict": "correct",
+  "note": "Rows cover 1771-01-31 (13th Parliament of Great Britain), 1774 (14th), 1784 (16th) and 1794-04-21 (colonial governor of Guadeloupe). The jump from the 14th to the 16th looked like a possible deleted row, so I read every session dated between 1775 and 1783 — the persona never claims a 15th Parliament seat anywhere in the log, so the chain is complete as against the log. The two undated-day sessions (1774-00-00, 1784-00-00) are reproduced with the same partial dates the log carries.",
+  "classes": [],
+  "evidence_quote": "I'm now a member of the 16th Parliament of Great Britain"
+ },
+ {
+  "item": "chain-082",
+  "verdict": "correct",
+  "note": "Four employers in strict order with matching dates: The Royal London Hospital (1992-05-01), South London and Maudsley NHS Foundation Trust (1995-11-01), Institute of Psychiatry, Psychology and Neuroscience (1999-02-01), University of Exeter Medical School (2007-09-01). Each anchor appears verbatim in the first-day session of that date; the intervening chit-chat sessions (tennis rackets, hard drives, Japan trip) contain no employer claim, and the 1997-02-09 mention of Stanford/data-science certificates is the assistant listing course providers, not the persona's employer.",
+  "classes": [],
+  "evidence_quote": "my new employer is South London and Maudsley NHS Foundation Trust"
+ },
+ {
+  "item": "chain-101",
+  "verdict": "correct",
+  "note": "Five consecutive Parliaments, each anchored in its own session: 15th (1848-03-24), 16th (1852-07-07), 17th (1857-03-27), 18th (1859-04-28), 19th (1867-07-25). Because four of the five anchors use the same 'as of today I'm officially a member of the Nth Parliament' formula I verified each one inside its own session to rule out a swapped pair or a shifted date; all five line up. No further position claim appears in the 30 unrelated sessions.",
+  "classes": [],
+  "evidence_quote": "as of today I'm officially a member of the 18th Parliament of the United Kingdom"
+ },
+ {
+  "item": "chain-123",
+  "verdict": "correct",
+  "note": "Three teams, three declaring sessions: Lotto Intermarché Ladies (2008), Cyclelive Plus–Zannata (2012), Lensworld-Kuota (2014), all with year-only dates exactly as the log records them. Values match their anchors including the en dash in 'Cyclelive Plus–Zannata'. The 2010-08-27 'recreational soccer league with my colleagues from work' is unrelated small talk with no team named, so it is not a missing state.",
+  "classes": [],
+  "evidence_quote": "I'm riding for Lensworld-Kuota as of this season"
+ },
+ {
+  "item": "chain-141",
+  "verdict": "correct",
+  "note": "CERN (2001-05-01), Laboratoire d'Annecy-le-Vieux de Physique Théorique (2004-07-01) and Syracuse University (2006-01-01) each correspond to a first-day/New-Year session carrying that date, with the anchors present word for word and the accented institution name reproduced correctly. The remaining sessions (goat kidding, herb garden, camera gear) carry no employer assertion from the persona or the assistant, so nothing is missing and nothing is superfluous.",
+  "classes": [],
+  "evidence_quote": "as of today I'm officially on faculty at Syracuse University"
+ }
+]
