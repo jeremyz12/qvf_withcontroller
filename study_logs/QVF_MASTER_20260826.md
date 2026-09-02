@@ -457,5 +457,9 @@ vs v2.4 −1.39(题级 p=0.41;簇 CI [−5.38,+2.43],预注册 ±3pp 等价检�
 - **外场**:Temporal Wiki −4.3(显著负,非污染;建卡器按叙述年份填日期)、AMemGym −3.3~−4.7(表达轴)、LME-preference −28.6(写侧不抽偏好)——**账目机制的边界**:记忆条须为带时刻的陈述;快照式语料与偏好类内容上输给直读。
 - **对手**:HippoRAG 2 55.0、MemOS 45.0、Letta-FS 56.7、TRACE 出厂 16.7 —— 全部与直读同档、比 smoc 低 28~40;检索赢裁决输(HippoRAG 整链在场仍 56.9)。Letta 服务端/Memobase BLOCKED(无 Docker 路径)。
 - **诚实边界**:Docker 后端本机无法启动;`lb_reader_arm` 不落盘判官 usage;建卡器失败批次不记 usage;ClaudeJudge 有 run 间抖动(F 臂 29 条重跑翻 11)。
-进行中:A 冻结重建 9 臂、G1 PersonaMem、G4 MINTEval、H2 TRACE(LoCoMo 配置)、J 小捆、K Gemini、I 第二段。
+- **单店单跑头条(A,五臂已核)**:smoc 89.06 vs direct 47.57,**+41.49**(簇 CI [+36.5,+46.4]);有闸店 85.59(−3.47,p=0.04,A3 不过)→ 归属闸只作抗干扰加固旗标;v43 起店无 slot_class,中间梯须 OPEN 旗标重跑。
+- **外场四场全负**:PersonaMem −7.2、AMemGym −3.3~−4.7、Temporal Wiki −4.3、MINTEval 地板;LME 十格 1 胜 4 平 5 负(single-assistant 0 vs 100:助手内容不在卡 schema)。**分界线**:题需跨日期状态转移推理时账目赢;逐字事实/偏好/措辞题上抽取是有损压缩。
+- **第三厂商(K)**:Gemini 协议效应 +0.35 n.s.(协议律按厂商分布);direct 63.4(证据饥饿限定 claude/openai 家族);14K 全文 95.5 > smoc(强读者小库 limitation);L2 全文 77.5 = gpt(104K 崩溃是 haiku 家族属性)。
+- **小捆(J)**:读时账目 60.2 vs 写时 89–90(写时价值 = 覆盖);S2 +59 / S1 +8.3;无填充对照:结构溢价 44% 抗干扰 + 56% 抗聚合;日期粗化归因无干预支持。
+进行中:A 中间梯重跑与终评分、H2 TRACE(LoCoMo 配置)。
 

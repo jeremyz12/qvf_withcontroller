@@ -237,4 +237,10 @@ QVF_CARD_OWNER_GATE 默认值是否翻到 1:**用户决定**,若翻则与第 1 �
 | 盘上(§五-10) | LME-preference −28.6;MAB-FC mh 零效应(草堆同,差全由跳数) | 自然语料战绩为混合,须如实报 |
 | 对手(§五-7) | HippoRAG 2 55.0、MemOS 45.0、Letta-FS 56.7、TRACE 出厂 16.7;Letta 服务端/Memobase BLOCKED | 与直读同档、比 smoc 低 28–40;"检索赢裁决输"为第三方证据 |
 
-进行中:A 冻结重建九臂(direct 47.57、smwplain 53.47 已出)、MINTEval、TRACE(LoCoMo 配置)、小捆、Gemini、LME 第二段。
+| 外场 A 档续(PersonaMem / MINTEval) | PersonaMem −7.2(who=others +14.0,两臂低于随机);MINTEval 地板(1.2 vs 1.9) | 四个 A 档外场**全部**负向或地板;外场表只剩 STALE 一场为正 |
+| 第三厂商读者(§五-8) | Gemini 3.6 Flash:协议效应 +0.35 n.s.;direct 63.4(比 haiku +15.1);fullplain 14K 95.5 > smoc;L2 全文 77.5 = gpt | 协议适配律改"按厂商分布";"证据饥饿"限定 claude/openai 家族;新 limitation:强读者小库上全文赢 |
+| LME 全 split(§五-10) | multi-session −2.3(有功效零结果)、single-user −25、single-assistant 0 vs 100、preference −28.6 | 自然语料十格 1 胜 4 平 5 负;分界线 = 是否需跨日期状态转移推理 |
+| 小捆(读时账目 / S1-S2 / 无填充 / 日期粗化) | 读时账目 60.2(−30 vs 写时);S2 +59.0、S1 +8.3;无填充:结构溢价 44% 抗干扰 + 56% 抗聚合;补全日期不救 gpt 降级层 | "写时"两字有独立证据;"查找题无优势"自设 limitation 撤回;"日期粗化"归因作废 |
+| 单店单跑头条(§五-1,五臂已核) | smoc 89.06 vs direct 47.57(+41.5,簇 CI [+36.5,+46.4]);有闸店 85.59(−3.5,p=0.04) | 头条来路问题关闭;归属闸在干净语料有代价 → 不改默认;中间梯因 v43 起无 slot_class 走回退选池,OPEN 旗标重跑中 |
+
+进行中:A 中间梯 OPEN 旗标重跑与终评分、TRACE(LoCoMo 配置)。
