@@ -124,7 +124,7 @@ first_vs_last +1.4。
 
 ---
 
-## 九、人工核验第一份背书(senior2 完成 84/84,2026-08-31)
+## 九、人工核验第一份背书(senior2 完成 84/84,2026-09-01→09-02(原写 08-31 有误:09-01 红队快照记 senior2 3/84 刚启动;以评审系统时间戳为准))
 
 **senior2 独立复现了同一现象**,且用词与机器审计一致:
 > "Missing position change on 1824-07-16: **promoted to Senior Account Manager**"
