@@ -22,6 +22,7 @@ def merge(paths):
 
 
 def cell(tag, rows):
+    rows = [r for r in rows if "judge_correct" in r]
     n = len(rows)
     if not n:
         print(f"{tag}: EMPTY"); return

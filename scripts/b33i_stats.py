@@ -81,6 +81,12 @@ def compare(name, test_rows, base_rows):
     """三种连接键各试一次,取匹配最多的那一种(MAB 两臂 id 同形,LME
     账目臂 id 带 _<dim>_query 后缀而 direct 臂用裸 question_id)。"""
     ident = lambda x: x  # noqa: E731
+    # 跑批器错误行(无 judge_correct,多为 openai 嵌入 8192 token 上限拒绝)
+    # 必须整对剔除,不能当作判错——否则单方面惩罚出错的那一臂。
+    n_err = (sum(1 for r in test_rows if "judge_correct" not in r)
+             + sum(1 for r in base_rows if "judge_correct" not in r))
+    test_rows = [r for r in test_rows if "judge_correct" in r]
+    base_rows = [r for r in base_rows if "judge_correct" in r]
     best = None
     for kt, kb, tag in ((ident, ident, "raw"), (key, ident, "strip-test"),
                         (ident, key, "strip-base")):
@@ -93,7 +99,7 @@ def compare(name, test_rows, base_rows):
             best = (n, t, b, tag)
     _, t, b, tag = best
     ks = sorted(set(t) & set(b))
-    name = f"{name} join={tag}"
+    name = f"{name} join={tag} dropped_err={n_err}"
     pairs = [(t[k], b[k]) for k in ks]
     w = sum(1 for x, y in pairs if x and not y)
     l = sum(1 for x, y in pairs if y and not x)
