@@ -74,3 +74,16 @@ results/b27_smoc_L2probe.jsonl(10 店 L2≈104K,40 题):账目读取均输入 **
 **§7 必须写成衰减率主张**:7.4× 语料下,账目读取 ×6.8(投影 ×7.2 但基数小),全文 ×34.8;
 准确率账目 −15、投影 −20(n=40 探针,两者不可分),全文 haiku −42 / gpt −20。
 "账目恒定 2.9K"与"5× 成本优势"两句撤回;批 27b(30 店 L2,n=120,≈$17)仍是把这条从探针升为主张的最小实验。
+
+## 四、直读基线的隐藏配置:嵌入器(09-02 晚,自查自纠)
+
+- 今天用 `scripts/lb_reader_arm.py --arm direct` 在 v2.4 上重跑直读臂得 **35.94**(vs 文档 48.61,b/c=136/63,p=2.5e-07),
+  逐题型 change_count 32.6 / count_before 27.1 / first_vs_last 54.9 / longest_tenure 29.2。
+- 排查:v2.2 与 v2.4 只有 85/23,754 个记忆单元不同、查询日期完全一致 → 不是语料;批量/逐条嵌入余弦 = 1.0 → 不是 ollama 批处理错位;
+  **根因 = 嵌入器**:代码默认 `QVF_EMBED_BACKEND=ollama`(nomic-embed-text),而 8 月存档 wsc_v2_direct 与 09-01 批 31 直读臂都是
+  `QVF_EMBED_BACKEND=openai`(text-embedding-3-small)启动的(上一会话记录 14 次显式 export;OpenAI 后端与存档 top-10 重合 30/30 = 1.00,
+  nomic 后端只重合 0.48)。今天漏掉了这个 export。
+- **入档结论**:(1) canonical direct 48.61 的嵌入器是 OpenAI text-embedding-3-small,论文与 datasheet 必须写明;
+  (2) 换成本地 nomic-embed-text 后 direct 掉到 35.94,"无信息"回答从 79 升到 142/576 —— 结构总价对检索嵌入器敏感(弱嵌入器下差距更大,+54),
+  这是基线的一个自由度,应在 limitations/附录报两档;(3) 今天的 35.94 **不是** v2.4 语料效应,v2.4 上 OpenAI 嵌入的直读重跑见下行。
+- v2.4 × OpenAI 嵌入 直读实跑:__D24OAI__
