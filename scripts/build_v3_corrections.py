@@ -40,16 +40,19 @@ def main():
         new = old + shift if old + shift < nxt else old - shift
         if new <= prev:
             new = old + timedelta(days=min(60, max(1, (nxt - old).days // 2)))
+        orig = ch[r]["date"]
+        # 00-日期(月/日未知)的原声明从未说过具体日子:更正句只引用用户真说过的粒度
+        old_str = orig[:4] if "-00" in orig else fd(old)
         ch[r]["date"] = fd(new)
-        ch[r]["corrected_from"] = fd(old)
+        ch[r]["corrected_from"] = orig
         ins = old + timedelta(days=45)
         if ins >= nxt:
             ins = old + timedelta(days=1)
         corr = {"chain_index": f"corr{r}", "date": fd(ins), "turns": [
             {"role": "user", "content":
                 f"Quick correction on something I mentioned before - I actually "
-                f"started at {ch[r]['value']} on {fd(new)}, not {fd(old)}. "
-                f"I had the date mixed up."},
+                f"started at {ch[r]['value']} on {fd(new)}, not {old_str} "
+                f"as I said before. I had the date mixed up."},
             {"role": "assistant", "content":
                 f"Thanks for the correction - noted: {ch[r]['value']} "
                 f"from {fd(new)}."}]}
