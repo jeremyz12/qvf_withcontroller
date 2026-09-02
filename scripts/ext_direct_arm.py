@@ -282,10 +282,13 @@ def run(data_paths: List[str], questions_path: str, out_path: str,
         gold = q.get("gold")
         if gold is None:
             jc, jr = None, "gold=null: judged separately via rubric"
+            _jin = _jout = None
             n_null += 1
         else:
             v = judge.judge(q["question"], str(gold), answer, q.get("qtype"))
             jc, jr = v.correct, v.reason
+            # 批 33-G1 追加(纯记账,不改任何调用):判官侧 token 落盘。
+            _jin, _jout = v.usage_input_tokens, v.usage_output_tokens
             n_ok += bool(jc)
 
         row = {
@@ -298,6 +301,7 @@ def run(data_paths: List[str], questions_path: str, out_path: str,
             "usage_input_tokens": _uin,
             "usage_output_tokens": _uout,
             "judge_correct": jc, "judge_reason": jr,
+            "judge_input_tokens": _jin, "judge_output_tokens": _jout,
             "reader_model": MODEL, "latency_s": round(time.time() - t0, 2),
         }
         fout.write(json.dumps(row, ensure_ascii=False) + "\n")

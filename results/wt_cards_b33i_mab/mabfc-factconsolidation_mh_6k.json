@@ -1,0 +1,1372 @@
+{
+ "uid": "mabfc-factconsolidation_mh_6k",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s0#r0",
+   "source_span": "Thomas Kyd was born in the city of London.",
+   "entity": "Thomas Kyd",
+   "slot": "birth_city",
+   "value": "London",
+   "claim": "Thomas Kyd was born in London.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s306#r0",
+   "source_span": "Thomas Kyd was born in the city of Leeds.",
+   "entity": "Thomas Kyd",
+   "slot": "birth_city",
+   "value": "Leeds",
+   "claim": "Thomas Kyd was born in Leeds.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s2#r0",
+   "source_span": "Amy Winehouse died in the city of Camden Town.",
+   "entity": "Amy Winehouse",
+   "slot": "death_city",
+   "value": "Camden Town",
+   "claim": "Amy Winehouse died in Camden Town.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s5#r0",
+   "source_span": "Pedro Pierluisi worked in the city of Washington, D.C..",
+   "entity": "Pedro Pierluisi",
+   "slot": "work_city",
+   "value": "Washington, D.C.",
+   "claim": "Pedro Pierluisi worked in Washington, D.C.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s8#r0",
+   "source_span": "Victoria Beckham is married to David Beckham.",
+   "entity": "Victoria Beckham",
+   "slot": "spouse",
+   "value": "David Beckham",
+   "claim": "Victoria Beckham is married to David Beckham.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s11#r0",
+   "source_span": "Ferdinand Marcos is married to Imelda Marcos.",
+   "entity": "Ferdinand Marcos",
+   "slot": "spouse",
+   "value": "Imelda Marcos",
+   "claim": "Ferdinand Marcos is married to Imelda Marcos.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s16#r0",
+   "source_span": "Chanel was founded by Coco Chanel.",
+   "entity": "Chanel",
+   "slot": "founder",
+   "value": "Coco Chanel",
+   "claim": "Chanel was founded by Coco Chanel.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s34#r0",
+   "source_span": "Chanel was founded by Andy Warhol.",
+   "entity": "Chanel",
+   "slot": "founder",
+   "value": "Andy Warhol",
+   "claim": "Chanel was founded by Andy Warhol.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s25#r0",
+   "source_span": "Aladdin Sane was performed by David Bowie.",
+   "entity": "Aladdin Sane",
+   "slot": "performer",
+   "value": "David Bowie",
+   "claim": "Aladdin Sane was performed by David Bowie.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s285#r0",
+   "source_span": "Aladdin Sane was performed by Yves Montand.",
+   "entity": "Aladdin Sane",
+   "slot": "performer",
+   "value": "Yves Montand",
+   "claim": "Aladdin Sane was performed by Yves Montand.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s28#r0",
+   "source_span": "Satya Nadella was born in the city of Hyderabad.",
+   "entity": "Satya Nadella",
+   "slot": "birth_city",
+   "value": "Hyderabad",
+   "claim": "Satya Nadella was born in Hyderabad.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s37#r0",
+   "source_span": "Frank Zappa died in the city of Los Angeles.",
+   "entity": "Frank Zappa",
+   "slot": "death_city",
+   "value": "Los Angeles",
+   "claim": "Frank Zappa died in Los Angeles.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s51#r0",
+   "source_span": "Frank Zappa died in the city of Berlin.",
+   "entity": "Frank Zappa",
+   "slot": "death_city",
+   "value": "Berlin",
+   "claim": "Frank Zappa died in Berlin.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s38#r0",
+   "source_span": "Dave Filoni is employed by Lucasfilm.",
+   "entity": "Dave Filoni",
+   "slot": "employer",
+   "value": "Lucasfilm",
+   "claim": "Dave Filoni is employed by Lucasfilm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r15"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s226#r0",
+   "source_span": "Dave Filoni is employed by British Broadcasting Corporation.",
+   "entity": "Dave Filoni",
+   "slot": "employer",
+   "value": "British Broadcasting Corporation",
+   "claim": "Dave Filoni is employed by British Broadcasting Corporation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s52#r0",
+   "source_span": "Blood on the Tracks was performed by Bob Dylan.",
+   "entity": "Blood on the Tracks",
+   "slot": "performer",
+   "value": "Bob Dylan",
+   "claim": "Blood on the Tracks was performed by Bob Dylan.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r17"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s181#r0",
+   "source_span": "Blood on the Tracks was performed by Lou Reed.",
+   "entity": "Blood on the Tracks",
+   "slot": "performer",
+   "value": "Lou Reed",
+   "claim": "Blood on the Tracks was performed by Lou Reed.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s53#r0",
+   "source_span": "Ursula K. Le Guin died in the city of Portland.",
+   "entity": "Ursula K. Le Guin",
+   "slot": "death_city",
+   "value": "Portland",
+   "claim": "Ursula K. Le Guin died in Portland.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s58#r0",
+   "source_span": "Nicolae Ceaușescu is married to Elena Ceaușescu.",
+   "entity": "Nicolae Ceaușescu",
+   "slot": "spouse",
+   "value": "Elena Ceaușescu",
+   "claim": "Nicolae Ceaușescu is married to Elena Ceaușescu.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s62#r0",
+   "source_span": "Yves Montand is married to Simone Signoret.",
+   "entity": "Yves Montand",
+   "slot": "spouse",
+   "value": "Simone Signoret",
+   "claim": "Yves Montand is married to Simone Signoret.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r21"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s233#r0",
+   "source_span": "Yves Montand is married to Natalie Portman.",
+   "entity": "Yves Montand",
+   "slot": "spouse",
+   "value": "Natalie Portman",
+   "claim": "Yves Montand is married to Natalie Portman.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r20"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s61#r0",
+   "source_span": "Walter Chrysler's child is Walter Percy Chrysler Jr..",
+   "entity": "Walter Chrysler",
+   "slot": "child",
+   "value": "Walter Percy Chrysler Jr.",
+   "claim": "Walter Chrysler's child is Walter Percy Chrysler Jr.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r23"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s231#r0",
+   "source_span": "Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.",
+   "entity": "Walter Chrysler",
+   "slot": "child",
+   "value": "Charles Frederick, Duke of Holstein-Gottorp",
+   "claim": "Walter Chrysler's child is Charles Frederick, Duke of Holstein-Gottorp.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s65#r0",
+   "source_span": "Born in the U.S.A. was performed by Bruce Springsteen.",
+   "entity": "Born in the U.S.A.",
+   "slot": "performer",
+   "value": "Bruce Springsteen",
+   "claim": "Born in the U.S.A. was performed by Bruce Springsteen.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r25"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s337#r0",
+   "source_span": "Born in the U.S.A. was performed by Dana International.",
+   "entity": "Born in the U.S.A.",
+   "slot": "performer",
+   "value": "Dana International",
+   "claim": "Born in the U.S.A. was performed by Dana International.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s71#r0",
+   "source_span": "Rocket Man was performed by Elton John.",
+   "entity": "Rocket Man",
+   "slot": "performer",
+   "value": "Elton John",
+   "claim": "Rocket Man was performed by Elton John.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r27"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s229#r0",
+   "source_span": "Rocket Man was performed by Ayumi Hamasaki.",
+   "entity": "Rocket Man",
+   "slot": "performer",
+   "value": "Ayumi Hamasaki",
+   "claim": "Rocket Man was performed by Ayumi Hamasaki.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r26"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s76#r0",
+   "source_span": "The author of The Birth of Tragedy is Friedrich Nietzsche.",
+   "entity": "The Birth of Tragedy",
+   "slot": "author",
+   "value": "Friedrich Nietzsche",
+   "claim": "The Birth of Tragedy was authored by Friedrich Nietzsche.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s77#r0",
+   "source_span": "The author of The Birth of Tragedy is Stephen Crane.",
+   "entity": "The Birth of Tragedy",
+   "slot": "author",
+   "value": "Stephen Crane",
+   "claim": "The Birth of Tragedy was authored by Stephen Crane.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r28"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s84#r0",
+   "source_span": "Laura Bush is married to George W. Bush.",
+   "entity": "Laura Bush",
+   "slot": "spouse",
+   "value": "George W. Bush",
+   "claim": "Laura Bush is married to George W. Bush.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s135#r0",
+   "source_span": "Laura Bush is married to Princess Alice, Duchess of Gloucester.",
+   "entity": "Laura Bush",
+   "slot": "spouse",
+   "value": "Princess Alice, Duchess of Gloucester",
+   "claim": "Laura Bush is married to Princess Alice, Duchess of Gloucester.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r30"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s85#r0",
+   "source_span": "The chief executive officer of Microsoft is Satya Nadella.",
+   "entity": "Microsoft",
+   "slot": "ceo",
+   "value": "Satya Nadella",
+   "claim": "Satya Nadella is the CEO of Microsoft.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r33"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s188#r0",
+   "source_span": "The chief executive officer of Microsoft is Steve Jobs.",
+   "entity": "Microsoft",
+   "slot": "ceo",
+   "value": "Steve Jobs",
+   "claim": "Steve Jobs is the CEO of Microsoft.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r32"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s109#r0",
+   "source_span": "The chief executive officer of Twitter is Jack Dorsey.",
+   "entity": "Twitter",
+   "slot": "ceo",
+   "value": "Jack Dorsey",
+   "claim": "Jack Dorsey is the CEO of Twitter.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s275#r0",
+   "source_span": "The chief executive officer of Twitter is Bernard Arnault.",
+   "entity": "Twitter",
+   "slot": "ceo",
+   "value": "Bernard Arnault",
+   "claim": "Bernard Arnault is the CEO of Twitter.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r34"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s120#r0",
+   "source_span": "Elvis Presley is married to Priscilla Presley.",
+   "entity": "Elvis Presley",
+   "slot": "spouse",
+   "value": "Priscilla Presley",
+   "claim": "Elvis Presley is married to Priscilla Presley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r37"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s139#r0",
+   "source_span": "Elvis Presley is married to Charles the Bold.",
+   "entity": "Elvis Presley",
+   "slot": "spouse",
+   "value": "Charles the Bold",
+   "claim": "Elvis Presley is married to Charles the Bold.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r36"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s121#r0",
+   "source_span": "Andy Warhol died in the city of New York City.",
+   "entity": "Andy Warhol",
+   "slot": "death_city",
+   "value": "New York City",
+   "claim": "Andy Warhol died in New York City.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r39"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s142#r0",
+   "source_span": "Andy Warhol died in the city of Montmélian.",
+   "entity": "Andy Warhol",
+   "slot": "death_city",
+   "value": "Montmélian",
+   "claim": "Andy Warhol died in Montmélian.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s131#r0",
+   "source_span": "Charles Dickens is married to Catherine Dickens.",
+   "entity": "Charles Dickens",
+   "slot": "spouse",
+   "value": "Catherine Dickens",
+   "claim": "Charles Dickens is married to Catherine Dickens.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s138#r0",
+   "source_span": "David Bowie is married to Iman.",
+   "entity": "David Bowie",
+   "slot": "spouse",
+   "value": "Iman",
+   "claim": "David Bowie is married to Iman.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s141#r0",
+   "source_span": "Tony Blair is married to Cherie Blair.",
+   "entity": "Tony Blair",
+   "slot": "spouse",
+   "value": "Cherie Blair",
+   "claim": "Tony Blair is married to Cherie Blair.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r43"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s424#r0",
+   "source_span": "Tony Blair is married to Alan Jay Lerner.",
+   "entity": "Tony Blair",
+   "slot": "spouse",
+   "value": "Alan Jay Lerner",
+   "claim": "Tony Blair is married to Alan Jay Lerner.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r42"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s164#r0",
+   "source_span": "Charles Darwin is married to Emma Darwin.",
+   "entity": "Charles Darwin",
+   "slot": "spouse",
+   "value": "Emma Darwin",
+   "claim": "Charles Darwin is married to Emma Darwin.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r45"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s335#r0",
+   "source_span": "Charles Darwin is married to Amala Paul.",
+   "entity": "Charles Darwin",
+   "slot": "spouse",
+   "value": "Amala Paul",
+   "claim": "Charles Darwin is married to Amala Paul.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r44"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s166#r0",
+   "source_span": "Stefan Löfven worked in the city of Stockholm.",
+   "entity": "Stefan Löfven",
+   "slot": "work_city",
+   "value": "Stockholm",
+   "claim": "Stefan Löfven worked in Stockholm.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s170#r0",
+   "source_span": "Alan Jay Lerner died in the city of New York City.",
+   "entity": "Alan Jay Lerner",
+   "slot": "death_city",
+   "value": "New York City",
+   "claim": "Alan Jay Lerner died in New York City.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r48"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s394#r0",
+   "source_span": "Alan Jay Lerner died in the city of Mansourah, Algeria.",
+   "entity": "Alan Jay Lerner",
+   "slot": "death_city",
+   "value": "Mansourah, Algeria",
+   "claim": "Alan Jay Lerner died in Mansourah, Algeria.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r47"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s175#r0",
+   "source_span": "Igor of Kiev is married to Olga of Kiev.",
+   "entity": "Igor of Kiev",
+   "slot": "spouse",
+   "value": "Olga of Kiev",
+   "claim": "Igor of Kiev is married to Olga of Kiev.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s178#r0",
+   "source_span": "Steve Jobs was born in the city of San Francisco.",
+   "entity": "Steve Jobs",
+   "slot": "birth_city",
+   "value": "San Francisco",
+   "claim": "Steve Jobs was born in San Francisco.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s181#r0",
+   "source_span": "Blood on the Tracks was performed by Lou Reed.",
+   "entity": "Blood on the Tracks",
+   "slot": "performer",
+   "value": "Lou Reed",
+   "claim": "Blood on the Tracks was performed by Lou Reed.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s206#r0",
+   "source_span": "John Keats died in the city of Rome.",
+   "entity": "John Keats",
+   "slot": "death_city",
+   "value": "Rome",
+   "claim": "John Keats died in Rome.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r53"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s372#r0",
+   "source_span": "John Keats died in the city of Leipzig.",
+   "entity": "John Keats",
+   "slot": "death_city",
+   "value": "Leipzig",
+   "claim": "John Keats died in Leipzig.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r52"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s201#r0",
+   "source_span": "The chief executive officer of Apple Inc. is Vijay Mallya.",
+   "entity": "Apple Inc.",
+   "slot": "ceo",
+   "value": "Vijay Mallya",
+   "claim": "Vijay Mallya is the CEO of Apple Inc.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r55"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s13#r0",
+   "source_span": "The chief executive officer of Apple Inc. is Tim Cook.",
+   "entity": "Apple Inc.",
+   "slot": "ceo",
+   "value": "Tim Cook",
+   "claim": "Tim Cook is the CEO of Apple Inc.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r54"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s128#r0",
+   "source_span": "Oscar Wilde died in the city of Paris.",
+   "entity": "Oscar Wilde",
+   "slot": "death_city",
+   "value": "Paris",
+   "claim": "Oscar Wilde died in Paris.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r57"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s270#r0",
+   "source_span": "Oscar Wilde died in the city of Guangzhou.",
+   "entity": "Oscar Wilde",
+   "slot": "death_city",
+   "value": "Guangzhou",
+   "claim": "Oscar Wilde died in Guangzhou.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r56"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s288#r0",
+   "source_span": "Back to Black was performed by Amy Winehouse.",
+   "entity": "Back to Black",
+   "slot": "performer",
+   "value": "Amy Winehouse",
+   "claim": "Back to Black was performed by Amy Winehouse.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r59"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s318#r0",
+   "source_span": "Back to Black was performed by Frank Zappa.",
+   "entity": "Back to Black",
+   "slot": "performer",
+   "value": "Frank Zappa",
+   "claim": "Back to Black was performed by Frank Zappa.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r58"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s300#r0",
+   "source_span": "Sigmund Freud died in the city of London.",
+   "entity": "Sigmund Freud",
+   "slot": "death_city",
+   "value": "London",
+   "claim": "Sigmund Freud died in London.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s302#r0",
+   "source_span": "Nadezhda Krupskaya died in the city of Moscow.",
+   "entity": "Nadezhda Krupskaya",
+   "slot": "death_city",
+   "value": "Moscow",
+   "claim": "Nadezhda Krupskaya died in Moscow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s307#r0",
+   "source_span": "Jesus Christ worked in the city of Galilee.",
+   "entity": "Jesus Christ",
+   "slot": "work_city",
+   "value": "Galilee",
+   "claim": "Jesus Christ worked in Galilee.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r63",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s312#r0",
+   "source_span": "John Knox worked in the city of Edinburgh.",
+   "entity": "John Knox",
+   "slot": "work_city",
+   "value": "Edinburgh",
+   "claim": "John Knox worked in Edinburgh.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r64",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s316#r0",
+   "source_span": "Pierre Beaumarchais was born in the city of Paris.",
+   "entity": "Pierre Beaumarchais",
+   "slot": "birth_city",
+   "value": "Paris",
+   "claim": "Pierre Beaumarchais was born in Paris.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r65",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s342#r0",
+   "source_span": "Thomas Arne was born in the city of London.",
+   "entity": "Thomas Arne",
+   "slot": "birth_city",
+   "value": "London",
+   "claim": "Thomas Arne was born in London.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r66"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r66",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s366#r0",
+   "source_span": "Thomas Arne was born in the city of Bengaluru.",
+   "entity": "Thomas Arne",
+   "slot": "birth_city",
+   "value": "Bengaluru",
+   "claim": "Thomas Arne was born in Bengaluru.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r65"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r67",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s352#r0",
+   "source_span": "Coco Chanel died in the city of Paris.",
+   "entity": "Coco Chanel",
+   "slot": "death_city",
+   "value": "Paris",
+   "claim": "Coco Chanel died in Paris.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r68",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s395#r0",
+   "source_span": "Joseph Goebbels worked in the city of Berlin.",
+   "entity": "Joseph Goebbels",
+   "slot": "work_city",
+   "value": "Berlin",
+   "claim": "Joseph Goebbels worked in Berlin.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r69",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s407#r0",
+   "source_span": "Sophia Hawthorne is married to Nathaniel Hawthorne.",
+   "entity": "Sophia Hawthorne",
+   "slot": "spouse",
+   "value": "Nathaniel Hawthorne",
+   "claim": "Sophia Hawthorne is married to Nathaniel Hawthorne.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r70"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r70",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s420#r0",
+   "source_span": "Sophia Hawthorne is married to Joan Didion.",
+   "entity": "Sophia Hawthorne",
+   "slot": "spouse",
+   "value": "Joan Didion",
+   "claim": "Sophia Hawthorne is married to Joan Didion.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r69"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r71",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s413#r0",
+   "source_span": "Hermione Granger was performed by Emma Watson.",
+   "entity": "Hermione Granger",
+   "slot": "performer",
+   "value": "Emma Watson",
+   "claim": "Hermione Granger was performed by Emma Watson.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r72"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r72",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s425#r0",
+   "source_span": "Hermione Granger was performed by Kylie Minogue.",
+   "entity": "Hermione Granger",
+   "slot": "performer",
+   "value": "Kylie Minogue",
+   "claim": "Hermione Granger was performed by Kylie Minogue.",
+   "slot_cardinality": "set",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r71"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r73",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s414#r0",
+   "source_span": "Derek Shepherd is married to Meredith Grey.",
+   "entity": "Derek Shepherd",
+   "slot": "spouse",
+   "value": "Meredith Grey",
+   "claim": "Derek Shepherd is married to Meredith Grey.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r74",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s422#r0",
+   "source_span": "Vladimir Lenin is married to Nadezhda Krupskaya.",
+   "entity": "Vladimir Lenin",
+   "slot": "spouse",
+   "value": "Nadezhda Krupskaya",
+   "claim": "Vladimir Lenin is married to Nadezhda Krupskaya.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r75",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s447#r0",
+   "source_span": "Roy Rogers is married to Dale Evans.",
+   "entity": "Roy Rogers",
+   "slot": "spouse",
+   "value": "Dale Evans",
+   "claim": "Roy Rogers is married to Dale Evans.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r76"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r76",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s452#r0",
+   "source_span": "Roy Rogers is married to John McVie.",
+   "entity": "Roy Rogers",
+   "slot": "spouse",
+   "value": "John McVie",
+   "claim": "Roy Rogers is married to John McVie.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r75"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r77",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s448#r0",
+   "source_span": "Charles Dickens died in the city of Gads Hill Place.",
+   "entity": "Charles Dickens",
+   "slot": "death_city",
+   "value": "Gads Hill Place",
+   "claim": "Charles Dickens died in Gads Hill Place.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r78",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s125#r0",
+   "source_span": "Olga of Kiev died in the city of Kyiv.",
+   "entity": "Olga of Kiev",
+   "slot": "death_city",
+   "value": "Kyiv",
+   "claim": "Olga of Kiev died in Kyiv.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r79"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r79",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s450#r0",
+   "source_span": "Olga of Kiev died in the city of Rodez.",
+   "entity": "Olga of Kiev",
+   "slot": "death_city",
+   "value": "Rodez",
+   "claim": "Olga of Kiev died in Rodez.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r78"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r80",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s117#r0",
+   "source_span": "Pius XII died in the city of Castel Gandolfo.",
+   "entity": "Pius XII",
+   "slot": "death_city",
+   "value": "Castel Gandolfo",
+   "claim": "Pius XII died in Castel Gandolfo.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r81"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r81",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s283#r0",
+   "source_span": "Pius XII died in the city of Wolverhampton.",
+   "entity": "Pius XII",
+   "slot": "death_city",
+   "value": "Wolverhampton",
+   "claim": "Pius XII died in Wolverhampton.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r80"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r82",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s292#r0",
+   "source_span": "Gennady Rozhdestvensky died in the city of Moscow.",
+   "entity": "Gennady Rozhdestvensky",
+   "slot": "death_city",
+   "value": "Moscow",
+   "claim": "Gennady Rozhdestvensky died in Moscow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r83"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r83",
+   "source_memory_id": "mabfc-factconsolidation_mh_6k/s451#r0",
+   "source_span": "Gennady Rozhdestvensky died in the city of United States of America.",
+   "entity": "Gennady Rozhdestvensky",
+   "slot": "death_city",
+   "value": "United States of America",
+   "claim": "Gennady Rozhdestvensky died in United States of America.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r82"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 25598,
+ "usage_out": 10569
+}

@@ -121,6 +121,11 @@ def main() -> int:
             "protocol_deviation": deviated,
             "usage_input_tokens": ti, "usage_output_tokens": to,
             "judge_correct": v.correct, "judge_reason": v.reason,
+            # 批 33-G1 追加(纯记账,不改任何调用):判官侧 token 落盘,
+            # 使 $/题 覆盖读者+判官两侧而非只读者侧。JudgeResult 自 08-16
+            # 起已带这两个字段,此处只是写出来。
+            "judge_input_tokens": v.usage_input_tokens,
+            "judge_output_tokens": v.usage_output_tokens,
             "latency_s": round(time.time() - t0, 2)},
             ensure_ascii=False) + "\n")
         fh.flush()
