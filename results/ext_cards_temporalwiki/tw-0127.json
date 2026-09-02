@@ -1,0 +1,180 @@
+{
+ "uid": "tw-0127",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0127/s0#r0",
+   "source_span": "Current team: Chelsea",
+   "entity": "Salomon Kalou",
+   "slot": "current_team",
+   "value": "Chelsea",
+   "claim": "Salomon Kalou's current team is Chelsea.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0127/s0#r0",
+   "source_span": "Number: 21",
+   "entity": "Salomon Kalou",
+   "slot": "jersey_number",
+   "value": "21",
+   "claim": "Salomon Kalou wears jersey number 21.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at Chelsea",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0127/s0#r0",
+   "source_span": "Position(s): Winger",
+   "entity": "Salomon Kalou",
+   "slot": "position",
+   "value": "Winger",
+   "claim": "Salomon Kalou plays as a winger.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0127/s0#r0",
+   "source_span": "Height: 1.86 m (6 ft 1 in)",
+   "entity": "Salomon Kalou",
+   "slot": "height",
+   "value": "1.86 m (6 ft 1 in)",
+   "claim": "Salomon Kalou's height is 1.86 m (6 ft 1 in).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0127/s0#r0",
+   "source_span": "On 12 October 2009, Kalou signed a new 3 year contract extension with Chelsea, keeping him at Stamford Bridge until the summer of 2012.",
+   "entity": "Salomon Kalou",
+   "slot": "contract_end_date",
+   "value": "summer of 2012",
+   "claim": "Salomon Kalou's contract with Chelsea extends until the summer of 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009-10-12"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0127/s1#r0",
+   "source_span": "Current team: Lille",
+   "entity": "Salomon Kalou",
+   "slot": "current_team",
+   "value": "Lille",
+   "claim": "Salomon Kalou's current team is Lille.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "jersey_number"
+   ],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0127/s1#r0",
+   "source_span": "Number: 8",
+   "entity": "Salomon Kalou",
+   "slot": "jersey_number",
+   "value": "8",
+   "claim": "Salomon Kalou wears jersey number 8.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "at Lille",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0127/s1#r0",
+   "source_span": "Position(s): Striker",
+   "entity": "Salomon Kalou",
+   "slot": "position",
+   "value": "Striker",
+   "claim": "Salomon Kalou plays as a striker.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0127/s1#r0",
+   "source_span": "Date of birth: (1985-08-05)5 August 1985",
+   "entity": "Salomon Kalou",
+   "slot": "date_of_birth",
+   "value": "1985-08-05",
+   "claim": "Salomon Kalou was born on 5 August 1985.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-08-05"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0127/s1#r0",
+   "source_span": "Place of birth: Abidjan,Ivory Coast",
+   "entity": "Salomon Kalou",
+   "slot": "place_of_birth",
+   "value": "Abidjan, Ivory Coast",
+   "claim": "Salomon Kalou was born in Abidjan, Ivory Coast.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0127/s1#r0",
+   "source_span": "He moved to Lille on a free transfer in July 2012 upon the expiry of his contract at Chelsea.",
+   "entity": "Salomon Kalou",
+   "slot": "current_team",
+   "value": "Lille",
+   "claim": "Salomon Kalou moved to Lille in July 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-07"
+  }
+ ],
+ "usage_in": 2399,
+ "usage_out": 1536
+}

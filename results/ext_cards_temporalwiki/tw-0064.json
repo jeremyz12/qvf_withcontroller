@@ -1,0 +1,331 @@
+{
+ "uid": "tw-0064",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "Founded: 1951",
+   "entity": "FC Orsha",
+   "slot": "founded_year",
+   "value": "1951",
+   "claim": "FC Orsha was founded in 1951.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1951"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "Ground: City Stadium",
+   "entity": "FC Orsha",
+   "slot": "ground",
+   "value": "City Stadium",
+   "claim": "FC Orsha's ground is City Stadium.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "Capacity: 2,852",
+   "entity": "FC Orsha",
+   "slot": "stadium_capacity",
+   "value": "2852",
+   "claim": "City Stadium has a capacity of 2,852.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "Head Coach: Yury Konoplev",
+   "entity": "FC Orsha",
+   "slot": "head_coach",
+   "value": "Yury Konoplev",
+   "claim": "FC Orsha's head coach is Yury Konoplev.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "League: Belarusian First League",
+   "entity": "FC Orsha",
+   "slot": "league",
+   "value": "Belarusian First League",
+   "claim": "FC Orsha plays in the Belarusian First League.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "2015: 14th",
+   "entity": "FC Orsha",
+   "slot": "league_position",
+   "value": "14th",
+   "claim": "FC Orsha finished 14th in the league in 2015.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "The team was founded in 1951 as Trud Orsha",
+   "entity": "FC Orsha",
+   "slot": "original_name",
+   "value": "Trud Orsha",
+   "claim": "FC Orsha was originally named Trud Orsha when founded in 1951.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1951"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "The club renamed to ZShM in 1959",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "ZShM",
+   "claim": "The club was renamed to ZShM in 1959.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1959"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "then to FC Mashinostroitel Orsha in 1960",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "FC Mashinostroitel Orsha",
+   "claim": "The club was renamed to FC Mashinostroitel Orsha in 1960.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1960"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "renamed to FC Start Orsha in 1965",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "FC Start Orsha",
+   "claim": "The club was renamed to FC Start Orsha in 1965.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1965"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "In 1992 the team was renamed to Legmash Orsha",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "Legmash Orsha",
+   "claim": "The team was renamed to Legmash Orsha in 1992.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1992"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "In 1992 the team was renamed to Legmash Orsha and joined newly created Belarusian Second League",
+   "entity": "FC Orsha",
+   "slot": "league",
+   "value": "Belarusian Second League",
+   "claim": "FC Orsha joined the Belarusian Second League in 1992.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1992"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "In 1994 the team was renamed to Maxim-Legmash Orsha due to sponsorship",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "Maxim-Legmash Orsha",
+   "claim": "The team was renamed to Maxim-Legmash Orsha in 1994 due to sponsorship.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1994"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "After successful 1995 season Maxim-Legmash was promoted the First League",
+   "entity": "FC Orsha",
+   "slot": "league",
+   "value": "Belarusian First League",
+   "claim": "FC Orsha was promoted to the First League after the 1995 season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "Before the start of 1996 season the 'Legmash' part of the name was dropped due Legmash plant withdwal from team support and the team spent one season as Maxim-Orsha",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "Maxim-Orsha",
+   "claim": "The team was renamed to Maxim-Orsha before the 1996 season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1996"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "before being renamed again into FC Orsha in 1997",
+   "entity": "FC Orsha",
+   "slot": "team_name",
+   "value": "FC Orsha",
+   "claim": "The team was renamed to FC Orsha in 1997.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r15"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1997"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "tw-0064/s0#r0",
+   "source_span": "At the end of 2001 Orsha withdrew to the amateur level (Vitebsk Voblast championship) due to financial troubles",
+   "entity": "FC Orsha",
+   "slot": "league",
+   "value": "Vitebsk Voblast championship (amateur)",
+   "claim": "FC Orsha withdrew to the amateur level at the end of 2001 due to financial troubles.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "tw-0064/s1#r0",
+   "source_span": "Head Coach: Mikalay Branfilaw",
+   "entity": "FC Orsha",
+   "slot": "head_coach",
+   "value": "Mikalay Branfilaw",
+   "claim": "FC Orsha's head coach is Mikalay Branfilaw.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "tw-0064/s1#r0",
+   "source_span": "League: Belarusian First League",
+   "entity": "FC Orsha",
+   "slot": "league",
+   "value": "Belarusian First League",
+   "claim": "FC Orsha plays in the Belarusian First League.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r17"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "tw-0064/s1#r0",
+   "source_span": "2020: 11th",
+   "entity": "FC Orsha",
+   "slot": "league_position",
+   "value": "11th",
+   "claim": "FC Orsha finished 11th in the league in 2020.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  }
+ ],
+ "usage_in": 2303,
+ "usage_out": 2674
+}

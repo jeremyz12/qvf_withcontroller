@@ -1,0 +1,101 @@
+{
+ "uid": "tw-0035",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0035/s0#r0",
+   "source_span": "From 2008-2012 Dr Goos was Director of the Teaching and Educational Development Institute at The University of Queensland",
+   "entity": "Merrilyn Goos",
+   "slot": "job_title",
+   "value": "Director of the Teaching and Educational Development Institute",
+   "claim": "Merrilyn Goos was Director of the Teaching and Educational Development Institute at The University of Queensland from 2008 to 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0035/s0#r0",
+   "source_span": "From 2008-2012 Dr Goos was Director of the Teaching and Educational Development Institute at The University of Queensland",
+   "entity": "Merrilyn Goos",
+   "slot": "employer",
+   "value": "The University of Queensland",
+   "claim": "Merrilyn Goos was employed at The University of Queensland from 2008 to 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0035/s0#r0",
+   "source_span": "in 2003she was awarded the Award for Excellence in Teaching",
+   "entity": "Merrilyn Goos",
+   "slot": "award",
+   "value": "Award for Excellence in Teaching",
+   "claim": "Merrilyn Goos was awarded the Award for Excellence in Teaching in 2003.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2003"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0035/s1#r0",
+   "source_span": "Since October 2017 she has been Professor of STEM Education and Director of EPI*STEM at the University of Limerick, Ireland",
+   "entity": "Merrilyn Goos",
+   "slot": "job_title",
+   "value": "Professor of STEM Education and Director of EPI*STEM",
+   "claim": "Merrilyn Goos is Professor of STEM Education and Director of EPI*STEM at the University of Limerick since October 2017.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-10"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0035/s1#r0",
+   "source_span": "Since October 2017 she has been Professor of STEM Education and Director of EPI*STEM at the University of Limerick, Ireland",
+   "entity": "Merrilyn Goos",
+   "slot": "employer",
+   "value": "University of Limerick, Ireland",
+   "claim": "Merrilyn Goos is employed at the University of Limerick, Ireland since October 2017.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-10"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0035/s1#r0",
+   "source_span": "Merrilyn Goos is an Australian mathematics educator",
+   "entity": "Merrilyn Goos",
+   "slot": "nationality",
+   "value": "Australian",
+   "claim": "Merrilyn Goos is Australian.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 1859,
+ "usage_out": 892
+}

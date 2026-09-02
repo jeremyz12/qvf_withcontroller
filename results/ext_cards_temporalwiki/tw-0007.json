@@ -1,0 +1,131 @@
+{
+ "uid": "tw-0007",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0007/s0#r0",
+   "source_span": "Born: (1954-11-10)10 November 1954",
+   "entity": "Jaume Bartumeu",
+   "slot": "birth_date",
+   "value": "1954-11-10",
+   "claim": "Jaume Bartumeu was born on 10 November 1954.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1954-11-10"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0007/s0#r0",
+   "source_span": "Political party: Social Democratic Party",
+   "entity": "Jaume Bartumeu",
+   "slot": "political_party",
+   "value": "Social Democratic Party",
+   "claim": "Jaume Bartumeu is a member of the Social Democratic Party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0007/s0#r0",
+   "source_span": "he was therefore the only candidate that could achieve the necessary majority to be invested head of the government of Andorra during the parliamentary vote held on May 29, 2009. Following the ApC's decision to abstain, however, he failed to be elected in that session",
+   "entity": "Jaume Bartumeu",
+   "slot": "position",
+   "value": "candidate for head of government of Andorra",
+   "claim": "Jaume Bartumeu was a candidate for head of government of Andorra in May 2009 but failed to be elected in the initial vote.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009-05-29"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0007/s0#r0",
+   "source_span": "He was confirmed on 3 June 2009 with a simple majority of 14 votes, and took office on 5 June 2009",
+   "entity": "Jaume Bartumeu",
+   "slot": "position",
+   "value": "head of government of Andorra",
+   "claim": "Jaume Bartumeu was confirmed as head of government of Andorra on 3 June 2009 and took office on 5 June 2009.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009-06-05"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0007/s1#r0",
+   "source_span": "Jaume Bartumeu Cassany (born 10 November 1954 in Andorra la Vella)",
+   "entity": "Jaume Bartumeu",
+   "slot": "birth_place",
+   "value": "Andorra la Vella",
+   "claim": "Jaume Bartumeu was born in Andorra la Vella.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0007/s1#r0",
+   "source_span": "is an Andorran lawyer",
+   "entity": "Jaume Bartumeu",
+   "slot": "profession",
+   "value": "lawyer",
+   "claim": "Jaume Bartumeu is a lawyer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0007/s1#r0",
+   "source_span": "founding member of the Social Democratic Party (PSD) in June 2000",
+   "entity": "Jaume Bartumeu",
+   "slot": "founding_member_party",
+   "value": "Social Democratic Party",
+   "claim": "Jaume Bartumeu was a founding member of the Social Democratic Party in June 2000.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2000-06"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0007/s1#r0",
+   "source_span": "He is currently leader of the opposition",
+   "entity": "Jaume Bartumeu",
+   "slot": "position",
+   "value": "leader of the opposition",
+   "claim": "Jaume Bartumeu is the leader of the opposition.",
+   "slot_cardinality": "single",
+   "temporal_relation": "contradiction",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2146,
+ "usage_out": 1123
+}

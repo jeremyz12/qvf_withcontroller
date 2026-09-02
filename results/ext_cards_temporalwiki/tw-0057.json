@@ -1,0 +1,207 @@
+{
+ "uid": "tw-0057",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0057/s0#r0",
+   "source_span": "Founded: 1930",
+   "entity": "FC Rostov",
+   "slot": "founded_year",
+   "value": "1930",
+   "claim": "FC Rostov was founded in 1930.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1930"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0057/s0#r0",
+   "source_span": "Ground: Olimp – 2,Rostov-on-Don",
+   "entity": "FC Rostov",
+   "slot": "ground",
+   "value": "Olimp – 2, Rostov-on-Don",
+   "claim": "FC Rostov's ground is Olimp – 2 in Rostov-on-Don.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0057/s1#r0",
+   "source_span": "Ground: Rostov Arena",
+   "entity": "FC Rostov",
+   "slot": "ground",
+   "value": "Rostov Arena",
+   "claim": "FC Rostov's ground is Rostov Arena.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0057/s0#r0",
+   "source_span": "Capacity: 15,842",
+   "entity": "FC Rostov",
+   "slot": "ground_capacity",
+   "value": "15,842",
+   "claim": "FC Rostov's ground has a capacity of 15,842.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0057/s1#r0",
+   "source_span": "Capacity: 45,000",
+   "entity": "FC Rostov",
+   "slot": "ground_capacity",
+   "value": "45,000",
+   "claim": "FC Rostov's ground has a capacity of 45,000.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0057/s0#r0",
+   "source_span": "Chairman: Viktor Goncharov",
+   "entity": "FC Rostov",
+   "slot": "chairman",
+   "value": "Viktor Goncharov",
+   "claim": "Viktor Goncharov is the chairman of FC Rostov.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0057/s1#r0",
+   "source_span": "Chairman: Artashes Arutyunyants",
+   "entity": "FC Rostov",
+   "slot": "chairman",
+   "value": "Artashes Arutyunyants",
+   "claim": "Artashes Arutyunyants is the chairman of FC Rostov.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0057/s0#r0",
+   "source_span": "Manager: Miodrag Božović",
+   "entity": "FC Rostov",
+   "slot": "manager",
+   "value": "Miodrag Božović",
+   "claim": "Miodrag Božović is the manager of FC Rostov.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0057/s1#r0",
+   "source_span": "Manager: Valeri Karpin",
+   "entity": "FC Rostov",
+   "slot": "manager",
+   "value": "Valeri Karpin",
+   "claim": "Valeri Karpin is the manager of FC Rostov.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0057/s0#r0",
+   "source_span": "Nickname(s): RSM, Selmashi",
+   "entity": "FC Rostov",
+   "slot": "nicknames",
+   "value": "RSM, Selmashi",
+   "claim": "FC Rostov's nicknames are RSM and Selmashi.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0057/s1#r0",
+   "source_span": "Nickname(s): Selmashi(Rednecks),Muzhiki(Tough Guys)",
+   "entity": "FC Rostov",
+   "slot": "nicknames",
+   "value": "Selmashi (Rednecks), Muzhiki (Tough Guys)",
+   "claim": "FC Rostov's nicknames are Selmashi (Rednecks) and Muzhiki (Tough Guys).",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "tw-0057/s1#r0",
+   "source_span": "Owner: Rostov Oblast",
+   "entity": "FC Rostov",
+   "slot": "owner",
+   "value": "Rostov Oblast",
+   "claim": "FC Rostov is owned by Rostov Oblast.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2304,
+ "usage_out": 1506
+}

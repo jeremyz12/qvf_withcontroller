@@ -1,0 +1,52 @@
+{
+ "uid": "tw-0044",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0044/s0#r0",
+   "source_span": "Linha do Oeste (Western Line) is a railway line serving the central western coast of Portugal belonging to REFER network",
+   "entity": "Linha do Oeste",
+   "slot": "network_operator",
+   "value": "REFER",
+   "claim": "Linha do Oeste is operated by the REFER network.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0044/s0#r0",
+   "source_span": "The line was opened in 1887",
+   "entity": "Linha do Oeste",
+   "slot": "opening_year",
+   "value": "1887",
+   "claim": "Linha do Oeste was opened in 1887.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1887"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0044/s0#r0",
+   "source_span": "a railway line serving the central western coast of Portugal",
+   "entity": "Linha do Oeste",
+   "slot": "service_region",
+   "value": "central western coast of Portugal",
+   "claim": "Linha do Oeste serves the central western coast of Portugal.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 1824,
+ "usage_out": 401
+}

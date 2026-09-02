@@ -1,0 +1,148 @@
+{
+ "uid": "tw-0139",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0139/s0#r0",
+   "source_span": "Governor: Daniel Scioli(PJ)",
+   "entity": "Buenos Aires Province",
+   "slot": "governor",
+   "value": "Daniel Scioli",
+   "claim": "Daniel Scioli was the governor of Buenos Aires Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0139/s0#r0",
+   "source_span": "Capital: La Plata",
+   "entity": "Buenos Aires Province",
+   "slot": "capital",
+   "value": "La Plata",
+   "claim": "La Plata is the capital of Buenos Aires Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0139/s0#r0",
+   "source_span": "Total: 15.594.428 (Ranked 1st)",
+   "entity": "Buenos Aires Province",
+   "slot": "population",
+   "value": "15,594,428",
+   "claim": "Buenos Aires Province had a population of 15,594,428.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0139/s1#r0",
+   "source_span": "Governor: María Eugenia Vidal(Cambiemos)",
+   "entity": "Buenos Aires Province",
+   "slot": "governor",
+   "value": "María Eugenia Vidal",
+   "claim": "María Eugenia Vidal was the governor of Buenos Aires Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0139/s1#r0",
+   "source_span": "Capital: La Plata",
+   "entity": "Buenos Aires Province",
+   "slot": "capital",
+   "value": "La Plata",
+   "claim": "La Plata is the capital of Buenos Aires Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0139/s1#r0",
+   "source_span": "Total: 15,625,084; • Rank: 1st",
+   "entity": "Buenos Aires Province",
+   "slot": "population",
+   "value": "15,625,084",
+   "claim": "Buenos Aires Province had a population of 15,625,084.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0139/s2#r0",
+   "source_span": "Governor: Axel Kicillof(Frente de Todos)",
+   "entity": "Buenos Aires Province",
+   "slot": "governor",
+   "value": "Axel Kicillof",
+   "claim": "Axel Kicillof was the governor of Buenos Aires Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0139/s2#r0",
+   "source_span": "Capital: La Plata",
+   "entity": "Buenos Aires Province",
+   "slot": "capital",
+   "value": "La Plata",
+   "claim": "La Plata is the capital of Buenos Aires Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0139/s2#r0",
+   "source_span": "Total: 15,625,084; • Rank: 1st",
+   "entity": "Buenos Aires Province",
+   "slot": "population",
+   "value": "15,625,084",
+   "claim": "Buenos Aires Province had a population of 15,625,084.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  }
+ ],
+ "usage_in": 2640,
+ "usage_out": 1092
+}

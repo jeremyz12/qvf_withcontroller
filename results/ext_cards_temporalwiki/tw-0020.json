@@ -1,0 +1,229 @@
+{
+ "uid": "tw-0020",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "Arthur's academic career began at Southampton, where he was appointed research fellow and lecturer in medicine in 1982",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "research fellow and lecturer in medicine at Southampton",
+   "claim": "Michael Arthur was appointed research fellow and lecturer in medicine at Southampton in 1982.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1982"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "senior lecturer in 1989",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "senior lecturer at Southampton",
+   "claim": "Michael Arthur was promoted to senior lecturer in 1989.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1989"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "at the age of 37, to a Chair of Medicine in 1992",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "Chair of Medicine at Southampton",
+   "claim": "Michael Arthur was appointed to a Chair of Medicine at Southampton in 1992.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1992"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "He became Director of Research at Southampton in 1995",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "Director of Research at Southampton",
+   "claim": "Michael Arthur became Director of Research at Southampton in 1995.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "Head of the School of Medicine in 1998",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "Head of the School of Medicine at Southampton",
+   "claim": "Michael Arthur became Head of the School of Medicine at Southampton in 1998.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1998"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "Dean of the Faculty of Medicine, Health and Life Sciences in 2003",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "Dean of the Faculty of Medicine, Health and Life Sciences at Southampton",
+   "claim": "Michael Arthur became Dean of the Faculty of Medicine, Health and Life Sciences at Southampton in 2003.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2003"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0020/s0#r0",
+   "source_span": "From 1 September 2004 he has been Vice-Chancellor of the University of Leeds",
+   "entity": "Michael Arthur",
+   "slot": "position",
+   "value": "Vice-Chancellor of the University of Leeds",
+   "claim": "Michael Arthur became Vice-Chancellor of the University of Leeds from 1 September 2004.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2004-09-01"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "Born: (1954-08-03)3 August 1954",
+   "entity": "Michael Arthur",
+   "slot": "birth_date",
+   "value": "3 August 1954",
+   "claim": "Michael Arthur was born on 3 August 1954.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1954-08-03"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "Alma mater: University of Southampton",
+   "entity": "Michael Arthur",
+   "slot": "alma_mater",
+   "value": "University of Southampton",
+   "claim": "Michael Arthur's alma mater is the University of Southampton.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "the award of the American Liver Foundation Research Prize (1987)",
+   "entity": "Michael Arthur",
+   "slot": "award",
+   "value": "American Liver Foundation Research Prize",
+   "claim": "Michael Arthur received the American Liver Foundation Research Prize in 1987.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1987"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "the Linacre Medal of the Royal College of Physicians, London (1994)",
+   "entity": "Michael Arthur",
+   "slot": "award",
+   "value": "Linacre Medal of the Royal College of Physicians, London",
+   "claim": "Michael Arthur received the Linacre Medal of the Royal College of Physicians, London in 1994.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1994"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "a year after becoming a Fellow",
+   "entity": "Michael Arthur",
+   "slot": "membership",
+   "value": "Fellow of the Royal College of Physicians, London",
+   "claim": "Michael Arthur became a Fellow of the Royal College of Physicians, London in 1993.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1993"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "He became a Fellow of the Academy of Medical Sciences in 1998",
+   "entity": "Michael Arthur",
+   "slot": "membership",
+   "value": "Fellow of the Academy of Medical Sciences",
+   "claim": "Michael Arthur became a Fellow of the Academy of Medical Sciences in 1998.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1998"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "tw-0020/s1#r0",
+   "source_span": "Fellow of the Royal Society of Arts, Manufactures and Commerce in 2006",
+   "entity": "Michael Arthur",
+   "slot": "membership",
+   "value": "Fellow of the Royal Society of Arts, Manufactures and Commerce",
+   "claim": "Michael Arthur became a Fellow of the Royal Society of Arts, Manufactures and Commerce in 2006.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2006"
+  }
+ ],
+ "usage_in": 2035,
+ "usage_out": 1816
+}

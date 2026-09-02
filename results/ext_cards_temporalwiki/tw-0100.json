@@ -1,0 +1,75 @@
+{
+ "uid": "tw-0100",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0100/s0#r0",
+   "source_span": "Headquarters: Gwacheon Government Complex,Gwacheon-si, Gyeonggi-do,South Korea",
+   "entity": "Ministry of Strategy & Finance (South Korea)",
+   "slot": "headquarters_location",
+   "value": "Gwacheon Government Complex, Gwacheon-si, Gyeonggi-do, South Korea",
+   "claim": "The Ministry of Strategy & Finance headquarters is located at Gwacheon Government Complex in Gwacheon-si, Gyeonggi-do, South Korea.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0100/s1#r0",
+   "source_span": "Headquarters: Sejong Government Complex,Sejong City,South Korea",
+   "entity": "Ministry of Strategy & Finance (South Korea)",
+   "slot": "headquarters_location",
+   "value": "Sejong Government Complex, Sejong City, South Korea",
+   "claim": "The Ministry of Strategy & Finance headquarters is located at Sejong Government Complex in Sejong City, South Korea.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0100/s0#r0",
+   "source_span": "Agency executive: Yoon Jeung-Hyun, Minister",
+   "entity": "Ministry of Strategy & Finance (South Korea)",
+   "slot": "minister",
+   "value": "Yoon Jeung-Hyun",
+   "claim": "Yoon Jeung-Hyun is the Minister of the Ministry of Strategy & Finance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0100/s1#r0",
+   "source_span": "Agency executive: Choi Kyung-hwan, Minister",
+   "entity": "Ministry of Strategy & Finance (South Korea)",
+   "slot": "minister",
+   "value": "Choi Kyung-hwan",
+   "claim": "Choi Kyung-hwan is the Minister of the Ministry of Strategy & Finance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2113,
+ "usage_out": 696
+}

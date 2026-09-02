@@ -1,0 +1,163 @@
+{
+ "uid": "tw-0049",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "Founded: 20 June 1908",
+   "entity": "MŠK Žilina",
+   "slot": "founded_date",
+   "value": "1908-06-20",
+   "claim": "MŠK Žilina was founded on 20 June 1908.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1908-06-20"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "Owner: Jozef Antošík",
+   "entity": "MŠK Žilina",
+   "slot": "owner",
+   "value": "Jozef Antošík",
+   "claim": "Jozef Antošík is the owner of MŠK Žilina.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "Chairman: Jozef Antošík",
+   "entity": "MŠK Žilina",
+   "slot": "chairman",
+   "value": "Jozef Antošík",
+   "claim": "Jozef Antošík is the chairman of MŠK Žilina.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "Coach: Adrián Guľa",
+   "entity": "MŠK Žilina",
+   "slot": "coach",
+   "value": "Adrián Guľa",
+   "claim": "Adrián Guľa is the coach of MŠK Žilina.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "Ground: Štadión pod Dubňom,Žilina,Slovakia",
+   "entity": "MŠK Žilina",
+   "slot": "ground",
+   "value": "Štadión pod Dubňom, Žilina, Slovakia",
+   "claim": "MŠK Žilina plays at Štadión pod Dubňom in Žilina, Slovakia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "Capacity: 11,200",
+   "entity": "MŠK Žilina",
+   "slot": "stadium_capacity",
+   "value": "11,200",
+   "claim": "The stadium capacity is 11,200.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0049/s0#r0",
+   "source_span": "League: Corgoň Liga",
+   "entity": "MŠK Žilina",
+   "slot": "league",
+   "value": "Corgoň Liga",
+   "claim": "MŠK Žilina plays in the Corgoň Liga.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0049/s1#r0",
+   "source_span": "Manager: Pavol Staňo",
+   "entity": "MŠK Žilina",
+   "slot": "coach",
+   "value": "Pavol Staňo",
+   "claim": "Pavol Staňo is the manager of MŠK Žilina.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0049/s1#r0",
+   "source_span": "Capacity: 11,258",
+   "entity": "MŠK Žilina",
+   "slot": "stadium_capacity",
+   "value": "11,258",
+   "claim": "The stadium capacity is 11,258.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0049/s1#r0",
+   "source_span": "League: Fortuna Liga",
+   "entity": "MŠK Žilina",
+   "slot": "league",
+   "value": "Fortuna Liga",
+   "claim": "MŠK Žilina plays in the Fortuna Liga.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2300,
+ "usage_out": 1244
+}

@@ -1,0 +1,86 @@
+{
+ "uid": "tw-0095",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0095/s0#r0",
+   "source_span": "Speaker: Thor Pedersen,Venstresince 28 November 2007",
+   "entity": "Folketing",
+   "slot": "speaker",
+   "value": "Thor Pedersen",
+   "claim": "Thor Pedersen of Venstre is the Speaker of the Folketing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2007-11-28"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0095/s0#r0",
+   "source_span": "Seats: 179",
+   "entity": "Folketing",
+   "slot": "number_of_seats",
+   "value": "179",
+   "claim": "The Folketing has 179 seats.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0095/s0#r0",
+   "source_span": "Type: Unicameral",
+   "entity": "Folketing",
+   "slot": "chamber_type",
+   "value": "Unicameral",
+   "claim": "The Folketing is a unicameral legislature.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0095/s1#r0",
+   "source_span": "Speaker: Mogens Lykketoft,Social Democratssince 4 October 2011",
+   "entity": "Folketing",
+   "slot": "speaker",
+   "value": "Mogens Lykketoft",
+   "claim": "Mogens Lykketoft of the Social Democrats is the Speaker of the Folketing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011-10-04"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0095/s2#r0",
+   "source_span": "Speaker: Henrik Dam Kristensen,Social Democratssince 21 June 2019",
+   "entity": "Folketing",
+   "slot": "speaker",
+   "value": "Henrik Dam Kristensen",
+   "claim": "Henrik Dam Kristensen of the Social Democrats is the Speaker of the Folketing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019-06-21"
+  }
+ ],
+ "usage_in": 2727,
+ "usage_out": 636
+}

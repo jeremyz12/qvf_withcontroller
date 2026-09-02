@@ -1,0 +1,118 @@
+{
+ "uid": "tw-0123",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0123/s0#r0",
+   "source_span": "2008–2010: VfB Stuttgart",
+   "entity": "Jens Lehmann",
+   "slot": "team",
+   "value": "VfB Stuttgart",
+   "claim": "Jens Lehmann played for VfB Stuttgart from 2008 to 2010.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r0"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008"
+  },
+  {
+   "record_id": "r0",
+   "source_memory_id": "tw-0123/s0#r0",
+   "source_span": "2003–2008: Arsenal",
+   "entity": "Jens Lehmann",
+   "slot": "team",
+   "value": "Arsenal",
+   "claim": "Jens Lehmann played for Arsenal from 2003 to 2008.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2003"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0123/s1#r0",
+   "source_span": "2011: Arsenal",
+   "entity": "Jens Lehmann",
+   "slot": "team",
+   "value": "Arsenal",
+   "claim": "Jens Lehmann played for Arsenal in 2011.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0123/s0#r0",
+   "source_span": "Position(s): Goalkeeper",
+   "entity": "Jens Lehmann",
+   "slot": "position",
+   "value": "Goalkeeper",
+   "claim": "Jens Lehmann's playing position is goalkeeper.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0123/s0#r0",
+   "source_span": "Height: 1.90 m (6 ft 3 in)",
+   "entity": "Jens Lehmann",
+   "slot": "height",
+   "value": "1.90 m (6 ft 3 in)",
+   "claim": "Jens Lehmann's height is 1.90 m (6 ft 3 in).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0123/s0#r0",
+   "source_span": "Full name: Jens Lehmann",
+   "entity": "Jens Lehmann",
+   "slot": "full_name",
+   "value": "Jens Lehmann",
+   "claim": "Jens Lehmann's full name is Jens Lehmann.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0123/s1#r0",
+   "source_span": "Full name: Jens Gerhard Lehmann",
+   "entity": "Jens Lehmann",
+   "slot": "full_name",
+   "value": "Jens Gerhard Lehmann",
+   "claim": "Jens Lehmann's full name is Jens Gerhard Lehmann.",
+   "slot_cardinality": "single",
+   "temporal_relation": "correction",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2429,
+ "usage_out": 867
+}

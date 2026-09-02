@@ -1,0 +1,118 @@
+{
+ "uid": "tw-0040",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0040/s0#r0",
+   "source_span": "Founded: 1992",
+   "entity": "Boston Dynamics",
+   "slot": "founded_year",
+   "value": "1992",
+   "claim": "Boston Dynamics was founded in 1992.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1992"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0040/s0#r0",
+   "source_span": "Headquarters: Waltham, Massachusetts,United States",
+   "entity": "Boston Dynamics",
+   "slot": "headquarters_location",
+   "value": "Waltham, Massachusetts, United States",
+   "claim": "Boston Dynamics headquarters is located in Waltham, Massachusetts, United States.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0040/s0#r0",
+   "source_span": "Industry: Robotics",
+   "entity": "Boston Dynamics",
+   "slot": "industry",
+   "value": "Robotics",
+   "claim": "Boston Dynamics operates in the Robotics industry.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0040/s0#r0",
+   "source_span": "Parent: Hyundai Motor Company",
+   "entity": "Boston Dynamics",
+   "slot": "parent_company",
+   "value": "Hyundai Motor Company",
+   "claim": "Boston Dynamics parent company is Hyundai Motor Company.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0040/s1#r0",
+   "source_span": "Owner: SoftBank Group(2017-),X (company)(2013 - 2017)",
+   "entity": "Boston Dynamics",
+   "slot": "parent_company",
+   "value": "SoftBank Group",
+   "claim": "Boston Dynamics parent company is SoftBank Group as of 2017.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0040/s1#r0",
+   "source_span": "On 13 December 2013, the company was acquired by Google X (later X, a subsidiary of Alphabet Inc.)",
+   "entity": "Boston Dynamics",
+   "slot": "parent_company",
+   "value": "Google X (Alphabet Inc.)",
+   "claim": "Boston Dynamics was acquired by Google X on December 13, 2013.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013-12-13"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0040/s1#r0",
+   "source_span": "On 8 June 2017, Alphabet Inc. announced the sale of the company to Japan's SoftBank Group",
+   "entity": "Boston Dynamics",
+   "slot": "parent_company",
+   "value": "SoftBank Group",
+   "claim": "Boston Dynamics was sold to SoftBank Group on June 8, 2017.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-06-08"
+  }
+ ],
+ "usage_in": 2128,
+ "usage_out": 893
+}

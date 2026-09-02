@@ -1,0 +1,371 @@
+{
+ "uid": "tw-0140",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "President: Peter Christian",
+   "entity": "Federated States of Micronesia",
+   "slot": "president",
+   "value": "Peter Christian",
+   "claim": "Peter Christian was President of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Vice President: Yosiwo George",
+   "entity": "Federated States of Micronesia",
+   "slot": "vice_president",
+   "value": "Yosiwo George",
+   "claim": "Yosiwo George was Vice President of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Capital: Palikir",
+   "entity": "Federated States of Micronesia",
+   "slot": "capital",
+   "value": "Palikir",
+   "claim": "Palikir is the capital of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Capital: Palikir",
+   "entity": "Federated States of Micronesia",
+   "slot": "capital",
+   "value": "Palikir",
+   "claim": "Palikir is the capital of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Largest city: Weno",
+   "entity": "Federated States of Micronesia",
+   "slot": "largest_city",
+   "value": "Weno",
+   "claim": "Weno is the largest city of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Largest town: Weno",
+   "entity": "Federated States of Micronesia",
+   "slot": "largest_city",
+   "value": "Weno",
+   "claim": "Weno is the largest town of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Official languageand national languagea: English",
+   "entity": "Federated States of Micronesia",
+   "slot": "official_language",
+   "value": "English",
+   "claim": "English is the official language of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Official language: English",
+   "entity": "Federated States of Micronesia",
+   "slot": "official_language",
+   "value": "English",
+   "claim": "English is the official language of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Recognised regionallanguages: ChuukeseKosraenWoleaian",
+   "entity": "Federated States of Micronesia",
+   "slot": "recognized_regional_languages",
+   "value": "Chuukese, Kosraen, Woleaian",
+   "claim": "Chuukese, Kosraen, and Woleaian are recognized regional languages of the Federated States of Micronesia.",
+   "slot_cardinality": "set",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Recognized regionallanguages: ChuukeseKosraeanPohnpeianYapese",
+   "entity": "Federated States of Micronesia",
+   "slot": "recognized_regional_languages",
+   "value": "Chuukese, Kosraean, Pohnpeian, Yapese",
+   "claim": "Chuukese, Kosraean, Pohnpeian, and Yapese are recognized regional languages of the Federated States of Micronesia.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Government: Federalparliamentary republicUnder aNon-partisan democracy",
+   "entity": "Federated States of Micronesia",
+   "slot": "government_type",
+   "value": "Federal parliamentary republic under non-partisan democracy",
+   "claim": "The Federated States of Micronesia has a federal parliamentary republic government under non-partisan democracy.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Government: Federalassembly-independentrepublicundernon-partisan democracy",
+   "entity": "Federated States of Micronesia",
+   "slot": "government_type",
+   "value": "Federal assembly-independent republic under non-partisan democracy",
+   "claim": "The Federated States of Micronesia has a federal assembly-independent republic government under non-partisan democracy.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "President: David Panuelo",
+   "entity": "Federated States of Micronesia",
+   "slot": "president",
+   "value": "David Panuelo",
+   "claim": "David Panuelo was President of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Vice President: Yosiwo George",
+   "entity": "Federated States of Micronesia",
+   "slot": "vice_president",
+   "value": "Yosiwo George",
+   "claim": "Yosiwo George was Vice President of the Federated States of Micronesia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Compact of Free Association: November 3, 1986",
+   "entity": "Federated States of Micronesia",
+   "slot": "compact_of_free_association_date",
+   "value": "November 3, 1986",
+   "claim": "The Federated States of Micronesia entered into the Compact of Free Association on November 3, 1986.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1986-11-03"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Compact of Free Association: November 3, 1986",
+   "entity": "Federated States of Micronesia",
+   "slot": "compact_of_free_association_date",
+   "value": "November 3, 1986",
+   "claim": "The Federated States of Micronesia entered into the Compact of Free Association on November 3, 1986.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r15"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1986-11-03"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Currency: United States dollar(USD)",
+   "entity": "Federated States of Micronesia",
+   "slot": "currency",
+   "value": "United States dollar",
+   "claim": "The currency of the Federated States of Micronesia is the United States dollar.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r18"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Currency: United States dollar(USD)",
+   "entity": "Federated States of Micronesia",
+   "slot": "currency",
+   "value": "United States dollar",
+   "claim": "The currency of the Federated States of Micronesia is the United States dollar.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r17"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Calling code: +691",
+   "entity": "Federated States of Micronesia",
+   "slot": "calling_code",
+   "value": "+691",
+   "claim": "The calling code for the Federated States of Micronesia is +691.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r20"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Calling code: +691",
+   "entity": "Federated States of Micronesia",
+   "slot": "calling_code",
+   "value": "+691",
+   "claim": "The calling code for the Federated States of Micronesia is +691.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r19"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "tw-0140/s0#r0",
+   "source_span": "Internet TLD: .fm",
+   "entity": "Federated States of Micronesia",
+   "slot": "internet_tld",
+   "value": ".fm",
+   "claim": "The internet top-level domain for the Federated States of Micronesia is .fm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "tw-0140/s1#r0",
+   "source_span": "Internet TLD: .fm",
+   "entity": "Federated States of Micronesia",
+   "slot": "internet_tld",
+   "value": ".fm",
+   "claim": "The internet top-level domain for the Federated States of Micronesia is .fm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r21"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  }
+ ],
+ "usage_in": 3099,
+ "usage_out": 3120
+}

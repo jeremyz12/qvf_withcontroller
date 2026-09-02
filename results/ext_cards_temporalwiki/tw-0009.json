@@ -1,0 +1,82 @@
+{
+ "uid": "tw-0009",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0009/s0#r0",
+   "source_span": "Sunil Babu Pant is the first openly gay politician in Nepal",
+   "entity": "Sunil Babu Pant",
+   "slot": "political_identity",
+   "value": "first openly gay politician in Nepal",
+   "claim": "Sunil Babu Pant is the first openly gay politician in Nepal.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0009/s0#r0",
+   "source_span": "one of five members from the CPN(U) in the constituent assembly",
+   "entity": "Sunil Babu Pant",
+   "slot": "political_position",
+   "value": "member of CPN(U) in constituent assembly",
+   "claim": "Sunil Babu Pant is one of five members from the CPN(U) in the constituent assembly.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0009/s0#r0",
+   "source_span": "head of the Blue Diamond Society, the only gay rights group in Nepal",
+   "entity": "Sunil Babu Pant",
+   "slot": "organizational_leadership",
+   "value": "head of Blue Diamond Society",
+   "claim": "Sunil Babu Pant is head of the Blue Diamond Society, the only gay rights group in Nepal.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0009/s0#r0",
+   "source_span": "at the meeting for The Yogyakarta Principles held in November 2006, he was one of 29 experts",
+   "entity": "Sunil Babu Pant",
+   "slot": "expert_participation",
+   "value": "expert at Yogyakarta Principles meeting",
+   "claim": "Sunil Babu Pant was one of 29 experts at the meeting for The Yogyakarta Principles held in November 2006.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2006-11"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0009/s1#r0",
+   "source_span": "born 1972",
+   "entity": "Sunil Babu Pant",
+   "slot": "birth_year",
+   "value": "1972",
+   "claim": "Sunil Babu Pant was born in 1972.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1972"
+  }
+ ],
+ "usage_in": 1958,
+ "usage_out": 765
+}

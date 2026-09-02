@@ -1,0 +1,116 @@
+{
+ "uid": "tw-0129",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0129/s0#r0",
+   "source_span": "Current team: Burton Albion",
+   "entity": "Greg Pearson",
+   "slot": "current_team",
+   "value": "Burton Albion",
+   "claim": "Greg Pearson's current team is Burton Albion.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0129/s0#r0",
+   "source_span": "Number: 18",
+   "entity": "Greg Pearson",
+   "slot": "jersey_number",
+   "value": "18",
+   "claim": "Greg Pearson wears jersey number 18.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at Burton Albion",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0129/s0#r0",
+   "source_span": "Position(s): Forward",
+   "entity": "Greg Pearson",
+   "slot": "position",
+   "value": "Forward",
+   "claim": "Greg Pearson plays as a Forward.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0129/s0#r0",
+   "source_span": "Height: 6 ft 0 in (1.83 m)",
+   "entity": "Greg Pearson",
+   "slot": "height",
+   "value": "6 ft 0 in (1.83 m)",
+   "claim": "Greg Pearson's height is 6 ft 0 in (1.83 m).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0129/s1#r0",
+   "source_span": "Current team: Hinckley AFC",
+   "entity": "Greg Pearson",
+   "slot": "current_team",
+   "value": "Hinckley AFC",
+   "claim": "Greg Pearson's current team is Hinckley AFC.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "jersey_number"
+   ],
+   "stated_date": "2015-12-17"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0129/s1#r0",
+   "source_span": "Date of birth: (1985-04-03)3 April 1985",
+   "entity": "Greg Pearson",
+   "slot": "date_of_birth",
+   "value": "1985-04-03",
+   "claim": "Greg Pearson was born on 3 April 1985.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-04-03"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0129/s1#r0",
+   "source_span": "Place of birth: Birmingham,England",
+   "entity": "Greg Pearson",
+   "slot": "place_of_birth",
+   "value": "Birmingham, England",
+   "claim": "Greg Pearson was born in Birmingham, England.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2275,
+ "usage_out": 935
+}

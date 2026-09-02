@@ -1,0 +1,165 @@
+{
+ "uid": "tw-0006",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "Born: (1983-07-25)25 July 1983",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "birth_date",
+   "value": "1983-07-25",
+   "claim": "Gabriela Rivadeneira was born on 25 July 1983.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1983-07-25"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "Born: (1983-07-25)25 July 1983(age 41)Quito,Ecuador",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "birthplace",
+   "value": "Quito, Ecuador",
+   "claim": "Gabriela Rivadeneira was born in Quito, Ecuador.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "Political party: PAIS Alliance",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "political_party",
+   "value": "PAIS Alliance",
+   "claim": "Gabriela Rivadeneira's political party is PAIS Alliance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "On 28 July 2011 Rivadeneira took up the function of Governor of Imbabura Province",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "position",
+   "value": "Governor of Imbabura Province",
+   "claim": "Gabriela Rivadeneira became Governor of Imbabura Province on 28 July 2011.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011-07-28"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "Rivadeneira was forced to lay down her function of Vice Prefect in the same province",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "position",
+   "value": "Vice Prefect of Imbabura Province",
+   "claim": "Gabriela Rivadeneira was Vice Prefect of Imbabura Province.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "On 9 November 2012 Rivadeneira resigned as Governor",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "position",
+   "value": "Governor of Imbabura Province",
+   "claim": "Gabriela Rivadeneira resigned as Governor of Imbabura Province on 9 November 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-11-09"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0006/s0#r0",
+   "source_span": "On 14 May 2013 Rivadeneira was chosen as President of the National Assembly",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "position",
+   "value": "President of the National Assembly",
+   "claim": "Gabriela Rivadeneira became President of the National Assembly on 14 May 2013.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013-05-14"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0006/s1#r0",
+   "source_span": "She was the Executive Secretary of the PAIS Alliance between 1 May 2017 and 2018",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "position",
+   "value": "Executive Secretary of the PAIS Alliance",
+   "claim": "Gabriela Rivadeneira was Executive Secretary of the PAIS Alliance from 1 May 2017 to 2018.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-05-01"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0006/s1#r0",
+   "source_span": "Political party: PAIS Alliance(Before 2018)Citizen Revolution Movement(After 2018)",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "political_party",
+   "value": "Citizen Revolution Movement",
+   "claim": "Gabriela Rivadeneira's political party is Citizen Revolution Movement after 2018.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2018"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0006/s1#r0",
+   "source_span": "During the Correa-Moreno split within PAIS, she sided with the former, leaving the party and becoming one of the leaders of the Citizen Revolution Movement",
+   "entity": "Gabriela Rivadeneira",
+   "slot": "political_affiliation",
+   "value": "Citizen Revolution Movement leader",
+   "claim": "Gabriela Rivadeneira became one of the leaders of the Citizen Revolution Movement after leaving PAIS Alliance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2265,
+ "usage_out": 1477
+}

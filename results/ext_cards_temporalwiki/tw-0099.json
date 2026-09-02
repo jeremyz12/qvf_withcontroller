@@ -1,0 +1,150 @@
+{
+ "uid": "tw-0099",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0099/s0#r0",
+   "source_span": "President of the Landtag: Barbara Stamm,CSUsince 20 October 2008",
+   "entity": "Landtag of Bavaria",
+   "slot": "president",
+   "value": "Barbara Stamm",
+   "claim": "Barbara Stamm is the President of the Landtag of Bavaria.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008-10-20"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0099/s0#r0",
+   "source_span": "Seats: 187",
+   "entity": "Landtag of Bavaria",
+   "slot": "number_of_seats",
+   "value": "187",
+   "claim": "The Landtag of Bavaria has 187 seats.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0099/s0#r0",
+   "source_span": "Political groups: CSU(92)SPD(39)Free Voters(21)The Greens(19)FDP(16)",
+   "entity": "Landtag of Bavaria",
+   "slot": "political_composition",
+   "value": "CSU(92), SPD(39), Free Voters(21), The Greens(19), FDP(16)",
+   "claim": "The Landtag of Bavaria's political composition consists of CSU (92 seats), SPD (39 seats), Free Voters (21 seats), The Greens (19 seats), and FDP (16 seats).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0099/s0#r0",
+   "source_span": "Last election: 28 September 2008",
+   "entity": "Landtag of Bavaria",
+   "slot": "last_election_date",
+   "value": "28 September 2008",
+   "claim": "The last election to the Landtag of Bavaria was held on 28 September 2008.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008-09-28"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0099/s1#r0",
+   "source_span": "President of the Landtag: Ilse Aigner,CSUsince 5 November 2018",
+   "entity": "Landtag of Bavaria",
+   "slot": "president",
+   "value": "Ilse Aigner",
+   "claim": "Ilse Aigner is the President of the Landtag of Bavaria.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2018-11-05"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0099/s1#r0",
+   "source_span": "Seats: 205",
+   "entity": "Landtag of Bavaria",
+   "slot": "number_of_seats",
+   "value": "205",
+   "claim": "The Landtag of Bavaria has 205 seats.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0099/s1#r0",
+   "source_span": "Political groups: Government (112)[1]CSU(85)FW(27)Opposition (93)The Greens(38)SPD(22)AfD(22)FDP(11)",
+   "entity": "Landtag of Bavaria",
+   "slot": "political_composition",
+   "value": "CSU(85), FW(27), The Greens(38), SPD(22), AfD(22), FDP(11)",
+   "claim": "The Landtag of Bavaria's political composition consists of CSU (85 seats), FW (27 seats), The Greens (38 seats), SPD (22 seats), AfD (22 seats), and FDP (11 seats).",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0099/s1#r0",
+   "source_span": "Last election: 14 October 2018",
+   "entity": "Landtag of Bavaria",
+   "slot": "last_election_date",
+   "value": "14 October 2018",
+   "claim": "The last election to the Landtag of Bavaria was held on 14 October 2018.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2018-10-14"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0099/s1#r0",
+   "source_span": "Next election: 2023",
+   "entity": "Landtag of Bavaria",
+   "slot": "next_election_year",
+   "value": "2023",
+   "claim": "The next election to the Landtag of Bavaria is scheduled for 2023.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2023"
+  }
+ ],
+ "usage_in": 2065,
+ "usage_out": 1338
+}

@@ -1,0 +1,122 @@
+{
+ "uid": "tw-0008",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0008/s0#r0",
+   "source_span": "A mayor of the former Carmel City",
+   "entity": "Akram Hasson",
+   "slot": "position",
+   "value": "mayor of Carmel City",
+   "claim": "Akram Hasson was a mayor of Carmel City.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "former",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0008/s0#r0",
+   "source_span": "Hasson entered the Knesset in May 2012",
+   "entity": "Akram Hasson",
+   "slot": "position",
+   "value": "Knesset member",
+   "claim": "Akram Hasson entered the Knesset in May 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012-05"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0008/s0#r0",
+   "source_span": "placed 35th on the Kadima list for the 2009 Knesset elections",
+   "entity": "Akram Hasson",
+   "slot": "party_affiliation",
+   "value": "Kadima",
+   "claim": "Akram Hasson was affiliated with Kadima party for the 2009 elections.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0008/s1#r0",
+   "source_span": "Placed eighth on the Kadima list for the 2013 elections, he lost his seat when the party was reduced to two MKs",
+   "entity": "Akram Hasson",
+   "slot": "position",
+   "value": "no longer Knesset member",
+   "claim": "Akram Hasson lost his Knesset seat after the 2013 elections when Kadima was reduced to two seats.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0008/s1#r0",
+   "source_span": "After party leader Shaul Mofaz retired from politics on 27 January 2015; Hasson was elected on the same day to replace him, becoming the first Druze leader of a Jewish party",
+   "entity": "Akram Hasson",
+   "slot": "position",
+   "value": "Kadima party leader",
+   "claim": "Akram Hasson was elected Kadima party leader on 27 January 2015, becoming the first Druze leader of a Jewish party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015-01-27"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0008/s1#r0",
+   "source_span": "two days later he joined the new Kulanu list for the 2015 elections, being placed twelfth on the party list",
+   "entity": "Akram Hasson",
+   "slot": "party_affiliation",
+   "value": "Kulanu",
+   "claim": "Akram Hasson joined Kulanu party for the 2015 elections on 29 January 2015.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015-01-29"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0008/s1#r0",
+   "source_span": "Hasson returned to the Knesset in January 2016 as a replacement for party leader Moshe Kahlon, who had resigned under the Norwegian Law",
+   "entity": "Akram Hasson",
+   "slot": "position",
+   "value": "Knesset member",
+   "claim": "Akram Hasson returned to the Knesset in January 2016 as a replacement for Moshe Kahlon.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016-01"
+  }
+ ],
+ "usage_in": 1994,
+ "usage_out": 1111
+}

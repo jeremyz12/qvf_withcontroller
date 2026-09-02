@@ -1,0 +1,116 @@
+{
+ "uid": "tw-0103",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0103/s0#r0",
+   "source_span": "Formation: 1936",
+   "entity": "Association for Symbolic Logic",
+   "slot": "founding_year",
+   "value": "1936",
+   "claim": "The Association for Symbolic Logic was founded in 1936.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1936"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0103/s0#r0",
+   "source_span": "Headquarters: Poughkeepsie, New York",
+   "entity": "Association for Symbolic Logic",
+   "slot": "headquarters",
+   "value": "Poughkeepsie, New York",
+   "claim": "The Association for Symbolic Logic is headquartered in Poughkeepsie, New York.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0103/s0#r0",
+   "source_span": "President: Alex Wilkie",
+   "entity": "Association for Symbolic Logic",
+   "slot": "president",
+   "value": "Alex Wilkie",
+   "claim": "Alex Wilkie is the president of the Association for Symbolic Logic.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0103/s0#r0",
+   "source_span": "Vice President: Alasdair Urquhart",
+   "entity": "Association for Symbolic Logic",
+   "slot": "vice_president",
+   "value": "Alasdair Urquhart",
+   "claim": "Alasdair Urquhart is the vice president of the Association for Symbolic Logic.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0103/s0#r0",
+   "source_span": "Secretary: Charles Steinhorn",
+   "entity": "Association for Symbolic Logic",
+   "slot": "secretary",
+   "value": "Charles Steinhorn",
+   "claim": "Charles Steinhorn is the secretary of the Association for Symbolic Logic.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0103/s1#r0",
+   "source_span": "President: Alasdair Urquhart",
+   "entity": "Association for Symbolic Logic",
+   "slot": "president",
+   "value": "Alasdair Urquhart",
+   "claim": "Alasdair Urquhart is the president of the Association for Symbolic Logic.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2014"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0103/s1#r0",
+   "source_span": "Vice President: Ulrich Kohlenbach",
+   "entity": "Association for Symbolic Logic",
+   "slot": "vice_president",
+   "value": "Ulrich Kohlenbach",
+   "claim": "Ulrich Kohlenbach is the vice president of the Association for Symbolic Logic.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2014"
+  }
+ ],
+ "usage_in": 2068,
+ "usage_out": 876
+}

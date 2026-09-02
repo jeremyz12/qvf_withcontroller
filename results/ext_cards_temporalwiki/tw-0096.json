@@ -1,0 +1,86 @@
+{
+ "uid": "tw-0096",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0096/s0#r0",
+   "source_span": "Sir Winfried Bischoff has been Chairman of the FRC since May 2014",
+   "entity": "Sir Winfried Bischoff",
+   "slot": "position",
+   "value": "Chairman of the FRC",
+   "claim": "Sir Winfried Bischoff is Chairman of the Financial Reporting Council.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2014-05"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0096/s0#r0",
+   "source_span": "Other board members include Gay Huey Evans, Melanie McLaren and Paul George",
+   "entity": "Financial Reporting Council",
+   "slot": "board_members",
+   "value": "Gay Huey Evans, Melanie McLaren, Paul George",
+   "claim": "Gay Huey Evans, Melanie McLaren, and Paul George are board members of the FRC.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0096/s1#r0",
+   "source_span": "In 2019, Simon Dingemans and Sir Jon Thompson took over as chair and CEO respectively",
+   "entity": "Simon Dingemans",
+   "slot": "position",
+   "value": "Chair of the FRC",
+   "claim": "Simon Dingemans became Chair of the FRC in 2019.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0096/s1#r0",
+   "source_span": "In 2019, Simon Dingemans and Sir Jon Thompson took over as chair and CEO respectively",
+   "entity": "Sir Jon Thompson",
+   "slot": "position",
+   "value": "CEO of the FRC",
+   "claim": "Sir Jon Thompson became CEO of the FRC in 2019.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0096/s1#r0",
+   "source_span": "In May 2020, Dingemans resigned, citing conflicts between the part-time role and other positions he was interested in taking",
+   "entity": "Simon Dingemans",
+   "slot": "position",
+   "value": "Chair of the FRC",
+   "claim": "Simon Dingemans resigned from his position as Chair of the FRC in May 2020.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020-05"
+  }
+ ],
+ "usage_in": 1871,
+ "usage_out": 704
+}

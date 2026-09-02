@@ -1,0 +1,180 @@
+{
+ "uid": "tw-0063",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "Full name: Football Club Minsk; Founded: 2006",
+   "entity": "FC Minsk",
+   "slot": "founded_year",
+   "value": "2006",
+   "claim": "FC Minsk was founded in 2006.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2006"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "Ground: FC Minsk StadiumMinsk,Belarus",
+   "entity": "FC Minsk",
+   "slot": "ground",
+   "value": "FC Minsk Stadium, Minsk, Belarus",
+   "claim": "FC Minsk's ground is FC Minsk Stadium in Minsk, Belarus.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "Capacity: 3,000",
+   "entity": "FC Minsk",
+   "slot": "stadium_capacity",
+   "value": "3,000",
+   "claim": "FC Minsk's stadium has a capacity of 3,000.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "Chairman: Igor Shloido",
+   "entity": "FC Minsk",
+   "slot": "chairman",
+   "value": "Igor Shloido",
+   "claim": "Igor Shloido is the chairman of FC Minsk.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "Manager: Georgi Kondratiev",
+   "entity": "FC Minsk",
+   "slot": "manager",
+   "value": "Georgi Kondratiev",
+   "claim": "Georgi Kondratiev is the manager of FC Minsk.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "League: Belarusian Premier League",
+   "entity": "FC Minsk",
+   "slot": "league",
+   "value": "Belarusian Premier League",
+   "claim": "FC Minsk plays in the Belarusian Premier League.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0063/s0#r0",
+   "source_span": "2015: 6th",
+   "entity": "FC Minsk",
+   "slot": "league_position",
+   "value": "6th",
+   "claim": "FC Minsk finished 6th in the league in 2015.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0063/s1#r0",
+   "source_span": "Manager: Alyaksandar Lukhvich",
+   "entity": "FC Minsk",
+   "slot": "manager",
+   "value": "Alyaksandar Lukhvich",
+   "claim": "Alyaksandar Lukhvich is the manager of FC Minsk.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0063/s1#r0",
+   "source_span": "2018: 11th",
+   "entity": "FC Minsk",
+   "slot": "league_position",
+   "value": "11th",
+   "claim": "FC Minsk finished 11th in the league in 2018.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2018"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0063/s2#r0",
+   "source_span": "Manager: Andrey Razin",
+   "entity": "FC Minsk",
+   "slot": "manager",
+   "value": "Andrey Razin",
+   "claim": "Andrey Razin is the manager of FC Minsk.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0063/s2#r0",
+   "source_span": "2019: 9th",
+   "entity": "FC Minsk",
+   "slot": "league_position",
+   "value": "9th",
+   "claim": "FC Minsk finished 9th in the league in 2019.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  }
+ ],
+ "usage_in": 2461,
+ "usage_out": 1292
+}

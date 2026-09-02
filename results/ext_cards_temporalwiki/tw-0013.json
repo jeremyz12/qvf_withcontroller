@@ -1,0 +1,133 @@
+{
+ "uid": "tw-0013",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0013/s0#r0",
+   "source_span": "Born: (1963-06-10)June 10, 1963",
+   "entity": "Pierre Nantel",
+   "slot": "birth_date",
+   "value": "1963-06-10",
+   "claim": "Pierre Nantel was born on June 10, 1963.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1963-06-10"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0013/s0#r0",
+   "source_span": "Residence(s): Longueuil,Quebec",
+   "entity": "Pierre Nantel",
+   "slot": "residence",
+   "value": "Longueuil, Quebec",
+   "claim": "Pierre Nantel's residence is Longueuil, Quebec.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0013/s0#r0",
+   "source_span": "Political party: New Democratic Party",
+   "entity": "Pierre Nantel",
+   "slot": "political_party",
+   "value": "New Democratic Party",
+   "claim": "Pierre Nantel is a member of the New Democratic Party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0013/s0#r0",
+   "source_span": "Profession: Artistic director, researcher, commentator",
+   "entity": "Pierre Nantel",
+   "slot": "profession",
+   "value": "Artistic director, researcher, commentator",
+   "claim": "Pierre Nantel's profession is artistic director, researcher, and commentator.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0013/s0#r0",
+   "source_span": "Canadian Member of Parliament for the riding of Longueuil—Pierre-Boucher, first elected in the 2011 federal election",
+   "entity": "Pierre Nantel",
+   "slot": "political_position",
+   "value": "Member of Parliament for Longueuil—Pierre-Boucher",
+   "claim": "Pierre Nantel is a Canadian Member of Parliament for the riding of Longueuil—Pierre-Boucher, first elected in 2011.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0013/s1#r0",
+   "source_span": "Political party: Green(2019–present; de facto, begun during the 2019 federal election)",
+   "entity": "Pierre Nantel",
+   "slot": "political_party",
+   "value": "Green Party of Canada",
+   "claim": "Pierre Nantel joined the Green Party of Canada in 2019.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0013/s1#r0",
+   "source_span": "On August 16, 2019, the NDP dropped Nantel from its caucus",
+   "entity": "Pierre Nantel",
+   "slot": "political_party",
+   "value": "Independent",
+   "claim": "Pierre Nantel was dropped from the NDP caucus on August 16, 2019 and sat as an independent MP.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0013/s1#r0",
+   "source_span": "He was defeated in the election, placing third behind the Bloc Québécois and Liberal candidates",
+   "entity": "Pierre Nantel",
+   "slot": "political_position",
+   "value": "defeated in 2019 federal election",
+   "claim": "Pierre Nantel was defeated in the 2019 federal election.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  }
+ ],
+ "usage_in": 2204,
+ "usage_out": 1072
+}

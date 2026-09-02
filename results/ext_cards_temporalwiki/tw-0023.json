@@ -1,0 +1,150 @@
+{
+ "uid": "tw-0023",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0023/s0#r0",
+   "source_span": "Martin Bean is vice-chancellor (chief executive) of The Open University",
+   "entity": "Martin Bean",
+   "slot": "job_title",
+   "value": "vice-chancellor (chief executive)",
+   "claim": "Martin Bean holds the position of vice-chancellor (chief executive).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0023/s0#r0",
+   "source_span": "Martin Bean is vice-chancellor (chief executive) of The Open University",
+   "entity": "Martin Bean",
+   "slot": "employer",
+   "value": "The Open University",
+   "claim": "Martin Bean works at The Open University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0023/s0#r0",
+   "source_span": "He was appointed to the post in December 2008 and took up office on 1 October 2009",
+   "entity": "Martin Bean",
+   "slot": "employment_start_date",
+   "value": "1 October 2009",
+   "claim": "Martin Bean took up office at The Open University on 1 October 2009.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at The Open University",
+   "implies_stale_slots": [],
+   "stated_date": "2009-10-01"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0023/s0#r0",
+   "source_span": "Alma mater: University of Technology, Sydney",
+   "entity": "Martin Bean",
+   "slot": "alma_mater",
+   "value": "University of Technology, Sydney",
+   "claim": "Martin Bean's alma mater is University of Technology, Sydney.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0023/s1#r0",
+   "source_span": "Martin George Bean (born 26 October 1964)",
+   "entity": "Martin Bean",
+   "slot": "birth_date",
+   "value": "26 October 1964",
+   "claim": "Martin Bean was born on 26 October 1964.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1964-10-26"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0023/s1#r0",
+   "source_span": "is an Australian education administrator",
+   "entity": "Martin Bean",
+   "slot": "nationality",
+   "value": "Australian",
+   "claim": "Martin Bean is Australian.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0023/s1#r0",
+   "source_span": "On 10 July 2014 he was appointed Vice-Chancellor and President of RMIT University, and took up the appointment in February 2015",
+   "entity": "Martin Bean",
+   "slot": "job_title",
+   "value": "Vice-Chancellor and President",
+   "claim": "Martin Bean became Vice-Chancellor and President of RMIT University in February 2015.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "at RMIT University",
+   "implies_stale_slots": [
+    "employer"
+   ],
+   "stated_date": "2015-02"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0023/s1#r0",
+   "source_span": "On 10 July 2014 he was appointed Vice-Chancellor and President of RMIT University, and took up the appointment in February 2015",
+   "entity": "Martin Bean",
+   "slot": "employer",
+   "value": "RMIT University",
+   "claim": "Martin Bean works at RMIT University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015-02"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0023/s1#r0",
+   "source_span": "Previously (from 2009 to 2015), he was Vice-Chancellor of The Open University",
+   "entity": "Martin Bean",
+   "slot": "employment_end_date",
+   "value": "2015",
+   "claim": "Martin Bean's employment at The Open University ended in 2015.",
+   "slot_cardinality": "single",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "at The Open University",
+   "implies_stale_slots": [],
+   "stated_date": "2015"
+  }
+ ],
+ "usage_in": 1982,
+ "usage_out": 1281
+}

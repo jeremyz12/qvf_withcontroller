@@ -1,0 +1,152 @@
+{
+ "uid": "tw-0004",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "Born: (1950-01-15)15 January 1950",
+   "entity": "Carlo Giovanardi",
+   "slot": "birth_date",
+   "value": "1950-01-15",
+   "claim": "Carlo Giovanardi was born on 15 January 1950.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1950-01-15"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "Modena, Italy",
+   "entity": "Carlo Giovanardi",
+   "slot": "birth_place",
+   "value": "Modena, Italy",
+   "claim": "Carlo Giovanardi was born in Modena, Italy.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "Constituency: Emilia-Romagna",
+   "entity": "Carlo Giovanardi",
+   "slot": "constituency",
+   "value": "Emilia-Romagna",
+   "claim": "Carlo Giovanardi represented the Emilia-Romagna constituency.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "Political party: New Centre-Right(since 2013)",
+   "entity": "Carlo Giovanardi",
+   "slot": "political_party",
+   "value": "New Centre-Right",
+   "claim": "Carlo Giovanardi joined the New Centre-Right party in 2013.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "PdL(2009–13)",
+   "entity": "Carlo Giovanardi",
+   "slot": "political_party",
+   "value": "The People of Freedom",
+   "claim": "Carlo Giovanardi was a member of The People of Freedom (PdL) from 2009 to 2013.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "PL(2008–09)",
+   "entity": "Carlo Giovanardi",
+   "slot": "political_party",
+   "value": "Liberal Populars",
+   "claim": "Carlo Giovanardi was a member of the Liberal Populars party from 2008 to 2009.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2008"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "UDC(2002–08)",
+   "entity": "Carlo Giovanardi",
+   "slot": "political_party",
+   "value": "UDC",
+   "claim": "Carlo Giovanardi was a member of the UDC from 2002 to 2008.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2002"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "CCD(1994–2002)",
+   "entity": "Carlo Giovanardi",
+   "slot": "political_party",
+   "value": "CCD",
+   "claim": "Carlo Giovanardi was a member of the CCD from 1994 to 2002.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1994"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0004/s1#r0",
+   "source_span": "DC(before 1994)",
+   "entity": "Carlo Giovanardi",
+   "slot": "political_party",
+   "value": "DC",
+   "claim": "Carlo Giovanardi was a member of the DC party before 1994.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2112,
+ "usage_out": 1151
+}

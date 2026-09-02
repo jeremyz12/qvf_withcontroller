@@ -1,0 +1,261 @@
+{
+ "uid": "tw-0072",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "Born: (1956-01-17)17 January 1956(age 68)Barry, Vale of Glamorgan,Wales",
+   "entity": "Damian Green",
+   "slot": "birth_date",
+   "value": "1956-01-17",
+   "claim": "Damian Green was born on 17 January 1956.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1956-01-17"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "Born: (1956-01-17)17 January 1956(age 68)Barry, Vale of Glamorgan,Wales",
+   "entity": "Damian Green",
+   "slot": "birth_place",
+   "value": "Barry, Vale of Glamorgan, Wales",
+   "claim": "Damian Green was born in Barry, Vale of Glamorgan, Wales.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "Nationality: British",
+   "entity": "Damian Green",
+   "slot": "nationality",
+   "value": "British",
+   "claim": "Damian Green's nationality is British.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "Political party: Conservative",
+   "entity": "Damian Green",
+   "slot": "political_party",
+   "value": "Conservative",
+   "claim": "Damian Green is a member of the Conservative political party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "Spouse: Alicia Collinson",
+   "entity": "Damian Green",
+   "slot": "spouse",
+   "value": "Alicia Collinson",
+   "claim": "Damian Green's spouse is Alicia Collinson.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "Alma mater: Balliol College, Oxford",
+   "entity": "Damian Green",
+   "slot": "alma_mater",
+   "value": "Balliol College, Oxford",
+   "claim": "Damian Green attended Balliol College, Oxford.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "a member of the Culture, Media and Sport select committee from 1997 until his appointment to the frontbench by William Hague in 1998",
+   "entity": "Damian Green",
+   "slot": "parliamentary_committee_membership",
+   "value": "Culture, Media and Sport select committee",
+   "claim": "Damian Green was a member of the Culture, Media and Sport select committee from 1997 to 1998.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1997"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "appointment to the frontbench by William Hague in 1998 as a spokesman on education and employment",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "spokesman on education and employment",
+   "claim": "Damian Green was appointed as a spokesman on education and employment in 1998.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1998"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "He spoke on the environment from 1999",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "spokesman on environment",
+   "claim": "Damian Green was a spokesman on the environment from 1999.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1999"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "promoted to the Shadow Cabinet by Iain Duncan Smith in 2001 as the Shadow Secretary of State for Education and Skills",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "Shadow Secretary of State for Education and Skills",
+   "claim": "Damian Green was promoted to Shadow Secretary of State for Education and Skills in 2001.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "In 2003, Michael Howard gave him the position of Shadow Secretary of State for Transport",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "Shadow Secretary of State for Transport",
+   "claim": "Damian Green was given the position of Shadow Secretary of State for Transport in 2003.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2003"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "In September 2004, he left the front bench altogether of his own accord and joined the home affairs select committee",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "member of home affairs select committee",
+   "claim": "Damian Green left the front bench in September 2004 and joined the home affairs select committee.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2004"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "has been a member of the treasury committee since the 2005 General Election",
+   "entity": "Damian Green",
+   "slot": "parliamentary_committee_membership",
+   "value": "treasury committee",
+   "claim": "Damian Green has been a member of the treasury committee since the 2005 General Election.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2005"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "tw-0072/s0#r0",
+   "source_span": "He returned to the frontbench under the leadership of David Cameron in 2005 as a spokesman on home affairs and shadow minister for immigration",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "spokesman on home affairs and shadow minister for immigration",
+   "claim": "Damian Green returned to the frontbench in 2005 as a spokesman on home affairs and shadow minister for immigration.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2005"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "tw-0072/s1#r0",
+   "source_span": "He was the Minister of State for Police and Criminal Justice until 14 July 2014",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "Minister of State for Police and Criminal Justice",
+   "claim": "Damian Green was the Minister of State for Police and Criminal Justice until 14 July 2014.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2014"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "tw-0072/s1#r0",
+   "source_span": "He was appointed as Secretary of State for Work and Pensions by Prime Minister Theresa May in July 2016",
+   "entity": "Damian Green",
+   "slot": "parliamentary_position",
+   "value": "Secretary of State for Work and Pensions",
+   "claim": "Damian Green was appointed as Secretary of State for Work and Pensions in July 2016.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r15"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  }
+ ],
+ "usage_in": 2244,
+ "usage_out": 2181
+}

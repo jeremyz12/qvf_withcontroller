@@ -1,0 +1,84 @@
+{
+ "uid": "tw-0077",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0077/s0#r0",
+   "source_span": "Erdan was first elected to the Knesset in the 2003 elections",
+   "entity": "Gilad Erdan",
+   "slot": "knesset_member_start_year",
+   "value": "2003",
+   "claim": "Gilad Erdan was first elected to the Knesset in 2003.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2003"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0077/s0#r0",
+   "source_span": "He was appointed Minister of Environmental Protection, and the Minister in charge of coordinating between the Cabinet and the Knesset in the Netanyahu cabinet",
+   "entity": "Gilad Erdan",
+   "slot": "government_position",
+   "value": "Minister of Environmental Protection; Minister in charge of coordinating between the Cabinet and the Knesset",
+   "claim": "Gilad Erdan was appointed Minister of Environmental Protection and Minister in charge of coordinating between the Cabinet and the Knesset in the Netanyahu cabinet.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0077/s1#r0",
+   "source_span": "born 30 September 1970",
+   "entity": "Gilad Erdan",
+   "slot": "birth_date",
+   "value": "1970-09-30",
+   "claim": "Gilad Erdan was born on 30 September 1970.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1970-09-30"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0077/s1#r0",
+   "source_span": "serves as a member of the Knesset for Likud and the Minister of Public Security, Strategic Affairs and Minister of Information",
+   "entity": "Gilad Erdan",
+   "slot": "government_position",
+   "value": "Member of Knesset for Likud; Minister of Public Security; Minister of Strategic Affairs; Minister of Information",
+   "claim": "Gilad Erdan serves as a member of the Knesset for Likud and as Minister of Public Security, Strategic Affairs and Minister of Information.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0077/s1#r0",
+   "source_span": "He formerly held the posts of Minister of Environmental Protection, Minister of Communications, Home Front Defense Minister and Minister of Internal Affairs",
+   "entity": "Gilad Erdan",
+   "slot": "former_government_position",
+   "value": "Minister of Environmental Protection; Minister of Communications; Home Front Defense Minister; Minister of Internal Affairs",
+   "claim": "Gilad Erdan formerly held the posts of Minister of Environmental Protection, Minister of Communications, Home Front Defense Minister and Minister of Internal Affairs.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2033,
+ "usage_out": 789
+}

@@ -1,0 +1,39 @@
+{
+ "uid": "tw-0104",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0104/s0#r0",
+   "source_span": "Its chairman is Stefan Mappus.",
+   "entity": "CDU Baden-Württemberg",
+   "slot": "chairman",
+   "value": "Stefan Mappus",
+   "claim": "Stefan Mappus is the chairman of CDU Baden-Württemberg.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0104/s1#r0",
+   "source_span": "Its chairman is Thomas Strobl, who succeeded Stefan Mappus after the lost 2011 election.",
+   "entity": "CDU Baden-Württemberg",
+   "slot": "chairman",
+   "value": "Thomas Strobl",
+   "claim": "Thomas Strobl is the chairman of CDU Baden-Württemberg, succeeding Stefan Mappus after the 2011 election.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012"
+  }
+ ],
+ "usage_in": 1911,
+ "usage_out": 283
+}

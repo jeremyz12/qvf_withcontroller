@@ -1,0 +1,180 @@
+{
+ "uid": "tw-0056",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0056/s0#r0",
+   "source_span": "Founded: 1911",
+   "entity": "PFC CSKA Moscow",
+   "slot": "founded_year",
+   "value": "1911",
+   "claim": "PFC CSKA Moscow was founded in 1911.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1911"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0056/s0#r0",
+   "source_span": "Ground: Arena Khimki",
+   "entity": "PFC CSKA Moscow",
+   "slot": "home_ground",
+   "value": "Arena Khimki",
+   "claim": "PFC CSKA Moscow's home ground is Arena Khimki.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0056/s0#r0",
+   "source_span": "Capacity: 20,000",
+   "entity": "PFC CSKA Moscow",
+   "slot": "ground_capacity",
+   "value": "20,000",
+   "claim": "Arena Khimki has a capacity of 20,000.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0056/s0#r0",
+   "source_span": "Chairman: Yevgeni Giner",
+   "entity": "PFC CSKA Moscow",
+   "slot": "chairman",
+   "value": "Yevgeni Giner",
+   "claim": "Yevgeni Giner is the chairman of PFC CSKA Moscow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0056/s0#r0",
+   "source_span": "Manager: Leonid Slutsky",
+   "entity": "PFC CSKA Moscow",
+   "slot": "manager",
+   "value": "Leonid Slutsky",
+   "claim": "Leonid Slutsky is the manager of PFC CSKA Moscow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0056/s0#r0",
+   "source_span": "League: Russian Premier League",
+   "entity": "PFC CSKA Moscow",
+   "slot": "league",
+   "value": "Russian Premier League",
+   "claim": "PFC CSKA Moscow competes in the Russian Premier League.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0056/s1#r0",
+   "source_span": "Ground: VEB Arena",
+   "entity": "PFC CSKA Moscow",
+   "slot": "home_ground",
+   "value": "VEB Arena",
+   "claim": "PFC CSKA Moscow's home ground is VEB Arena.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0056/s1#r0",
+   "source_span": "Capacity: 30,000",
+   "entity": "PFC CSKA Moscow",
+   "slot": "ground_capacity",
+   "value": "30,000",
+   "claim": "VEB Arena has a capacity of 30,000.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "tw-0056/s1#r0",
+   "source_span": "Owner: Vadim Giner",
+   "entity": "PFC CSKA Moscow",
+   "slot": "owner",
+   "value": "Vadim Giner",
+   "claim": "Vadim Giner is the owner of PFC CSKA Moscow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "tw-0056/s1#r0",
+   "source_span": "Manager: Viktor Goncharenko",
+   "entity": "PFC CSKA Moscow",
+   "slot": "manager",
+   "value": "Viktor Goncharenko",
+   "claim": "Viktor Goncharenko is the manager of PFC CSKA Moscow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "tw-0056/s1#r0",
+   "source_span": "On 6 December 2016, CSKA announced that manager Leonid Slutsky would leave the club after seven years at the club",
+   "entity": "PFC CSKA Moscow",
+   "slot": "manager_departure",
+   "value": "Leonid Slutsky left the club",
+   "claim": "Leonid Slutsky left PFC CSKA Moscow after seven years.",
+   "slot_cardinality": "set",
+   "temporal_relation": "cessation",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016-12-06"
+  }
+ ],
+ "usage_in": 2387,
+ "usage_out": 1308
+}

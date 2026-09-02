@@ -1,0 +1,99 @@
+{
+ "uid": "tw-0094",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0094/s0#r0",
+   "source_span": "Its present chair is Tsai Ing-wen.",
+   "entity": "Democratic Progressive Party",
+   "slot": "chair",
+   "value": "Tsai Ing-wen",
+   "claim": "Tsai Ing-wen is the chair of the Democratic Progressive Party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0094/s1#r0",
+   "source_span": "Leader: Su Tseng-chang",
+   "entity": "Democratic Progressive Party",
+   "slot": "chair",
+   "value": "Su Tseng-chang",
+   "claim": "Su Tseng-chang is the leader of the Democratic Progressive Party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0094/s0#r0",
+   "source_span": "The Democratic Progressive Party (DPP) is a political party in Taiwan",
+   "entity": "Democratic Progressive Party",
+   "slot": "country",
+   "value": "Taiwan",
+   "claim": "The Democratic Progressive Party is a political party in Taiwan.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0094/s1#r0",
+   "source_span": "Founded: September 28, 1986",
+   "entity": "Democratic Progressive Party",
+   "slot": "founded_date",
+   "value": "September 28, 1986",
+   "claim": "The Democratic Progressive Party was founded on September 28, 1986.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1986-09-28"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0094/s1#r0",
+   "source_span": "Headquarters: Taipei,Taiwan",
+   "entity": "Democratic Progressive Party",
+   "slot": "headquarters",
+   "value": "Taipei, Taiwan",
+   "claim": "The Democratic Progressive Party headquarters is in Taipei, Taiwan.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0094/s1#r0",
+   "source_span": "Membership(2012): 335,643",
+   "entity": "Democratic Progressive Party",
+   "slot": "membership",
+   "value": "335,643",
+   "claim": "The Democratic Progressive Party had 335,643 members in 2012.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2012"
+  }
+ ],
+ "usage_in": 2401,
+ "usage_out": 724
+}

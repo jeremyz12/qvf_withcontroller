@@ -1,0 +1,116 @@
+{
+ "uid": "tw-0108",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0108/s0#r0",
+   "source_span": "Current team: Blackburn Rovers; Number: 8",
+   "entity": "David Dunn",
+   "slot": "current_team",
+   "value": "Blackburn Rovers",
+   "claim": "David Dunn's current team is Blackburn Rovers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0108/s0#r0",
+   "source_span": "Position(s): Midfielder",
+   "entity": "David Dunn",
+   "slot": "position",
+   "value": "Midfielder",
+   "claim": "David Dunn plays as a midfielder.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0108/s0#r0",
+   "source_span": "Height: 5 ft 10 in (1.78 m)",
+   "entity": "David Dunn",
+   "slot": "height",
+   "value": "5 ft 10 in (1.78 m)",
+   "claim": "David Dunn's height is 5 ft 10 in (1.78 m).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0108/s1#r0",
+   "source_span": "Date of birth: (1979-12-27)27 December 1979",
+   "entity": "David Dunn",
+   "slot": "date_of_birth",
+   "value": "1979-12-27",
+   "claim": "David Dunn was born on 27 December 1979.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1979-12-27"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0108/s1#r0",
+   "source_span": "Place of birth: Great Harwood, England",
+   "entity": "David Dunn",
+   "slot": "place_of_birth",
+   "value": "Great Harwood, England",
+   "claim": "David Dunn was born in Great Harwood, England.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0108/s1#r0",
+   "source_span": "Current team: Blackburn Rovers(U-21 Assistant Coach)",
+   "entity": "David Dunn",
+   "slot": "current_team",
+   "value": "Blackburn Rovers",
+   "claim": "David Dunn's current team is Blackburn Rovers as U-21 Assistant Coach.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0108/s1#r0",
+   "source_span": "Following a short-lived player-manager spell at League One club Oldham Athletic, Dunn returned to Blackburn Rovers in February 2016 working alongside former teammate Damien Johnson as Under 23s Assistant Coach.",
+   "entity": "David Dunn",
+   "slot": "current_role",
+   "value": "Under 23s Assistant Coach",
+   "claim": "David Dunn returned to Blackburn Rovers in February 2016 as Under 23s Assistant Coach.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016-02"
+  }
+ ],
+ "usage_in": 2430,
+ "usage_out": 935
+}

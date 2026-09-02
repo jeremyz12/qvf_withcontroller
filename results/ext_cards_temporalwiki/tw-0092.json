@@ -1,0 +1,103 @@
+{
+ "uid": "tw-0092",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0092/s0#r0",
+   "source_span": "Headquarters: Jeddah,Saudi Arabia",
+   "entity": "Organisation of Islamic Cooperation",
+   "slot": "headquarters",
+   "value": "Jeddah, Saudi Arabia",
+   "claim": "The Organisation of Islamic Cooperation has its headquarters in Jeddah, Saudi Arabia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0092/s0#r0",
+   "source_span": "Official languages: Arabic,English,French",
+   "entity": "Organisation of Islamic Cooperation",
+   "slot": "official_languages",
+   "value": "Arabic, English, French",
+   "claim": "The Organisation of Islamic Cooperation has official languages of Arabic, English, and French.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0092/s0#r0",
+   "source_span": "Membership: 57 member states",
+   "entity": "Organisation of Islamic Cooperation",
+   "slot": "member_states_count",
+   "value": "57",
+   "claim": "The Organisation of Islamic Cooperation has 57 member states.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0092/s0#r0",
+   "source_span": "Secretary-General: Ekmeleddin İhsanoğlu",
+   "entity": "Organisation of Islamic Cooperation",
+   "slot": "secretary_general",
+   "value": "Ekmeleddin İhsanoğlu",
+   "claim": "Ekmeleddin İhsanoğlu is the Secretary-General of the Organisation of Islamic Cooperation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2005-01-01"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0092/s1#r0",
+   "source_span": "Secretary-General: Iyad bin Amin Madani",
+   "entity": "Organisation of Islamic Cooperation",
+   "slot": "secretary_general",
+   "value": "Iyad bin Amin Madani",
+   "claim": "Iyad bin Amin Madani is the Secretary-General of the Organisation of Islamic Cooperation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2014-01-31"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0092/s1#r0",
+   "source_span": "Administrative centre: Jeddah,Saudi Arabia",
+   "entity": "Organisation of Islamic Cooperation",
+   "slot": "headquarters",
+   "value": "Jeddah, Saudi Arabia",
+   "claim": "The Organisation of Islamic Cooperation has its administrative centre in Jeddah, Saudi Arabia.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2041,
+ "usage_out": 882
+}

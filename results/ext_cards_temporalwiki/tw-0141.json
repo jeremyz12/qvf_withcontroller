@@ -1,0 +1,71 @@
+{
+ "uid": "tw-0141",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0141/s0#r0",
+   "source_span": "Mayor: Gábor Tamás Nagy",
+   "entity": "District I (Várkerület)",
+   "slot": "mayor",
+   "value": "Gábor Tamás Nagy",
+   "claim": "Gábor Tamás Nagy was the mayor of District I (Várkerület).",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0141/s0#r0",
+   "source_span": "Total: 24,933",
+   "entity": "District I (Várkerület)",
+   "slot": "population",
+   "value": "24,933",
+   "claim": "District I (Várkerület) had a population of 24,933.",
+   "slot_cardinality": "single",
+   "temporal_relation": "unresolved",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2010"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0141/s1#r0",
+   "source_span": "Mayor: Márta V. Naszályi(Dialogue)",
+   "entity": "District I (Várkerület)",
+   "slot": "mayor",
+   "value": "Márta V. Naszályi",
+   "claim": "Márta V. Naszályi was the mayor of District I (Várkerület).",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0141/s1#r0",
+   "source_span": "Total: 25,196",
+   "entity": "District I (Várkerület)",
+   "slot": "population",
+   "value": "25,196",
+   "claim": "District I (Várkerület) had a population of 25,196.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2020"
+  }
+ ],
+ "usage_in": 2136,
+ "usage_out": 536
+}

@@ -1,0 +1,71 @@
+{
+ "uid": "tw-0137",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0137/s0#r0",
+   "source_span": "Governor: William Boyd McCleary",
+   "entity": "British Virgin Islands",
+   "slot": "governor",
+   "value": "William Boyd McCleary",
+   "claim": "William Boyd McCleary is the Governor of the British Virgin Islands.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0137/s0#r0",
+   "source_span": "Premier: Orlando Smith",
+   "entity": "British Virgin Islands",
+   "slot": "premier",
+   "value": "Orlando Smith",
+   "claim": "Orlando Smith is the Premier of the British Virgin Islands.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0137/s1#r0",
+   "source_span": "The current Governor is Augustus Jaspert (since 22 August 2017)",
+   "entity": "British Virgin Islands",
+   "slot": "governor",
+   "value": "Augustus Jaspert",
+   "claim": "Augustus Jaspert is the Governor of the British Virgin Islands.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-08-22"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0137/s1#r0",
+   "source_span": "The current Premier is Andrew Fahie (since 26 February 2019)",
+   "entity": "British Virgin Islands",
+   "slot": "premier",
+   "value": "Andrew Fahie",
+   "claim": "Andrew Fahie is the Premier of the British Virgin Islands.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019-02-26"
+  }
+ ],
+ "usage_in": 2529,
+ "usage_out": 496
+}

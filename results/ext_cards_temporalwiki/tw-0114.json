@@ -1,0 +1,131 @@
+{
+ "uid": "tw-0114",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0114/s0#r0",
+   "source_span": "Current team: Swansea City",
+   "entity": "Stephen Dobbie",
+   "slot": "current_team",
+   "value": "Swansea City",
+   "claim": "Stephen Dobbie's current team is Swansea City.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0114/s0#r0",
+   "source_span": "Number: 14",
+   "entity": "Stephen Dobbie",
+   "slot": "jersey_number",
+   "value": "14",
+   "claim": "Stephen Dobbie wears jersey number 14.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0114/s0#r0",
+   "source_span": "Position(s): Forward",
+   "entity": "Stephen Dobbie",
+   "slot": "position",
+   "value": "Forward",
+   "claim": "Stephen Dobbie plays as a Forward.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0114/s0#r0",
+   "source_span": "Height: 5 ft 8 in (1.73 m)",
+   "entity": "Stephen Dobbie",
+   "slot": "height",
+   "value": "5 ft 8 in (1.73 m)",
+   "claim": "Stephen Dobbie's height is 5 ft 8 in (1.73 m).",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0114/s1#r0",
+   "source_span": "Current team: Queen of the South",
+   "entity": "Stephen Dobbie",
+   "slot": "current_team",
+   "value": "Queen of the South",
+   "claim": "Stephen Dobbie's current team is Queen of the South.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "tw-0114/s1#r0",
+   "source_span": "Number: 11",
+   "entity": "Stephen Dobbie",
+   "slot": "jersey_number",
+   "value": "11",
+   "claim": "Stephen Dobbie wears jersey number 11.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "tw-0114/s1#r0",
+   "source_span": "Date of birth: (1982-12-05)5 December 1982",
+   "entity": "Stephen Dobbie",
+   "slot": "date_of_birth",
+   "value": "1982-12-05",
+   "claim": "Stephen Dobbie was born on 5 December 1982.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1982-12-05"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "tw-0114/s1#r0",
+   "source_span": "Place of birth: Glasgow, Scotland",
+   "entity": "Stephen Dobbie",
+   "slot": "place_of_birth",
+   "value": "Glasgow, Scotland",
+   "claim": "Stephen Dobbie was born in Glasgow, Scotland.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2546,
+ "usage_out": 1043
+}

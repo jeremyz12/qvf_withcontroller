@@ -1,0 +1,84 @@
+{
+ "uid": "tw-0017",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0017/s0#r0",
+   "source_span": "born 23 September in Lecce",
+   "entity": "Raffaele Baldassarre",
+   "slot": "birthplace",
+   "value": "Lecce",
+   "claim": "Raffaele Baldassarre was born in Lecce.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0017/s0#r0",
+   "source_span": "Italian politician",
+   "entity": "Raffaele Baldassarre",
+   "slot": "nationality",
+   "value": "Italian",
+   "claim": "Raffaele Baldassarre is Italian.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0017/s0#r0",
+   "source_span": "member of the European Parliament for the European People's Party",
+   "entity": "Raffaele Baldassarre",
+   "slot": "political_position",
+   "value": "member of the European Parliament for the European People's Party",
+   "claim": "Raffaele Baldassarre is a member of the European Parliament for the European People's Party.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "tw-0017/s1#r0",
+   "source_span": "born 23 September 1956",
+   "entity": "Raffaele Baldassarre",
+   "slot": "birth_date",
+   "value": "1956-09-23",
+   "claim": "Raffaele Baldassarre was born on 23 September 1956.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1956-09-23"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "tw-0017/s1#r0",
+   "source_span": "He was born in Lecce",
+   "entity": "Raffaele Baldassarre",
+   "slot": "birthplace",
+   "value": "Lecce",
+   "claim": "Raffaele Baldassarre was born in Lecce.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 1845,
+ "usage_out": 617
+}

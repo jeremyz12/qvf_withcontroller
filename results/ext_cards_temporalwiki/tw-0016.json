@@ -1,0 +1,52 @@
+{
+ "uid": "tw-0016",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "tw-0016/s0#r0",
+   "source_span": "served as federal deputy (1997–2000)",
+   "entity": "Gerardo Buganza",
+   "slot": "political_position",
+   "value": "federal deputy",
+   "claim": "Gerardo Buganza served as federal deputy from 1997 to 2000.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1997"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "tw-0016/s0#r0",
+   "source_span": "served as federal deputy (1997–2000) and as senator (2000–2006)",
+   "entity": "Gerardo Buganza",
+   "slot": "political_position",
+   "value": "senator",
+   "claim": "Gerardo Buganza served as senator from 2000 to 2006.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2000"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "tw-0016/s0#r0",
+   "source_span": "In 2004 he unsuccessfully ran for Governor of Veracruz representing the PAN",
+   "entity": "Gerardo Buganza",
+   "slot": "political_candidacy",
+   "value": "Governor of Veracruz (PAN, 2004, unsuccessful)",
+   "claim": "Gerardo Buganza unsuccessfully ran for Governor of Veracruz in 2004 representing the PAN.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2004"
+  }
+ ],
+ "usage_in": 1881,
+ "usage_out": 417
+}
