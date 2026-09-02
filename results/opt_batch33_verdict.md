@@ -17,6 +17,7 @@
 | **G2 AMemGym** | G 判负(负向) | 600 题 / 20 人物:smoc 49.0 vs direct 52.3(EM −3.3,簇 CI [−8.8,+2.2],p=0.17;ClaudeJudge −4.7,p=0.05);全上下文 54.0 仅 +2.0 → 瓶颈非检索;机制 = 题靠用户措辞细微差别区分近义选项,卡片 span 抽象丢掉细微差别(29-K 表达轴重现);smoc 4.3× 成本 | 15.1 |
 | **J 小捆** | 四格全到 n | J1 读时建账目 60.24(vs direct +12.0;vs smoc **−30.2**;检索覆盖齐 85.3 / 缺一会话 15.9 → 写时卡价值 = 覆盖);J2 S2 点时 **+59.0**(p=1e-24)、S1 现值 +8.3(p=5e-4,"查找题无优势"自设 limitation 撤回);J3 无填充对照 direct +22.5 / fullplain +20.0 / smoc +1.7 → 结构溢价 44% 抗干扰 + 56% 抗聚合(操纵结果);J4 补全日期不救 gpt-5-mini 降级层(−3.6,p=0.73,与重跑漂移同量)→ "日期粗化"归因**无干预支持** | 14.3 |
 | **G4 MINTEval** | G 判负(地板) | 577 题/22 用户:smoc 1.21 vs direct 1.91(−0.7,簇 CI [−1.9,+0.5]);剂量-响应不可读;haiku 全文不可跑(中位 35 万 tok);机制 = 槽位词汇不对齐(读者弃答 79.5%)+ 无序数索引;smoc 全管线 6× 成本 | 37.8 |
+| **K Gemini 3.6 Flash** | 三条:协议律不复现;双端定理半复现;新 limitation | smoc 92.53 / ledgerplain 92.19(**+0.35 n.s.**,簇 CI [−0.9,+1.6] → 协议效应按厂商分布);direct **63.37**(比 haiku +15.1,p=4e-13 → "证据饥饿"是 claude/openai 家族属性;结构总价 +29.2);fullplain 14K **95.49 > smoc**(−5.6,p=0.007);closedbook 5.73 非污染;L1 92.5 / L2 77.5 = gpt-5-mini(104K 崩溃是 haiku 家族属性);thinking=low、fullplain 288 题 | 24.3 |
 | **H1 HippoRAG 2** | 同台入表 | 60 题 55.00,CI [41.7,68.3];vs direct +3.3 n.s.;vs smoc −33.3(p=9e-5);检索赢(链态 recall@10 0.915)裁决输(整链在场仍 56.9);41.7% 查询事实闸全关退回 DPR;换 gpt-4o 闸无改善 | 1.8 |
 | **H3 Letta** | 服务端 BLOCKED;文件系统 agent 入表 | 0.16.x 无 SQLite 路径(源码级),无 Postgres;Letta 式文件系统 agent 60 题 56.67(vs direct +5.0 n.s.;vs smoc −28.3,p=5e-4;每题 0.021 美元,约 21×) | 1.6 |
 | **H4 MemOS** | 同台入表(general_text 路径;tree_text 图记忆因 Docker 阻塞未测) | 60 题 45.00,CI [31.7,58.3];vs direct −6.7 跨零;vs smoc −40.0(p=0.003);vs Mem0 +18.3;haiku / gpt-4.1-mini 抽取不可分;写时扩张 4.1 节点/会话,聚合题 top-10 端不回全序列 | 4.2 |
@@ -24,7 +25,7 @@
 | **I 盘上(第一段)** | 两条否定 | LME single-session-preference smoc 42.9 vs direct 71.4(−28.6,CI 排除 0;弃答 35.7%,写侧不抽偏好类内容);MAB-FC mh_6k/mh_32k 零效应(sh_6k 与 mh_6k 草堆逐字节相同 → 61pp 差全由跳数,该格无鉴别力);LME 建卡实测每题 0.19 美元;建卡器失败批次不记 usage | 8.3 |
 
 ## 进行中
-A 冻结重建(direct 47.57、smwplain 53.47 已出;smoc×2 / smw / filter / usability / compile / summary 在跑)、H2 TRACE(出厂配置 60 题 16.67,0 条取代边;其 LoCoMo 配置重跑中)、K Gemini、I 第二段(LME multi-session 133 + single-session 126)。
+A 冻结重建(direct 47.57、smwplain 53.47 已出;smoc×2 / smw / filter / usability / compile / summary 在跑)、H2 TRACE(出厂配置 60 题 16.67,0 条取代边;其 LoCoMo 配置重跑中)、I 第二段(LME multi-session 133 + single-session 126)。
 
 ## 已能写进论文的三句(证据已齐)
 1. 结构溢价对检索基线的强弱不敏感:更强的重排/时间感知检索让 direct 变差而非变好;完美检索的直读也只到 76.7,距账目臂 −13.7。
