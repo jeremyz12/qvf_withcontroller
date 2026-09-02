@@ -1,0 +1,43 @@
+## 溯源块(批 33-A)
+
+- git rev: `95af0e417e0de2e021ceb93b7dcdc2dc4900fe3c`
+- scripts//qvf 工作区改动: 
+```
+?? scripts/b33A_backfill_slot_class.py
+?? scripts/b33A_provenance.py
+?? scripts/b33A_score.py
+?? scripts/b33A_score_k.py
+?? scripts/holdout_run_v1.sh
+?? scripts/ledger_fidelity_audit.py
+?? scripts/memobase_s5_agg.py
+?? scripts/repro_batch3_b33.py
+?? scripts/summary_arm_b33.py
+?? scripts/trace_contestant.py
+?? scripts/trace_verdict_stats.py
+```
+- 语料/题源 `data/wikistate_full_ALL_v24.json`: sha256 `c62291897f22bc5632e8b155bb7d997ea4880b59ef40d3b5a5e8be5af4060749` (8,118,849 B, mtime 2026-09-02 01:23:15)
+- 语料/题源 `data/wsc_s5_v2.jsonl`: sha256 `c9adc32370e4035cc561addd2304f7d05b5c8f02e76a0d6be2c087c11671bd39` (149,795 B, mtime 2026-08-25 16:15:06)
+- 店 `results/wt_cards_v45`: 144 文件 | 建店窗 2026-09-02 16:52:05 → 2026-09-02 17:10:18 | 目录 sha256(名+内容拼接) `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`
+- 店 `results/wt_cards_v45g`: 144 文件 | 建店窗 2026-09-02 16:51:48 → 2026-09-02 17:06:03 | 目录 sha256(名+内容拼接) `2e7209104f4d3c077a230c29fa088b19344321573f53195cc2304e57d4c8db15`
+- 店 `results/wt_cards_v45k`: 144 文件 | 建店窗 2026-09-02 19:29:29 → 2026-09-02 19:29:29 | 目录 sha256(名+内容拼接) `f1e40762ed27b52c54921279aecba884cee6becddf384580dcb1b425c133145f`
+- 摘要目录 `results/wt_summaries_v24`: 144 文件 | 2026-09-02 17:07:33 → 2026-09-02 18:24:00
+
+### 逐臂运行时窗 / 产物 / 读者侧成本
+
+| 臂 | 产物 | 行数 | 店 | 文件 mtime | 读者 in tok | 读者 out tok | 读者 $(0.8/4) | 累计延迟 h |
+|---|---|---|---|---|---|---|---|---|
+| direct | `results/b33A_direct.jsonl` | 576 | —(不读店) | 2026-09-02 17:58:47 | 505,291 | 49,507 | $0.602 | 0.27 |
+| filter | `results/b33A_filter.jsonl` | 842 | wt_cards_v45 | 2026-09-02 18:57:51 | 1,801,258 | 86,722 | $1.788 | 1.41 |
+| usability | `results/b33A_usability.jsonl` | 831 | wt_cards_v45 | 2026-09-02 18:59:06 | 1,895,075 | 88,963 | $1.872 | 1.37 |
+| compile | `results/b33A_compile.jsonl` | 1150 | wt_cards_v45 | 2026-09-02 19:28:01 | 2,650,800 | 111,608 | $2.567 | 1.82 |
+| smw | `results/b33A_smw.jsonl` | 576 | —(读原文) | 2026-09-02 18:32:43 | 8,018,040 | 263,290 | $7.468 | 1.42 |
+| smwplain | `results/b33A_smwplain.jsonl` | 576 | —(读原文) | 2026-09-02 18:01:44 | 7,874,616 | 77,796 | $6.611 | 0.91 |
+| summary | `results/b33A_summary.jsonl` | 803 | results/wt_summaries_v24 | 2026-09-02 19:14:55 | 1,969,210 | 74,095 | $1.872 | 1.16 |
+| smoc_v45 | `results/b33A_smoc_v45.jsonl` | 576 | wt_cards_v45 | 2026-09-02 18:32:35 | 1,694,844 | 276,000 | $2.460 | 0.80 |
+| smoc_v45g | `results/b33A_smoc_v45g.jsonl` | 576 | wt_cards_v45g | 2026-09-02 18:30:13 | 1,215,412 | 268,396 | $2.046 | 0.79 |
+| filter_k | `results/b33A_filter_k.jsonl` | 576 | wt_cards_v45k (derived) | 2026-09-02 20:27:22 | 1,249,504 | 62,514 | $1.250 | 0.94 |
+| usability_k | `results/b33A_usability_k.jsonl` | 576 | wt_cards_v45k (derived) | 2026-09-02 20:26:40 | 1,351,276 | 64,607 | $1.339 | 0.93 |
+| compile_k | `results/b33A_compile_k.jsonl` | 576 | wt_cards_v45k (derived) | 2026-09-02 20:24:24 | 1,305,769 | 56,163 | $1.269 | 0.89 |
+| filter_v42probe | `results/b33A_filter_v42probe.jsonl` | 144 | wt_cards_v42 (144 fvl only) | 2026-09-02 19:25:43 | 312,744 | 12,520 | $0.300 | 0.22 |
+
+读者侧合计:in 31,843,839 / out 1,492,181 tok = **$31.44**(haiku $0.80/M in、$4.00/M out;判官 claude-opus-5 另计)

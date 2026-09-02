@@ -1,0 +1,189 @@
+# Batch 33-A score (corpus v2.4 / stores v45+v45g / haiku-4.5 / ClaudeJudge)
+
+## 0. Dedupe ledger (concurrent duplicate writes -> keep FIRST)
+
+| arm | raw rows | deduped | dup rows | first/later verdict agreement |
+|---|---|---|---|---|
+| direct | 576 | 576 | 0 | - |
+| filter | 842 | 576 | 266 | 97.4% |
+| usability | 831 | 576 | 255 | 97.6% |
+| compile | 1150 | 576 | 574 | 99.8% |
+| smw | 576 | 576 | 0 | - |
+| smwplain | 576 | 576 | 0 | - |
+| summary | 803 | 576 | 227 | 96.9% |
+| smoc_v45 | 576 | 576 | 0 | - |
+| smoc_v45g | 576 | 576 | 0 | - |
+
+qid-set check vs data/wsc_s5_v2.jsonl (576):
+  direct      576 q, symdiff=0 -> PASS
+  filter      576 q, symdiff=0 -> PASS
+  usability   576 q, symdiff=0 -> PASS
+  compile     576 q, symdiff=0 -> PASS
+  smw         576 q, symdiff=0 -> PASS
+  smwplain    576 q, symdiff=0 -> PASS
+  summary     576 q, symdiff=0 -> PASS
+  smoc_v45    576 q, symdiff=0 -> PASS
+  smoc_v45g   576 q, symdiff=0 -> PASS
+
+## 1. Headline table
+
+| arm | n | v2.4 x v45 | v2.0 archive | diff | spliced v2.4 |
+|---|---|---|---|---|---|
+| direct | 576 | 47.57 | 48.61 | -1.04 | 48.26 |
+| filter | 576 | 58.68 | 62.67 | -3.99 | - |
+| usability | 576 | 60.59 | 65.62 | -5.03 | - |
+| compile | 576 | 77.78 | 75.87 | +1.91 | - |
+| smw | 576 | 85.59 | 81.25 | +4.34 | - |
+| smwplain | 576 | 53.47 | 52.26 | +1.22 | - |
+| summary | 576 | 57.12 | 52.78 | +4.34 | - |
+| smoc_v45 | 576 | 89.06 | 82.64 | +6.42 | 90.45 |
+| smoc_v45g | 576 | 85.59 | 82.64 | +2.95 | - |
+
+## 2. Cost / tokens / latency (reader usage; $0.80/M in, $4/M out)
+
+| arm | mean in | mean out | $/q | 576q $ | median latency s |
+|---|---|---|---|---|---|
+| direct | 877 | 86 | $0.00105 | $0.60 | 1.55 |
+| filter | 2139 | 104 | $0.00213 | $1.23 | 5.55 |
+| usability | 2282 | 108 | $0.00226 | $1.30 | 5.51 |
+| compile | 2305 | 97 | $0.00223 | $1.29 | 5.37 |
+| smw | 13920 | 457 | $0.01296 | $7.47 | 7.88 |
+| smwplain | 13671 | 135 | $0.01148 | $6.61 | 5.46 |
+| summary | 2454 | 92 | $0.00233 | $1.34 | 4.94 |
+| smoc_v45 | 2942 | 479 | $0.00427 | $2.46 | 4.86 |
+| smoc_v45g | 2110 | 466 | $0.00355 | $2.05 | 4.79 |
+
+reader-side total (deduped rows only): $24.34
+
+## 3. Per question type
+
+| arm | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| direct | 35.4 | 42.4 | 79.9 | 32.6 |
+| filter | 54.2 | 71.5 | 75.7 | 33.3 |
+| usability | 58.3 | 70.8 | 75.7 | 37.5 |
+| compile | 65.3 | 79.9 | 86.8 | 79.2 |
+| smw | 64.6 | 91.0 | 99.3 | 87.5 |
+| smwplain | 31.9 | 67.4 | 75.7 | 38.9 |
+| summary | 49.3 | 52.1 | 87.5 | 39.6 |
+| smoc_v45 | 85.4 | 86.8 | 94.4 | 89.6 |
+| smoc_v45g | 82.6 | 81.9 | 93.8 | 84.0 |
+
+## 4. Ladder rungs (A2: direction must match v2.0)
+
+### select direct->filter
+  n=576 ti / 144 lian | delta=+11.11pp  b/c=82/146  McNemar p=2.69e-05
+  chain sign test 80W/36L/28T p=5.4e-05 | cluster boot 95% CI [+4.51,+17.71]pp
+  TOST +-3.0pp (90% CI [+5.38,+16.67]): FAIL not equivalent
+  v2.0 same rung: 48.61->62.67 = +14.06pp | direction MATCH
+
+### certify filter->usability
+  n=576 ti / 144 lian | delta=+1.91pp  b/c=28/39  McNemar p=0.222
+  chain sign test 36W/24L/84T p=0.155 | cluster boot 95% CI [-0.87,+4.69]pp
+  TOST +-3.0pp (90% CI [-0.35,+4.34]): FAIL not equivalent
+  v2.0 same rung: 62.67->65.62 = +2.95pp | direction MATCH
+
+### compute usability->compile
+  n=576 ti / 144 lian | delta=+17.19pp  b/c=8/107  McNemar p=3.07e-23
+  chain sign test 71W/4L/69T p=6.81e-17 | cluster boot 95% CI [+13.37,+21.18]pp
+  TOST +-3.0pp (90% CI [+13.89,+20.49]): FAIL not equivalent
+  v2.0 same rung: 65.62->75.87 = +10.24pp | direction MATCH
+
+### ledger+protocol compile->smoc(v45)
+  n=576 ti / 144 lian | delta=+11.28pp  b/c=27/92  McNemar p=1.73e-09
+  chain sign test 47W/18L/79T p=0.000422 | cluster boot 95% CI [+6.42,+16.32]pp
+  TOST +-3.0pp (90% CI [+7.29,+15.45]): FAIL not equivalent
+  v2.0 same rung: 75.87->82.64 = +6.77pp | direction MATCH
+
+### [aside] compile->smw
+  n=576 ti / 144 lian | delta=+7.81pp  b/c=48/93  McNemar p=0.000188
+  chain sign test 46W/32L/66T p=0.141 | cluster boot 95% CI [+2.43,+13.37]pp
+  TOST +-3.0pp (90% CI [+3.12,+12.33]): FAIL not equivalent
+  v2.0 same rung: 75.87->81.25 = +5.38pp | direction MATCH
+
+### [aside] smw->smoc(v45)
+  n=576 ti / 144 lian | delta=+3.47pp  b/c=46/66  McNemar p=0.0721
+  chain sign test 47W/26L/71T p=0.0186 | cluster boot 95% CI [-0.87,+7.64]pp
+  TOST +-3.0pp (90% CI [-0.17,+6.94]): FAIL not equivalent
+  v2.0 same rung: 81.25->82.64 = +1.39pp | direction MATCH
+
+### [aside] smwplain->smw (protocol price)
+  n=576 ti / 144 lian | delta=+32.12pp  b/c=17/202  McNemar p=2.36e-41
+  chain sign test 108W/6L/30T p=2.72e-25 | cluster boot 95% CI [+27.43,+36.81]pp
+  TOST +-3.0pp (90% CI [+28.30,+36.11]): FAIL not equivalent
+  v2.0 same rung: 52.26->81.25 = +28.99pp | direction MATCH
+
+### [aside] summary->smoc(v45)
+  n=576 ti / 144 lian | delta=+31.94pp  b/c=26/210  McNemar p=6.08e-37
+  chain sign test 102W/13L/29T p=2.69e-18 | cluster boot 95% CI [+26.39,+37.50]pp
+  TOST +-3.0pp (90% CI [+27.26,+36.63]): FAIL not equivalent
+  v2.0 same rung: 52.78->82.64 = +29.86pp | direction MATCH
+
+
+## 5. A1 structure total & A3 owner-gate equivalence
+
+### A1 direct->smoc(v45)
+  n=576 ti / 144 lian | delta=+41.49pp  b/c=22/261  McNemar p=4.7e-53
+  chain sign test 124W/7L/13T p=8.68e-29 | cluster boot 95% CI [+36.63,+46.35]pp
+
+### A3 smoc(v45)->smoc(v45g) owner gate
+  n=576 ti / 144 lian | delta=-3.47pp  b/c=54/34  McNemar p=0.0422
+  chain sign test 21W/32L/91T p=0.169 | cluster boot 95% CI [-7.81,+0.69]pp
+  TOST +-2.0pp (90% CI [-7.12,+0.00]): FAIL not equivalent
+  TOST +-3.0pp (90% CI [-7.12,+0.00]): FAIL not equivalent
+  TOST +-5.0pp (90% CI [-7.12,+0.00]): FAIL not equivalent
+
+
+## 6. Each arm vs its v2.0 archive (cleaning tax, confounded by store)
+
+### direct: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=-1.04pp  b/c=25/19  McNemar p=0.451
+  chain sign test 13W/18L/113T p=0.473 | cluster boot 95% CI [-2.95,+0.87]pp
+
+### filter: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=-3.99pp  b/c=105/82  McNemar p=0.107
+  chain sign test 39W/49L/56T p=0.337 | cluster boot 95% CI [-10.94,+2.95]pp
+
+### usability: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=-5.03pp  b/c=108/79  McNemar p=0.0403
+  chain sign test 42W/44L/58T p=0.914 | cluster boot 95% CI [-12.50,+2.26]pp
+
+### compile: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=+1.91pp  b/c=77/88  McNemar p=0.436
+  chain sign test 39W/31L/74T p=0.403 | cluster boot 95% CI [-5.21,+9.03]pp
+
+### smw: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=+4.34pp  b/c=24/49  McNemar p=0.00463
+  chain sign test 28W/16L/100T p=0.0961 | cluster boot 95% CI [+0.87,+7.81]pp
+
+### smwplain: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=+1.22pp  b/c=45/52  McNemar p=0.543
+  chain sign test 34W/31L/79T p=0.804 | cluster boot 95% CI [-2.08,+4.51]pp
+
+### summary: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=+4.34pp  b/c=57/82  McNemar p=0.0414
+  chain sign test 46W/36L/62T p=0.32 | cluster boot 95% CI [-0.17,+9.03]pp
+
+### smoc_v45: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=+6.42pp  b/c=33/70  McNemar p=0.000341
+  chain sign test 34W/20L/90T p=0.0759 | cluster boot 95% CI [+1.74,+11.28]pp
+
+### smoc_v45g: v2.0 archive -> b33A v2.4 x v45
+  n=576 ti / 144 lian | delta=+2.95pp  b/c=46/63  McNemar p=0.125
+  chain sign test 33W/27L/84T p=0.519 | cluster boot 95% CI [-1.74,+7.64]pp
+
+
+## 7. Schema-regime isolation probe (first_vs_last only)
+
+| cell | corpus | store | fvl acc |
+|---|---|---|---|
+| v2.0 archive | v2.0 | v42 (has slot_class) | 92.36 |
+| b33A probe   | v2.4 | v42 (has slot_class) | 92.36 |
+| b33A run     | v2.4 | v45 (no slot_class)  | 75.69 |
+
+corpus effect (archive->probe): +0.00pp
+store/schema effect (probe->run): -16.67pp
+mean evidence_n: archive 4.13 | probe 4.13 | run 2.92
+### probe(v42 store) -> run(v45 store), fvl 144
+  n=144 ti / 144 lian | delta=-16.67pp  b/c=32/8  McNemar p=0.000182
+  chain sign test 8W/32L/104T p=0.000182 | cluster boot 95% CI [-25.00,-8.33]pp

@@ -1,0 +1,83 @@
+# 批 33-A v45k keyed-regime ladder (derived store)
+
+## Dedupe ledger for the v45k runs
+
+| arm | raw rows | deduped | dup rows | first/later agreement |
+|---|---|---|---|---|
+| filter_k | 576 | 576 | 0 | - |
+| usability_k | 576 | 576 | 0 | - |
+| compile_k | 576 | 576 | 0 | - |
+
+## Three regimes side by side
+
+| arm | v2.0 archive (v2.0 corpus, v42) | b33A raw v45 (fallback) | b33A v45k (keyed backfill) |
+|---|---|---|---|
+| filter | 62.67 | 58.68 | 65.62 |
+| usability | 65.62 | 60.59 | 66.32 |
+| compile | 75.87 | 77.78 | 79.69 |
+| smoc(v45) | 82.64 | 89.06 | 89.06 (same, store-independent) |
+
+## Per type (v45k)
+
+| arm | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| filter_k | 59.0 | 75.0 | 89.6 | 38.9 |
+| usability_k | 61.8 | 72.9 | 88.9 | 41.7 |
+| compile_k | 65.3 | 79.2 | 92.4 | 81.9 |
+
+## Ladder in the keyed regime (A2 judged here)
+
+### select direct->filter_k
+  n=576 ti / 144 lian | delta=+18.06pp  b/c=65/169  McNemar p=7.49e-12
+  chain sign test 89W/26L/29T p=2.95e-09 | cluster boot 95% CI [+11.81,+24.13]pp
+  TOST +-3.0pp (90% CI [+12.85,+23.09]): FAIL not equivalent
+  v2.0 same rung: 48.61->62.67 = +14.06pp | direction MATCH
+
+### certify filter_k->usability_k
+  n=576 ti / 144 lian | delta=+0.69pp  b/c=31/35  McNemar p=0.712
+  chain sign test 28W/25L/91T p=0.784 | cluster boot 95% CI [-2.08,+3.47]pp
+  TOST +-3.0pp (90% CI [-1.56,+3.12]): FAIL not equivalent
+  v2.0 same rung: 62.67->65.62 = +2.95pp | direction MATCH
+
+### compute usability_k->compile_k
+  n=576 ti / 144 lian | delta=+13.37pp  b/c=12/89  McNemar p=1.08e-15
+  chain sign test 63W/6L/75T p=4.47e-13 | cluster boot 95% CI [+9.90,+16.84]pp
+  TOST +-3.0pp (90% CI [+10.59,+16.32]): FAIL not equivalent
+  v2.0 same rung: 65.62->75.87 = +10.25pp | direction MATCH
+
+### ledger+protocol compile_k->smoc(v45)
+  n=576 ti / 144 lian | delta=+9.38pp  b/c=35/89  McNemar p=1.34e-06
+  chain sign test 46W/22L/76T p=0.0049 | cluster boot 95% CI [+4.34,+14.58]pp
+  TOST +-3.0pp (90% CI [+5.21,+13.54]): FAIL not equivalent
+  v2.0 same rung: 75.87->82.64 = +6.77pp | direction MATCH
+
+
+## Backfill effect: raw v45 -> v45k, same corpus same questions
+
+### filter: raw v45 (fallback) -> v45k (keyed)
+  n=576 ti / 144 lian | delta=+6.94pp  b/c=36/76  McNemar p=0.000198
+  chain sign test 36W/22L/86T p=0.0869 | cluster boot 95% CI [+2.26,+11.98]pp
+
+### usability: raw v45 (fallback) -> v45k (keyed)
+  n=576 ti / 144 lian | delta=+5.73pp  b/c=35/68  McNemar p=0.00149
+  chain sign test 31W/25L/88T p=0.504 | cluster boot 95% CI [+0.87,+10.94]pp
+
+### compile: raw v45 (fallback) -> v45k (keyed)
+  n=576 ti / 144 lian | delta=+1.91pp  b/c=37/48  McNemar p=0.278
+  chain sign test 20W/17L/107T p=0.743 | cluster boot 95% CI [-3.12,+7.12]pp
+
+
+## v45k vs v2.0 archive (corpus+builder effect, schema now aligned)
+
+### filter: v2.0 archive -> b33A v45k
+  n=576 ti / 144 lian | delta=+2.95pp  b/c=71/88  McNemar p=0.204
+  chain sign test 42W/35L/67T p=0.494 | cluster boot 95% CI [-3.47,+9.38]pp
+
+### usability: v2.0 archive -> b33A v45k
+  n=576 ti / 144 lian | delta=+0.69pp  b/c=71/75  McNemar p=0.804
+  chain sign test 38W/28L/78T p=0.268 | cluster boot 95% CI [-5.38,+6.77]pp
+
+### compile: v2.0 archive -> b33A v45k
+  n=576 ti / 144 lian | delta=+3.82pp  b/c=56/78  McNemar p=0.0693
+  chain sign test 34W/23L/87T p=0.185 | cluster boot 95% CI [-2.43,+10.07]pp
+
