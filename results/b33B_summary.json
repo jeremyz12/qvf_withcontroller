@@ -1,0 +1,132 @@
+{
+ "merged": {
+  "n": 576,
+  "correct": 521,
+  "acc": 90.45,
+  "errors": 55,
+  "by_type": {
+   "longest_tenure": 17,
+   "count_before": 16,
+   "change_count": 17,
+   "first_vs_last": 5
+  },
+  "provenance": {
+   "results/b31_smoc_v22_full.jsonl": 412,
+   "results/b31_smoc_v23.jsonl": 104,
+   "results/b31_smoc_v24.jsonl": 60
+  }
+ },
+ "store_drift_uids": [],
+ "cqe_strict_slot_class_modes": {
+  "zero_cards": 144
+ },
+ "write_modes_all_144": {
+  "wrong_value_or_order": 13,
+  "correct": 88,
+  "zero_cards": 22,
+  "missing_value": 11,
+  "extra_value": 10
+ },
+ "chain_clustering": {
+  "n_error_chains": 35,
+  "dist": {
+   "1": 21,
+   "2": 8,
+   "3": 6
+  },
+  "expected_binomial": {
+   "1": 40.7,
+   "2": 6.45,
+   "3": 0.45,
+   "4": 0.01
+  }
+ },
+ "count_direction": {
+  "undercount": 24,
+  "overcount": 9
+ },
+ "exec_upper_bound": {
+  "from_ledger": 407,
+  "from_goldchain": 576,
+  "n": 576
+ },
+ "top_class": {
+  "write": 38,
+  "read": 13,
+  "gold": 4
+ },
+ "top_class_ci": {
+  "write": {
+   "pct": 69.09,
+   "lo": 55.97,
+   "hi": 79.72
+  },
+  "read": {
+   "pct": 23.64,
+   "lo": 14.37,
+   "hi": 36.35
+  },
+  "gold": {
+   "pct": 7.27,
+   "lo": 2.86,
+   "hi": 17.26
+  }
+ },
+ "write_split": {
+  "write_A_值缺失": 9,
+  "write_B_值在场但选不出": 29
+ },
+ "subtable_5way": {
+  "correct": {
+   "read": 11,
+   "gold": 3
+  },
+  "zero_cards": {
+   "write": 11
+  },
+  "missing_value": {
+   "write": 21
+  },
+  "extra_value": {
+   "write": 4
+  },
+  "wrong_value_or_order": {
+   "write": 2,
+   "read": 2,
+   "gold": 1
+  }
+ },
+ "subtable_by_qtype": {
+  "change_count": {
+   "write": 12,
+   "read": 5
+  },
+  "count_before": {
+   "write": 10,
+   "read": 6
+  },
+  "longest_tenure": {
+   "write": 11,
+   "gold": 4,
+   "read": 2
+  },
+  "first_vs_last": {
+   "write": 5
+  }
+ },
+ "gold_tie_basrate": {
+  "n_tie": 16,
+  "tie_wrong": 6,
+  "n_nontie": 128,
+  "nontie_wrong": 11,
+  "tie_err_rate": 37.5,
+  "nontie_err_rate": 8.59,
+  "fisher_p_one_sided": 0.00431,
+  "enrichment": 4.37
+ },
+ "judge_false_negative_candidates": [
+  "wikiP54019-Q67283693_v2lt"
+ ],
+ "B1_gold_share_pct": 7.27,
+ "B1_pass": true
+}
