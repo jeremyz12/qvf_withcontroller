@@ -1,0 +1,88 @@
+{
+ "uid": "wikiP39010-Q16190712",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP39010-Q16190712/s0#r2",
+   "source_span": "I'm a member of the 55th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "55th Parliament of the United Kingdom",
+   "claim": "The user is a member of the 55th Parliament of the United Kingdom.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013-05-02"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP39010-Q16190712/s1#r2",
+   "source_span": "as of tonight I'm a member of the 56th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "56th Parliament of the United Kingdom",
+   "claim": "The user is a member of the 56th Parliament of the United Kingdom.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015-05-07"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP39010-Q16190712/s2#r2",
+   "source_span": "I'm a member of the 57th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "57th Parliament of the United Kingdom",
+   "claim": "The user is a member of the 57th Parliament of the United Kingdom.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017-06-08"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP39010-Q16190712/s3#r2",
+   "source_span": "I'm officially a member of the 58th Parliament of the United Kingdom again",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "58th Parliament of the United Kingdom",
+   "claim": "The user is a member of the 58th Parliament of the United Kingdom.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019-12-12"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP39010-Q16190712/s2#r1",
+   "source_span": "Mam's dropping the dog off later",
+   "entity": "user",
+   "slot": "pet",
+   "value": "dog",
+   "claim": "The user has a dog.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 3066,
+ "usage_out": 680
+}

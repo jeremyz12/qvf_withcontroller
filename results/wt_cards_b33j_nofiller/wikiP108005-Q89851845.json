@@ -1,0 +1,150 @@
+{
+ "uid": "wikiP108005-Q89851845",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108005-Q89851845/s0#r1",
+   "source_span": "I've started as a postdoctoral researcher at Lawrence Berkeley National Laboratory",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "postdoctoral researcher",
+   "claim": "The user started as a postdoctoral researcher.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001-08-01"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108005-Q89851845/s0#r1",
+   "source_span": "I've started as a postdoctoral researcher at Lawrence Berkeley National Laboratory",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Lawrence Berkeley National Laboratory",
+   "claim": "The user works at Lawrence Berkeley National Laboratory.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001-08-01"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108005-Q89851845/s0#r0",
+   "source_span": "The commute up the hill is going to be a thing",
+   "entity": "user",
+   "slot": "commute_characteristic",
+   "value": "uphill commute",
+   "claim": "The user has an uphill commute.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001-08-01"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108005-Q89851845/s1#r1",
+   "source_span": "I've started as a research fellow at the University of Glasgow",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "research fellow",
+   "claim": "The user started as a research fellow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2005-01-01"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108005-Q89851845/s1#r1",
+   "source_span": "I've started as a research fellow at the University of Glasgow",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Glasgow",
+   "claim": "The user works at the University of Glasgow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2005-01-01"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108005-Q89851845/s1#r0",
+   "source_span": "half my books are still in boxes",
+   "entity": "user",
+   "slot": "residence_status",
+   "value": "recently moved, unpacking",
+   "claim": "The user recently moved and is unpacking.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2005-01-01"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108005-Q89851845/s2#r1",
+   "source_span": "as of today I'm officially on staff at the University of Sydney",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "staff member",
+   "claim": "The user is on staff at the University of Sydney.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2007-01-01"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108005-Q89851845/s2#r1",
+   "source_span": "as of today I'm officially on staff at the University of Sydney",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Sydney",
+   "claim": "The user works at the University of Sydney.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2007-01-01"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108005-Q89851845/s2#r0",
+   "source_span": "I'm doing that annoying thing where I try to sort my life out on the 1st of January",
+   "entity": "user",
+   "slot": "habit",
+   "value": "attempts life organization on New Year's Day",
+   "claim": "The user attempts to organize their life on New Year's Day.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2580,
+ "usage_out": 1148
+}

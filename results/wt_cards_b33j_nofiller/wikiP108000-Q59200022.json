@@ -1,0 +1,122 @@
+{
+ "uid": "wikiP108000-Q59200022",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108000-Q59200022/s0#r0",
+   "source_span": "I officially started as a research fellow at the California Institute of Technology this morning",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "research fellow",
+   "claim": "The user started as a research fellow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-11-01"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108000-Q59200022/s0#r0",
+   "source_span": "I officially started as a research fellow at the California Institute of Technology this morning",
+   "entity": "user",
+   "slot": "employer",
+   "value": "California Institute of Technology",
+   "claim": "The user works at the California Institute of Technology.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-11-01"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108000-Q59200022/s1#r1",
+   "source_span": "Officially started at CERN today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "CERN",
+   "claim": "The user started working at CERN.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1989-06-01"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108000-Q59200022/s1#r1",
+   "source_span": "Officially started at CERN today",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "unknown",
+   "claim": "The user has a position at CERN.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1989-06-01"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108000-Q59200022/s2#r1",
+   "source_span": "as of today I've officially started at the University of Cambridge",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Cambridge",
+   "claim": "The user started working at the University of Cambridge.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995-10-01"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108000-Q59200022/s3#r0",
+   "source_span": "I've officially started as a lecturer at the University of Birmingham today",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "lecturer",
+   "claim": "The user is a lecturer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1998-09-01"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108000-Q59200022/s3#r0",
+   "source_span": "I've officially started as a lecturer at the University of Birmingham today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Birmingham",
+   "claim": "The user works at the University of Birmingham.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1998-09-01"
+  }
+ ],
+ "usage_in": 2950,
+ "usage_out": 899
+}

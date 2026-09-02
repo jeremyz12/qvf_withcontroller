@@ -1,0 +1,124 @@
+{
+ "uid": "wikiP108040-Q57038615",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108040-Q57038615/s0#r0",
+   "source_span": "I officially started at Henry Ford Hospital this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Henry Ford Hospital",
+   "claim": "The user started working at Henry Ford Hospital in July 1988.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1988-07"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108040-Q57038615/s0#r2",
+   "source_span": "Detroit traffic on the way in",
+   "entity": "user",
+   "slot": "work_location_city",
+   "value": "Detroit",
+   "claim": "The user commutes to work in Detroit.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108040-Q57038615/s1#r1",
+   "source_span": "I've started at the Leonard M. Miller School of Medicine this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Leonard M. Miller School of Medicine",
+   "claim": "The user started at the Leonard M. Miller School of Medicine in July 1989.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "work_location_city"
+   ],
+   "stated_date": "1989-07"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108040-Q57038615/s1#r2",
+   "source_span": "down here",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Miami area",
+   "claim": "The user is living in the Miami area as of July 1989.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108040-Q57038615/s2#r0",
+   "source_span": "I officially started this month as a research fellow at the National Cancer Institute",
+   "entity": "user",
+   "slot": "employer",
+   "value": "National Cancer Institute",
+   "claim": "The user started as a research fellow at the National Cancer Institute in April 1992.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence_location"
+   ],
+   "stated_date": "1992-04"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108040-Q57038615/s3#r0",
+   "source_span": "I officially started this month as a clinical investigator at the National Institute of Allergy and Infectious Diseases",
+   "entity": "user",
+   "slot": "employer",
+   "value": "National Institute of Allergy and Infectious Diseases",
+   "claim": "The user started as a clinical investigator at the National Institute of Allergy and Infectious Diseases in July 1995.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995-07"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108040-Q57038615/s3#r1",
+   "source_span": "the Bethesda apartment",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Bethesda",
+   "claim": "The user is living in a Bethesda apartment as of July 1995.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995-07"
+  }
+ ],
+ "usage_in": 2948,
+ "usage_out": 1026
+}

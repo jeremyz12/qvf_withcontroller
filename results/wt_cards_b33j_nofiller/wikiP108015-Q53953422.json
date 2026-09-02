@@ -1,0 +1,190 @@
+{
+ "uid": "wikiP108015-Q53953422",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108015-Q53953422/s0#r0",
+   "source_span": "unpacking boxes of books. The flat still smells of paint",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Barcelona",
+   "claim": "The user has recently moved to a flat in Barcelona.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108015-Q53953422/s0#r1",
+   "source_span": "as of today I'm officially on staff at the Autonomous University of Barcelona",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Autonomous University of Barcelona",
+   "claim": "The user is employed as staff at the Autonomous University of Barcelona.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-09-01"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108015-Q53953422/s0#r2",
+   "source_span": "I want to leave the house by 7:40 to catch the train",
+   "entity": "user",
+   "slot": "commute_method",
+   "value": "train",
+   "claim": "The user commutes by train, departing at 7:40.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108015-Q53953422/s0#r2",
+   "source_span": "I'd like to keep Thursday evenings free for dinner with my sister",
+   "entity": "user",
+   "slot": "recurring_commitment",
+   "value": "Thursday dinner with sister",
+   "claim": "The user has a recurring Thursday evening dinner commitment with their sister.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Thursday evenings",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108015-Q53953422/s1#r1",
+   "source_span": "as of today I'm officially a fellow at CERN, so that's my new employer",
+   "entity": "user",
+   "slot": "employer",
+   "value": "CERN",
+   "claim": "The user is employed as a fellow at CERN.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence_location"
+   ],
+   "stated_date": "1991-01-01"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108015-Q53953422/s1#r3",
+   "source_span": "Geneva in January is not Barcelona in January",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Geneva",
+   "claim": "The user is now residing in Geneva.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108015-Q53953422/s2#r1",
+   "source_span": "I've started as a researcher at the University of Barcelona",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Barcelona",
+   "claim": "The user is employed as a researcher at the University of Barcelona.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence_location"
+   ],
+   "stated_date": "1997-01-01"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108015-Q53953422/s2#r2",
+   "source_span": "figure out where I can leave the bike without it getting stolen",
+   "entity": "user",
+   "slot": "transportation_method",
+   "value": "bike",
+   "claim": "The user uses a bike for transportation.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108015-Q53953422/s2#r1",
+   "source_span": "I've started as a researcher at the University of Barcelona",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Barcelona",
+   "claim": "The user is residing in Barcelona.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108015-Q53953422/s3#r0",
+   "source_span": "I officially started as a staff scientist at Lawrence Berkeley National Laboratory today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Lawrence Berkeley National Laboratory",
+   "claim": "The user is employed as a staff scientist at Lawrence Berkeley National Laboratory.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence_location"
+   ],
+   "stated_date": "2001-02-01"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108015-Q53953422/s3#r0",
+   "source_span": "I officially started as a staff scientist at Lawrence Berkeley National Laboratory today",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Berkeley",
+   "claim": "The user is residing in Berkeley.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2796,
+ "usage_out": 1537
+}

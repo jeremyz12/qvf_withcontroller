@@ -1,0 +1,116 @@
+{
+ "uid": "wikiP54002-Q56709404",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54002-Q56709404/s0#r0",
+   "source_span": "I officially signed with Virginia's Blue Ridge-Twenty28 for this season",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Virginia's Blue Ridge-Twenty28",
+   "claim": "The user signed with Virginia's Blue Ridge-Twenty28 for the cycling season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "2019 season",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54002-Q56709404/s0#r3",
+   "source_span": "my bike shoes are falling apart",
+   "entity": "user",
+   "slot": "bike_shoes_condition",
+   "value": "falling apart",
+   "claim": "The user's bike shoes are falling apart.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54002-Q56709404/s1#r0",
+   "source_span": "I've officially signed with St Michel-Mavic-Auber 93 (Women) for the season",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "St Michel-Mavic-Auber 93 (Women)",
+   "claim": "The user signed with St Michel-Mavic-Auber 93 (Women) for the season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2022"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54002-Q56709404/s1#r2",
+   "source_span": "my left cleat is worn down",
+   "entity": "user",
+   "slot": "left_cleat_condition",
+   "value": "worn down",
+   "claim": "The user's left cleat is worn down.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2022"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54002-Q56709404/s1#r2",
+   "source_span": "my rain jacket zipper is broken",
+   "entity": "user",
+   "slot": "rain_jacket_condition",
+   "value": "zipper broken",
+   "claim": "The user's rain jacket zipper is broken.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2022"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54002-Q56709404/s2#r0",
+   "source_span": "I'm riding for Uno-X Mobility Women this season",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Uno-X Mobility Women",
+   "claim": "The user is riding for Uno-X Mobility Women this season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54002-Q56709404/s2#r3",
+   "source_span": "my left shoe cleat has been clicking weirdly on rides",
+   "entity": "user",
+   "slot": "left_shoe_cleat_condition",
+   "value": "clicking weirdly",
+   "claim": "The user's left shoe cleat has been clicking weirdly on rides.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2024"
+  }
+ ],
+ "usage_in": 2525,
+ "usage_out": 924
+}

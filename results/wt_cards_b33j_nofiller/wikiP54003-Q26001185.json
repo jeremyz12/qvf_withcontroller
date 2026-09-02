@@ -1,0 +1,148 @@
+{
+ "uid": "wikiP54003-Q26001185",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54003-Q26001185/s0#r0",
+   "source_span": "I've signed with Ceratizit Pro Cycling Team",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Ceratizit Pro Cycling Team",
+   "claim": "The user is signed with Ceratizit Pro Cycling Team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54003-Q26001185/s1#r0",
+   "source_span": "I've officially signed with DAS-Hutchinson for the season",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "DAS-Hutchinson",
+   "claim": "The user is signed with DAS-Hutchinson for the season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54003-Q26001185/s2#r1",
+   "source_span": "I've signed with Mayenne-Monbana-MyPie",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Mayenne-Monbana-MyPie",
+   "claim": "The user is signed with Mayenne-Monbana-MyPie.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54003-Q26001185/s3#r0",
+   "source_span": "official as of today I'm riding for Lifeplus Wahoo",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Lifeplus Wahoo",
+   "claim": "The user is riding for Lifeplus Wahoo as of 2023-07-01.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2023-07-01"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54003-Q26001185/s0#r0",
+   "source_span": "The rear derailleur has been making a horrible clicking noise all week",
+   "entity": "user",
+   "slot": "bike_issue",
+   "value": "rear derailleur clicking noise",
+   "claim": "The user's bike rear derailleur has been making a clicking noise.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54003-Q26001185/s1#r3",
+   "source_span": "the washing machine is making that grinding noise again",
+   "entity": "user",
+   "slot": "washing_machine_issue",
+   "value": "grinding noise",
+   "claim": "The user's washing machine is making a grinding noise.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54003-Q26001185/s3#r2",
+   "source_span": "My washing machine's making that grinding noise again",
+   "entity": "user",
+   "slot": "washing_machine_issue",
+   "value": "grinding noise",
+   "claim": "The user's washing machine is making a grinding noise.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP54003-Q26001185/s2#r3",
+   "source_span": "find out whether the flat I'm looking at actually has a washing machine",
+   "entity": "user",
+   "slot": "housing_search_status",
+   "value": "looking at flats",
+   "claim": "The user is looking at flats.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP54003-Q26001185/s2#r3",
+   "source_span": "buy a French SIM",
+   "entity": "user",
+   "slot": "location_context",
+   "value": "France",
+   "claim": "The user is planning to buy a French SIM, indicating a connection to France.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2922,
+ "usage_out": 1102
+}

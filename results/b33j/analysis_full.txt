@@ -1,0 +1,116 @@
+
+======================================================================
+J1  读时建账目臂 rtl(576 题,v2.4)
+======================================================================
+rtl n=576  smoc n=576  direct n=576
+rtl acc = 347/576 = 60.24
+
+### rtl vs direct(读时账目 vs 裸检索)
+  n_items=576  n_chains=144  base=48.26  test=60.24
+  item-level: D=+11.98pp  b=42/c=111  McNemar p=2.246e-08
+  chain-level sign test: 75W/21L/48T  p=2.707e-08
+  chain cluster bootstrap 95% CI: [+7.99, +15.97]pp
+
+### rtl vs smoc(读时建 vs 写时建)
+  n_items=576  n_chains=144  base=90.45  test=60.24
+  item-level: D=-30.21pp  b=188/c=14  McNemar p=4.577e-40
+  chain-level sign test: 8W/97L/39T  p=1.495e-20
+  chain cluster bootstrap 95% CI: [-35.42, -25.00]pp
+
+  qtype                rtl    smoc  direct   n
+  change_count       45.83   88.19   34.72   144
+  count_before       39.58   88.89   43.75   144
+  first_vs_last      79.17   96.53   80.56   144
+  longest_tenure     76.39   88.19   34.03   144
+
+  读时建卡:每题卡片数 mean=9.3 min=3 max=22;检索集重复命中缓存 0/576
+  cost[rtl] 读者 in=403,172 out=260,793;建卡 in=1,553,009 out=726,376;合计 $6.892 ($0.01197/题)
+  cost[rtl 判官] $1.001 (实测576/归档价0);rtl 全口径 $7.893
+  cost[smoc 读端] $3.079 ($0.00534/题, mean_in=2950);cost[direct] $0.754 ($0.00131/题, mean_in=877)
+
+======================================================================
+J2  S1/S2 有效性探针(haiku 读者,v44clean 账目)
+======================================================================
+
+-- S1 dim1_current(当前值)  (预注册:打平 ±5pp) --
+
+### dim1: smoc vs direct
+  n_items=144  n_chains=144  base=90.97  test=99.31
+  item-level: D=+8.33pp  b=0/c=12  McNemar p=0.0004883
+  chain-level sign test: 12W/0L/132T  p=0.0004883
+  chain cluster bootstrap 95% CI: [+4.17, +13.19]pp
+  cost[dim1/smoc] n=144 mean_in=2940 mean_out=378 读者$0.696 + 判官$0.204 = $0.900
+  cost[dim1/direct] n=144 mean_in=828 mean_out=56 读者$0.159 + 判官$0.713 = $0.873
+
+-- S2 dim4_point_in_time(时点值)  (预注册:>= +30pp) --
+
+### dim4: smoc vs direct
+  n_items=144  n_chains=144  base=38.19  test=97.22
+  item-level: D=+59.03pp  b=1/c=86  McNemar p=1.137e-24
+  chain-level sign test: 86W/1L/57T  p=1.137e-24
+  chain cluster bootstrap 95% CI: [+50.69, +67.36]pp
+  cost[dim4/smoc] n=144 mean_in=2935 mean_out=438 读者$0.738 + 判官$0.190 = $0.928
+  cost[dim4/direct] n=144 mean_in=829 mean_out=86 读者$0.182 + 判官$0.687 = $0.869
+
+======================================================================
+J3  无填充对照梯(30 链 / 120 题)
+======================================================================
+arm                 有填充        无填充         Δ   n
+smoc              90.83      92.50     +1.67   120
+direct            43.33      65.83    +22.50   120
+fullplain         58.33      78.33    +20.00   120
+
+### smoc: 无填充 vs 有填充(同 120 题)
+  n_items=120  n_chains=30  base=90.83  test=92.50
+  item-level: D=+1.67pp  b=6/c=8  McNemar p=0.7905
+  chain-level sign test: 5W/5L/20T  p=1
+  chain cluster bootstrap 95% CI: [-4.17, +8.33]pp
+
+### direct: 无填充 vs 有填充(同 120 题)
+  n_items=120  n_chains=30  base=43.33  test=65.83
+  item-level: D=+22.50pp  b=7/c=34  McNemar p=2.532e-05
+  chain-level sign test: 20W/0L/10T  p=1.907e-06
+  chain cluster bootstrap 95% CI: [+15.00, +30.83]pp
+
+### fullplain: 无填充 vs 有填充(同 120 题)
+  n_items=120  n_chains=30  base=58.33  test=78.33
+  item-level: D=+20.00pp  b=7/c=31  McNemar p=0.0001162
+  chain-level sign test: 17W/4L/9T  p=0.007197
+  chain cluster bootstrap 95% CI: [+8.33, +30.83]pp
+
+### 无填充语料内:smoc vs direct
+  n_items=120  n_chains=30  base=65.83  test=92.50
+  item-level: D=+26.67pp  b=6/c=38  McNemar p=9.43e-07
+  chain-level sign test: 22W/2L/6T  p=3.588e-05
+  chain cluster bootstrap 95% CI: [+17.50, +35.83]pp
+
+### 无填充语料内:fullplain vs direct
+  n_items=120  n_chains=30  base=65.83  test=78.33
+  item-level: D=+12.50pp  b=7/c=22  McNemar p=0.00813
+  chain-level sign test: 15W/3L/12T  p=0.007538
+  chain cluster bootstrap 95% CI: [+4.17, +20.83]pp
+  cost[nofiller/smoc] n=120 mean_in=639 mean_out=479 读者$0.364 + 判官$0.189 = $0.553
+  cost[nofiller/direct] n=120 mean_in=641 mean_out=87 读者$0.129 + 判官$0.410 = $0.538
+  cost[nofiller/fullplain] n=120 mean_in=903 mean_out=104 读者$0.171 + 判官$0.383 = $0.554
+
+======================================================================
+J4  强读者日期粗化 E1(gpt-5-mini smoc,v43 账目)
+======================================================================
+unpatched n=56  patched n=56
+实际被改写日期的链所属题数(粗化子层)= 40
+
+### 全 56 题降级层:补丁 vs 不补丁
+  n_items=56  n_chains=14  base=67.86  test=64.29
+  item-level: D=-3.57pp  b=5/c=3  McNemar p=0.7266
+  chain-level sign test: 2W/4L/8T  p=0.6875
+  chain cluster bootstrap 95% CI: [-12.50, +5.36]pp
+
+### 粗化子层(日期真被改写的 10 链/40 题)
+  n_items=40  n_chains=10  base=77.50  test=75.00
+  item-level: D=-2.50pp  b=4/c=3  McNemar p=1
+  chain-level sign test: 2W/3L/5T  p=1
+  chain cluster bootstrap 95% CI: [-12.50, +7.50]pp
+
+  [口径核对] 归档 smoc(F.1)gpt-5-mini 在同 56 题上 64.29;本轮 unpatched 67.86
+  cost[unpatched] n=56 in=141,766 out=121,909 读者$0.279 + 判官$0.172(实测0/归档价56) = $0.452
+  cost[patched] n=56 in=142,070 out=120,801 读者$0.277 + 判官$0.172(实测0/归档价56) = $0.450

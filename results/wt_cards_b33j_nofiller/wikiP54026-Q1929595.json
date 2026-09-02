@@ -1,0 +1,88 @@
+{
+ "uid": "wikiP54026-Q1929595",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54026-Q1929595/s0#r0",
+   "source_span": "I've signed with PureBlack Racing, so that's my new team from here on out",
+   "entity": "user",
+   "slot": "racing_team",
+   "value": "PureBlack Racing",
+   "claim": "The user signed with PureBlack Racing as their racing team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54026-Q1929595/s0#r3",
+   "source_span": "my racing shoes are basically wrecked",
+   "entity": "user",
+   "slot": "racing_shoes_condition",
+   "value": "wrecked",
+   "claim": "The user's racing shoes are in wrecked condition.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54026-Q1929595/s1#r2",
+   "source_span": "officially for Bissell as of today",
+   "entity": "user",
+   "slot": "racing_team",
+   "value": "Bissell",
+   "claim": "The user is now racing for Bissell as of this date.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2013-01-01"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54026-Q1929595/s2#r1",
+   "source_span": "as of today SmartStop is my new team",
+   "entity": "user",
+   "slot": "racing_team",
+   "value": "SmartStop",
+   "claim": "The user's new racing team as of this date is SmartStop.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2014-01-01"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54026-Q1929595/s3#r1",
+   "source_span": "I've signed with Budget Forklifts as my new team for the season",
+   "entity": "user",
+   "slot": "racing_team",
+   "value": "Budget Forklifts",
+   "claim": "The user signed with Budget Forklifts as their racing team for the season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2015-01-01"
+  }
+ ],
+ "usage_in": 2846,
+ "usage_out": 676
+}

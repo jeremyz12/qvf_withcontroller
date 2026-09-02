@@ -1,0 +1,139 @@
+{
+ "uid": "wikiP108044-Q73300218",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108044-Q73300218/s0#r0",
+   "source_span": "I've officially joined the University of Freiburg as my new employer",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Freiburg",
+   "claim": "The user officially joined the University of Freiburg as their employer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1987"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108044-Q73300218/s1#r0",
+   "source_span": "I've officially started at Ludwig-Maximilians-Universität München",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Ludwig-Maximilians-Universität München",
+   "claim": "The user officially started at Ludwig-Maximilians-Universität München.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1989"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108044-Q73300218/s2#r0",
+   "source_span": "I've officially started at the Medical University of Innsbruck this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Medical University of Innsbruck",
+   "claim": "The user officially started at the Medical University of Innsbruck.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1992-03"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108044-Q73300218/s3#r0",
+   "source_span": "I've officially started my new post at the University of Oxford this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Oxford",
+   "claim": "The user officially started a new post at the University of Oxford.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1993-03"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108044-Q73300218/s4#r0",
+   "source_span": "As of this month I'm a professor at Technische Hochschule Lübeck",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Technische Hochschule Lübeck",
+   "claim": "The user is a professor at Technische Hochschule Lübeck.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995-11"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108044-Q73300218/s5#r0",
+   "source_span": "I officially started at Duke University Hospital this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Duke University Hospital",
+   "claim": "The user officially started at Duke University Hospital.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1999-11"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108044-Q73300218/s6#r0",
+   "source_span": "I've officially started at the University of Bonn this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Bonn",
+   "claim": "The user officially started at the University of Bonn.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2006-10"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108044-Q73300218/s1#r1",
+   "source_span": "Remind me to sort out the tram pass before the end of the month",
+   "entity": "user",
+   "slot": "transit_pass",
+   "value": "tram pass",
+   "claim": "The user needs to sort out a tram pass.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1989"
+  }
+ ],
+ "usage_in": 3782,
+ "usage_out": 1093
+}

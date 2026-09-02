@@ -1,0 +1,101 @@
+{
+ "uid": "wikiP108050-Q57979238",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108050-Q57979238/s0#r1",
+   "source_span": "I officially started today as a faculty member at Zhejiang University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Zhejiang University",
+   "claim": "User started as a faculty member at Zhejiang University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1997-09-01"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108050-Q57979238/s0#r1",
+   "source_span": "I officially started today as a faculty member at Zhejiang University",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "faculty member",
+   "claim": "User is employed as a faculty member.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1997-09-01"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108050-Q57979238/s1#r1",
+   "source_span": "as of today I've officially started as a faculty member at Texas A&M University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Texas A&M University",
+   "claim": "User started as a faculty member at Texas A&M University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001-08-20"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108050-Q57979238/s1#r1",
+   "source_span": "as of today I've officially started as a faculty member at Texas A&M University",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "faculty member",
+   "claim": "User is employed as a faculty member.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2001-08-20"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108050-Q57979238/s2#r1",
+   "source_span": "I've officially joined North Carolina State University as a faculty member",
+   "entity": "user",
+   "slot": "employer",
+   "value": "North Carolina State University",
+   "claim": "User joined as a faculty member at North Carolina State University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2002-12-21"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108050-Q57979238/s2#r1",
+   "source_span": "I've officially joined North Carolina State University as a faculty member",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "faculty member",
+   "claim": "User is employed as a faculty member.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2002-12-21"
+  }
+ ],
+ "usage_in": 2595,
+ "usage_out": 771
+}

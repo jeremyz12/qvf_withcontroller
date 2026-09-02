@@ -1,0 +1,184 @@
+{
+ "uid": "wikiP108002-Q57686589",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108002-Q57686589/s0#r0",
+   "source_span": "I've officially started at the Instituto de Física de Cantabria",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Instituto de Física de Cantabria",
+   "claim": "The user started working at Instituto de Física de Cantabria.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [
+    "work_location"
+   ],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108002-Q57686589/s0#r0",
+   "source_span": "my mornings now begin in Santander instead of at my parents' kitchen table",
+   "entity": "user",
+   "slot": "work_location",
+   "value": "Santander",
+   "claim": "The user's work location is Santander.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108002-Q57686589/s0#r1",
+   "source_span": "the flat I'm renting has no washing machine until Thursday",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "rented flat",
+   "claim": "The user is renting a flat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108002-Q57686589/s0#r2",
+   "source_span": "I bought a bike to avoid the bus queues",
+   "entity": "user",
+   "slot": "transportation_mode",
+   "value": "bike",
+   "claim": "The user owns a bike for transportation.",
+   "slot_cardinality": "set",
+   "temporal_relation": "additive",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108002-Q57686589/s1#r0",
+   "source_span": "I'm officially starting today as a postdoctoral researcher at Tel Aviv University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Tel Aviv University",
+   "claim": "The user started as a postdoctoral researcher at Tel Aviv University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "work_location"
+   ],
+   "stated_date": "2014-09-01"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108002-Q57686589/s1#r0",
+   "source_span": "postdoctoral researcher at Tel Aviv University",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "postdoctoral researcher",
+   "claim": "The user's job title is postdoctoral researcher.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108002-Q57686589/s1#r1",
+   "source_span": "the flat I'm renting has no working washing machine until Thursday",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "rented flat",
+   "claim": "The user is renting a flat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108002-Q57686589/s1#r1",
+   "source_span": "the flat I'm renting has no working washing machine until Thursday, so I need to find a laundromat near Ramat Aviv",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "Ramat Aviv",
+   "claim": "The user's residence is near Ramat Aviv.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108002-Q57686589/s2#r0",
+   "source_span": "today I officially started at CERN",
+   "entity": "user",
+   "slot": "employer",
+   "value": "CERN",
+   "claim": "The user started working at CERN.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "work_location"
+   ],
+   "stated_date": "2017-05-01"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108002-Q57686589/s2#r1",
+   "source_span": "sort out the Swiss phone SIM",
+   "entity": "user",
+   "slot": "phone_provider",
+   "value": "Swiss SIM",
+   "claim": "The user has a Swiss phone SIM.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108002-Q57686589/s2#r2",
+   "source_span": "the flat's washing machine makes a grinding noise on spin cycle",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "flat",
+   "claim": "The user lives in a flat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2603,
+ "usage_out": 1498
+}

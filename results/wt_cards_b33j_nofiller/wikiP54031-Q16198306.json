@@ -1,0 +1,163 @@
+{
+ "uid": "wikiP54031-Q16198306",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54031-Q16198306/s0#r0",
+   "source_span": "I officially signed with S.C. Michela Fanini as my new team",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "S.C. Michela Fanini",
+   "claim": "The user signed with S.C. Michela Fanini as their cycling team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2007"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54031-Q16198306/s1#r0",
+   "source_span": "I've signed with Gauss RDZ Ormu for this season",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Gauss RDZ Ormu",
+   "claim": "The user signed with Gauss RDZ Ormu for the season.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54031-Q16198306/s2#r1",
+   "source_span": "I've officially signed with Top Girls Fassa Bortolo, so that's my new team from now on",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Top Girls Fassa Bortolo",
+   "claim": "The user signed with Top Girls Fassa Bortolo as their new team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009-06-09"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54031-Q16198306/s3#r0",
+   "source_span": "I'm riding for Aromitalia Vaiano this year",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Aromitalia Vaiano",
+   "claim": "The user is riding for Aromitalia Vaiano this year.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54031-Q16198306/s0#r2",
+   "source_span": "Mamma wants me home for Sunday lunch and she's making lasagna",
+   "entity": "user",
+   "slot": "family_commitment",
+   "value": "Sunday lunch with mother",
+   "claim": "The user's mother wants them home for Sunday lunch where she makes lasagna.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "Sunday",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54031-Q16198306/s1#r1",
+   "source_span": "my washing machine is making a noise like a dying seagull",
+   "entity": "user",
+   "slot": "appliance_status",
+   "value": "washing machine needs repair",
+   "claim": "The user's washing machine is making unusual noises and needs repair.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54031-Q16198306/s3#r2",
+   "source_span": "my bike shoes are falling apart, the left buckle is basically decorative at this point",
+   "entity": "user",
+   "slot": "equipment_status",
+   "value": "bike shoes need replacement",
+   "claim": "The user's bike shoes are falling apart and need to be replaced.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP54031-Q16198306/s0#r3",
+   "source_span": "my bike computer has been resetting the odometer randomly",
+   "entity": "user",
+   "slot": "equipment_status",
+   "value": "bike computer malfunctioning",
+   "claim": "The user's bike computer is resetting the odometer randomly.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2007"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP54031-Q16198306/s2#r2",
+   "source_span": "my bike needs a new chain",
+   "entity": "user",
+   "slot": "equipment_status",
+   "value": "bike chain needs replacement",
+   "claim": "The user's bike needs a new chain.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009-06-09"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP54031-Q16198306/s1#r3",
+   "source_span": "I want to be more organised this year. Can you set a recurring nudge to log my training hours every evening at 9?",
+   "entity": "user",
+   "slot": "habit",
+   "value": "log training hours daily at 9pm",
+   "claim": "The user wants to establish a habit of logging training hours every evening at 9pm.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2009"
+  }
+ ],
+ "usage_in": 2940,
+ "usage_out": 1481
+}

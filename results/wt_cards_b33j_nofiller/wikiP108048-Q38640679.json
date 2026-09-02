@@ -1,0 +1,109 @@
+{
+ "uid": "wikiP108048-Q38640679",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108048-Q38640679/s0#r0",
+   "source_span": "boxes are finally out of the car and the apartment smells like fresh paint and old carpet",
+   "entity": "user",
+   "slot": "residence",
+   "value": "apartment (newly moved in)",
+   "claim": "The user has just moved into an apartment.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-09-01"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108048-Q38640679/s0#r1",
+   "source_span": "as of today I'm officially on the faculty at the University of California, Irvine",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of California, Irvine",
+   "claim": "The user is on the faculty at the University of California, Irvine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1985-09-01"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108048-Q38640679/s0#r1",
+   "source_span": "my commute is now about twelve minutes",
+   "entity": "user",
+   "slot": "commute_duration",
+   "value": "about twelve minutes",
+   "claim": "The user's commute is about twelve minutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108048-Q38640679/s1#r0",
+   "source_span": "as of today I'm officially on the faculty at Duke University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Duke University",
+   "claim": "The user is on the faculty at Duke University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence",
+    "commute_duration"
+   ],
+   "stated_date": "1987-03-01"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108048-Q38640679/s1#r1",
+   "source_span": "The apartment near Ninth Street has a washer but no dryer",
+   "entity": "user",
+   "slot": "residence",
+   "value": "apartment near Ninth Street, Duke University area",
+   "claim": "The user's apartment near Ninth Street has a washer but no dryer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108048-Q38640679/s2#r0",
+   "source_span": "I've officially joined the RIKEN Brain Science Institute",
+   "entity": "user",
+   "slot": "employer",
+   "value": "RIKEN Brain Science Institute",
+   "claim": "The user has joined the RIKEN Brain Science Institute.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [
+    "residence",
+    "commute_duration"
+   ],
+   "stated_date": "1989"
+  }
+ ],
+ "usage_in": 2552,
+ "usage_out": 879
+}

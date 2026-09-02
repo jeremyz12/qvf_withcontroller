@@ -1,0 +1,131 @@
+{
+ "uid": "wikiP54028-Q22681824",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54028-Q22681824/s0#r1",
+   "source_span": "as of today 0711/Cycling is my new team",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "0711/Cycling",
+   "claim": "The user joined 0711/Cycling as their cycling team as of January 1, 2016.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016-01-01"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54028-Q22681824/s0#r1",
+   "source_span": "Kit and paperwork are sorted, first proper camp should be later this month",
+   "entity": "user",
+   "slot": "cycling_camp_scheduled",
+   "value": "later this month",
+   "claim": "The user has a first proper cycling camp scheduled for later in January 2016.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54028-Q22681824/s0#r2",
+   "source_span": "the bike needs a new chain and the rear brake pads before I do any real base miles",
+   "entity": "user",
+   "slot": "bike_maintenance_needed",
+   "value": "new chain and rear brake pads",
+   "claim": "The user's bike needs a new chain and rear brake pads before doing base miles.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54028-Q22681824/s1#r1",
+   "source_span": "I've officially signed with Leopard Pro Cycling as of today",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Leopard Pro Cycling",
+   "claim": "The user officially signed with Leopard Pro Cycling as of July 22, 2016.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2016-07-22"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54028-Q22681824/s1#r2",
+   "source_span": "order new cleats (the left one is basically a rock now)",
+   "entity": "user",
+   "slot": "cleats_condition",
+   "value": "left one worn out",
+   "claim": "The user's left cleat is worn out and needs replacement.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54028-Q22681824/s1#r2",
+   "source_span": "figure out what to do about the leaky kitchen tap before my landlord asks again",
+   "entity": "user",
+   "slot": "kitchen_tap_condition",
+   "value": "leaky",
+   "claim": "The user has a leaky kitchen tap that needs repair.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54028-Q22681824/s2#r1",
+   "source_span": "I'm officially riding for Benotti Berthold this season",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Benotti Berthold",
+   "claim": "The user is officially riding for Benotti Berthold this season in 2019.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP54028-Q22681824/s2#r0",
+   "source_span": "the neighbour's dog has decided 4am is social hour",
+   "entity": "user",
+   "slot": "neighbor_dog_noise",
+   "value": "barking at 4am",
+   "claim": "The user's neighbor's dog barks at 4am.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2585,
+ "usage_out": 1168
+}

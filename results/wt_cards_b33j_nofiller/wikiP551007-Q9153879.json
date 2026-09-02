@@ -1,0 +1,71 @@
+{
+ "uid": "wikiP551007-Q9153879",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP551007-Q9153879/s0#r1",
+   "source_span": "I've settled in Koropets now",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Koropets",
+   "claim": "The user has settled in Koropets.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1927"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP551007-Q9153879/s0#r1",
+   "source_span": "update my address for the letters and the paper subscription",
+   "entity": "user",
+   "slot": "subscriptions",
+   "value": "paper subscription",
+   "claim": "The user has a paper subscription.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1927"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP551007-Q9153879/s1#r0",
+   "source_span": "Horodok is my new residence as of this week",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Horodok",
+   "claim": "The user's new residence is Horodok.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1937"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP551007-Q9153879/s2#r1",
+   "source_span": "Lviv is my new residence now",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Lviv",
+   "claim": "The user's new residence is Lviv.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1939"
+  }
+ ],
+ "usage_in": 2565,
+ "usage_out": 536
+}

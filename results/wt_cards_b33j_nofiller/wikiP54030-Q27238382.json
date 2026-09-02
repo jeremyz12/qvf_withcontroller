@@ -1,0 +1,90 @@
+{
+ "uid": "wikiP54030-Q27238382",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54030-Q27238382/s0#r0",
+   "source_span": "I've officially signed with Mutua Levante, so that's my new team",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Mutua Levante",
+   "claim": "The user signed with Mutua Levante as their cycling team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2011"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54030-Q27238382/s1#r1",
+   "source_span": "I've officially signed with Elevate–Webiplex Pro Cycling, so today's my first day on the roster",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Elevate–Webiplex Pro Cycling",
+   "claim": "The user signed with Elevate–Webiplex Pro Cycling as their cycling team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2017"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54030-Q27238382/s2#r1",
+   "source_span": "as of today I'm officially signed with Team California",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Team California",
+   "claim": "The user signed with Team California as their cycling team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54030-Q27238382/s3#r1",
+   "source_span": "I signed and I'm officially riding for DC Bank Pro Cycling Team starting now",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "DC Bank Pro Cycling Team",
+   "claim": "The user signed with DC Bank Pro Cycling Team as their cycling team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2019-08-08"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54030-Q27238382/s4#r0",
+   "source_span": "I signed with L39ION of Los Angeles, this is my new team",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "L39ION of Los Angeles",
+   "claim": "The user signed with L39ION of Los Angeles as their cycling team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2021"
+  }
+ ],
+ "usage_in": 3191,
+ "usage_out": 718
+}

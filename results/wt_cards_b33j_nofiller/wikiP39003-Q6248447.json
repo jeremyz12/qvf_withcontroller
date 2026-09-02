@@ -1,0 +1,101 @@
+{
+ "uid": "wikiP39003-Q6248447",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP39003-Q6248447/s0#r0",
+   "source_span": "as of today I'm a member of the First Chamber",
+   "entity": "user",
+   "slot": "political_position",
+   "value": "member of the First Chamber",
+   "claim": "The user became a member of the First Chamber.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1964"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP39003-Q6248447/s0#r2",
+   "source_span": "the boiler at home is making that knocking sound again",
+   "entity": "user",
+   "slot": "home_boiler_condition",
+   "value": "making knocking sound",
+   "claim": "The user's home boiler is making a knocking sound.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at home",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP39003-Q6248447/s1#r1",
+   "source_span": "as of today I'm officially a member of the Swedish Riksdag",
+   "entity": "user",
+   "slot": "political_position",
+   "value": "member of the Swedish Riksdag",
+   "claim": "The user became a member of the Swedish Riksdag.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1971-01-11"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP39003-Q6248447/s1#r2",
+   "source_span": "she wants to know if I'll be home for the weekend",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "home (location unspecified)",
+   "claim": "The user has a home where they spend weekends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP39003-Q6248447/s2#r1",
+   "source_span": "I've taken up the post as Representative of the Parliamentary Assembly of the Council of Europe",
+   "entity": "user",
+   "slot": "political_position",
+   "value": "Representative of the Parliamentary Assembly of the Council of Europe",
+   "claim": "The user became a Representative of the Parliamentary Assembly of the Council of Europe.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1974-05-06"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP39003-Q6248447/s2#r2",
+   "source_span": "Strasbourg means travel",
+   "entity": "user",
+   "slot": "work_location",
+   "value": "Strasbourg",
+   "claim": "The user's work involves travel to Strasbourg.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "for Representative position",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 2571,
+ "usage_out": 762
+}

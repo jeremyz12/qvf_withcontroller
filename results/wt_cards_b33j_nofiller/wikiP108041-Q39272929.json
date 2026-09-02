@@ -1,0 +1,165 @@
+{
+ "uid": "wikiP108041-Q39272929",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108041-Q39272929/s0#r0",
+   "source_span": "I've just started at the International Agency for Research on Cancer",
+   "entity": "user",
+   "slot": "employer",
+   "value": "International Agency for Research on Cancer",
+   "claim": "The user started working at the International Agency for Research on Cancer.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995-11-01"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108041-Q39272929/s0#r1",
+   "source_span": "I paid single fares twice today like an idiot and Lyon is not cheap",
+   "entity": "user",
+   "slot": "residence_city",
+   "value": "Lyon",
+   "claim": "The user is living in Lyon.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1995-11-01"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108041-Q39272929/s0#r1",
+   "source_span": "Can you remind me tomorrow morning to sort out the tram pass?",
+   "entity": "user",
+   "slot": "public_transport_pass",
+   "value": "tram pass needed",
+   "claim": "The user needs to obtain a tram pass.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108041-Q39272929/s0#r2",
+   "source_span": "the flat's boiler makes a knocking sound around 6am",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "flat",
+   "claim": "The user lives in a flat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108041-Q39272929/s1#r0",
+   "source_span": "I've officially started today as a researcher at the Armand-Frappier Santé Biotechnologie Research Centre",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Armand-Frappier Santé Biotechnologie Research Centre",
+   "claim": "The user started working as a researcher at the Armand-Frappier Santé Biotechnologie Research Centre.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1999-07-01"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108041-Q39272929/s1#r1",
+   "source_span": "the movers apparently think 'fragile' means 'kick harder'. Two of my mugs are gone",
+   "entity": "user",
+   "slot": "recent_move",
+   "value": "moved recently",
+   "claim": "The user recently moved and had items damaged in transit.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "1999-07-01"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108041-Q39272929/s1#r2",
+   "source_span": "I promised Céline I'd call her tonight about the apartment lease renewal",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "apartment",
+   "claim": "The user lives in an apartment.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108041-Q39272929/s2#r0",
+   "source_span": "I've officially started at the London School of Hygiene and Tropical Medicine today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "London School of Hygiene and Tropical Medicine",
+   "claim": "The user started working at the London School of Hygiene and Tropical Medicine.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2002-07-01"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108041-Q39272929/s2#r0",
+   "source_span": "first day at my new job",
+   "entity": "user",
+   "slot": "job_status",
+   "value": "employed",
+   "claim": "The user is employed.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2002-07-01"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108041-Q39272929/s2#r1",
+   "source_span": "Took me 55 minutes door to door",
+   "entity": "user",
+   "slot": "residence_city",
+   "value": "London",
+   "claim": "The user is living in London.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2002-07-01"
+  }
+ ],
+ "usage_in": 2647,
+ "usage_out": 1303
+}

@@ -1,0 +1,101 @@
+{
+ "uid": "wikiP108035-Q39407125",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108035-Q39407125/s0#r1",
+   "source_span": "comecei hoje como professor na Universidade Estadual da Paraíba",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Universidade Estadual da Paraíba",
+   "claim": "The user started as a professor at Universidade Estadual da Paraíba.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2004-04-05"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108035-Q39407125/s0#r2",
+   "source_span": "O da padaria perto do apartamento",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "near a bakery",
+   "claim": "The user lives in an apartment near a bakery.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "inferred from context",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108035-Q39407125/s1#r1",
+   "source_span": "comecei oficialmente como professor na Universidade Federal do Vale do São Francisco",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Universidade Federal do Vale do São Francisco",
+   "claim": "The user started as a professor at Universidade Federal do Vale do São Francisco.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2004-09-13"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108035-Q39407125/s1#r3",
+   "source_span": "ver se dá pra instalar um ventilador na sala",
+   "entity": "user",
+   "slot": "work_location_amenity_need",
+   "value": "fan installation in office",
+   "claim": "The user needs to install a fan in their office due to heat.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "at work",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108035-Q39407125/s1#r3",
+   "source_span": "ver preço de internet discada aqui",
+   "entity": "user",
+   "slot": "internet_service",
+   "value": "dial-up internet",
+   "claim": "The user is considering getting dial-up internet service.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108035-Q39407125/s2#r1",
+   "source_span": "as of today I've officially started as a visiting researcher at Paris Cité University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Paris Cité University",
+   "claim": "The user started as a visiting researcher at Paris Cité University.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": "2023-05-30"
+  }
+ ],
+ "usage_in": 2685,
+ "usage_out": 792
+}
