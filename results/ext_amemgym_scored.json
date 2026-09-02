@@ -1,0 +1,156 @@
+{
+ "n_paired": 600,
+ "arms": {
+  "direct": {
+   "em_official": {
+    "pct": 52.33,
+    "ci95": [
+     48.33,
+     56.67
+    ]
+   },
+   "em_strict": {
+    "pct": 52.33,
+    "ci95": [
+     48.33,
+     56.67
+    ]
+   },
+   "em_rescue": {
+    "pct": 52.33,
+    "ci95": [
+     48.33,
+     56.67
+    ]
+   },
+   "judge": {
+    "pct": 52.33,
+    "ci95": [
+     48.33,
+     56.67
+    ]
+   },
+   "parse_fail": 0.0,
+   "tiers": {
+    "T1": 35,
+    "T2": 492,
+    "T3": 73,
+    "fail": 0
+   },
+   "protocol_deviation": 0,
+   "mean_in_tok": 1148.6,
+   "mean_out_tok": 87.5,
+   "mean_latency_s": 5.02,
+   "by_period": {
+    "0": 78.2,
+    "1": 67.9,
+    "2": 64.2,
+    "3": 52.7,
+    "4": 53.7,
+    "5": 43.9,
+    "6": 35.2,
+    "7": 37.7,
+    "8": 41.1,
+    "9": 51.9,
+    "10": 50.0
+   }
+  },
+  "smoc": {
+   "em_official": {
+    "pct": 49.0,
+    "ci95": [
+     43.67,
+     55.0
+    ]
+   },
+   "em_strict": {
+    "pct": 48.0,
+    "ci95": [
+     42.67,
+     54.0
+    ]
+   },
+   "em_rescue": {
+    "pct": 49.0,
+    "ci95": [
+     43.67,
+     55.0
+    ]
+   },
+   "judge": {
+    "pct": 47.67,
+    "ci95": [
+     42.5,
+     53.67
+    ]
+   },
+   "parse_fail": 2.0,
+   "tiers": {
+    "T1": 540,
+    "T2": 45,
+    "T3": 3,
+    "fail": 12
+   },
+   "protocol_deviation": 63,
+   "mean_in_tok": 2143.6,
+   "mean_out_tok": 647.6,
+   "mean_latency_s": 10.56,
+   "by_period": {
+    "0": 69.1,
+    "1": 62.3,
+    "2": 58.5,
+    "3": 50.9,
+    "4": 53.7,
+    "5": 33.3,
+    "6": 37.0,
+    "7": 35.8,
+    "8": 42.9,
+    "9": 50.0,
+    "10": 46.6
+   }
+  }
+ },
+ "paired": {
+  "em_official": {
+   "delta_smoc_minus_direct": -3.33,
+   "cluster_ci95": [
+    -8.83,
+    2.17
+   ],
+   "mcnemar_b_smoc_only": 84,
+   "mcnemar_c_direct_only": 104,
+   "mcnemar_p": 0.165661
+  },
+  "em_strict": {
+   "delta_smoc_minus_direct": -4.33,
+   "cluster_ci95": [
+    -9.67,
+    1.17
+   ],
+   "mcnemar_b_smoc_only": 81,
+   "mcnemar_c_direct_only": 107,
+   "mcnemar_p": 0.067971
+  },
+  "em_rescue": {
+   "delta_smoc_minus_direct": -3.33,
+   "cluster_ci95": [
+    -8.83,
+    2.17
+   ],
+   "mcnemar_b_smoc_only": 84,
+   "mcnemar_c_direct_only": 104,
+   "mcnemar_p": 0.165661
+  },
+  "judge": {
+   "delta_smoc_minus_direct": -4.67,
+   "cluster_ci95": [
+    -9.83,
+    0.67
+   ],
+   "mcnemar_b_smoc_only": 81,
+   "mcnemar_c_direct_only": 109,
+   "mcnemar_p": 0.049851
+  }
+ },
+ "official_random_baseline_pct": 23.17
+}

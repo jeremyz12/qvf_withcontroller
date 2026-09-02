@@ -1,0 +1,896 @@
+{
+ "uid": "amemgym-12",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "amemgym-12/s0#r0",
+   "source_span": "Can you suggest strategies to stay motivated at work when you feel like you're making progress but still think there's room for improvement?",
+   "entity": "user",
+   "slot": "work_context",
+   "value": "employed in role with motivation challenges",
+   "claim": "User is employed and seeking strategies to stay motivated at work.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "amemgym-12/s1#r0",
+   "source_span": "What are effective ways to communicate new process ideas in a company where decisions tend to follow a strict chain of command?",
+   "entity": "user",
+   "slot": "work_environment",
+   "value": "company with strict chain of command",
+   "claim": "User works in a company with a strict hierarchical chain of command.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "amemgym-12/s2#r0",
+   "source_span": "Can you help me plan a week-long trip to a city with a vibrant jazz scene, keeping the budget under $1500?",
+   "entity": "user",
+   "slot": "travel_interests",
+   "value": "jazz scene cities",
+   "claim": "User is interested in traveling to cities with vibrant jazz scenes.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "amemgym-12/s3#r0",
+   "source_span": "What are some project management tips for a small analytics team working under a tight deadline?",
+   "entity": "user",
+   "slot": "job_role",
+   "value": "analytics team member",
+   "claim": "User works on a small analytics team.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "amemgym-12/s4#r0",
+   "source_span": "I'm looking to actively participate in regular jazz or hip-hop workshops, group jam sessions, or community music events in Providence",
+   "entity": "user",
+   "slot": "location",
+   "value": "Providence",
+   "claim": "User is located in or near Providence.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "amemgym-12/s4#r0",
+   "source_span": "I'm looking to actively participate in regular jazz or hip-hop workshops, group jam sessions, or community music events in Providence—ideally something ongoing where I can connect with other musicians and learn together.",
+   "entity": "user",
+   "slot": "music_interests",
+   "value": "jazz and hip-hop",
+   "claim": "User is interested in jazz and hip-hop music.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "amemgym-12/s4#r0",
+   "source_span": "I'm looking to actively participate in regular jazz or hip-hop workshops, group jam sessions, or community music events in Providence—ideally something ongoing where I can connect with other musicians and learn together.",
+   "entity": "user",
+   "slot": "music_participation",
+   "value": "musician seeking workshops and jam sessions",
+   "claim": "User is a musician seeking to participate in workshops and jam sessions.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "amemgym-12/s5#r0",
+   "source_span": "Can you recommend some soul food recipes that I can easily adapt for vegan friends, but still keep flavorful for everyone?",
+   "entity": "user",
+   "slot": "cooking_interests",
+   "value": "soul food",
+   "claim": "User is interested in cooking soul food.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "amemgym-12/s5#r0",
+   "source_span": "Can you recommend some soul food recipes that I can easily adapt for vegan friends, but still keep flavorful for everyone?",
+   "entity": "user",
+   "slot": "dietary_accommodation",
+   "value": "adapts recipes for vegan friends",
+   "claim": "User accommodates vegan dietary preferences when cooking.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "amemgym-12/s6#r0",
+   "source_span": "What are some drills I can do at the YMCA to improve my ball handling and shooting if I play pickup basketball several times a week?",
+   "entity": "user",
+   "slot": "gym_membership",
+   "value": "YMCA",
+   "claim": "User has a YMCA membership.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "amemgym-12/s6#r0",
+   "source_span": "What are some drills I can do at the YMCA to improve my ball handling and shooting if I play pickup basketball several times a week?",
+   "entity": "user",
+   "slot": "sports_activities",
+   "value": "pickup basketball several times a week",
+   "claim": "User plays pickup basketball several times a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "amemgym-12/s7#r0",
+   "source_span": "What books or courses would you recommend for someone looking to strengthen their leadership and management skills for a future executive role?",
+   "entity": "user",
+   "slot": "career_aspirations",
+   "value": "executive role",
+   "claim": "User aspires to an executive role.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "amemgym-12/s8#r0",
+   "source_span": "How can I make the most out of networking events and mentoring opportunities in the management analytics field?",
+   "entity": "user",
+   "slot": "professional_field",
+   "value": "management analytics",
+   "claim": "User works in the management analytics field.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "amemgym-12/s9#r0",
+   "source_span": "Can you suggest some new music genres or artists for a group listening session with friends who are open to exploring beyond jazz and hip-hop?",
+   "entity": "user",
+   "slot": "social_activities",
+   "value": "group listening sessions with friends",
+   "claim": "User hosts group listening sessions with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "amemgym-12/s10#r0",
+   "source_span": "What are some effective ways to resolve minor disagreements in a team that includes both long-time colleagues and newer members?",
+   "entity": "user",
+   "slot": "team_composition",
+   "value": "mixed long-time and new members",
+   "claim": "User works on a team with both long-time colleagues and newer members.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "amemgym-12/s11#r0",
+   "source_span": "Can you recommend some engaging history or biography books I can get in print, given I have about 5 to 10 hours a week to read?",
+   "entity": "user",
+   "slot": "reading_time",
+   "value": "5 to 10 hours per week",
+   "claim": "User has 5 to 10 hours per week available for reading.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "amemgym-12/s11#r0",
+   "source_span": "Can you recommend some engaging history or biography books I can get in print, given I have about 5 to 10 hours a week to read?",
+   "entity": "user",
+   "slot": "reading_interests",
+   "value": "history and biography",
+   "claim": "User is interested in history and biography books.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "amemgym-12/s11#r0",
+   "source_span": "Can you recommend some engaging history or biography books I can get in print, given I have about 5 to 10 hours a week to read?",
+   "entity": "user",
+   "slot": "reading_format_preference",
+   "value": "print books",
+   "claim": "User prefers print books for reading.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "amemgym-12/s12#r0",
+   "source_span": "Can you suggest strategies for building rapport and effective collaboration in a newly formed analytics team, especially when most members are meeting for the first time and the group has grown much larger than before?",
+   "entity": "user",
+   "slot": "team_status",
+   "value": "newly formed analytics team, larger than before",
+   "claim": "User's analytics team is newly formed and has grown larger.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "amemgym-12/s14#r0",
+   "source_span": "I've been experimenting with advanced cooking techniques lately, like making homemade roux and adapting soul food recipes for vegan friends.",
+   "entity": "user",
+   "slot": "cooking_skills",
+   "value": "advanced techniques including homemade roux",
+   "claim": "User is developing advanced cooking techniques including making homemade roux.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "amemgym-12/s15#r0",
+   "source_span": "I want to highlight some workflow bottlenecks and suggest ways to make our project planning more collaborative, especially now that our department is encouraging open feedback and flexible work-from-home options.",
+   "entity": "user",
+   "slot": "work_environment",
+   "value": "flexible work-from-home with open feedback culture",
+   "claim": "User's department now encourages open feedback and flexible work-from-home options.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "amemgym-12/s16#r0",
+   "source_span": "What are some good weekend destinations within driving distance from Rhode Island?",
+   "entity": "user",
+   "slot": "location",
+   "value": "Rhode Island",
+   "claim": "User is located in Rhode Island.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "amemgym-12/s16#r0",
+   "source_span": "I've realized I prefer shorter getaways that fit into a busy schedule rather than long vacations.",
+   "entity": "user",
+   "slot": "travel_preferences",
+   "value": "short weekend getaways over long vacations",
+   "claim": "User prefers short weekend getaways over long vacations.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "amemgym-12/s17#r0",
+   "source_span": "I'm interested in self-paced learning that I can do at home, since local workshops and jam sessions aren't available right now.",
+   "entity": "user",
+   "slot": "music_participation",
+   "value": "online self-paced jazz learning",
+   "claim": "User is pursuing online self-paced jazz learning at home.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "local workshops and jam sessions unavailable",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "amemgym-12/s18#r0",
+   "source_span": "Can you help me organize a schedule for presenting our analytics project updates to stakeholders? Since we're now doing milestone reviews instead of aiming for a single final report",
+   "entity": "user",
+   "slot": "project_structure",
+   "value": "milestone reviews instead of single final report",
+   "claim": "User's analytics project now uses milestone reviews instead of a single final report.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r19"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "amemgym-12/s19#r0",
+   "source_span": "Given my busier evenings lately, could you recommend some new jazz or hip-hop albums and digital biographies I can check out during my commutes or downtime?",
+   "entity": "user",
+   "slot": "schedule_status",
+   "value": "busier evenings",
+   "claim": "User has busier evenings recently.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "amemgym-12/s19#r0",
+   "source_span": "I'm looking for ways to stay connected to the music scene and keep up with my reading, even if I can't make it to local shows as often.",
+   "entity": "user",
+   "slot": "music_participation",
+   "value": "reduced local show attendance",
+   "claim": "User is attending local music shows less frequently.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "amemgym-12/s20#r0",
+   "source_span": "What are some effective cardio and endurance drills I can add to my basketball training routine? I've noticed I'm getting tired faster during pickup games, so I want to focus more on fitness and stamina rather than just ball skills.",
+   "entity": "user",
+   "slot": "sports_focus",
+   "value": "cardio and endurance for basketball",
+   "claim": "User is focusing on cardio and endurance training for basketball.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "amemgym-12/s21#r0",
+   "source_span": "Can you suggest some alternative ways to stay active and keep up my basketball skills while the YMCA gym is closed and pickup games are only happening occasionally?",
+   "entity": "user",
+   "slot": "gym_membership",
+   "value": "YMCA temporarily closed",
+   "claim": "User's YMCA gym is temporarily closed.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "amemgym-12/s21#r0",
+   "source_span": "Can you suggest some alternative ways to stay active and keep up my basketball skills while the YMCA gym is closed and pickup games are only happening occasionally?",
+   "entity": "user",
+   "slot": "sports_activities",
+   "value": "pickup basketball only occasionally",
+   "claim": "User is playing pickup basketball only occasionally.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r28"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "amemgym-12/s22#r0",
+   "source_span": "What are some authentic vegan soul food recipes I can try for my weekend dinners with friends who are strictly vegan?",
+   "entity": "user",
+   "slot": "dietary_accommodation",
+   "value": "vegan soul food for strictly vegan friends",
+   "claim": "User prepares vegan soul food for friends with strict vegan diets.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "amemgym-12/s24#r0",
+   "source_span": "What are effective strategies for maintaining and growing my professional network online, especially now that I'm not attending in-person industry events or mentoring sessions?",
+   "entity": "user",
+   "slot": "networking_approach",
+   "value": "online networking, not attending in-person events",
+   "claim": "User is focusing on online networking and not attending in-person industry events.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "amemgym-12/s25#r0",
+   "source_span": "Can you recommend some advanced Python and machine learning resources or online courses that would help me contribute more effectively to a small analytics team working on cloud-based dashboards?",
+   "entity": "user",
+   "slot": "technical_skills",
+   "value": "Python and machine learning for cloud dashboards",
+   "claim": "User is developing Python and machine learning skills for cloud-based analytics work.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "amemgym-12/s26#r0",
+   "source_span": "I've been finishing a lot more biographies and history books lately, especially since I have plenty of free time during my commutes and at home—usually more than 10 hours a week to dedicate to reading and listening.",
+   "entity": "user",
+   "slot": "reading_time",
+   "value": "more than 10 hours per week",
+   "claim": "User has more than 10 hours per week for reading and listening.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "amemgym-12/s26#r0",
+   "source_span": "I've been finishing a lot more biographies and history books lately, especially since I have plenty of free time during my commutes and at home—usually more than 10 hours a week to dedicate to reading and listening.",
+   "entity": "user",
+   "slot": "reading_format_preference",
+   "value": "audiobooks and print",
+   "claim": "User uses both audiobooks and print formats for reading.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r18"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "amemgym-12/s27#r0",
+   "source_span": "I'm planning to host another dinner party for friends with different dietary preferences. Can you suggest some inclusive, plant-forward recipes that use flexible vegan ingredients—like plant-based cheeses and meat alternatives, but aren't strictly vegan?",
+   "entity": "user",
+   "slot": "dietary_accommodation",
+   "value": "plant-forward with flexible vegan options",
+   "claim": "User prepares plant-forward meals with flexible vegan options alongside traditional dishes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "amemgym-12/s27#r0",
+   "source_span": "I'm planning to host another dinner party for friends with different dietary preferences.",
+   "entity": "user",
+   "slot": "social_activities",
+   "value": "hosting dinner parties",
+   "claim": "User hosts dinner parties for friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "amemgym-12/s28#r0",
+   "source_span": "Given how expensive flights have gotten lately, can you help me plan some affordable day trips around Providence or Boston that I can do with friends using public transit?",
+   "entity": "user",
+   "slot": "travel_preferences",
+   "value": "affordable day trips using public transit",
+   "claim": "User prefers affordable day trips using public transit.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r23"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "amemgym-12/s29#r0",
+   "source_span": "I've started hosting monthly listening sessions at my place where my friends and I revisit classic jazz and hip-hop albums together.",
+   "entity": "user",
+   "slot": "social_activities",
+   "value": "monthly listening sessions at home",
+   "claim": "User hosts monthly listening sessions at home with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r37"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "amemgym-12/s30#r0",
+   "source_span": "I recently attended a hands-on music appreciation workshop at the community center and found it much more engaging than my usual online tutorials.",
+   "entity": "user",
+   "slot": "music_participation",
+   "value": "in-person music appreciation workshops",
+   "claim": "User is attending in-person music appreciation workshops at the community center.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r27"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "amemgym-12/s31#r0",
+   "source_span": "Can you suggest some strategies for keeping our analytics team productive and collaborative now that we've got both new and experienced members?",
+   "entity": "user",
+   "slot": "team_composition",
+   "value": "mixed new and experienced members",
+   "claim": "User's analytics team has both new and experienced members.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "amemgym-12/s32#r0",
+   "source_span": "What are some upcoming live jazz or hip-hop events in Providence this month? I'm looking to make Friday concerts and jam sessions a regular part of my weekends.",
+   "entity": "user",
+   "slot": "music_participation",
+   "value": "regular Friday concerts and jam sessions",
+   "claim": "User is making Friday concerts and jam sessions a regular part of weekends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r40"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "amemgym-12/s33#r0",
+   "source_span": "Can you recommend some good history or biography audiobooks for my commute and evenings? I've been finding audio formats much easier to fit into my routine lately.",
+   "entity": "user",
+   "slot": "reading_format_preference",
+   "value": "audiobooks preferred",
+   "claim": "User prefers audiobooks for commutes and evenings.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "amemgym-12/s34#r0",
+   "source_span": "Can you help me reorganize my project timeline and suggest strategies for keeping my team on track, now that our analytics dashboard has a firm launch date set for the end of September?",
+   "entity": "user",
+   "slot": "project_structure",
+   "value": "analytics dashboard with firm launch date",
+   "claim": "User's analytics dashboard project has a firm launch date set.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r25"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "amemgym-12/s35#r0",
+   "source_span": "With my current schedule, I usually have around 5 to 10 hours a week that I can dedicate to reading, mostly during my commutes and in the evenings.",
+   "entity": "user",
+   "slot": "reading_time",
+   "value": "5 to 10 hours per week",
+   "claim": "User has 5 to 10 hours per week for reading.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r34"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "amemgym-12/s36#r0",
+   "source_span": "The YMCA basketball league is back after renovations, and I've started playing pickup games twice a week.",
+   "entity": "user",
+   "slot": "gym_membership",
+   "value": "YMCA",
+   "claim": "User has YMCA membership and basketball league is operational.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "amemgym-12/s36#r0",
+   "source_span": "The YMCA basketball league is back after renovations, and I've started playing pickup games twice a week.",
+   "entity": "user",
+   "slot": "sports_activities",
+   "value": "pickup basketball twice a week",
+   "claim": "User plays pickup basketball twice a week.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r30"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "amemgym-12/s37#r0",
+   "source_span": "I've been attending several in-person networking mixers and joined a mentorship program for young professionals.",
+   "entity": "user",
+   "slot": "networking_approach",
+   "value": "in-person networking mixers and mentorship program",
+   "claim": "User is attending in-person networking mixers and participating in a mentorship program.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r32"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "amemgym-12/s39#r0",
+   "source_span": "What are some good resources or workshops for developing leadership and management skills, particularly for someone transitioning from a technical role to more people-focused responsibilities like coordinating a mentorship program?",
+   "entity": "user",
+   "slot": "career_transition",
+   "value": "technical to people-focused leadership role",
+   "claim": "User is transitioning from a technical role to people-focused leadership responsibilities.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "amemgym-12/s40#r0",
+   "source_span": "Do you have any ideas for keeping post-basketball hangouts engaging during the winter, maybe ways to combine staying active with catching up and sharing music with friends?",
+   "entity": "user",
+   "slot": "social_activities",
+   "value": "post-basketball hangouts with music sharing",
+   "claim": "User combines basketball with social hangouts and music sharing with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r39"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "amemgym-12/s41#r0",
+   "source_span": "Could you recommend some compelling biographies or history books available in print? I'm looking to cut down on screen time and get back into reading physical books in the evenings.",
+   "entity": "user",
+   "slot": "reading_format_preference",
+   "value": "print books to reduce screen time",
+   "claim": "User is returning to print books to reduce screen time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r43"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "amemgym-12/s42#r0",
+   "source_span": "I just wrapped up a big analytics project solo—can you suggest best practices or tools for managing expense reporting workflows when you're the only analyst in charge?",
+   "entity": "user",
+   "slot": "job_role",
+   "value": "sole analyst on analytics project",
+   "claim": "User recently completed a major analytics project as the sole analyst.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r33"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "amemgym-12/s43#r0",
+   "source_span": "I'm planning a six-day trip to Chicago with friends to catch a jazz festival and explore museums.",
+   "entity": "user",
+   "slot": "travel_interests",
+   "value": "jazz festivals and museums",
+   "claim": "User is interested in traveling to jazz festivals and museums.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "amemgym-12/s44#r0",
+   "source_span": "I love making soul food for friends and always prepare both classic and plant-based versions at the same meal, but I'm not strictly vegan—I just like including plant-based options alongside traditional dishes.",
+   "entity": "user",
+   "slot": "dietary_accommodation",
+   "value": "plant-based and traditional soul food at same meal",
+   "claim": "User prepares both plant-based and traditional soul food versions at the same meal.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r36"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "amemgym-12/s45#r0",
+   "source_span": "After enjoying a recent jazz fusion concert, I've started exploring neo-soul and funk, and I'm updating my playlists with artists that are closely related to jazz and hip-hop.",
+   "entity": "user",
+   "slot": "music_interests",
+   "value": "jazz, hip-hop, neo-soul, funk, and jazz fusion",
+   "claim": "User is exploring neo-soul and funk in addition to jazz and hip-hop.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 6114,
+ "usage_out": 8457
+}

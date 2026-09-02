@@ -1,0 +1,1019 @@
+{
+ "uid": "amemgym-06",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "amemgym-06/s0#r0",
+   "source_span": "I want to make sure nothing slips through the cracks",
+   "entity": "user",
+   "slot": "work_role",
+   "value": "office clerk handling file organization",
+   "claim": "User works in an office role managing both paper and digital files.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "amemgym-06/s1#r0",
+   "source_span": "you're the only clerk handling everything",
+   "entity": "user",
+   "slot": "work_role",
+   "value": "sole office clerk",
+   "claim": "User is the only clerk handling all office tasks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "amemgym-06/s2#r0",
+   "source_span": "expand a model train layout in an 8 to 16 foot space without going over a $600 budget",
+   "entity": "user",
+   "slot": "hobby_model_trains",
+   "value": "active hobbyist with space and budget constraints",
+   "claim": "User has a model train hobby with 8-16 foot layout space and $600 budget.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "amemgym-06/s3#r0",
+   "source_span": "Southern comfort recipes I can make on weeknights using fresh produce",
+   "entity": "user",
+   "slot": "cooking_interest",
+   "value": "Southern comfort food on weeknights",
+   "claim": "User enjoys cooking Southern comfort recipes on weeknights with fresh produce.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "amemgym-06/s4#r0",
+   "source_span": "bluegrass songs that are fun for an intermediate guitar player to play with a couple of friends on the porch",
+   "entity": "user",
+   "slot": "hobby_guitar",
+   "value": "intermediate bluegrass guitarist",
+   "claim": "User plays intermediate-level bluegrass guitar with friends on the porch.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "amemgym-06/s4#r0",
+   "source_span": "play with a couple of friends on the porch",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "porch guitar sessions with small group",
+   "claim": "User hosts porch guitar sessions with a couple of friends.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "amemgym-06/s5#r0",
+   "source_span": "riverbank fishing spots in Kentucky for a weekend trip",
+   "entity": "user",
+   "slot": "hobby_fishing",
+   "value": "recreational fishing in Kentucky",
+   "claim": "User enjoys fishing at riverbank spots in Kentucky for weekend trips.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "amemgym-06/s5#r0",
+   "source_span": "Kentucky",
+   "entity": "user",
+   "slot": "location",
+   "value": "Kentucky",
+   "claim": "User is located in or frequently visits Kentucky.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "amemgym-06/s6#r0",
+   "source_span": "improve my office inventory tracking with spreadsheets if I only have a couple hours a week",
+   "entity": "user",
+   "slot": "work_responsibilities",
+   "value": "office inventory tracking",
+   "claim": "User manages office inventory tracking using spreadsheets with limited weekly time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "amemgym-06/s7#r0",
+   "source_span": "hosting a poker night at home for a small group of 3 to 5 friends",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "home poker nights with 3-5 friends",
+   "claim": "User hosts poker nights at home with 3-5 friends.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "amemgym-06/s8#r0",
+   "source_span": "after a full-time office job",
+   "entity": "user",
+   "slot": "work_schedule",
+   "value": "full-time office job",
+   "claim": "User works a full-time office job.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "amemgym-06/s9#r0",
+   "source_span": "office clerks looking to move into management",
+   "entity": "user",
+   "slot": "career_goals",
+   "value": "move from clerk to management",
+   "claim": "User is interested in moving from office clerk role into management.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "amemgym-06/s10#r0",
+   "source_span": "Kentucky small towns with interesting history for a quick overnight family trip",
+   "entity": "user",
+   "slot": "family_status",
+   "value": "has family",
+   "claim": "User has family and takes family trips.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "amemgym-06/s11#r0",
+   "source_span": "I have a pretty good set of power tools—not just basic hand tools, but things like a drill, circular saw, and sander",
+   "entity": "user",
+   "slot": "tools_owned",
+   "value": "power tools including drill, circular saw, sander",
+   "claim": "User owns power tools including drill, circular saw, and sander.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "amemgym-06/s11#r0",
+   "source_span": "home repair projects that make use of these tools but don't require heavy lifting or strenuous physical effort",
+   "entity": "user",
+   "slot": "hobby_home_repair",
+   "value": "moderate-activity home repair projects",
+   "claim": "User engages in moderate-activity home repair projects avoiding heavy lifting.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "amemgym-06/s12#r0",
+   "source_span": "leadership workshops at the county government center",
+   "entity": "user",
+   "slot": "work_training",
+   "value": "attending leadership workshops at county government center",
+   "claim": "User attends leadership workshops at the county government center.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "amemgym-06/s13#r0",
+   "source_span": "I'm an advanced bluegrass guitarist",
+   "entity": "user",
+   "slot": "hobby_guitar",
+   "value": "advanced bluegrass guitarist",
+   "claim": "User is an advanced bluegrass guitarist.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "amemgym-06/s13#r0",
+   "source_span": "recently hosting a big gathering with more than five neighbors and family members",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "large porch gatherings with 5+ neighbors and family",
+   "claim": "User recently hosted a large porch gathering with more than five neighbors and family members.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "amemgym-06/s14#r0",
+   "source_span": "festive Southern recipes that use specialty ingredients like heritage pork, stone-ground grits, and rare spices",
+   "entity": "user",
+   "slot": "cooking_interest",
+   "value": "Southern recipes with specialty ingredients",
+   "claim": "User cooks Southern recipes using specialty ingredients like heritage pork and stone-ground grits.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "amemgym-06/s14#r0",
+   "source_span": "My pantry is overflowing after trips to local markets",
+   "entity": "user",
+   "slot": "shopping_habits",
+   "value": "frequent trips to local markets",
+   "claim": "User frequently shops at local markets.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "amemgym-06/s15#r0",
+   "source_span": "our office switched over from paper and spreadsheets to these new digital tools",
+   "entity": "user",
+   "slot": "work_tools",
+   "value": "transitioned from paper/spreadsheets to digital filing and inventory software",
+   "claim": "User's office switched from paper and spreadsheets to digital filing and inventory management software.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r9"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "amemgym-06/s15#r0",
+   "source_span": "dedicating more than three hours each week to making sure everything is organized",
+   "entity": "user",
+   "slot": "work_time_commitment",
+   "value": "3+ hours per week on digital organization",
+   "claim": "User dedicates more than 3 hours per week to digital file organization.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "amemgym-06/s16#r0",
+   "source_span": "After trying out a fishing boat at Lake Cumberland, I'm thinking about renting boats for future outings instead of sticking to the riverbank",
+   "entity": "user",
+   "slot": "hobby_fishing",
+   "value": "boat fishing at Kentucky lakes",
+   "claim": "User is transitioning from riverbank to boat-based fishing at Kentucky lakes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "amemgym-06/s17#r0",
+   "source_span": "I've started guiding a couple of new hires and want to make sure I'm doing a good job leading a small team",
+   "entity": "user",
+   "slot": "work_role",
+   "value": "team lead for new hires",
+   "claim": "User is leading and training a small team of new hires.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "amemgym-06/s18#r0",
+   "source_span": "plan more trips that mix nature stops with small town events",
+   "entity": "user",
+   "slot": "travel_interests",
+   "value": "family trips combining nature and small town attractions",
+   "claim": "User plans family trips mixing nature stops with small town events.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "amemgym-06/s19#r0",
+   "source_span": "spend a few extra days fishing and would love to plan another extended getaway",
+   "entity": "user",
+   "slot": "hobby_fishing",
+   "value": "extended fishing getaways",
+   "claim": "User enjoys extended fishing getaways.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r23"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "amemgym-06/s20#r0",
+   "source_span": "I've picked up a few new power tools and have been tackling bigger home improvement projects lately",
+   "entity": "user",
+   "slot": "hobby_home_repair",
+   "value": "larger home improvement projects",
+   "claim": "User is tackling bigger home improvement projects with new power tools.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r15"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "amemgym-06/s20#r0",
+   "source_span": "spending most weekends working on repairs and upgrades",
+   "entity": "user",
+   "slot": "weekend_activities",
+   "value": "home repairs and upgrades",
+   "claim": "User spends most weekends on home repairs and upgrades.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "amemgym-06/s21#r0",
+   "source_span": "I just cleared out a lot more space and received a generous gift card for my birthday",
+   "entity": "user",
+   "slot": "hobby_model_trains",
+   "value": "expanded basement layout with increased budget",
+   "claim": "User has expanded basement space and increased budget for model train hobby.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "amemgym-06/s22#r0",
+   "source_span": "I've been getting a great harvest from my vegetable garden this summer",
+   "entity": "user",
+   "slot": "hobby_gardening",
+   "value": "vegetable gardening",
+   "claim": "User maintains a vegetable garden with good harvests.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "amemgym-06/s22#r0",
+   "source_span": "Southern comfort recipes that take a bit more time to prepare—maybe casseroles or stews I can simmer or bake on weeknights",
+   "entity": "user",
+   "slot": "cooking_interest",
+   "value": "time-intensive Southern comfort recipes on weeknights",
+   "claim": "User cooks time-intensive Southern comfort recipes like casseroles and stews on weeknights.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "amemgym-06/s23#r0",
+   "source_span": "Our regular poker nights have been busier lately, with more neighbors and friends joining in—sometimes we've had six to eight people around the table",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "poker nights with 6-8 people",
+   "claim": "User hosts poker nights with 6-8 neighbors and friends.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "amemgym-06/s24#r0",
+   "source_span": "leadership workshops I'll be attending at the office",
+   "entity": "user",
+   "slot": "work_training",
+   "value": "ongoing leadership workshops at office",
+   "claim": "User continues attending leadership workshops at the office.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "amemgym-06/s25#r0",
+   "source_span": "multi-day family road trip over Thanksgiving",
+   "entity": "user",
+   "slot": "travel_interests",
+   "value": "multi-day family road trips",
+   "claim": "User takes multi-day family road trips.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r25"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "amemgym-06/s26#r0",
+   "source_span": "our annual holiday poker night",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "annual holiday poker night",
+   "claim": "User hosts an annual holiday poker night.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r32"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "amemgym-06/s27#r0",
+   "source_span": "organize and store a new set of professional-grade power tools",
+   "entity": "user",
+   "slot": "tools_owned",
+   "value": "professional-grade power tools",
+   "claim": "User owns professional-grade power tools.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "amemgym-06/s27#r0",
+   "source_span": "tackle more complex projects this winter",
+   "entity": "user",
+   "slot": "hobby_home_repair",
+   "value": "complex home repair projects",
+   "claim": "User tackles complex home repair projects.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r27"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "amemgym-06/s28#r0",
+   "source_span": "it's just me, my wife, and a close friend enjoying guitar on the porch these days",
+   "entity": "user",
+   "slot": "family_status",
+   "value": "married",
+   "claim": "User is married.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "amemgym-06/s28#r0",
+   "source_span": "it's just me, my wife, and a close friend enjoying guitar on the porch these days",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "small porch guitar sessions with wife and close friend",
+   "claim": "User has smaller porch guitar sessions with wife and a close friend.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r18"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "amemgym-06/s29#r0",
+   "source_span": "we've been sticking to day trips lately—like visiting Civil War sites and nature trails",
+   "entity": "user",
+   "slot": "travel_interests",
+   "value": "day trips to Civil War sites and nature trails",
+   "claim": "User takes day trips to Civil War sites and nature trails.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r34"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "amemgym-06/s30#r0",
+   "source_span": "Our poker nights have gotten cozier, with just three or four of us around the kitchen table lately",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "small poker nights with 3-4 people",
+   "claim": "User hosts smaller poker nights with 3-4 people.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r32"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "amemgym-06/s31#r0",
+   "source_span": "On weekends, I like to stay moderately active by spreading out small home repairs—things like fixing leaky faucets or tightening cabinet hinges",
+   "entity": "user",
+   "slot": "hobby_home_repair",
+   "value": "small weekend home repairs",
+   "claim": "User does small home repairs on weekends like fixing faucets and tightening hinges.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r37"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "amemgym-06/s32#r0",
+   "source_span": "managing a larger records department now that my supervisor has combined several teams",
+   "entity": "user",
+   "slot": "work_role",
+   "value": "records department manager",
+   "claim": "User manages a larger records department after team consolidation.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "amemgym-06/s32#r0",
+   "source_span": "my new 8-to-5 schedule",
+   "entity": "user",
+   "slot": "work_schedule",
+   "value": "8-to-5 schedule",
+   "claim": "User works an 8-to-5 schedule.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "amemgym-06/s33#r0",
+   "source_span": "fresh tomatoes, squash, and beans from the farmers market",
+   "entity": "user",
+   "slot": "shopping_habits",
+   "value": "farmers market shopping",
+   "claim": "User shops at farmers markets for fresh produce.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r20"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "amemgym-06/s34#r0",
+   "source_span": "plan a week-long fishing trip at Kentucky Lake",
+   "entity": "user",
+   "slot": "hobby_fishing",
+   "value": "week-long fishing trips at Kentucky Lake",
+   "claim": "User plans week-long fishing trips at Kentucky Lake.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r26"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "amemgym-06/s34#r0",
+   "source_span": "especially with my brother-in-law joining for a few days",
+   "entity": "user",
+   "slot": "family_status",
+   "value": "has brother-in-law",
+   "claim": "User has a brother-in-law.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "amemgym-06/s35#r0",
+   "source_span": "I've started delegating most of the routine supply checks to the newer folks so I can focus on improving our digital filing system",
+   "entity": "user",
+   "slot": "work_responsibilities",
+   "value": "digital filing system improvement and team delegation",
+   "claim": "User delegates routine supply checks and focuses on digital filing system improvements.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r21"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "amemgym-06/s35#r0",
+   "source_span": "only spending a couple hours on it",
+   "entity": "user",
+   "slot": "work_time_commitment",
+   "value": "2 hours per week on inventory",
+   "claim": "User spends about 2 hours per week on inventory improvements.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "amemgym-06/s36#r0",
+   "source_span": "my porch has become the go-to spot for bluegrass evenings with family and friends this summer, and we often have a bigger crowd joining in",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "large porch bluegrass gatherings",
+   "claim": "User hosts large porch bluegrass gatherings with family and friends.",
+   "slot_cardinality": "set",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r39"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "amemgym-06/s37#r0",
+   "source_span": "After visiting the local train club's fall exhibition, I'm planning to update my model train layout with a few new scenic pieces and track sections",
+   "entity": "user",
+   "slot": "hobby_model_trains",
+   "value": "active model train hobbyist with local club involvement",
+   "claim": "User is an active model train hobbyist involved with a local train club.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "amemgym-06/s37#r0",
+   "source_span": "keep my spending moderate this time around",
+   "entity": "user",
+   "slot": "hobby_model_trains",
+   "value": "$200-$600 budget for upgrades",
+   "claim": "User has a $200-$600 budget for model train upgrades.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "amemgym-06/s38#r0",
+   "source_span": "weeknight dinners that use fresh seasonal produce but don't take more than an hour to make",
+   "entity": "user",
+   "slot": "cooking_interest",
+   "value": "quick weeknight dinners with seasonal produce",
+   "claim": "User cooks quick weeknight dinners with seasonal produce in under an hour.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r54",
+   "source_memory_id": "amemgym-06/s39#r0",
+   "source_span": "set up a simple weekly checklist for the junior clerks to track inventory updates",
+   "entity": "user",
+   "slot": "work_responsibilities",
+   "value": "managing junior clerks and inventory tracking systems",
+   "claim": "User manages junior clerks and creates inventory tracking systems.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r43"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r55",
+   "source_memory_id": "amemgym-06/s39#r0",
+   "source_span": "coordinating the audit and year-end reports with my team",
+   "entity": "user",
+   "slot": "work_responsibilities",
+   "value": "audit and year-end report coordination",
+   "claim": "User coordinates audits and year-end reports with team.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r56",
+   "source_memory_id": "amemgym-06/s40#r0",
+   "source_span": "quick skillet or sandwich recipes I can make on weeknights that don't take more than half an hour",
+   "entity": "user",
+   "slot": "cooking_interest",
+   "value": "quick weeknight meals under 30 minutes",
+   "claim": "User cooks quick weeknight meals like skillets and sandwiches in under 30 minutes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r53"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r57",
+   "source_memory_id": "amemgym-06/s41#r0",
+   "source_span": "historic small towns nearby with interesting courthouses or main streets for our next family weekend trip",
+   "entity": "user",
+   "slot": "travel_interests",
+   "value": "family weekend trips to historic small towns",
+   "claim": "User takes family weekend trips to historic small towns.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r40"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r58",
+   "source_memory_id": "amemgym-06/s42#r0",
+   "source_span": "affordable scenic accessories for my model train layout",
+   "entity": "user",
+   "slot": "hobby_model_trains",
+   "value": "budget-conscious model train upgrades under $200",
+   "claim": "User seeks affordable scenic accessories for model train layout under $200.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r52"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r59",
+   "source_memory_id": "amemgym-06/s43#r0",
+   "source_span": "I've recently upgraded my home repair toolkit to include power tools like a cordless drill and a circular saw, moving beyond just basic hand tools",
+   "entity": "user",
+   "slot": "tools_owned",
+   "value": "cordless drill and circular saw",
+   "claim": "User upgraded toolkit to include cordless drill and circular saw.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r36"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r60",
+   "source_memory_id": "amemgym-06/s43#r0",
+   "source_span": "I've been really active with home improvement projects, spending a lot of time refacing kitchen cabinets and repairing my backyard fence",
+   "entity": "user",
+   "slot": "hobby_home_repair",
+   "value": "active home improvement including cabinet refacing and fence repair",
+   "claim": "User actively does home improvements including kitchen cabinet refacing and backyard fence repair.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r42"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r61",
+   "source_memory_id": "amemgym-06/s44#r0",
+   "source_span": "organize a poker night when you've got six to eight people coming over regularly",
+   "entity": "user",
+   "slot": "social_gatherings",
+   "value": "regular poker nights with 6-8 people",
+   "claim": "User regularly hosts poker nights with 6-8 people.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r50"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r62",
+   "source_memory_id": "amemgym-06/s45#r0",
+   "source_span": "I've started mixing in digital learning with the occasional in-person workshop",
+   "entity": "user",
+   "slot": "work_training",
+   "value": "digital learning and in-person workshops for leadership",
+   "claim": "User combines digital learning with occasional in-person workshops for leadership development.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r33"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 6355,
+ "usage_out": 7669
+}

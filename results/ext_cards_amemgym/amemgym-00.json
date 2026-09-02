@@ -1,0 +1,872 @@
+{
+ "uid": "amemgym-00",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "amemgym-00/s0#r0",
+   "source_span": "a group of 6 to 12 friends, most of us being over 50",
+   "entity": "user",
+   "slot": "social_group_bridge",
+   "value": "group of 6-12 friends, mostly over 50",
+   "claim": "User plays bridge with a group of 6 to 12 friends, most of whom are over 50.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "amemgym-00/s1#r0",
+   "source_span": "small group mentoring setting",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentoring young women in small group setting",
+   "claim": "User mentors young women in a small group mentoring setting.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "amemgym-00/s2#r0",
+   "source_span": "medium-sized backyard rose garden",
+   "entity": "user",
+   "slot": "garden",
+   "value": "medium-sized backyard rose garden",
+   "claim": "User maintains a medium-sized backyard rose garden.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "amemgym-00/s3#r0",
+   "source_span": "Southern-style potluck menu",
+   "entity": "user",
+   "slot": "potluck_hosting",
+   "value": "hosts Southern-style potlucks",
+   "claim": "User hosts Southern-style potlucks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "amemgym-00/s4#r0",
+   "source_span": "our weekly evening practices",
+   "entity": "user",
+   "slot": "choir_participation",
+   "value": "participates in weekly evening choir practices",
+   "claim": "User participates in weekly evening choir practices.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "amemgym-00/s5#r0",
+   "source_span": "volunteer opportunities at the historical society",
+   "entity": "user",
+   "slot": "volunteer_organization",
+   "value": "Anniston Historical Society",
+   "claim": "User volunteers at the Anniston Historical Society.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "amemgym-00/s5#r0",
+   "source_span": "someone who sometimes needs a little help getting around",
+   "entity": "user",
+   "slot": "mobility_status",
+   "value": "sometimes needs help getting around",
+   "claim": "User sometimes needs help getting around.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "amemgym-00/s6#r0",
+   "source_span": "day trip destinations near Anniston",
+   "entity": "user",
+   "slot": "location_residence",
+   "value": "Anniston area",
+   "claim": "User lives in or near Anniston.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "amemgym-00/s7#r0",
+   "source_span": "quilting workshop",
+   "entity": "user",
+   "slot": "needlecraft_activity",
+   "value": "teaches quilting workshops",
+   "claim": "User teaches quilting workshops.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "amemgym-00/s8#r0",
+   "source_span": "local farmers market",
+   "entity": "user",
+   "slot": "shopping_location",
+   "value": "local farmers market",
+   "claim": "User shops at a local farmers market.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "amemgym-00/s9#r0",
+   "source_span": "block party for the Crimson Tide game",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "Crimson Tide fan",
+   "claim": "User is a Crimson Tide fan and hosts block parties for games.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "amemgym-00/s10#r0",
+   "source_span": "my bridge nights",
+   "entity": "user",
+   "slot": "social_group_bridge",
+   "value": "hosts regular bridge nights with longtime friends and younger guests",
+   "claim": "User hosts regular bridge nights with both longtime friends and younger guests.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "amemgym-00/s11#r0",
+   "source_span": "Saturday workshops for young women with the Anniston Historical Society",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "leads Saturday workshops for young women with Anniston Historical Society",
+   "claim": "User leads Saturday workshops for young women with the Anniston Historical Society.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "amemgym-00/s12#r0",
+   "source_span": "my roses",
+   "entity": "user",
+   "slot": "garden",
+   "value": "maintains rose garden",
+   "claim": "User maintains a rose garden.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r3"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "amemgym-00/s13#r0",
+   "source_span": "volunteering at the Anniston Historical Society",
+   "entity": "user",
+   "slot": "volunteer_organization",
+   "value": "Anniston Historical Society",
+   "claim": "User volunteers at the Anniston Historical Society.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "amemgym-00/s14#r0",
+   "source_span": "our book club and historical society guests",
+   "entity": "user",
+   "slot": "social_groups",
+   "value": "member of book club and historical society",
+   "claim": "User is a member of a book club and the historical society.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "amemgym-00/s14#r0",
+   "source_span": "potluck for a group that includes both vegans and vegetarians, along with some friends who have nut allergies",
+   "entity": "user",
+   "slot": "potluck_hosting",
+   "value": "hosts potlucks accommodating vegans, vegetarians, and nut allergies",
+   "claim": "User hosts potlucks that accommodate vegans, vegetarians, and guests with nut allergies.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "amemgym-00/s15#r0",
+   "source_span": "teach to a group of complete beginners",
+   "entity": "user",
+   "slot": "needlecraft_activity",
+   "value": "teaches needlecraft to beginners",
+   "claim": "User teaches needlecraft to complete beginners.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "amemgym-00/s16#r0",
+   "source_span": "organize practices whenever enough voices are available, sometimes on weekends or midweek mornings",
+   "entity": "user",
+   "slot": "choir_participation",
+   "value": "organizes choir rehearsals with flexible scheduling",
+   "claim": "User organizes choir rehearsals with flexible scheduling on weekends or midweek mornings.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "amemgym-00/s17#r0",
+   "source_span": "a bigger bridge gathering next week",
+   "entity": "user",
+   "slot": "social_group_bridge",
+   "value": "hosts larger bridge gatherings with neighbors and friends",
+   "claim": "User hosts larger bridge gatherings with neighbors and their friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r12"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "amemgym-00/s18#r0",
+   "source_span": "tending my roses every week with a neighbor",
+   "entity": "user",
+   "slot": "garden",
+   "value": "tends rose garden weekly with a neighbor",
+   "claim": "User tends her rose garden weekly with a neighbor.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "amemgym-00/s19#r0",
+   "source_span": "hosting flexible drop-in stitching sessions on my porch",
+   "entity": "user",
+   "slot": "needlecraft_activity",
+   "value": "hosts flexible drop-in needlecraft sessions on porch",
+   "claim": "User hosts flexible drop-in needlecraft sessions on her porch.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r18"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "amemgym-00/s20#r0",
+   "source_span": "local travel club",
+   "entity": "user",
+   "slot": "travel_club_membership",
+   "value": "member of local travel club",
+   "claim": "User is a member of a local travel club.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "amemgym-00/s21#r0",
+   "source_span": "choir welcoming back the seasoned members",
+   "entity": "user",
+   "slot": "choir_participation",
+   "value": "participates in choir with experienced singers",
+   "claim": "User participates in a choir with experienced singers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r19"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "amemgym-00/s22#r0",
+   "source_span": "mentoring young women who are interested in becoming teachers",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentors young women interested in becoming teachers",
+   "claim": "User mentors young women interested in becoming teachers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "amemgym-00/s23#r0",
+   "source_span": "volunteer together again with masks and sanitizer",
+   "entity": "user",
+   "slot": "volunteer_organization",
+   "value": "Anniston Historical Society",
+   "claim": "User volunteers at the Anniston Historical Society with health precautions.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r15"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "amemgym-00/s24#r0",
+   "source_span": "pick up my collard greens, peaches, and buttermilk from the Piggly Wiggly",
+   "entity": "user",
+   "slot": "shopping_location",
+   "value": "Piggly Wiggly",
+   "claim": "User shops at Piggly Wiggly for groceries.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "amemgym-00/s25#r0",
+   "source_span": "moved my favorite potted varieties onto the balcony",
+   "entity": "user",
+   "slot": "garden",
+   "value": "maintains potted roses on balcony",
+   "claim": "User maintains potted roses on her balcony.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r21"
+   ],
+   "condition": "winter",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "amemgym-00/s26#r0",
+   "source_span": "local travel club",
+   "entity": "user",
+   "slot": "travel_club_membership",
+   "value": "member of local travel club",
+   "claim": "User is a member of a local travel club.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r23"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "amemgym-00/s27#r0",
+   "source_span": "autumn potluck",
+   "entity": "user",
+   "slot": "potluck_hosting",
+   "value": "hosts potlucks",
+   "claim": "User hosts potlucks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r17"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "amemgym-00/s28#r0",
+   "source_span": "my doctor wants me to take it easy for a while",
+   "entity": "user",
+   "slot": "health_status",
+   "value": "doctor advised to take it easy",
+   "claim": "User's doctor advised her to take it easy.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "amemgym-00/s28#r0",
+   "source_span": "volunteering from home",
+   "entity": "user",
+   "slot": "volunteer_organization",
+   "value": "Anniston Historical Society (remote)",
+   "claim": "User volunteers for the Anniston Historical Society from home.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r26"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "amemgym-00/s29#r0",
+   "source_span": "football gatherings being just a handful of close friends",
+   "entity": "user",
+   "slot": "sports_interest",
+   "value": "hosts small Crimson Tide watch parties with close friends",
+   "claim": "User hosts small Crimson Tide watch parties with close friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "amemgym-00/s29#r0",
+   "source_span": "my grandson setting up that outdoor projector on the patio",
+   "entity": "user",
+   "slot": "family_relations",
+   "value": "has a grandson",
+   "claim": "User has a grandson.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "amemgym-00/s30#r0",
+   "source_span": "needlecraft group",
+   "entity": "user",
+   "slot": "needlecraft_activity",
+   "value": "leads needlecraft group with advanced quilting projects",
+   "claim": "User leads a needlecraft group focused on advanced quilting projects.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "amemgym-00/s31#r0",
+   "source_span": "our weekly card games",
+   "entity": "user",
+   "slot": "social_group_bridge",
+   "value": "hosts weekly bridge games with 8-10 regular older friends",
+   "claim": "User hosts weekly bridge games with 8 to 10 regular older friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r20"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "amemgym-00/s32#r0",
+   "source_span": "inviting a handful over for afternoon tea and more personal chats on the porch",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentors young women in small group afternoon tea sessions on porch",
+   "claim": "User mentors young women in small group afternoon tea sessions on her porch.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r25"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "amemgym-00/s33#r0",
+   "source_span": "tending to my roses once a month for quick watering and pruning",
+   "entity": "user",
+   "slot": "garden",
+   "value": "tends roses monthly during summer",
+   "claim": "User tends her roses monthly during summer months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r28"
+   ],
+   "condition": "summer",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "amemgym-00/s34#r0",
+   "source_span": "church choir just switched to a fixed weekly evening rehearsal",
+   "entity": "user",
+   "slot": "choir_participation",
+   "value": "participates in church choir with fixed weekly evening rehearsals",
+   "claim": "User participates in a church choir with fixed weekly evening rehearsals.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "amemgym-00/s35#r0",
+   "source_span": "most of my bridge group now made up of friends in their seventies and up",
+   "entity": "user",
+   "slot": "social_group_bridge",
+   "value": "hosts weekly bridge games with friends in their seventies and older",
+   "claim": "User hosts weekly bridge games with friends in their seventies and older.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r36"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r41",
+   "source_memory_id": "amemgym-00/s36#r0",
+   "source_span": "mentoring young women on organizing neighborhood clean-ups and voter registration drives",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentors young women on community leadership and grassroots involvement",
+   "claim": "User mentors young women on community leadership and grassroots involvement.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r37"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r42",
+   "source_memory_id": "amemgym-00/s37#r0",
+   "source_span": "potluck guests now have food allergies and dietary restrictions",
+   "entity": "user",
+   "slot": "potluck_hosting",
+   "value": "hosts potlucks accommodating food allergies and dietary restrictions",
+   "claim": "User hosts potlucks that accommodate guests with food allergies and dietary restrictions.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r30"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r43",
+   "source_memory_id": "amemgym-00/s38#r0",
+   "source_span": "introductory quilting class for a few newly retired friends",
+   "entity": "user",
+   "slot": "needlecraft_activity",
+   "value": "teaches introductory quilting classes",
+   "claim": "User teaches introductory quilting classes.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r44",
+   "source_memory_id": "amemgym-00/s39#r0",
+   "source_span": "historical society moving most events online",
+   "entity": "user",
+   "slot": "volunteer_organization",
+   "value": "Anniston Historical Society (online)",
+   "claim": "User volunteers for the Anniston Historical Society with most events online.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r32"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r45",
+   "source_memory_id": "amemgym-00/s39#r0",
+   "source_span": "caring for my roses during the colder months",
+   "entity": "user",
+   "slot": "garden",
+   "value": "maintains roses during winter",
+   "claim": "User maintains her roses during winter months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r38"
+   ],
+   "condition": "winter",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r46",
+   "source_memory_id": "amemgym-00/s40#r0",
+   "source_span": "church choir is welcoming several new members for the holidays",
+   "entity": "user",
+   "slot": "choir_participation",
+   "value": "participates in church choir welcoming new members",
+   "claim": "User participates in a church choir welcoming new members.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r39"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r47",
+   "source_memory_id": "amemgym-00/s41#r0",
+   "source_span": "friends at the autumn potluck are managing diabetes or heart conditions",
+   "entity": "user",
+   "slot": "potluck_hosting",
+   "value": "hosts potlucks for guests managing diabetes or heart conditions",
+   "claim": "User hosts potlucks for guests managing diabetes or heart conditions.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r42"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r48",
+   "source_memory_id": "amemgym-00/s42#r0",
+   "source_span": "hosting smaller, more intimate games with just a few close friends",
+   "entity": "user",
+   "slot": "social_group_bridge",
+   "value": "hosts smaller bridge games with 3-5 close friends",
+   "claim": "User hosts smaller bridge games with 3 to 5 close friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r40"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r49",
+   "source_memory_id": "amemgym-00/s43#r0",
+   "source_span": "I've been feeling a bit run down lately",
+   "entity": "user",
+   "slot": "health_status",
+   "value": "feeling run down",
+   "claim": "User has been feeling run down.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r50",
+   "source_memory_id": "amemgym-00/s43#r0",
+   "source_span": "bringing back my afternoon potlucks",
+   "entity": "user",
+   "slot": "potluck_hosting",
+   "value": "hosts afternoon potlucks",
+   "claim": "User hosts afternoon potlucks.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [
+    "r47"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r51",
+   "source_memory_id": "amemgym-00/s44#r0",
+   "source_span": "church choir has welcomed a wave of enthusiastic newcomers",
+   "entity": "user",
+   "slot": "choir_participation",
+   "value": "participates in church choir with mostly new members",
+   "claim": "User participates in a church choir with mostly new members.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r46"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r52",
+   "source_memory_id": "amemgym-00/s45#r0",
+   "source_span": "my mobility has improved enough that I can now attend select historical society events with occasional help from a neighbor or family member",
+   "entity": "user",
+   "slot": "mobility_status",
+   "value": "improved mobility, can attend events with occasional assistance",
+   "claim": "User's mobility has improved and she can attend events with occasional assistance.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r7"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r53",
+   "source_memory_id": "amemgym-00/s45#r0",
+   "source_span": "attend select historical society events",
+   "entity": "user",
+   "slot": "volunteer_organization",
+   "value": "Anniston Historical Society",
+   "claim": "User attends Anniston Historical Society events.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r44"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 6405,
+ "usage_out": 7254
+}

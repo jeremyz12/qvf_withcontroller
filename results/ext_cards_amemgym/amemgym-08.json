@@ -1,0 +1,653 @@
+{
+ "uid": "amemgym-08",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "amemgym-08/s0#r0",
+   "source_span": "charity volunteer events in Glen Burnie",
+   "entity": "user",
+   "slot": "location",
+   "value": "Glen Burnie",
+   "claim": "User is located in or associated with Glen Burnie.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "amemgym-08/s1#r0",
+   "source_span": "full-time residential sales agent",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "residential sales agent",
+   "claim": "User works as a full-time residential sales agent.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "amemgym-08/s1#r0",
+   "source_span": "full-time residential sales agent juggling multiple listings",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "full-time",
+   "claim": "User is employed full-time.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "amemgym-08/s2#r0",
+   "source_span": "I try to catch something every week",
+   "entity": "user",
+   "slot": "hobby_frequency",
+   "value": "weekly live music",
+   "claim": "User attends live music shows weekly.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "amemgym-08/s4#r0",
+   "source_span": "small group mentoring session with new agents",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentoring new agents",
+   "claim": "User mentors new agents in small group sessions.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "amemgym-08/s5#r0",
+   "source_span": "community drop-in basketball games in DC or Philly",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "basketball",
+   "claim": "User plays basketball in drop-in games when traveling.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "amemgym-08/s5#r0",
+   "source_span": "I like to join when I travel",
+   "entity": "user",
+   "slot": "travel_frequency",
+   "value": "travels to DC and Philadelphia",
+   "claim": "User travels to DC and Philadelphia.",
+   "slot_cardinality": "set",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "amemgym-08/s6#r0",
+   "source_span": "urban art galleries nearby",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "visiting art galleries",
+   "claim": "User visits urban art galleries with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "amemgym-08/s7#r0",
+   "source_span": "steadily growing real estate market like Glen Burnie",
+   "entity": "user",
+   "slot": "market_focus",
+   "value": "Glen Burnie real estate market",
+   "claim": "User focuses on Glen Burnie's real estate market.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "amemgym-08/s10#r0",
+   "source_span": "growing my referral network beyond 10 to 30 contacts",
+   "entity": "user",
+   "slot": "referral_network_size",
+   "value": "10 to 30 contacts",
+   "claim": "User is growing referral network from 10 to 30 contacts.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "amemgym-08/s11#r0",
+   "source_span": "regularly mentoring new real estate agents",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "mentoring new real estate agents in weekly workshops",
+   "claim": "User regularly mentors new real estate agents in weekly workshops that have grown into a large team setting.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r5"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "amemgym-08/s13#r0",
+   "source_span": "over 30 agents from neighboring counties plus a number of past clients",
+   "entity": "user",
+   "slot": "referral_network_size",
+   "value": "over 30 agents and past clients",
+   "claim": "User has a referral network of over 30 agents from neighboring counties plus past clients.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r10"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "amemgym-08/s14#r0",
+   "source_span": "competitive basketball leagues or tournaments for visiting players in cities like DC or Philly",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "competitive basketball leagues",
+   "claim": "User is interested in competitive basketball leagues when traveling.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r6"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "amemgym-08/s15#r0",
+   "source_span": "shift my focus from smaller charity mixers to bigger events with more energy and diversity",
+   "entity": "user",
+   "slot": "networking_strategy",
+   "value": "large public festivals instead of smaller charity mixers",
+   "claim": "User is shifting networking focus from smaller charity mixers to larger public festivals.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r1"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "amemgym-08/s16#r0",
+   "source_span": "recently took a virtual cooking masterclass and have been experimenting with advanced techniques",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "cooking with advanced techniques",
+   "claim": "User has taken a virtual cooking masterclass and experiments with advanced cooking techniques.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "amemgym-08/s17#r0",
+   "source_span": "organizing another gallery crawl, this time for my real estate colleagues",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "gallery crawls with colleagues",
+   "claim": "User organizes gallery crawls with real estate colleagues for professional networking.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r8"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "amemgym-08/s18#r0",
+   "source_span": "monthly basketball league away games",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "monthly basketball league",
+   "claim": "User participates in monthly basketball league away games.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r13"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "amemgym-08/s19#r0",
+   "source_span": "block out weekday afternoons for personal time—I'd like to fit in midday basketball games",
+   "entity": "user",
+   "slot": "schedule_preference",
+   "value": "weekday afternoons for personal time",
+   "claim": "User prefers to block out weekday afternoons for personal time including midday basketball games.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "amemgym-08/s19#r0",
+   "source_span": "evening showings",
+   "entity": "user",
+   "slot": "work_schedule",
+   "value": "evening showings",
+   "claim": "User has evening real estate showings.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "amemgym-08/s23#r0",
+   "source_span": "leaning towards hitting bigger events every few months instead of my usual weekly concerts",
+   "entity": "user",
+   "slot": "hobby_frequency",
+   "value": "bigger events every few months",
+   "claim": "User is shifting from weekly concerts to bigger events every few months.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r4"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "amemgym-08/s24#r0",
+   "source_span": "getting more involved in commercial real estate lately",
+   "entity": "user",
+   "slot": "job_focus",
+   "value": "commercial real estate and commercial leasing",
+   "claim": "User is shifting focus to commercial real estate and commercial leasing.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r2"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "amemgym-08/s25#r0",
+   "source_span": "planning more upscale city getaways with friends—focusing on great restaurants and nightlife",
+   "entity": "user",
+   "slot": "travel_preference",
+   "value": "upscale city getaways with budget over $350",
+   "claim": "User plans upscale city getaways with friends focusing on restaurants and nightlife with budget over $350.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "amemgym-08/s26#r0",
+   "source_span": "small business mixers or intimate local gatherings in Glen Burnie",
+   "entity": "user",
+   "slot": "networking_strategy",
+   "value": "small business mixers and intimate local gatherings",
+   "claim": "User prefers small business mixers and intimate local gatherings for networking.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r14"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "amemgym-08/s27#r0",
+   "source_span": "casual pick-up basketball games when I'm traveling with friends",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "casual pick-up basketball",
+   "claim": "User plays casual pick-up basketball when traveling with friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r17"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "amemgym-08/s28#r0",
+   "source_span": "plan my getaways around sports and recreation",
+   "entity": "user",
+   "slot": "travel_preference",
+   "value": "sports and recreation focused getaways",
+   "claim": "User plans getaways around sports and recreation activities.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r22"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r26",
+   "source_memory_id": "amemgym-08/s29#r0",
+   "source_span": "commercial leasing is slow right now",
+   "entity": "user",
+   "slot": "job_focus",
+   "value": "residential sales referral network focus",
+   "claim": "User is focusing on residential sales referral network as commercial leasing is slow.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r21"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r27",
+   "source_memory_id": "amemgym-08/s32#r0",
+   "source_span": "quarterly basketball trip for my closest teammates",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "quarterly basketball trips",
+   "claim": "User plans quarterly basketball trips with closest teammates.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r24"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r28",
+   "source_memory_id": "amemgym-08/s32#r0",
+   "source_span": "my work schedule has gotten busier and I can't travel for games as often as I used to",
+   "entity": "user",
+   "slot": "work_intensity",
+   "value": "busier work schedule",
+   "claim": "User's work schedule has become busier, limiting travel for games.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r29",
+   "source_memory_id": "amemgym-08/s33#r0",
+   "source_span": "moved away from one-on-one mentoring",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "small group mentoring at local café",
+   "claim": "User has moved from one-on-one mentoring to small group mentoring sessions at a local café.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r11"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r30",
+   "source_memory_id": "amemgym-08/s34#r0",
+   "source_span": "focusing less on online platforms now that local events are back",
+   "entity": "user",
+   "slot": "networking_strategy",
+   "value": "in-person mixers and charity auctions",
+   "claim": "User is focusing on in-person mixers and charity auctions instead of online platforms.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r23"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r31",
+   "source_memory_id": "amemgym-08/s35#r0",
+   "source_span": "turn these outings into social evenings with dinner and music, rather than going with colleagues from work",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "gallery visits with friends for social evenings",
+   "claim": "User visits art galleries with friends for social evenings with dinner and music, not with work colleagues.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r16"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r32",
+   "source_memory_id": "amemgym-08/s36#r0",
+   "source_span": "cozy gumbo night for just two close friends",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "intimate dinner parties",
+   "claim": "User hosts intimate dinner parties for close friends.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r33",
+   "source_memory_id": "amemgym-08/s37#r0",
+   "source_span": "Glen Burnie market has slowed down",
+   "entity": "user",
+   "slot": "market_condition",
+   "value": "slowed market",
+   "claim": "Glen Burnie real estate market has slowed down.",
+   "slot_cardinality": "single",
+   "temporal_relation": "equivalent",
+   "relation_target_record_ids": [],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r34",
+   "source_memory_id": "amemgym-08/s37#r0",
+   "source_span": "strengthen my referral network with mortgage brokers and home inspectors through direct agent-to-agent exchanges",
+   "entity": "user",
+   "slot": "networking_strategy",
+   "value": "direct agent-to-agent exchanges with mortgage brokers and home inspectors",
+   "claim": "User strengthens referral network through direct agent-to-agent exchanges instead of networking mixers.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r30"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r35",
+   "source_memory_id": "amemgym-08/s38#r0",
+   "source_span": "spending my afternoons reading about street art movements and watching interviews with artists",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "studying street art and urban art movements",
+   "claim": "User spends afternoons reading about street art movements and watching artist interviews.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r31"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r36",
+   "source_memory_id": "amemgym-08/s39#r0",
+   "source_span": "charity volunteer events where I can network with new contacts",
+   "entity": "user",
+   "slot": "networking_strategy",
+   "value": "charity volunteer events",
+   "claim": "User networks through charity volunteer events.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r34"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r37",
+   "source_memory_id": "amemgym-08/s41#r0",
+   "source_span": "visiting local art galleries solo to unwind and explore new exhibits",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "solo art gallery visits",
+   "claim": "User visits local art galleries solo to unwind and explore exhibits.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r35"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r38",
+   "source_memory_id": "amemgym-08/s42#r0",
+   "source_span": "recent surge in homebuyer interest around Glen Burnie and more junior agents joining our office",
+   "entity": "user",
+   "slot": "market_condition",
+   "value": "growing market with increased homebuyer interest",
+   "claim": "Glen Burnie market is experiencing a surge in homebuyer interest with more junior agents joining.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r33"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r39",
+   "source_memory_id": "amemgym-08/s42#r0",
+   "source_span": "weekly training plan for a larger team of new agents",
+   "entity": "user",
+   "slot": "mentoring_activity",
+   "value": "weekly training for larger team of new agents",
+   "claim": "User designs weekly training plans for a larger team of new agents.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r29"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  },
+  {
+   "record_id": "r40",
+   "source_memory_id": "amemgym-08/s44#r0",
+   "source_span": "weekly R&B nights and more local concerts",
+   "entity": "user",
+   "slot": "hobby_frequency",
+   "value": "weekly live music events",
+   "claim": "User attends weekly R&B nights and local concerts.",
+   "slot_cardinality": "single",
+   "temporal_relation": "replacement",
+   "relation_target_record_ids": [
+    "r20"
+   ],
+   "condition": "",
+   "implies_stale_slots": [],
+   "stated_date": ""
+  }
+ ],
+ "usage_in": 6169,
+ "usage_out": 4681
+}
