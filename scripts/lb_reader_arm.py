@@ -118,6 +118,12 @@ def main() -> int:
             sys_p = ""
             user = SMW_PROMPT.format(question=q["question"],
                                      transcript=led[uid])
+            if _os.environ.get("QVF_LEDGER_SELF") == "1":
+                # 批 32-B′ 读侧对照臂:只计用户本人的状态
+                user += ("\n\nImportant: count ONLY states that belong to the "
+                         "user themself. Ledger entries about other people "
+                         "(family, coworkers, friends, acquaintances) must be "
+                         "ignored even if they are listed.")
         elif a.arm == "ledgerplain":
             # 协议税判别臂:同一账目 + 裸问答提示(无两段式协议)——
             # 分离"账目内容价值"与"协议跟随成本"。

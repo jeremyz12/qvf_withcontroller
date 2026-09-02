@@ -387,6 +387,16 @@ def _catalog_prompt() -> str:
         base = base + _CONDVAL_RULE
     if _CARD_INCR:
         base = base + _INCR_RULE
+    if int(os.environ.get("QVF_CARD_OWNER_GATE", "0") or 0):
+        # 批 32-B′ 写侧归属闸:只为用户本人的状态建卡
+        base = base + (
+            "\nOWNER GATE (mandatory): create records ONLY for states of the "
+            "user themself, i.e. statements in the first person about the "
+            "user's own employer, position, residence, team, etc. Statements "
+            "about OTHER people (family members, coworkers, friends, "
+            "acquaintances, or anyone named in the third person) must NOT "
+            "produce any record, even if they mention a job, a move, a team "
+            "or a title. When in doubt about who the state belongs to, skip.\n")
     return base
 
 
