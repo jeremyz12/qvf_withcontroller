@@ -109,3 +109,8 @@ results/b27_smoc_L2probe.jsonl(10 店 L2≈104K,40 题):账目读取均输入 **
 故 filter/usability/compile 在 v45 上走的是回退选池(fvl 题 evidence_n 均值 0.4 vs v42 上 4.9,32 题答"无信息")。
 中间梯在新店上的数字与 v2.0 存档**不可比**;已令 33-A 用 QVF_OPEN_SLOT=1 QVF_OPEN_KEYS=1 重跑三臂。
 这也解释了 33-B 里"card_quality_eval 严格 slot_class 过滤在 v44clean 上退化为全 zero_cards"。
+
+**§五 补(19:30 复核)**:OPEN 旗标对无键店无效(4 题 fvl 探针 evidence_n 0/0/2/1)。`_select_pool` 仅在存在 `slot_class` 记录时走开放匹配;
+无键店落到 `_select_pool_frozen` 的词面匹配 `_slot_match(slot,'employer')`,而 v45 建卡器写的是自由槽位名(`employment`/`occupation`/`workplace`/
+`residence_location`…),与 employer/residence 无词重叠 → 选池为空。处置:离线把 `slot` 确定性映射为 `slot_class` 回填到派生店 wt_cards_v45k,
+中间梯在 v45k 上重跑并标注"派生店";v42 存档的中间梯数字与 v43+ 建卡器的店之间的可比性由该映射承担,须在 datasheet 里写明。
