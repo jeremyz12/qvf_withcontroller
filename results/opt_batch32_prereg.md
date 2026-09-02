@@ -100,3 +100,7 @@ top-10 在 **100%** 的题上含更正会话,在 98–100% 的题上含 ≥2 条
   视图才过滤——但即便过滤,那 287 张标错槽位的卡也会漏进来;
 - 因此净效应取决于读者是否据 claim/span 文本识别归属。smoc-D 终值即答案;
   若掉幅大,修复应在**写侧 slot 标注**(归属闸)而非读侧过滤。
+- **渲染格式**(repro_batch3 默认视图):`[entry n] date | slot: value — "span"`。
+  干扰卡即使 slot 被错标为 employer,其 value 也含人名("Sofia at University
+  of Cambridge")、span 逐字含 "My brother Sofia…"——**归属线索对读者可见**。
+  故净效应 = 读者据 value/span 排除他人状态的纪律;smoc-D 终值裁决。
