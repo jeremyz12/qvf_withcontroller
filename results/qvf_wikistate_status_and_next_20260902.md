@@ -220,3 +220,20 @@ WikiBigEdit/EvoWiki/evolveQA/BeliefShift(不开放或近重复)。
 代码修复(与第 1 项同一提交):lb_reader_arm / wsc_direct_arm / complex_query_arm / ext_smoc_arm 每行写入
 corpus_path、corpus_sha256、cards_dir、cards_build_utc、git_rev、run_utc;--cards-dir / --data 改必填;拒绝写入已存在的店目录。
 QVF_CARD_OWNER_GATE 默认值是否翻到 1:**用户决定**,若翻则与第 1 项同提交并记录翻转日期。
+
+## 六、批 33 更新(2026-09-02 晚,滚动;终版见 results/opt_batch33_verdict.md)
+
+§五 的 10 项已按"都跑"全部启动;截至本节写入已收口 12 轨:
+
+| 项 | 结果 | 对 §一/§四 的影响 |
+|---|---|---|
+| 冻结保留集(§五-3) | 40 链/160 题零交集:smoc 95.00 / direct 51.88,+43.1(簇 CI [+34.4,+51.3])与开发场 +42.2 不可分 | "无保留集"缺口关闭;结构总价非过拟合;smoc−fullplain 不迁移(+37→+23)新入 limitation |
+| 残余归类(§五-2) | 写侧 69%(值在场槽位名不合 76%)/ 读侧 24% / 金标 7% | §6 失败模型可写;金标残留率有数字 |
+| 上界臂(§五-6) | 金卡 94.97(写侧余量 +4.5 下界);金句证据直读 76.74 | 90.45 距天花板 ≈4.5;瓶颈是"无结构证据弱读者算不动" |
+| 强基线(§五-5a) | 重排 35.1、时间融合 23.4,均显著低于 direct 48.3 | "基线太弱"问题反向关闭 |
+| 规模 L2(§五-4) | 30 店:全账目 54.2 @20.9K,投影 61.7 @8.8K;对 gpt 全文成本仅 1.37× | §7 改衰减率;"5×"撤回 |
+| 外场 A 档(§五-9) | Temporal Wiki −4.3(显著负,非污染)、AMemGym −3.3~−4.7、PersonaMem −7.2(who=others +14) | 三场全负 → 账目机制边界:记忆条须为带时刻的陈述;快照式语料、偏好/措辞类内容上输给直读 |
+| 盘上(§五-10) | LME-preference −28.6;MAB-FC mh 零效应(草堆同,差全由跳数) | 自然语料战绩为混合,须如实报 |
+| 对手(§五-7) | HippoRAG 2 55.0、MemOS 45.0、Letta-FS 56.7、TRACE 出厂 16.7;Letta 服务端/Memobase BLOCKED | 与直读同档、比 smoc 低 28–40;"检索赢裁决输"为第三方证据 |
+
+进行中:A 冻结重建九臂(direct 47.57、smwplain 53.47 已出)、MINTEval、TRACE(LoCoMo 配置)、小捆、Gemini、LME 第二段。
