@@ -1,0 +1,150 @@
+{
+ "arms": [
+  {
+   "label": "smoc",
+   "n": 160,
+   "acc": 95.0,
+   "ci": [
+    90.0,
+    98.75
+   ],
+   "by_type": {
+    "change_count": [
+     39,
+     40
+    ],
+    "count_before": [
+     38,
+     40
+    ],
+    "longest_tenure": [
+     35,
+     40
+    ],
+    "first_vs_last": [
+     40,
+     40
+    ]
+   },
+   "tok_in": 498872,
+   "tok_out": 73111,
+   "cost_usd": 0.6915416,
+   "latency_mean": 4.834687499999999
+  },
+  {
+   "label": "direct",
+   "n": 160,
+   "acc": 51.87500000000001,
+   "ci": [
+    44.375,
+    59.375
+   ],
+   "by_type": {
+    "change_count": [
+     12,
+     40
+    ],
+    "count_before": [
+     15,
+     40
+    ],
+    "longest_tenure": [
+     20,
+     40
+    ],
+    "first_vs_last": [
+     36,
+     40
+    ]
+   },
+   "tok_in": 138991,
+   "tok_out": 13230,
+   "cost_usd": 0.1641128,
+   "latency_mean": 1.6681875000000002
+  },
+  {
+   "label": "fullplain",
+   "n": 160,
+   "acc": 71.875,
+   "ci": [
+    66.25,
+    77.5
+   ],
+   "by_type": {
+    "change_count": [
+     20,
+     40
+    ],
+    "count_before": [
+     33,
+     40
+    ],
+    "longest_tenure": [
+     24,
+     40
+    ],
+    "first_vs_last": [
+     38,
+     40
+    ]
+   },
+   "tok_in": 2179228,
+   "tok_out": 23432,
+   "cost_usd": 1.8371104000000003,
+   "latency_mean": 2.61775
+  }
+ ],
+ "contrasts": [
+  {
+   "label": "smoc − direct(结构总价)",
+   "delta": 43.125,
+   "b": 4,
+   "c": 73,
+   "p": 1.891833529313699e-17,
+   "ci": [
+    34.375,
+    51.24999999999999
+   ],
+   "chain_sign": [
+    34,
+    1,
+    5
+   ],
+   "chain_p": 2.0954757928848267e-09
+  },
+  {
+   "label": "smoc − fullplain(弱读者抬升)",
+   "delta": 23.125,
+   "b": 3,
+   "c": 40,
+   "p": 3.0213413992896676e-09,
+   "ci": [
+    16.875,
+    29.375
+   ],
+   "chain_sign": [
+    30,
+    1,
+    9
+   ],
+   "chain_p": 2.9802322387695312e-08
+  },
+  {
+   "label": "fullplain − direct",
+   "delta": 20.0,
+   "b": 20,
+   "c": 52,
+   "p": 0.00020771603022674048,
+   "ci": [
+    9.375,
+    30.0
+   ],
+   "chain_sign": [
+    25,
+    8,
+    7
+   ],
+   "chain_p": 0.004551384132355452
+  }
+ ]
+}

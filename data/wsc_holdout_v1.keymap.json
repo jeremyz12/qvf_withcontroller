@@ -1,0 +1,899 @@
+{
+ "meta": {
+  "n_chains": 40,
+  "n_questions": 160,
+  "qtype_counts": {
+   "change_count": 40,
+   "count_before": 40,
+   "longest_tenure": 40,
+   "first_vs_last": 40
+  },
+  "slot_counts": {
+   "employer": 14,
+   "position": 12,
+   "team": 11,
+   "residence": 3
+  },
+  "change_count_gold_hist": {
+   "1": 12,
+   "2": 11,
+   "3": 10,
+   "4": 4,
+   "5": 1,
+   "6": 1,
+   "7": 1
+  },
+  "change_count_mode_share": 30.0,
+  "count_before_gold_hist": {
+   "1": 9,
+   "2": 8,
+   "3": 8,
+   "4": 8,
+   "5": 4,
+   "6": 1,
+   "7": 1,
+   "8": 1
+  },
+  "count_before_mode_share": 22.5,
+  "longest_tenure_tail_share": 35.0,
+  "criteria": {
+   "mode_share_le_35": true,
+   "tail_share_gt_10": true
+  }
+ },
+ "chains": {
+  "holdP108000-Q103822966": {
+   "slot": "employer",
+   "qid_wikidata": "Q103822966",
+   "chain_values": [
+    "Kyoto University Hospital",
+    "Stanford University",
+    "Kyoto Prefectural University of Medicine"
+   ],
+   "chain_dates": [
+    "2005-04-01",
+    "2006-03-01",
+    "2008-07-01"
+   ],
+   "state_spans": [
+    "today's officially my first day working at Kyoto University Hospital",
+    "I officially started at Stanford University today",
+    "Today's officially my first day as an associate professor at Kyoto Prefectural University of Medicine"
+   ]
+  },
+  "holdP108001-Q55344440": {
+   "slot": "employer",
+   "qid_wikidata": "Q55344440",
+   "chain_values": [
+    "Pasteur Institute",
+    "Albert Einstein College of Medicine",
+    "Columbia University Irving Medical Center"
+   ],
+   "chain_dates": [
+    "2009-03-02",
+    "2013-09-00",
+    "2014-09-00"
+   ],
+   "state_spans": [
+    "I started today as a research fellow at the Pasteur Institute",
+    "I officially started in the lab at Albert Einstein College of Medicine",
+    "I officially started as a postdoctoral research scientist at Columbia University Irving Medical Center"
+   ]
+  },
+  "holdP108002-Q55728849": {
+   "slot": "employer",
+   "qid_wikidata": "Q55728849",
+   "chain_values": [
+    "Dr. Reddy's Laboratories",
+    "National Taiwan Normal University",
+    "University of Birmingham"
+   ],
+   "chain_dates": [
+    "2001-08-00",
+    "2008-08-00",
+    "2013-01-00"
+   ],
+   "state_spans": [
+    "I officially joined Dr. Reddy's Laboratories this month",
+    "I've started as a postdoctoral researcher at National Taiwan Normal University this month",
+    "I've officially started as a researcher at the University of Birmingham this month"
+   ]
+  },
+  "holdP108003-Q56875838": {
+   "slot": "employer",
+   "qid_wikidata": "Q56875838",
+   "chain_values": [
+    "Max Planck Institute for Meteorology",
+    "University of Bremen",
+    "Kiel University"
+   ],
+   "chain_dates": [
+    "1975-08-01",
+    "1989-11-15",
+    "1995-10-01"
+   ],
+   "state_spans": [
+    "as of today I'm officially on the payroll at the Max Planck Institute for Meteorology",
+    "as of today I'm officially on staff at the University of Bremen",
+    "as of today Kiel University is my new employer"
+   ]
+  },
+  "holdP108004-Q57239282": {
+   "slot": "employer",
+   "qid_wikidata": "Q57239282",
+   "chain_values": [
+    "Centro de Estudios Avanzados de Blanes",
+    "University of Wisconsin–Madison",
+    "Center for Ecological Research and Forestry Applications"
+   ],
+   "chain_dates": [
+    "2004-04-15",
+    "2010-06-01",
+    "2013-09-01"
+   ],
+   "state_spans": [
+    "I officially started today at the Centro de Estudios Avanzados de Blanes",
+    "I officially started my postdoc at the University of Wisconsin–Madison today",
+    "I've started as a postdoctoral researcher at the Center for Ecological Research and Forestry Applications"
+   ]
+  },
+  "holdP108005-Q61141855": {
+   "slot": "employer",
+   "qid_wikidata": "Q61141855",
+   "chain_values": [
+    "University of São Paulo",
+    "University of Campinas",
+    "University Institute of Cardiology and Pulmonology"
+   ],
+   "chain_dates": [
+    "2012-03-01",
+    "2015-08-03",
+    "2022-12-01"
+   ],
+   "state_spans": [
+    "today is officially my first day as a researcher at the University of São Paulo",
+    "today is officially my first day as a lecturer at the University of Campinas",
+    "as of today I'm officially on staff at the University Institute of Cardiology and Pulmonology"
+   ]
+  },
+  "holdP108006-Q62055511": {
+   "slot": "employer",
+   "qid_wikidata": "Q62055511",
+   "chain_values": [
+    "Fernando Pessoa University",
+    "Faculty of Engineering of the University of Porto",
+    "Norwegian Polar Institute"
+   ],
+   "chain_dates": [
+    "2003-02-01",
+    "2006-10-01",
+    "2013-10-01"
+   ],
+   "state_spans": [
+    "I've officially started as a lecturer at Fernando Pessoa University",
+    "as of today I've started as a lecturer at the Faculty of Engineering of the University of Porto",
+    "I've officially started at the Norwegian Polar Institute"
+   ]
+  },
+  "holdP108007-Q63961454": {
+   "slot": "employer",
+   "qid_wikidata": "Q63961454",
+   "chain_values": [
+    "University of Bristol",
+    "Institut de Neurosciences des Systèmes",
+    "Pompeu Fabra University"
+   ],
+   "chain_dates": [
+    "2008-07-09",
+    "2010-03-08",
+    "2012-07-25"
+   ],
+   "state_spans": [
+    "today's officially my first day as a postdoctoral research associate at the University of Bristol",
+    "today's my first day at Institut de Neurosciences des Systèmes",
+    "I've officially started as a postdoc at Pompeu Fabra University"
+   ]
+  },
+  "holdP108008-Q82594195": {
+   "slot": "employer",
+   "qid_wikidata": "Q82594195",
+   "chain_values": [
+    "University of the Andes",
+    "Erasmus MC",
+    "Delft University of Technology"
+   ],
+   "chain_dates": [
+    "2000-01-01",
+    "2005-08-01",
+    "2006-08-01"
+   ],
+   "state_spans": [
+    "as of today I'm officially on staff at the University of the Andes",
+    "as of today I started at Erasmus MC in Rotterdam",
+    "as of today I'm officially on staff at Delft University of Technology"
+   ]
+  },
+  "holdP108009-Q90703719": {
+   "slot": "employer",
+   "qid_wikidata": "Q90703719",
+   "chain_values": [
+    "Northwest Missouri State University",
+    "Southern Illinois University Edwardsville",
+    "Duke University"
+   ],
+   "chain_dates": [
+    "2002-12-01",
+    "2014-07-01",
+    "2017-07-01"
+   ],
+   "state_spans": [
+    "as of today I'm officially on staff at Northwest Missouri State University",
+    "I started as a faculty member at Southern Illinois University Edwardsville this morning",
+    "Today's my official start date at Duke University"
+   ]
+  },
+  "holdP108010-Q92431303": {
+   "slot": "employer",
+   "qid_wikidata": "Q92431303",
+   "chain_values": [
+    "Indian Institute of Science, Bengaluru",
+    "University of California",
+    "Arizona State University"
+   ],
+   "chain_dates": [
+    "2018-01-01",
+    "2019-02-07",
+    "2020-02-01"
+   ],
+   "state_spans": [
+    "I've officially started at Indian Institute of Science, Bengaluru today",
+    "I officially started as a research scientist at the University of California today",
+    "I officially started as a research faculty member at Arizona State University today"
+   ]
+  },
+  "holdP108011-Q57256525": {
+   "slot": "employer",
+   "qid_wikidata": "Q57256525",
+   "chain_values": [
+    "Scottish Association for Marine Science",
+    "University of KwaZulu-Natal",
+    "Ulster University",
+    "University of the Sunshine Coast"
+   ],
+   "chain_dates": [
+    "2004-00-00",
+    "2006-00-00",
+    "2009-00-00",
+    "2012-00-00"
+   ],
+   "state_spans": [
+    "I've officially started at the Scottish Association for Marine Science",
+    "I've officially started as a lecturer at the University of KwaZulu-Natal",
+    "I've signed on at Ulster University",
+    "I've officially started as a lecturer at the University of the Sunshine Coast"
+   ]
+  },
+  "holdP108012-Q58010296": {
+   "slot": "employer",
+   "qid_wikidata": "Q58010296",
+   "chain_values": [
+    "National Research Centre",
+    "University of Jena",
+    "Ohio State University Department of Materials Science and Engineering",
+    "University of Sheffield School of Clinical Dentistry"
+   ],
+   "chain_dates": [
+    "1991-01-01",
+    "1999-06-01",
+    "2005-07-01",
+    "2007-07-01"
+   ],
+   "state_spans": [
+    "I officially start today as a researcher at the National Research Centre in Dokki",
+    "I started as a research fellow at the University of Jena",
+    "I started today as a postdoctoral researcher at the Ohio State University Department of Materials Science and Engineering",
+    "today I officially started at the University of Sheffield School of Clinical Dentistry"
+   ]
+  },
+  "holdP108013-Q61049349": {
+   "slot": "employer",
+   "qid_wikidata": "Q61049349",
+   "chain_values": [
+    "University of Surrey",
+    "Durham University",
+    "Royal Geographical Society",
+    "University of Otago"
+   ],
+   "chain_dates": [
+    "2005-01-00",
+    "2005-11-00",
+    "2006-10-00",
+    "2007-03-00"
+   ],
+   "state_spans": [
+    "I've officially started at the University of Surrey this month",
+    "I've officially started at Durham University this week",
+    "I've officially started at the Royal Geographical Society",
+    "I've started as a lecturer at the University of Otago"
+   ]
+  },
+  "holdP39000-Q110304071": {
+   "slot": "position",
+   "qid_wikidata": "Q110304071",
+   "chain_values": [
+    "sub-lieutenant",
+    "lieutenant",
+    "captain"
+   ],
+   "chain_dates": [
+    "1636-00-00",
+    "1639-00-00",
+    "1641-00-00"
+   ],
+   "state_spans": [
+    "I've been made sub-lieutenant",
+    "I've been appointed lieutenant",
+    "I've been made captain, and the ink on the papers is barely dry"
+   ]
+  },
+  "holdP39001-Q111313871": {
+   "slot": "position",
+   "qid_wikidata": "Q111313871",
+   "chain_values": [
+    "lieutenant",
+    "captain",
+    "chamberlain"
+   ],
+   "chain_dates": [
+    "1693-00-00",
+    "1697-00-00",
+    "1698-00-00"
+   ],
+   "state_spans": [
+    "I have officially been made lieutenant",
+    "I've been made captain",
+    "I have been appointed chamberlain at court"
+   ]
+  },
+  "holdP39002-Q30041468": {
+   "slot": "position",
+   "qid_wikidata": "Q30041468",
+   "chain_values": [
+    "Privatdozent",
+    "extraordinary professor",
+    "judge"
+   ],
+   "chain_dates": [
+    "1869-00-00",
+    "1874-05-12",
+    "1876-00-00"
+   ],
+   "state_spans": [
+    "I've been admitted as Privatdozent",
+    "I've been appointed extraordinary professor",
+    "I've been appointed judge"
+   ]
+  },
+  "holdP39003-Q3426450": {
+   "slot": "position",
+   "qid_wikidata": "Q3426450",
+   "chain_values": [
+    "member of the French National Assembly",
+    "European Parliament",
+    "substitute member of the Parliamentary Assembly of the Council of Europe"
+   ],
+   "chain_dates": [
+    "1958-12-09",
+    "1967-00-00",
+    "1973-07-02"
+   ],
+   "state_spans": [
+    "as of today I'm a member of the French National Assembly, representing Maine-et-Loire",
+    "I've just been appointed to the European Parliament",
+    "as of today I'm a substitute member of the Parliamentary Assembly of the Council of Europe"
+   ]
+  },
+  "holdP39004-Q42373685": {
+   "slot": "position",
+   "qid_wikidata": "Q42373685",
+   "chain_values": [
+    "underlöjtnant",
+    "löjtnant",
+    "captain"
+   ],
+   "chain_dates": [
+    "1902-00-00",
+    "1905-00-00",
+    "1916-00-00"
+   ],
+   "state_spans": [
+    "I have been commissioned as underlöjtnant",
+    "as of today I'm commissioned löjtnant",
+    "I've been promoted to captain"
+   ]
+  },
+  "holdP39005-Q7052412": {
+   "slot": "position",
+   "qid_wikidata": "Q7052412",
+   "chain_values": [
+    "solicitor",
+    "general counsel",
+    "president"
+   ],
+   "chain_dates": [
+    "1937-00-00",
+    "1945-00-00",
+    "1967-00-00"
+   ],
+   "state_spans": [
+    "I'm now working as a solicitor",
+    "I've been named general counsel",
+    "I've been named president of Canadian National Railways"
+   ]
+  },
+  "holdP39006-Q808684": {
+   "slot": "position",
+   "qid_wikidata": "Q808684",
+   "chain_values": [
+    "judge",
+    "member of the State Senate of Maryland",
+    "United States representative"
+   ],
+   "chain_dates": [
+    "1941-00-00",
+    "1946-00-00",
+    "1949-01-03"
+   ],
+   "state_spans": [
+    "I've been appointed judge",
+    "I'm officially a member of the State Senate of Maryland now",
+    "I was sworn in this morning as a United States representative"
+   ]
+  },
+  "holdP39007-Q110264588": {
+   "slot": "position",
+   "qid_wikidata": "Q110264588",
+   "chain_values": [
+    "Sergeant",
+    "sub-lieutenant",
+    "quartermaster",
+    "captain"
+   ],
+   "chain_dates": [
+    "1683-00-00",
+    "1700-09-10",
+    "1707-04-13",
+    "1708-05-03"
+   ],
+   "state_spans": [
+    "as of today I've been made Sergeant",
+    "as of this morning I've been appointed sub-lieutenant",
+    "as of today I have been appointed quartermaster",
+    "I have been made captain"
+   ]
+  },
+  "holdP39008-Q111292549": {
+   "slot": "position",
+   "qid_wikidata": "Q111292549",
+   "chain_values": [
+    "volunteer",
+    "Sergeant",
+    "ensign",
+    "captain"
+   ],
+   "chain_dates": [
+    "1703-00-00",
+    "1704-06-14",
+    "1704-11-24",
+    "1706-07-13"
+   ],
+   "state_spans": [
+    "I have been taken on as a volunteer with the army",
+    "I've been made Sergeant",
+    "I've been made ensign",
+    "I have been made captain"
+   ]
+  },
+  "holdP39009-Q111446581": {
+   "slot": "position",
+   "qid_wikidata": "Q111446581",
+   "chain_values": [
+    "ensign",
+    "löjtnant",
+    "captain",
+    "Major"
+   ],
+   "chain_dates": [
+    "1782-02-25",
+    "1786-09-20",
+    "1788-07-22",
+    "1798-02-21"
+   ],
+   "state_spans": [
+    "I've been appointed ensign",
+    "jag är från och med idag löjtnant",
+    "As of this morning I hold the rank of captain",
+    "I have been promoted to Major"
+   ]
+  },
+  "holdP39010-Q132190479": {
+   "slot": "position",
+   "qid_wikidata": "Q132190479",
+   "chain_values": [
+    "scientist",
+    "senior scientist",
+    "associate professor",
+    "professor"
+   ],
+   "chain_dates": [
+    "1976-00-00",
+    "1979-00-00",
+    "1983-00-00",
+    "1994-00-00"
+   ],
+   "state_spans": [
+    "as of this year I've officially started as a scientist",
+    "I've officially started as a senior scientist at the institute",
+    "it's official as of today, I've been made associate professor",
+    "as of this year I've been appointed professor"
+   ]
+  },
+  "holdP39011-Q116508517": {
+   "slot": "position",
+   "qid_wikidata": "Q116508517",
+   "chain_values": [
+    "lieutenant",
+    "captain",
+    "quartermaster",
+    "Major",
+    "Lieutenant Colonel",
+    "commandant"
+   ],
+   "chain_dates": [
+    "1627-00-00",
+    "1628-00-00",
+    "1642-00-00",
+    "1647-00-00",
+    "1661-04-02",
+    "1661-07-20"
+   ],
+   "state_spans": [
+    "I've been made lieutenant, and the ink on the paper is still damp",
+    "I've been made captain",
+    "I've been appointed quartermaster",
+    "I've been made Major",
+    "as of today I'm serving as Lieutenant Colonel",
+    "as of today I am commandant"
+   ]
+  },
+  "holdP54000-Q1607368": {
+   "slot": "team",
+   "qid_wikidata": "Q1607368",
+   "chain_values": [
+    "Esperia Football Club",
+    "Inter Milan",
+    "Como 1907"
+   ],
+   "chain_dates": [
+    "1919-01-01",
+    "1923-01-01",
+    "1926-01-01"
+   ],
+   "state_spans": [
+    "as of today I'm signed with Esperia Football Club",
+    "I've signed with Inter Milan, so that's my new team as of today",
+    "I've signed with Como 1907, so that's my new team from today"
+   ]
+  },
+  "holdP54001-Q1614202": {
+   "slot": "team",
+   "qid_wikidata": "Q1614202",
+   "chain_values": [
+    "Inter Milan",
+    "FC Chiasso",
+    "Como 1907"
+   ],
+   "chain_dates": [
+    "1913-01-01",
+    "1914-01-01",
+    "1919-01-01"
+   ],
+   "state_spans": [
+    "I've signed on with Inter Milan, so my new year begins with a new team",
+    "as of today I've signed on and started with FC Chiasso, so that's my new club",
+    "I've signed on with Como 1907, so that's my new team from today"
+   ]
+  },
+  "holdP54002-Q1614252": {
+   "slot": "team",
+   "qid_wikidata": "Q1614252",
+   "chain_values": [
+    "Inter Milan",
+    "AC Cesena",
+    "Treviso F.B.C. 1993"
+   ],
+   "chain_dates": [
+    "1938-01-01",
+    "1946-01-01",
+    "1949-01-01"
+   ],
+   "state_spans": [
+    "I've officially signed on with Inter Milan",
+    "starting today I'm officially with AC Cesena",
+    "as of today I've signed with Treviso F.B.C. 1993, so please note that down as my new club"
+   ]
+  },
+  "holdP54003-Q16529754": {
+   "slot": "team",
+   "qid_wikidata": "Q16529754",
+   "chain_values": [
+    "US Cremonese",
+    "A.C. Legnano",
+    "Inter Milan"
+   ],
+   "chain_dates": [
+    "1913-01-01",
+    "1914-01-01",
+    "1917-01-01"
+   ],
+   "state_spans": [
+    "as of today I'm signed with US Cremonese",
+    "I've signed with A.C. Legnano, and I start training with them this week",
+    "I've signed on with Inter Milan, so that's my new club as of today"
+   ]
+  },
+  "holdP54004-Q1317097": {
+   "slot": "team",
+   "qid_wikidata": "Q1317097",
+   "chain_values": [
+    "Modena F.C.",
+    "A.C. Reggiana 1919",
+    "AS Roma",
+    "Calcio Padova"
+   ],
+   "chain_dates": [
+    "1952-01-01",
+    "1954-01-01",
+    "1956-01-01",
+    "1960-01-01"
+   ],
+   "state_spans": [
+    "as of today Modena F.C. is my new team",
+    "as of today I'm playing for A.C. Reggiana 1919",
+    "I've signed with AS Roma and I start training with them this month",
+    "as of today I'm officially playing for Calcio Padova"
+   ]
+  },
+  "holdP54005-Q1319308": {
+   "slot": "team",
+   "qid_wikidata": "Q1319308",
+   "chain_values": [
+    "Inter Milan",
+    "Unione Sportiva Milanese",
+    "Atalanta BC",
+    "Unione Sportiva Catanzaro"
+   ],
+   "chain_dates": [
+    "1924-01-01",
+    "1926-01-01",
+    "1930-01-01",
+    "1933-01-01"
+   ],
+   "state_spans": [
+    "as of today I'm officially a player for Inter Milan",
+    "as of today I'm officially with Unione Sportiva Milanese",
+    "as of today Atalanta BC is my new team",
+    "as of today I'm playing for Unione Sportiva Catanzaro"
+   ]
+  },
+  "holdP54006-Q1407513": {
+   "slot": "team",
+   "qid_wikidata": "Q1407513",
+   "chain_values": [
+    "U.C. Sampdoria",
+    "US Lecce",
+    "Ars et Labor Ferrara Calcio",
+    "Inter Milan",
+    "AS Roma"
+   ],
+   "chain_dates": [
+    "1949-01-01",
+    "1950-01-01",
+    "1952-01-01",
+    "1954-01-01",
+    "1959-01-01"
+   ],
+   "state_spans": [
+    "as of today I'm officially playing for U.C. Sampdoria",
+    "as of today I'm officially playing for US Lecce",
+    "as of today I'm officially a player for Ars et Labor Ferrara Calcio",
+    "I've signed with Inter Milan, so that's my club from now on",
+    "I've signed with AS Roma, so that's my new team from today"
+   ]
+  },
+  "holdP54007-Q1613723": {
+   "slot": "team",
+   "qid_wikidata": "Q1613723",
+   "chain_values": [
+    "Brescia Calcio",
+    "Inter Milan",
+    "AC Milan",
+    "U.S.D. Novese",
+    "A.C. Crema 1908"
+   ],
+   "chain_dates": [
+    "1914-01-01",
+    "1915-01-01",
+    "1916-01-01",
+    "1921-01-01",
+    "1922-01-01"
+   ],
+   "state_spans": [
+    "I've signed with Brescia Calcio, so that's my new club from today",
+    "I've signed with Inter Milan, so that's my new team starting now",
+    "I've signed with AC Milan, so that's my new team as of today",
+    "as of today I'm playing for U.S.D. Novese, so put that down as my new team",
+    "as of today I'm playing for A.C. Crema 1908"
+   ]
+  },
+  "holdP54008-Q1615624": {
+   "slot": "team",
+   "qid_wikidata": "Q1615624",
+   "chain_values": [
+    "Inter Milan",
+    "Como 1907",
+    "A.C. Perugia Calcio",
+    "US Alessandria Calcio 1912",
+    "Varese Calcio"
+   ],
+   "chain_dates": [
+    "1943-01-01",
+    "1946-01-01",
+    "1948-01-01",
+    "1949-01-01",
+    "1954-01-01"
+   ],
+   "state_spans": [
+    "as of today I've officially joined Inter Milan",
+    "as of today Como 1907 is my new team",
+    "I've signed with A.C. Perugia Calcio, so put that down as my new team from today",
+    "as of today I'm officially playing for US Alessandria Calcio 1912",
+    "as of today I'm playing for Varese Calcio"
+   ]
+  },
+  "holdP54009-Q1612792": {
+   "slot": "team",
+   "qid_wikidata": "Q1612792",
+   "chain_values": [
+    "Clodiense S.S.D.",
+    "S.S.D. Massese",
+    "Inter Milan",
+    "Vicenza Calcio",
+    "Delfino Pescara 1936",
+    "Calcio Padova"
+   ],
+   "chain_dates": [
+    "1969-01-01",
+    "1972-01-01",
+    "1974-01-01",
+    "1976-01-01",
+    "1979-01-01",
+    "1981-01-01"
+   ],
+   "state_spans": [
+    "I've signed with Clodiense S.S.D., so I'm officially starting there",
+    "as of today I've signed with S.S.D. Massese",
+    "as of today I'm officially a player for Inter Milan",
+    "I've signed for Vicenza Calcio",
+    "I've signed for Delfino Pescara 1936, so that's my new team as of today",
+    "as of today I'm officially a Calcio Padova player"
+   ]
+  },
+  "holdP54010-Q1533108": {
+   "slot": "team",
+   "qid_wikidata": "Q1533108",
+   "chain_values": [
+    "A.C. Reggiana 1919",
+    "Ars et Labor Ferrara Calcio",
+    "A.C. Fanfulla 1874",
+    "Inter Milan",
+    "Catania FC",
+    "A.C. Crema 1908",
+    "Sondrio Calcio"
+   ],
+   "chain_dates": [
+    "1952-01-01",
+    "1953-01-01",
+    "1954-01-01",
+    "1955-01-01",
+    "1956-01-01",
+    "1958-01-01",
+    "1961-01-01"
+   ],
+   "state_spans": [
+    "as of today I've signed with A.C. Reggiana 1919",
+    "as of today I'm officially playing for Ars et Labor Ferrara Calcio",
+    "as of today I've signed with A.C. Fanfulla 1874",
+    "I've signed with Inter Milan, and I'm expected to report for training with the squad this week",
+    "as of today I've officially signed on and my new team is Catania FC",
+    "I've signed with A.C. Crema 1908, so that's where I'll be playing from now on",
+    "I've signed with Sondrio Calcio, so that's my new team from today"
+   ]
+  },
+  "holdP551000-Q116206695": {
+   "slot": "residence",
+   "qid_wikidata": "Q116206695",
+   "chain_values": [
+    "United States",
+    "German Empire",
+    "Berlin"
+   ],
+   "chain_dates": [
+    "1902-00-00",
+    "1910-11-00",
+    "1920-00-00"
+   ],
+   "state_spans": [
+    "the United States is my new residence",
+    "I'm officially a resident of the German Empire as of this month",
+    "I've just moved to Berlin"
+   ]
+  },
+  "holdP551001-Q115859072": {
+   "slot": "residence",
+   "qid_wikidata": "Q115859072",
+   "chain_values": [
+    "England",
+    "Australia",
+    "United States",
+    "Mandatory Palestine"
+   ],
+   "chain_dates": [
+    "1884-00-00",
+    "1891-00-00",
+    "1894-00-00",
+    "1922-00-00"
+   ],
+   "state_spans": [
+    "England is my new home now",
+    "Australia is my new residence now",
+    "as of this year the United States is my residence",
+    "my new residence is Mandatory Palestine"
+   ]
+  },
+  "holdP551002-Q12295575": {
+   "slot": "residence",
+   "qid_wikidata": "Q12295575",
+   "chain_values": [
+    "London",
+    "Budapest",
+    "Washington, D.C.",
+    "Sofia",
+    "Stockholm",
+    "Bucharest",
+    "Tokyo",
+    "Switzerland"
+   ],
+   "chain_dates": [
+    "1921-00-00",
+    "1927-00-00",
+    "1933-00-00",
+    "1936-00-00",
+    "1938-00-00",
+    "1940-00-00",
+    "1944-00-00",
+    "1945-00-00"
+   ],
+   "state_spans": [
+    "London is now my residence",
+    "I've moved to Budapest, and this is my new residence as of this year",
+    "As of this week Washington, D.C. is my new residence",
+    "as of this move, Sofia is my new residence",
+    "Stockholm is my new residence as of this year",
+    "Bucharest is my new residence as of today",
+    "as of today Tokyo is my new residence",
+    "Switzerland is now my place of residence"
+   ]
+  }
+ }
+}
