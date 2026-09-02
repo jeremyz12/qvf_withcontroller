@@ -37,3 +37,7 @@ rateapp/*.db
 results/hipporag_stores/
 .memos/
 results/memos_stores_*/
+
+# external arena raw downloads (licenses vary; derived small files are added explicitly with -f)
+data/external/*/
+!data/external/elephantbench/
