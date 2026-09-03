@@ -73,6 +73,15 @@ def main():
                 if hit: break
             if not hit:
                 log["not_found"].append({"uid": e["uid"], "quote": q})
+    # (1b) 整轮删除后若填充会话只剩助手轮(无任何用户文本),整个会话删除并记录(2026-09-03 补:v25-144 第 16 会话空头)
+    for e in data:
+        keep = []
+        for s in e["sessions"]:
+            has_user = any(unwrap(t)[0] == "user" and (unwrap(t)[1] or "").strip() for t in s["turns"])
+            if not has_user and s.get("chain_index") is None:
+                log.setdefault("dropped_empty_sessions", []).append({"uid": e["uid"], "date": s["date"], "turns_left": len(s["turns"])}); continue
+            keep.append(s)
+        e["sessions"] = keep
     # gates: anchors intact, residue zero
     bad = 0
     for e in data:
