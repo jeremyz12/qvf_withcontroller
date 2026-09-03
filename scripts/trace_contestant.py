@@ -194,6 +194,7 @@ def run_uid(uid, sessions, questions, cfg, store_root: Path, judge, client,
                "question_type": q["qtype"], "question": q["question"],
                "gold_answer": q["gold"],
                "ingest_seconds": round(ingest_s, 1),
+               "build_s": round(ingest_s, 1),
                "trace_ingest_input_tokens": ing["in"],
                "trace_ingest_output_tokens": ing["out"],
                "trace_ingest_llm_calls": ing["calls"]}
@@ -275,6 +276,8 @@ def main() -> int:
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--nshards", type=int, default=1)
     ap.add_argument("--out-suffix", default="")
+    ap.add_argument("--out", default="",
+                    help="结果 jsonl 完整路径;空=results/wsc_s5_trace{suffix}.jsonl")
     ap.add_argument("--model", default="gpt-4o-mini")
     ap.add_argument("--api-base", default="", help="空=OpenAI 官方端点")
     ap.add_argument("--update-detection", action="store_true",
@@ -330,7 +333,8 @@ def main() -> int:
         picked = picked[:a.limit_stores]
     picked = [u for i, u in enumerate(picked) if i % a.nshards == a.shard]
 
-    out_p = ROOT / f"results/wsc_s5_trace{a.out_suffix}.jsonl"
+    out_p = (ROOT / a.out) if a.out else (
+        ROOT / f"results/wsc_s5_trace{a.out_suffix}.jsonl")
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in

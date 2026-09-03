@@ -50,13 +50,26 @@ def sample_stores(n_stores=15):
 class Mem0System:
     name = "mem0"
 
-    def __init__(self):
+    def __init__(self, store_root=None):
         from mem0 import Memory
         # v2.0.16 出厂默认 LLM 拒绝 temperature<1(o系列);按其论文时代
         # 文档默认钉 gpt-4o-mini(temperature 支持),embedder 保持默认
         # text-embedding-3-small。偏离如实入档(prereg 附录)。
-        self.m = Memory.from_config({"llm": {"provider": "openai",
-            "config": {"model": "gpt-4o-mini", "temperature": 0.1}}})
+        cfg = {"llm": {"provider": "openai",
+            "config": {"model": "gpt-4o-mini", "temperature": 0.1}}}
+        if store_root:
+            # b35c plumbing (README §三.12c): keep qdrant + history.db out of
+            # the factory /tmp/qdrant + ~/.mem0 (old stores live there). Field
+            # names as scripts/run_mem0_baseline.py::_mem0_config; LLM and
+            # embedder (text-embedding-3-small, 1536 dims) unchanged.
+            root = Path(store_root)
+            root = root if root.is_absolute() else ROOT / root
+            root.mkdir(parents=True, exist_ok=True)
+            cfg["vector_store"] = {"provider": "qdrant", "config": {
+                "collection_name": "b35c_mem0", "embedding_model_dims": 1536,
+                "path": str(root / "qdrant"), "on_disk": False}}
+            cfg["history_db_path"] = str(root / "history.db")
+        self.m = Memory.from_config(cfg)
 
     def ingest(self, uid, sessions):
         for s in sessions:
@@ -211,19 +224,42 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--system", choices=["mem0", "sumrag", "obsrag", "timeline"],
                     required=True)
+    # b35c 接线(results/b35c_README.md §二):只动装载段,系统类/读者/判官不动。
+    ap.add_argument("--vols", default=None,
+                    help="逗号分隔语料 json;默认保持 VOLS")
+    ap.add_argument("--uids-file", default=None,
+                    help="uid 清单(每行一个);给出时替代 sample_stores() 的 picked")
+    ap.add_argument("--questions-file", default=None,
+                    help="题集 jsonl(uid/qid/qtype/question/gold);给出时 by_uid 从它重建")
+    ap.add_argument("--out", default=None,
+                    help="结果 jsonl 完整路径;默认 results/wsc_s5_<name>.jsonl")
+    ap.add_argument("--store-root", default=None,
+                    help="mem0 only: root dir for qdrant/history.db "
+                         "(default: mem0 factory /tmp/qdrant + ~/.mem0)")
     a = ap.parse_args()
+    kw = {"store_root": a.store_root} if (a.system == "mem0" and a.store_root) else {}
     sysm = {"mem0": Mem0System, "sumrag": SumRagSystem,
-            "obsrag": ObsRagSystem, "timeline": TimelineSystem}[a.system]()
-    out_p = ROOT / f"results/wsc_s5_{sysm.name}.jsonl"
+            "obsrag": ObsRagSystem, "timeline": TimelineSystem}[a.system](**kw)
+    out_p = ROOT / a.out if a.out else ROOT / f"results/wsc_s5_{sysm.name}.jsonl"
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in open(out_p, encoding="utf-8")}
 
+    vols = a.vols.split(",") if a.vols else VOLS
     entries = {}
-    for v in VOLS:
+    for v in vols:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
+    if a.questions_file:
+        by_uid = {}
+        for q in (json.loads(l) for l in open(ROOT / a.questions_file,
+                                              encoding="utf-8") if l.strip()):
+            by_uid.setdefault(q["uid"], []).append(q)
+    if a.uids_file:
+        picked = [u.strip() for u in open(ROOT / a.uids_file, encoding="utf-8")
+                  if u.strip()]
+    picked = [u for u in picked if u in by_uid]
     client = anthropic.Anthropic()
     judge = ClaudeJudge()
     fh = open(out_p, "a", encoding="utf-8")

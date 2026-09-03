@@ -207,16 +207,35 @@ def run_agent(client, tools: FsTools, question: str) -> dict:
 
 
 def main() -> int:
+    global CORPUS_ROOT
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="results/wsc_s5_lettafs.jsonl")
     ap.add_argument("--limit-stores", type=int, default=0)
+    # b35c 接线(README §三.15c):只换语料/uid/题集/店根,协议常量不动
+    ap.add_argument("--vols", default="")
+    ap.add_argument("--uids-file", default="")
+    ap.add_argument("--questions-file", default="")
+    ap.add_argument("--corpus-root", default="")
     a = ap.parse_args()
 
+    if a.corpus_root:
+        CORPUS_ROOT = ROOT / a.corpus_root
+    vols = a.vols.split(",") if a.vols else VOLS
     entries = {}
-    for v in VOLS:
+    for v in vols:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
+    if a.questions_file:
+        by_uid = {}
+        for line in open(ROOT / a.questions_file, encoding="utf-8"):
+            if line.strip():
+                q = json.loads(line)
+                by_uid.setdefault(q["uid"], []).append(q)
+    if a.uids_file:
+        picked = [u.strip() for u in open(ROOT / a.uids_file, encoding="utf-8")
+                  if u.strip()]
+    picked = [u for u in picked if u in by_uid]
     if a.limit_stores:
         picked = picked[:a.limit_stores]
 

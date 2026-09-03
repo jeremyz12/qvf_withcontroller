@@ -38,26 +38,43 @@ def main() -> int:
     ap.add_argument("--n-stores", type=int, default=15)
     ap.add_argument("--store-offset", type=int, default=0)
     ap.add_argument("--out", default="results/wsc_s5_langmem.jsonl")
+    # b35c 接线(results/b35c_README.md §二):只动装载段,协议常量不动
+    ap.add_argument("--vols", default=None,
+                    help="逗号分隔语料 json;默认保持 VOLS")
+    ap.add_argument("--uids-file", default=None,
+                    help="uid 清单(每行一个);给出时替代等距抽样,保持文件顺序")
+    ap.add_argument("--questions-file", default=None,
+                    help="题集 jsonl(uid/qid/qtype/question/gold);给出时 by_uid 从它重建")
     a = ap.parse_args()
 
     entries = {}
-    for v in VOLS:
+    for v in (a.vols.split(",") if a.vols else VOLS):
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
-    # 418 题重建(与 raw_select 同来源:归档 filter 行含全部题面字段)
-    qrows = [json.loads(l) for l in open(ROOT / "results/wsc_s5_filter_only.jsonl",
-                                         encoding="utf-8")]
     by_uid: dict = {}
-    for r in qrows:
-        by_uid.setdefault(r["uid"], []).append(
-            {"qid": r["question_id"], "qtype": r["question_type"],
-             "question": r["question"], "gold": r["gold_answer"]})
+    if a.questions_file:
+        for q in (json.loads(l) for l in open(ROOT / a.questions_file, encoding="utf-8")
+                  if l.strip()):
+            by_uid.setdefault(q["uid"], []).append(q)
+    else:
+        # 418 题重建(与 raw_select 同来源:归档 filter 行含全部题面字段)
+        qrows = [json.loads(l) for l in open(ROOT / "results/wsc_s5_filter_only.jsonl",
+                                             encoding="utf-8")]
+        for r in qrows:
+            by_uid.setdefault(r["uid"], []).append(
+                {"qid": r["question_id"], "qtype": r["question_type"],
+                 "question": r["question"], "gold": r["gold_answer"]})
     uids = sorted(by_uid)
     n = len(uids)
-    picked = [uids[(a.store_offset + i) * n // a.n_stores % n]
-              for i in range(a.n_stores)] if a.store_offset == 0 else \
-             [uids[(i * n // a.n_stores + a.store_offset) % n]
-              for i in range(a.n_stores)]
+    if a.uids_file:
+        picked = [u.strip() for u in open(ROOT / a.uids_file, encoding="utf-8")
+                  if u.strip()]
+        picked = [u for u in picked if u in by_uid]
+    else:
+        picked = [uids[(a.store_offset + i) * n // a.n_stores % n]
+                  for i in range(a.n_stores)] if a.store_offset == 0 else \
+                 [uids[(i * n // a.n_stores + a.store_offset) % n]
+                  for i in range(a.n_stores)]
     picked = list(dict.fromkeys(picked))
     print(f"抽中 {len(picked)} 库,共 {sum(len(by_uid[u]) for u in picked)} 题",
           flush=True)

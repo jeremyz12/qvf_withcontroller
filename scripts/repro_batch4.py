@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -102,16 +103,44 @@ class AmemSystem:
     name = "amem"
 
     def __init__(self):
-        sys.path.insert(0, r"C:/Users/25243/AppData/Local/Temp/claude/"
-                           r"D--ZZL-cluade/2b238d36-0e89-4591-ac1c-f5ffd6578795/"
-                           r"scratchpad/A-mem")
+        # b35c 接线:源码路径可由 --amem-repo / 环境变量 AMEM_REPO 指定;默认仍为旧路径
+        repo = os.environ.get("AMEM_REPO") or (
+            r"C:/Users/25243/AppData/Local/Temp/claude/"
+            r"D--ZZL-cluade/2b238d36-0e89-4591-ac1c-f5ffd6578795/"
+            r"scratchpad/A-mem")
+        sys.path.insert(0, repo)
         from agentic_memory.memory_system import AgenticMemorySystem
         self._cls = AgenticMemorySystem
         self.stores: dict = {}
+        try:
+            import subprocess
+            commit = subprocess.check_output(
+                ["git", "-C", repo, "rev-parse", "HEAD"], text=True).strip()
+        except Exception:  # noqa: BLE001
+            commit = "unknown"
+        self.row_extra = {"amem_repo": repo, "amem_commit": commit}
+        self.store_extra: dict = {}  # uid -> 摄入期 gpt-4o-mini 用量(只计量)
 
     def ingest(self, uid, sessions):
         m = self._cls(model_name="all-MiniLM-L6-v2",
                       llm_backend="openai", llm_model="gpt-4o-mini")
+        usage = {"amem_ingest_llm_in": 0, "amem_ingest_llm_out": 0,
+                 "amem_ingest_llm_calls": 0}
+        try:  # 计量包装:透传全部参数,只读 response.usage,不改 A-MEM 的调用
+            _cc = m.llm_controller.llm.client.chat.completions
+            _orig = _cc.create
+
+            def _counted(*args, **kw):
+                r = _orig(*args, **kw)
+                u = getattr(r, "usage", None)
+                usage["amem_ingest_llm_calls"] += 1
+                usage["amem_ingest_llm_in"] += getattr(u, "prompt_tokens", 0) or 0
+                usage["amem_ingest_llm_out"] += getattr(u, "completion_tokens", 0) or 0
+                return r
+            _cc.create = _counted
+        except Exception:  # noqa: BLE001
+            pass
+        self.store_extra[uid] = usage
         for s in sessions:
             for attempt in range(3):
                 try:
@@ -242,15 +271,54 @@ class CogneeSystem:
         import cognee
         self._c = cognee
         self._run = asyncio.run
+        # b35c 用量埋点:被动 litellm success 回调,只累计 usage,不改任何调用
+        self._root = None
+        self.usage = {"llm_in": 0, "llm_out": 0, "llm_calls": 0,
+                      "emb_tok": 0, "emb_calls": 0}
+        try:
+            import litellm
+
+            def _cb(kwargs, resp, t0, t1, _u=self.usage):
+                u = getattr(resp, "usage", None)
+                if u is None:
+                    return
+                pt = getattr(u, "prompt_tokens", 0) or 0
+                ct = getattr(u, "completion_tokens", 0) or 0
+                if "embedding" in str(kwargs.get("call_type", "")):
+                    _u["emb_tok"] += pt
+                    _u["emb_calls"] += 1
+                else:
+                    _u["llm_in"] += pt
+                    _u["llm_out"] += ct
+                    _u["llm_calls"] += 1
+            litellm.success_callback.append(_cb)
+        except Exception:  # noqa: BLE001
+            pass
+
+    def set_store_root(self, root):
+        """b35c:把 cognee 的 system/data 根改到隔离目录(不写其全局根)。"""
+        import atexit
+        self._root = Path(root)
+        self._root.mkdir(parents=True, exist_ok=True)
+        self._c.config.system_root_directory(str(self._root / "system"))
+        self._c.config.data_root_directory(str(self._root / "data"))
+        atexit.register(lambda: (self._root / "usage_total.json").write_text(
+            json.dumps(self.usage), encoding="utf-8"))
 
     def ingest(self, uid, sessions):
         c = self._c
+        u0, t0 = dict(self.usage), time.time()
 
         async def go():
             for s in sessions:
                 await c.add(sess_text(s), dataset_name=uid)
             await c.cognify(datasets=[uid])
         self._run(go())
+        if self._root is not None:  # 每库建库用量 sidecar(店根内)
+            with open(self._root / "usage_build.jsonl", "a", encoding="utf-8") as f:
+                f.write(json.dumps({"uid": uid, "n_sessions": len(sessions),
+                                    "build_s": round(time.time() - t0, 1),
+                                    **{k: self.usage[k] - u0[k] for k in u0}}) + "\n")
 
     def search(self, uid, query):
         c = self._c
@@ -397,25 +465,43 @@ def main() -> int:
     ap.add_argument("--questions-file", default="",
                     help="题源 jsonl(uid/qid/qtype/question/gold);仍限 15 库抽样交集")
     ap.add_argument("--out-suffix", default="", help="输出文件后缀")
+    # b35c 接线(仅装载段,协议常量不动):自定义语料 / uid 清单 / 输出路径
+    ap.add_argument("--vols", default="",
+                    help="逗号分隔语料 json;默认保持 VOLS")
+    ap.add_argument("--uids-file", default="",
+                    help="uid 清单(每行一个);给出时替代 sample_stores() 的 picked,保持文件顺序")
+    ap.add_argument("--out", default="",
+                    help="结果 jsonl 完整路径;默认 results/wsc_s5_<name>{suffix}.jsonl")
+    ap.add_argument("--store-root", default="",
+                    help="需落盘系统的店根目录(cognee:system/data 根);默认保持各系统原值")
+    ap.add_argument("--amem-repo", default="",
+                    help="A-MEM 源码目录(相对 ROOT;设为环境变量 AMEM_REPO)")
     a = ap.parse_args()
+    if a.amem_repo:
+        os.environ["AMEM_REPO"] = str(ROOT / a.amem_repo)
     sysm = {"txtai": TxtaiSystem, "lgstore": LgStoreSystem,
             "amem": AmemSystem, "bm25": Bm25System,
             "mstrata": MemStrataSystem, "cognee": CogneeSystem,
             "graphiti": GraphitiSystem, "lightrag": LightRagSystem}[a.system]()
-    out_p = ROOT / f"results/wsc_s5_{sysm.name}{a.out_suffix}.jsonl"
+    if a.store_root and hasattr(sysm, "set_store_root"):
+        sysm.set_store_root(ROOT / a.store_root)
+    out_p = ROOT / a.out if a.out else ROOT / f"results/wsc_s5_{sysm.name}{a.out_suffix}.jsonl"
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in open(out_p, encoding="utf-8")}
+    vols = a.vols.split(",") if a.vols else VOLS
     entries = {}
-    for v in VOLS:
+    for v in vols:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
     if a.questions_file:
         by_uid = {}
-        for q in (json.loads(l) for l in open(ROOT / a.questions_file, encoding="utf-8")):
+        for q in (json.loads(l) for l in open(ROOT / a.questions_file, encoding="utf-8") if l.strip()):
             by_uid.setdefault(q["uid"], []).append(q)
-        picked = [u for u in picked if u in by_uid]
+    if a.uids_file:
+        picked = [u.strip() for u in open(ROOT / a.uids_file, encoding="utf-8") if u.strip()]
+    picked = [u for u in picked if u in by_uid]
     if a.limit_stores:
         picked = picked[:a.limit_stores]
     client = anthropic.Anthropic()
@@ -457,7 +543,10 @@ def main() -> int:
                 "usage_input_tokens": ti, "usage_output_tokens": to,
                 "judge_correct": v.correct, "judge_reason": v.reason,
                 "ingest_seconds": round(ingest_s, 1),
-                "latency_s": round(time.time() - t1, 2)},
+                "build_s": round(ingest_s, 1),
+                "latency_s": round(time.time() - t1, 2),
+                **getattr(sysm, "row_extra", {}),
+                **getattr(sysm, "store_extra", {}).get(uid, {})},
                 ensure_ascii=False) + "\n")
             fh.flush()
         print(f"[{uid}] ingested {len(sessions)} in {ingest_s:.0f}s, "
@@ -465,6 +554,7 @@ def main() -> int:
     rows = [json.loads(l) for l in open(out_p, encoding="utf-8")]
     acc = sum(1 for r in rows if r.get("judge_correct")) / len(rows) * 100
     print(f"\n{sysm.name}: {acc:.2f}% (n={len(rows)})")
+    print(f"judge total_usage (this process): {judge.total_usage}", flush=True)
     return 0
 
 

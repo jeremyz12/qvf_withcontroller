@@ -190,18 +190,36 @@ def main() -> int:
     ap.add_argument("--rerank-llm", default="",
                     help="只把 recognition-memory 重排(DSPyFilter)的 LLM 换掉,"
                          "索引仍是 gpt-4o-mini 建的;诊断臂,非 README 默认")
+    # b35c plumbing (README section 2): custom corpus / uid list / questions / out path
+    ap.add_argument("--vols", default="",
+                    help="comma-separated corpus json paths (default: VOLS)")
+    ap.add_argument("--uids-file", default="",
+                    help="uid list, one per line; replaces sample_stores() picked, file order kept")
+    ap.add_argument("--questions-file", default="",
+                    help="questions jsonl (uid/qid/qtype/question/gold); rebuilds by_uid")
+    ap.add_argument("--out", default="",
+                    help="full output jsonl path (default results/wsc_s5_hipporag2{suffix}.jsonl)")
     a = ap.parse_args()
 
-    out_p = ROOT / f"results/wsc_s5_hipporag2{a.out_suffix}.jsonl"
+    out_p = ROOT / a.out if a.out else ROOT / f"results/wsc_s5_hipporag2{a.out_suffix}.jsonl"
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"] for l in open(out_p, encoding="utf-8")}
 
+    vols = a.vols.split(",") if a.vols else VOLS
     entries = {}
-    for v in VOLS:
+    for v in vols:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
+    if a.questions_file:
+        by_uid = {}
+        for q in (json.loads(l) for l in open(ROOT / a.questions_file, encoding="utf-8")
+                  if l.strip()):
+            by_uid.setdefault(q["uid"], []).append(q)
+    if a.uids_file:
+        picked = [u.strip() for u in open(ROOT / a.uids_file, encoding="utf-8") if u.strip()]
+    picked = [u for u in picked if u in by_uid]
     picked = picked[a.store_offset:]
     if a.limit_stores:
         picked = picked[:a.limit_stores]
@@ -293,6 +311,7 @@ def main() -> int:
                 "usage_input_tokens": ti, "usage_output_tokens": to,
                 "judge_correct": v.correct, "judge_reason": v.reason,
                 "ingest_seconds": round(ingest_s, 1),
+                "build_s": round(ingest_s, 1),
                 "latency_s": round(time.time() - t1, 2),
                 "retrieve_s": round(retrieve_s, 2),
                 "read_s": round(read_s, 2),

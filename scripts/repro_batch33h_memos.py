@@ -268,9 +268,21 @@ def main() -> int:
     ap.add_argument("--drop-top-p", action="store_true",
                     help="传输层丢弃 top_p(Anthropic OpenAI 兼容端点要求 "
                          "temperature/top_p 二选一);其余请求原样。")
+    # b35c 接线(仅装载段;协议常量与 MemOSSystem/run_uid 不动)
+    ap.add_argument("--vols", default="",
+                    help="逗号分隔语料 json;默认保持 repro_batch2.VOLS")
+    ap.add_argument("--uids-file", default="",
+                    help="uid 清单(每行一个);给出时替代 sample_stores() 的 picked")
+    ap.add_argument("--questions-file", default="",
+                    help="题集 jsonl(uid/qid/qtype/question/gold);给出时 by_uid 从它重建")
+    ap.add_argument("--out", default="",
+                    help="结果 jsonl 完整路径;默认 results/wsc_s5_memos{suffix}.jsonl")
+    ap.add_argument("--store-root", default="",
+                    help="店根目录;默认 results/memos_stores{suffix or _60q}")
     a = ap.parse_args()
 
-    store_root = ROOT / "results" / f"memos_stores{a.out_suffix or '_60q'}"
+    store_root = (ROOT / a.store_root if a.store_root else
+                  ROOT / "results" / f"memos_stores{a.out_suffix or '_60q'}")
     store_root.mkdir(parents=True, exist_ok=True)
     sysm = MemOSSystem(
         llm_model=a.llm_model, llm_api_base=a.llm_api_base,
@@ -278,16 +290,27 @@ def main() -> int:
         embed_model=a.embed_model, embed_dims=a.embed_dims,
         store_root=store_root, top_k=a.top_k, drop_top_p=a.drop_top_p)
 
-    out_p = ROOT / f"results/wsc_s5_{sysm.name}{a.out_suffix}.jsonl"
+    out_p = (ROOT / a.out if a.out else
+             ROOT / f"results/wsc_s5_{sysm.name}{a.out_suffix}.jsonl")
     done = set()
     if out_p.exists():
         done = {json.loads(l)["question_id"]
                 for l in open(out_p, encoding="utf-8")}
+    vols = a.vols.split(",") if a.vols else VOLS
     entries = {}
-    for v in VOLS:
+    for v in vols:
         for e in json.loads((ROOT / v).read_text(encoding="utf-8")):
             entries.setdefault(e["uid"], e)
     picked, by_uid = sample_stores()
+    if a.questions_file:
+        by_uid = {}
+        for q in (json.loads(l) for l in
+                  open(ROOT / a.questions_file, encoding="utf-8") if l.strip()):
+            by_uid.setdefault(q["uid"], []).append(q)
+    if a.uids_file:
+        picked = [u.strip() for u in
+                  open(ROOT / a.uids_file, encoding="utf-8") if u.strip()]
+    picked = [u for u in picked if u in by_uid]
     if a.limit_stores:
         picked = picked[:a.limit_stores]
 
@@ -340,6 +363,7 @@ def main() -> int:
                 "usage_input_tokens": ti, "usage_output_tokens": to,
                 "judge_correct": v.correct, "judge_reason": v.reason,
                 "ingest_seconds": round(ingest_s, 1),
+                "build_s": round(ingest_s, 1),
                 "latency_s": round(time.time() - t1, 2),
                 # MemOS 侧写入成本(每条目一次,逐题重复记录以便聚合)
                 "memos_llm_model": a.llm_model,
