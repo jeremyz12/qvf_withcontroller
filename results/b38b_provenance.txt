@@ -1,0 +1,90 @@
+## 溯源块(批 38-B)
+
+- git rev: `b2b01848f1dd3e9ee5a48e460e7a698f97a018a0`(本轨道全程未 git add / commit / push)
+- scripts//qvf 工作区改动:
+```
+?? scripts/b35_backfill_slot_class.py
+?? scripts/b35c_langmem_run.py
+?? scripts/b35c_mstrata_run.py
+?? scripts/b35c_run_mem0.py
+?? scripts/b35c_score_letta_fs.py
+?? scripts/b35c_score_trace.py
+?? scripts/b35c_summarize_langmem.py
+?? scripts/b35c_summarize_mem0.py
+?? scripts/b35c_sumrag_run.py
+?? scripts/b38b_provenance.py
+?? scripts/b38b_score.py
+?? scripts/wt_qvf_prototype_b38b.py
+```
+- 语料/题源 `data/wikistate_full_ALL_v24.json`: sha256 `c62291897f22bc5632e8b155bb7d997ea4880b59ef40d3b5a5e8be5af4060749` (8,118,849 B, mtime 2026-09-02 01:23:15)
+- 语料/题源 `results/b35_questions_sample36.jsonl`: sha256 `c5a0532c4bb83709da172ceed3c81be610b440924eee796fd2947b514e7ac5e2` (36,145 B, mtime 2026-09-03 19:36:14)
+- 语料/题源 `results/b35_sample_uids.txt`: sha256 `1bf4e3098177e49085e0c9b6eff5efc1633b8bc9ee384438832fc2d17039d30a` (802 B, mtime 2026-09-03 19:33:58)
+
+### 建卡器(写入侧)
+
+- 冻结件 `scripts/wt_qvf_prototype.py` sha256 `56b64f146f46354c44c9a86bf2a0ae1ccc097d4e5844bb51e2715c84cb479edb` (**全程只读,未改**)
+- 批 38 副本 `scripts/wt_qvf_prototype_b38.py` sha256 `edecece48d8d56aa50f6e39a69c925925a0b2e9b2943e5a367baf6e6e4001018`(**全程只读,未改**,建 v47s 用)
+- 本批副本 `scripts/wt_qvf_prototype_b38b.py` sha256 `f34ac7a68794579e3e9f76d2b6a2c6336e14839fbaaf9d1d79e711d682dc73ff`
+- 与批 38 副本(`wt_qvf_prototype_b38.py`)的差异: `1 file changed, 180 insertions(+)`(预注册 §四称 +172 行纯新增、0 行删改 —— 上面这行是机械核验)
+
+- **本批(v47sk)建店命令**(results/opt_batch38b_prereg.md §五,4 分片并行;
+  v45 / v47s 全程只读):
+  ```
+  QVF_CARD_OWNER_GATE=0 QVF_CARD_MODEL=claude-sonnet-5 QVF_CARD_THINKING=off \
+  QVF_CARD_KEYS=1 QVF_DATE_STRICT=1 QVF_CARD_SLOT_CANON=1 \
+  QVF_CARD_DATE_REFINE=1 QVF_CARD_TRACE=1 PYTHONUTF8=1 python -u \
+    scripts/wt_qvf_prototype_b38b.py --phase write \
+    --data data/wikistate_full_ALL_v24.json \
+    --cards-dir results/wt_cards_v47sk --uids <shard>   # 4 分片并行
+  ```
+  与 v47s(批 38)的建店命令相比,唯一差异是抽取器脚本换成
+  `wt_qvf_prototype_b38b.py`、店目录换成 `wt_cards_v47sk`,以及新增
+  `QVF_CARD_KEYS=1 QVF_DATE_STRICT=1 QVF_CARD_SLOT_CANON=1
+  QVF_CARD_DATE_REFINE=1` 四个旗标(前两个任务书点名但对本批目标零/弱作用,
+  后两个是预注册 §四 授权补的最小规范化步骤;详见预注册全文)。
+
+### 建店窗 / 三店目录指纹(v45、v47s 全程只读,须与预注册逐字相同)
+
+- 店 `results/wt_cards_v45`: 144 文件 / 8,288 记录 | 建店窗 2026-09-02 16:52:05 → 2026-09-02 17:10:18 | 目录 sha256(名+内容拼接) `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`
+  - 对照预注册 §三 记录的建店前指纹(144 文件 / 8,288 记录 / sha256 `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`): **逐字相同,机械证明未被本批触碰**
+- 店 `results/wt_cards_v47s`: 36 文件 / 1,743 记录 | 建店窗 2026-09-03 22:23:22 → 2026-09-03 22:46:51 | 目录 sha256(名+内容拼接) `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd`
+  - 对照预注册 §三 记录的建店前指纹(36 文件 / 1,743 记录 / sha256 `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd`): **逐字相同,机械证明未被本批触碰**
+- 店 `results/wt_cards_v47sk`: 36 文件 / 1,639 记录 | 建店窗 2026-09-03 23:22:17 → 2026-09-03 23:30:56 | 目录 sha256(名+内容拼接) `2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131`
+
+注:`results/wt_cards_v45` 是批 33-A 的 144 链全量店;`v47s` 是批 38 的 36 链抽样店。`v47sk` 是本批新建的 36 链抽样店(from-scratch,非增量)。
+
+### 逐链建店成本(claude-sonnet-5 $2.00/M in、$10.00/M out)
+
+| 日志 | 条目 | in tok | out tok | $ |
+|---|---|---|---|---|
+| `build_v47sk_0.log` | 9 | 230,569 | 73,607 | $1.197 |
+| `build_v47sk_1.log` | 9 | 234,185 | 77,540 | $1.244 |
+| `build_v47sk_2.log` | 9 | 231,238 | 85,219 | $1.315 |
+| `build_v47sk_3.log` | 9 | 232,330 | 78,330 | $1.248 |
+| **合计** | **36** | **928,322** | **314,696** | **$5.004** |
+
+逐链均值:in 25,787 / out 8,742 tok = $0.1390/链(冒烟 $0.139/链、批 38 同量级 $0.14x/链)。
+
+| 店 | 抽取模型 | 链 | 写入 in tok(卡片文件) | 写入 out tok (卡片文件) | $ |
+|---|---|---|---|---|---|
+| results/wt_cards_v45 | claude-haiku-4-5 | 36 | 765,882 | 271,251 | $2.122 |
+| results/wt_cards_v47s | claude-sonnet-5 | 36 | 928,322 | 297,444 | $4.831 |
+| results/wt_cards_v47sk | claude-sonnet-5 | 36 | 928,322 | 314,696 | $5.004 |
+
+(v45 / v47s 两行是从各自既有店里挑出这 36 个文件读的只读复核,不是重建;v47sk 一行应与上面逐链日志合计在四舍五入内一致 —— 两者独立来源,一致即证明日志没有漏记或重复计的链。)
+
+### 读者臂运行时窗 / 行数 / 成本
+
+| 臂 | 产物 | 行数 | 去重后 qid 数 | 店 | 读者 | 文件 mtime | in tok | out tok | $ | 累计延迟 h |
+|---|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47sk@haiku-4-5 | `results/b38b_smoc_v47sk_haiku-4-5.jsonl` | 140 | 140 | wt_cards_v47sk | claude-haiku-4-5 | 2026-09-04 00:24:28 | 348,950 | 64,965 | $0.674 | 0.20 |
+| smoc_v47sk@sonnet-5 | `results/b38b_smoc_v47sk_sonnet-5.jsonl` | 140 | 140 | wt_cards_v47sk | claude-sonnet-5 | 2026-09-04 00:26:20 | 454,237 | 99,289 | $1.901 | 0.32 |
+
+### 读者跑批日志(启动命令与 ARM DONE 汇总行)
+
+- `results/b38b_reader_haiku.log` (mtime 2026-09-04 00:24:28): `[plan] 140 questions, 0 already done, 140 to run | arm=smoc reader=anthropic:claude-haiku-4-5 max_tokens=800 temperature_sent=True`
+  - `B36B ARM DONE anthropic:claude-haiku-4-5/smoc: 124/140 = 88.6% | skipped(budget)=0 | reader spend $8.811 | judge {'input_tokens': 15252, 'output_tokens': 5425, 'calls': 140}`
+- `results/b38b_reader_sonnet.log` (mtime 2026-09-04 00:26:20): `[plan] 140 questions, 0 already done, 140 to run | arm=smoc reader=anthropic:claude-sonnet-5 max_tokens=4000 temperature_sent=False`
+  - `B36B ARM DONE anthropic:claude-sonnet-5/smoc: 128/140 = 91.4% | skipped(budget)=0 | reader spend $10.039 | judge {'input_tokens': 16575, 'output_tokens': 7250, 'calls': 140}`
+
+**本批总花费(建店 + 读者,判官另计)= $7.58** (建店 $5.00 + 读者 $2.58)。

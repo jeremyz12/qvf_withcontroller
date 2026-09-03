@@ -1,0 +1,208 @@
+# Batch 38-B — write-side normalisation: contract problem or model problem?
+
+Hypothesis under test (from batch 38 §九): batch 38 found that swapping the card-builder extractor haiku->sonnet-5 closed the missing-row gap (122/133 -> 133/133 vs gold) but end-to-end only moved 91.4->92.9 (haiku reader) / 90.7->92.1 (sonnet-5 reader), both n.s., still short of the 97.1% plain full-context ceiling. Post-hoc diagnosis pinned the gap on two write-side regressions introduced BY the stronger extractor: slot-name fragmentation (v45 2/36 chains -> v47s 7/36) and date-precision loss (v47s 24/133 matched gold rows lose day precision, v45 only 2/122). Batch 38-B tests whether these are CONTRACT problems, fixable by deterministic post-extraction normalisation on the SAME extractor/corpus/questions/reader/runner (store results/wt_cards_v47sk, same 36 chains), rather than MODEL problems. Four pre-registered hypotheses (results/opt_batch38b_prereg.md §二): H1 fragmented chains <= 2/36; H2 batch-38's 26 fragmented-chain questions >= 88% @sonnet5; H3 overall >= 95% and n.s. vs plainctx mt4000; H4 ledger fidelity stays 133/133 (missing=0, date_off=0).
+
+Questions: results/b35_questions_sample36.jsonl (140 qids / 36 chains); corpus data/wikistate_full_ALL_v24.json (v2.4).
+Runner: scripts/lb_reader_arm_b36b.py (unchanged from batch 36-B / 38).
+Builder: scripts/wt_qvf_prototype_b38b.py — b38 copy +172 lines pure-addition, two post-extraction normalisation flags (QVF_CARD_SLOT_CANON, QVF_CARD_DATE_REFINE); see results/b38b_provenance.txt for the exact diff.
+
+## 1. Accuracy / cost table (all restricted to the same 140 qids)
+
+| arm | reader | note | n | acc | change_count | count_before | first_vs_last | longest_tenure | in tok | out tok | median lat s | $/q | $ total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47sk@haiku  (canon+date-refine ledger) | haiku-4-5 | 本批 | 140 | **88.6%** | 88.9 | 75.0 | 97.2 | 93.8 | 2492 | 464 | 5.20 | $0.00481 | $0.674 |
+| smoc_v47sk@sonnet5(canon+date-refine ledger) | sonnet-5 | 本批 | 140 | **91.4%** | 88.9 | 83.3 | 97.2 | 96.9 | 3245 | 709 | 7.36 | $0.01358 | $1.901 |
+| smoc_v47s@haiku   (sonnet-5-built ledger) | haiku-4-5 | 批 38 | 140 | **92.9%** | 88.9 | 86.1 | 100.0 | 96.9 | 2644 | 465 | 5.46 | $0.00497 | $0.696 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger) | sonnet-5 | 批 38 | 140 | **92.1%** | 86.1 | 94.4 | 97.2 | 90.6 | 3465 | 772 | 7.29 | $0.01465 | $2.050 |
+| smoc_v45@haiku    (haiku-built ledger) | haiku-4-5 | 批 33-A | 140 | **91.4%** | 86.1 | 86.1 | 100.0 | 93.8 | 2841 | 467 | 4.79 | $0.00518 | $0.725 |
+| smoc_v45@sonnet5  (haiku-built ledger) | sonnet-5 | 批 36-B | 140 | **90.7%** | 83.3 | 88.9 | 100.0 | 90.6 | 3713 | 726 | 7.13 | $0.01469 | $2.056 |
+| plainctx@sonnet5  (full text, mt800) | sonnet-5 | 批 36 | 140 | **87.9%** | 94.4 | 94.4 | 94.4 | 65.6 | 18549 | 444 | 5.01 | $0.04154 | $5.816 |
+| plainctx@sonnet5  (trunc-corrected mt4000) | sonnet-5 | 批 36 | 140 | **97.1%** | 100.0 | 97.2 | 100.0 | 90.6 | 18549 | 469 | 4.88 | $0.04179 | $5.850 |
+| plainctx@haiku    (full text, mt800) | haiku-4-5 | 批 36 | 140 | **70.0%** | 52.8 | 75.0 | 91.7 | 59.4 | 13570 | 199 | 2.94 | $0.01456 | $2.039 |
+
+### max_tokens 上限命中数(按 stop_reason 字段,凡该字段存在即报)
+
+| arm | reader | capped rows | rows w/ stop_reason |
+|---|---|---|---|
+| smoc_v47sk@haiku  (canon+date-refine ledger) | haiku-4-5 | 0 | 140 |
+| smoc_v47sk@sonnet5(canon+date-refine ledger) | sonnet-5 | 0 | 140 |
+| smoc_v47s@haiku   (sonnet-5-built ledger) | haiku-4-5 | 1 | 140 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger) | sonnet-5 | 0 | 140 |
+| smoc_v45@haiku    (haiku-built ledger) | haiku-4-5 | (no stop_reason field) | - |
+| smoc_v45@sonnet5  (haiku-built ledger) | sonnet-5 | 0 | 140 |
+| plainctx@sonnet5  (full text, mt800) | sonnet-5 | (no stop_reason field) | - |
+| plainctx@sonnet5  (trunc-corrected mt4000) | sonnet-5 | 0 | 20 |
+| plainctx@haiku    (full text, mt800) | haiku-4-5 | (no stop_reason field) | - |
+
+## 2. Paired McNemar (exact binomial sign test) on the 140 ids
+
+Pre-registered comparisons (results/opt_batch38b_prereg.md §二):
+  n=140 | A=smoc_v47sk@haiku  (canon+date-refine ledger)  88.6%  B=smoc_v47s@haiku   (sonnet-5-built ledger)   92.9% | delta(A-B)  -4.29pp | A-only-right= 6 B-only-right=12 | McNemar exact p=0.2379
+  n=140 | A=smoc_v47sk@sonnet5(canon+date-refine ledger)  91.4%  B=smoc_v47s@sonnet5 (sonnet-5-built ledger)   92.1% | delta(A-B)  -0.71pp | A-only-right= 9 B-only-right=10 | McNemar exact p=1
+  n=140 | A=smoc_v47sk@sonnet5(canon+date-refine ledger)  91.4%  B=plainctx@sonnet5  (trunc-corrected mt4000)  97.1% | delta(A-B)  -5.71pp | A-only-right= 3 B-only-right=11 | McNemar exact p=0.05737
+  n=140 | A=smoc_v47sk@haiku  (canon+date-refine ledger)  88.6%  B=smoc_v45@haiku    (haiku-built ledger)      91.4% | delta(A-B)  -2.86pp | A-only-right=10 B-only-right=14 | McNemar exact p=0.5413
+
+Supporting comparisons:
+  n=140 | A=smoc_v47sk@sonnet5(canon+date-refine ledger)  91.4%  B=smoc_v47sk@haiku  (canon+date-refine ledger)  88.6% | delta(A-B)  +2.86pp | A-only-right= 6 B-only-right= 2 | McNemar exact p=0.2891
+  n=140 | A=smoc_v47sk@haiku  (canon+date-refine ledger)  88.6%  B=plainctx@haiku    (full text, mt800)        70.0% | delta(A-B) +18.57pp | A-only-right=36 B-only-right=10 | McNemar exact p=0.0001564
+  n=140 | A=smoc_v47sk@sonnet5(canon+date-refine ledger)  91.4%  B=plainctx@sonnet5  (full text, mt800)        87.9% | delta(A-B)  +3.57pp | A-only-right=15 B-only-right=10 | McNemar exact p=0.4244
+  n=140 | A=smoc_v47sk@sonnet5(canon+date-refine ledger)  91.4%  B=smoc_v45@sonnet5  (haiku-built ledger)      90.7% | delta(A-B)  +0.71pp | A-only-right=10 B-only-right= 9 | McNemar exact p=1
+  n=140 | A=smoc_v47s@haiku   (sonnet-5-built ledger)   92.9%  B=smoc_v45@haiku    (haiku-built ledger)      91.4% | delta(A-B)  +1.43pp | A-only-right=10 B-only-right= 8 | McNemar exact p=0.8145
+  n=140 | A=smoc_v47s@sonnet5 (sonnet-5-built ledger)   92.1%  B=smoc_v45@sonnet5  (haiku-built ledger)      90.7% | delta(A-B)  +1.43pp | A-only-right=11 B-only-right= 9 | McNemar exact p=0.8238
+
+## 3. Per-chain view: chains where the v45 ledger lost to plainctx under BOTH readers — did v47s / v47sk fix them?
+
+Chains meeting the criterion: 3 / 36
+
+| chain | qids v45 lost (both readers) | v47s@h fixed | v47s@s5 fixed | v47sk@h fixed | v47sk@s5 fixed | v47sk newly broken (any reader) |
+|---|---|---|---|---|---|---|
+| wikiP54001-Q16225986 | 3 (v2cb, v2cc, v2lt) | 3 | 3 | 3 | 3 | 0 |
+| wikiP551002-Q107297 | 1 (v2cc) | 1 | 1 | 1 | 1 | 0 |
+| wikiP551003-Q20512700 | 2 (v2cc, v2lt) | 2 | 2 | 2 | 2 | 0 |
+| **total** | **6** | **6** | **6** | **6** | **6** | **0** |
+
+("newly broken" counts questions in those same chains that v45 got right and v47sk got wrong, under either reader.)
+
+## 4. Write-side diagnostic: compiled ledger vs gold chain (three stores)
+
+For each chain, the slot's dated value sequence is read out of the store exactly as repro_batch3.render_card_ledger builds it (stated_date, else the source memory's session date), then matched 1-1 against the corpus field chain[*].{value,date}.
+  exact   = gold row matched on normalised value AND same year
+  date-off= value matched but the year differs
+  missing = gold row not present in the ledger at all
+  extra   = ledger rows in the same slot lane that match no gold row
+
+| store | extractor | gold rows | exact | date-off | missing | extra | total cards | perfect chains |
+|---|---|---|---|---|---|---|---|---|
+| v45 | claude-haiku-4-5 | 133 | **122** (91.7%) | 0 | **11** | 13 | 2003 | 31/36 |
+| v47s | claude-sonnet-5 | 133 | **133** (100.0%) | 0 | **0** | 4 | 1743 | 36/36 |
+| v47sk | claude-sonnet-5+canon | 133 | **131** (98.5%) | 0 | **2** | 7 | 1639 | 35/36 |
+
+### Per-chain diff, v47s vs v47sk (did the patch change the compiled ledger?)
+
+| chain | gold | v47s exact/date-off/missing/extra | v47sk exact/date-off/missing/extra | v47s lane | v47sk lane |
+|---|---|---|---|---|---|
+| wikiP108008-Q53283502 | 3 | 3/0/0/0 | 3/0/0/2 | job | employer,position |
+| wikiP108009-Q64855331 | 3 | 3/0/0/0 | 3/0/0/2 | job | position |
+| wikiP39000-Q4976518 | 3 | 3/0/0/1 | 3/0/0/0 | committee_membership,family_composition,occupation_role | position |
+| wikiP39003-Q6248447 | 3 | 3/0/0/0 | 3/0/0/1 | political_position | position |
+| wikiP39037-Q3525068 | 4 | 4/0/0/0 | 2/0/2/0 | occupation,parliament_membership | position |
+| wikiP39039-Q11801709 | 8 | 8/0/0/1 | 8/0/0/2 | civic_office,parliament_membership | position |
+| wikiP54020-Q98594955 | 6 | 6/0/0/1 | 6/0/0/0 | cycling_team | team |
+| wikiP551001-Q20667184 | 4 | 4/0/0/1 | 4/0/0/0 | residence,residence_area | residence |
+
+(8 of 36 chains differ between v47s and v47sk on all four counts; the rest are identical.)
+
+### Per-chain diff, v45 vs v47s (retained from batch 38, reference only)
+
+| chain | gold | v45 exact/date-off/missing/extra | v47s exact/date-off/missing/extra | v45 lane | v47s lane |
+|---|---|---|---|---|---|
+| wikiP39003-Q6248447 | 3 | 3/0/0/1 | 3/0/0/0 | academic_position,political_position | political_position |
+| wikiP39006-Q5220520 | 3 | 1/0/2/2 | 3/0/0/0 | political_position,position | public_office |
+| wikiP39017-Q24568849 | 5 | 1/0/4/5 | 5/0/0/0 | household_composition,position | civic_role,parliament_membership |
+| wikiP39037-Q3525068 | 4 | 1/0/3/0 | 4/0/0/0 | occupation | occupation,parliament_membership |
+| wikiP39039-Q11801709 | 8 | 8/0/0/0 | 8/0/0/1 | parliament_membership,position | civic_office,parliament_membership |
+| wikiP54001-Q16225986 | 4 | 3/0/1/1 | 4/0/0/0 | cycling_team,team_size | cycling_team |
+| wikiP54020-Q98594955 | 6 | 6/0/0/0 | 6/0/0/1 | cycling_team | cycling_team |
+| wikiP551001-Q20667184 | 4 | 4/0/0/0 | 4/0/0/1 | residence | residence,residence_area |
+| wikiP551002-Q107297 | 4 | 3/0/1/1 | 4/0/0/0 | residence | residence |
+| wikiP551003-Q20512700 | 3 | 3/0/0/1 | 3/0/0/0 | residence | residence |
+| wikiP551006-Q57870878 | 4 | 4/0/0/1 | 4/0/0/0 | residence,residence_update_needed | residence |
+
+(11 of 36 chains differ; the rest are identical.)
+
+### Slot-name vocabulary (write-side, all 36 chains, three stores)
+
+- **v45**: 2003 cards, 962 distinct slot names; top 12 = hobby(85), residence(32), cycling_team(29), employer(23), travel_plans(22), political_position(19), education(18), travel_history(17), job_title(16), commute_method(15), residence_location(15), location(14)
+- **v47s**: 1743 cards, 908 distinct slot names; top 12 = cycling_team(34), parliament_membership(26), hobby(25), residence(25), habit(19), residence_city(18), travel_history(16), employer(16), recent_activity(15), pet(13), gift_purchase(12), clothing_purchase(12)
+- **v47sk**: 1639 cards, 702 distinct slot names; top 12 = residence(97), device(76), position(67), team(35), employer(30), other:hobby(29), relationship(29), location(23), hobby(21), activity(13), habit(12), other:habit(12)
+
+## 5. Slot-name fragmentation (three stores)
+
+A chain is 'fragmented' in a store when the gold chain's values land under MORE THAN ONE card `slot` name. The ledger renderer prints `slot: value` per row, so a reader asked 'how many times did my position change' counts only one of the lanes.
+
+| chain | gold rows | v45 slot names | v47s slot names | v47sk slot names |
+|---|---|---|---|---|
+| wikiP108008-Q53283502 | 3 | employer | job | employer, position |
+| wikiP39000-Q4976518 | 3 | political_position | committee_membership, occupation_role | position |
+| wikiP39017-Q24568849 | 5 | position | civic_role, parliament_membership | position |
+| wikiP39023-Q18527003 | 5 | political_position | parliament_membership, public_office | position |
+| wikiP39033-Q5331705 | 6 | political_position | civic_appointment, parliament_membership | position |
+| wikiP39037-Q3525068 | 4 | occupation | occupation, parliament_membership | position |
+| wikiP39039-Q11801709 | 8 | parliament_membership, position | civic_office, parliament_membership | position |
+| wikiP551000-Q19845625 | 3 | europe_trip_destinations, residence_country | residence_country, upcoming_trip | residence |
+
+Chains whose gold values are split across >1 card slot name: **v45 2/36, v47s 7/36, v47sk 1/36**.
+
+**H1 判据(results/opt_batch38b_prereg.md §二)**: v47sk 碎片化链数 <= 2/36 记「证实」;落在 3-6 之间记「部分证实」;仍为 7 记「被否定」。 本批实测 v47sk = **1/36**。
+
+### 3.x Accuracy split by v47s fragmentation (batch-38 partition, kept fixed) — v47sk vs v47s vs plainctx
+
+Partition is v47s's own fragmentation (frozen from batch 38, NOT recomputed on v47sk) — this is the 26-question / 114-question split named in the batch 38-B task.
+
+| subset | n | v47sk@sonnet5 | v47sk@haiku | v47s@sonnet5 | v47s@haiku | v45@sonnet5 | v45@haiku | plainctx@sonnet5 mt4000 |
+|---|---|---|---|---|---|---|---|---|
+| v47s-fragmented chains (26) | 26 | **73.1%** | 73.1% | 69.2% | 88.5% | 88.5% | 88.5% | 92.3% |
+| v47s single-slot chains (114) | 114 | **95.6%** | 92.1% | 97.4% | 93.9% | 91.2% | 92.1% | 98.2% |
+
+**H2 判据**: 批 38 那 26 道碎片化题上 v47sk@sonnet5 >= 88% 记「证实」;未过 88% 但显著高于 v47s@sonnet5 的 69.2% 记「部分证实」;<= 76.9% (即只修好 <=2 题)记「被否定」。 本批实测 v47sk@sonnet5 = **73.1%** (19/26)。
+
+Paired McNemar on the two subsets:
+  n= 26 | 26 fragmented | A=smoc_v47sk@sonnet5(canon+date-refine ledger) B=plainctx@sonnet5  (trunc-corrected mt4000) | A-only-right=1 B-only-right=6 | McNemar exact p=0.125
+  n= 26 | 26 fragmented | A=smoc_v47sk@sonnet5(canon+date-refine ledger) B=smoc_v47s@sonnet5 (sonnet-5-built ledger) | A-only-right=6 B-only-right=5 | McNemar exact p=1
+  n= 26 | 26 fragmented | A=smoc_v47sk@haiku  (canon+date-refine ledger) B=smoc_v47s@haiku   (sonnet-5-built ledger) | A-only-right=1 B-only-right=5 | McNemar exact p=0.2188
+  n=114 | 114 other | A=smoc_v47sk@sonnet5(canon+date-refine ledger) B=plainctx@sonnet5  (trunc-corrected mt4000) | A-only-right=2 B-only-right=5 | McNemar exact p=0.4531
+  n=114 | 114 other | A=smoc_v47sk@sonnet5(canon+date-refine ledger) B=smoc_v47s@sonnet5 (sonnet-5-built ledger) | A-only-right=3 B-only-right=5 | McNemar exact p=0.7266
+  n=114 | 114 other | A=smoc_v47sk@haiku  (canon+date-refine ledger) B=smoc_v47s@haiku   (sonnet-5-built ledger) | A-only-right=5 B-only-right=7 | McNemar exact p=0.7744
+
+**Residual failures on the 26 fragmented questions (v47sk@sonnet5):** 7 / 26 still wrong. Of those, 5 were answered correctly by v47s@sonnet5 (regression fixed elsewhere would show here as still-broken), 4 by v45@sonnet5, 6 by plainctx@sonnet5.
+
+### Questions BOTH v47sk readers still get wrong
+
+- `wikiP108009-Q64855331_v2cc` [change_count] gold=2 | v47sk@haiku='3' | v47sk@sonnet5='3 times' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39003-Q6248447_v2cb` [count_before] gold=2 | v47sk@haiku='3' | v47sk@sonnet5='3' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39003-Q6248447_v2cc` [change_count] gold=2 | v47sk@haiku='3' | v47sk@sonnet5='3 times' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39017-Q24568849_v2lt` [longest_tenure] gold='High Sheriff of Hampshire' | v47sk@haiku='Member of the 2nd Parliament of the United Kingdom (hel' | v47sk@sonnet5='Member of the 2nd Parliament of the United Kingdom (hel' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 also wrong
+- `wikiP39033-Q5331705_v2cb` [count_before] gold=6 | v47sk@haiku='5' | v47sk@sonnet5='5' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=X | plainctx@sonnet5 RIGHT
+- `wikiP39037-Q3525068_v2cb` [count_before] gold=4 | v47sk@haiku='2' | v47sk@sonnet5='2' | v45@haiku=OK v45@sonnet5=X | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39037-Q3525068_v2cc` [change_count] gold=3 | v47sk@haiku='1' | v47sk@sonnet5='1' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39037-Q3525068_v2fl` [first_vs_last] gold='first: member of the 13th Parliament of Great Britain; most recent: colonial governor of Guadeloupe' | v47sk@haiku='Your first position was member of the 13th Parliament o' | v47sk@sonnet5='Your first position was as a member of the 13th Parliam' | v45@haiku=OK v45@sonnet5=OK | v47s@haiku=OK v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39039-Q11801709_v2cb` [count_before] gold=8 | v47sk@haiku='10' | v47sk@sonnet5='10' | v45@haiku=OK v45@sonnet5=X | v47s@haiku=X v47s@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39039-Q11801709_v2cc` [change_count] gold=7 | v47sk@haiku='9' | v47sk@sonnet5='9' | v45@haiku=OK v45@sonnet5=X | v47s@haiku=X v47s@sonnet5=X | plainctx@sonnet5 RIGHT
+
+10 question(s) both v47sk readers get wrong.
+
+### Date granularity loss (three stores)
+
+The gold chain carries day-precision dates for some rows (e.g. `1857-03-01`); the card's `stated_date` may coarsen that to the year. Counted over the gold rows each store actually matched:
+
+- **v45**: 2 / 122 matched gold rows lose day precision in the rendered ledger (1.6%)
+- **v47s**: 24 / 133 matched gold rows lose day precision in the rendered ledger (18.0%)
+- **v47sk**: 0 / 131 matched gold rows lose day precision in the rendered ledger (0.0%)
+
+**H4 判据**: 编译账目 vs 金标仍 133/133(missing=0、date_off=0)记「证实」;出现 missing>0 或 date_off>0 记「规范化引入了新的保真度代价」。 本批实测 v47sk: missing=2, date_off=0, exact=131/133 (gold=133)。
+
+## 6. Cost summary
+
+### 6.1 Reader-arm cost (usage tokens, this batch's two arms)
+
+| arm | reader | in tok total | out tok total | $ |
+|---|---|---|---|---|
+| smoc_v47sk@haiku  (canon+date-refine ledger) | haiku-4-5 | 348,950 | 64,965 | $0.674 |
+| smoc_v47sk@sonnet5(canon+date-refine ledger) | sonnet-5 | 454,237 | 99,289 | $1.901 |
+| **reader total** | | | | **$2.575** |
+
+### 6.2 Builder cost (scratchpad/b38b/build_v47sk_*.log, if present)
+
+| log | chains | in tok | out tok | $ |
+|---|---|---|---|---|
+| `build_v47sk_0.log` | 9 | 230,569 | 73,607 | $1.197 |
+| `build_v47sk_1.log` | 9 | 234,185 | 77,540 | $1.244 |
+| `build_v47sk_2.log` | 9 | 231,238 | 85,219 | $1.315 |
+| `build_v47sk_3.log` | 9 | 232,330 | 78,330 | $1.248 |
+| **合计** | **36** | **928,322** | **314,696** | **$5.004** |
+
+逐链均值:in 25,787 / out 8,742 tok = $0.1390/链 (cf. 批 38 smoke $0.139/链、批 38 全店 ~ 同量级)。
+
+**本批总花费(建店 + 读者,判官另计)= $7.58** (建店 $5.00 + 读者 $2.58)。
+
+See results/b38b_provenance.txt for directory sha256, build window, and full reader-arm provenance.
