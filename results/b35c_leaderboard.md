@@ -22,13 +22,14 @@
 | top-10 直读(v2.5,批 35) | 58 | 37.9 | [26.6, 50.8] | 861.9 | 85.3 | 1.6 | — | — | (同题行) | OpenAI 嵌入 top-10 |
 | sumrag | 58 | 36.2 | [25.1, 49.1] | 918.9 | 85.9 | 4.9 | 57.1 | 0.8 | 通过 | acc is reported as a PERCENT (21/58 correct). Per question type: change_count 3/15 = 20.00 |
 | langmem | 58 | 32.8 | [22.1, 45.6] | 835 | 100.1 | 5.1 | 288.8 | 3.4 | 通过 | No protocol deviation from the 60-question calibration run: reader / judge / k=10 / 300-ch |
+| trace(LoCoMo 公平配置,--evolution --update-detection) | 58 | 31.0 | [20.6, 43.8] | 10969.9 | 89.9 | 7.9 | 2500 | 3.9 | 通过(单代理复算) | 建库 gpt-4o-mini,update_edges 35 / contradiction 4;与 33-H2 同配置 30.0 一致 |
 | memos | 58 | 31.0 | [20.6, 43.8] | 613 | 92.4 | 5.0 | 207.8 | 2.9 | 通过 | RESUME OUTCOME: nothing was left to run. results/b35c_memos.jsonl already held 58 rows / 5 |
 | mstrata | 58 | 13.8 | [7.2, 24.9] | 319.8 | 75.6 | 4.6 | 67.8 | 1.0 | 通过 | No protocol deviation. Reader/judge/k=10/300-char truncation/sess_text/date-ordered ingest |
 | obsrag | 58 | 13.8 | [7.2, 24.9] | 210.1 | 74.9 | 4.8 | 75.2 | 0.9 | 通过 | acc is reported as a percentage (13.79% = 8/58), matching the README/leaderboard conventio |
 | bm25 | 58 | 12.1 | [6.0, 22.9] | 1213.4 | 86.1 | 4.6 | 0.0 | 0.5 | 通过 | RESUME: 54 of the 58 rows were already in results/b35c_bm25.jsonl from an earlier interrup |
 | mem0 | 58 | 10.3 | [4.8, 20.8] | 786.4 | 101 | 5.0 | 81 | 0.8 | 通过 | 1) Corpus/questions/uids swapped to b35c per task (v2.5, 58 q, 15 uids); reader/judge/k/tr |
 
-- TRACE 在本批因 API 529 两次中断,单独补跑中(结果出来后追加一行)。Graphiti / LightRAG 沿用批 33 判定为构造性失败,未列;Letta 服务端 / Memobase 需 Docker,阻塞。
+- TRACE 已补跑入表(单独代理,结果与 33-H2 同配置的 30.0 一致)。Graphiti / LightRAG 沿用批 33 判定为构造性失败,未列;Letta 服务端 / Memobase 需 Docker,阻塞。
 - 中段(lgstore / HippoRAG 2 / txtai / cognee / Letta-FS / A-MEM)区间互相覆盖,不排名;首尾分离。
 - 全上下文裸调用(haiku)63.8 高于全部竞品:这些系统在 14K 小库上的取证策略不如"什么都不做、全放进去";只有 QVF 账目显著高于它。
 
