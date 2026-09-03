@@ -67,3 +67,9 @@
 - 原规则用"末链日期 + 400 天"当 Today,与题面不符;按题面自己的 Today(与 gen_wsc_v2.tenure_gold 同口径:同值段累加、末段截至 Today)重算,144 道 longest_tenure 题中头两名相对差 ≤1% 的是 16 题(与批 33-B 残差判决记录的 16/144 一致)。
 - 原 8 题中 6 题是真近平局,2 题(wikiP108027、wikiP551004,差 50%)被误删;另有 10 题真近平局漏删。修正后移除 16 题,题集 576→560;语料文件字节不变(sha256 fdac2491… 不变),核验链接与答案键不受影响。
 - 近平局题在 33-A 单店上的表现(实际 Today 口径,18/144 含并列同值聚合差异):smoc 83.3% vs 清晰题 90.5%;direct 55.6% vs 29.4%——近平局题对读取臂是抛硬币题,移除后不利于 direct、略利于 smoc,方向如实记录。
+
+### 任期缺口处置:采用 A(2026-09-03,用户裁定"按推荐方法")
+
+- 链不改。约定明写于三处:docs/wikistate_datasheet_v2.md §3(任期约定 + 量化后果 + wikiP39042 示例 + Weill Cornell 裁定 + 近平局勘误);scripts/build_round2_items.py 的 CONVENTION 行;线上评审页(rate.db:149 道 v25 题的题面 CONVENTION 行 + 评审说明新增 "Tenure convention" 段)。
+- 载荷重生成:题序/令牌/答案键/raw_html 全部不变,仅 chain_html 的 CONVENTION 行变化;机器槽位已答完不重答(旧行只少一句说明,且机器审查 0 报错,不存在"因缺结束行报错"的情况)。
+- 真人链接 reviewer-v25 已核验渲染新说明,0/149 已答,可交付。

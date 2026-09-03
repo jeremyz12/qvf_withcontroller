@@ -15,7 +15,9 @@ STYLE = re.search(r'STYLE = """(.*?)"""', STYLE, re.S).group(1)
 STYLE = "<style>" + STYLE.split("<style>", 1)[1]
 
 CONV = ("dates use the session date on which the state was declared; "
-        "00 means the day/month was not stated.")
+        "00 means the day/month was not stated. The chain records declared starts only: "
+        "a row stays current until the next declaration, and the end of a tenure is not modeled "
+        "&mdash; a chain is NOT wrong for lacking an end row.")  # 任期约定 2026-09-03 明写
 
 
 def chain_table(rows):
