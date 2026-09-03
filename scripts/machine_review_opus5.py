@@ -13,20 +13,24 @@ load_dotenv(ROOT / ".env")
 import anthropic
 from machine_review import SYS, TMPL, log_of  # 逐字复用提示词与日志渲染
 
-MODEL = "claude-opus-5"
+MODEL = None  # 由 --model 指定;默认 claude-opus-5
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--shard", type=int, default=0)
     ap.add_argument("--nshard", type=int, default=1)
+    ap.add_argument("--model", default="claude-opus-5")
+    ap.add_argument("--tag", default="opus5")
     a = ap.parse_args()
+    global MODEL
+    MODEL = a.model
     items = json.loads((ROOT / "data/app_displayed_chains.json").read_text(encoding="utf-8"))
     cmap = json.loads((ROOT / "data/labelstudio_chainproj_map.json").read_text(encoding="utf-8"))
     data = {e["uid"]: e for e in json.loads((ROOT / "data/wikistate_full_ALL.json").read_text(encoding="utf-8"))}
-    out = ROOT / f"results/machine_review_149_opus5_s{a.shard}.jsonl"
+    out = ROOT / f"results/machine_review_149_{a.tag}_s{a.shard}.jsonl"
     import glob as _g  # 全局续跑:任一分片已出的题都跳过(分片数可变)
-    done = {json.loads(l)["item"] for f in _g.glob(str(ROOT / "results/machine_review_149_opus5_s*.jsonl"))
+    done = {json.loads(l)["item"] for f in _g.glob(str(ROOT / f"results/machine_review_149_{a.tag}_s*.jsonl"))
             for l in open(f, encoding="utf-8")}
     fh = open(out, "a", encoding="utf-8")
     cli = anthropic.Anthropic()
@@ -62,7 +66,7 @@ def main():
                              **res}, ensure_ascii=False) + "\n")
         fh.flush(); n += 1
         print(f"[{a.shard}:{n}] {item} {res['verdict']} {res.get('classes')}", flush=True)
-    print(f"MACHINE REVIEW OPUS5 DONE shard {a.shard}: n={n}")
+    print(f"MACHINE REVIEW {a.tag} DONE shard {a.shard}: n={n}")
 
 
 if __name__ == "__main__":

@@ -38,6 +38,11 @@ def main():
         for l in open(f, encoding="utf-8"):
             r = json.loads(l); op.setdefault(r["item"], r)
     if op: machines["单遍 opus-5"] = op
+    so = {}
+    for f in glob.glob(str(ROOT / "results/machine_review_149_sonnet5_s*.jsonl")):
+        for l in open(f, encoding="utf-8"):
+            r = json.loads(l); so.setdefault(r["item"], r)
+    if so: machines["单遍 sonnet-5"] = so
     sim = {r["item"]: r for r in json.load(open(ROOT / "results/sim_senior1_reviews.json", encoding="utf-8"))}
     machines["多段 Opus 模拟 senior1(85 题)"] = sim
     s2 = human.get("senior2", {})
