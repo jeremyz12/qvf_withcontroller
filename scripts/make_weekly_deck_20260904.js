@@ -422,7 +422,7 @@ let n = 0;
   ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.3, 1.2, 3.6, 1.9, 1.1], fontSize: 10, rowH: 0.42 });
   bullets(s, [
     "Prompt wording alone moves a full-context baseline by +11\u201312 pp on identical bytes: the archived \u2018plain full text\u2019 number understated the realistic baseline. The main table's first row must be the plainest full-context call.",
-    "Same weak reader: ledger +21.4 over full context (p = 5e-6) at 1/2.8 the input tokens. Same strong reader: ledger \u22126.4 (p = 0.035); only the 2.8\u00d7 cost edge survives.",
+    "Same weak reader: ledger +21.4 over full context (p = 5e-6) at 1/2.8 the input tokens. Same strong reader: the v45 ledger is −6.4 (p = 0.035); with Sonnet-built cards and the assertion-type filter the gap is −2.1 (p = 0.51) at 1/5.4 the input tokens.",
     "Using top-10 retrieval as the only baseline inflates any memory mechanism by 19\u201337 pp. The +42 headline is therefore reported next to +21 (weak reader) and \u22126 (strong reader), never alone.",
   ], { x: 0.6, y: 5.05, w: 12.1, h: 1.9, fontSize: 11.5 });
   footer(s, n);
