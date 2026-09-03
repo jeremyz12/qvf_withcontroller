@@ -59,6 +59,11 @@ def main():
                         continue
                     a0, b0 = expand_sentence(body, span[0], span[1])  # 扩到整句边界(v2.1 同款)
                     new_body = (body[:a0] + body[b0:]).strip()
+                    # 锚点保护:待删文本(整轮或该句)若含任何金标锚句,跳过并记录——不得动锚点
+                    anchors = [r.get("state_span", "") for r in e["chain"] if r.get("state_span")]
+                    doomed = body if (v.get("suggested_fix") == "delete_turn" or not new_body) else body[a0:b0]
+                    if any(sp in doomed for sp in anchors):
+                        log.setdefault("anchor_protected", []).append({"uid": e["uid"], "date": s["date"], "quote": q}); hit = True; break
                     if v.get("suggested_fix") == "delete_turn" or not new_body:
                         s["turns"].pop(ti)
                     else:
@@ -76,9 +81,11 @@ def main():
             if not any(sp in (unwrap(t)[1] or "") for s in e["sessions"] if s.get("chain_index") is not None for t in s["turns"]):
                 bad += 1
     residue = 0
+    protected = {(x["uid"], x["quote"]) for x in log.get("anchor_protected", [])}
     for e in data:
         blob = norm(" ".join((unwrap(t)[1] or "") for s in e["sessions"] for t in s["turns"]))
         for v in by_uid.get(e["uid"], []):
+            if (e["uid"], v["quote"]) in protected: continue  # 锚点保护项有意保留,不计残留
             if norm(v["quote"]) in blob: residue += 1
     log["anchor_check"] = f"{anchors_before - bad}/{anchors_before}"; log["residue"] = residue
     # (3) questions: drop near-tie longest_tenure
