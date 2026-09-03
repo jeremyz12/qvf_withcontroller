@@ -1,0 +1,62 @@
+## 溯源块(批 38-E)
+
+- git rev: `63db615cb8baf019b2d3a8e99c3fdec1f35a3589`(本轨道全程未 git add / commit / push)
+- scripts//qvf 工作区改动:
+```
+?? scripts/b35_backfill_slot_class.py
+?? scripts/b35c_langmem_run.py
+?? scripts/b35c_mstrata_run.py
+?? scripts/b35c_run_mem0.py
+?? scripts/b35c_score_letta_fs.py
+?? scripts/b35c_score_trace.py
+?? scripts/b35c_summarize_langmem.py
+?? scripts/b35c_summarize_mem0.py
+?? scripts/b35c_sumrag_run.py
+?? scripts/b38e_build_v47skf.py
+?? scripts/b38e_provenance.py
+?? scripts/b38e_score.py
+?? scripts/wt_qvf_prototype_b38b.py
+```
+- 语料/题源 `data/wikistate_full_ALL_v24.json`: sha256 `c62291897f22bc5632e8b155bb7d997ea4880b59ef40d3b5a5e8be5af4060749` (8,118,849 B, mtime 2026-09-02 01:23:15)
+- 语料/题源 `results/b35_questions_sample36.jsonl`: sha256 `c5a0532c4bb83709da172ceed3c81be610b440924eee796fd2947b514e7ac5e2` (36,145 B, mtime 2026-09-03 19:36:14)
+- 语料/题源 `results/b35_sample_uids.txt`: sha256 `1bf4e3098177e49085e0c9b6eff5efc1633b8bc9ee384438832fc2d17039d30a` (802 B, mtime 2026-09-03 19:33:58)
+
+### 建店方式(离线,零 API 调用)
+
+- `scripts/b38e_build_v47skf.py` sha256 `f6b591557c29dcbc539eb09da944da3402ce89011835b3cc43e2e4eb16e172ab` —— 对 results/wt_cards_v47sk 的 36 条链逐卡应用批 38-D 的 assertion_type() 规则(逐字复制自会话 scratchpad b38d_filter.py，见该文件顶部注释),丢弃 plan/task/other_person/restate 四类，保留 start+unknown；不调用任何模型 API。
+- 命令: `PYTHONUTF8=1 python scripts/b38e_build_v47skf.py`
+- `results/b38e_filter_log.json`: dropped=203 kept=1436 (census={'unknown': 1362, 'plan': 136, 'start': 74, 'restate': 32, 'task': 20, 'other_person': 15})
+- 硬约束(a) 命中索引翻转检查: 0 / 133 金标行被误删
+- 硬约束(b) span 文本二次核验: 0 条被标记
+
+### 建店窗 / 四店目录指纹(v45、v47s、v47sk 全程只读,须与批 38-B 记录的指纹逐字相同)
+
+- 店 `results/wt_cards_v45`: 144 文件 / 8,288 记录 | 目录 mtime 窗 2026-09-02 16:52:05 → 2026-09-02 17:10:18 | 目录 sha256(名+内容拼接) `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`
+  - 对照批 38-B 记录的指纹(144 文件 / 8,288 记录 / sha256 `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`): **逐字相同,机械证明未被本批触碰**
+- 店 `results/wt_cards_v47s`: 36 文件 / 1,743 记录 | 目录 mtime 窗 2026-09-03 22:23:22 → 2026-09-03 22:46:51 | 目录 sha256(名+内容拼接) `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd`
+  - 对照批 38-B 记录的指纹(36 文件 / 1,743 记录 / sha256 `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd`): **逐字相同,机械证明未被本批触碰**
+- 店 `results/wt_cards_v47sk`: 36 文件 / 1,639 记录 | 目录 mtime 窗 2026-09-03 23:22:17 → 2026-09-03 23:30:56 | 目录 sha256(名+内容拼接) `2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131`
+  - 对照批 38-B 记录的指纹(36 文件 / 1,639 记录 / sha256 `2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131`): **逐字相同,机械证明未被本批触碰**
+- 店 `results/wt_cards_v47skf`: 36 文件 / 1,436 记录 | 目录 mtime 窗 2026-09-04 01:28:39 → 2026-09-04 01:28:39 | 目录 sha256(名+内容拼接) `7a78f9b7ed16cc51809374339b3b59f73b44ed9be8aba2fa7848c78a86fade54`
+
+注:`wt_cards_v47skf` 是本批新建的 derived 店(36 链,从 `wt_cards_v47sk` 离线过滤而来,非增量、非重新抽取)。
+
+### 读者臂运行时窗 / 行数 / 成本
+
+| 臂 | 产物 | 行数 | 去重后 qid 数 | 店 | 读者 | 文件 mtime | in tok | out tok | $ | 累计延迟 h |
+|---|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47skf@haiku-4-5 (mt800) | `results/b38e_smoc_v47skf_haiku-4-5.jsonl` | 140 | 140 | wt_cards_v47skf | claude-haiku-4-5 | 2026-09-04 01:34:56 | 309,714 | 64,255 | $0.631 | 0.20 |
+| smoc_v47skf@haiku-4-5 (mt4000 capped-row correction) | `results/b38e_smoc_v47skf_haiku-4-5_mt4000.jsonl` | **缺失** | | wt_cards_v47skf | claude-haiku-4-5 | — | — | — | — | — |
+| smoc_v47skf@sonnet-5 (mt4000) | `results/b38e_smoc_v47skf_sonnet-5.jsonl` | 140 | 140 | wt_cards_v47skf | claude-sonnet-5 | 2026-09-04 01:36:54 | 402,924 | 98,172 | $1.788 | 0.33 |
+
+**读者臂总花费(建店零花费,判官另计)= $2.419**
+
+### 读者跑批日志(启动命令与 ARM DONE 汇总行)
+
+- `results/b38e_reader_haiku.log` (mtime 2026-09-04 01:34:56): `[plan] 140 questions, 0 already done, 140 to run | arm=smoc reader=anthropic:claude-haiku-4-5 max_tokens=800 temperature_sent=True`
+  - `B36B ARM DONE anthropic:claude-haiku-4-5/smoc: 131/140 = 93.6% | skipped(budget)=0 | reader spend $8.768 | judge {'input_tokens': 15116, 'output_tokens': 5062, 'calls': 140}`
+- `results/b38e_reader_sonnet.log` (mtime 2026-09-04 01:36:54): `[plan] 140 questions, 0 already done, 140 to run | arm=smoc reader=anthropic:claude-sonnet-5 max_tokens=4000 temperature_sent=False`
+  - `B36B ARM DONE anthropic:claude-sonnet-5/smoc: 133/140 = 95.0% | skipped(budget)=0 | reader spend $9.925 | judge {'input_tokens': 16194, 'output_tokens': 6806, 'calls': 140}`
+- `results/b38e_reader_haiku_mt4000.log`: 缺失
+
+**本批总花费(建店 $0.00 + 读者,判官另计)= $2.42**

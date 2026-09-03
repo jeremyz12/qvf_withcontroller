@@ -1,0 +1,106 @@
+# Batch 38-E — assertion-type filter on wt_cards_v47sk, real readers
+
+Hypothesis under test (results/opt_batch38d_verdict.md, offline replay, zero API calls): a deterministic assertion-type filter (drop plan/task/other_person/restate cards, keep start+unknown) applied to results/wt_cards_v47sk raises the compiled-ledger-vs-gold match from 131/140 to 137/140 with zero gold rows lost. Extrapolating from each reader's historical (ledger-ceiling vs real accuracy) gap, batch 38-D predicted ~92.9% for haiku-4.5 and ~95.7% for sonnet-5 on the real reader arm. Batch 38-E runs both readers for real on the derived store results/wt_cards_v47skf to test that prediction.
+
+Questions: results/b35_questions_sample36.jsonl (140 qids / 36 chains); corpus data/wikistate_full_ALL_v24.json (v2.4).
+Runner: scripts/lb_reader_arm_b36b.py --arm smoc --cards-dir results/wt_cards_v47skf --workers 4 (unchanged from batch 36-B/38/38-B).
+Store: results/wt_cards_v47skf — built by scripts/b38e_build_v47skf.py from results/wt_cards_v47sk (36 chains), dropping cards whose assertion_type in {plan,task,other_person,restate}; see results/b38e_filter_log.json for the full drop list and hard-constraint check.
+
+## 1. Accuracy / cost table (all restricted to the same 140 qids)
+
+| arm | reader | note | n | acc | change_count | count_before | first_vs_last | longest_tenure | in tok | out tok | median lat s | $/q | $ total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped) | haiku-4-5 | 本批 | 140 | **93.6%** | 91.7 | 86.1 | 97.2 | 100.0 | 2212 | 459 | 5.21 | $0.00451 | $0.631 |
+| smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000) | sonnet-5 | 本批 | 140 | **95.0%** | 97.2 | 88.9 | 97.2 | 96.9 | 2878 | 701 | 8.00 | $0.01277 | $1.788 |
+| smoc_v47sk@haiku  (canon+date-refine, 批38-B) | haiku-4-5 | 批38-B | 140 | **88.6%** | 88.9 | 75.0 | 97.2 | 93.8 | 2492 | 464 | 5.20 | $0.00481 | $0.674 |
+| smoc_v47sk@sonnet5(canon+date-refine, 批38-B) | sonnet-5 | 批38-B | 140 | **91.4%** | 88.9 | 83.3 | 97.2 | 96.9 | 3245 | 709 | 7.36 | $0.01358 | $1.901 |
+| smoc_v47s@haiku   (sonnet-5-built ledger, 批38) | haiku-4-5 | 批38 | 140 | **92.9%** | 88.9 | 86.1 | 100.0 | 96.9 | 2644 | 465 | 5.46 | $0.00497 | $0.696 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger, 批38) | sonnet-5 | 批38 | 140 | **92.1%** | 86.1 | 94.4 | 97.2 | 90.6 | 3465 | 772 | 7.29 | $0.01465 | $2.050 |
+| smoc_v45@haiku    (haiku-built ledger, 批33-A) | haiku-4-5 | 批33-A | 140 | **91.4%** | 86.1 | 86.1 | 100.0 | 93.8 | 2841 | 467 | 4.79 | $0.00518 | $0.725 |
+| smoc_v45@sonnet5  (haiku-built ledger, 批36-B) | sonnet-5 | 批36-B | 140 | **90.7%** | 83.3 | 88.9 | 100.0 | 90.6 | 3713 | 726 | 7.13 | $0.01469 | $2.056 |
+| plainctx@sonnet5  (full text, mt800, 批36) | sonnet-5 | 批36 | 140 | **87.9%** | 94.4 | 94.4 | 94.4 | 65.6 | 18549 | 444 | 5.01 | $0.04154 | $5.816 |
+| plainctx@sonnet5  (trunc-corrected mt4000, 批36) | sonnet-5 | 批36 | 140 | **97.1%** | 100.0 | 97.2 | 100.0 | 90.6 | 18549 | 469 | 4.88 | $0.04179 | $5.850 |
+| plainctx@haiku    (full text, mt800, 批36) | haiku-4-5 | 批36 | 140 | **70.0%** | 52.8 | 75.0 | 91.7 | 59.4 | 13570 | 199 | 2.94 | $0.01456 | $2.039 |
+
+### max_tokens 上限命中数(按 stop_reason 字段,凡该字段存在即报)
+
+| arm | reader | capped rows | rows w/ stop_reason |
+|---|---|---|---|
+| smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped) | haiku-4-5 | 0 | 140 |
+| smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000) | sonnet-5 | 0 | 140 |
+| smoc_v47sk@haiku  (canon+date-refine, 批38-B) | haiku-4-5 | 0 | 140 |
+| smoc_v47sk@sonnet5(canon+date-refine, 批38-B) | sonnet-5 | 0 | 140 |
+| smoc_v47s@haiku   (sonnet-5-built ledger, 批38) | haiku-4-5 | 1 | 140 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger, 批38) | sonnet-5 | 0 | 140 |
+| smoc_v45@haiku    (haiku-built ledger, 批33-A) | haiku-4-5 | (no stop_reason field) | - |
+| smoc_v45@sonnet5  (haiku-built ledger, 批36-B) | sonnet-5 | 0 | 140 |
+| plainctx@sonnet5  (full text, mt800, 批36) | sonnet-5 | (no stop_reason field) | - |
+| plainctx@sonnet5  (trunc-corrected mt4000, 批36) | sonnet-5 | 0 | 20 |
+| plainctx@haiku    (full text, mt800, 批36) | haiku-4-5 | (no stop_reason field) | - |
+
+## 2. Paired McNemar (exact binomial sign test) on the 140 ids
+
+Task-specified comparisons:
+  n=140 | A=smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped)  93.6%  B=smoc_v47sk@haiku  (canon+date-refine, 批38-B)          88.6% | delta(A-B)  +5.00pp | A-only-right=11 B-only-right= 4 | McNemar exact p=0.1185
+  n=140 | A=smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000)  95.0%  B=smoc_v47sk@sonnet5(canon+date-refine, 批38-B)          91.4% | delta(A-B)  +3.57pp | A-only-right= 7 B-only-right= 2 | McNemar exact p=0.1797
+  n=140 | A=smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped)  93.6%  B=smoc_v47s@haiku   (sonnet-5-built ledger, 批38)        92.9% | delta(A-B)  +0.71pp | A-only-right= 8 B-only-right= 7 | McNemar exact p=1
+  n=140 | A=smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000)  95.0%  B=smoc_v47s@sonnet5 (sonnet-5-built ledger, 批38)        92.1% | delta(A-B)  +2.86pp | A-only-right=11 B-only-right= 7 | McNemar exact p=0.4807
+  n=140 | A=smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000)  95.0%  B=plainctx@sonnet5  (trunc-corrected mt4000, 批36)       97.1% | delta(A-B)  -2.14pp | A-only-right= 3 B-only-right= 6 | McNemar exact p=0.5078
+  n=140 | A=smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped)  93.6%  B=smoc_v45@haiku    (haiku-built ledger, 批33-A)         91.4% | delta(A-B)  +2.14pp | A-only-right=10 B-only-right= 7 | McNemar exact p=0.6291
+
+Supporting comparisons:
+  n=140 | A=smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000)  95.0%  B=smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped)  93.6% | delta(A-B)  +1.43pp | A-only-right= 5 B-only-right= 3 | McNemar exact p=0.7266
+  n=140 | A=smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped)  93.6%  B=plainctx@haiku    (full text, mt800, 批36)             70.0% | delta(A-B) +23.57pp | A-only-right=38 B-only-right= 5 | McNemar exact p=2.5e-07
+  n=140 | A=smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000)  95.0%  B=plainctx@sonnet5  (full text, mt800, 批36)             87.9% | delta(A-B)  +7.14pp | A-only-right=16 B-only-right= 6 | McNemar exact p=0.05248
+  n=140 | A=smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000)  95.0%  B=smoc_v45@sonnet5  (haiku-built ledger, 批36-B)         90.7% | delta(A-B)  +4.29pp | A-only-right=11 B-only-right= 5 | McNemar exact p=0.2101
+
+## 3. The ten 'both v47sk readers wrong' questions of batch 38-B — status under v47skf
+
+n = 10 (recomputed directly from this script's own v47sk@haiku / v47sk@sonnet5 loads, should equal batch 38-B's 10).
+
+| qid | type | gold | v47sk@h | v47sk@s5 | v47skf@h | v47skf@s5 | now right? |
+|---|---|---|---|---|---|---|---|
+| `wikiP108009-Q64855331_v2cc` | change_count | 2 | X | X | OK | OK | BOTH right |
+| `wikiP39003-Q6248447_v2cb` | count_before | 2 | X | X | OK | OK | BOTH right |
+| `wikiP39003-Q6248447_v2cc` | change_count | 2 | X | X | OK | OK | BOTH right |
+| `wikiP39017-Q24568849_v2lt` | longest_tenure | 'High Sheriff of Hampshire' | X | X | OK | X | haiku right |
+| `wikiP39033-Q5331705_v2cb` | count_before | 6 | X | X | X | OK | sonnet5 right |
+| `wikiP39037-Q3525068_v2cb` | count_before | 4 | X | X | X | X | still both wrong |
+| `wikiP39037-Q3525068_v2cc` | change_count | 3 | X | X | X | X | still both wrong |
+| `wikiP39037-Q3525068_v2fl` | first_vs_last | 'first: member of the 13th Parliament of Great Britain; most recent: colonial governor of Guadeloupe' | X | X | X | X | still both wrong |
+| `wikiP39039-Q11801709_v2cb` | count_before | 8 | X | X | OK | OK | BOTH right |
+| `wikiP39039-Q11801709_v2cc` | change_count | 7 | X | X | OK | OK | BOTH right |
+
+7/10 fixed by at least one v47skf reader; 5/10 fixed by both.
+
+## 4. Write-side diagnostic: compiled ledger vs gold chain (four stores)
+
+| store | extractor | gold rows | exact | date-off | missing | extra | total cards | perfect chains |
+|---|---|---|---|---|---|---|---|---|
+| v45 | claude-haiku-4-5 | 133 | **122** (91.7%) | 0 | **11** | 13 | 2003 | 31/36 |
+| v47s | claude-sonnet-5 | 133 | **133** (100.0%) | 0 | **0** | 4 | 1743 | 36/36 |
+| v47sk | claude-sonnet-5+canon | 133 | **131** (98.5%) | 0 | **2** | 7 | 1639 | 35/36 |
+| v47skf | claude-sonnet-5+canon+assertion-filter | 133 | **131** (98.5%) | 0 | **2** | 2 | 1436 | 35/36 |
+
+### 4b. Compiled-answer ceiling (offline, zero API — a reader that never makes a reasoning error, reading only this ledger) — v47sk vs v47skf, cf. results/opt_batch38d_verdict.md §4
+
+Reproduces batch 38-D's methodology exactly (same compiled_answer()/gold_equal() as scripts/b38d_compile.py, inlined above) to confirm the store this batch actually built reproduces the 131/140 -> 137/140 uplift batch 38-D predicted offline.
+
+| store | gold-equal | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|---|
+| v47sk | **131/140** | 32/36 | 33/36 | 35/36 | 31/32 |
+| v47skf | **137/140** | 35/36 | 35/36 | 35/36 | 32/32 |
+
+## 5. Cost summary
+
+### 5.1 Reader-arm cost (usage tokens, this batch's two arms)
+
+| arm | reader | in tok total | out tok total | $ |
+|---|---|---|---|---|
+| smoc_v47skf@haiku (assertion-type filtered ledger, mt800, 0 capped) | haiku-4-5 | 309,714 | 64,255 | $0.631 |
+| smoc_v47skf@sonnet5(assertion-type filtered ledger, mt4000) | sonnet-5 | 402,924 | 98,172 | $1.788 |
+| **reader total** | | | | **$2.419** |
+
+**本批读者花费(判官另计)= $2.419**（对照批 38-B 两读者合计 $2.575，同一 36 链 / 140 题 / 两读者配置)。
+
+See results/b38e_provenance.txt for store directory sha256, reader-arm runtime windows and log-based cost cross-check.
