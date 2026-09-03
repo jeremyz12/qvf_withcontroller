@@ -102,8 +102,14 @@ def main():
     D = {e["uid"]: e for e in data}; dropped = []
     for q in qs:
         if q["qtype"] != "longest_tenure": continue
-        rows = D[q["uid"]]["chain"]; today = pd(rows[-1]["date"]) + timedelta(days=400)
-        ten = sorted((((pd(rows[i + 1]["date"]) if i + 1 < len(rows) else today) - pd(r["date"])).days for i, r in enumerate(rows)), reverse=True)
+        # 2026-09-03 勘误:近平局须按题面自己的 Today 与 gen_wsc_v2.tenure_gold 同口径(同值段累加、末段截至 Today);
+        # 原 400 天启发式误删 2 题、漏删 10 题。
+        rows = D[q["uid"]]["chain"]; today = pd(re.search(r"Today is (\d{4}-\d{2}-\d{2})", q["question"]).group(1))
+        per = {}
+        for i, r in enumerate(rows):
+            end = pd(rows[i + 1]["date"]) if i + 1 < len(rows) else today
+            per[r["value"]] = per.get(r["value"], 0) + (min(end, today) - pd(r["date"])).days
+        ten = sorted(per.values(), reverse=True)
         if len(ten) > 1 and ten[0] > 0 and (ten[0] - ten[1]) / ten[0] <= 0.01: dropped.append(q["qid"])
     log["dropped_questions"] = dropped
     print(f"deleted {len(log['deleted'])} (turn {sum(1 for x in log['deleted'] if x['mode']=='turn')}), not_found {len(log['not_found'])}, dedup {len(log['dedup'])}, anchors {log['anchor_check']}, residue {residue}, dropped lt questions {len(dropped)}")
