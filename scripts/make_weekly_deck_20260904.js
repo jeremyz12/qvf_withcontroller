@@ -318,7 +318,7 @@ let n = 0;
   ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 1.9, 2.0, 2.4, 2.8], fontSize: 10.5, rowH: 0.62 });
   bullets(s, [
     "The ledger is reader-insensitive (haiku 91.4 \u2192 Sonnet 90.7, p = 1.0) while every other arm gains 18\u201327 pp from the stronger reader: its ceiling is set by card content, not by reading.",
-    "Write-side upgrade: a Sonnet-built store reaches 133/133 gold rows but only 92.9 / 92.1; on the 29 chains without slot-name fragmentation it ties full context (97.4 vs 98.2, p = 1.0). Residual errors sit in multi-value political-position chains. StateMemBench (2608.19652, \u00a73.2) reports the same pattern: 44.4% of failures under oracle retrieval are stale-state answers.",
+    "Write-side fixes, step by step: Sonnet-built cards 133/133 gold rows but 92.9 / 92.1 (haiku / Sonnet); slot canonicalisation alone 88.6 / 91.4; adding a rule-based assertion-type filter (drop plans, nominations, one-off tasks, restatements; 203 of 1,639 cards, zero gold rows lost) gives 93.6 / 95.0 — gap to full context now −2.1 (p = 0.51). The last 3 questions are one chain whose extraction missed 28 cards. StateMemBench (2608.19652, §3.2) reports the same pattern: 44.4% of failures under oracle retrieval are stale-state answers.",
     "Claim, restated: the ledger is necessary when the reader is not frontier-class, or the store exceeds the context window, or cost is bound \u2014 any one of the three. Otherwise it is a cheaper, auditable layer, not a more accurate one.",
   ], { x: 0.6, y: 4.75, w: 12.1, h: 2.2, fontSize: 11.5 });
   footer(s, n);
@@ -418,7 +418,8 @@ let n = 0;
     ["Top-10 retrieval (direct)", "50.7", "70.7", "0.9K / 1.1K", "$0.005"],
     [{ text: "QVF ledger (store v45)", options: { bold: true } }, { text: "91.4", options: { bold: true } }, { text: "90.7", options: { bold: true } }, "2.8K / 3.7K", "$0.015"],
     ["QVF ledger, Sonnet-built cards (v47s)", "92.9", "92.1", "2.6K / 3.5K", "$0.015"],
-  ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.3, 1.2, 3.6, 1.9, 1.1], fontSize: 10.5, rowH: 0.48 });
+    [{ text: "QVF ledger, Sonnet-built + assertion-type filter (v47skf)", options: { bold: true } }, { text: "93.6", options: { bold: true } }, { text: "95.0", options: { bold: true } }, "2.5K / 3.4K", "$0.014"],
+  ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.3, 1.2, 3.6, 1.9, 1.1], fontSize: 10, rowH: 0.42 });
   bullets(s, [
     "Prompt wording alone moves a full-context baseline by +11\u201312 pp on identical bytes: the archived \u2018plain full text\u2019 number understated the realistic baseline. The main table's first row must be the plainest full-context call.",
     "Same weak reader: ledger +21.4 over full context (p = 5e-6) at 1/2.8 the input tokens. Same strong reader: ledger \u22126.4 (p = 0.035); only the 2.8\u00d7 cost edge survives.",
@@ -512,7 +513,7 @@ let n = 0;
   title(s, "Honest boundaries and next steps");
   s.addText("Boundaries (said up front)", { x: 0.6, y: 1.5, w: 6, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
-    "Scope is three conditions (non-frontier reader, or store beyond the context window, or cost-bound). With a strong reader on a 14K store the whole memory in the prompt beats the ledger (97.1 vs 90.7, p = 0.035); a Sonnet-built store closes the fidelity gap (133/133 rows) but not the score (92.1) — residual errors sit in multi-value position chains.",
+    "Scope is three conditions (non-frontier reader, or store beyond the context window, or cost-bound). With a strong reader on a 14K store the whole memory in the prompt beats the v45 ledger (97.1 vs 90.7, p = 0.035); Sonnet-built cards plus an assertion-type filter reach 95.0 (−2.1 vs full context, n.s.); the residual is one chain's extraction gap.",
     "External arenas: 2 positive, several ties, several negative; the scope is three conditions, not a universal win.",
     "Owner gate costs accuracy on clean text; the '5× cost' and 'ledger constant' claims are withdrawn.",
     "Human agreement is fair (α ≈ 0.3–0.45); the v2.5 human review has not started; the 560-q table uses the v2.4-corpus store; the partial v2.5-corpus rerun (36 chains) agrees with it within noise.",
