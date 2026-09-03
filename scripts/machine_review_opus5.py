@@ -25,7 +25,9 @@ def main():
     cmap = json.loads((ROOT / "data/labelstudio_chainproj_map.json").read_text(encoding="utf-8"))
     data = {e["uid"]: e for e in json.loads((ROOT / "data/wikistate_full_ALL.json").read_text(encoding="utf-8"))}
     out = ROOT / f"results/machine_review_149_opus5_s{a.shard}.jsonl"
-    done = {json.loads(l)["item"] for l in open(out, encoding="utf-8")} if out.exists() else set()
+    import glob as _g  # 全局续跑:任一分片已出的题都跳过(分片数可变)
+    done = {json.loads(l)["item"] for f in _g.glob(str(ROOT / "results/machine_review_149_opus5_s*.jsonl"))
+            for l in open(f, encoding="utf-8")}
     fh = open(out, "a", encoding="utf-8")
     cli = anthropic.Anthropic()
     keys = sorted(items)[a.shard::a.nshard]
@@ -41,7 +43,9 @@ def main():
         ti = to = 0
         for attempt in range(3):
             try:
-                r = cli.messages.create(model=MODEL, max_tokens=1200, temperature=0.0, system=SYS,
+                # opus-5 拒绝 temperature 参数("deprecated for this model"),按默认采样;
+                # 回复含 ThinkingBlock,只取 text 块。
+                r = cli.messages.create(model=MODEL, max_tokens=4000, system=SYS,
                                         messages=[{"role": "user", "content": prompt}])
                 ti, to = r.usage.input_tokens, r.usage.output_tokens
                 txt = "".join(b.text for b in r.content if b.type == "text")
