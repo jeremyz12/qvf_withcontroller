@@ -15,7 +15,9 @@
     嵌入落盘缓存后各臂共用同一份向量,消除"换了嵌入器"的混淆。
 
 臂(--variant):
-  dense_top30 / dense_top50  同检索器、更深的 k(预算匹配对照)
+  direct / dense_top10       dense top-10(归档直读基线同 k 同序;两名同义)
+  dense_top30 / dense_top50 / dense_top100
+                             同检索器、更深的 k(预算匹配对照)
   session_top5   以**整个会话**(日期+全部轮次拼接)为索引单元,取 top-5 会话,
                  渲染这些会话的全部轮次
   hybrid_rrf     BM25 top-30 与 dense top-30 按 RRF(k=60)融合,保留 top-10
@@ -36,6 +38,17 @@
       --variant build_cache
   QVF_EMBED_BACKEND=openai PYTHONUTF8=1 python scripts/b37_rag_variants.py \
       --variant dense_top30 --out results/b37_dense_top30.jsonl
+
+批 39(规模轴 L2,30 店 / 120 题)——换语料时**必须**换缓存文件:
+  QVF_EMBED_BACKEND=openai PYTHONUTF8=1 python scripts/b37_rag_variants.py \
+      --variant build_cache --data data/wikistate_long_L2_b33.json \
+      --questions data/wsc_long_L1_questions.jsonl \
+      --emb-cache results/b39_emb_L2_turns.npz --emb-cache-sess ""
+  QVF_EMBED_BACKEND=openai PYTHONUTF8=1 python scripts/b37_rag_variants.py \
+      --variant dense_top50 --data data/wikistate_long_L2_b33.json \
+      --questions data/wsc_long_L1_questions.jsonl \
+      --emb-cache results/b39_emb_L2_turns.npz --emb-cache-sess "" \
+      --out results/b39_dense_top50_L2.jsonl
 """
 from __future__ import annotations
 
@@ -141,7 +154,7 @@ def load_emb_cache():
     构造函数写入缓存的值同源),此后构造检索器零 API 调用。"""
     n = 0
     for path, builder in ((CACHE_TURN, _memories), (CACHE_SESS, session_memories)):
-        if not path.exists():
+        if not path or not path.exists():
             continue
         z = np.load(path)
         entries = load_entries()
@@ -160,6 +173,8 @@ def load_emb_cache():
 
 def build_cache(uids: List[str], entries: dict, workers: int = 4):
     for path, builder in ((CACHE_TURN, _memories), (CACHE_SESS, session_memories)):
+        if not path:            # --emb-cache-sess "" :只建轮次级(批 39 无会话臂)
+            continue
         got: Dict[str, np.ndarray] = {}
         if path.exists():
             z = np.load(path)
@@ -306,8 +321,12 @@ def retrieve(variant: str, store: Store, q: dict) -> Tuple[List[MemoryItem], dic
     mems = store.turns(uid)
     extra = {"retrieval_input_tokens": 0, "retrieval_output_tokens": 0}
 
-    if variant in ("dense_top30", "dense_top50", "dense_top10"):
-        k = {"dense_top10": 10, "dense_top30": 30, "dense_top50": 50}[variant]
+    if variant in ("dense_top30", "dense_top50", "dense_top10", "dense_top100",
+                   "direct"):
+        # `direct` = dense top-10,与归档 direct 臂同 k 同序(批 39 起用这个
+        # 别名,使 L2 上的产物名 b39_direct_L2.jsonl 与"直读基线"对齐)。
+        k = {"direct": 10, "dense_top10": 10, "dense_top30": 30,
+             "dense_top50": 50, "dense_top100": 100}[variant]
         return store.dense_r(uid).retrieve(question, top_k=k), extra
 
     if variant == "session_top5":
@@ -429,6 +448,12 @@ def main() -> int:
     ap.add_argument("--data", default=DATA)
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--limit", type=int, default=0)
+    # 批 39:换语料(L2,30 店 x ~1350 轮)时向量缓存必须另存一份,否则
+    # _cache_key 只按 (模型, 首条 id, 条数) 判同,不同语料会互相污染。
+    ap.add_argument("--emb-cache", default=str(CACHE_TURN),
+                    help="轮次级嵌入缓存 npz 路径")
+    ap.add_argument("--emb-cache-sess", default=str(CACHE_SESS),
+                    help="会话级嵌入缓存 npz 路径;传空串则不建/不加载")
     a = ap.parse_args()
 
     backend = os.environ.get("QVF_EMBED_BACKEND", "")
@@ -436,6 +461,8 @@ def main() -> int:
         raise SystemExit("set QVF_EMBED_BACKEND=openai exactly (same dense "
                          "stack / model as the archived direct arm)")
     globals()["DATA"] = a.data
+    globals()["CACHE_TURN"] = Path(a.emb_cache) if a.emb_cache else None
+    globals()["CACHE_SESS"] = Path(a.emb_cache_sess) if a.emb_cache_sess else None
     entries = load_entries()
     qs = load_questions(a.questions)
     if a.limit:

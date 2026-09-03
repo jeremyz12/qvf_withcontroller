@@ -1,0 +1,167 @@
+# Batch 39 — retrieval baselines at L2 scale (30 stores / 120 q)
+# corpus data/wikistate_long_L2_b33.json | questions data/wsc_long_L1_questions.jsonl
+# stores: ~440.6K chars median (~104K tok), 271.5 sessions, 1353 turns median; 120 chain anchors total
+# reader claude-haiku-4-5 (max_tokens 800, temperature 0, frozen READER_SYSTEM + dated-transcript rendering; identical to batch 37)
+# retriever OpenAIDenseRetriever/text-embedding-3-small over 40,585 turn vectors (results/b39_emb_L2_turns.npz, shared by all variants) | judge qvf.judge.ClaudeJudge (claude-opus-5, frozen)
+# archived reference arms are batch 33-D headline rows (results/opt_batch33_D_scaleL2_verdict.md)
+
+## 0. Row ledger
+
+| arm | source rows | deduped | dup rows | first/later agreement | qid symdiff vs the 120 | FALLBACK judge rows |
+|---|---|---|---|---|---|---|
+| ledger (QVF full) | 120 | 120 | 0 | - | 0 | 0 |
+| projection (slot) | 120 | 120 | 0 | - | 0 | 0 |
+| haiku full text | 120 | 120 | 0 | - | 0 | 0 |
+| direct | 120 | 120 | 0 | - | 0 | 0 |
+| dense_top50 | 120 | 120 | 0 | - | 0 | 0 |
+| dense_top100 | 120 | 120 | 0 | - | 0 | 0 |
+| rerank | 120 | 120 | 0 | - | 0 | 0 |
+
+## 1. Headline (accuracy with Wilson 95% CI)
+
+| arm | n | acc % | Wilson 95% | anchor cov % | as-of anchor cov % | mean in tok | mean out tok | retr in/out tok | reader $/q | median latency s |
+|---|---|---|---|---|---|---|---|---|---|---|
+| ledger (QVF full) | 120 | 54.17 | [45.3, 62.8] | n/a | n/a | 20855 | 546 | 0/0 | $0.0236 | 6.25 |
+| projection (slot) | 120 | 61.67 | [52.7, 69.9] | n/a | n/a | 8800 | 518 | 0/0 | $0.0114 | 5.67 |
+| haiku full text | 120 | 7.50 | [4.0, 13.6] | n/a | n/a | 103780 | 340 | 0/0 | $0.1055 | 5.53 |
+| direct | 120 | 16.67 | [11.1, 24.3] | 38.8 | 39.3 | 1023 | 87 | 0/0 | $0.0015 | 1.77 |
+| dense_top50 | 120 | 29.17 | [21.8, 37.8] | 76.0 | 76.6 | 4513 | 95 | 0/0 | $0.0050 | 2.01 |
+| dense_top100 | 120 | 38.33 | [30.1, 47.3] | 90.6 | 91.3 | 8903 | 105 | 0/0 | $0.0094 | 2.14 |
+| rerank | 120 | 26.67 | [19.6, 35.2] | 59.0 | 59.7 | 1005 | 89 | 2876/439 | $0.0065 | 1.73 |
+
+## 2. Accuracy by question type (% correct; n=30 each)
+
+| arm | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| ledger (QVF full) | 50.0 | 46.7 | 56.7 | 63.3 |
+| projection (slot) | 63.3 | 56.7 | 63.3 | 63.3 |
+| haiku full text | 6.7 | 3.3 | 13.3 | 6.7 |
+| direct | 10.0 | 0.0 | 33.3 | 23.3 |
+| dense_top50 | 20.0 | 13.3 | 70.0 | 13.3 |
+| dense_top100 | 26.7 | 23.3 | 73.3 | 30.0 |
+| rerank | 16.7 | 0.0 | 70.0 | 20.0 |
+
+## 3. Paired McNemar — each variant vs each archived arm (same 120 qids)
+
+### direct vs ledger 54.2
+  n=120 q / 30 stores | delta=-37.50pp  b/c=51/6  McNemar p=5.676e-10
+  flips: base-right->test-wrong = 51 | base-wrong->test-right = 6
+### dense_top50 vs ledger 54.2
+  n=120 q / 30 stores | delta=-25.00pp  b/c=39/9  McNemar p=1.522e-05
+  flips: base-right->test-wrong = 39 | base-wrong->test-right = 9
+### dense_top100 vs ledger 54.2
+  n=120 q / 30 stores | delta=-15.83pp  b/c=32/13  McNemar p=0.006609
+  flips: base-right->test-wrong = 32 | base-wrong->test-right = 13
+### rerank vs ledger 54.2
+  n=120 q / 30 stores | delta=-27.50pp  b/c=42/9  McNemar p=3.389e-06
+  flips: base-right->test-wrong = 42 | base-wrong->test-right = 9
+
+### direct vs projection 61.7
+  n=120 q / 30 stores | delta=-45.00pp  b/c=57/3  McNemar p=6.254e-14
+  flips: base-right->test-wrong = 57 | base-wrong->test-right = 3
+### dense_top50 vs projection 61.7
+  n=120 q / 30 stores | delta=-32.50pp  b/c=47/8  McNemar p=8.068e-08
+  flips: base-right->test-wrong = 47 | base-wrong->test-right = 8
+### dense_top100 vs projection 61.7
+  n=120 q / 30 stores | delta=-23.33pp  b/c=41/13  McNemar p=0.0001751
+  flips: base-right->test-wrong = 41 | base-wrong->test-right = 13
+### rerank vs projection 61.7
+  n=120 q / 30 stores | delta=-35.00pp  b/c=50/8  McNemar p=1.57e-08
+  flips: base-right->test-wrong = 50 | base-wrong->test-right = 8
+
+### direct vs haiku full text 7.5
+  n=120 q / 30 stores | delta=+9.17pp  b/c=6/17  McNemar p=0.03469
+  flips: base-right->test-wrong = 6 | base-wrong->test-right = 17
+### dense_top50 vs haiku full text 7.5
+  n=120 q / 30 stores | delta=+21.67pp  b/c=4/30  McNemar p=6.165e-06
+  flips: base-right->test-wrong = 4 | base-wrong->test-right = 30
+### dense_top100 vs haiku full text 7.5
+  n=120 q / 30 stores | delta=+30.83pp  b/c=3/40  McNemar p=3.021e-09
+  flips: base-right->test-wrong = 3 | base-wrong->test-right = 40
+### rerank vs haiku full text 7.5
+  n=120 q / 30 stores | delta=+19.17pp  b/c=3/26  McNemar p=1.524e-05
+  flips: base-right->test-wrong = 3 | base-wrong->test-right = 26
+
+
+## 4. Store-level cluster bootstrap — best variant vs ledger / projection
+
+Strongest retrieval variant by accuracy: **dense_top100** (38.33%)
+
+### dense_top100 vs ledger (QVF full)
+  n=120 q / 30 stores | delta=-15.83pp  b/c=32/13  McNemar p=0.006609
+  flips: base-right->test-wrong = 32 | base-wrong->test-right = 13
+  store sign test 6W/17L/7T p=0.03469 | cluster boot 95% CI [-25.83,-5.83]pp (N=4000, seed=39)
+### dense_top100 vs projection (slot)
+  n=120 q / 30 stores | delta=-23.33pp  b/c=41/13  McNemar p=0.0001751
+  flips: base-right->test-wrong = 41 | base-wrong->test-right = 13
+  store sign test 6W/20L/4T p=0.009355 | cluster boot 95% CI [-35.83,-11.67]pp (N=4000, seed=39)
+### dense_top100 vs haiku full text
+  n=120 q / 30 stores | delta=+30.83pp  b/c=3/40  McNemar p=3.021e-09
+  flips: base-right->test-wrong = 3 | base-wrong->test-right = 40
+  store sign test 23W/1L/6T p=2.98e-06 | cluster boot 95% CI [+22.50,+40.00]pp (N=4000, seed=39)
+
+(reference, archived-only) projection vs ledger:
+### projection vs ledger
+  n=120 q / 30 stores | delta=+7.50pp  b/c=11/20  McNemar p=0.1496
+  flips: base-right->test-wrong = 11 | base-wrong->test-right = 20
+  store sign test 9W/7L/14T p=0.8036 | cluster boot 95% CI [-4.17,+20.00]pp (N=4000, seed=39)
+
+## 5. Cost ledger (measured tokens, this batch only)
+
+| variant | reader in | reader out | retrieval in | retrieval out | haiku $ ($1/$5) | judge in | judge out | judge $ (opus-5 $5/$25) |
+|---|---|---|---|---|---|---|---|---|
+| direct | 122771 | 10450 | 0 | 0 | $0.175 | 24603 | 10906 | $0.396 |
+| dense_top50 | 541573 | 11354 | 0 | 0 | $0.598 | 25736 | 11639 | $0.420 |
+| dense_top100 | 1068352 | 12571 | 0 | 0 | $1.131 | 27246 | 13925 | $0.484 |
+| rerank | 120639 | 10687 | 345109 | 52666 | $0.783 | 24960 | 9760 | $0.369 |
+| **TOTAL** | 1853335 | 45062 | 345109 | 52666 | $2.687 | 102545 | 46230 | $1.668 |
+
+Embeddings: 40,585 turn vectors x text-embedding-3-small, one-off cache build (~3.3M tok, ~$0.07 at $0.02/M) + 1 query embedding per question per variant (negligible).
+
+## 6. Retrieval-set diagnostics
+
+| variant | mean memories rendered | mean anchors hit / question | questions with 0 anchors hit | mean anchors per store |
+|---|---|---|---|---|
+| direct | 10.0 | 1.55 | 41 | 4.00 |
+| dense_top50 | 50.0 | 3.04 | 6 | 4.00 |
+| dense_top100 | 100.0 | 3.62 | 0 | 4.00 |
+| rerank | 10.0 | 2.36 | 23 | 4.00 |
+
+## 7. Accuracy conditioned on anchor recall (does the failure sit before or after retrieval?)
+
+| variant | anchor bucket | n q | variant acc % | ledger acc % (same q) | projection acc % (same q) |
+|---|---|---|---|---|---|
+| direct | ALL anchors | 14 | 64.3 | 64.3 | 92.9 |
+| direct | some anchors | 65 | 16.9 | 55.4 | 52.3 |
+| direct | ZERO anchors | 41 | 0.0 | 48.8 | 65.9 |
+| dense_top50 | ALL anchors | 66 | 43.9 | 57.6 | 63.6 |
+| dense_top50 | some anchors | 48 | 12.5 | 52.1 | 60.4 |
+| dense_top50 | ZERO anchors | 6 | 0.0 | 33.3 | 50.0 |
+| dense_top100 | ALL anchors | 89 | 46.1 | 55.1 | 65.2 |
+| dense_top100 | some anchors | 31 | 16.1 | 51.6 | 51.6 |
+| rerank | ALL anchors | 40 | 55.0 | 62.5 | 75.0 |
+| rerank | some anchors | 57 | 17.5 | 52.6 | 49.1 |
+| rerank | ZERO anchors | 23 | 0.0 | 43.5 | 69.6 |
+
+### 7b. Paired tests restricted to the best variant's full-recall subset (n=89)
+
+### dense_top100 vs ledger [full-recall subset]
+  n=89 q / 30 stores | delta=-8.99pp  b/c=20/12  McNemar p=0.2153
+  flips: base-right->test-wrong = 20 | base-wrong->test-right = 12
+  store sign test 5W/10L/15T p=0.3018 | cluster boot 95% CI [-19.54,+1.11]pp (N=4000, seed=39)
+### dense_top100 vs projection [full-recall subset]
+  n=89 q / 30 stores | delta=-19.10pp  b/c=28/11  McNemar p=0.009475
+  flips: base-right->test-wrong = 28 | base-wrong->test-right = 11
+  store sign test 6W/19L/5T p=0.01463 | cluster boot 95% CI [-31.40,-5.88]pp (N=4000, seed=39)
+
+## 8. Per-store correct-count distribution (of 4 questions each)
+
+| arm | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+| ledger (QVF full) | 5 | 6 | 4 | 9 | 6 |
+| projection (slot) | 3 | 4 | 8 | 6 | 9 |
+| haiku full text | 25 | 2 | 2 | 1 | 0 |
+| direct | 14 | 13 | 2 | 1 | 0 |
+| dense_top50 | 8 | 14 | 3 | 5 | 0 |
+| dense_top100 | 5 | 9 | 12 | 3 | 1 |
+| rerank | 9 | 10 | 11 | 0 | 0 |
