@@ -118,7 +118,7 @@ let n = 0;
     "Batch 34: full-read scan of all 144 chains by one model, independent per-chain adjudication by another, surgical deletion under two gates (anchors verbatim, zero residue).",
     "Review pipeline: fresh Opus 5 agents drive the actual review page item by item; two leaks in the planted-error items fixed before v2.5.",
     "Tenure convention (chains record declared starts only) found to be systemic, quantified, and written into the datasheet and the review page instead of patching one chain.",
-    "Human review link for v2.5 is ready; corpus-level rerun of all arms on v2.5 is in progress (batch 35).",
+    "Partial rerun on the v2.5 corpus with a new store (batch 35: 36 chains / 140 q): QVF 90.7 vs direct 49.3 (+41.4); paired against the v2.4 store on the same questions the differences are within noise — cleaning does not move the headline. Human review link for v2.5 is ready.",
   ], { x: 0.6, y: 4.0, w: 12.1, h: 2.9 });
   footer(s, n);
 }
@@ -291,7 +291,7 @@ let n = 0;
     ]);
   });
   table(s, rows, { x: 0.6, y: 1.65, w: 12.1, colW: [3.3, 1.3, 1.4, 1.5, 1.5, 1.4, 1.7], fontSize: 11.5, rowH: 0.42 });
-  s.addText("QVF ledger vs direct: +42.0 pp, chain-cluster bootstrap 95% CI [37.0, 46.9]. Full-text + protocol reaches 86.6 at 4.7× the input tokens and 1.6× the latency; the plain full-text reader stays at 54.5. Owner-gate store −3.0 (p = 0.04 on 576) → gate stays off by default. On the original 576 questions the headline is 89.06 vs 47.57 (+41.5).", { x: 0.6, y: 6.0, w: 12.1, h: 0.9, fontFace: BFONT, fontSize: 11.5, color: INK, margin: 0 });
+  s.addText("QVF ledger vs direct: +42.0 pp, chain-cluster bootstrap 95% CI [37.0, 46.9]. Full-text + protocol reaches 86.6 at 4.7× the input tokens and 1.6× the latency; the plain full-text reader stays at 54.5. Owner-gate store −3.0 (p = 0.04 on 576) → gate stays off by default. On the original 576 questions the headline is 89.06 vs 47.57 (+41.5). Partial rerun on the v2.5 corpus with a new store (batch 35, 36 chains / 140 q): direct 49.3 · compile 70.7 · QVF 90.7 (+41.4, CI [30.9, 51.4]); paired vs the v2.4 store on the same 140 questions: −1.4 / −5.0 / −0.7, all n.s.", { x: 0.6, y: 6.0, w: 12.1, h: 0.9, fontFace: BFONT, fontSize: 11.5, color: INK, margin: 0 });
   footer(s, n);
 }
 // ---------- 11 cost & latency charts ----------
@@ -337,7 +337,7 @@ let n = 0;
     ["Stronger baselines for the direct arm", "bge-reranker 35.1, TempRALM 23.4 (both below direct 47.6)", "the gap is not a weak-retriever artifact"],
     ["Stronger reader: Gemini 3.6 Flash, 14K store", "full text 95.5 > ledger 92.5; protocol +0.35 n.s.; direct 63.4", "structure wins for weak / mid readers and large stores"],
     ["Store scale: 104K-session store, 30 stores", "ledger 54.2 @ 20.9K tok · projection 61.7 @ 8.8K · haiku full text 7.5 @ 103.8K", "ledger degrades slowly with size"],
-    ["Corpus versions v2.2 / v2.3 / v2.4", "scores statistically indistinguishable", "cleaning has saturated; v2.5 rerun in progress"],
+    ["Corpus versions v2.2 → v2.5", "v2.2–v2.4 indistinguishable; v2.5 partial rerun (36 chains, new store) paired vs v2.4 store: direct −1.4 · compile −5.0 · QVF −0.7, all n.s.; the 24 untouched chains drift by the same −2 to −5 (rebuild noise)", "cleaning has saturated; no v2.5 penalty"],
     ["Machine review of gold chains (v2.4 and v2.5)", "5/5 planted errors caught, 0/144 real chains flagged, each time", "chain error rate upper bound 2.6% per review"],
   ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.0, 4.4, 3.7], fontSize: 11, rowH: 0.55 });
   footer(s, n);
@@ -389,13 +389,13 @@ let n = 0;
     "Main claim holds on a synthetic corpus with a weak / mid-tier reader; a strong reader on a 14K store reads full text better than the ledger.",
     "External arenas: 2 positive, several ties, several negative; the scope is three conditions, not a universal win.",
     "Owner gate costs accuracy on clean text; the '5× cost' and 'ledger constant' claims are withdrawn.",
-    "Human agreement is fair (α ≈ 0.3–0.45); the v2.5 human review has not started; reported numbers for v2.5 are the v2.4-corpus store rescored on the 560-q set until batch 35 lands.",
+    "Human agreement is fair (α ≈ 0.3–0.45); the v2.5 human review has not started; the 560-q table uses the v2.4-corpus store; the partial v2.5-corpus rerun (36 chains) agrees with it within noise.",
     "Card builder regression (slot_class / owner fields) still patched via a derived store; fix pending.",
   ], { x: 0.6, y: 1.95, w: 6.0, h: 4.9, fontSize: 12.5 });
   s.addText("Next steps", { x: 7.0, y: 1.5, w: 5.7, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
-    "Hand the reviewer-v25 link to a human reviewer (149 items, ~1.5–2 min each); compute agreement against the machine review.",
-    "Finish batch 35: new store on v2.5 and all arms on 560 q; replace the headline with the single-run v2.5 numbers.",
+    "Author review of v2.5 on the author-v25 link (149 items, ~1.5–2 min each); compute agreement against the machine review.",
+    "Full v2.5-corpus rerun of all arms deferred until the human review settles the corpus; competing systems are being rerun on the same v2.5 sample (15 chains / 58 q).",
     "Fix the card builder schema regression and retire the derived store.",
     "Paper: §2 ancestors (temporal databases, TAC-KBP), §8 limitations as a three-condition scope, datasheet v2.5 with the tenure convention and errata.",
   ], { x: 7.0, y: 1.95, w: 5.7, h: 4.9, fontSize: 12.5 });
