@@ -1,0 +1,157 @@
+# Batch 37 — retrieval-side RAG baseline family (140 q / 36 chains)
+# corpus data/wikistate_full_ALL_v24.json | questions results/b35_questions_sample36.jsonl
+# reader claude-haiku-4-5 (max_tokens 800, temperature 0, frozen READER_SYSTEM + dated-transcript rendering of the archived direct arm)
+# retriever OpenAIDenseRetriever/text-embedding-3-small (shared cached vectors) | judge qvf.judge.ClaudeJudge (claude-opus-5)
+# paired references: results/b33A_direct.jsonl (direct top-10) and results/b33A_smoc_v45.jsonl (QVF smoc v45), first occurrence per question_id, same 140 qids
+
+## 0. Row ledger
+
+| arm | raw rows | deduped | dup rows | first/later agreement | qid symdiff vs the 140 |
+|---|---|---|---|---|---|
+| direct(b33A) | 576 | 576 | 0 | - | 0 |
+| smoc_v45(b33A) | 576 | 576 | 0 | - | 0 |
+| dense_top30 | 140 | 140 | 0 | - | 0 |
+| dense_top50 | 140 | 140 | 0 | - | 0 |
+| session_top5 | 140 | 140 | 0 | - | 0 |
+| hybrid_rrf | 140 | 140 | 0 | - | 0 |
+| mmr | 140 | 140 | 0 | - | 0 |
+| recency | 140 | 140 | 0 | - | 0 |
+| asof_filter | 140 | 140 | 0 | - | 0 |
+| rewrite | 140 | 140 | 0 | - | 0 |
+| rerank | 140 | 140 | 0 | - | 0 |
+
+## 1. Headline
+
+| variant | n | acc % | Δ vs direct pp | McNemar p | anchor cov % | as-of anchor cov % | mean in tok | mean out tok | retr in/out tok | $/q | median latency s |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| direct (reference) | 140 | 50.71 | — | — | 86.7 | 86.5 | 862 | 84 | 0/0 | $0.0013 | 1.57 |
+| smoc_v45 (QVF) | 140 | 91.43 | +40.71 | 1.641e-15 | - | - | 2841 | 467 | 0/0 | $0.0052 | 4.79 |
+| dense_top30 | 140 | 57.86 | +7.14 | 0.1641 | 98.1 | 98.0 | 2493 | 92 | 0/0 | $0.0030 | 1.85 |
+| dense_top50 | 140 | 62.86 | +12.14 | 0.01372 | 99.8 | 99.8 | 4156 | 93 | 0/0 | $0.0046 | 1.85 |
+| session_top5 | 140 | 47.14 | -3.57 | 0.4996 | 84.6 | 84.5 | 1580 | 85 | 0/0 | $0.0020 | 1.73 |
+| hybrid_rrf | 140 | 41.43 | -9.29 | 0.09191 | 78.0 | 77.7 | 899 | 82 | 0/0 | $0.0013 | 1.62 |
+| mmr | 140 | 40.71 | -10.00 | 0.05946 | 78.4 | 78.1 | 877 | 84 | 0/0 | $0.0013 | 1.70 |
+| recency | 140 | 10.71 | -40.00 | 2.275e-12 | 52.8 | 52.1 | 883 | 78 | 0/0 | $0.0013 | 1.72 |
+| asof_filter | 140 | 50.71 | +0.00 | 1 | 85.4 | 86.7 | 861 | 84 | 0/0 | $0.0013 | 1.65 |
+| rewrite | 140 | 36.43 | -14.29 | 0.0066 | 64.4 | 64.2 | 945 | 82 | 110/10 | $0.0015 | 1.62 |
+| rerank | 140 | 60.71 | +10.00 | 0.009355 | 96.9 | 96.9 | 838 | 84 | 2599/440 | $0.0061 | 1.60 |
+
+## 2. Accuracy by question type (%)
+
+| variant | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| direct | 47.2 | 36.1 | 88.9 | 28.1 |
+| smoc_v45 | 86.1 | 86.1 | 100.0 | 93.8 |
+| dense_top30 | 33.3 | 63.9 | 94.4 | 37.5 |
+| dense_top50 | 47.2 | 69.4 | 97.2 | 34.4 |
+| session_top5 | 47.2 | 36.1 | 80.6 | 21.9 |
+| hybrid_rrf | 38.9 | 36.1 | 58.3 | 31.2 |
+| mmr | 25.0 | 36.1 | 66.7 | 34.4 |
+| recency | 16.7 | 11.1 | 2.8 | 12.5 |
+| asof_filter | 41.7 | 41.7 | 91.7 | 25.0 |
+| rewrite | 33.3 | 47.2 | 41.7 | 21.9 |
+| rerank | 41.7 | 66.7 | 97.2 | 34.4 |
+
+## 3. Paired vs direct top-10 (b33A)
+
+### dense_top30 vs direct
+  n=140 q / 36 chains | delta=+7.14pp  b/c=16/26  McNemar p=0.1641
+  flips: base-right->test-wrong = 16 | base-wrong->test-right = 26
+  chain sign test 15W/9L/12T p=0.3075 | cluster boot 95% CI [-2.78,+17.02]pp (N=4000, seed=37)
+### dense_top50 vs direct
+  n=140 q / 36 chains | delta=+12.14pp  b/c=13/30  McNemar p=0.01372
+  flips: base-right->test-wrong = 13 | base-wrong->test-right = 30
+  chain sign test 17W/6L/13T p=0.03469 | cluster boot 95% CI [+2.84,+21.99]pp (N=4000, seed=37)
+### session_top5 vs direct
+  n=140 q / 36 chains | delta=-3.57pp  b/c=20/15  McNemar p=0.4996
+  flips: base-right->test-wrong = 20 | base-wrong->test-right = 15
+  chain sign test 11W/17L/8T p=0.3449 | cluster boot 95% CI [-12.06,+5.04]pp (N=4000, seed=37)
+### hybrid_rrf vs direct
+  n=140 q / 36 chains | delta=-9.29pp  b/c=32/19  McNemar p=0.09191
+  flips: base-right->test-wrong = 32 | base-wrong->test-right = 19
+  chain sign test 9W/15L/12T p=0.3075 | cluster boot 95% CI [-19.72,+1.42]pp (N=4000, seed=37)
+### mmr vs direct
+  n=140 q / 36 chains | delta=-10.00pp  b/c=31/17  McNemar p=0.05946
+  flips: base-right->test-wrong = 31 | base-wrong->test-right = 17
+  chain sign test 8W/15L/13T p=0.21 | cluster boot 95% CI [-20.98,+1.45]pp (N=4000, seed=37)
+### recency vs direct
+  n=140 q / 36 chains | delta=-40.00pp  b/c=63/7  McNemar p=2.275e-12
+  flips: base-right->test-wrong = 63 | base-wrong->test-right = 7
+  chain sign test 1W/28L/7T p=1.118e-07 | cluster boot 95% CI [-50.00,-29.41]pp (N=4000, seed=37)
+### asof_filter vs direct
+  n=140 q / 36 chains | delta=+0.00pp  b/c=5/5  McNemar p=1
+  flips: base-right->test-wrong = 5 | base-wrong->test-right = 5
+  chain sign test 5W/5L/26T p=1 | cluster boot 95% CI [-4.35,+4.35]pp (N=4000, seed=37)
+### rewrite vs direct
+  n=140 q / 36 chains | delta=-14.29pp  b/c=35/15  McNemar p=0.0066
+  flips: base-right->test-wrong = 35 | base-wrong->test-right = 15
+  chain sign test 9W/17L/10T p=0.1686 | cluster boot 95% CI [-26.24,-2.86]pp (N=4000, seed=37)
+### rerank vs direct
+  n=140 q / 36 chains | delta=+10.00pp  b/c=6/20  McNemar p=0.009355
+  flips: base-right->test-wrong = 6 | base-wrong->test-right = 20
+  chain sign test 16W/4L/16T p=0.01182 | cluster boot 95% CI [+3.57,+16.31]pp (N=4000, seed=37)
+
+## 4. Paired vs smoc_v45 (QVF)
+
+Strongest variant by accuracy: **dense_top50** (62.86%)
+
+### dense_top50 vs smoc_v45
+  n=140 q / 36 chains | delta=-28.57pp  b/c=43/3  McNemar p=4.622e-10
+  flips: base-right->test-wrong = 43 | base-wrong->test-right = 3
+  chain sign test 1W/25L/10T p=8.047e-07 | cluster boot 95% CI [-37.86,-18.57]pp (N=4000, seed=37)
+### dense_top30 vs smoc_v45
+  n=140 q / 36 chains | delta=-33.57pp  b/c=52/5  McNemar p=6.402e-11
+  flips: base-right->test-wrong = 52 | base-wrong->test-right = 5
+### session_top5 vs smoc_v45
+  n=140 q / 36 chains | delta=-44.29pp  b/c=64/2  McNemar p=5.996e-17
+  flips: base-right->test-wrong = 64 | base-wrong->test-right = 2
+### hybrid_rrf vs smoc_v45
+  n=140 q / 36 chains | delta=-50.00pp  b/c=73/3  McNemar p=1.938e-18
+  flips: base-right->test-wrong = 73 | base-wrong->test-right = 3
+### mmr vs smoc_v45
+  n=140 q / 36 chains | delta=-50.71pp  b/c=71/0  McNemar p=8.47e-22
+  flips: base-right->test-wrong = 71 | base-wrong->test-right = 0
+### recency vs smoc_v45
+  n=140 q / 36 chains | delta=-80.71pp  b/c=114/1  McNemar p=5.585e-33
+  flips: base-right->test-wrong = 114 | base-wrong->test-right = 1
+### asof_filter vs smoc_v45
+  n=140 q / 36 chains | delta=-40.71pp  b/c=59/2  McNemar p=1.641e-15
+  flips: base-right->test-wrong = 59 | base-wrong->test-right = 2
+### rewrite vs smoc_v45
+  n=140 q / 36 chains | delta=-55.00pp  b/c=79/2  McNemar p=2.748e-21
+  flips: base-right->test-wrong = 79 | base-wrong->test-right = 2
+### rerank vs smoc_v45
+  n=140 q / 36 chains | delta=-30.71pp  b/c=48/5  McNemar p=7.077e-10
+  flips: base-right->test-wrong = 48 | base-wrong->test-right = 5
+### direct vs smoc_v45
+  n=140 q / 36 chains | delta=-40.71pp  b/c=59/2  McNemar p=1.641e-15
+  flips: base-right->test-wrong = 59 | base-wrong->test-right = 2
+
+## 5. Cost ledger (measured tokens, this batch only)
+
+| variant | reader in | reader out | retrieval in | retrieval out | haiku $ | judge in | judge out | judge $ (opus-5) |
+|---|---|---|---|---|---|---|---|---|
+| dense_top30 | 348975 | 12932 | 0 | 0 | $0.414 | 29464 | 12022 | $1.344 |
+| dense_top50 | 581797 | 13056 | 0 | 0 | $0.647 | 29564 | 11975 | $1.342 |
+| session_top5 | 221154 | 11940 | 0 | 0 | $0.281 | 28193 | 11768 | $1.305 |
+| hybrid_rrf | 125843 | 11513 | 0 | 0 | $0.183 | 27642 | 13211 | $1.405 |
+| mmr | 122792 | 11749 | 0 | 0 | $0.182 | 27877 | 13606 | $1.439 |
+| recency | 123554 | 10964 | 0 | 0 | $0.178 | 26789 | 12135 | $1.312 |
+| asof_filter | 120548 | 11755 | 0 | 0 | $0.179 | 27923 | 11765 | $1.301 |
+| rewrite | 132300 | 11517 | 15396 | 1459 | $0.213 | 27573 | 11834 | $1.301 |
+| rerank | 117295 | 11742 | 363815 | 61600 | $0.848 | 28007 | 12361 | $1.347 |
+| **TOTAL** | 1894258 | 107168 | 379211 | 63059 | $3.125 | 253032 | 110677 | $12.096 |
+
+## 6. Retrieval-set diagnostics
+
+| variant | mean memories rendered | mean anchors hit / question | questions with 0 anchors hit |
+|---|---|---|
+| dense_top30 | 30.0 | 3.64 | 0 |
+| dense_top50 | 50.0 | 3.70 | 0 |
+| session_top5 | 21.8 | 3.14 | 3 |
+| hybrid_rrf | 10.0 | 2.89 | 1 |
+| mmr | 10.0 | 2.91 | 0 |
+| recency | 10.0 | 1.96 | 2 |
+| asof_filter | 10.0 | 3.16 | 3 |
+| rewrite | 10.0 | 2.39 | 18 |
+| rerank | 10.0 | 3.59 | 1 |
