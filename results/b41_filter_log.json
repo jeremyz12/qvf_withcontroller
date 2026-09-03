@@ -1,0 +1,324 @@
+{
+ "store_sk": "results/wt_cards_v47sk",
+ "store_skf": "results/wt_cards_v47skf",
+ "store_pass2": "results/wt_cards_v47s_pass2",
+ "store_dst": "results/wt_cards_v47skf2",
+ "target_uids": [
+  "wikiP39037-Q3525068",
+  "wikiP39006-Q5220520",
+  "wikiP39017-Q24568849"
+ ],
+ "union_report": {
+  "wikiP39017-Q24568849": {
+   "v47sk_n": 44,
+   "pass2_n": 29,
+   "union_n": 73,
+   "new_from_pass2": 29
+  },
+  "wikiP39037-Q3525068": {
+   "v47sk_n": 30,
+   "pass2_n": 56,
+   "union_n": 86,
+   "new_from_pass2": 56
+  },
+  "wikiP39006-Q5220520": {
+   "v47sk_n": 32,
+   "pass2_n": 46,
+   "union_n": 78,
+   "new_from_pass2": 46
+  }
+ },
+ "census_all_records_36_chains": {
+  "unknown": 1468,
+  "start": 85,
+  "restate": 7,
+  "plan": 13,
+  "task": 4,
+  "other_person": 3
+ },
+ "dropped_total": 27,
+ "dropped_cards": [
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "residence",
+   "value": "Dogmersfield (roof leaking)",
+   "span": "the roof over the east passage at Dogmersfield still leaks whenever the wind comes round from the west",
+   "class": "restate"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "device",
+   "value": "old soundbar (still using)",
+   "span": "got it working with my old soundbar",
+   "class": "restate"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "hobby",
+   "value": "half-finished knitting blanket",
+   "span": "I have a half-finished blanket that I started last summer, and I'm thinking of picking it up again",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "other:health",
+   "value": "recovering from gallbladder removal surgery",
+   "span": "I'm still recovering from my gallbladder removal surgery that was originally scheduled for April 15th, but ended up happ",
+   "class": "restate"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "device",
+   "value": "Canon EF 70-200mm f/2.8L IS III USM lens",
+   "span": "I'm planning to bring my new Canon EF 70-200mm f/2.8L IS III USM lens",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "other:habit",
+   "value": "planning to limit social media to 30 min/day",
+   "span": "I'm thinking of limiting my social media usage to 30 minutes a day, which is a big reduction from my previous 2 hours",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "1787",
+   "slot": "residence",
+   "value": "Dogmersfield (roof leaks in east passage)",
+   "span": "the roof over the east passage at Dogmersfield still leaks whenever the wind comes round from the west",
+   "class": "restate"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "auto_service_provider",
+   "value": "Firestone Complete Auto Care",
+   "span": "I was actually thinking of getting my car serviced at Firestone Complete Auto Care again, since they did a great job on ",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "1802-04-15",
+   "slot": "health_status",
+   "value": "recovering from gallbladder removal surgery (scheduled Apr 15, happened earlier)",
+   "span": "I'm still recovering from my gallbladder removal surgery that was originally scheduled for April 15th, but ended up happ",
+   "class": "restate"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "camera_gear",
+   "value": "Canon EF 70-200mm f/2.8L IS III USM lens",
+   "span": "I'm planning to bring my new Canon EF 70-200mm f/2.8L IS III USM lens",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39017-Q24568849",
+   "date": "",
+   "slot": "social_media_usage_goal",
+   "value": "30 minutes/day (reduced from 2 hours)",
+   "span": "I'm thinking of limiting my social media usage to 30 minutes a day, which is a big reduction from my previous 2 hours.",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "hobby_project",
+   "value": "Ferrari 288 GTO model",
+   "span": "I'm working on a model of a 1980s-era Ferrari 288 GTO, started it about three weeks ago on a Sunday afternoon",
+   "class": "task"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "volunteer_activity",
+   "value": "organized toy drive, donated $50 to Toys for Tots",
+   "span": "organizing a toy drive at my office over the holiday season and donating $50 to the local Toys for Tots program",
+   "class": "task"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "current_hobby_project",
+   "value": "Ferrari 288 GTO model",
+   "span": "I'm working on a model of a 1980s-era Ferrari 288 GTO, started it about three weeks ago on a Sunday afternoon",
+   "class": "task"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "family_event",
+   "value": "cousin Tom's new baby Olivia",
+   "span": "I'm planning a visit to my cousin Tom's place to meet their new baby, Olivia",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "charity_activity",
+   "value": "organized office toy drive; donated $50 to Toys for Tots",
+   "span": "organizing a toy drive at my office over the holiday season and donating $50 to the local Toys for Tots program",
+   "class": "task"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "laptop_ram",
+   "value": "16GB currently, considering +8GB",
+   "span": "I'm currently using 16GB of RAM and I've been considering adding another 8GB",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39037-Q3525068",
+   "date": "",
+   "slot": "gardening_plan",
+   "value": "considering herb garden on balcony with trellis",
+   "span": "I'm also considering starting a small herb garden on my balcony using a trellis system",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "residence",
+   "value": "planning to build eco-friendly home on newly bought land",
+   "span": "I helped my friend buy a plot of land in a nearby town today, she's planning to build an eco-friendly home",
+   "class": "other_person"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "other:property",
+   "value": "inherited land, planning vacation home",
+   "span": "a vacation home I'm planning to build on a plot of land I inherited from my grandmother's estate",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "other:travel_plan",
+   "value": "planning trip to Hawaii in October",
+   "span": "I'm thinking of reaching out to some friends to see if they want to join me on this trip",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "relationship",
+   "value": "has a partner",
+   "span": "I'm currently watching it with my partner",
+   "class": "other_person"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "relationship",
+   "value": "lives with/married to Anne",
+   "span": "the guttering at home is still leaking after Sunday's downpour, and I promised Anne I'd ring the roofer",
+   "class": "restate"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "meal_prep_day",
+   "value": "Sunday",
+   "span": "I was thinking of meal prepping on Sunday like I usually do",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "relationship_status",
+   "value": "has a partner",
+   "span": "I'm currently watching it with my partner",
+   "class": "other_person"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "land_ownership",
+   "value": "plot of land inherited from grandmother's estate",
+   "span": "a vacation home I'm planning to build on a plot of land I inherited from my grandmother's estate",
+   "class": "plan"
+  },
+  {
+   "uid": "wikiP39006-Q5220520",
+   "date": "",
+   "slot": "home_maintenance_issue",
+   "value": "leaking guttering",
+   "span": "the guttering at home is still leaking after Sunday's downpour",
+   "class": "restate"
+  }
+ ],
+ "hard_constraint_gold_anchor_check_a_index": {
+  "method": "exact+date_off hit-index set, v47sk(before)/v47skf(before) vs v47skf2(after), per gold-chain hit->miss transition count",
+  "gold_rows_total_36_chains": 133,
+  "lost_vs_v47sk": 0,
+  "lost_detail_vs_v47sk": [],
+  "lost_vs_v47skf": 0,
+  "lost_detail_vs_v47skf": [],
+  "newly_hit_vs_v47skf": [
+   {
+    "uid": "wikiP39037-Q3525068",
+    "newly_hit_gold_idx": [
+     2,
+     3
+    ],
+    "gold": [
+     {
+      "value": "member of the 16th Parliament of Great Britain",
+      "date": "1784-00-00",
+      "state_span": "I'm now a member of the 16th Parliament of Great Britain"
+     },
+     {
+      "value": "colonial governor of Guadeloupe",
+      "date": "1794-04-21",
+      "state_span": "I am now colonial governor of Guadeloupe"
+     }
+    ]
+   }
+  ]
+ },
+ "hard_constraint_gold_anchor_check_b_span_text": {
+  "method": "dropped card source_span[:120] vs every gold chain[*].state_span in the same uid, case-insensitive substring match either direction",
+  "flagged": []
+ },
+ "non_target_33_chains_byte_identical_to_v47skf": true,
+ "sk_dir_fingerprint_before": {
+  "n_files": 36,
+  "n_records": 1639,
+  "sha256": "2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131"
+ },
+ "sk_dir_fingerprint_after": {
+  "n_files": 36,
+  "n_records": 1639,
+  "sha256": "2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131"
+ },
+ "sk_untouched": true,
+ "skf_dir_fingerprint_before": {
+  "n_files": 36,
+  "n_records": 1436,
+  "sha256": "7a78f9b7ed16cc51809374339b3b59f73b44ed9be8aba2fa7848c78a86fade54"
+ },
+ "skf_dir_fingerprint_after": {
+  "n_files": 36,
+  "n_records": 1436,
+  "sha256": "7a78f9b7ed16cc51809374339b3b59f73b44ed9be8aba2fa7848c78a86fade54"
+ },
+ "skf_untouched": true,
+ "pass2_dir_fingerprint": {
+  "n_files": 3,
+  "n_records": 131,
+  "sha256": "c62600850cd235e90b6d6e41d33309d88bcc4e33fe24fdd842410fcd0606f100"
+ },
+ "dst_dir_fingerprint": {
+  "n_files": 36,
+  "n_records": 1553,
+  "sha256": "3b301633f07f36d8ebc426285d47014fa39116bc452e6e538ff43c677875c76f"
+ }
+}

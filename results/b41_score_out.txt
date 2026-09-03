@@ -1,0 +1,114 @@
+# Batch 41 — extraction instability (2nd pass) on the 3 chains flagged by batch 38-D's variance table, real readers
+
+Pre-registration: results/opt_batch41_prereg.md (written before any build/reader call). Ground-truth correction made there (§0): of the 3 flagged chains, only wikiP39037-Q3525068 actually has missing gold anchors in results/wt_cards_v47sk / v47skf (2 rows missing: 1784 '16th Parliament', 1794 'colonial governor of Guadeloupe'); wikiP39006-Q5220520 and wikiP39017-Q24568849 are already 3/3 and 5/5 in v47sk/v47skf (their anchor loss in the batch 38-D variance table is specific to the unrelated v45 144-chain haiku store).
+
+Questions: results/b35_questions_sample36.jsonl (140 qids / 36 chains); corpus data/wikistate_full_ALL_v24.json (v2.4).
+Runner: scripts/lb_reader_arm_b36b.py --arm smoc --cards-dir results/wt_cards_v47skf2 --workers 4 (unchanged from batch 36-B/38/38-B/38-E).
+Store: results/wt_cards_v47skf2 — built by scripts/b41_build_v47skf2.py: for the 3 target chains, union results/wt_cards_v47sk cards with a fresh 2nd-pass extraction results/wt_cards_v47s_pass2 (scripts/wt_qvf_prototype_b38.py, identical command/env to the results/wt_cards_v47s build, only --cards-dir changed), dedupe key = (slot_class-or-slot, value-normalized, stated_date, source_span), then apply the same assertion-type filter as scripts/b38e_build_v47skf.py; the other 33 chains are copied byte-identical from results/wt_cards_v47skf. See results/b41_filter_log.json for the full union/drop log and hard-constraint check.
+
+## 1. Accuracy / cost table (all restricted to the same 140 qids)
+
+| arm | reader | note | n | acc | change_count | count_before | first_vs_last | longest_tenure | in tok | out tok | median lat s | $/q | $ total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47skf2@haiku (2nd-pass union+filter, mt800, capped-row corrected) | haiku-4-5 | 本批 | 140 | **97.1%** | 100.0 | 88.9 | 100.0 | 100.0 | 2350 | 461 | 5.40 | $0.00466 | $0.652 |
+| smoc_v47skf2@sonnet5(2nd-pass union+filter, mt4000) | sonnet-5 | 本批 | 140 | **93.6%** | 97.2 | 83.3 | 100.0 | 93.8 | 3059 | 693 | 6.18 | $0.01305 | $1.826 |
+| smoc_v47skf@haiku  (assertion-filtered, 批38-E) | haiku-4-5 | 批38-E | 140 | **93.6%** | 91.7 | 86.1 | 97.2 | 100.0 | 2212 | 459 | 5.21 | $0.00451 | $0.631 |
+| smoc_v47skf@sonnet5(assertion-filtered, 批38-E) | sonnet-5 | 批38-E | 140 | **95.0%** | 97.2 | 88.9 | 97.2 | 96.9 | 2878 | 701 | 8.00 | $0.01277 | $1.788 |
+| smoc_v47sk@haiku  (canon+date-refine, 批38-B) | haiku-4-5 | 批38-B | 140 | **88.6%** | 88.9 | 75.0 | 97.2 | 93.8 | 2492 | 464 | 5.20 | $0.00481 | $0.674 |
+| smoc_v47sk@sonnet5(canon+date-refine, 批38-B) | sonnet-5 | 批38-B | 140 | **91.4%** | 88.9 | 83.3 | 97.2 | 96.9 | 3245 | 709 | 7.36 | $0.01358 | $1.901 |
+| smoc_v47s@haiku   (sonnet-5-built ledger, 批38) | haiku-4-5 | 批38 | 140 | **92.9%** | 88.9 | 86.1 | 100.0 | 96.9 | 2644 | 465 | 5.46 | $0.00497 | $0.696 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger, 批38) | sonnet-5 | 批38 | 140 | **92.1%** | 86.1 | 94.4 | 97.2 | 90.6 | 3465 | 772 | 7.29 | $0.01465 | $2.050 |
+| smoc_v45@haiku    (haiku-built ledger, 批33-A) | haiku-4-5 | 批33-A | 140 | **91.4%** | 86.1 | 86.1 | 100.0 | 93.8 | 2841 | 467 | 4.79 | $0.00518 | $0.725 |
+| smoc_v45@sonnet5  (haiku-built ledger, 批36-B) | sonnet-5 | 批36-B | 140 | **90.7%** | 83.3 | 88.9 | 100.0 | 90.6 | 3713 | 726 | 7.13 | $0.01469 | $2.056 |
+| plainctx@sonnet5  (trunc-corrected mt4000, 批36) | sonnet-5 | 批36 | 140 | **97.1%** | 100.0 | 97.2 | 100.0 | 90.6 | 18549 | 469 | 4.88 | $0.04179 | $5.850 |
+| plainctx@haiku    (full text, mt800, 批36) | haiku-4-5 | 批36 | 140 | **70.0%** | 52.8 | 75.0 | 91.7 | 59.4 | 13570 | 199 | 2.94 | $0.01456 | $2.039 |
+
+### max_tokens 上限命中数(按 stop_reason 字段,凡该字段存在即报)
+
+| arm | reader | capped rows | rows w/ stop_reason |
+|---|---|---|---|
+| smoc_v47skf2@haiku (2nd-pass union+filter, mt800, capped-row corrected) | haiku-4-5 | 0 | 140 |
+| smoc_v47skf2@sonnet5(2nd-pass union+filter, mt4000) | sonnet-5 | 0 | 140 |
+| smoc_v47skf@haiku  (assertion-filtered, 批38-E) | haiku-4-5 | 0 | 140 |
+| smoc_v47skf@sonnet5(assertion-filtered, 批38-E) | sonnet-5 | 0 | 140 |
+| smoc_v47sk@haiku  (canon+date-refine, 批38-B) | haiku-4-5 | 0 | 140 |
+| smoc_v47sk@sonnet5(canon+date-refine, 批38-B) | sonnet-5 | 0 | 140 |
+| smoc_v47s@haiku   (sonnet-5-built ledger, 批38) | haiku-4-5 | 1 | 140 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger, 批38) | sonnet-5 | 0 | 140 |
+| smoc_v45@haiku    (haiku-built ledger, 批33-A) | haiku-4-5 | (no stop_reason field) | - |
+| smoc_v45@sonnet5  (haiku-built ledger, 批36-B) | sonnet-5 | 0 | 140 |
+| plainctx@sonnet5  (trunc-corrected mt4000, 批36) | sonnet-5 | 0 | 20 |
+| plainctx@haiku    (full text, mt800, 批36) | haiku-4-5 | (no stop_reason field) | - |
+
+## 2. Paired McNemar (exact binomial sign test) on the 140 ids
+
+Task-specified / prereg comparisons:
+  n=140 | A=smoc_v47skf2@haiku (2nd-pass union+filter, mt800, capped-row corrected)  97.1%  B=smoc_v47skf@haiku  (assertion-filtered, 批38-E)        93.6% | delta(A-B)  +3.57pp | A-only-right= 6 B-only-right= 1 | McNemar exact p=0.125
+  n=140 | A=smoc_v47skf2@sonnet5(2nd-pass union+filter, mt4000)   93.6%  B=smoc_v47skf@sonnet5(assertion-filtered, 批38-E)        95.0% | delta(A-B)  -1.43pp | A-only-right= 1 B-only-right= 3 | McNemar exact p=0.625
+  n=140 | A=smoc_v47skf2@sonnet5(2nd-pass union+filter, mt4000)   93.6%  B=plainctx@sonnet5  (trunc-corrected mt4000, 批36)       97.1% | delta(A-B)  -3.57pp | A-only-right= 2 B-only-right= 7 | McNemar exact p=0.1797
+  n=140 | A=smoc_v47skf2@haiku (2nd-pass union+filter, mt800, capped-row corrected)  97.1%  B=smoc_v45@haiku    (haiku-built ledger, 批33-A)         91.4% | delta(A-B)  +5.71pp | A-only-right=10 B-only-right= 2 | McNemar exact p=0.03857
+
+Supporting comparisons:
+  n=140 | A=smoc_v47skf2@sonnet5(2nd-pass union+filter, mt4000)   93.6%  B=smoc_v47skf2@haiku (2nd-pass union+filter, mt800, capped-row corrected)  97.1% | delta(A-B)  -3.57pp | A-only-right= 2 B-only-right= 7 | McNemar exact p=0.1797
+
+## 3. The three wikiP39037-Q3525068 questions (batch 38-E's 残留缺口) — status under v47skf2
+
+| qid | type | gold | v47skf@h | v47skf@s5 | v47skf2@h | v47skf2@s5 |
+|---|---|---|---|---|---|---|
+| `wikiP39037-Q3525068_v2cb` | count_before | 4 | X | X | OK | X |
+| `wikiP39037-Q3525068_v2cc` | change_count | 3 | X | X | OK | X |
+| `wikiP39037-Q3525068_v2fl` | first_vs_last | 'first: member of the 13th Parliament of Great Britain; most recent: colonial governor of Guadeloupe' | X | X | OK | OK |
+
+## 4. Write-side diagnostic: compiled ledger vs gold chain (five stores)
+
+| store | extractor | gold rows | exact | date-off | missing | extra | total cards | perfect chains |
+|---|---|---|---|---|---|---|---|---|
+| v45 | claude-haiku-4-5 | 133 | **122** (91.7%) | 0 | **11** | 13 | 2003 | 31/36 |
+| v47s | claude-sonnet-5 | 133 | **133** (100.0%) | 0 | **0** | 4 | 1743 | 36/36 |
+| v47sk | claude-sonnet-5+canon | 133 | **131** (98.5%) | 0 | **2** | 7 | 1639 | 35/36 |
+| v47skf | claude-sonnet-5+canon+assertion-filter | 133 | **131** (98.5%) | 0 | **2** | 2 | 1436 | 35/36 |
+| v47skf2 | claude-sonnet-5+canon+2nd-pass-union(3 chains)+assertion-filter | 133 | **133** (100.0%) | 0 | **0** | 4 | 1553 | 36/36 |
+
+### 4b. Gold-anchor status on the 3 target chains, all five stores (exact/gold)
+
+| uid | gold | v45 | v47s | v47sk | v47skf | v47skf2 |
+|---|---|---|---|---|---|---|
+| wikiP39037-Q3525068 | 4 | 1/4 | 4/4 | 2/4 | 2/4 | 4/4 |
+| wikiP39006-Q5220520 | 3 | 1/3 | 3/3 | 3/3 | 3/3 | 3/3 |
+| wikiP39017-Q24568849 | 5 | 1/5 | 5/5 | 5/5 | 5/5 | 5/5 |
+
+### 4c. Compiled-answer ceiling (offline, zero API — a reader that never makes a reasoning error, reading only this ledger) — v47skf vs v47skf2, H2 target >= 139/140
+
+| store | gold-equal | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|---|
+| v47sk | **131/140** | 32/36 | 33/36 | 35/36 | 31/32 |
+| v47skf | **137/140** | 35/36 | 35/36 | 35/36 | 32/32 |
+| v47skf2 | **140/140** | 36/36 | 36/36 | 36/36 | 32/32 |
+
+## 5. Extraction instability: pass 1 (results/wt_cards_v47s) vs pass 2 (results/wt_cards_v47s_pass2) on the 3 target chains
+
+Same script (scripts/wt_qvf_prototype_b38.py), same env (QVF_CARD_MODEL=claude-sonnet-5, QVF_CARD_THINKING=off, max_tokens=16000, one call per chain), same corpus — the only difference between the two card sets is which API call happened to run (temperature=0 is not sent for sonnet-5, so run-to-run variance is real nondeterminism, not a seed artifact).
+
+| uid | pass1 n | pass2 n | pass1-only (by slot,value,date) | pass2-only | common | pass1 gold-exact | pass2 gold-exact |
+|---|---|---|---|---|---|---|---|
+| wikiP39037-Q3525068 | 58 | 56 | 39 | 37 | 19 | 4/4 | 4/4 |
+| wikiP39006-Q5220520 | 56 | 46 | 45 | 35 | 11 | 3/3 | 3/3 |
+| wikiP39017-Q24568849 | 46 | 29 | 45 | 28 | 1 | 5/5 | 5/5 |
+
+## 6. Cost summary
+
+### 6.1 Reader-arm cost (usage tokens, this batch's two arms)
+
+| arm | reader | in tok total | out tok total | $ |
+|---|---|---|---|---|
+| smoc_v47skf2@haiku (2nd-pass union+filter, mt800, capped-row corrected) | haiku-4-5 | 328,952 | 64,594 | $0.652 |
+| smoc_v47skf2@sonnet5(2nd-pass union+filter, mt4000) | sonnet-5 | 428,278 | 96,977 | $1.826 |
+| **reader total** | | | | **$2.478** |
+
+### 6.2 Build cost (2nd-pass extraction, 3 chains)
+
+3 chains, claude-sonnet-5: in=77,894 out=22,332 $0.379
+
+**本批总花费(建店 + 联集(离线,$0) + 读者,判官另计)= $2.857**
+
+See results/b41_provenance.txt for store directory sha256, reader-arm runtime windows and log-based cost cross-check.

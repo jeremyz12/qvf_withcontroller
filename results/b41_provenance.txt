@@ -1,0 +1,82 @@
+## 溯源块(批 41)
+
+- git rev: `1efef497df7d1d11326ec6d64acc2b67c192cc44`(本轨道全程未 git add / commit / push)
+- scripts//qvf 工作区改动:
+```
+M scripts/b37_rag_variants.py
+?? scripts/b35_backfill_slot_class.py
+?? scripts/b35c_langmem_run.py
+?? scripts/b35c_mstrata_run.py
+?? scripts/b35c_run_mem0.py
+?? scripts/b35c_score_letta_fs.py
+?? scripts/b35c_score_trace.py
+?? scripts/b35c_summarize_langmem.py
+?? scripts/b35c_summarize_mem0.py
+?? scripts/b35c_sumrag_run.py
+?? scripts/b40_score.py
+?? scripts/b41_build_v47skf2.py
+?? scripts/b41_provenance.py
+?? scripts/b41_score.py
+?? scripts/b42_holdout_build_v1.py
+?? scripts/b42_holdout_merge_v1.py
+?? scripts/b42_holdout_questions_v1.py
+?? scripts/b42_holdout_render_v1.py
+?? scripts/b42_holdout_scrape_v1.py
+?? scripts/b42_holdout_select_v1.py
+?? scripts/b42_lb_reader_arm.py
+?? scripts/b42_stats.py
+?? scripts/b43_score.py
+?? scripts/lb_reader_arm_b43.py
+?? scripts/wt_qvf_prototype_b38b.py
+```
+- 语料/题源 `data/wikistate_full_ALL_v24.json`: sha256 `c62291897f22bc5632e8b155bb7d997ea4880b59ef40d3b5a5e8be5af4060749` (8,118,849 B, mtime 2026-09-02 01:23:15)
+- 语料/题源 `results/b35_questions_sample36.jsonl`: sha256 `c5a0532c4bb83709da172ceed3c81be610b440924eee796fd2947b514e7ac5e2` (36,145 B, mtime 2026-09-03 19:36:14)
+- 语料/题源 `results/b35_sample_uids.txt`: sha256 `1bf4e3098177e49085e0c9b6eff5efc1633b8bc9ee384438832fc2d17039d30a` (802 B, mtime 2026-09-03 19:33:58)
+
+### 只读店核验(v45 / v47s / v47sk / v47skf 全程未被本批触碰)
+
+- `results/wt_cards_v45`: 144 文件 / 8,288 记录 / sha256 `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4` — 对照批 38-E 记录 (144 文件 / 8,288 记录 / `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`): **逐字相同,未被触碰**
+- `results/wt_cards_v47s`: 36 文件 / 1,743 记录 / sha256 `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd` — 对照批 38-E 记录 (36 文件 / 1,743 记录 / `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd`): **逐字相同,未被触碰**
+- `results/wt_cards_v47sk`: 36 文件 / 1,639 记录 / sha256 `2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131` — 对照批 38-E 记录 (36 文件 / 1,639 记录 / `2b96697d10fd715712ba56499cfa83ff24011b229659548210e0963a06add131`): **逐字相同,未被触碰**
+- `results/wt_cards_v47skf`: 36 文件 / 1,436 记录 / sha256 `7a78f9b7ed16cc51809374339b3b59f73b44ed9be8aba2fa7848c78a86fade54` — 对照批 38-E 记录 (36 文件 / 1,436 记录 / `7a78f9b7ed16cc51809374339b3b59f73b44ed9be8aba2fa7848c78a86fade54`): **逐字相同,未被触碰**
+
+### 建卡器(写入侧,第二次抽取,3 条链)
+
+- `scripts/wt_qvf_prototype_b38.py` sha256 `edecece48d8d56aa50f6e39a69c925925a0b2e9b2943e5a367baf6e6e4001018` (**全程只读,未改**,与建 v47s 用的是同一份文件,本批仅换 --cards-dir 与 --uids)
+- **本批(v47s_pass2)建店命令**(3 条目标链,单进程串行):
+  ```
+  QVF_CARD_OWNER_GATE=0 QVF_CARD_MODEL=claude-sonnet-5 QVF_CARD_THINKING=off QVF_CARD_TRACE=1 PYTHONUTF8=1 python -u scripts/wt_qvf_prototype_b38.py --phase write --data data/wikistate_full_ALL_v24.json --cards-dir results/wt_cards_v47s_pass2 --uids wikiP39037-Q3525068,wikiP39006-Q5220520,wikiP39017-Q24568849
+  ```
+  与建 `wt_cards_v47s`(批 38)的命令逐字相同,唯二差异:目标目录、--uids 收窄到 3 条链。
+
+- 店 `results/wt_cards_v47s_pass2`: 3 文件 / 131 记录 | 建店窗 2026-09-04 09:33:04 → 2026-09-04 09:34:40 | 目录 sha256 `c62600850cd235e90b6d6e41d33309d88bcc4e33fe24fdd842410fcd0606f100`
+
+### 逐链建店成本(claude-sonnet-5 $2.00/M in、$10.00/M out,results/b41_build_pass2.log)
+
+| uid | in tok | out tok | $ |
+|---|---|---|---|
+| wikiP39006-Q5220520 | 25,757 | 8,451 | $0.136 |
+| wikiP39017-Q24568849 | 26,419 | 4,981 | $0.103 |
+| wikiP39037-Q3525068 | 25,718 | 8,900 | $0.140 |
+| **合计** | **77,894** | **22,332** | **$0.379** |
+
+### 联集 + 过滤建店(results/wt_cards_v47skf2,离线,零 API)
+
+- `scripts/b41_build_v47skf2.py` sha256 `f327aa4fd0518b2df85d2fa821d7f45ab45786ad9f8ac92c510b9bbac1cf6962`
+- 店 `results/wt_cards_v47skf2`: 36 文件 / 1553 记录 | 建店时刻 2026-09-04 09:35:20 | 目录 sha256 `3b301633f07f36d8ebc426285d47014fa39116bc452e6e538ff43c677875c76f`
+- 硬约束(a)金标锚点索引翻转:vs v47sk = 0/133; vs v47skf = 0/133
+- 硬约束(b)span 文本二次核验被标记数:0
+- 其余 33 条链字节级等同 v47skf: True
+- 联集报告(每条目标链):
+  - wikiP39017-Q24568849: v47sk 44 张 + pass2 新增 29 张(pass2 原 29 张)= 联集 73 张(去重前)
+  - wikiP39037-Q3525068: v47sk 30 张 + pass2 新增 56 张(pass2 原 56 张)= 联集 86 张(去重前)
+  - wikiP39006-Q5220520: v47sk 32 张 + pass2 新增 46 张(pass2 原 46 张)= 联集 78 张(去重前)
+
+### 读者臂运行时窗 / 成本
+
+| 臂 | 产物 | 行数 | 店 | 读者 | 文件 mtime | in tok | out tok | $ |
+|---|---|---|---|---|---|---|---|---|
+| smoc_v47skf2@haiku-4-5 (mt800) | `results/b41_smoc_v47skf2_haiku-4-5.jsonl` | 140 | wt_cards_v47skf2 | claude-haiku-4-5 | 2026-09-04 09:40:51 | 328,952 | 64,594 | $0.652 |
+| smoc_v47skf2@sonnet-5 (mt4000) | `results/b41_smoc_v47skf2_sonnet-5.jsonl` | 140 | wt_cards_v47skf2 | claude-sonnet-5 | 2026-09-04 09:46:54 | 428,278 | 96,977 | $1.826 |
+
+**本批总花费(建店 pass2 + 联集(离线,$0) + 读者,判官另计)见 results/b41_score_out.txt §6。**
