@@ -7,7 +7,9 @@ import json, math, sys
 from collections import Counter
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-TOKENS = {"v24PjfPXLtZijW6R": "opus5-agent-v24", "v24BwLwRrXg9m78V": "reviewerA-v24"}
+TOKENS = {"v24PjfPXLtZijW6R": "opus5-agent-v24", "v24BwLwRrXg9m78V": "reviewerA-v24",
+          "v25kNtm27hkW2dcA": "opus5-agent-v25", "v25BTzCpYPPPYrqC": "reviewer-v25"}
+KEYMAP = {"v24": "data/v24full_keymap.json", "v25": "data/v25full_keymap.json"}
 
 
 def wilson(k, n, z=1.96):
@@ -20,11 +22,11 @@ def wilson(k, n, z=1.96):
 def main():
     src = ROOT / (sys.argv[1] if len(sys.argv) > 1 else "results/rater_answers_v24_20260903.json")
     rows = json.load(open(src, encoding="utf-8"))
-    key = json.load(open(ROOT / "data/v24full_keymap.json", encoding="utf-8"))
     out = []
     for tok, name in TOKENS.items():
         ans = {r["item"]: r for r in rows if r["rater"] == tok}
         if not ans: continue
+        key = json.load(open(ROOT / KEYMAP[tok[:3]], encoding="utf-8"))
         vc = Counter(r["verdict"] for r in ans.values())
         catch = [i for i in ans if key.get(i, {}).get("catch")]
         crec = sum(1 for i in catch if ans[i]["verdict"] == "errors")
@@ -44,7 +46,7 @@ def main():
                 out.append(f"| {i} | {key[i]['uid']} | {ans[i]['verdict']} | {(ans[i]['note'] or '')[:200]} |")
         out.append("")
     doc = "# v2.4 全量评审汇总(2026-09-03)\n\n语料 v2.4,149 题 = 144 链 + 5 植入对照题;数据源 rate.db 导出。\n\n" + "\n".join(out)
-    (ROOT / "results/v24_agent_review_20260903.md").write_text(doc, encoding="utf-8")
+    (ROOT / (sys.argv[2] if len(sys.argv) > 2 else "results/v24_agent_review_20260903.md")).write_text(doc, encoding="utf-8")
     print(doc)
 
 
