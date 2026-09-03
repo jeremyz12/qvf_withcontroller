@@ -1,0 +1,134 @@
+# Batch 38 — WRITE-side extractor swap: does a stronger card builder raise the QVF ledger ceiling?
+
+Hypothesis under test (from batch 36b): the ledger arm is reader-insensitive (smoc 91.4%@haiku vs 90.7%@sonnet-5) while plain full-context reading with sonnet-5 reaches 97.1%, so the ledger's ceiling is set by WRITE-side card extraction, not by the reader. Batch 38 rebuilds the store with extractor = claude-sonnet-5 (store results/wt_cards_v47s, 36 chains) and reruns the ledger arm with both readers on the same 140 questions.
+
+Questions: results/b35_questions_sample36.jsonl (140 qids / 36 chains); corpus data/wikistate_full_ALL_v24.json (v2.4).
+Runner: scripts/lb_reader_arm_b36b.py (unchanged from batch 36b).
+Builder: scripts/wt_qvf_prototype_b38.py — see results/b38_provenance.txt for the exact diff vs the frozen scripts/wt_qvf_prototype.py.
+
+## 1. Accuracy / cost table (all restricted to the same 140 qids)
+
+| arm | reader | n | acc | change_count | count_before | first_vs_last | longest_tenure | in tok | out tok | median lat s | $/q |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47s@haiku   (sonnet-5-built ledger) | haiku-4-5 | 140 | **92.9%** | 88.9 | 86.1 | 100.0 | 96.9 | 2644 | 465 | 5.46 | $0.00497 |
+| smoc_v47s@sonnet5 (sonnet-5-built ledger) | sonnet-5 | 140 | **92.1%** | 86.1 | 94.4 | 97.2 | 90.6 | 3465 | 772 | 7.29 | $0.01465 |
+| smoc_v45@haiku    (haiku-built ledger) | haiku-4-5 | 140 | **91.4%** | 86.1 | 86.1 | 100.0 | 93.8 | 2841 | 467 | 4.79 | $0.00518 |
+| smoc_v45@sonnet5  (haiku-built ledger) | sonnet-5 | 140 | **90.7%** | 83.3 | 88.9 | 100.0 | 90.6 | 3713 | 726 | 7.13 | $0.01469 |
+| plainctx@sonnet5  (full text, mt800) | sonnet-5 | 140 | **87.9%** | 94.4 | 94.4 | 94.4 | 65.6 | 18549 | 444 | 5.01 | $0.04154 |
+| plainctx@sonnet5  (trunc-corrected mt4000) | sonnet-5 | 140 | **97.1%** | 100.0 | 97.2 | 100.0 | 90.6 | 18549 | 469 | 4.88 | $0.04179 |
+| plainctx@haiku    (full text, mt800) | haiku-4-5 | 140 | **70.0%** | 52.8 | 75.0 | 91.7 | 59.4 | 13570 | 199 | 2.94 | $0.01456 |
+
+## 2. Paired McNemar (exact binomial sign test) on the 140 ids
+
+Pre-registered comparisons:
+  n=140 | A=smoc_v47s@haiku   (sonnet-5-built ledger)   92.9%  B=smoc_v45@haiku    (haiku-built ledger)      91.4% | delta(A-B)  +1.43pp | A-only-right=10 B-only-right= 8 | McNemar exact p=0.8145
+  n=140 | A=smoc_v47s@sonnet5 (sonnet-5-built ledger)   92.1%  B=smoc_v45@sonnet5  (haiku-built ledger)      90.7% | delta(A-B)  +1.43pp | A-only-right=11 B-only-right= 9 | McNemar exact p=0.8238
+  n=140 | A=smoc_v47s@sonnet5 (sonnet-5-built ledger)   92.1%  B=plainctx@sonnet5  (trunc-corrected mt4000)  97.1% | delta(A-B)  -5.00pp | A-only-right= 2 B-only-right= 9 | McNemar exact p=0.06543
+
+Supporting comparisons:
+  n=140 | A=smoc_v47s@sonnet5 (sonnet-5-built ledger)   92.1%  B=smoc_v47s@haiku   (sonnet-5-built ledger)   92.9% | delta(A-B)  -0.71pp | A-only-right= 6 B-only-right= 7 | McNemar exact p=1
+  n=140 | A=smoc_v47s@haiku   (sonnet-5-built ledger)   92.9%  B=plainctx@sonnet5  (trunc-corrected mt4000)  97.1% | delta(A-B)  -4.29pp | A-only-right= 4 B-only-right=10 | McNemar exact p=0.1796
+  n=140 | A=smoc_v47s@sonnet5 (sonnet-5-built ledger)   92.1%  B=plainctx@sonnet5  (full text, mt800)        87.9% | delta(A-B)  +4.29pp | A-only-right=14 B-only-right= 8 | McNemar exact p=0.2863
+  n=140 | A=smoc_v45@haiku    (haiku-built ledger)      91.4%  B=smoc_v45@sonnet5  (haiku-built ledger)      90.7% | delta(A-B)  +0.71pp | A-only-right= 7 B-only-right= 6 | McNemar exact p=1
+
+## 3. Per-chain view: chains where the v45 ledger lost to plainctx under BOTH readers — did v47s fix them?
+
+Chains meeting the criterion: 3 / 36
+
+| chain | qids v45 lost (both readers) | v47s@haiku fixed | v47s@sonnet5 fixed | v47s newly broken (any reader) |
+|---|---|---|---|---|
+| wikiP54001-Q16225986 | 3 (v2cb, v2cc, v2lt) | 3 | 3 | 0 |
+| wikiP551002-Q107297 | 1 (v2cc) | 1 | 1 | 0 |
+| wikiP551003-Q20512700 | 2 (v2cc, v2lt) | 2 | 2 | 0 |
+| **total** | **6** | **6** | **6** | **0** |
+
+("newly broken" counts questions in those same chains that v45 got right and v47s got wrong, under either reader.)
+
+## 4. Write-side diagnostic: compiled ledger vs gold chain
+
+For each chain, the slot's dated value sequence is read out of the store exactly as repro_batch3.render_card_ledger builds it (stated_date, else the source memory's session date), then matched 1-1 against the corpus field chain[*].{value,date}.
+  exact   = gold row matched on normalised value AND same year
+  date-off= value matched but the year differs
+  missing = gold row not present in the ledger at all
+  extra   = ledger rows in the same slot lane that match no gold row
+
+| store | extractor | gold rows | exact | date-off | missing | extra | total cards | perfect chains |
+|---|---|---|---|---|---|---|---|---|
+| v45 | claude-haiku-4-5 | 133 | **122** (91.7%) | 0 | **11** | 13 | 2003 | 31/36 |
+| v47s | claude-sonnet-5 | 133 | **133** (100.0%) | 0 | **0** | 4 | 1743 | 36/36 |
+
+### Per-chain (only chains where the two stores differ)
+
+| chain | gold | v45 exact/date-off/missing/extra | v47s exact/date-off/missing/extra | v45 lane | v47s lane |
+|---|---|---|---|---|---|
+| wikiP39003-Q6248447 | 3 | 3/0/0/1 | 3/0/0/0 | academic_position,political_position | political_position |
+| wikiP39006-Q5220520 | 3 | 1/0/2/2 | 3/0/0/0 | political_position,position | public_office |
+| wikiP39017-Q24568849 | 5 | 1/0/4/5 | 5/0/0/0 | household_composition,position | civic_role,parliament_membership |
+| wikiP39037-Q3525068 | 4 | 1/0/3/0 | 4/0/0/0 | occupation | occupation,parliament_membership |
+| wikiP39039-Q11801709 | 8 | 8/0/0/0 | 8/0/0/1 | parliament_membership,position | civic_office,parliament_membership |
+| wikiP54001-Q16225986 | 4 | 3/0/1/1 | 4/0/0/0 | cycling_team,team_size | cycling_team |
+| wikiP54020-Q98594955 | 6 | 6/0/0/0 | 6/0/0/1 | cycling_team | cycling_team |
+| wikiP551001-Q20667184 | 4 | 4/0/0/0 | 4/0/0/1 | residence | residence,residence_area |
+| wikiP551002-Q107297 | 4 | 3/0/1/1 | 4/0/0/0 | residence | residence |
+| wikiP551003-Q20512700 | 3 | 3/0/0/1 | 3/0/0/0 | residence | residence |
+| wikiP551006-Q57870878 | 4 | 4/0/0/1 | 4/0/0/0 | residence,residence_update_needed | residence |
+
+(11 of 36 chains differ; the rest are identical on all four counts.)
+
+### Slot-name vocabulary (write-side, all 36 chains)
+
+- **v45**: 2003 cards, 962 distinct slot names; top 12 = hobby(85), residence(32), cycling_team(29), employer(23), travel_plans(22), political_position(19), education(18), travel_history(17), job_title(16), commute_method(15), residence_location(15), location(14)
+- **v47s**: 1743 cards, 908 distinct slot names; top 12 = cycling_team(34), parliament_membership(26), hobby(25), residence(25), habit(19), residence_city(18), travel_history(16), employer(16), recent_activity(15), pet(13), gift_purchase(12), clothing_purchase(12)
+
+## 5. POST-HOC: slot-name fragmentation (NOT pre-registered)
+
+Found while reading the 4 questions both v47s readers still get wrong. A chain is 'fragmented' in a store when the gold chain's values land under MORE THAN ONE card `slot` name — e.g. the gold slot `position` split into `parliament_membership` + `civic_office`. The ledger renderer prints `slot: value` per row, so a reader asked 'how many times did my position change' counts only one of the two lanes.
+
+| chain | gold rows | v45 slot names | v47s slot names |
+|---|---|---|---|
+| wikiP39000-Q4976518 | 3 | political_position | committee_membership, occupation_role |
+| wikiP39017-Q24568849 | 5 | position | civic_role, parliament_membership |
+| wikiP39023-Q18527003 | 5 | political_position | parliament_membership, public_office |
+| wikiP39033-Q5331705 | 6 | political_position | civic_appointment, parliament_membership |
+| wikiP39037-Q3525068 | 4 | occupation | occupation, parliament_membership |
+| wikiP39039-Q11801709 | 8 | parliament_membership, position | civic_office, parliament_membership |
+| wikiP551000-Q19845625 | 3 | europe_trip_destinations, residence_country | residence_country, upcoming_trip |
+
+Chains whose gold values are split across >1 card slot name: **v45 2/36, v47s 7/36** — the stronger extractor uses more semantically precise slot names and therefore fragments MORE.
+
+### Accuracy split by v47s fragmentation (the control matters)
+
+| subset | n | v47s@sonnet5 | v47s@haiku | v45@sonnet5 | v45@haiku | plainctx@sonnet5 mt4000 |
+|---|---|---|---|---|---|---|
+| v47s-fragmented chains (7) | 26 | **69.2%** | 88.5% | 88.5% | 88.5% | 92.3% |
+| v47s single-slot chains (29) | 114 | **97.4%** | 93.9% | 91.2% | 92.1% | 98.2% |
+
+  paired on the 114 single-slot questions: smoc_v47s@sonnet5 vs plainctx@sonnet5 — smoc-only-right=1, plainctx-only-right=2, McNemar exact p=1
+
+  paired on the 26 fragmented questions: smoc_v47s@sonnet5 vs plainctx@sonnet5 — smoc-only-right=1, plainctx-only-right=7, McNemar exact p=0.07031
+
+Confound check — fragmented chains are longer (mean 4.9 gold rows vs 3.4), BUT plainctx@sonnet5 scores 92.3% on exactly those 26 questions, and v45@sonnet5 scores 88.5%. So the subset is not intrinsically unanswerable; it is specifically hard for the v47s ledger.
+
+**Causal evidence, not just correlation:** v47s@sonnet5 fails 8 of the 26 fragmented questions. Of those 8 failures, **7 were answered correctly by v45@sonnet5** (same reader, same question, same corpus — only the store changed) and 7 by plainctx@sonnet5. So these failures are specific to THIS store, not to the questions.
+
+### The 4 questions BOTH v47s readers still get wrong
+
+- `wikiP39033-Q5331705_v2cc` [change_count] gold=5 | v47s@haiku='3' | v47s@sonnet5='3 times' | v45@haiku=OK v45@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP39039-Q11801709_v2cc` [change_count] gold=7 | v47s@haiku='6' | v47s@sonnet5='6' | v45@haiku=OK v45@sonnet5=X | plainctx@sonnet5 RIGHT
+- `wikiP54020-Q98594955_v2cb` [count_before] gold=6 | v47s@haiku='5' | v47s@sonnet5='5' | v45@haiku=X v45@sonnet5=OK | plainctx@sonnet5 RIGHT
+- `wikiP551005-Q42324799_v2lt` [longest_tenure] gold='Amsterdam' | v47s@haiku='Buddenbrookhaus (held for 11 years, from 1835 to 1846)' | v47s@sonnet5='Buddenbrookhaus (tied with Amsterdam at 11 years each, ' | v45@haiku=OK v45@sonnet5=OK | plainctx@sonnet5 RIGHT
+
+Note: `wikiP54020-Q98594955_v2cb` is NOT a v47s regression — v45@haiku gets it wrong too. Its gold date is `2024-00-00`, rendered in both ledgers as `2024`, so a reader cannot tell whether it falls strictly before 2024-06-29 and conservatively drops it. That is a gold-side date-precision problem shared by both stores.
+
+### Second write-side regression: date granularity
+
+The gold chain carries day-precision dates for some rows (e.g. `1857-03-01`); the card's `stated_date` may coarsen that to the year. Counted over the gold rows each store actually matched:
+
+- **v45**: 2 / 122 matched gold rows lose day precision in the rendered ledger (1.6%)
+- **v47s**: 24 / 133 matched gold rows lose day precision in the rendered ledger (18.0%)
+
+This is what breaks `wikiP551005-Q42324799_v2lt`: v45 kept `1857-03-01`, v47s wrote `1857`, so Buddenbrookhaus (1835-1846) and Amsterdam (1846-1857) tie at 11 years and both readers pick the wrong one. Gold is Amsterdam, which wins only on the month.
+
+## 6. Build cost / provenance
+
+See results/b38_provenance.txt.

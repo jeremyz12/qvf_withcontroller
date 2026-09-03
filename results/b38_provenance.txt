@@ -1,0 +1,112 @@
+## 溯源块(批 38)
+
+- git rev: `48ffca6fb8249c994bcd5c2885c62433e3e98666`(本轨道全程未 git add / commit / push)
+- scripts//qvf 工作区改动:
+```
+M scripts/hipporag2_baseline.py
+ M scripts/langmem_s5_agg.py
+ M scripts/letta_fs_agent_baseline.py
+ M scripts/repro_batch2.py
+ M scripts/repro_batch33h_memos.py
+ M scripts/repro_batch4.py
+ M scripts/trace_contestant.py
+?? scripts/b35_backfill_slot_class.py
+?? scripts/b35c_langmem_run.py
+?? scripts/b35c_mstrata_run.py
+?? scripts/b35c_run_mem0.py
+?? scripts/b35c_score_letta_fs.py
+?? scripts/b35c_score_trace.py
+?? scripts/b35c_summarize_langmem.py
+?? scripts/b35c_summarize_mem0.py
+?? scripts/b35c_sumrag_run.py
+?? scripts/b38_provenance.py
+?? scripts/b38_score.py
+?? scripts/wt_qvf_prototype_b38.py
+```
+- 语料/题源 `data/wikistate_full_ALL_v24.json`: sha256 `c62291897f22bc5632e8b155bb7d997ea4880b59ef40d3b5a5e8be5af4060749` (8,118,849 B, mtime 2026-09-02 01:23:15)
+- 语料/题源 `results/b35_questions_sample36.jsonl`: sha256 `c5a0532c4bb83709da172ceed3c81be610b440924eee796fd2947b514e7ac5e2` (36,145 B, mtime 2026-09-03 19:36:14)
+- 语料/题源 `results/b35_sample_uids.txt`: sha256 `1bf4e3098177e49085e0c9b6eff5efc1633b8bc9ee384438832fc2d17039d30a` (802 B, mtime 2026-09-03 19:33:58)
+
+### 建卡器(写入侧)
+
+- 冻结件 `scripts/wt_qvf_prototype.py` sha256 `56b64f146f46354c44c9a86bf2a0ae1ccc097d4e5844bb51e2715c84cb479edb` (**全程只读,未改**)
+- 本批副本 `scripts/wt_qvf_prototype_b38.py` sha256 `edecece48d8d56aa50f6e39a69c925925a0b2e9b2943e5a367baf6e6e4001018`
+- 与冻结件差异: `1 file changed, 60 insertions(+), 2 deletions(-)`
+
+- **v45(批 33-A,对照店)建店命令**(自 results/opt_batch33_A_rebuild_verdict.md
+  §九 与 scripts/b35_provenance.py:118 逐字复核):
+  ```
+  QVF_CARD_OWNER_GATE=0 PYTHONUTF8=1 python -u scripts/wt_qvf_prototype.py \
+    --phase write --data data/wikistate_full_ALL_v24.json \
+    --cards-dir results/wt_cards_v45 --uids <shard>
+  ```
+  抽取模型 = 脚本内建常量 `MODEL = "claude-haiku-4-5"`(`QVF_CARD_MODEL` 未设,
+  `_CARD_MODEL` 回落到 MODEL);`QVF_CARD_TEMP0` 默认 1 → 发 `temperature=0.0`;
+  `max_tokens=16000`;其余建卡旗标全默认(KEYS/TAGS/V5/STRICT/ABS_DATE/
+  RENUMBER/VERIFY_SPAN/FAIL_LOUD/INCR/BY_SESSION 全 0)。
+
+- **v47s(本批)建店命令**:
+  ```
+  QVF_CARD_OWNER_GATE=0 QVF_CARD_MODEL=claude-sonnet-5 QVF_CARD_THINKING=off \
+  QVF_CARD_TRACE=1 PYTHONUTF8=1 python -u scripts/wt_qvf_prototype_b38.py \
+    --phase write --data data/wikistate_full_ALL_v24.json \
+    --cards-dir results/wt_cards_v47s --uids <shard>   # 4 分片并行
+  ```
+  与 v45 的差异**只有三处**,逐条理由:
+  1. `QVF_CARD_MODEL=claude-sonnet-5` —— 本批的自变量。
+  2. **不发 `temperature`**。claude-sonnet-5 已移除采样参数,发送必 400
+     (实测 `400 invalid_request_error: \`temperature\` is deprecated for this
+     model.`)。闸写在 `_card_wants_temperature()`,**只对不接受该参数的模型
+     生效**:传 claude-haiku-4-5 时仍发 `temperature=0.0`,与冻结件逐字节同。
+     批 36-B 已在读者侧确认同一 API 行为。
+  3. `QVF_CARD_THINKING=off` → 显式 `thinking={"type":"disabled"}`。
+     **理由(必须照实读)**:sonnet-5 默认开自适应思考,而 `max_tokens` 同时
+     封顶「思考 + 可见文本」。用默认设定实测(见 `build_v47s_smoke.log`):
+     首次调用在 `max_tokens=16000` 上被截断 → `messages.parse` 解析失败 →
+     `_catalog()` 对半分批,同一条链被拆成两次互不可见的抽取,与 v45 的
+     「一链一次调用」**不同构**;且被截断那次的 token 白烧却不进 usage 统计。
+     关掉思考后:一链一次调用、`stop_reason=end_turn`、`max_tokens` 保持
+     16000 不变。这同时也让写入侧调用与 v45 **同构**——v45 的
+     claude-haiku-4-5 不配 `budget_tokens` 本就零思考,故两店都是"零思考抽取,
+     只有模型不同"。**代价照实记:本批没有测「sonnet-5 + 思考」的抽取上限**
+     (预算 $10 封顶,默认设定实测约 $0.26/链 × 36 ≈ $9.4,加读者会超顶)。
+
+### 建店窗 / 目录指纹
+
+- 店 `results/wt_cards_v45`: 144 文件 / 8,288 记录 | 建店窗 2026-09-02 16:52:05 → 2026-09-02 17:10:18 | 目录 sha256(名+内容拼接) `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`
+- 店 `results/wt_cards_v47s`: 36 文件 / 1,743 记录 | 建店窗 2026-09-03 22:23:22 → 2026-09-03 22:46:51 | 目录 sha256(名+内容拼接) `a80ea1f36554abff8964a1d536f911f613bac7e54200cfd9928b7fb946cdb3dd`
+
+注:`results/wt_cards_v45` 是批 33-A 的 144 链全量店,本批**全程只读**(上面的 144 文件指纹应与 results/b33A_provenance.txt 逐字相同 —— 这就是「未触碰 v45」的机械证明)。v47s 只建 36 链抽样。
+
+### 逐链建店成本(claude-sonnet-5 $2.00/M in、$10.00/M out)
+
+| 日志 | 条目 | in tok | out tok | $ |
+|---|---|---|---|---|
+| `build_v47s_0.log` | 9 | 233,047 | 79,360 | $1.260 |
+| `build_v47s_1.log` | 9 | 230,039 | 83,941 | $1.299 |
+| `build_v47s_2.log` | 9 | 232,214 | 69,025 | $1.155 |
+| `build_v47s_3.log` | 8 | 207,626 | 69,270 | $1.108 |
+| `build_v47s_4_refrag.log` | 1 | 25,528 | 5,034 | $0.101 |
+| `build_v47s_calib.log` | 1 | 25,480 | 6,495 | $0.116 |
+| `build_v47s_smoke.log` | 1 | 25,501 | 25,450 | $0.306 |
+| **合计** | **38** | **979,435** | **338,575** | **$5.345** |
+
+逐链均值:in 25,775 / out 8,910 tok = $0.1406/链。
+
+对照:v45 同 36 条链的 haiku 建店成本无逐链归档(批 33-A 只留 144 链的分片日志),故不做逐链对照;两店的 `usage_in`/`usage_out` 字段落在各自卡片文件里,见下表。
+
+| 店 | 抽取模型 | 链 | 写入 in tok | 写入 out tok | $ |
+|---|---|---|---|---|---|
+| results/wt_cards_v45 | claude-haiku-4-5 | 36 | 765,882 | 271,251 | $2.122 |
+| results/wt_cards_v47s | claude-sonnet-5 | 36 | 928,322 | 297,444 | $4.831 |
+
+(v45 的 36 链 usage 是从 144 链店里挑出这 36 个文件读的,不是重建;两行价格表不同,故金额不可直接相减比模型贵贱。)
+
+### 读者臂运行时窗 / 成本
+
+| 臂 | 产物 | 行数 | 店 | 读者 | 文件 mtime | in tok | out tok | $ | 累计延迟 h |
+|---|---|---|---|---|---|---|---|---|---|
+| smoc_v47s@haiku-4-5 | `results/b38_smoc_v47s_haiku-4-5.jsonl` | 140 | wt_cards_v47s | claude-haiku-4-5 | 2026-09-03 22:57:11 | 370,201 | 65,168 | $0.696 | 0.21 |
+| smoc_v47s@sonnet-5 | `results/b38_smoc_v47s_sonnet-5.jsonl` | 140 | wt_cards_v47s | claude-sonnet-5 | 2026-09-03 22:59:02 | 485,116 | 108,024 | $2.050 | 0.32 |
+
+**本批总花费(建店 + 读者,判官另计)= $8.09** (建店 $5.34 + 读者 $2.75;另有一次被截断的默认设定冒烟 ≈ $0.35 白烧,见上文第 3 条理由)。
