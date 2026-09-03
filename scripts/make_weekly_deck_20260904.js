@@ -113,7 +113,7 @@ let n = 0;
   tile(s, 0.6, 1.7, 2.9, 1.95, "v2.4 → v2.5", "47 contaminating sentences removed, 7 duplicate filler sessions merged; −0.31% chars; 542/542 anchors intact");
   tile(s, 3.7, 1.7, 2.9, 1.95, "2 × 149", "machine reviews (v2.4, v2.5): 5/5 planted errors caught, 0/144 real chains flagged");
   tile(s, 6.8, 1.7, 2.9, 1.95, "576 → 560", "questions: 16 near-tie longest-tenure items removed (margin ≤ 1%)");
-  tile(s, 9.9, 1.7, 2.9, 1.95, "+42.0 pp", "QVF ledger vs direct read on the 560-q set (89.3 vs 47.3; chain-cluster 95% CI [37.0, 46.9])", ACCENT);
+  tile(s, 9.9, 1.7, 2.9, 1.95, "+21 / −6", "QVF ledger vs the whole memory in the prompt, same reader: +21.4 (haiku, p = 5e-6) / −6.4 (Sonnet 5, p = 0.035); +42 vs top-10 retrieval on 560 q", ACCENT);
   bullets(s, [
     "Batch 34: full-read scan of all 144 chains by one model, independent per-chain adjudication by another, surgical deletion under two gates (anchors verbatim, zero residue).",
     "Review pipeline: fresh Opus 5 agents drive the actual review page item by item; two leaks in the planted-error items fixed before v2.5.",
@@ -260,6 +260,69 @@ let n = 0;
   });
   footer(s, n);
 }
+
+// ---------- 8a what the reader is up against ----------
+{
+  const s = pres.addSlide(); n++;
+  title(s, "What the reader is up against — one real chain", "wikiP39042: 34 dated sessions, ~170 user turns; 4 of them carry the persona's own position history");
+  s.addShape(pres.ShapeType.roundRect, { x: 0.6, y: 1.6, w: 6.0, h: 3.0, fill: { color: ICE }, line: { color: ICE }, rectRadius: 0.08 });
+  s.addText("The four sentences that matter (verbatim anchors)", { x: 0.8, y: 1.7, w: 5.6, h: 0.35, fontFace: HFONT, fontSize: 13, bold: true, color: NAVY, margin: 0 });
+  s.addText([
+    { text: "1974-02-28  ", options: { bold: true, color: NAVY } }, { text: "\u201cI'm now a member of the 46th Parliament of the United Kingdom\u201d", options: { breakLine: true } },
+    { text: "1974-10-10  ", options: { bold: true, color: NAVY } }, { text: "\u201cI'm now a member of the 47th Parliament \u2026\u201d", options: { breakLine: true } },
+    { text: "1992-04-09  ", options: { bold: true, color: NAVY } }, { text: "\u201cI'll be taking my seat as a member of the 51st Parliament \u2026\u201d", options: { breakLine: true } },
+    { text: "1997-10-03  ", options: { bold: true, color: NAVY } }, { text: "\u201cas of today I'm officially a member of the House of Lords\u201d", options: {} },
+  ], { x: 0.8, y: 2.1, w: 5.6, h: 1.6, fontFace: BFONT, fontSize: 11.5, color: INK, margin: 0, valign: "top", paraSpaceAfter: 4 });
+  s.addText("Question: \u201c(Today is 1998-04-01.) How many times did I change my position?\u201d  \u2192  gold 3", { x: 0.8, y: 3.8, w: 5.6, h: 0.6, fontFace: BFONT, fontSize: 12, bold: true, color: ACCENT, margin: 0 });
+  s.addText("The other ~166 turns", { x: 6.9, y: 1.6, w: 5.8, h: 0.35, fontFace: HFONT, fontSize: 13, bold: true, color: NAVY, margin: 0 });
+  bullets(s, [
+    "Small talk: sneakers, a festival, a flat search, tea \u2014 plus states of OTHER people in the same slot (\u201cour team lead Emily was promoted\u201d).",
+    "Dates live on session headers, not in the sentences (\u201cas of today\u201d, \u201cthe count went our way\u201d).",
+    "Nothing says \u201cthis supersedes that\u201d; the reader must infer succession from dates.",
+  ], { x: 6.9, y: 2.0, w: 5.8, h: 2.6, fontSize: 12 });
+  s.addText("To answer correctly the reader must do four things at once", { x: 0.6, y: 4.8, w: 12.1, h: 0.35, fontFace: HFONT, fontSize: 13, bold: true, color: NAVY, margin: 0 });
+  table(s, [
+    ["Sub-task", "What goes wrong for a small reader", "Which arm still fails it"],
+    ["Find all four sentences", "top-10 retrieval covers 86.7% of anchors on 14K stores, 38.8% on 104K stores", "direct; every RAG variant at scale"],
+    ["Exclude other people's states", "same-slot distractors get counted", "direct, full text (no-filler: direct +22.5, ledger +1.7)"],
+    ["Order by date", "dates are on headers; narrative order \u2260 time order", "full text (order shuffle \u221211.7 on n=60, pending)"],
+    ["Count transitions (merge equal neighbours)", "weak readers cannot count over a timeline (full text change_count 29.9)", "everything except compile / ledger"],
+  ], { x: 0.6, y: 5.2, w: 12.1, colW: [3.0, 5.4, 3.7], fontSize: 10.5, rowH: 0.34 });
+  footer(s, n);
+}
+// ---------- 8b each step removes one failure source ----------
+{
+  const s = pres.addSlide(); n++;
+  title(s, "Each step removes one failure source", "Mechanism \u2192 our exclusion evidence \u2192 literature that predicts it");
+  table(s, [
+    ["Step", "Failure source removed", "Our evidence (same reader, same judge)", "Literature anchor"],
+    ["Write-time cards", "Coverage: every session is read once, so no evidence is left to retrieval luck", "Ledger built at read time from top-10: 60.2 (85.3 with full coverage, 15.9 with one session missing). Top-50 retrieval covers 99.8% of anchors and still fails 37% \u2192 finding is necessary, not sufficient", "MemTrace 2606.17328: bottleneck is evidence use, not retrieval \u00b7 Zep 2501.13956: write-time dated facts"],
+    ["1 Select", "Distractors: other people's and off-slot states enter the count", "Remove all filler sessions: direct +22.5, full text +20.0, ledger +1.7 \u2192 44% of the structural premium", "Shi et al., ICML 2023 (2302.00093): irrelevant but similar context degrades accuracy"],
+    ["2 Certify", "Unverifiable / undated cards", "Remove verbatim anchors: \u22125.4 (p = 1e-4); rung alone +0.5 here, +5.7 on the clean subset \u2014 it feeds step 3", "\u2014"],
+    ["3 Compile", "Aggregation: sort, merge, count are done by code, not by the LM", "Full text change_count 29.9 vs ledger 85.4; compile rung +12.7 \u2192 the other 56%", "PAL, ICML 2023 (2211.10435): let a program do the arithmetic \u00b7 Faith & Fate, NeurIPS 2023 (2305.18654): chained aggregation fails \u00b7 Test of Time, ICLR 2025 (2406.09170): ordering/counting over timelines is weak"],
+    ["4 Ledger + protocol", "Skipping: answering from intuition instead of the whole trajectory", "Protocol: haiku +10.9 (p < 1e-6), gpt-5-mini \u22123.5, Gemini +0.35 n.s.; compression alone gives nothing (summary 52.8 = full text 52.3)", "Sprague et al. 2024 (2409.12183): CoT helps mainly symbolic tasks \u00b7 Lost in the Middle, TACL 2024 (2307.03172): buried evidence is missed"],
+  ], { x: 0.6, y: 1.55, w: 12.1, colW: [1.5, 2.9, 4.4, 3.3], fontSize: 9.5, rowH: 0.8 });
+  s.addText("One sentence: QVF turns \u201cread 14K tokens of chatter and rebuild a timeline in your head\u201d into \u201cread a 4-row dated table\u201d. The reader keeps only the step it is good at. Caveat to run next: a render-matched control (same layout, mechanism off) \u2014 Presentation, Not Mechanism (2607.16019) shows layout alone can explain most of a ledger-style gain.", { x: 0.6, y: 6.25, w: 12.1, h: 0.75, fontFace: BFONT, fontSize: 10.5, color: INK, margin: 0 });
+  footer(s, n);
+}
+// ---------- 8c when it does not help ----------
+{
+  const s = pres.addSlide(); n++;
+  title(s, "When it does not help \u2014 and why that is the same mechanism", "Same 140 questions / 36 chains unless noted; \u2018full context\u2019 = the whole raw memory in the prompt, plain system prompt");
+  table(s, [
+    ["Setting", "Full context", "Best retrieval", "QVF ledger", "Reading"],
+    ["14K store \u00b7 weak reader (haiku-4.5)", "70.0 (13.6K tok)", "62.9 (top-50)", "91.4 (2.8K tok)", "+21.4 vs full context, p = 5e-6; 1/2.8 the cost"],
+    ["14K store \u00b7 strong reader (Sonnet 5)", "97.1 (18.5K tok)", "70.7 (top-10)", "90.7 (3.7K tok)", "\u22126.4, p = 0.035: the reader does the four sub-tasks itself; only the 2.8\u00d7 cost edge remains"],
+    ["104K store \u00b7 weak reader (30 stores / 120 q)", "7.5 (103.8K tok)", "38.3 (top-100, 8.9K tok)", "61.7 projection (8.8K) \u00b7 54.2 full ledger", "+23.3 vs budget-matched top-100, p = 2e-4; retrieval collapses first (top-10 reaches 38.8% of anchors)"],
+    ["104K store \u00b7 strong reader", "not run", "not run", "not run", "the decisive missing cell (~$30)"],
+  ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 1.9, 2.0, 2.4, 2.8], fontSize: 10.5, rowH: 0.62 });
+  bullets(s, [
+    "The ledger is reader-insensitive (haiku 91.4 \u2192 Sonnet 90.7, p = 1.0) while every other arm gains 18\u201327 pp from the stronger reader: its ceiling is set by card content, not by reading.",
+    "Write-side upgrade: a Sonnet-built store reaches 133/133 gold rows but only 92.9 / 92.1; on the 29 chains without slot-name fragmentation it ties full context (97.4 vs 98.2, p = 1.0). Residual errors sit in multi-value political-position chains. StateMemBench (2608.19652, \u00a73.2) reports the same pattern: 44.4% of failures under oracle retrieval are stale-state answers.",
+    "Claim, restated: the ledger is necessary when the reader is not frontier-class, or the store exceeds the context window, or cost is bound \u2014 any one of the three. Otherwise it is a cheaper, auditable layer, not a more accurate one.",
+  ], { x: 0.6, y: 4.75, w: 12.1, h: 2.2, fontSize: 11.5 });
+  footer(s, n);
+}
 // ---------- 9 exclusion tests ----------
 {
   const s = pres.addSlide(); n++;
@@ -342,6 +405,69 @@ let n = 0;
   ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.0, 4.4, 3.7], fontSize: 11, rowH: 0.55 });
   footer(s, n);
 }
+
+// ---------- 13a realistic baselines ----------
+{
+  const s = pres.addSlide(); n++;
+  title(s, "Realistic baseline: whole memory in the prompt (36 / 36b)", "140 questions / 36 chains, corpus v2.4; plain system prompt; judge Opus 5; $ at list prices (haiku $1/$5, Sonnet 5 $2/$10 per M)");
+  table(s, [
+    ["Arm", "haiku-4.5", "Sonnet 5", "In tok / q (haiku / Sonnet)", "$ / q (Sonnet)"],
+    ["Whole memory in prompt, plain call", "70.0", "97.1 (max_tokens 4000; 87.9 at 800 because thinking shares the cap)", "13.6K / 18.5K", "$0.042"],
+    ["Archived plain full text (other user-prompt wording, same bytes)", "58.6", "84.8", "13.6K / 18.6K", "$0.039"],
+    ["Full text + trajectory protocol", "92.9", "\u2014", "13.8K", "\u2014"],
+    ["Top-10 retrieval (direct)", "50.7", "70.7", "0.9K / 1.1K", "$0.005"],
+    [{ text: "QVF ledger (store v45)", options: { bold: true } }, { text: "91.4", options: { bold: true } }, { text: "90.7", options: { bold: true } }, "2.8K / 3.7K", "$0.015"],
+    ["QVF ledger, Sonnet-built cards (v47s)", "92.9", "92.1", "2.6K / 3.5K", "$0.015"],
+  ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.3, 1.2, 3.6, 1.9, 1.1], fontSize: 10.5, rowH: 0.48 });
+  bullets(s, [
+    "Prompt wording alone moves a full-context baseline by +11\u201312 pp on identical bytes: the archived \u2018plain full text\u2019 number understated the realistic baseline. The main table's first row must be the plainest full-context call.",
+    "Same weak reader: ledger +21.4 over full context (p = 5e-6) at 1/2.8 the input tokens. Same strong reader: ledger \u22126.4 (p = 0.035); only the 2.8\u00d7 cost edge survives.",
+    "Using top-10 retrieval as the only baseline inflates any memory mechanism by 19\u201337 pp. The +42 headline is therefore reported next to +21 (weak reader) and \u22126 (strong reader), never alone.",
+  ], { x: 0.6, y: 5.05, w: 12.1, h: 1.9, fontSize: 11.5 });
+  footer(s, n);
+}
+// ---------- 13b other RAG, scale, competitors ----------
+{
+  const s = pres.addSlide(); n++;
+  title(s, "Other retrieval strategies, scale, and 15 competing systems", "haiku-4.5 reader, same judge; batches 37 (140 q), 39 (104K-token stores, 120 q), 35c (v2.5 sample, 15 chains / 58 q)");
+  table(s, [
+    ["14K store: retrieval variant", "acc", "anchor cov."],
+    ["QVF ledger", "91.4", "\u2014"],
+    ["dense top-50", "62.9", "99.8%"],
+    ["LLM rerank 30\u219210", "60.7", "96.9%"],
+    ["dense top-30", "57.9", "98.1%"],
+    ["top-10 / as-of filter", "50.7", "86.7%"],
+    ["session top-5 / hybrid RRF / MMR", "47.1 / 41.4 / 40.7", "85 / 78 / 78%"],
+    ["query rewrite / recency prior", "36.4 / 10.7", "64 / 53%"],
+  ], { x: 0.6, y: 1.55, w: 4.1, colW: [2.4, 0.9, 0.8], fontSize: 9.5, rowH: 0.34 });
+  table(s, [
+    ["104K store: arm", "acc", "in tok"],
+    ["QVF slot projection", "61.7", "8.8K"],
+    ["QVF full ledger", "54.2", "20.9K"],
+    ["dense top-100", "38.3", "8.9K"],
+    ["dense top-50 / rerank", "29.2 / 26.7", "4.5K / 1K+2.9K"],
+    ["top-10 direct", "16.7", "1.0K"],
+    ["haiku full text", "7.5", "103.8K"],
+  ], { x: 4.9, y: 1.55, w: 3.6, colW: [2.0, 0.9, 0.7], fontSize: 9.5, rowH: 0.34 });
+  table(s, [
+    ["v2.5 sample: system", "acc"],
+    ["QVF ledger (v2.5 store / v2.4 store)", "98.3 / 89.7"],
+    ["QVF compile arm", "75.9"],
+    ["Whole memory in prompt (haiku)", "63.8"],
+    ["timeline baseline", "56.9"],
+    ["lgstore / HippoRAG 2 / txtai / cognee", "46.6 / 46.5 / 44.8 / 44.8"],
+    ["Letta-FS agent (30K tok/q) / A-MEM", "43.1 / 39.7"],
+    ["top-10 direct / summary RAG", "37.9 / 36.2"],
+    ["LangMem / TRACE / MemOS", "32.8 / 31.0 / 31.0"],
+    ["stamped ledger / obs-RAG / BM25 / Mem0", "13.8 / 13.8 / 12.1 / 10.3"],
+  ], { x: 8.7, y: 1.55, w: 4.0, colW: [2.9, 1.1], fontSize: 9.5, rowH: 0.34 });
+  bullets(s, [
+    "14K: recall is not the bottleneck \u2014 top-50 reaches 99.8% of gold anchors and still fails 37%; the best variant is 28.6 pp below the ledger (p = 5e-10). LLM rerank costs more per question than the ledger and is 30.7 pp worse.",
+    "104K: retrieval collapses first (top-10 sees 38.8% of anchors); at equal token budget the projection beats top-100 by 23.3 pp (p = 2e-4); full text is unusable.",
+    "Competitors (each independently re-scored and diffed for protocol parity): every system scores below the plain full-context call on the same 58 questions; middle-of-table CIs overlap, no ranking claimed there.",
+  ], { x: 0.6, y: 5.2, w: 12.1, h: 1.8, fontSize: 11 });
+  footer(s, n);
+}
 // ---------- 14 cross-tests: QVF elsewhere ----------
 {
   const s = pres.addSlide(); n++;
@@ -386,7 +512,7 @@ let n = 0;
   title(s, "Honest boundaries and next steps");
   s.addText("Boundaries (said up front)", { x: 0.6, y: 1.5, w: 6, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
-    "Main claim holds on a synthetic corpus with a weak / mid-tier reader; a strong reader on a 14K store reads full text better than the ledger.",
+    "Scope is three conditions (non-frontier reader, or store beyond the context window, or cost-bound). With a strong reader on a 14K store the whole memory in the prompt beats the ledger (97.1 vs 90.7, p = 0.035); a Sonnet-built store closes the fidelity gap (133/133 rows) but not the score (92.1) — residual errors sit in multi-value position chains.",
     "External arenas: 2 positive, several ties, several negative; the scope is three conditions, not a universal win.",
     "Owner gate costs accuracy on clean text; the '5× cost' and 'ledger constant' claims are withdrawn.",
     "Human agreement is fair (α ≈ 0.3–0.45); the v2.5 human review has not started; the 560-q table uses the v2.4-corpus store; the partial v2.5-corpus rerun (36 chains) agrees with it within noise.",
@@ -395,7 +521,7 @@ let n = 0;
   s.addText("Next steps", { x: 7.0, y: 1.5, w: 5.7, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
     "Author review of v2.5 on the author-v25 link (149 items, ~1.5–2 min each); compute agreement against the machine review.",
-    "Full v2.5-corpus rerun of all arms deferred until the human review settles the corpus; competing systems are being rerun on the same v2.5 sample (15 chains / 58 q).",
+    "Run the two missing cells: 104K store with a strong reader (~$30) and a render-matched control (same layout, mechanism off); then a full v2.5-corpus rerun once the human review settles the corpus.",
     "Fix the card builder schema regression and retire the derived store.",
     "Paper: §2 ancestors (temporal databases, TAC-KBP), §8 limitations as a three-condition scope, datasheet v2.5 with the tenure convention and errata.",
   ], { x: 7.0, y: 1.95, w: 5.7, h: 4.9, fontSize: 12.5 });
