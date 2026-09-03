@@ -1,0 +1,132 @@
+# Batch 35 score — PARTIAL RUN (36/144 chains, stratified 9 per slot)
+# corpus v2.5 (data/wikistate_full_ALL_v25.json) / store v46 (+derived v46k) / reader claude-haiku-4-5 / ClaudeJudge (opus-5)
+
+NOT a replacement for the batch 33-A full-576 headline: this is a 140-question subset on 36 of 144 chains.
+
+Sample: results/b35_sample_uids.txt (36 uids). Questions: results/b35_questions_sample36.jsonl (140 q, drawn from data/wsc_s5_v25.jsonl).
+Paired reference: batch 33-A rows (corpus v2.4 / stores v45 + v45k) restricted to the same 140 question_ids.
+
+## 0. Dedupe ledger (concurrent duplicate writes -> keep FIRST)
+
+| arm | file | raw rows | deduped | dup rows | first/later verdict agreement |
+|---|---|---|---|---|---|
+| b35 direct | `results/b35_direct.jsonl` | 140 | 140 | 0 | - |
+| b33A direct | `results/b33A_direct.jsonl` | 576 | 576 | 0 | - |
+| b35 compile_k | `results/b35_compile_k.jsonl` | 140 | 140 | 0 | - |
+| b33A compile_k | `results/b33A_compile_k.jsonl` | 576 | 576 | 0 | - |
+| b35 smoc | `results/b35_smoc.jsonl` | 140 | 140 | 0 | - |
+| b33A smoc | `results/b33A_smoc_v45.jsonl` | 576 | 576 | 0 | - |
+
+qid-set check vs results/b35_questions_sample36.jsonl (140):
+  b35 direct     140 q, symdiff=0 -> PASS
+  b35 compile_k  140 q, symdiff=0 -> PASS
+  b35 smoc       140 q, symdiff=0 -> PASS
+  b33A direct     covers 140/140 of the sampled qids -> PASS
+  b33A compile_k  covers 140/140 of the sampled qids -> PASS
+  b33A smoc       covers 140/140 of the sampled qids -> PASS
+
+## 1. Headline table (same 36 chains / same 140 questions in both store columns)
+
+| arm | n | b35 v2.5 x v46(k) | b33A v2.4 x v45(k), same 140 q | diff | b33A full 576 q (context only) |
+|---|---|---|---|---|---|
+| direct | 140 | 49.29 (—) | 50.71 (—) | -1.43 | 47.57 |
+| compile_k | 140 | 70.71 (v46k) | 75.71 (v45k) | -5.00 | 79.69 |
+| smoc | 140 | 90.71 (v46) | 91.43 (v45) | -0.71 | 89.06 |
+
+## 2. Cost / tokens / latency (reader-side usage; primary price $1.00/M in, $5.00/M out)
+
+| arm | n | mean in tok | mean out tok | $/q @1/5 | 140q $ @1/5 | $/q @0.8/4 (legacy) | median latency s |
+|---|---|---|---|---|---|---|---|
+| direct | 140 | 862 | 84 | $0.00128 | $0.180 | $0.00103 | 1.58 |
+| compile_k | 140 | 2264 | 95 | $0.00274 | $0.383 | $0.00219 | 5.22 |
+| smoc | 140 | 2771 | 469 | $0.00512 | $0.716 | $0.00409 | 5.50 |
+
+reader-side total over the 3 arms x 140 q: $1.279 @1/5  |  $1.024 @0.8/4 (judge claude-opus-5 billed separately)
+
+### 2b. Same table for the b33A (v2.4 x v45) reference rows, same 140 questions
+
+| arm | n | mean in tok | mean out tok | $/q @1/5 | $/q @0.8/4 | median latency s |
+|---|---|---|---|---|---|---|
+| direct | 140 | 862 | 84 | $0.00128 | $0.00103 | 1.57 |
+| compile_k | 140 | 2263 | 97 | $0.00275 | $0.00220 | 5.33 |
+| smoc | 140 | 2841 | 467 | $0.00518 | $0.00414 | 4.79 |
+
+## 3. Per question type (b35 v2.5 accuracy; in brackets b33A v2.4 on the same questions)
+
+| arm | change_count (n=36) | count_before (n=36) | first_vs_last (n=36) | longest_tenure (n=32) |
+|---|---|---|---|---|
+| direct | 41.7 (47.2) | 41.7 (36.1) | 88.9 (88.9) | 21.9 (28.1) |
+| compile_k | 52.8 (61.1) | 61.1 (72.2) | 97.2 (94.4) | 71.9 (75.0) |
+| smoc | 91.7 (86.1) | 83.3 (86.1) | 100.0 (100.0) | 87.5 (93.8) |
+
+## 4. Structure total & ladder rungs inside b35 (v2.5 x v46)
+
+(bootstrap: 36 chain clusters, N=4000 resamples, seed=35)
+
+### A1 structure total: direct -> smoc(v46)
+  n=140 ti / 36 lian | delta=+41.43pp  b/c=5/63  McNemar p=7.651e-14
+  flips: base-right->test-wrong = 5 | base-wrong->test-right = 63
+  chain sign test 32W/1L/3T p=7.916e-09 | cluster boot 95% CI [+30.94,+51.41]pp (N=4000, seed=35, 36 chains)
+  b33A same rung, same 140 questions: 50.71->91.43 = +40.71pp | direction MATCH
+
+### rung 1: direct -> compile_k(v46k)
+  n=140 ti / 36 lian | delta=+21.43pp  b/c=12/42  McNemar p=5.209e-05
+  flips: base-right->test-wrong = 12 | base-wrong->test-right = 42
+  chain sign test 21W/4L/11T p=0.0009105 | cluster boot 95% CI [+9.49,+32.61]pp (N=4000, seed=35, 36 chains)
+  TOST +-3.0pp (90% CI [+11.51,+30.66]): FAIL not equivalent
+  b33A same rung, same 140 questions: 50.71->75.71 = +25.00pp | direction MATCH
+
+### rung 2: compile_k(v46k) -> smoc(v46) [ledger+protocol]
+  n=140 ti / 36 lian | delta=+20.00pp  b/c=5/33  McNemar p=4.256e-06
+  flips: base-right->test-wrong = 5 | base-wrong->test-right = 33
+  chain sign test 16W/2L/18T p=0.001312 | cluster boot 95% CI [+10.71,+30.28]pp (N=4000, seed=35, 36 chains)
+  TOST +-3.0pp (90% CI [+12.14,+28.87]): FAIL not equivalent
+  b33A same rung, same 140 questions: 75.71->91.43 = +15.71pp | direction MATCH
+
+
+## 5. Paired corpus-version comparison on the SAME 140 questions:
+##    b33A (v2.4 corpus x v45/v45k store) -> b35 (v2.5 corpus x v46/v46k store)
+
+| arm | v2.4-store acc | v2.5-store acc | diff pp | flips 2.4-right->2.5-wrong | flips 2.4-wrong->2.5-right | McNemar p |
+|---|---|---|---|---|---|---|
+| direct | 50.71 | 49.29 | -1.43 | 4 | 2 | 0.6875 |
+| compile_k | 75.71 | 70.71 | -5.00 | 12 | 5 | 0.1435 |
+| smoc | 91.43 | 90.71 | -0.71 | 9 | 8 | 1 |
+
+### direct: v2.4 x v45(k) -> v2.5 x v46(k)
+  n=140 ti / 36 lian | delta=-1.43pp  b/c=4/2  McNemar p=0.6875
+  flips: base-right->test-wrong = 4 | base-wrong->test-right = 2
+  chain sign test 2W/4L/30T p=0.6875 | cluster boot 95% CI [-5.00,+2.13]pp (N=4000, seed=35, 36 chains)
+  TOST +-3.0pp (90% CI [-4.29,+1.43]): FAIL not equivalent
+
+### compile_k: v2.4 x v45(k) -> v2.5 x v46(k)
+  n=140 ti / 36 lian | delta=-5.00pp  b/c=12/5  McNemar p=0.1435
+  flips: base-right->test-wrong = 12 | base-wrong->test-right = 5
+  chain sign test 4W/5L/27T p=1 | cluster boot 95% CI [-14.18,+2.86]pp (N=4000, seed=35, 36 chains)
+  TOST +-3.0pp (90% CI [-12.23,+1.46]): FAIL not equivalent
+
+### smoc: v2.4 x v45(k) -> v2.5 x v46(k)
+  n=140 ti / 36 lian | delta=-0.71pp  b/c=9/8  McNemar p=1
+  flips: base-right->test-wrong = 9 | base-wrong->test-right = 8
+  chain sign test 5W/7L/24T p=0.7744 | cluster boot 95% CI [-8.63,+7.30]pp (N=4000, seed=35, 36 chains)
+  TOST +-3.0pp (90% CI [-7.14,+5.76]): FAIL not equivalent
+
+
+## 6. 谁在动:把第 5 节按“该链的会话在 v2.4->v2.5 是否真的变了”拆开
+
+语料清洗只动了一部分链。对**未变**的链,v2.4->v2.5 的差 = 重建店 + 读者非确定性的噪声底,
+不是语料效应;只有**变了**的链上的差才可能含语料效应。
+
+链:会话变了 12 / 未变 24(净删会话 2 轮)
+变了的链: `wikiP108008-Q53283502`, `wikiP108009-Q64855331`, `wikiP108016-Q57079433`, `wikiP108021-Q37837264`, `wikiP39000-Q4976518`, `wikiP39023-Q18527003`, `wikiP54001-Q16225986`, `wikiP551001-Q20667184`, `wikiP551002-Q107297`, `wikiP551003-Q20512700`, `wikiP551008-Q29918442`, `wikiP551009-Q5321987`
+
+| arm | 子集 | 链 | 题 | v2.4 acc | v2.5 acc | diff pp | 翻错 | 翻对 | McNemar p |
+|---|---|---|---|---|---|---|---|---|---|
+| direct | 会话变了 | 12 | 47 | 48.94 | 48.94 | +0.00 | 2 | 2 | 1 |
+| direct | 会话未变 | 24 | 93 | 51.61 | 49.46 | -2.15 | 2 | 0 | 0.5 |
+| compile_k | 会话变了 | 12 | 47 | 80.85 | 72.34 | -8.51 | 7 | 3 | 0.3438 |
+| compile_k | 会话未变 | 24 | 93 | 73.12 | 69.89 | -3.23 | 5 | 2 | 0.4531 |
+| smoc | 会话变了 | 12 | 47 | 82.98 | 91.49 | +8.51 | 1 | 5 | 0.2188 |
+| smoc | 会话未变 | 24 | 93 | 95.70 | 90.32 | -5.38 | 8 | 3 | 0.2266 |
+
+注:未变子集上的非零差 = 噪声底(重建 v46 店 + haiku 读者非确定性),本机既有观测为 run 间抖动 3–4pp。第 5 节的合计差须对着这个底来读。
