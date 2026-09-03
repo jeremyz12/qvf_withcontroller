@@ -1,0 +1,2360 @@
+{
+ "wikiP108012-Q61996585": [
+  {
+   "uid": "wikiP108012-Q61996585",
+   "session_index": 12,
+   "date": "1998-02-09",
+   "role": "user",
+   "quote": "I take the 7:15 AM train to work every weekday, so that's 20 days a month. My usual route is around 20 miles, and individual tickets cost me $6 each. I've been doing this for four months now",
+   "kind": "other",
+   "why": "Weak signal only: a work commute that began four months earlier (~Oct 1997, priced in US dollars while the persona is supposedly at Leeds) hints at an unrecorded workplace or residence change; no employer is named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108012-Q61996585",
+   "session_index": 28,
+   "date": "2010-02-12",
+   "role": "user",
+   "quote": "I've also been active in a Slack group for freelance writers and it's been really helpful for productivity tips and learning from others.",
+   "kind": "other",
+   "why": "Implies the persona is a freelance writer (self-employed) in 2010 while gold has them employed at the Institute of Cancer Research; also Slack did not exist until 2013.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108012-Q61996585",
+   "session_index": 28,
+   "date": "2010-02-12",
+   "role": "assistant",
+   "quote": "Regarding staying organized and focused as a freelance writer, I'm happy to share some advice!",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona's occupation as freelance writer in 2010, conflicting with employment at the Institute of Cancer Research.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108009-Q64855331": [
+  {
+   "uid": "wikiP108009-Q64855331",
+   "session_index": 12,
+   "date": "2008-11-15",
+   "role": "user",
+   "quote": "I'm moving to the US soon to start my Master's program at UC Berkeley",
+   "kind": "other",
+   "why": "Persona (a postdoc at SFU per gold row #1) says they are joining UC Berkeley as a Master's student; this is an in-progress degree (excluded category) but it names an institution being joined and implies leaving SFU before the 2010 KIT row, and is inconsistent with the postdoc persona.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108003-Q63411963": [
+  {
+   "uid": "wikiP108003-Q63411963",
+   "session_index": 24,
+   "date": "2006-09-02",
+   "role": "assistant",
+   "quote": "Welcome back to New York! I'm happy to help you find some great deals on flights to Europe.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the New York residence implication from the user turn; residence not employer, so no effect on the employer chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108008-Q53283502": [
+  {
+   "uid": "wikiP108008-Q53283502",
+   "session_index": 5,
+   "date": "2013-07-16",
+   "role": "assistant",
+   "quote": "you received the news you were waiting for, and I'm thrilled for you! Three weeks is a relatively quick turnaround, so it's clear that you made a strong impression on the VP of Marketing.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user got awaited news after impressing a 'VP of Marketing' (corporate hire/offer implied) while gold says Tsinghua faculty since 2013; unnamed employer/role change implied.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108008-Q53283502",
+   "session_index": 23,
+   "date": "2017-03-17",
+   "role": "user",
+   "quote": "I've already signed up for the company's ride-sharing program, and my colleague Rachel has agreed to carpool with me on Fridays",
+   "kind": "same_slot_state",
+   "why": "First-person 'the company's ... program' plus daily train commute to 'the office' implies a corporate employer in 2017-03, between LPT postdoc (2016) and CERN (2018); employer not named.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108011-Q42430132": [
+  {
+   "uid": "wikiP108011-Q42430132",
+   "session_index": 12,
+   "date": "1975-02-09",
+   "role": "user",
+   "quote": "I'm preparing for my first trade show on June 1st and I'm a bit unsure about how to effectively showcase my products",
+   "kind": "same_slot_state",
+   "why": "Persona speaks of 'my products', 'my business skills', 'my newsletter' at a date when gold employer is University of Manchester; implies an own-business/self-employed state not in the chain (no company named).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108011-Q42430132",
+   "session_index": 12,
+   "date": "1975-02-09",
+   "role": "assistant",
+   "quote": "Congratulations on your first trade show and on developing your business skills through the entrepreneurship workshop!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the persona running their own product business, reinforcing the unrecorded self-employment implication.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108001-Q53458422": [
+  {
+   "uid": "wikiP108001-Q53458422",
+   "session_index": 4,
+   "date": "2003-05-06",
+   "role": "user",
+   "quote": "I'm looking to create a presentation to share with our sales team about the customer churn model we've been developing.",
+   "kind": "other",
+   "why": "Persona speaks of 'our sales team', 'our model' and 'other product lines' as own workplace, implying a corporate employer while gold says OSU postdoc (2003); no employer named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108001-Q53458422",
+   "session_index": 9,
+   "date": "2005-03-20",
+   "role": "user",
+   "quote": "I'm working on setting up an online store and I need help with finding a reliable shipping provider.",
+   "kind": "other",
+   "why": "Persona is building their own business (online store, business plan, 12-hour days) during the OSU state; could be read as self-employment, though no employer is named and it is in-progress.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108001-Q53458422",
+   "session_index": 16,
+   "date": "2007-11-18",
+   "role": "user",
+   "quote": "Can you give me some tips on where to find good ingredients in Tokyo? I've been living here since March, so I'm still getting used to navigating the city.",
+   "kind": "other",
+   "why": "Residence statement (living in Tokyo since March 2007, hosting 'my coworkers' there) implies a Tokyo workplace, inconsistent with the gold employer Ohio State University at that date; employer not named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108001-Q53458422",
+   "session_index": 11,
+   "date": "2006-04-22",
+   "role": "assistant",
+   "quote": "Managing your time effectively is crucial in a senior role, where you'll likely have more responsibilities and demands on your time.",
+   "kind": "assistant_echo",
+   "why": "Assistant unpromptedly asserts the user is in 'a senior role' (position-type claim, not employer); no institution named so it does not alter the employer chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108002-Q57686589": [
+  {
+   "uid": "wikiP108002-Q57686589",
+   "session_index": 33,
+   "date": "2017-10-13",
+   "role": "user",
+   "quote": "I'm looking to improve my social media strategy for a client in the tech industry.",
+   "kind": "other",
+   "why": "First-person: persona has a 'client' (freelance/self-employed social-media work) five months into the gold CERN state; no employer named but implies a different occupation/work arrangement.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108002-Q57686589",
+   "session_index": 33,
+   "date": "2017-10-13",
+   "role": "assistant",
+   "quote": "With your existing experience as a social media manager",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona's profession is 'social media manager' during the CERN state; contradicts the physicist/employer chain though it names no institution.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108010-Q53284080": [
+  {
+   "uid": "wikiP108010-Q53284080",
+   "session_index": 11,
+   "date": "2010-05-06",
+   "role": "user",
+   "quote": "I'm thinking of expanding my product line to include some herbal teas and spice blends.",
+   "kind": "same_slot_state",
+   "why": "Persona asserts owning a product line / business (also 'my customers', loyalty program) while gold has them employed at Syracuse University; implied self-employment state not in chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108010-Q53284080",
+   "session_index": 11,
+   "date": "2010-05-06",
+   "role": "user",
+   "quote": "I just sold 20 potted herb plants at the Summer Solstice Market for $7.5 each",
+   "kind": "same_slot_state",
+   "why": "First-person statement of running an own herb-selling business at 2010-05 (Syracuse period); could be read as a second employer/self-employment state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108010-Q53284080",
+   "session_index": 23,
+   "date": "2013-11-18",
+   "role": "user",
+   "quote": "I've got about 2 weeks to explore before classes start at UBC, and I want to make the most of my time.",
+   "kind": "same_slot_transition",
+   "why": "One month after the gold CERN start, persona says they are moving to Vancouver to start classes at UBC (new institution, student), implying leaving CERN; not in the chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108010-Q53284080",
+   "session_index": 23,
+   "date": "2013-11-18",
+   "role": "user",
+   "quote": "I booked a one-way flight from my hometown to Vancouver International Airport today, so I'm officially committed to this big move!",
+   "kind": "other",
+   "why": "Persona is at their hometown committing to a permanent move to Vancouver, contradicting being newly employed at CERN in Geneva (session 22, 2013-10).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108010-Q53284080",
+   "session_index": 23,
+   "date": "2013-11-18",
+   "role": "assistant",
+   "quote": "Two weeks is a great amount of time to explore the city before classes start at UBC.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the user's forthcoming UBC affiliation / Vancouver move that conflicts with the CERN state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108010-Q53284080",
+   "session_index": 26,
+   "date": "2014-07-16",
+   "role": "user",
+   "quote": "Can you recommend any good business banking options for small-scale entrepreneurs like me?",
+   "kind": "same_slot_state",
+   "why": "Persona self-identifies as a small-scale entrepreneur earning tips and selling art at local markets while gold has them as a research physicist at CERN; implied self-employment state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108016-Q57079433": [
+  {
+   "uid": "wikiP108016-Q57079433",
+   "session_index": 3,
+   "date": "1978-01-07",
+   "role": "user",
+   "quote": "I showcase my brand's commitment to sustainability. Can you help me write a brief paragraph about my sustainable practices and values?",
+   "kind": "prechain_history",
+   "why": "Persona speaks of running their own brand with a production process (self-owned business) five months before the first chain row (University of Barcelona, 1978-06); an unnamed pre-chain employer/self-employment state that a strict reviewer could count as a first state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108016-Q57079433",
+   "session_index": 3,
+   "date": "1978-01-07",
+   "role": "assistant",
+   "quote": "Congratulations on your website launch and first email subscribers!",
+   "kind": "assistant_echo",
+   "why": "Assistant affirms the persona runs a business with a website; also a blatant anachronism (no websites or email subscribers in 1978).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108016-Q57079433",
+   "session_index": 29,
+   "date": "1988-03-17",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona leads a team, which the user never stated in the session; a role-like assertion, no employer named, so it does not alter the employer chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108014-Q56648183": [
+  {
+   "uid": "wikiP108014-Q56648183",
+   "session_index": 3,
+   "date": "2012-03-17",
+   "role": "user",
+   "quote": "our team lead, Emily, is getting married in April, and I'm really excited for her",
+   "kind": "prechain_history",
+   "why": "Persona speaks of 'our team lead' seven months before gold row #1 (UCSD 2012-10-01), implying an existing workplace before the chain's first state; no employer is named so it cannot form a row, but it suggests UCSD was not the first employer.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108014-Q56648183",
+   "session_index": 24,
+   "date": "2015-07-19",
+   "role": "user",
+   "quote": "I’m in Canada, and I’m especially worried about a potential 12–18 month work assignment abroad.",
+   "kind": "other",
+   "why": "While gold says employer = CERN (Geneva) from 2013-06 to 2016-07, persona states they live in Canada as a permanent resident (also 'I’m comfortable staying as a permanent resident for now'); residence-type statement, not the employer slot, but hard to reconcile with a CERN fellowship. No employer named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108014-Q56648183",
+   "session_index": 27,
+   "date": "2016-01-07",
+   "role": "user",
+   "quote": "I've already signed up for the company's ride-sharing program, and my colleague Rachel has agreed to carpool with me on Fridays",
+   "kind": "other",
+   "why": "Persona refers to 'the company' as their workplace in Jan 2016 when gold employer is CERN (a research organisation, not a company); employer not named so no new row, but wording implies a corporate employer.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108014-Q56648183",
+   "session_index": 17,
+   "date": "2014-03-20",
+   "role": "assistant",
+   "quote": "Welcome back to LA! I hope your flight with Turkish Airlines was comfortable and enjoyable.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user is based in LA during the CERN period; residence echo, not employer slot.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108021-Q37837264": [
+  {
+   "uid": "wikiP108021-Q37837264",
+   "session_index": 3,
+   "date": "1991-01-04",
+   "role": "user",
+   "quote": "I'm looking to improve my marketing strategy for my business.",
+   "kind": "same_slot_state",
+   "why": "Persona asserts owning/running her own business (self-employment) while gold employer at this date is Stanford University School of Medicine; unlisted employer-type state, though it could be a side business.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108021-Q37837264",
+   "session_index": 3,
+   "date": "1991-01-04",
+   "role": "user",
+   "quote": "as those are the main themes of my business",
+   "kind": "same_slot_state",
+   "why": "Restates that the persona runs a business (photography/entrepreneurship) — same unlisted self-employment state as above in the same session.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108019-Q41470166": [
+  {
+   "uid": "wikiP108019-Q41470166",
+   "session_index": 11,
+   "date": "1998-04-22",
+   "role": "user",
+   "quote": "I'm preparing for my semester abroad at the University of California, Berkeley, and I was wondering if you could help me with some tips on what to expect during my first few weeks on campus.",
+   "kind": "other",
+   "why": "Persona names an own institutional affiliation (UC Berkeley exchange semester, F-1 student visa) during the University of Perugia employer state; it is a student affiliation, not employment, so strict reviewers may or may not count it as an employer-slot value.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108019-Q41470166",
+   "session_index": 11,
+   "date": "1998-04-22",
+   "role": "assistant",
+   "quote": "Congratulations on your acceptance to UC Berkeley's exchange program! I'd be happy to help you prepare for your semester abroad.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the UC Berkeley affiliation for the user; only matters if the Session 11 user statement is counted as an employer-slot value.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108019-Q41470166",
+   "session_index": 30,
+   "date": "2004-10-10",
+   "role": "user",
+   "quote": "Our team consisted of the project leader, our CEO, and two product specialists.",
+   "kind": "other",
+   "why": "First-person plural description of the persona's own organization (a company with a CEO and product specialists exhibiting at a Tech Expo) implies an employer inconsistent with the gold NIH state for 2004, though no employer name is given.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108025-Q56879021": [
+  {
+   "uid": "wikiP108025-Q56879021",
+   "session_index": 14,
+   "date": "1995-07-16",
+   "role": "user",
+   "quote": "I'm looking to improve my marketing strategy for my business.",
+   "kind": "same_slot_state",
+   "why": "First-person claim of owning/running a business (photography/entrepreneurship) while gold chain says employer is Freie Universität Berlin in 1995; implies a self-employment state not in the chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108025-Q56879021",
+   "session_index": 14,
+   "date": "1995-07-16",
+   "role": "user",
+   "quote": "as those are the main themes of my business",
+   "kind": "same_slot_state",
+   "why": "Repeats the own-business claim in the same session (running Facebook Ads for own business), reinforcing an employer/self-employment state absent from the chain.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108022-Q53509286": [
+  {
+   "uid": "wikiP108022-Q53509286",
+   "session_index": 3,
+   "date": "2004-05-03",
+   "role": "user",
+   "quote": "I'm looking to create a presentation to share with our sales team about the customer churn model we've been developing.",
+   "kind": "prechain_history",
+   "why": "Two months before the chain's first state (CMU postdoc 2004-07-01) the persona speaks of 'our sales team', product lines and 'four of my team members' — implies an unnamed corporate employer (and lead role) pre-chain; no employer is named, so no value can be added to the gold rows.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108020-Q42614637": [
+  {
+   "uid": "wikiP108020-Q42614637",
+   "session_index": 9,
+   "date": "1995-11-01",
+   "role": "user",
+   "quote": "my new employer is South London and Maudsley NHS Foundation Trust",
+   "kind": "gold_issue",
+   "why": "Gold value is the current Wikidata label; SLaM NHS Trust was formed in 1999 and gained Foundation Trust status in 2006, so the name did not exist in Nov 1995 (would have been Bethlem and Maudsley NHS Trust).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108020-Q42614637",
+   "session_index": 17,
+   "date": "1999-02-01",
+   "role": "user",
+   "quote": "I've started at the Institute of Psychiatry, Psychology and Neuroscience today",
+   "kind": "gold_issue",
+   "why": "Gold value uses the 2014 name; in 1999 the institution was the Institute of Psychiatry (King's College London). Label anachronism, date/count unaffected.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108020-Q42614637",
+   "session_index": 34,
+   "date": "2007-09-01",
+   "role": "user",
+   "quote": "as of today I'm officially starting at University of Exeter Medical School",
+   "kind": "gold_issue",
+   "why": "University of Exeter Medical School was established in 2013; in 2007 the institution was Peninsula Medical School. Label anachronism, date/count unaffected.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108023-Q58326057": [
+  {
+   "uid": "wikiP108023-Q58326057",
+   "session_index": 20,
+   "date": "2007-07-16",
+   "role": "assistant",
+   "quote": "Three weeks is a relatively quick turnaround, so it's clear that you made a strong impression on the VP of Marketing.",
+   "kind": "assistant_echo",
+   "why": "Assistant congratulates the persona on receiving awaited news after impressing a 'VP of Marketing' (reads as a corporate hire/offer in 2007, while gold has LBNL 2001-2008); user in same session also refers to 'my team' twice (managerial role), no employer named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108023-Q58326057",
+   "session_index": 21,
+   "date": "2007-07-19",
+   "role": "user",
+   "quote": "I'm actually based near Denver, so Colorado Mountains sound perfect.",
+   "kind": "other",
+   "why": "Residence/base statement (not employer slot) but being based near Denver in 2007 is geographically inconsistent with employment at Lawrence Berkeley National Laboratory (Berkeley, CA) that gold holds until 2008; together with session 20 it hints at an unrecorded 2007 job.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108023-Q58326057",
+   "session_index": 26,
+   "date": "2009-05-06",
+   "role": "user",
+   "quote": "I'm moving to Vancouver soon and I'm looking for recommendations on things to do and see in the city. I've got about 2 weeks to explore before classes start at UBC",
+   "kind": "other",
+   "why": "Persona relocates from 'my hometown' to Vancouver for classes at UBC in 2009 (student affiliation with a new institution), contradicting the gold UCSD postdoc state 2008-2011; a strict reviewer could read this as leaving UCSD / an unrecorded institution change.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108023-Q58326057",
+   "session_index": 26,
+   "date": "2009-05-06",
+   "role": "assistant",
+   "quote": "Two weeks is a great amount of time to explore the city before classes start at UBC.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the UBC affiliation and the move to Vancouver for the user.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108023-Q58326057",
+   "session_index": 28,
+   "date": "2010-10-13",
+   "role": "user",
+   "quote": "I'm moving to Melbourne soon to start my master's degree at the University of Melbourne and I need help finding a good internet provider in the area.",
+   "kind": "other",
+   "why": "Persona moves to Melbourne to start a master's at the University of Melbourne in 2010 (student affiliation, not employment) while gold holds the UCSD postdoc until 2011; implies leaving San Diego/UCSD and an unrecorded institutional affiliation.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108023-Q58326057",
+   "session_index": 28,
+   "date": "2010-10-13",
+   "role": "assistant",
+   "quote": "Congratulations on your acceptance to the University of Melbourne and your student visa application!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the University of Melbourne affiliation for the user.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108026-Q56530701": [
+  {
+   "uid": "wikiP108026-Q56530701",
+   "session_index": 23,
+   "date": "1997-06-21",
+   "role": "user",
+   "quote": "I officially started as an assistant professor at Weill Cornell Medicine, so the lab is finally mine to build",
+   "kind": "gold_issue",
+   "why": "Row #1 'Weill Cornell Medical Center' and row #2 'Weill Cornell Medicine' are two labels of the same institution family (hospital vs. medical college); the sentence reads as a title change (assistant professor) at the same employer, so the 1986->1997 employer change is questionable; also the 'Weill Cornell' name postdates 1998, so both labels are anachronistic for 1986/1997.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108026-Q56530701",
+   "session_index": 32,
+   "date": "2005-09-01",
+   "role": "user",
+   "quote": "as of today I'm officially with the Howard Hughes Medical Institute, so please update my contact card and the signature block on my letters",
+   "kind": "gold_issue",
+   "why": "HHMI investigator appointments are concurrent with host-institution faculty employment; the persona never says they left Weill Cornell (their lab is still theirs), so the post-2005 employer state may be both institutions rather than HHMI replacing Weill Cornell.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108030-Q67469956": [
+  {
+   "uid": "wikiP108030-Q67469956",
+   "session_index": 7,
+   "date": "2011-11-18",
+   "role": "user",
+   "quote": "I've been living in Tokyo for about 5 months now",
+   "kind": "other",
+   "why": "Cross-slot residence claim (Tokyo since ~mid-2011) while gold employer is ITEP (Moscow); names no employer but could imply an unrecorded institutional move.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108030-Q67469956",
+   "session_index": 31,
+   "date": "2022-01-04",
+   "role": "user",
+   "quote": "I've held my card with the electrical workers' union since",
+   "kind": "other",
+   "why": "First-person professional-affiliation claim (union electrician seeking work with a contractor) inconsistent with a physicist at Syracuse/CERN; no employer named, so not a strict same-slot state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108030-Q67469956",
+   "session_index": 24,
+   "date": "2018-10-13",
+   "role": "user",
+   "quote": "I actually implemented a similar system for the Tech Expo 2022, and it was really effective in helping us follow up with potential clients.",
+   "kind": "other",
+   "why": "Implies commercial/sales work ('us', 'potential clients') during the Syracuse University period; no employer named.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108034-Q37640706": [
+  {
+   "uid": "wikiP108034-Q37640706",
+   "session_index": 22,
+   "date": "1999-10-10",
+   "role": "user",
+   "quote": "I'm still getting used to living in Tokyo, but I've been enjoying the independence of my new studio apartment in Harajuku - it's been a month now, and the commute to work is really convenient.",
+   "kind": "other",
+   "why": "First-person claim of living in Tokyo with a daily commute to work implies a Tokyo-based workplace in Oct 1999, incompatible with gold state #2 (Wayne State University School of Medicine, Detroit, 1995-2009); no employer is named, so it is an implied rather than explicit same-slot change.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108029-Q28320577": [
+  {
+   "uid": "wikiP108029-Q28320577",
+   "session_index": 7,
+   "date": "1998-11-18",
+   "role": "user",
+   "quote": "I'm moving to Vancouver soon and I'm looking for recommendations on things to do and see in the city. I've got about 2 weeks to explore before classes start at UBC",
+   "kind": "other",
+   "why": "Persona (employed at Oxford since 1997-06 per gold) says they are relocating from their hometown to Vancouver to start classes at UBC; a student affiliation/residence statement, not a named employer, but it implicitly ends the Oxford employment state 8 years before the gold #2 transition and attaches the persona to a different institution.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108029-Q28320577",
+   "session_index": 16,
+   "date": "2002-02-09",
+   "role": "user",
+   "quote": "I've been working professionally for 10 years now, and I'm hoping to get promoted to a senior developer role within the next year or",
+   "kind": "prechain_history",
+   "why": "Implies continuous professional employment since ~1992, i.e. an (unnamed) employer before the 1997 Oxford start, and a software-developer job at a date when gold says University of Oxford; the promotion part is only a wish, but the 10-year history could change whether Oxford is the first state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108029-Q28320577",
+   "session_index": 16,
+   "date": "2002-02-09",
+   "role": "assistant",
+   "quote": "Congratulations on your career milestone and your goal to get promoted to a senior developer role!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the persona's 10-year professional-work milestone and developer career track; adds no new value beyond the user turn.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP108029-Q28320577",
+   "session_index": 26,
+   "date": "2006-10-10",
+   "role": "user",
+   "quote": "I'm located in the San Francisco Bay Area, and my grandfather's guitar is a 1962 Gibson J-45 acoustic",
+   "kind": "other",
+   "why": "Four months after the gold #2 start as research fellow at the University of Edinburgh, the persona states they are located in the San Francisco Bay Area; residence-type statement rather than a named employer, but incompatible with being employed in Edinburgh.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108029-Q28320577",
+   "session_index": 29,
+   "date": "2008-01-07",
+   "role": "user",
+   "quote": "When I first graduated with my bachelor's degree in computer science, I was making around $60,000 per year",
+   "kind": "prechain_history",
+   "why": "Asserts a salaried job (unnamed employer) straight after a computer-science bachelor's, i.e. employment history that predates and differs in kind from the gold chain's first state (Oxford, phylogenetics researcher); no employer named.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108038-Q37830162": [
+  {
+   "uid": "wikiP108038-Q37830162",
+   "session_index": 25,
+   "date": "2005-11-18",
+   "role": "user",
+   "quote": "I’m in NYC—usually taking the subway from Queens into Midtown.",
+   "kind": "other",
+   "why": "Persona describes a daily rush-hour commute inside New York City in Nov 2005, while the gold employer at that date is the Genome Institute of Singapore (2004-08 to 2012-09); implies a workplace in NYC, i.e. a possible unrecorded employer/location change.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108038-Q37830162",
+   "session_index": 30,
+   "date": "2010-12-26",
+   "role": "user",
+   "quote": "I recently took a trip with friends from my language school to a city in Japan, and it was amazing.",
+   "kind": "other",
+   "why": "Persona claims to attend 'my language school' and later says they will be flying from Tokyo, implying being based in Japan in Dec 2010 while the gold employer is the Genome Institute of Singapore; not an employer statement per se, but inconsistent with the gold state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108035-Q39407125": [
+  {
+   "uid": "wikiP108035-Q39407125",
+   "session_index": 32,
+   "date": "2023-05-30",
+   "role": "user",
+   "quote": "draft a short, friendly note to my postgrad students saying I'll keep the Thursday meetings running online for now",
+   "kind": "gold_issue",
+   "why": "Persona still supervises postgrad students while starting as visiting researcher, implying the prior employer (UNIVASF) continues concurrently; gold treats Paris Cité as a replacement state, so 'current employer' after 2023-05-30 is arguably two-valued.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108031-Q42869895": [
+  {
+   "uid": "wikiP108031-Q42869895",
+   "session_index": 22,
+   "date": "2005-10-10",
+   "role": "user",
+   "quote": "I'd like to focus on my current projects, which include wrapping up the Johnson account, onboarding my new team, and mentoring Alex.",
+   "kind": "other",
+   "why": "First-person description of client-account work and onboarding a new team implies an unnamed corporate employer/role in 2005, inconsistent with the gold state (University of Hong Kong, 2000-2014); no institution named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108031-Q42869895",
+   "session_index": 30,
+   "date": "2012-09-05",
+   "role": "user",
+   "quote": "I need help keeping track of my farm expenses",
+   "kind": "other",
+   "why": "Persona claims to run a farm with horses and fencing in 2012 while gold says employed at University of Hong Kong; implies a farming occupation/self-employment but names no institution.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108039-Q64856772": [
+  {
+   "uid": "wikiP108039-Q64856772",
+   "session_index": 31,
+   "date": "2018-02-15",
+   "role": "assistant",
+   "quote": "It's completely normal to feel overwhelmed in a new job, and it's great that you're acknowledging your feelings and seeking help.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user is in a 'new job' on 2018-02-15, implying an employer change between row #3 (University of Chicago, 2012-09-03) and row #4 (UC Irvine, 2018-10-10) that the chain does not contain; the rendered user turn only says 'the positive aspects of the job' and names no employer, so the echo is ungrounded.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108039-Q64856772",
+   "session_index": 31,
+   "date": "2018-02-15",
+   "role": "assistant",
+   "quote": "This is totally normal, especially when you",
+   "kind": "assistant_echo",
+   "why": "Sentence continues '...you're new to a role' (apostrophe omitted from the quote because the renderer escapes it); second assistant assertion in the same session that the user is new to a role in Feb 2018, again implying an unrecorded transition before the 2018-10-10 Irvine row.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108040-Q57038615": [
+  {
+   "uid": "wikiP108040-Q57038615",
+   "session_index": 11,
+   "date": "1990-03-17",
+   "role": "user",
+   "quote": "I'm planning a road trip to Lake Tahoe this weekend and wanted to know the best route to take from San Francisco. Also, since my new commute to work takes 45 minutes",
+   "kind": "other",
+   "why": "'my new commute to work' from a San Francisco base in 1990-03 implies an unnamed workplace/residence change between rows #2 (Miller School, Miami, 1989-07) and #3 (NCI, 1992-04); no employer is named, so it cannot be turned into a row, but it is inconsistent with the gold state. ('podcasts' in 1990 is also anachronistic.)",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108040-Q57038615",
+   "session_index": 28,
+   "date": "1994-03-20",
+   "role": "user",
+   "quote": "I'm preparing for my first trade show on June 1st and I'm a bit unsure about how to effectively showcase my products",
+   "kind": "same_slot_state",
+   "why": "First-person 'my products', 'my business skills', 'my newsletter', 'my brand' imply the persona runs their own business (self-employed) in 1994-03, while gold says employer = National Cancer Institute (research fellow) from 1992-04 to 1995-07; no company name given.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108040-Q57038615",
+   "session_index": 28,
+   "date": "1994-03-20",
+   "role": "user",
+   "quote": "Do you have any suggestions on how to offer promotions or discounts that will drive sales and encourage attendees to sign up for my newsletter?",
+   "kind": "same_slot_state",
+   "why": "Second turn reinforcing the persona as a product-selling business owner in 1994-03 (own sales, own newsletter), not an NCI research fellow.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108040-Q57038615",
+   "session_index": 28,
+   "date": "1994-03-20",
+   "role": "assistant",
+   "quote": "Congratulations on your first trade show and on developing your business skills through the entrepreneurship workshop!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the persona as an entrepreneur exhibiting their own products, reinforcing an employer state (own business) absent from the gold chain.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108036-Q39032964": [
+  {
+   "uid": "wikiP108036-Q39032964",
+   "session_index": 7,
+   "date": "2005-05-06",
+   "role": "user",
+   "quote": "I've been working in digital marketing for a while now, and I think it's essential to stay updated on the latest trends.",
+   "kind": "other",
+   "why": "Persona asserts an ongoing digital-marketing occupation (later: 40-50 hr weeks, 'peak campaign seasons') inconsistent with being an assistant professor at the University of Oklahoma (row #2, 2005); no employer named so no row can be derived.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108036-Q39032964",
+   "session_index": 28,
+   "date": "2014-08-24",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts a team-leader role for the user that the user never stated; position-type echo, no employer named.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108043-Q79201145": [
+  {
+   "uid": "wikiP108043-Q79201145",
+   "session_index": 4,
+   "date": "1992-10-13",
+   "role": "user",
+   "quote": "I've been advised to develop my skills in these areas for potential advancement to a Technical Lead or Architect position within my company",
+   "kind": "same_slot_state",
+   "why": "13 days after gold row #1 (lecturer at University of Fribourg) the persona refers to their employer as 'my company' with a corporate Technical Lead/Architect ladder, implying a non-university employer; no company named so no row can be added.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108043-Q79201145",
+   "session_index": 26,
+   "date": "1997-02-09",
+   "role": "user",
+   "quote": "I'm leading a new project called Nova, which involves developing an AI-powered chatbot for customer support.",
+   "kind": "title_or_promotion",
+   "why": "First-person role statement (project lead on a customer-support chatbot product) while gold employer is University of Kentucky (academic nuclear physics); implies a corporate employer but names none.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108047-Q46421078": [
+  {
+   "uid": "wikiP108047-Q46421078",
+   "session_index": 14,
+   "date": "2004-11-15",
+   "role": "assistant",
+   "quote": "As a landscape photographer, you'll want software that can handle the unique challenges of editing outdoor images",
+   "kind": "assistant_echo",
+   "why": "Assistant labels the user a landscape photographer; an occupational label the user never asserted, but it is not an employer value.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108045-Q53103362": [
+  {
+   "uid": "wikiP108045-Q53103362",
+   "session_index": 21,
+   "date": "2004-05-06",
+   "role": "assistant",
+   "quote": "As an entrepreneur focused on marketing, it's great that you're proactive about understanding your online presence.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona is an entrepreneur (self-employed, marketing) while the gold employer at this date is University of Cambridge (postdoc); the user never says this, but it echoes a different employment state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108045-Q53103362",
+   "session_index": 31,
+   "date": "2009-01-04",
+   "role": "user",
+   "quote": "I'm moving to Melbourne soon for my Master's program and I'm trying to figure out my budget.",
+   "kind": "other",
+   "why": "Stated as a plan/degree (normally exempt), but together with 'my parents will be supporting me with a monthly allowance' and applying for an international-student scholarship it implies the persona has left Cambridge employment and is a student before the 2009-09 Peking University row, i.e. a possible unrecorded end-of-employer state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108046-Q37831543": [
+  {
+   "uid": "wikiP108046-Q37831543",
+   "session_index": 27,
+   "date": "1996-05-03",
+   "role": "user",
+   "quote": "I've been thinking about my career change and how it relates to my personal growth.",
+   "kind": "same_slot_transition",
+   "why": "First-person reference to 'my career change' between the UCL (1991) and Sheffield (1997) rows; ambiguous whether a completed employer change (missing from chain) or a contemplated one.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP108044-Q73300218": [
+  {
+   "uid": "wikiP108044-Q73300218",
+   "session_index": 17,
+   "date": "1993-07-16",
+   "role": "user",
+   "quote": "I'm moving to Melbourne soon to start my master's degree at the University of Melbourne and I need help finding a good internet provider in the area.",
+   "kind": "other",
+   "why": "First-person naming of an institution the persona is about to join (as a student, 4 months after the Oxford row); a plan and a degree, not employment, so excluded by the rules, but it is the strongest same-slot distractor in the log",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP108044-Q73300218",
+   "session_index": 17,
+   "date": "1993-07-16",
+   "role": "assistant",
+   "quote": "Congratulations on your acceptance to the University of Melbourne and your student visa application!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the University of Melbourne affiliation for the user (student acceptance, not employer)",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP108044-Q73300218",
+   "session_index": 30,
+   "date": "2000-06-11",
+   "role": "user",
+   "quote": "I'm thinking of expanding my business and was wondering if you could help me research online marketplaces where I can sell my handmade candles and soaps.",
+   "kind": "same_slot_state",
+   "why": "First-person assertion of running an own (unnamed) candle/soap side business while the chain state is Duke University Hospital; self-employment, no named employer, so unlikely to alter the chain",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108048-Q38640679": [
+  {
+   "uid": "wikiP108048-Q38640679",
+   "session_index": 7,
+   "date": "1985-09-01",
+   "role": "user",
+   "quote": "so my commute is now about twelve minutes instead of an ocean and a couple of time zones",
+   "kind": "prechain_history",
+   "why": "Implies the persona lived/worked overseas immediately before UC Irvine, i.e. a pre-chain employer existed (also 'my coworker Alex' in Session 1, 1985-01-01); no institution is named, so no row can be added.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP108048-Q38640679",
+   "session_index": 27,
+   "date": "1989-00-00",
+   "role": "user",
+   "quote": "I've officially joined the RIKEN Brain Science Institute",
+   "kind": "gold_issue",
+   "why": "Real-world anachronism in the gold value: RIKEN Brain Science Institute was founded in October 1997, so a 1989 join is impossible historically (Wikidata date/entity issue); the benchmark chain is internally consistent, but the true 1989 employer may be RIKEN proper rather than BSI.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39002-Q5573006": [
+  {
+   "uid": "wikiP39002-Q5573006",
+   "session_index": 26,
+   "date": "1990-10-13",
+   "role": "assistant",
+   "quote": "With your existing experience as a social media manager",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user holds the role 'social media manager', a position/occupation absent from the parliamentary gold chain (also anachronistic for 1990).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39002-Q5573006",
+   "session_index": 26,
+   "date": "1990-10-13",
+   "role": "user",
+   "quote": "I'm looking to improve my social media strategy for a client in the tech industry.",
+   "kind": "other",
+   "why": "First-person statement of doing social-media work 'for a client' implies a concurrent professional occupation not in the position chain; also anachronistic (social media in 1990).",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39000-Q4976518": [
+  {
+   "uid": "wikiP39000-Q4976518",
+   "session_index": 5,
+   "date": "1980-04-01",
+   "role": "user",
+   "quote": "I'm thinking of expanding my business and was wondering if you could help me research online marketplaces where I can sell my handmade candles and soaps",
+   "kind": "same_slot_state",
+   "why": "First-person claim of owning/running a handmade candle-and-soap business (with $400 pop-up sales) implies a self-employed occupational role held while the chain says the persona is a sitting Riksdag member; not in gold chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39000-Q4976518",
+   "session_index": 26,
+   "date": "1988-10-11",
+   "role": "user",
+   "quote": "Also today I officially became a Member of the Committee on the Labour Market, so my calendar is about to get weird",
+   "kind": "gold_issue",
+   "why": "Riksdag committee membership is held concurrently with the Riksdag seat (row #1), but the chain models rows #2/#3 as replacing row #1; 'current position' after 1988 is therefore ambiguous (both values remain true).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39000-Q4976518",
+   "session_index": 18,
+   "date": "1985-07-16",
+   "role": "assistant",
+   "quote": "Here are some tips to help you quickly memorize your lines for the role of Éponine",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user holds the role of Éponine in a community-theatre production; a theatrical role, not an employment/political position, so it does not change the P39 chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP108049-Q43145446": [
+  {
+   "uid": "wikiP108049-Q43145446",
+   "session_index": 32,
+   "date": "2006-11-18",
+   "role": "user",
+   "quote": "I'm preparing for an upcoming trade show in New York City and I was wondering if you could help me find some tips on how to make my product demo more engaging for attendees.",
+   "kind": "other",
+   "why": "First-person 'my product demo' at a trade show implies a commercial/company role, inconsistent with the gold employer (University of Bonn, academic neuropathology) in 2006; no employer is named, so it cannot form a chain row but casts doubt on the state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39001-Q4942028": [
+  {
+   "uid": "wikiP39001-Q4942028",
+   "session_index": 11,
+   "date": "1988-04-22",
+   "role": "assistant",
+   "quote": "Managing your time effectively is crucial in a senior role, where you'll likely have more responsibilities and demands on your time.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user is in 'a senior role' although no user turn in the session mentions one; implies an unnamed new/senior position six months before gold row #2 (Committee on Finance).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39001-Q4942028",
+   "session_index": 17,
+   "date": "1991-05-06",
+   "role": "user",
+   "quote": "I'm thinking of having four of my team members help with the presentation.",
+   "kind": "other",
+   "why": "Persona speaks of 'my team members', 'our sales team' and a customer churn model 'we've been developing', implying a corporate lead/manager position during the Committee on Finance period; no explicit title is named.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39003-Q6248447": [
+  {
+   "uid": "wikiP39003-Q6248447",
+   "session_index": 1,
+   "date": "1964-00-00",
+   "role": "user",
+   "quote": "Karin says it looks like I've been leaning on desks for twenty years, which, fair enough, I have.",
+   "kind": "prechain_history",
+   "why": "Joke implying ~20 years of prior desk work before the first chain row; no position or employer is named, so no row can be added from it.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP39003-Q6248447",
+   "session_index": 11,
+   "date": "1967-04-22",
+   "role": "user",
+   "quote": "thinking of mentioning my recent teaching assistant nomination in the department",
+   "kind": "title_or_promotion",
+   "why": "Persona says they were nominated as a teaching assistant in an academic department between rows #1 and #2; a nomination is not a held post, but strict 'a position is a position' reviewers may read it as an implied role outside the parliamentary chain.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39006-Q5220520": [
+  {
+   "uid": "wikiP39006-Q5220520",
+   "session_index": 1,
+   "date": "1996-00-00",
+   "role": "user",
+   "quote": "I've been appointed High Sheriff of Antrim, so my year just got a good deal busier than planned",
+   "kind": "gold_issue",
+   "why": "Persona's own wording implies a one-year term for High Sheriff, yet gold row #1 has no end and is implicitly held until 2009-06-09; no later session records the office ending.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39005-Q333007": [
+  {
+   "uid": "wikiP39005-Q333007",
+   "session_index": 19,
+   "date": "1997-05-01",
+   "role": "user",
+   "quote": "I'm returned as a member of the 52nd Parliament of the United Kingdom. Still slightly stunned, if I'm honest.",
+   "kind": "gold_issue",
+   "why": "Gold jumps from the 50th Parliament (1987-06-11) straight to the 52nd (1997-05-01) with no row ending the 50th-Parliament membership at the 1992 dissolution/defeat (Lewisham + Stratford details match John Maples, out of the Commons 1992-97); any query dated 1992-04..1997-04 would resolve to a state that was false, and no session text covers the gap.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39008-Q266078": [
+  {
+   "uid": "wikiP39008-Q266078",
+   "session_index": 21,
+   "date": "2016-07-16",
+   "role": "assistant",
+   "quote": "Three weeks is a relatively quick turnaround, so it's clear that you made a strong impression on the VP of Marketing",
+   "kind": "assistant_echo",
+   "why": "Assistant congratulates the persona on 'the news you were waiting for' after impressing a VP of Marketing, implying a corporate marketing hire/role in 2016 (user in same session asks about 'delegating tasks to my team'), an unrecorded position between rows #2 and #3.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39008-Q266078",
+   "session_index": 34,
+   "date": "2019-12-26",
+   "role": "assistant",
+   "quote": "As an NLP researcher, you're likely accustomed to reading and analyzing",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona's role as an NLP researcher two weeks after row #4 (returned as MP), echoing the user's 'my research experience in natural language processing'; a researcher role is a position-type state absent from the chain.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39013-Q592596": [
+  {
+   "uid": "wikiP39013-Q592596",
+   "session_index": 18,
+   "date": "1757-07-19",
+   "role": "user",
+   "quote": "I’m trying to get better at planning and executing marketing campaigns without everything turning into a last-minute scramble.",
+   "kind": "other",
+   "why": "First-person description of own work as running marketing campaign launches (also 'since I have four campaign launches due back-to-back before the month ends') implies a secular marketing role between the 1754 bishop and 1764 archbishop rows; no explicit title is named, so strict reviewers may or may not count it as a position state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39012-Q6767617": [
+  {
+   "uid": "wikiP39012-Q6767617",
+   "session_index": 5,
+   "date": "1984-06-08",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user leads a team (a managerial role the user never stated); under 'a position is a position' this echoes an untitled role between rows #1 and #2.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP39012-Q6767617",
+   "session_index": 29,
+   "date": "2000-02-12",
+   "role": "assistant",
+   "quote": "Regarding staying organized and focused as a freelance writer, I'm happy to share some advice!",
+   "kind": "assistant_echo",
+   "why": "Assistant explicitly labels the user 'a freelance writer' in 2000, an occupation not in the chain and inconsistent with the sitting-MP position; a strict reader could treat it as an unrecorded role.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39007-Q862272": [
+  {
+   "uid": "wikiP39007-Q862272",
+   "session_index": 32,
+   "date": "1994-01-07",
+   "role": "user",
+   "quote": "I helped organize a film festival in July at a venue in my neighborhood, where we screened a selection of short films by local filmmakers. I was responsible for curating the program and introducing the films",
+   "kind": "same_slot_state",
+   "why": "First-person role (festival organizer / program curator, July 1993) not in the gold chain; under the strict 'a position is a position' rule a reviewer could count it as an extra state, though it is an informal one-off volunteer role, not a P39-type office.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39007-Q862272",
+   "session_index": 1,
+   "date": "1970-00-00",
+   "role": "user",
+   "quote": "I've been appointed to the United States Court of Appeals for the Eighth Circuit, so my working life officially changes gears today",
+   "kind": "gold_issue",
+   "why": "Row #1 carries a year-only placeholder date (1970-00-00) and a federal appellate judgeship preceding state-house/state-senate/US-House service (rows 2-4 match Bill Luther's MN House 1975 / MN Senate 1977 / US House 1995 career) is implausible; likely a Wikidata P39 data error on the source item. Session 6 ('I turned 32 last month', 1972) would also make the persona ~30 at appointment.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39007-Q862272",
+   "session_index": 31,
+   "date": "1993-08-27",
+   "role": "user",
+   "quote": "it got me thinking about my own love life and future with Jack today",
+   "kind": "other_person_ambiguous",
+   "why": "Persona is married to Darlene (sessions 11, 33); this filler reads as a different persona (partner Jack, couple apartment-hunting). Same session also says 'I'm looking for apartments in the city where I currently live' (residence slot, not position).",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39009-Q6242279": [
+  {
+   "uid": "wikiP39009-Q6242279",
+   "session_index": 35,
+   "date": "1998-09-08",
+   "role": "assistant",
+   "quote": "Congratulations on the title update!",
+   "kind": "assistant_echo",
+   "why": "Assistant congratulates the user on a (job) title update that no user turn mentions; implies an unrecorded position change at 1998-09-08 but names no value, so no row can be derived.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39011-Q5581581": [
+  {
+   "uid": "wikiP39011-Q5581581",
+   "session_index": 13,
+   "date": "1948-02-09",
+   "role": "user",
+   "quote": "I'm preparing for my first trade show on June 1st and I'm a bit unsure about how to effectively showcase my products.",
+   "kind": "other",
+   "why": "First-person claim of selling own products at a trade show (plus 'my newsletter') implies persona runs a business in 1948, inconsistent with the military-officer chain (second-in-command 1946-1950); no title named, so no new position row.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39011-Q5581581",
+   "session_index": 13,
+   "date": "1948-02-09",
+   "role": "assistant",
+   "quote": "Congratulations on your first trade show and on developing your business skills through the entrepreneurship workshop!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the persona-as-business-owner framing from the same session.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39011-Q5581581",
+   "session_index": 29,
+   "date": "1957-00-00",
+   "role": "user",
+   "quote": "Ingrid wants the summer house shutters repainted before June, and my good boots need reheeling.",
+   "kind": "other_person_ambiguous",
+   "why": "Household partner is named Margareta in sessions 23, 26 and 36 but Ingrid here; persona-consistency wobble only, does not touch the position slot.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39016-Q5538488": [
+  {
+   "uid": "wikiP39016-Q5538488",
+   "session_index": 2,
+   "date": "1859-03-17",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant attributes a team-leading role to the persona one month before chain row #1; no title named, but a strict reader could read it as a pre-chain managerial position.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39016-Q5538488",
+   "session_index": 24,
+   "date": "1866-02-28",
+   "role": "user",
+   "quote": "as of today I'm officially a member of the 19th Parliament of the United Kingdom",
+   "kind": "gold_issue",
+   "why": "The 19th Parliament was elected at the July 1865 general election; a 1866-02-28 start is a mid-Parliament (by-election) entry, implying the persona was not an MP between the July 1865 dissolution and Feb 1866, yet the chain carries state #1 continuously into #2 with no end-of-membership row and no session mentions losing the seat.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39016-Q5538488",
+   "session_index": 14,
+   "date": "1863-01-07",
+   "role": "user",
+   "quote": "Can you help me come up with a few email topics that showcase my brand's mission and products?",
+   "kind": "other",
+   "why": "Persona speaks of owning/running a brand with a production process in 1863 (mid-chain), implying a business-owner role concurrent with the MP position; no explicit title.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39016-Q5538488",
+   "session_index": 14,
+   "date": "1863-01-07",
+   "role": "assistant",
+   "quote": "Congratulations on your website launch and first email subscribers!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes that the persona launched a website/business; supports the implied business-owner role above.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39014-Q5218291": [
+  {
+   "uid": "wikiP39014-Q5218291",
+   "session_index": 22,
+   "date": "1854-03-20",
+   "role": "assistant",
+   "quote": "Welcome back to LA! I hope your flight with Turkish Airlines was comfortable and enjoyable.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user lives in Los Angeles (residence, not position) and echoes an anachronistic airline flight in 1854.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP39014-Q5218291",
+   "session_index": 27,
+   "date": "1856-03-17",
+   "role": "user",
+   "quote": "Speaking of weddings, our team lead, Emily, is getting married in April",
+   "kind": "other_person_ambiguous",
+   "why": "Statement about a coworker, but 'our team lead' implies the persona holds a corporate team-member role; no own title named.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39023-Q18527003": [
+  {
+   "uid": "wikiP39023-Q18527003",
+   "session_index": 9,
+   "date": "1824-07-16",
+   "role": "assistant",
+   "quote": "Three weeks is a relatively quick turnaround, so it's clear that you made a strong impression on the VP of Marketing.",
+   "kind": "assistant_echo",
+   "why": "Assistant congratulates the persona on 'the news you were waiting for' after impressing a VP of Marketing, implying a corporate hire/new position in 1824 that is absent from the gold chain (no title named; persona is gold-state MP of the 7th Parliament).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39023-Q18527003",
+   "session_index": 9,
+   "date": "1824-07-16",
+   "role": "user",
+   "quote": "One thing I'm struggling with right now is delegating tasks to my team. I want to make sure I'm giving them the right responsibilities and not micromanaging.",
+   "kind": "same_slot_state",
+   "why": "First-person statement implying the persona holds a managerial role over a team (no title named), a position-slot state not reflected in the gold chain at this date.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39023-Q18527003",
+   "session_index": 28,
+   "date": "1841-08-27",
+   "role": "assistant",
+   "quote": "As an NLP researcher, you're likely accustomed to reading and analyzing",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona's role as an NLP researcher in 1841, a position-slot state absent from the gold chain (gold has no state between 1830 MP and 1848 High Sheriff).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39023-Q18527003",
+   "session_index": 28,
+   "date": "1841-08-27",
+   "role": "user",
+   "quote": "do you have any advice on how to leverage my research experience in natural language processing to strengthen my GRE verbal score?",
+   "kind": "other",
+   "why": "Persona claims own NLP research experience (experience, not an explicit title) which grounds the assistant's 'NLP researcher' echo; a strict reviewer may read it as an implied researcher position.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39023-Q18527003",
+   "session_index": 29,
+   "date": "1842-01-07",
+   "role": "assistant",
+   "quote": "As a landscape photographer, you'll want software that can handle the unique challenges of editing outdoor images",
+   "kind": "assistant_echo",
+   "why": "Assistant labels the persona a landscape photographer; reads as a hobby identity rather than an employment position, so unlikely to change the gold chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39020-Q11801663": [
+  {
+   "uid": "wikiP39020-Q11801663",
+   "session_index": 4,
+   "date": "1834-11-15",
+   "role": "user",
+   "quote": "for storing and transferring large files for my graphic design work",
+   "kind": "same_slot_state",
+   "why": "First-person statement of own occupation (graphic design work) between rows #1 and #2; under the strict 'a position is a position' rule this implies an occupational state not in the gold chain",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39028-Q21557444": [
+  {
+   "uid": "wikiP39028-Q21557444",
+   "session_index": 5,
+   "date": "1923-06-08",
+   "role": "assistant",
+   "quote": "9:00 am - 10:00 am: Review and respond to social media comments and messages",
+   "kind": "assistant_echo",
+   "why": "Assistant invents a work schedule implying a social-media/content-marketing job for the persona (an MP); no title named, so weak",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39022-Q8013107": [
+  {
+   "uid": "wikiP39022-Q8013107",
+   "session_index": 27,
+   "date": "2015-05-03",
+   "role": "user",
+   "quote": "I'm looking to create a presentation to share with our sales team about the customer churn model we've been developing",
+   "kind": "same_slot_state",
+   "why": "First-person framing ('our sales team', 'my team members', model 'we've been developing') implies the persona holds a corporate/data-team role in 2015, incongruent with the gold state (sitting MLA); no explicit title is named, so it does not add a countable position value.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39025-Q14917170": [
+  {
+   "uid": "wikiP39025-Q14917170",
+   "session_index": 5,
+   "date": "1988-07-16",
+   "role": "user",
+   "quote": "I'm looking to improve my marketing strategy for my business.",
+   "kind": "other",
+   "why": "First-person 'my business' (photography/entrepreneurship themes) implies the persona is a business owner one month after the Parliament of Catalonia row; no title named, but a strict 'a position is a position' reviewer could read it as an unlisted concurrent occupation.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39025-Q14917170",
+   "session_index": 25,
+   "date": "1992-09-02",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user leads a team (implied managerial role) that the user never stated in the rendered turns; a leadership role is an implied position outside the parliamentary chain (user's own turn only says 'I'm planning a team outing').",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39031-Q6224958": [
+  {
+   "uid": "wikiP39031-Q6224958",
+   "session_index": 22,
+   "date": "1850-10-10",
+   "role": "user",
+   "quote": "I'd like to focus on my current projects, which include wrapping up the Johnson account, onboarding my new team, and mentoring Alex.",
+   "kind": "same_slot_state",
+   "why": "First-person corporate-manager role implied (owns a client account, onboards 'my new team', mentors a report) between the 15th- and 16th-Parliament rows; no title named, but a strict 'a position is a position' reader may count it as an unrecorded position/role.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39021-Q8011045": [
+  {
+   "uid": "wikiP39021-Q8011045",
+   "session_index": 3,
+   "date": "1865-09-08",
+   "role": "user",
+   "quote": "especially when they come from my team members or clients",
+   "kind": "same_slot_state",
+   "why": "First-person implies persona holds a managerial/business role with a team and clients (a position outside the parliament chain); no title named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39021-Q8011045",
+   "session_index": 3,
+   "date": "1865-09-08",
+   "role": "assistant",
+   "quote": "Effective delegation is a crucial skill for any manager, and it's great that you're thinking about setting a good example for Alex.",
+   "kind": "assistant_echo",
+   "why": "Assistant addresses the persona as a manager mentoring a junior colleague, echoing a corporate managerial role not in the chain (generic phrasing).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39021-Q8011045",
+   "session_index": 28,
+   "date": "1877-01-04",
+   "role": "user",
+   "quote": "I'm looking to improve my marketing strategy for my business.",
+   "kind": "same_slot_state",
+   "why": "First-person 'my business' implies persona is a business owner/entrepreneur in Jan 1877, a role not represented in the position chain (between 19th and 21st Parliament rows).",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39024-Q6250233": [
+  {
+   "uid": "wikiP39024-Q6250233",
+   "session_index": 33,
+   "date": "1859-00-00",
+   "role": "user",
+   "quote": "I've been appointed High Sheriff of Wiltshire, and apparently that means a good deal of standing about in uncomfortable clothing",
+   "kind": "gold_issue",
+   "why": "Not a log defect but a gold-completeness gap: Wikidata P39 for Q6250233 (John Gladstone) also lists 'member of the 18th Parliament of the United Kingdom' starting 1859-04-28 (end 1863-02-07), concurrent with High Sheriff (1859-1860) and before the last session (1859-07-19); the gold chain has no row for it, so the final position state is incomplete unless the builder deliberately drops overlapping/same-year positions. Row #4 date is a partial 1859-00-00 and matches the session date, so not a chain mismatch.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39029-Q5341608": [
+  {
+   "uid": "wikiP39029-Q5341608",
+   "session_index": 13,
+   "date": "1853-02-09",
+   "role": "assistant",
+   "quote": "Congratulations on your career milestone and your goal to get promoted to a senior developer role!",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts an unprompted career milestone and implies the persona currently holds a (non-senior) developer position — a same-slot (position) state at 1853 that is not in the parliamentary chain; no user turn supports it.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39029-Q5341608",
+   "session_index": 10,
+   "date": "1852-01-07",
+   "role": "user",
+   "quote": "When I first graduated with my bachelor's degree in computer science, I was making around $60,000 per year",
+   "kind": "prechain_history",
+   "why": "First-person pre-chain employment history (a salaried job after a CS degree) implying a prior occupation before/outside the MP chain; no title named, so borderline, but a strict reviewer may count it as an unrecorded earlier position.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39026-Q16063633": [
+  {
+   "uid": "wikiP39026-Q16063633",
+   "session_index": 18,
+   "date": "1838-05-03",
+   "role": "user",
+   "quote": "I'm trying to analyze the performance of my social media campaign for my new online course on digital marketing.",
+   "kind": "other",
+   "why": "Only same-slot candidate outside the chain: persona claims to run/market their own online course, implying an occupation (course creator/instructor) not in the position chain; weak, no title named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39026-Q16063633",
+   "session_index": 1,
+   "date": "1830-00-00",
+   "role": "user",
+   "quote": "I've been appointed High Sheriff of Kent, so you may as well start a fresh ledger",
+   "kind": "gold_issue",
+   "why": "Row #1 date is year-only (1830-00-00, month/day zero); session date matches but day-precision questions about this appointment are unanswerable and ordering vs filler Session 2 (1830-01-01) is artificial.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39035-Q7526378": [
+  {
+   "uid": "wikiP39035-Q7526378",
+   "session_index": 11,
+   "date": "1857-05-03",
+   "role": "assistant",
+   "quote": "As a landscape photographer, you'll want software that can handle the unique challenges of editing outdoor images",
+   "kind": "assistant_echo",
+   "why": "Assistant labels the persona with an occupation ('landscape photographer') never stated by the user (hobby context: hiked and shot a sunset); an occupation label, not a position held, so no gold impact.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39030-Q6265172": [
+  {
+   "uid": "wikiP39030-Q6265172",
+   "session_index": 11,
+   "date": "1871-12-23",
+   "role": "user",
+   "quote": "I was responsible for curating the program and introducing the films, which was a great experience.",
+   "kind": "same_slot_state",
+   "why": "First-person role (festival program curator, July 1871) held between rows #2 and #3; informal one-off event role rather than a titled office, but a strict 'a position is a position' reviewer could count it as an unlisted position.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39030-Q6265172",
+   "session_index": 18,
+   "date": "1876-01-04",
+   "role": "assistant",
+   "quote": "You’re welcome to verify my status; I’ve held my card with the electrical wor",
+   "kind": "assistant_echo",
+   "why": "Assistant drafts in the persona's own voice asserting the user holds an electrical workers' union card — an occupation claim for the user that conflicts with the MP persona, though not a P39-style position.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39041-Q636368": [
+  {
+   "uid": "wikiP39041-Q636368",
+   "session_index": 19,
+   "date": "1992-04-09",
+   "role": "user",
+   "quote": "Right, polling day at last and I'm running on about four hours' sleep and a bacon roll.",
+   "kind": "gold_issue",
+   "why": "1992-04-09 is the UK general election; the session frames the persona as a sitting MP standing at the count, which implies re-election as member of the 51st Parliament (a same-slot state Wikidata lists with this date), but the gold chain jumps 50th -> Chief Whip -> 52nd and omits it; the persona never explicitly asserts the 51st Parliament membership, so a strict count of position changes may differ.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39043-Q13391423": [
+  {
+   "uid": "wikiP39043-Q13391423",
+   "session_index": 28,
+   "date": "1965-10-13",
+   "role": "user",
+   "quote": "I've been advised to develop my skills in these areas for potential advancement to a Technical Lead or Architect position within my company",
+   "kind": "same_slot_state",
+   "why": "Implies the persona currently holds a corporate (sub-Technical-Lead) position at 'my company' in 1965, while gold says Bishop of Tui-Vigo 1959-1969; phrased as potential advancement (plan), so it does not add a row, but strict reviewers may count the implied non-episcopal position. Also blatant anachronism (AI/cloud computing, London AI Summit in 1965).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39043-Q13391423",
+   "session_index": 11,
+   "date": "1949-02-09",
+   "role": "user",
+   "quote": "I'm leading a new project called Nova, which involves developing an AI-powered chatbot for customer support.",
+   "kind": "same_slot_state",
+   "why": "First-person role claim (project lead of a tech/customer-support project) in 1949 while gold has the persona as bishop of Tui; not a titled position, so unlikely to add a Wikidata row, but it is a same-slot role assertion. Also blatant anachronism (AI chatbot, Dialogflow, Salesforce in 1949).",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39038-Q7528194": [
+  {
+   "uid": "wikiP39038-Q7528194",
+   "session_index": 31,
+   "date": "1857-03-27",
+   "role": "user",
+   "quote": "rather than my usual lawyerly hedging",
+   "kind": "same_slot_state",
+   "why": "Self-description implies the persona is a lawyer/barrister, an occupation not represented in the P39 chain; it is an adjective, not a titled appointment, and sits on the same date as gold row #3, so it adds no new transition date.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39039-Q11801709": [
+  {
+   "uid": "wikiP39039-Q11801709",
+   "session_index": 33,
+   "date": "1831-02-15",
+   "role": "assistant",
+   "quote": "It's completely normal to feel overwhelmed in a new job, and it's great that you're acknowledging your feelings and seeking help.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona is in a 'new job' in Feb 1831, between gold #3 (9th Parliament, 1830-07) and #4 (10th, 1831-04); no value named, but under the strict rule it implies an unlisted position change.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39039-Q11801709",
+   "session_index": 33,
+   "date": "1831-02-15",
+   "role": "assistant",
+   "quote": "This is totally normal, especially when you\\'re new to a role.",
+   "kind": "assistant_echo",
+   "why": "Second assistant echo in the same session that the persona is 'new to a role' with paperwork/reports duties; role is never named, so gold cannot be amended, but it implies a transition absent from the chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39039-Q11801709",
+   "session_index": 1,
+   "date": "1802-00-00",
+   "role": "user",
+   "quote": "so my year is now considerably less my own than it was last week",
+   "kind": "gold_issue",
+   "why": "Persona's own words frame High Sheriff as a one-year office, yet gold row #1 is treated as the standing position until 1826 with no end/vacancy row; a reviewer may count the 1803 expiry as an unrepresented change.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39040-Q16066414": [
+  {
+   "uid": "wikiP39040-Q16066414",
+   "session_index": 32,
+   "date": "1821-03-20",
+   "role": "user",
+   "quote": "I'm preparing for my first trade show on June 1st and I'm a bit unsure about how to effectively showcase my products",
+   "kind": "same_slot_state",
+   "why": "First-person statement implying the persona runs a business selling products (same session also says 'develop my business skills' / 'my newsletter'); an implied occupation between rows #7 (1820) and #8 (1826), though no formal title is named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39040-Q16066414",
+   "session_index": 3,
+   "date": "1799-09-08",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user leads a team (a supervisory role) that the user never stated in this session; implies a work role outside the parliamentary chain, but no named title.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39040-Q16066414",
+   "session_index": 16,
+   "date": "1809-03-17",
+   "role": "user",
+   "quote": "since my new commute to work takes 45 minutes, I'd like to find some good podcasts to listen to during my drive",
+   "kind": "other",
+   "why": "'my new commute to work' hints at a recent job or residence change between rows #3 (1802) and #4 (1810); no position or employer named, so weak.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39040-Q16066414",
+   "session_index": 29,
+   "date": "1819-05-06",
+   "role": "user",
+   "quote": "I've also been using a branded hashtag #FitWithSarah on all of my fitness-related posts",
+   "kind": "other_person_ambiguous",
+   "why": "Filler persona presents as 'Sarah' while the chain persona is a male MP with a wife (Session 21), suggesting the filler content belongs to a different person; work-related hints in fillers are of doubtful attribution.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54001-Q16225986": [
+  {
+   "uid": "wikiP54001-Q16225986",
+   "session_index": 19,
+   "date": "2010-02-12",
+   "role": "user",
+   "quote": "how much I've grown since I started my new job 6 months ago",
+   "kind": "same_slot_transition",
+   "why": "For a pro rider a 'new job' is a new team contract; 6 months before 2010-02-12 is ~Aug 2009, which sits between Selle Italia Ghezzi (2007) and A.R. Monex (2010-00-00) and could be read as an unlisted or mis-dated team change. No team is named.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP54001-Q16225986",
+   "session_index": 21,
+   "date": "2010-04-22",
+   "role": "user",
+   "quote": "I was recently promoted to a senior role in my company on February 1st",
+   "kind": "title_or_promotion",
+   "why": "First-person corporate promotion ('my company') inside a cycling-team chain; it is a position/employer state, not the team slot, but contradicts the pro-cyclist persona in the A.R. Monex period.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39042-Q994984": [
+  {
+   "uid": "wikiP39042-Q994984",
+   "session_index": 24,
+   "date": "1989-04-25",
+   "role": "user",
+   "quote": "I also struggle with saying no to tasks that don't align with my goals, especially when they come from my team members or clients.",
+   "kind": "other",
+   "why": "First-person claim of having team members and clients (plus mentoring a junior colleague) implies a managerial/client-facing occupation in 1989, in the gap between rows #2 and #3; no title is named so it cannot add a row, but it contradicts the chain's parliamentary framing.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39042-Q994984",
+   "session_index": 24,
+   "date": "1989-04-25",
+   "role": "assistant",
+   "quote": "Effective delegation is a crucial skill for any manager, and it's great that you're thinking about setting a good example for Alex.",
+   "kind": "assistant_echo",
+   "why": "Assistant twice frames the user as a manager ('crucial skill for any manager'); generic wording, no explicit title asserted for the persona.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP39042-Q994984",
+   "session_index": 29,
+   "date": "1993-12-26",
+   "role": "user",
+   "quote": "given my background in accounting and my cumulative GPA of 3.7 in my Master's in Accounting program from the University of Illinois",
+   "kind": "other",
+   "why": "First-person professional-background claim (accountant preparing for the CPA exam, Master's from University of Illinois) while the gold state is sitting member of the 51st Parliament; no position title named, but it implies a different occupation and pre-history for the persona.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39042-Q994984",
+   "session_index": 31,
+   "date": "1995-10-13",
+   "role": "user",
+   "quote": "I recently gave a presentation on our company's approach to innovation in the tech sector in a city situated on the southwestern shore of Lake Michigan",
+   "kind": "other",
+   "why": "Persona speaks of 'our company' in the tech sector and preparing a product demo for a New York trade show in 1995, implying a corporate role while gold says member of the 51st Parliament; no company or title named, so no new row can be derived.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39042-Q994984",
+   "session_index": 27,
+   "date": "1992-04-09",
+   "role": "user",
+   "quote": "Well — the count went our way. I'll be taking my seat as a member of the 51st Parliament of the United Kingdom",
+   "kind": "gold_issue",
+   "why": "Chain jumps from 47th Parliament (Oct 1974) to 51st (1992) with no end-of-tenure row; Wikidata Q994984 (Bryan Davies, Baron Davies of Oldham) gives P582 end 1979-04-07 for the 47th-Parliament membership, so for the 14 filler sessions dated 1979-1992 the chain's 'current' value (47th Parliament) had actually lapsed. Rows themselves match Wikidata.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39036-Q15039950": [
+  {
+   "uid": "wikiP39036-Q15039950",
+   "session_index": 16,
+   "date": "1855-08-24",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona is currently leading a team (a leadership/managerial role) that appears nowhere in the gold position chain; no named title, but under the strict rule it is an implied same-slot state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP39036-Q15039950",
+   "session_index": 24,
+   "date": "1857-03-27",
+   "role": "user",
+   "quote": "Remind me to write to Mrs Keating this evening before the post goes",
+   "kind": "gold_issue",
+   "why": "Statement about another person (not a slot flag itself), but 'Mrs Keating' + Reading constituency identifies the persona as Henry Singer Keating, who per external knowledge was Solicitor General (Nov 1857-Feb 1858, Jun-Dec 1859) and Justice of the Common Pleas (Dec 1859); none of these P39-type positions appear in the 3-row gold chain, though the log itself never states them. Unverified against Wikidata here.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP39032-Q1716798": [
+  {
+   "uid": "wikiP39032-Q1716798",
+   "session_index": 14,
+   "date": "1992-05-06",
+   "role": "assistant",
+   "quote": "It's great to hear that you're enjoying leading your team and excited to see them grow.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user is 'leading your team' (a managerial role) that the user never stated; vague, names no position value, so it cannot add a chain row.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP39032-Q1716798",
+   "session_index": 31,
+   "date": "2000-09-08",
+   "role": "user",
+   "quote": "Do you think you could help me create a timeline of my life's milestones, like graduating from college, getting my first job, and turning 30?",
+   "kind": "prechain_history",
+   "why": "Persona references 'getting my first job' and 'turning 30' as past milestones (pre-chain career history, and an age inconsistent with the 1934-born peer), but names no position/employer value, so first state and change count are unaffected.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54012-Q25618290": [
+  {
+   "uid": "wikiP54012-Q25618290",
+   "session_index": 7,
+   "date": "2018-06-08",
+   "role": "assistant",
+   "quote": "Congratulations on your role as Senior Software Engineer! That's fantastic!",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts a job title (position slot) for the persona that appears nowhere in the user's turns and clashes with the cyclist persona; different slot from the team chain, so gold unaffected.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54007-Q30330058": [
+  {
+   "uid": "wikiP54007-Q30330058",
+   "session_index": 9,
+   "date": "2018-07-16",
+   "role": "user",
+   "quote": "I've been playing in an indoor soccer league and I've scored 3 goals so far",
+   "kind": "same_slot_state",
+   "why": "First-person team-sport membership (indoor soccer league) dated between chain rows #1 (2017 Keukens Redant) and #2 (2019 Restore); no team is named, so it supplies no competing value, but a strict reader could count it as an unlisted team state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP54008-Q54622403": [
+  {
+   "uid": "wikiP54008-Q54622403",
+   "session_index": 26,
+   "date": "2019-07-16",
+   "role": "user",
+   "quote": "I just got a promotion to senior account manager",
+   "kind": "title_or_promotion",
+   "why": "First-person corporate promotion/job title; different slot (position) inside a team chain, implies a non-cycling career during the 2015-2021 Team JS.dk span but names no team.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP54008-Q54622403",
+   "session_index": 26,
+   "date": "2019-07-16",
+   "role": "user",
+   "quote": "I got the promotion three weeks after the interview with the VP of Marketing",
+   "kind": "title_or_promotion",
+   "why": "Restates the corporate promotion (position slot, not team); no team value asserted.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP54008-Q54622403",
+   "session_index": 26,
+   "date": "2019-07-16",
+   "role": "assistant",
+   "quote": "As a senior account manager, effective project management is crucial to your success",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the persona's corporate job title; different slot from the team chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP39037-Q3525068": [
+  {
+   "uid": "wikiP39037-Q3525068",
+   "session_index": 33,
+   "date": "1794-04-21",
+   "role": "user",
+   "quote": "Well, it is settled and signed: I am now colonial governor of Guadeloupe.",
+   "kind": "gold_issue",
+   "why": "Raw Wikidata P39 chain for Q3525068 (data/wikistate_candidates_P39.json) has 5 rows; the row Q3238285 'Lieutenant Governor of Guernsey' (1793-00-00 to 1793-00-00) was dropped from the 4-row gold, so the dim5 trajectory / count of changes may be incomplete; Wikidata also has no 15th Parliament row for 1780-1784, so the chain jumps 14th -> 16th.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP54014-Q2856385": [
+  {
+   "uid": "wikiP54014-Q2856385",
+   "session_index": 10,
+   "date": "1997-03-17",
+   "role": "user",
+   "quote": "our team lead, Emily, is getting married in April, and I'm really excited for her",
+   "kind": "other_person_ambiguous",
+   "why": "Persona speaks of 'our team lead' (a corporate team) while the gold chain has them riding for Mutuelle de Seine-et-Marne; no team is named, so no alternative slot value, but a strict reviewer may read it as a same-slot (team) membership statement.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54016-Q28553694": [
+  {
+   "uid": "wikiP54016-Q28553694",
+   "session_index": 6,
+   "date": "2012-03-17",
+   "role": "assistant",
+   "quote": "Congratulations on your role as Senior Software Engineer! That's fantastic!",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts a job title (Senior Software Engineer) for the persona that the user never stated; off-slot (position, not team) but it is an assistant-asserted state for a pro-cyclist persona, in a session that also opens with 'I'm planning a team outing'.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54009-Q6767658": [
+  {
+   "uid": "wikiP54009-Q6767658",
+   "session_index": 11,
+   "date": "1990-01-01",
+   "role": "user",
+   "quote": "Paperwork's done, so put that in the file and stop calling me a free agent.",
+   "kind": "same_slot_state",
+   "why": "Implies a free-agent (no-team) interval before the Dallas Rockets signing, i.e. a team-slot state between Dayton Dynamo (1989) and Dallas Rockets (1990) that the chain does not represent; only matters if reviewers count 'free agent' as a slot value.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP54009-Q6767658",
+   "session_index": 23,
+   "date": "1992-09-08",
+   "role": "user",
+   "quote": "I recently updated my title to \"Content Creator\" instead of \"Freelance Writer\" - it feels more fitting for the type of work I do nowadays",
+   "kind": "title_or_promotion",
+   "why": "First-person job-title change (position slot, not the team slot); implies the persona's occupation is content creator/freelance writer in 1992, inconsistent with a footballer between Dallas Rockets and Mesquite Kickers, but names no team.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP54009-Q6767658",
+   "session_index": 23,
+   "date": "1992-09-08",
+   "role": "assistant",
+   "quote": "Congratulations on the title update! \"Content Creator\" is a great fit for the modern freelance landscape.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes and confirms the user's job-title state (position slot, not team).",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54021-Q50768390": [
+  {
+   "uid": "wikiP54021-Q50768390",
+   "session_index": 3,
+   "date": "2013-09-08",
+   "role": "user",
+   "quote": "I've recently taken on a new role as a senior account manager and I'm still figuring out how to delegate tasks to my team",
+   "kind": "title_or_promotion",
+   "why": "Persona (a pro cyclist per the team chain) asserts a corporate job title; different slot (position), and 'my team' here is a work team, not a cycling team.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54023-Q16200523": [
+  {
+   "uid": "wikiP54023-Q16200523",
+   "session_index": 29,
+   "date": "2013-07-16",
+   "role": "user",
+   "quote": "I just got a promotion to senior account manager and I'm trying to get settled into my new role.",
+   "kind": "title_or_promotion",
+   "why": "First-person corporate promotion in 2013, between the 2011 Experza–Footlogix row and the 2014 Lensworld-Kuota row; it is a position/employer statement rather than a named cycling team, but it asserts a non-cycling professional affiliation mid-chain and the session also refers to 'my team' (an office team).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP54023-Q16200523",
+   "session_index": 29,
+   "date": "2013-07-16",
+   "role": "assistant",
+   "quote": "Congratulations on your promotion! As a senior account manager, effective project management is crucial to your success.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the persona's senior-account-manager role as an established state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP54025-Q11731907": [
+  {
+   "uid": "wikiP54025-Q11731907",
+   "session_index": 12,
+   "date": "1997-09-02",
+   "role": "assistant",
+   "quote": "Congratulations on your role as Senior Software Engineer! That's fantastic!",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts a job title (position slot) for the user that the user never stated; different slot from the team chain, but a persona-state assertion for a footballer persona.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54028-Q22681824": [
+  {
+   "uid": "wikiP54028-Q22681824",
+   "session_index": 14,
+   "date": "2017-06-08",
+   "role": "user",
+   "quote": "I'm a Digital Marketing Specialist, and my top tasks include managing our social media presence",
+   "kind": "title_or_promotion",
+   "why": "First-person job title (40h/week digital marketer with 'our design team') asserted while gold says the persona is a rider for Leopard Pro Cycling (2016-07-22 to 2019); no team named, but contradicts the pro-cyclist persona in the interval.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP54031-Q16198306": [
+  {
+   "uid": "wikiP54031-Q16198306",
+   "session_index": 32,
+   "date": "2011-10-10",
+   "role": "user",
+   "quote": "my supervisor's name is Rachel, and I'm still getting used to my new role",
+   "kind": "title_or_promotion",
+   "why": "First-person 'new role' with a supervisor and a 'Johnson account' implies a corporate job during the Aromitalia Vaiano period; no team named, so it does not alter the team chain but is a persona/slot-adjacent inconsistency.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP54031-Q16198306",
+   "session_index": 32,
+   "date": "2011-10-10",
+   "role": "assistant",
+   "quote": "Congratulations on your new role!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the user's 'new role' statement (position-type state, not the team slot).",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP54027-Q16228153": [
+  {
+   "uid": "wikiP54027-Q16228153",
+   "session_index": 12,
+   "date": "2010-08-27",
+   "role": "user",
+   "quote": "Since I'm playing with my colleagues from work, I want to make sure I'm contributing to the team's success.",
+   "kind": "same_slot_state",
+   "why": "First-person statement of playing on a (recreational soccer) team with work colleagues between chain rows #1 (2008) and #2 (2012); team is unnamed so no gold value changes, but under the strict rule it is a team-membership assertion in the same slot.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP54027-Q16228153",
+   "session_index": 12,
+   "date": "2010-08-27",
+   "role": "assistant",
+   "quote": "Congratulations on starting your recreational soccer league!",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user has started/joined a recreational soccer league although the user only asked about shin splints in that turn; implies a team-slot state not in the gold chain (unnamed).",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP54033-Q43019831": [
+  {
+   "uid": "wikiP54033-Q43019831",
+   "session_index": 11,
+   "date": "2019-07-19",
+   "role": "user",
+   "quote": "I'm actually a casual cyclist, I just like to ride my bike to work a couple of times a week.",
+   "kind": "other",
+   "why": "First-person self-description as a casual commuter cyclist (no team named) contradicts the persona being a contracted team rider (gold state = Waoo on this date); a strict reviewer could read it as implying a 'no team' state, but it adds no team value to the chain.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP54036-Q2350417": [
+  {
+   "uid": "wikiP54036-Q2350417",
+   "session_index": 10,
+   "date": "2009-11-21",
+   "role": "user",
+   "quote": "I'm actually already a senior engineer, I got promoted three months ago.",
+   "kind": "title_or_promotion",
+   "why": "First-person job title/promotion assertion (position slot, not team); persona is a pro cyclist between GW-Shimano (2007) and EPM (2010) — no team named, so the team chain is unchanged but the strict 'a position is a position' reviewer may flag it.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP54036-Q2350417",
+   "session_index": 10,
+   "date": "2009-11-21",
+   "role": "assistant",
+   "quote": "Congratulations on your recent promotion to senior engineer!",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes the senior-engineer promotion as the user's state; different slot from team.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP551001-Q20667184": [
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 16,
+   "date": "1867-11-18",
+   "role": "user",
+   "quote": "I'm thinking of hosting a dinner party for my coworkers soon and I want to impress them with some Japanese dishes. Can you give me some tips on where to find good ingredients in Tokyo?",
+   "kind": "same_slot_state",
+   "why": "Hosting a dinner for coworkers and sourcing ingredients in Tokyo implies the persona is based in Tokyo in 1867, an unrecorded residence between Farmingdale (1853) and Iowa (1874); implication is indirect (phrased as a question), and the follow-up turn adds 'my Japanese cooking classes'.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 16,
+   "date": "1867-11-18",
+   "role": "assistant",
+   "quote": "Mirin and sake are essential ingredients in traditional Japanese cooking, and you can find them at many markets and stores in Tokyo.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes Tokyo as the user's local shopping area, reinforcing an implied Tokyo residence not in the gold chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 26,
+   "date": "1876-08-27",
+   "role": "user",
+   "quote": "I just got an annual pass, so I'm planning to visit at least once a month to try out new attractions",
+   "kind": "same_slot_state",
+   "why": "Annual pass with monthly visits to Universal Studios Hollywood (and 'planning to head there today') implies living in the Los Angeles area in 1876, while gold says Iowa (1874-1909); framed as a 'trip', so the residence implication is indirect.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 17,
+   "date": "1868-04-25",
+   "role": "user",
+   "quote": "I'm located in the downtown area, so something close to the city would be great.",
+   "kind": "same_slot_state",
+   "why": "First-person 'located in' statement about where the persona lives, but no place is named, so it cannot contradict a gold value (Farmingdale, a village, sits oddly with 'downtown' but nothing checkable).",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 27,
+   "date": "1877-01-07",
+   "role": "user",
+   "quote": "I'm in the city, so you can search for events in the city area.",
+   "kind": "same_slot_state",
+   "why": "First-person location statement ('I'm in the city') with no named place; cannot be matched against the gold value Iowa.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 5,
+   "date": "1856-04-22",
+   "role": "user",
+   "quote": "I was recently promoted to a senior role in my company on February 1st",
+   "kind": "title_or_promotion",
+   "why": "First-person promotion statement; different slot (position/employer) from this residence chain, so it does not touch the gold values.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP551001-Q20667184",
+   "session_index": 19,
+   "date": "1870-02-12",
+   "role": "user",
+   "quote": "it's made me realize how much I've grown since I started my new job 6 months ago",
+   "kind": "title_or_promotion",
+   "why": "First-person new-job statement (employer/position change ~1869); different slot from this residence chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP551000-Q19845625": [
+  {
+   "uid": "wikiP551000-Q19845625",
+   "session_index": 27,
+   "date": "2003-02-15",
+   "role": "user",
+   "quote": "I'm planning a trip to Europe in April and I need to make sure my travel documents are in order.",
+   "kind": "same_slot_state",
+   "why": "Framing Europe as a trip destination (and later asking about ETIAS for UK/France/Italy) implies the persona does not currently live in Europe, contradicting gold row #1 (Netherlands, 1991-2004).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551000-Q19845625",
+   "session_index": 27,
+   "date": "2003-02-15",
+   "role": "assistant",
+   "quote": "a general overview of the visa requirements for US citizens",
+   "kind": "assistant_echo",
+   "why": "Assistant assumes the user is a US citizen needing visas for Europe and the user does not correct it; citizenship is not residence, but it reinforces the non-European framing while gold says Netherlands.",
+   "affects_gold": "no"
+  },
+  {
+   "uid": "wikiP551000-Q19845625",
+   "session_index": 32,
+   "date": "2007-03-00",
+   "role": "user",
+   "quote": "do you know if I can get my old Dutch phone number to forward texts?",
+   "kind": "other",
+   "why": "The UK-move session refers to leaving behind a Dutch phone number (and a mum's garden updates), implying the prior residence was the Netherlands rather than France (gold row #2, 2004-2007); possible generator inconsistency with the France row.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551000-Q19845625",
+   "session_index": 2,
+   "date": "1991-01-20",
+   "role": "user",
+   "quote": "as of today I'm officially living in the Netherlands again",
+   "kind": "prechain_history",
+   "why": "The gold anchor itself says 'again', implying an earlier Netherlands residence and an unrecorded intervening residence elsewhere before 1991-01-20; the first state and change count could be questioned.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP551003-Q20512700": [
+  {
+   "uid": "wikiP551003-Q20512700",
+   "session_index": 7,
+   "date": "1918-09-02",
+   "role": "user",
+   "quote": "By the way, I just got back from a long trip to LA and I'm still recovering - I flew back to New York on June 24th.",
+   "kind": "same_slot_state",
+   "why": "'flew back to New York' after a trip (plus 'fly out of JFK' later in the session) implies New York is the persona's home base in 1918, while the gold chain has residence = Uzbekistan from 1916 to 1966.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551003-Q20512700",
+   "session_index": 7,
+   "date": "1918-09-02",
+   "role": "assistant",
+   "quote": "Welcome back to New York! I'm happy to help you find some great deals on flights to Europe.",
+   "kind": "assistant_echo",
+   "why": "Assistant echoes New York as the user's home location, reinforcing an implied residence that conflicts with the Uzbekistan state at this date.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551003-Q20512700",
+   "session_index": 20,
+   "date": "1931-02-12",
+   "role": "user",
+   "quote": "By the way, I just signed up for a museum membership there today, so I'm excited to explore more of their permanent collection.",
+   "kind": "same_slot_state",
+   "why": "A Brooklyn Museum membership signed 'today', 'one of the best in the city', and 'I just saw a retrospective ... at the MoMA last month' together imply the persona is living in New York City in 1931, contradicting residence = Uzbekistan; implicit, not an explicit 'I live in' statement.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551003-Q20512700",
+   "session_index": 2,
+   "date": "1914-01-01",
+   "role": "user",
+   "quote": "I'm looking for some recommendations on good restaurants in Tokyo that serve vegetarian food.",
+   "kind": "other",
+   "why": "Tokyo restaurant search plus 'Japanese lessons at a local language school' weakly suggests the persona is based in Tokyo right after the 1914 Yerevan move; could be travel, so low confidence.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP551004-Q42324811": [
+  {
+   "uid": "wikiP551004-Q42324811",
+   "session_index": 32,
+   "date": "1857-00-00",
+   "role": "user",
+   "quote": "half of Lübeck seems to have travelled with me in the form of linens",
+   "kind": "same_slot_state",
+   "why": "In the row-#3 chain session the persona implies she moved to Kaufingerstraße FROM Lübeck, whereas row #2 has her at Eimsbüttel (a Hamburg district) since 1846; this suggests an unlisted intermediate Lübeck residence between 1846 and 1857 (consistent with the novel, where Tony returns to Lübeck after the Grünlich divorce), i.e. the chain may be missing a state.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551004-Q42324811",
+   "session_index": 25,
+   "date": "1850-04-25",
+   "role": "user",
+   "quote": "I'm actually from the US, so I guess I didn't need a visa after all!",
+   "kind": "other",
+   "why": "Explicit first-person origin/nationality claim (US) at a date when the chain has the persona resident at Eimsbüttel; it is an origin statement rather than a residence value, so it adds no row, but a strict reader may take it as implying a US home.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551004-Q42324811",
+   "session_index": 15,
+   "date": "1841-07-16",
+   "role": "user",
+   "quote": "a one-day digital marketing workshop at a coworking space near my apartment",
+   "kind": "same_slot_state",
+   "why": "First-person reference to own dwelling as 'my apartment' while row #1 (1835-1846) has the persona living in the Buddenbrookhaus family house; no place is named, so it supplies no competing value.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP551005-Q42324799": [
+  {
+   "uid": "wikiP551005-Q42324799",
+   "session_index": 26,
+   "date": "1851-09-05",
+   "role": "assistant",
+   "quote": "Meeting new people in a new neighborhood can be challenging, but there are many ways to break the ice and start building connections",
+   "kind": "assistant_echo",
+   "why": "User only said 'my neighborhood'; the assistant asserts a 'new neighborhood', implying a residence change c.1851 that is not in the gold chain (between Amsterdam 1846 and Breite Straße 1857).",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551005-Q42324799",
+   "session_index": 6,
+   "date": "1837-06-14",
+   "role": "user",
+   "quote": "I'm planning a trip to Europe in April and I need to make sure my travel documents are in order",
+   "kind": "other",
+   "why": "Travel talk (excluded by rule) but it implies the persona resides outside Europe in 1837, contradicting gold value Buddenbrookhaus (Lübeck); the assistant then assumes 'US citizen' (hedged). No replacement value asserted.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP551002-Q107297": [
+  {
+   "uid": "wikiP551002-Q107297",
+   "session_index": 7,
+   "date": "1851-04-01",
+   "role": "assistant",
+   "quote": "First, welcome back to the States! Japan is an amazing country",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the persona lives in the United States (returning 'back to the States') while gold has Paris from 1851; the user only mentioned travel to Japan/LA and never named a residence.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551002-Q107297",
+   "session_index": 12,
+   "date": "1853-09-02",
+   "role": "user",
+   "quote": "I need help keeping track of my farm expenses. Can you set up a simple budget template for me to log my daily/weekly expenses, and also remind me to order more grain for the horses?",
+   "kind": "other",
+   "why": "First-person ownership/operation of a farm with horses, hay storage and fencing in 1853 implies a rural residence inconsistent with Paris (1851-1871), but no place is named so no chain row can be formed.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551002-Q107297",
+   "session_index": 24,
+   "date": "1865-09-05",
+   "role": "assistant",
+   "quote": "apply it to your current role as a data analyst",
+   "kind": "assistant_echo",
+   "why": "Assistant invents a job title (data analyst) the user never stated; different slot (position), not residence, so no effect on this chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP551006-Q57870878": [
+  {
+   "uid": "wikiP551006-Q57870878",
+   "session_index": 29,
+   "date": "1875-04-01",
+   "role": "user",
+   "quote": "This change in my surroundings inspired me to write a poem about the changing seasons",
+   "kind": "other",
+   "why": "Vague first-person reference to a 'change in my surroundings' in 1875 (between the Sens 1848 and Troyes 1890 rows) could be read as an unrecorded relocation; no place is named and it may only mean seasonal change, so ambiguous.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP551007-Q9153879": [
+  {
+   "uid": "wikiP551007-Q9153879",
+   "session_index": 5,
+   "date": "1928-04-01",
+   "role": "user",
+   "quote": "I'm in the city center, and I'm open to anything outdoors, as long as it's not too physically demanding.",
+   "kind": "same_slot_state",
+   "why": "First-person locational statement (living downtown in a city, asking about events 'downtown') while gold residence is the small town Koropets; no place name given, so no competing value can be extracted.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP551008-Q29918442": [
+  {
+   "uid": "wikiP551008-Q29918442",
+   "session_index": 23,
+   "date": "2016-06-14",
+   "role": "assistant",
+   "quote": "Now, let's find some charity runs and cycling events in the 92101 zip code area that support cancer research.",
+   "kind": "assistant_echo",
+   "why": "Assistant asserts the user's location is zip 92101 (downtown San Diego) although the user never gave a location; gold says San Francisco for 2006-2017.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551008-Q29918442",
+   "session_index": 28,
+   "date": "2018-04-01",
+   "role": "assistant",
+   "quote": "I've searched for art studios in the 92101 zip code and surrounding areas that offer acrylic painting classes.",
+   "kind": "assistant_echo",
+   "why": "Assistant again places the user in zip 92101 / North Park (San Diego) with no user input; gold says Mountain View for 2017-2020.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551008-Q29918442",
+   "session_index": 7,
+   "date": "2008-11-15",
+   "role": "user",
+   "quote": "do you think it's worth visiting other cities like Kobe or Osaka on the way back to Tokyo?",
+   "kind": "other",
+   "why": "Trip-planning turn: 'back to Tokyo' implies Tokyo is the home base of the trip; travel context only, no explicit residence claim, but a strict reader could read it against the San Francisco state.",
+   "affects_gold": "maybe"
+  }
+ ],
+ "wikiP551009-Q5321987": [
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 23,
+   "date": "1882-03-17",
+   "role": "user",
+   "quote": "I’m mostly on the E or F from Jackson Heights/Roosevelt Ave.",
+   "kind": "same_slot_state",
+   "why": "First-person daily commute from Jackson Heights (Queens, NYC) implies residing in New York in 1882, between gold rows #1 Frampton on Severn (1872) and #2 Birmingham (1885); no such state in the chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 23,
+   "date": "1882-03-17",
+   "role": "user",
+   "quote": "I've mostly given up on the local buses for getting across town, simply because the subway schedules are much more consistent",
+   "kind": "same_slot_state",
+   "why": "Describes a routine commute in a subway city (NYC per the following turns), supporting an unlisted New York residence in 1882.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 23,
+   "date": "1882-03-17",
+   "role": "assistant",
+   "quote": "In NYC, the MTA’s own app generally gives the fastest and most reliable delay alerts",
+   "kind": "assistant_echo",
+   "why": "Assistant places the user in NYC, echoing a residence not present in the gold chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 7,
+   "date": "1874-11-15",
+   "role": "user",
+   "quote": "I'm moving to the US soon to start my Master's program at UC Berkeley",
+   "kind": "other",
+   "why": "Stated imminent relocation to the US (Berkeley) in 1874; a plan rather than a state, but together with the later NYC sessions it suggests a US residence period absent from the chain between rows #1 and #2.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 5,
+   "date": "1873-06-08",
+   "role": "user",
+   "quote": "Do you know of any upcoming photography exhibits in the city?",
+   "kind": "other",
+   "why": "Weak: 'the city' after attending the Met and MoMA suggests the persona is based in New York in 1873 while gold says Frampton on Severn; could also be read as travel.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 16,
+   "date": "1879-11-21",
+   "role": "user",
+   "quote": "Do you know of any upcoming photography exhibits in the city?",
+   "kind": "other",
+   "why": "Duplicate of the session 5 filler; same weak implication of being based in New York in 1879 while gold says Frampton on Severn.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551009-Q5321987",
+   "session_index": 20,
+   "date": "1881-09-08",
+   "role": "user",
+   "quote": "I recently updated my title to \"Content Creator\" instead of \"Freelance Writer\"",
+   "kind": "title_or_promotion",
+   "why": "First-person job-title change; different slot from this residence chain, noted only in case the persona has a position chain.",
+   "affects_gold": "no"
+  }
+ ],
+ "wikiP551010-Q17362765": [
+  {
+   "uid": "wikiP551010-Q17362765",
+   "session_index": 16,
+   "date": "1937-11-18",
+   "role": "user",
+   "quote": "I booked a one-way flight from my hometown to Vancouver International Airport today, so I'm officially committed to this big move!",
+   "kind": "same_slot_transition",
+   "why": "First-person committed relocation (one-way ticket booked, 'officially committed to this big move') to Vancouver in 1937; gold chain has no residence between Dresden 1923 and Berlin 1957.",
+   "affects_gold": "yes"
+  },
+  {
+   "uid": "wikiP551010-Q17362765",
+   "session_index": 16,
+   "date": "1937-11-18",
+   "role": "user",
+   "quote": "since I'm moving from a small town, I'm not used to city living",
+   "kind": "same_slot_state",
+   "why": "Present-tense claim that current home is a small town / 'my hometown', contradicting Dresden as the residence in force at this date.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551010-Q17362765",
+   "session_index": 16,
+   "date": "1937-11-18",
+   "role": "user",
+   "quote": "I've already narrowed down my options to two apartments in the Fairview neighborhood, which I've heard is popular among students.",
+   "kind": "same_slot_transition",
+   "why": "Apartment hunting in Vancouver's Fairview neighbourhood reinforces the uncharted Vancouver residence.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551010-Q17362765",
+   "session_index": 16,
+   "date": "1937-11-18",
+   "role": "assistant",
+   "quote": "Congratulations on your big move to Vancouver! You must be excited and a little nervous, but don't worry, you'll love it here!",
+   "kind": "assistant_echo",
+   "why": "Assistant affirms the user's move to Vancouver (and later 'before classes start at UBC'), echoing a residence not in the gold chain.",
+   "affects_gold": "maybe"
+  },
+  {
+   "uid": "wikiP551010-Q17362765",
+   "session_index": 20,
+   "date": "1941-07-19",
+   "role": "assistant",
+   "quote": "**Guitar Center** (San Francisco or Berkeley locations)",
+   "kind": "assistant_echo",
+   "why": "Assistant answers a 'professionals in my area' request with San Francisco/Berkeley venues, implying the user lives in the Bay Area in 1941 (should be Dresden); inferred, not stated by the user.",
+   "affects_gold": "maybe"
+  }
+ ]
+}

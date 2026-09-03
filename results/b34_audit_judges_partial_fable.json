@@ -1,0 +1,350 @@
+[
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "I'm trying to create content for my Instagram that promotes gender equality, especially in STEM fields.",
+  "verdict": "BENIGN",
+  "reason": "Quote appears verbatim as the opening user line of Session 2 [FILLER] date=1985-09-08. The whole session is about Instagram post ideas for a follower base (\"64% of my followers are women\") and never asserts, implies, or lets the assistant echo any employer, job start/end, or institutional affiliation; the persona speaks only of followers and content. It precedes the first gold row (#1 1985-11-01 Caltech, anchored in Session 3) but establishes no pre-chain employer state, so it cannot alter count_before, change_count, first_vs_last, longest_tenure, or the row list. The Instagram-in-1985 anachronism is a realism/plausibility flaw of the filler (Session 1 likewise cites Todoist/Evernote in 1985), not a chain-completeness defect under the \"complete employer history\" rubric. Gold chain dates/anchors read consistently with the sessions checked, so no GOLD_ISSUE.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "I think I'll start with Todoist and Evernote since I've heard a lot about them.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 1 [FILLER] date=1985-01-01 (second user turn). It is a technology anachronism (Todoist 2007 / Evernote 2008 vs 1985) but says nothing about the employer slot: no institution, job, workplace, start/leave, or pre-chain employment state is asserted or echoed by the assistant. It therefore cannot add/remove a row, change the first state, or alter change_count / count_before / first_vs_last / longest_tenure. Gold chain (Caltech 1985-11-01 -> CERN 1989-06-01 -> Cambridge 1995-10-01 -> Birmingham 1998-09-01) is unaffected. Same filler pool has other anachronisms (Session 4 mentions the 2021 Perseverance rover; Session 8 podcasts in 1987), so this is a systemic filler-realism property, not a chain-completeness or gold problem. No fix required for slot correctness; a separate realism-cleanup pass could drop such sentences, but that is outside this adjudication's scope.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "Do I need to worry about ETIAS for these countries?",
+  "verdict": "BENIGN",
+  "reason": "Quote appears verbatim in Session 5 [FILLER] date=1986-02-15 (third user turn: \"I'm planning to visit the UK, France, and Italy. Do I need to worry about ETIAS for these countries? And can you tell me more about the healthcare requirements?\"). The whole session is a travel-documents conversation (passport renewed under new surname Johnson, EU visa rules, healthcare) with no employer state, transition, institution, or job mentioned by user or assistant; neighbours S4 (Egypt trip / Mars rover) and S6 (painting) are likewise employer-free. It cannot add, remove, re-date or contradict any row of the employer gold chain (Caltech 1985-11-01 -> CERN 1989-06-01 -> Cambridge 1995-10-01 -> Birmingham 1998-09-01), so change_count / count_before / first_vs_last / longest_tenure and the row list are unaffected. The anachronism is real (ETIAS is a 2020s EU system; S4 similarly references the 2021 Perseverance landing) but it is a realism blemish of the filler, not slot contamination and not a gold/anchor/date problem in the chain.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "You're likely referring to the NASA Perseverance rover, which landed on Mars on February 18, 2021.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 4 (FILLER, 1985-11-18, assistant turn 2). It is a genuine calendar anachronism (2021 Mars landing cited in a 1985-dated session), but it concerns a NASA mission, not the persona. Slot is `employer`; the sentence asserts no employer state or transition, names no institution the persona works for, does not contradict any row's value or date (rows: Caltech 1985-11-01, CERN 1989-06-01, Cambridge 1995-10-01, Birmingham 1998-09-01), and introduces no pre-chain state. A reviewer applying 'the chain must correctly and completely represent the persona's own employer history' would find the four-row chain unaffected. It cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. The surrounding session 4 turns (Egypt trip, museum exhibit, Mars rover curiosity) are all travel/interest chatter with no employer content; sessions 3 and 5 are likewise clean. The anachronism is a realism/world-consistency defect of the filler generator, not a slot-history defect; it does not warrant a gold change. Optional cosmetic cleanup could drop the sentence, but it is not required under the chain-completeness rule.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "I'm looking for some new podcasts to listen to on my daily commute.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 8 (FILLER, 1987-09-05), first user turn. The sentence (and the whole session: podcasts, The Moth \"founded in 1997\", Crime Junkie) is a genuine anachronism for 1987, but it is a realism flaw, not a chain-completeness flaw. The slot is employer; the sentence asserts no employer state or transition, names no institution or role, and the only cue (\"taking the 7:15 AM bus from my apartment to the city center for the past three weeks\", echoed by the assistant as \"establishing a daily commute routine\") is a commuting habit that could equally be a new apartment or bus route. It does not contradict row #1 (Caltech, 1985-11-01, still current in 1987), does not add a pre-chain state, and cannot alter change_count, count_before, first_vs_last, longest_tenure, or the row list. Neighbouring sessions 7 and 9 are also employer-neutral. A careful reviewer applying the \"complete employer history\" rule would not mark the chain incomplete on this basis. Optional cosmetic cleanup would be to swap out the podcast filler session for period-appropriate content, but no gold change is warranted.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "I just finished reading \"The Nightingale\" by Kristin Hannah today",
+  "verdict": "BENIGN",
+  "reason": "Verbatim check: the sentence is present in session 13 (date 1989-07-19, FILLER) as the first user turn; the only difference from the flag text is quote-mark style (raw data uses double quotes around the title, the flag used single quotes) — whitespace and wording are identical, so I treat it as verbatim rather than a hallucinated quote. Substance: the slot is employer. The gold chain is #1 1985-11-01 Caltech, #2 1989-06-01 CERN (session 12), #3 1995-10-01 Cambridge, #4 1998-09-01 Birmingham. Session 13 sits between rows #2 and #3 and its five turns are entirely about book recommendations (The Nightingale, All the Light We Cannot See); no turn asserts, implies, or echoes any employer state, transition, or pre-chain state, and nothing contradicts a row value or date. The anachronism is real (both novels were published 2014/2015, session dated 1989) but it is a period-realism defect of the filler, not a chain-completeness defect: it cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. No gold/anchor/date problem is revealed. If the maintainers want temporal realism, the whole session 13 would need replacing (every turn references post-2014 books), but that is outside the completeness criterion, so no fix is required for the gold.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "**Tame Impala** - A psychedelic indie rock band from Australia, known for their dreamy sound and catchy melodies.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 20 (FILLER, 1992-12-23), first assistant turn. The slot is employer; the sentence is an assistant music recommendation (band formed 2007, so an anachronism in a 1992 session) and asserts no employer state, transition, date, or pre-chain state for the persona. It does not restate, contradict, or add to any of the 4 gold rows (Caltech 1985 -> CERN 1989 -> Cambridge 1995 -> Birmingham 1998), so change_count, count_before, first_vs_last, longest_tenure and the row list are all unaffected. Purely a realism/anachronism cosmetic issue in a filler session, not chain contamination. (Side note, not part of this flag: the user's SXSW volunteering in the same session is also not an employer state; session 21's assistant cites a 2015 Pew study, another cosmetic anachronism with no slot impact.)",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "I'm actually volunteering at the SXSW music festival in Austin, Texas today",
+  "verdict": "BENIGN",
+  "reason": "Verbatim match confirmed in session 20 (1992-12-23, FILLER), first user turn; the follow-up turns and assistant replies only repeat \"since I'm volunteering\" / \"you're volunteering at SXSW\". Slot is employer; gold chain is Caltech (1985-11-01) -> CERN (1989-06-01) -> Cambridge (1995-10-01) -> Birmingham (1998-09-01), so session 20 falls inside the CERN tenure. The sentence describes a one-day unpaid volunteer activity at a music festival (\"today\"), names no employer, no job, no start/leave, and no duration; a reviewer applying \"correctly and COMPLETELY represent the persona's own employer history\" would not add an SXSW row or alter any existing row, so change_count, count_before, first_vs_last, longest_tenure and the row list are unaffected. The Geneva-to-Austin location and the SXSW-in-December season mismatch are filler-realism/plausibility blemishes, not employer-slot assertions and not evidence of any gold/anchor/date defect in the chain itself. Neighbouring fillers (S19 art timeline, S21 social-network demographics) contain nothing employer-related. Optional cosmetic cleanup could drop the sentence, but it is not required for gold correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "by the Pew Research Center (2015): This study examines",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 21 (1993-03-20, FILLER) assistant turn 1: '**\"The Dynamics of Male and Female Friendship\"** by the Pew Research Center (2015): This study examines'. The anachronism is real (a 2015 study cited in a 1993 session), but the sentence is about a third-party research study on gender dynamics in social networks; it makes no assertion about the persona's employer. The whole session (user + assistant, all 5 turns) contains no employer state, transition, plan, or echo — the only 'started' hit is 'to get you started'. Neighbouring sessions 20 (SXSW volunteering, 1992-12-23) and 22 (workplace gender equality, 1993-05-03) likewise add no employer state. The gold chain (Caltech 1985-11-01 -> CERN 1989-06-01 -> Cambridge 1995-10-01 -> Birmingham 1998-09-01) is unaffected: change_count, count_before, first_vs_last, longest_tenure and the row list cannot change because of this sentence. It is a date-consistency blemish of the filler text, not a chain-completeness issue.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "since they seem to be more geared towards handmade products like my candles and soaps",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 32 (1998-04-01, FILLER; last user turn: \"I think I'll start by looking into Etsy and Shopify, since they seem to be more geared towards handmade products like my candles and soaps.\"). The whole session is about selling handmade candles/soaps at a pop-up market and researching online marketplaces (Etsy, Shopify, Amazon Handmade). The slot is employer; the sentence names no employer, asserts no job start/end, no leaving Cambridge, and no self-employment as a formal position — it is a hobby/side-selling activity that sits inside the Cambridge tenure (1995-10-01 to 1998-08-31) and does not conflict with any row value or date. A careful reviewer would not add a row (no named employer entity), would not alter first/last state, count, or tenure lengths, and no assistant turn echoes an employer state. Neighbours (S31 triathlon, S33 name change, S34 Birmingham start) are consistent with the gold chain. Minor data quirk: session 32 opens with an assistant turn (the initial user turn appears absent), but this does not affect the chain.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "I'm working on setting up an online store and I need help with finding a reliable shipping provider.",
+  "verdict": "BENIGN",
+  "reason": "Verbatim in session 9 (2005-03-20, FILLER). The sentence describes an in-progress side project ('setting up', 'business plan', choosing a shipping provider, considering sustainable products) — a plan, not an asserted employer state or transition. No business name, no incorporation/launch, no statement of being self-employed or of leaving OSU; the slot is employer, and an unnamed pre-launch store cannot become a row nor change the OSU→Fermilab transition. It does not contradict any row's value or date: session 8 (2005-01-04) still has the persona commuting to 'the office by 9:00 AM' and 'getting ready for work', so the OSU state remains intact through 2005. Assistant replies only echo the store-planning framing, not an employer. A careful reviewer would not add a row or alter change_count, count_before, first_vs_last or longest_tenure on this basis. Residual softness: '12-hour days' on a business plan is a slightly odd fit for a postdoc, but it is atmosphere, not a same-slot claim.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108000-Q59200022",
+  "quote": "I think I'll start by looking into Etsy and Shopify, since they seem to be more geared towards handmade products like my candles and soaps.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 32 (FILLER, 1998-04-01, turn 4 of 4). The anachronism is genuine (Etsy 2005 / Shopify 2006 / Amazon Handmade 2015 / PayPal-style fees quoted in 1998) but it is a filler-realism defect, not a chain-completeness defect for slot=employer. The sentence is a plan (\"I'll start by looking into ...\") about online marketplaces for a hobby craft product (handmade candles and soaps sold at a pop-up market); it asserts no employer state, no transition, no pre-chain state, and does not contradict the gold row in force on that date (#3 University of Cambridge 1995-10-01, until #4 University of Birmingham 1998-09-01). None of the session's four turns mention a job, quitting, self-employment or an institution, so no row could be added or altered and none of change_count / count_before / first_vs_last / longest_tenure can change. The chain's own rows, dates and anchors are consistent (no GOLD_ISSUE). Note: the anachronism spans every turn of session 32 (assistant lists Etsy in turn 1, fees in turn 3), so delete_sentence/delete_turn would not cure the realism problem; only replacing the filler session would, which is out of scope for chain adjudication.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "Managing your time effectively is crucial in a senior role, where you'll likely have more responsibilities and demands on your time.",
+  "verdict": "BENIGN",
+  "reason": "Quote confirmed verbatim in Session 11 [FILLER] date=2006-04-22 (second assistant turn, replying to a generic 'how do I prioritize tasks' question that mentions no job). The slot is employer; the gold chain is Ohio State University (2003) -> Fermilab (2008) -> University of Zurich (2012-08), so at 2006-04-22 the persona is a postdoc at Ohio State. The assistant's 'senior role' is an unprompted position-type/seniority claim that names no institution, no start/end, and no transition; it asserts nothing about who employs the persona and does not contradict any row's value or date. It cannot add a row, alter the first state, or change change_count / count_before / first_vs_last / longest_tenure for the employer slot. It is a mild persona-consistency wobble (a postdoc is not a 'senior role') that would matter only for a position/seniority slot, not this employer chain. Neighbouring sessions 10 and 12 contain no employer or role content either.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "I'm planning a trip to Universal Studios Hollywood soon and I'm really looking forward to exploring the Wizarding World of Harry Potter.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 13 (2006-08-27, FILLER). The real-world anachronism is genuine (Wizarding World at Universal Hollywood opened 2016), but the sentence is a travel/leisure plan and asserts nothing about the persona's employer (slot=employer). The whole session is about an annual pass, ride wait times and butterbeer; no employer state, transition, pre-chain state, or contradiction of any row's value/date is stated or echoed by the assistant. It cannot alter the row list or the gold for change_count / count_before / first_vs_last / longest_tenure. At most there is a soft plausibility tension (monthly visits with an annual pass implies living near Los Angeles while the persona is at Ohio State in Columbus in 2006), but residence is not the audited slot and no reviewer applying the completeness rule for employer history would mark the chain incomplete or wrong because of it. Chain rows and anchors in sessions 1, 17, 31 remain consistent with their dates.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "I completed my Bachelor's degree in Business Administration from the University of Michigan exactly 5 years ago, in May 2017",
+  "verdict": "BENIGN",
+  "reason": "Quote verified verbatim in Session 6 [FILLER] date=2004-08-24, first user turn (whitespace-insensitive match, 1 hit). Slot is employer; gold chain is Ohio State University (2003) -> Fermilab (2008) -> University of Zurich (2012-08). The sentence asserts an education fact (a completed Bachelor's degree at the University of Michigan), not an employer state or transition: being a degree recipient is not employment, so it adds no row, no pre-chain employer state, and does not contradict any row's value or date. The rest of Session 6 (urban-rural education divide, mentorship, 'decision to pursue a Master's degree') likewise never names an employer. The 'May 2017 / 5 years ago' anachronism in a 2004-dated session is a filler-internal date inconsistency only; it does not touch the chain's own dates (2003/2008/2012-08), which remain mutually consistent, so it is neither a chain gold/anchor/date problem nor something that could alter change_count, count_before, first_vs_last, longest_tenure, or the row list. A careful reviewer applying 'completely represent the persona's employer history' would not mark the chain incomplete or wrong on account of this sentence. Deleting the sentence would be harmless date-hygiene but is not required for slot correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "I'm looking to create a presentation to share with our sales team about the customer churn model we've been developing.",
+  "verdict": "CONFIRMED",
+  "reason": "Quote is verbatim in Session 4 [FILLER] 2003-05-06 (render line 28). Slot=employer; gold row #1 is 'Ohio State University' postdoc anchored 2003-00-00 (Session 1) and runs until Fermilab 2008. Four months into that tenure the persona speaks in first person, present tense, about their own workplace as a commercial employer: 'our sales team', 'the customer churn model we've been developing', 'four of my team members', and in the same session 'how our model can be applied to other product lines, building on our recent success' and 'ROI of applying the model to other product lines'; the assistant echoes it ('for your sales team'). A sales team / product lines / ROI is a same-slot state (persona employed by a company) that contradicts row #1's value during its tenure and is represented by no row. Under the pre-registered strict rule ('职位就是职位': report every same-slot first-person state, including unnamed) a careful reviewer would mark the chain incomplete: either an unnamed intermediate employer exists in 2003 (change_count +1, count_before +1 for cutoffs after 2003-05, OSU tenure shortened so longest_tenure could flip from OSU 5y to Fermilab 4y) or row #1 is contradicted. This is not about another person, not a plan/wish, not travel, and not a restatement of a row. The project's own results show this failure mode is real: results/b33d_smoc_L2_new20.jsonl has a first_vs_last answer of 'TechCorp / unnamed San Francisco employer' produced from analogous filler contamination. Gold chain itself is sound (anchors verbatim, dates monotone), so not GOLD_ISSUE. Fix: deleting only the flagged sentence leaves 'four of my team members', the assistant echo 'your sales team', and the later 'our model ... other product lines ... our recent success' turns, which carry the same contamination, so the whole Session 4 user turn(s) should be removed together (the entire session is corporate-workplace filler; dropping the session is the cleanest option if the tool allows). Not yet present in results/b34_v25_changelog_dry.json.",
+  "which_question_types": [
+   "change_count",
+   "count_before",
+   "longest_tenure"
+  ],
+  "suggested_fix": "delete_turn"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "I just finished listening to the entire series of \"How I Built This\" podcast over the past month, all 20 episodes of it",
+  "verdict": "BENIGN",
+  "reason": "Quote confirmed verbatim in session 3 (2003-03-17, FILLER, chain_index None) first user turn; only difference is the flag uses single quotes around the podcast title where the data uses double quotes. The slot is employer (gold: Ohio State University 2003 -> Fermilab 2008 -> University of Zurich 2012-08). The sentence and the whole session concern podcast recommendations only; no employer, institution, position, start/end, or date is asserted or echoed by the assistant. The anachronism (How I Built This launched 2016, Tim Ferriss Show 2014, in a 2003-dated session) is a filler-realism flaw, not a same-slot state, pre-chain state, row contradiction, or assistant echo, so it cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list, and none of dim1/dim2/dim4/dim5 golds are affected. If the team later decides to scrub anachronistic filler for realism, the natural unit is the whole session 3 (both podcasts are post-2003), but that is not required for chain correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "\"Deep Learning\" by Ian Goodfellow, Yoshua Bengio, and Aaron Courville. Is it suitable for a beginner like me, or is it more advanced?",
+  "verdict": "BENIGN",
+  "reason": "Verbatim in session 15 (2007-09-02), third user turn (only difference: the flag rendered the title's double quotes as single quotes). The sentence is a question about a book's difficulty inside a filler session on AWS/ML learning resources. Slot is employer; the sentence asserts no employer state or transition, no institution, no date, and does not restate or contradict any gold row (Ohio State 2003 / Fermilab 2008 / Univ. of Zurich 2012-08). The 2016-book-in-2007 mismatch is a realism anachronism, not a chain-completeness defect: a reviewer applying 'the chain must completely represent the persona's own employer history' would not mark the chain incomplete or wrong because of it. No question type gold can change.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "By the way, I started reading articles on Medium and Quora today and came across an interesting piece on the future of cloud infrastructure",
+  "verdict": "BENIGN",
+  "reason": "Quote appears verbatim (whitespace-insensitive) in session 15 [FILLER] date=2007-09-02, first user turn. Slot is employer; gold chain is Ohio State University (2003) -> Fermilab (2008) -> University of Zurich (2012-08). The sentence is about the persona reading articles on two websites and asking for AWS/cloud tutorials; it asserts no employer state, no transition, no pre-chain employer, and contradicts no row value or date, and the assistant reply only recommends learning resources. The anachronism (Medium 2012 / Quora 2009-10 vs. 2007) is a realism defect only and cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. Optional cosmetic cleanup: drop the 'Medium and Quora' clause, but no gold impact. Aside (not the flagged sentence): neighbouring session 16 (2007-11-18) has the persona living in Tokyo 'since March' and hosting 'coworkers' there, which sits between the Ohio State and Fermilab rows and may warrant its own employer/residence contamination check.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "Anyway, I'd love to visit the Crypto.com Arena, can you tell me more about the guided tours?",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 22 (FILLER, 2009-09-05, second user turn). The slot is employer; gold chain is Ohio State (2003) -> Fermilab (2008) -> University of Zurich (2012-08). The flagged sentence is a travel plan/wish and a question about arena guided tours in LA; it asserts no employer state or transition, no pre-chain employer, and contradicts no row value or date. The assistant reply only describes the tour. The venue-name anachronism (Staples Center vs Crypto.com Arena in 2009) is a realism flaw in filler, not something a reviewer checking completeness/correctness of the persona's employer history would mark against the chain. It cannot alter change_count, count_before, first_vs_last, longest_tenure, or the row list.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "My Dell Inspiron's storage is almost full and I haven't cleaned up my files since August 2022.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 23 (2009-11-21, first user turn). The session is entirely about organizing laptop files (Dell Inspiron, 256GB USB drive bought Nov 2021, 1TB WD drive); no user or assistant turn in session 23 or in neighbours 22 (LA trip) and 24 (beliefs) mentions an employer, job, role, workplace, or institution. The chain slot is employer (Ohio State 2003 -> Fermilab 2008 -> Univ. of Zurich 2012-08); the anachronistic 2021/2022 dates are a filler-timeline inconsistency only and assert no employer state or transition, contradict no row value/date, and cannot alter change_count, count_before, first_vs_last, longest_tenure, or the row list. A reviewer applying 'the chain must completely represent the persona's own employer history' would not mark the chain incomplete or wrong because of this sentence. Optional cosmetic cleanup (delete_sentence) would be harmless but is not needed for gold correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "'Slow Rush' album. Can you recommend some artists or songs that fit a similar psychedelic indie rock vibe?",
+  "verdict": "BENIGN",
+  "reason": "Quote is present verbatim in session 14 (2007-01-07) apart from the flag rendering the album title with single quotes where the source uses double quotes (\"Slow Rush\"); word text is identical. The sentence is a real factual anachronism (The Slow Rush released 2020, session dated 2007) but it is a music-recommendation request in a FILLER session and says nothing about the persona's employer (slot=employer; gold chain OSU 2003 -> Fermilab 2008 -> University of Zurich 2012-08). It asserts no same-slot state or transition, no pre-chain employer, contradicts no row value/date, and the assistant reply (band recommendations) echoes no employer state; neighbouring sessions 13 (theme-park trip) and 15 (AWS/ML resources) are likewise slot-irrelevant. It cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. Anachronism is a realism flaw outside the chain-completeness rubric.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "I need help keeping track of my farm expenses.",
+  "verdict": "BENIGN",
+  "reason": "Quote appears verbatim in session 15 (2011-09-02). Slot is employer (organization employing the persona). 'My farm' with horses/hay/fencing is ownership of property or a hobby/family smallholding, not employment: no organization is named, no job, income, hire, departure, or start date is asserted, and nothing contradicts the IFCA row (#1, 2007-10) that is in force at that date; a researcher in Santander keeping horses in rural Cantabria is compatible with remaining at IFCA. The assistant's 'your farm expenses / your horses' echoes the same non-employer fact. No row is missing or wrong, so change_count, count_before, first_vs_last and longest_tenure are unaffected; the sentence only touches persona plausibility, which is not a chain-completeness criterion. No gold/anchor/date issue is revealed.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "First, welcome back to the States!",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 18 (2012-04-01, FILLER) assistant turn. The sentence is an assistant echo of the user's travel talk (back from Japan, 2-day LA trip, planning SF) and only implies US residence; it names no employer, asserts no employer start/end/transition, and contradicts no row value or date in the employer chain (IFCA 2007-10 -> Tel Aviv University 2014-09-01 -> CERN 2017-05-01). Session 18 falls inside the IFCA tenure and leaves change_count (2), count_before, first_vs_last (IFCA/CERN), longest_tenure (IFCA) and the row list unchanged. It is a residence-coherence blemish (US-based vs. Santander) in a slot that is not audited, so a careful reviewer applying the employer-slot completeness rule would not mark the chain incomplete or wrong because of it.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "great things about 'The Nightingale' by Kristin Hannah",
+  "verdict": "BENIGN",
+  "reason": "Quote is present in session 26 (date 2010-12-23, FILLER) modulo quote-mark style: raw turn reads 'I've heard great things about \"The Nightingale\" by Kristin Hannah, but I've already read it recently.' The flagged issue is an anachronism (The Nightingale 2015, Gone Girl 2012, All the Light We Cannot See 2014, The Alice Network 2017 discussed in a 2010 session), but the session is an audiobook-recommendation filler with no employer/job/institution content at all (regex scan for employer-ish tokens returns nothing). The slot is employer; the gold chain Ohio State University (2003) -> Fermilab (2008) -> University of Zurich (2012-08) is untouched: the sentence asserts no same-slot state or transition, no pre-chain state, no contradiction of any row value/date, and there is no assistant echo of an employer state. It cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list; nor does it affect the four probing_queries (dim1/dim2/dim4/dim5), whose golds all derive from the three chain rows. The anachronism is a distractor-realism cosmetic flaw (STALE remix), not a chain-completeness defect.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "Can you give me some tips on where to find good ingredients in Tokyo? I've been living here since March, so I'm still getting used to navigating the city.",
+  "verdict": "BENIGN",
+  "reason": "Verbatim confirmed: the quote appears character-for-character in session 16 (FILLER, 2007-11-18), first user turn, in data/wikistate_full_ALL_v24.json. Slot is employer; gold chain is OSU (2003) -> Fermilab (2008) -> University of Zurich (2012-08). The sentence asserts a residence fact (living in Tokyo since March 2007) and the turn mentions 'my coworkers' and Japanese cooking classes, but it never names an employer and never asserts an employer transition (no 'new job', 'joined', 'started at'). Under the chain's own A/B/C tier scheme this is tier C for the employer slot: mere implication of being employed somewhere, no transition, no identifiable description; the transition it does assert belongs to a different slot (residence). A careful reviewer cannot derive a new row, cannot change change_count (2), count_before, first_vs_last, or longest_tenure, and the OSU value/date is not contradicted (a postdoc can be stationed abroad while the employer stays OSU; the geographic tension is a narrative oddity, not an employer-slot assertion). Note for hygiene only: the whole session 16 is premised on living in Tokyo, so deleting just this sentence (or this turn) would not remove the Tokyo premise; it would only matter if a residence-slot chain for this persona existed, which it does not (persona 001's other chains are position/team/residence for different Wikidata entities). Neighbouring sessions 15 and 17 contain nothing that interacts with it; the earlier tier-B/C flags in sessions 11 and 24 were already removed in v2.4.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "I'm looking to improve my social media strategy for a client in the tech industry.",
+  "verdict": "BENIGN",
+  "reason": "Verbatim confirmed: session 33 [FILLER] date=2017-10-13, first user turn (STALE-remixed filler; same session text also appears in three other chains: wikiP39002/position, wikiP54002/team, wikiP551002/residence). Slot is employer; gold chain IFCA 2007-10 -> Tel Aviv University 2014-09-01 -> CERN 2017-05-01, and the flagged sentence sits five months after the CERN row. The sentence names no employer and asserts no transition: 'a client' is a work-arrangement hint compatible with a side consulting gig while employed at CERN, an unnamed agency, or freelancing, and nothing in the session says the persona left CERN or is self-employed. The assistant echo ('With your existing experience as a social media manager') asserts an occupation (position-slot content), not an employer, so it does not add an employer state either. A reviewer cannot construct an additional employer row (no value, no transition date), so change_count (2), count_before, first_vs_last (IFCA vs CERN) and longest_tenure (IFCA ~7y) all stand; dim1/dim2/dim4/dim5 probing golds are likewise unaffected. This is persona/occupation incoherence (physicist at CERN doing client social-media work), not an employer-chain contradiction. If persona-coherence hygiene were wanted, deleting the sentence alone would be insufficient because the assistant echo carries the 'social media manager' claim; the whole first exchange would have to go. Not required for the gold.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "specifically The Daily from The New York Times",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 2 (user turn, 2007-03-20). The anachronism is real (NYT's The Daily podcast launched Feb 2017), but the sentence is a media-consumption habit ('started listening to podcasts during my workout sessions'), not an employer state or transition. Slot is employer; the sentence names no employer, implies no job, workplace, or tenure, does not contradict any row's value or date, and introduces no pre-chain employer state. Sessions 1-3 are all employer-free filler, so the first row (Instituto de Física de Cantabria, 2007-10) and the count are unaffected. A reviewer checking chain completeness for the employer slot would not mark the chain incomplete or wrong because of it; change_count, count_before, first_vs_last, longest_tenure and the row list are all unchanged. Realism flaw only; optional cosmetic removal would not touch any gold.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "are smartwatches actually worth it in 2026, or is a fitness band just as good?",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 28 [FILLER] date=2015-12-26, first user turn (\"...upgrading my wearable tech—are smartwatches actually worth it in 2026, or is a fitness band just as good?\"); the assistant reply also opens \"In 2026 ...\". The slot is employer; gold chain is #1 2007-10 Instituto de Física de Cantabria, #2 2014-09-01 Tel Aviv University, #3 2017-05-01 CERN. The flagged sentence is a consumer-tech purchase question about smartwatches vs fitness bands. It asserts no employer state or transition, no pre-chain employer, does not contradict any row value or date, and no assistant turn echoes an employer state. The whole of Session 28 (all three user turns and both assistant turns) is about wearables, battery life and brands; nothing touches employment. The '2026' is a cosmetic date inconsistency inside a filler session, not a chain row, so even if a reviewer distrusted the session date it would sit after the CERN row with no employer content and could not alter change_count, count_before, first_vs_last, longest_tenure or the row list. No gold/anchor/date problem in the chain itself is revealed. If realism polishing is wanted, the 'in 2026' / 'In 2026' strings in Session 28 could be scrubbed, but this is not required for gold correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108001-Q53458422",
+  "quote": "I just started \"The Seven Husbands of Evelyn Hugo\" 2 weeks ago.",
+  "verdict": "BENIGN",
+  "reason": "Sentence is present in session 32 (2012-10-10, filler, chain_index None) word-for-word; the only deviation from the flag is the quote glyph around the title (data has double quotes, flag has single quotes) — strict whitespace-insensitive match fails on that glyph alone, dq->sq normalized match succeeds, so I treat it as verbatim rather than a paraphrase. Slot is employer (gold: Ohio State 2003 -> Fermilab 2008 -> University of Zurich 2012-08, anchored in sessions 1/17/31). Session 32 is a book-recommendation exchange: the persona says they started reading a novel two weeks ago and asks about a second novel and its audiobook narrator. It asserts no employer state or transition, no pre-chain employer, contradicts no row value or date, and the assistant echoes no employer state; sessions 31 and 33 are unaffected. The anachronism (2017/2019 novels in a 2012 session) is a date-realism flaw of the filler text, not something a reviewer applying 'the chain must correctly and completely represent the persona's employer history' would count against the chain. It cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. The flag was likely triggered by the lexical overlap of 'I just started ...' with the anchor phrasing 'I just started as a postdoctoral researcher'; here the object is a book, not a job. If filler date-realism is a separate quality criterion, session 32 could be swapped for a period-appropriate filler, but that is outside the chain-correctness criterion.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "**Apple News** (free): A built-in app on Apple devices",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 2 (2007-03-20), assistant turn 2, inside a list of news-app recommendations (source data/wikistate_full_ALL_v24.json, sessions[1].turns[1]). The anachronism is real (Apple News did not exist in 2007), but the sentence is an assistant product recommendation with no reference to the persona's employer slot: it asserts no employer state or transition, no pre-chain employer, no contradiction of any gold row's value or date (#1 IFCA 2007-10, #2 Tel Aviv University 2014-09-01, #3 CERN 2017-05-01), and it echoes no user-stated employer. The surrounding user turns in session 2 concern podcasts, The Economist, and news websites only. It therefore cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. It is a temporal-realism blemish in filler, not a chain-completeness defect; a reviewer applying the 'correctly and completely represent the persona's own employer history' rule would not mark the chain wrong because of it.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "yesterday, May 28th, was my first time using it and it was a blast!",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 17 (2012-02-09), first user turn. Slot is employer (gold chain: Instituto de Física de Cantabria 2007-10 -> Tel Aviv University 2014-09-01 -> CERN 2017-05-01). The sentence refers to first use of a new BBQ grill; it asserts no employer state, transition, pre-chain state, or contradiction of any row value/date, and the assistant echo only congratulates on the grill. The 'May 28th' vs session-date 2012-02-09 mismatch is an internal filler calendar inconsistency that cannot alter change_count, count_before, first_vs_last, longest_tenure, or the row list. Neighbouring sessions 16 (birthday party) and 18 (San Francisco trip) contain no employer content either. Optional cosmetic cleanup only; not required for chain correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "it was on October 15th, right?",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 30 (FILLER, date 2016-10-10). Slot is employer; the sentence is about the date of a Breast Cancer Awareness Walk the persona attended, with no employer/institution/job state or transition and no assistant echo of one. The 'last month' vs 'October 15th' vs session-date-Oct-10 mismatch is an internal filler date inconsistency only (a charity event, not a slot event) and cannot change the row list, change_count, count_before, first_vs_last, or longest_tenure. Gold chain (IFCA 2007-10 -> Tel Aviv Univ 2014-09-01 -> CERN 2017-05-01) is unaffected.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "I think I'll go with the Logitech MX Master 3.",
+  "verdict": "BENIGN",
+  "reason": "Quote appears verbatim in Session 3 [FILLER] date=2002-09-08 (last user turn). The slot is employer; the gold chain is University of Houston (2002-07-15) -> Instituto de Física de Cantabria (2003-02-01) -> University of Oviedo (2008-01-01). The flagged sentence is a purchase decision about a wireless mouse. It asserts no employer state or transition, no pre-chain employer, and contradicts no row value or date; the neighbouring assistant turn that recommends the same product is likewise employer-free. The Logitech MX Master 3 (released 2019) is indeed anachronistic for a 2002 session, but this is a period-realism flaw in the filler, not a chain-completeness issue: it cannot alter the row list, change_count, count_before, first_vs_last or longest_tenure. Nothing in the sentence or its neighbours reveals a gold/anchor/date problem either. If the team later decides to scrub anachronisms for realism, note that deleting only this user sentence would be insufficient because the preceding assistant turn also names the MX Master 3; both turns would need editing, but that is cosmetic and outside the chain-correctness criterion used here.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "less doomscrolling, more winding down",
+  "verdict": "BENIGN",
+  "reason": "Verbatim match in session 4 (2002-10-13, user turn 1, whitespace-insensitive). The sentence is about the persona's evening/phone habits and asks for a nighttime routine; it asserts no employer state, transition, pre-chain employer, or date, and no assistant turn echoes any employer. It cannot alter the row list (Houston 2002-07-15 -> IFCA 2003-02-01 -> Oviedo 2008-01-01) or the gold of change_count / count_before / first_vs_last / longest_tenure. The flagged issue is purely one of period realism ('doomscrolling' is a ~2018+ coinage; smartphone-out-of-bedroom advice in 2002), i.e. filler plausibility, not chain completeness. Note for a separate realism pass only: the same chain's filler also has 'Logitech MX Master 3' (2019 product) in session 3 and Instagram/hashtag advice in session 6 (2002), so this chain's anachronisms are systemic to the filler pool rather than specific to this sentence.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "I've been living in Tokyo for about 5 months now",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 1 (2002-01-01), confirmed in both the rendered output and the raw 1,813-char session in data/wikistate_full_ALL_v24.json. It is a residence-slot statement (living in Tokyo ~5 months), and the entire session contains no employment-related words (no work/job/company/lab/university/postdoc/research) — only restaurants and Japanese lessons at a language school. The slot is employer: the sentence names no employer, implies no pre-chain employer state or transition, and contradicts no row value/date (Houston 2002-07-15, IFCA 2003-02-01, Oviedo 2008-01-01). The Tokyo-vs-'boxes from home'/mother-in-Oviedo tension is a mild residence-coherence oddity in a different slot, not an employer inconsistency. No assistant echo of any employer state. A careful reviewer applying 'completely represent the persona's employer history' would not add, remove, or redate any row, so no gold for change_count / count_before / first_vs_last / longest_tenure can change.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "wondering if you could give me some tips on how to create engaging content for Instagram",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 6 [FILLER] dated 2002-12-23 (user turn 1). The whole session is social-media advice (Instagram content tips, hashtags, Twitter engagement); it asserts no employer state, no transition, no date, no pre-chain state, and contradicts no row's value or date. Assistant turns only echo social-media advice. The Instagram (2010) / Twitter (2006) anachronism is a realism defect of the filler, not something that could alter change_count, count_before, first_vs_last, longest_tenure, or the row list for slot=employer. Gold chain (Houston 2002-07-15 -> IFCA 2003-02-01 -> Oviedo 2008-01-01) is unaffected.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "I earned $8 from Fetch Rewards last month, which I redeemed for Amazon gift cards",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in session 11 [FILLER] date=2003-05-03, user turn 1 (and paraphrased again in user turn 3 of the same session). The slot is employer; the sentence is about a cashback app and gift cards and asserts no same-slot state, transition, pre-chain employer, or contradiction of any row value/date; the assistant echo only repeats the cashback content. It therefore cannot change the row list (Houston 2002-07-15 -> IFCA 2003-02-01 -> Oviedo 2008-01-01) or the gold of change_count / count_before / first_vs_last / longest_tenure. The anachronism is genuine (Fetch Rewards launched 2017, session dated 2003) but is a realism defect of the generic filler, not a chain-completeness or gold/date problem; the chain dates themselves are consistent with the persona's timeline (session 7 places the persona in Santander at IFCA, session 29 at Oviedo).",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "but I still need to sort and upload them to Google Photos",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 9 [FILLER] date=2003-03-20 (user turn 1). Slot is employer; gold chain = University of Houston (2002-07-15) -> Instituto de Física de Cantabria (2003-02-01) -> University of Oviedo (2008-01-01). The sentence is about organising road-trip photos and mentions no employer, job, institution, start/leave event, or pre-chain employment; it does not contradict any row's value or date, and the assistant reply (which also names Google Photos) echoes no employer state. It therefore cannot alter change_count, count_before, first_vs_last, longest_tenure, or the row list. The anachronism (Google Photos launched 2015, session dated 2003) is a realism/plausibility defect of the filler, not a chain-completeness or gold defect. Neighbouring sessions 8 and 10 are travel/fitness filler with no slot content; the three CHAIN sessions are internally consistent with the gold. No gold, anchor, or date problem is revealed.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "besides Hamilton and Rent?",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 24 [FILLER] date=2014-07-19, second user turn (\"What are some popular musicals that I should listen to, besides Hamilton and Rent?\"). The anachronism is real (Hamilton off-Broadway Jan 2015; the assistant reply also names Dear Evan Hansen, premiered Jul 2015), but it is a question about musicals and carries no employer state: no same-slot state or transition, no pre-chain employer, no value/date that contradicts rows #1 IFCA (2007-10), #2 Tel Aviv University (2014-09-01) or #3 CERN (2017-05-01). The only employment-adjacent phrase in the session (\"during my daily commute\") is consistent with the persona still being at IFCA in July 2014, i.e. a restatement-compatible state, not a new one. Neighbours S23 (tennis racket / charity 5K) and S25 (chain anchor: starting at Tel Aviv University) are unaffected. A reviewer checking that the chain completely and correctly represents the persona's employer history would not mark it incomplete or wrong because of this sentence; it cannot alter change_count, count_before, first_vs_last, longest_tenure or the row list. It is a real-world date-plausibility defect of the filler only; if anachronism scrubbing is wanted, deleting the sentence (and the assistant's Dear Evan Hansen mention) is cosmetic and optional.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "Do you have any recommendations for a good yoga routine or workout videos on YouTube that can help me relax",
+  "verdict": "BENIGN",
+  "reason": "Quote appears verbatim in Session 14 [FILLER] date=2004-09-05, second user turn (\"... workout videos on YouTube that can help me relax and prepare for bed better?\"). The anachronism is real (YouTube launched Feb 2005), but the slot is employer and the sentence is a request for yoga/workout video recommendations for a bedtime routine. It asserts no employer state or transition, no pre-chain employer, and does not contradict any row's value or date (gold rows: Univ. of Houston 2002-07-15, Instituto de Física de Cantabria 2003-02-01, Univ. of Oviedo 2008-01-01; session 14 sits inside the Cantabria tenure and neither session 13 nor 15 mentions work). The assistant reply only lists yoga channels. It therefore cannot change change_count, count_before, first_vs_last, longest_tenure, or the row list. This is a filler realism flaw (temporal plausibility), not a chain-completeness or gold issue; a cosmetic rewording (e.g. \"workout videos online\") would be optional and is not needed for gold correctness.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ },
+ {
+  "uid": "wikiP108002-Q57686589",
+  "quote": "In 2026 the gap between smartwatches and fitness bands is smaller than it used to be",
+  "verdict": "BENIGN",
+  "reason": "Quote verified verbatim at the start of the first assistant turn of session 28 [FILLER] date=2015-12-26 (rendered from data/wikistate_full_ALL_v24.json). The sentence is a year anachronism (the user turn also says 'worth it in 2026'; the assistant echoes it) inside a filler about smartwatches vs fitness bands. It says nothing about the employer slot: no employer state, transition, pre-chain state, or contradiction of any gold row (#1 2007-10 Instituto de Física de Cantabria, #2 2014-09-01 Tel Aviv University, #3 2017-05-01 CERN), and the user's only 'own history' remark ('had this same smartwatch on my wrist for over three years') is off-slot. The four questions for this chain carry explicit 'Today is ...' anchors (change_count today=2015-12-31 gold 1; count_before 2017-10-28 gold 3; longest_tenure today=2018-10-23 gold IFCA; first_vs_last today=2017-10-28), so the stray '2026' cannot shift any 'now' or tenure length, and the session date header 2015-12-26 remains the authoritative ordering. A careful human reviewer applying 'the chain must correctly and completely represent the persona's own employer history' would not mark the chain incomplete or wrong because of it. Cosmetic note only: the anachronism lives in both the user and assistant turns of session 28, so deleting this one assistant sentence would not remove it; no chain-relevant fix is needed.",
+  "suggested_fix": "none",
+  "which_question_types": []
+ },
+ {
+  "uid": "wikiP108003-Q63411963",
+  "quote": "I'm also thinking of mentioning my recent teaching assistant nomination in the department.",
+  "verdict": "BENIGN",
+  "reason": "Quote is verbatim in Session 20 (FILLER, 2005-04-22, third user turn). The sentence is a plan (\"thinking of mentioning\") about a nomination, not a held position; it names no institution, no date, and no start/leave event, so no employer row can be built from it and no existing row's value or date is contradicted. Session 20 falls squarely inside the IFCA tenure (2003-02-01 to 2008-01-01) and 'the department' is readable as the persona's current department (IFCA is a CSIC/Universidad de Cantabria joint centre, so a departmental TA nomination is not incompatible with a researcher there). The assistant turns in the session echo only 'Dean's List' and 'certification', never an employer. Therefore change_count (2), count_before, first_vs_last (Houston vs Oviedo), longest_tenure (IFCA, ~4y11m) and the 3-row list are all unaffected. The residual issue is persona-consistency hygiene only: the whole session reads as a student (Dean's List, scholarship) rather than a postdoc, and the turn carries a generator artifact prefix \"Here's my next response:\\n\\n\"; neither touches the employer slot, so no gold change is warranted. Deleting the sentence would be harmless but is not required.",
+  "which_question_types": [],
+  "suggested_fix": "none"
+ }
+]
