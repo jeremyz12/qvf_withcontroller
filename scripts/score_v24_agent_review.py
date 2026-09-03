@@ -45,7 +45,8 @@ def main():
             for i in flags + uns:
                 out.append(f"| {i} | {key[i]['uid']} | {ans[i]['verdict']} | {(ans[i]['note'] or '')[:200]} |")
         out.append("")
-    doc = "# v2.4 全量评审汇总(2026-09-03)\n\n语料 v2.4,149 题 = 144 链 + 5 植入对照题;数据源 rate.db 导出。\n\n" + "\n".join(out)
+    ver = "v2.5" if any(r["rater"].startswith("v25") for r in rows) else "v2.4"
+    doc = f"# {ver} 全量评审汇总(2026-09-03)\n\n语料 {ver},149 题 = 144 链 + 5 植入对照题;数据源 rate.db 导出。\n\n" + "\n".join(out)
     (ROOT / (sys.argv[2] if len(sys.argv) > 2 else "results/v24_agent_review_20260903.md")).write_text(doc, encoding="utf-8")
     print(doc)
 
