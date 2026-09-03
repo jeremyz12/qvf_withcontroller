@@ -1,0 +1,89 @@
+# Batch 36b — SAME-READER (claude-sonnet-5) rerun of the QVF ledger arm and two reference arms
+
+Why: batch 36 compared plainctx@sonnet-5 against smoc@haiku-4-5 — a CROSS-READER contrast. This batch reruns smoc / direct / fullplain with reader claude-sonnet-5 on exactly the same 140 questions so the comparison is within-reader.
+
+Runner: scripts/lb_reader_arm_b36b.py (copy of the frozen scripts/lb_reader_arm.py; the ONLY differences are --max-tokens (default still 800), --workers (default still 1), --budget, and extra logged fields. Prompt construction for smoc / direct / fullplain is copied verbatim from the original main()).
+Sampling params: the ORIGINAL lb_reader_arm.py already sends temperature=0 only when model.startswith('claude-haiku'), so claude-sonnet-5 was never sent temperature — no guard had to be added; the copy just makes that explicit (_wants_temperature). Verified empirically: claude-sonnet-5 returns 400 '`temperature` is deprecated for this model.' (and the same for `top_p`), and succeeds with neither parameter.
+max_tokens = 4000 for every sonnet-5 run in this batch (recorded per row as reader_max_tokens). Reason: sonnet-5 has extended thinking on by default and max_tokens caps thinking + visible text together; batch 36 lost 20/140 questions to the 800 cap.
+Corpus data/wikistate_full_ALL_v24.json (v2.4); store results/wt_cards_v45 (READ-ONLY, not rebuilt); questions results/b35_questions_sample36.jsonl (140 q / 36 chains); judge qvf.judge.ClaudeJudge() = claude-opus-5.
+
+## 0. Arm identity check
+
+  fullplain (this batch) == smwplain (33-A)?  PLAIN_PROMPT identical: True | render_transcript output identical on wikiP108008-Q53283502: True | system prompt empty in both: True
+  => fullplain@sonnet5 is the SAME arm as b33A_smwplain@haiku, only the reader differs.
+
+## 1. Coverage / integrity
+
+| arm | file(s) | rows | unique qid in 140-set | reader errors | judge fallbacks | empty answers | stop_reason != end_turn |
+|---|---|---|---|---|---|---|---|
+| smoc@sonnet5      (QVF ledger v45 + F.1) | results/b36b_smoc_sonnet5.jsonl | 140 | 140 | 0 | 0 | 0 | 0 |
+| direct@sonnet5    (dense top-10 + excerpts) | results/b36b_direct_sonnet5.jsonl | 140 | 140 | 0 | 0 | 0 | 0 |
+| fullplain@sonnet5 (full text + plain QA) | results/b36b_fullplain_sonnet5.jsonl | 138 | 138 | 0 | 0 | 0 | 0 |
+| plainctx@sonnet5  (full text + realistic prompt, mt800) | results/b36_plainctx_sonnet-5.jsonl | 140 | 140 | 0 | 0 | 14 | 0 |
+| plainctx@sonnet5  (same, truncation-corrected mt4000) | results/b36_plainctx_sonnet-5.jsonl, results/b36_plainctx_sonnet-5_mt4000.jsonl | 160 | 140 | 0 | 0 | 0 | 0 |
+| smoc@haiku        (QVF ledger v45 + F.1) | results/b33A_smoc_v45.jsonl | 576 | 140 | 0 | 0 | 0 | 0 |
+| direct@haiku      (dense top-10 + excerpts) | results/b33A_direct.jsonl | 576 | 140 | 0 | 0 | 0 | 0 |
+| smwplain@haiku    (= fullplain, full text + plain QA) | results/b33A_smwplain.jsonl | 576 | 140 | 0 | 0 | 0 | 0 |
+| smw@haiku         (full text + F.1) | results/b33A_smw.jsonl | 576 | 140 | 0 | 0 | 0 | 0 |
+| plainctx@haiku    (full text + realistic prompt, mt800) | results/b36_plainctx_haiku-4-5.jsonl | 140 | 140 | 0 | 0 | 0 | 0 |
+
+  !! fullplain@sonnet5 is INCOMPLETE (138/140). Missing: wikiP551009-Q5321987_v2fl, wikiP551009-Q5321987_v2lt
+     Cause: the $8 reader-spend cap tripped mid-run (the budget gate stopped the queue at $7.95; in-flight calls carried the batch total to $8.137). Completing these 2 questions costs about $0.08 more.
+
+## 2. Headline table (restricted to the same 140 question_ids)
+
+| arm | reader | source | n | acc | change_count | count_before | first_vs_last | longest_tenure | mean in tok | mean out tok | median lat s | $/q |
+|---|---|---|---|---|---|---|---|---|---|---|
+| smoc@sonnet5      (QVF ledger v45 + F.1) | sonnet-5 | 本批 | 140 | **90.7%** | 83.3 | 88.9 | 100.0 | 90.6 | 3713 | 726 | 7.13 | $0.01469 |
+| direct@sonnet5    (dense top-10 + excerpts) | sonnet-5 | 本批 | 140 | **70.7%** | 66.7 | 50.0 | 88.9 | 78.1 | 1149 | 266 | 3.40 | $0.00496 |
+| fullplain@sonnet5 (full text + plain QA) | sonnet-5 | 本批 | 138 | **84.8%** | 83.3 | 75.0 | 97.1 | 83.9 | 18555 | 192 | 3.00 | $0.03903 |
+| plainctx@sonnet5  (full text + realistic prompt, mt800) | sonnet-5 | 批 36 | 140 | **87.9%** | 94.4 | 94.4 | 94.4 | 65.6 | 18549 | 444 | 5.01 | $0.04154 |
+| plainctx@sonnet5  (same, truncation-corrected mt4000) | sonnet-5 | 批 36 | 140 | **97.1%** | 100.0 | 97.2 | 100.0 | 90.6 | 18549 | 469 | 4.88 | $0.04179 |
+| smoc@haiku        (QVF ledger v45 + F.1) | haiku-4-5 | 批 33-A | 140 | **91.4%** | 86.1 | 86.1 | 100.0 | 93.8 | 2841 | 467 | 4.79 | $0.00518 |
+| direct@haiku      (dense top-10 + excerpts) | haiku-4-5 | 批 33-A | 140 | **50.7%** | 47.2 | 36.1 | 88.9 | 28.1 | 862 | 84 | 1.57 | $0.00128 |
+| smwplain@haiku    (= fullplain, full text + plain QA) | haiku-4-5 | 批 33-A | 140 | **58.6%** | 33.3 | 66.7 | 80.6 | 53.1 | 13568 | 133 | 5.39 | $0.01423 |
+| smw@haiku         (full text + F.1) | haiku-4-5 | 批 33-A | 140 | **92.9%** | 83.3 | 94.4 | 100.0 | 93.8 | 13817 | 441 | 7.77 | $0.01602 |
+| plainctx@haiku    (full text + realistic prompt, mt800) | haiku-4-5 | 批 36 | 140 | **70.0%** | 52.8 | 75.0 | 91.7 | 59.4 | 13570 | 199 | 2.94 | $0.01456 |
+
+Prices: claude-sonnet-5 $2.00/M in, $10.00/M out; claude-haiku-4-5 $1.00/M in, $5.00/M out. Reader cost only (judge excluded).
+
+## 3. Paired McNemar (exact binomial) — the lines the task asked for
+
+  [same reader = sonnet-5, the contrast batch 36 could not make]
+  n=140 | smoc@sonnet5                        90.7%  vs  plainctx@sonnet5 mt800              87.9% | delta(A-B)  +2.86pp | flips A-only-right=16, B-only-right=12 | McNemar exact p=0.5716
+  n=140 | smoc@sonnet5                        90.7%  vs  plainctx@sonnet5 mt4000-corr        97.1% | delta(A-B)  -6.43pp | flips A-only-right= 3, B-only-right=12 | McNemar exact p=0.03516
+  n=140 | direct@sonnet5                      70.7%  vs  plainctx@sonnet5 mt800              87.9% | delta(A-B) -17.14pp | flips A-only-right=13, B-only-right=37 | McNemar exact p=0.0009362
+  n=140 | direct@sonnet5                      70.7%  vs  plainctx@sonnet5 mt4000-corr        97.1% | delta(A-B) -26.43pp | flips A-only-right= 1, B-only-right=38 | McNemar exact p=1.455e-10
+  n=138 | fullplain@sonnet5                   84.8%  vs  plainctx@sonnet5 mt800              87.7% | delta(A-B)  -2.90pp | flips A-only-right=14, B-only-right=18 | McNemar exact p=0.5966
+  n=138 | fullplain@sonnet5                   84.8%  vs  plainctx@sonnet5 mt4000-corr        97.1% | delta(A-B) -12.32pp | flips A-only-right= 0, B-only-right=17 | McNemar exact p=1.526e-05
+
+  [reader effect, arm held fixed]
+  n=140 | smoc@sonnet5                        90.7%  vs  smoc@haiku                          91.4% | delta(A-B)  -0.71pp | flips A-only-right= 6, B-only-right= 7 | McNemar exact p=1
+  n=140 | direct@sonnet5                      70.7%  vs  direct@haiku                        50.7% | delta(A-B) +20.00pp | flips A-only-right=35, B-only-right= 7 | McNemar exact p=1.51e-05
+  n=138 | fullplain@sonnet5                   84.8%  vs  smwplain@haiku (=fullplain)         58.0% | delta(A-B) +26.81pp | flips A-only-right=46, B-only-right= 9 | McNemar exact p=4.336e-07
+
+## 4. Extra same-reader lines (not requested, but they are the within-reader ladder)
+
+  n=140 | smoc@sonnet5                        90.7%  vs  direct@sonnet5                      70.7% | delta(A-B) +20.00pp | flips A-only-right=34, B-only-right= 6 | McNemar exact p=8.365e-06
+  n=138 | smoc@sonnet5                        90.6%  vs  fullplain@sonnet5                   84.8% | delta(A-B)  +5.80pp | flips A-only-right=18, B-only-right=10 | McNemar exact p=0.1849
+  n=138 | plainctx@sonnet5 mt4000             97.1%  vs  fullplain@sonnet5                   84.8% | delta(A-B) +12.32pp | flips A-only-right=17, B-only-right= 0 | McNemar exact p=1.526e-05
+
+  [the haiku ladder on the same 140 q, for reference]
+  n=140 | smoc@haiku                          91.4%  vs  plainctx@haiku                      70.0% | delta(A-B) +21.43pp | flips A-only-right=37, B-only-right= 7 | McNemar exact p=5.3e-06
+  n=140 | smoc@haiku                          91.4%  vs  smw@haiku                           92.9% | delta(A-B)  -1.43pp | flips A-only-right= 8, B-only-right=10 | McNemar exact p=0.8145
+  n=140 | smoc@haiku                          91.4%  vs  direct@haiku                        50.7% | delta(A-B) +40.71pp | flips A-only-right=59, B-only-right= 2 | McNemar exact p=1.641e-15
+
+## 5. Cost at equal reader (claude-sonnet-5)
+
+| arm | $/q | x vs plainctx@sonnet5(corrected) | in tok/q | x in-token vs plainctx |
+|---|---|---|---|---|
+| smoc@sonnet5      (QVF ledger v45 + F.1) | $0.01469 | 0.35x | 3713 | 0.20x |
+| direct@sonnet5    (dense top-10 + excerpts) | $0.00496 | 0.12x | 1149 | 0.06x |
+| fullplain@sonnet5 (full text + plain QA) | $0.03903 | 0.93x | 18555 | 1.00x |
+| plainctx@sonnet5  (full text + realistic prompt, mt800) | $0.04154 | 0.99x | 18549 | 1.00x |
+| plainctx@sonnet5  (same, truncation-corrected mt4000) | $0.04179 | 1.00x | 18549 | 1.00x |
+
+## 6. Judge-side cost of THIS batch (claude-opus-5 $5/M in, $25/M out)
+
+  judged rows with usage recorded: 418 | in 64309 / out 23286 tok | $0.904
+  reader spend of this batch (3 arms, as landed on disk): $8.137
