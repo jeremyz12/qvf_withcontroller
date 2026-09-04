@@ -1,0 +1,100 @@
+# Batch 46d — 144-chain frozen write-side config, full-set headline
+
+Pre-registration: results/opt_batch46d_prereg.md (H1 baseline corrected there §0 from the task-quoted 91.7% — a 36-chain/133-row historical figure — to a freshly-measured full-scale v45 baseline; see §1 below for both numbers side by side).
+
+Questions: data/wsc_s5_v25.jsonl (560 qids / 144 chains); corpus data/wikistate_full_ALL_v24.json.
+
+## 1. Write-side diagnostic: compiled ledger vs gold chain (all stores, 144 chains)
+
+| store | extractor | n chains | gold rows | exact | date-off | missing | extra | total cards | perfect chains |
+|---|---|---|---|---|---|---|---|---|---|
+| v45 | claude-haiku-4-5 | 144 | 542 | **471** (86.9%) | 0 | **71** | 79 | 8288 | 123/144 |
+| v47s | claude-sonnet-5 (36-chain sample only) | 36 | 133 | **133** (100.0%) | 0 | **0** | 4 | 1743 | 36/36 |
+| v48 | claude-sonnet-5, pass1, 144 chains (本批) | 144 | 542 | **521** (96.1%) | 0 | **21** | 40 | 6973 | 134/144 |
+| v48f | claude-sonnet-5, pass1(+gold-free pass2 for triggered chains)+assertion-filter, 144 chains (本批) | 144 | 542 | **528** (97.4%) | 0 | **14** | 85 | 7290 | 136/144 |
+
+## 2. H1 — compiled-answer ceiling (offline, zero API), all 560 questions, threshold >= 98%
+
+Task-quoted baseline "v45 was 91.7% of rows" is the 36-chain/133-gold-row figure from results/opt_batch38_verdict.md §6 (row-level, not question-level, and not full-scale) — see prereg §0 for the full correction. Both a freshly-measured full-scale row-level number and the question-level ceiling (the H1 judging metric) are reported below.
+
+| store | gold-equal (question-level, H1 metric) | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|---|
+| v45 | **481/560 = 85.9%** | 123/144 | 126/144 | 123/144 | 109/128 |
+| v48f | **518/560 = 92.5%** | 130/144 | 129/144 | 137/144 | 122/128 |
+
+**H1 verdict**: v48f = 92.5% (< 98%) -> **REJECTED**. (v45 full-scale for context: 85.9%, delta +6.6pp.)
+
+## 3. H2/H3 — real reader (claude-haiku-4-5, smoc, results/wt_cards_v48f), two independent runs
+
+| run | n | acc | change_count | count_before | first_vs_last | longest_tenure | in tok | out tok | median lat s | $/q | $ total |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| run1 | 560 | **89.82%** | 86.1 | 86.8 | 96.5 | 89.8 | 2753 | 486 | 5.79 | $0.00518 | $2.901 |
+| run2 | 560 | **90.18%** | 86.8 | 87.5 | 96.5 | 89.8 | 2753 | 485 | 5.74 | $0.00518 | $2.899 |
+| **run-mean** | 560 | **90.00%** | 86.5 | 87.2 | 96.5 | 89.8 | 2753 | 485 | - | $0.00518 | $2.900 |
+
+### max_tokens cap hits (stop_reason=="max_tokens")
+
+| run | capped rows | rows w/ stop_reason |
+|---|---|---|
+| run1 | 0 | 560 |
+| run2 | 0 | 560 |
+
+**H2 verdict (run1)**: 89.82% vs threshold >=92% (v45=89.29%) -> REJECTED (run1)
+**H2 verdict (run-mean)**: 90.00% -> REJECTED (run-mean)
+**H3 verdict (run1)**: mean in-tok 2753 vs threshold <=2937 (v45) -> CONFIRMED
+
+## 4. Paired McNemar (exact binomial sign test) vs v45 (results/b33A_smoc_v45.jsonl, filtered to the 560 qids)
+
+  n=560 | A=v48f@haiku run1                           89.8%  B=v45@haiku (batch 33-A)                    89.3% | delta(A-B)  +0.54pp | A-only-right=34 B-only-right=31 | McNemar exact p=0.8043
+### v48f@haiku run-mean vs v45@haiku (McNemar generalized to fractional run-mean values, see compare_frac() docstring)
+  n=560 items / 144 chains | delta=+0.71pp  item-win/loss=34/31  sign-test p=0.804
+  chain sign test 22W/21L/101T p=1 | cluster boot 95% CI [-2.97,+4.34]pp
+  TOST +-3.0pp (90% CI [-2.41,+3.78]): FAIL not equivalent
+
+## 5. 144-chain-cluster bootstrap CI (N=10000, seed=20260902, reused from scripts/b33A_score.py::compare()) vs direct / full-text arms
+
+### v48f@haiku run1 vs direct (批33-A)
+  n=560 items / 144 chains | delta=+42.50pp  item-win/loss=254/16  sign-test p=2.72e-56
+  chain sign test 121W/4L/19T p=4.71e-31 | cluster boot 95% CI [+37.61,+47.25]pp
+  TOST +-3.0pp (90% CI [+38.48,+46.47]): FAIL not equivalent
+### v48f@haiku run-mean vs direct (批33-A)
+  n=560 items / 144 chains | delta=+42.68pp  item-win/loss=255/16  sign-test p=1.45e-56
+  chain sign test 121W/4L/19T p=4.71e-31 | cluster boot 95% CI [+37.79,+47.40]pp
+  TOST +-3.0pp (90% CI [+38.66,+46.64]): FAIL not equivalent
+### v48f@haiku run1 vs smw (full text + F.1, 批33-A)
+  n=560 items / 144 chains | delta=+3.21pp  item-win/loss=55/37  sign-test p=0.0758
+  chain sign test 46W/23L/75T p=0.00762 | cluster boot 95% CI [-0.36,+6.65]pp
+  TOST +-3.0pp (90% CI [+0.18,+6.09]): FAIL not equivalent
+### v48f@haiku run-mean vs smw (full text + F.1, 批33-A)
+  n=560 items / 144 chains | delta=+3.39pp  item-win/loss=55/37  sign-test p=0.0758
+  chain sign test 47W/23L/74T p=0.00558 | cluster boot 95% CI [-0.18,+6.83]pp
+  TOST +-3.0pp (90% CI [+0.44,+6.29]): FAIL not equivalent
+### v48f@haiku run1 vs smwplain (full text plain, 批33-A)
+  n=560 items / 144 chains | delta=+35.36pp  item-win/loss=211/13  sign-test p=3.18e-47
+  chain sign test 114W/4L/26T p=4.78e-29 | cluster boot 95% CI [+30.58,+40.11]pp
+  TOST +-3.0pp (90% CI [+31.29,+39.39]): FAIL not equivalent
+### v48f@haiku run-mean vs smwplain (full text plain, 批33-A)
+  n=560 items / 144 chains | delta=+35.54pp  item-win/loss=213/13  sign-test p=8.95e-48
+  chain sign test 115W/4L/25T p=2.47e-29 | cluster boot 95% CI [+30.76,+40.27]pp
+  TOST +-3.0pp (90% CI [+31.46,+39.55]): FAIL not equivalent
+
+## 6. Headline accuracy comparison table (560 qids, all arms restricted to the same set)
+
+| arm | n | acc | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|---|---|
+| v45@haiku (smoc, 批33-A) | 560 | 89.29% | 85.4 | 86.8 | 94.4 | 90.6 |
+| direct (批33-A) | 560 | 47.32% | 35.4 | 42.4 | 79.9 | 29.7 |
+| smw (full text + F.1, 批33-A) | 560 | 86.61% | 64.6 | 91.0 | 99.3 | 92.2 |
+| smwplain (full text plain, 批33-A) | 560 | 54.46% | 31.9 | 67.4 | 75.7 | 41.4 |
+| v48f@haiku run1 | 560 | 89.82% | 86.1 | 86.8 | 96.5 | 89.8 |
+| v48f@haiku run2 | 560 | 90.18% | 86.8 | 87.5 | 96.5 | 89.8 |
+
+## 7. Reader-arm cost summary (this batch's two runs; judge billed separately)
+
+| run | in tok total | out tok total | $ |
+|---|---|---|---|
+| run1 | 1,541,831 | 271,915 | $2.901 |
+| run2 | 1,541,831 | 271,383 | $2.899 |
+| **reader total** | | | **$5.800** |
+
+See results/b46d_provenance.txt for build windows, per-chain cost, and store directory sha256.

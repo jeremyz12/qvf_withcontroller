@@ -1,0 +1,94 @@
+## 溯源块(批 46d)
+
+- git rev: `80e42b8feafe6ac91281eb35e72af3a7c595648f`
+- scripts//qvf 工作区改动:
+```
+?? scripts/b35_backfill_slot_class.py
+?? scripts/b35c_langmem_run.py
+?? scripts/b35c_mstrata_run.py
+?? scripts/b35c_run_mem0.py
+?? scripts/b35c_score_letta_fs.py
+?? scripts/b35c_score_trace.py
+?? scripts/b35c_summarize_langmem.py
+?? scripts/b35c_summarize_mem0.py
+?? scripts/b35c_sumrag_run.py
+?? scripts/b46a_gpt5mini_rerun.py
+?? scripts/b46a_score.py
+?? scripts/b46d_build_v48f.py
+?? scripts/b46d_determine_pass2.py
+?? scripts/b46d_provenance.py
+?? scripts/b46d_score.py
+?? scripts/wt_qvf_prototype_b38b.py
+```
+- 语料/题源 `data/wikistate_full_ALL_v24.json`: sha256 `c62291897f22bc5632e8b155bb7d997ea4880b59ef40d3b5a5e8be5af4060749` (8,118,849 B, mtime 2026-09-02 01:23:15)
+- 语料/题源 `data/wsc_s5_v25.jsonl`: sha256 `e0610e55b3c105e23b49cdeb2101642e2c96c67d3e9079c74a0456aec7fa8fb6` (145,561 B, mtime 2026-09-03 18:48:36)
+
+### 建卡器(写入侧,冻结配置)
+
+- 冻结件 `scripts/wt_qvf_prototype.py` sha256 `56b64f146f46354c44c9a86bf2a0ae1ccc097d4e5844bb51e2715c84cb479edb` (全程只读,未改)
+- 建卡器 `scripts/wt_qvf_prototype_b38.py`(批 38 冻结副本,本批复用不新建)sha256 `edecece48d8d56aa50f6e39a69c925925a0b2e9b2943e5a367baf6e6e4001018`
+
+- **pass1 建店命令**(144 链全量):
+  ```
+  QVF_CARD_OWNER_GATE=0 QVF_CARD_MODEL=claude-sonnet-5 QVF_CARD_THINKING=off \
+  QVF_CARD_TRACE=1 PYTHONUTF8=1 python -u scripts/wt_qvf_prototype_b38.py \
+    --phase write --data data/wikistate_full_ALL_v24.json \
+    --cards-dir results/wt_cards_v48 --uids <shard>   # 8 分片并行
+  ```
+- **pass2 建店命令**(gold-free 触发链子集,见 results/b46d_pass2_triggers.json):
+  ```
+  QVF_CARD_OWNER_GATE=0 QVF_CARD_MODEL=claude-sonnet-5 QVF_CARD_THINKING=off \
+  QVF_CARD_TRACE=1 PYTHONUTF8=1 python -u scripts/wt_qvf_prototype_b38.py \
+    --phase write --data data/wikistate_full_ALL_v24.json \
+    --cards-dir results/wt_cards_v48_pass2 --uids <triggered subset>
+  ```
+
+### 建店窗 / 目录指纹
+
+- 店 `results/wt_cards_v45`: 144 文件 / 8,288 记录 | 建店窗 2026-09-02 16:52:05 → 2026-09-02 17:10:18 | 目录 sha256(名+内容拼接) `bcb31a114dc27479326d981bbce9c6d906d7689c00e18b9d4371aeecf55589d4`
+- 店 `results/wt_cards_v48`: 144 文件 / 6,973 记录 | 建店窗 2026-09-04 13:12:43 → 2026-09-04 13:29:59 | 目录 sha256(名+内容拼接) `10d7b9558d1e41860dc74d8d2eba441271444bf361797e7d2047267fa977a8ee`
+- 店 `results/wt_cards_v48_pass2`: 38 文件 / 1,654 记录 | 建店窗 2026-09-04 13:31:38 → 2026-09-04 13:37:53 | 目录 sha256(名+内容拼接) `69d1d9aeec80b779da4e194da646c2a360269237c3cd5013be5c12529a9365fe`
+- 店 `results/wt_cards_v48f`: 144 文件 / 7,290 记录 | 建店窗 2026-09-04 13:38:23 → 2026-09-04 13:38:23 | 目录 sha256(名+内容拼接) `4206a64d89b18e2c65290b85b27fafe17e3196de509ad5e891800693456bdbbf`
+
+### GOLD-FREE 第二遍触发统计
+
+- 144 链 pass1 记录数:min=16 median=50.0 q1(p25 linear)=40.00 60%median=30.00 max=74
+- 触发链数:38/144 (26.4%)
+
+### 逐分片建店日志成本(claude-sonnet-5 $2.00/M in、$10.00/M out)
+
+
+**pass1**
+
+| 日志 | 条目 | in tok | out tok | $ |
+|---|---|---|---|---|
+| `build_v48_shard0.log` | 18 | 464,315 | 145,715 | $2.386 |
+| `build_v48_shard1.log` | 18 | 467,360 | 145,481 | $2.390 |
+| `build_v48_shard2.log` | 18 | 467,776 | 157,621 | $2.512 |
+| `build_v48_shard3.log` | 18 | 466,863 | 156,052 | $2.494 |
+| `build_v48_shard4.log` | 18 | 471,225 | 145,897 | $2.401 |
+| `build_v48_shard5.log` | 18 | 468,071 | 140,488 | $2.341 |
+| `build_v48_shard6.log` | 18 | 464,626 | 148,097 | $2.410 |
+| `build_v48_shard7.log` | 18 | 465,189 | 137,707 | $2.307 |
+| **合计** | **144** | **3,735,425** | **1,177,058** | **$19.241** |
+
+**pass2**
+
+| 日志 | 条目 | in tok | out tok | $ |
+|---|---|---|---|---|
+| `build_v48_pass2_shard0.log` | 7 | 180,782 | 59,273 | $0.954 |
+| `build_v48_pass2_shard1.log` | 7 | 180,057 | 50,929 | $0.869 |
+| `build_v48_pass2_shard2.log` | 6 | 157,729 | 43,116 | $0.747 |
+| `build_v48_pass2_shard3.log` | 6 | 155,684 | 44,727 | $0.759 |
+| `build_v48_pass2_shard4.log` | 6 | 152,735 | 41,762 | $0.723 |
+| `build_v48_pass2_shard5.log` | 6 | 152,767 | 43,564 | $0.741 |
+| **合计** | **38** | **979,754** | **283,371** | **$4.793** |
+
+### 读者臂运行时窗 / 成本
+
+| 臂 | 产物 | 行数 | 店 | 读者 | 文件 mtime | in tok | out tok | $ | 累计延迟 h |
+|---|---|---|---|---|---|---|---|---|---|
+| run1 | `results/b46d_smoc_v48f_haiku_run1.jsonl` | 560 | results/wt_cards_v48f | claude-haiku-4-5 | 2026-09-04 14:00:57 | 1,541,831 | 271,902 | $2.901 | 0.95 |
+| run2 | `results/b46d_smoc_v48f_haiku_run2.jsonl` | 560 | results/wt_cards_v48f | claude-haiku-4-5 | 2026-09-04 14:22:05 | 1,541,831 | 271,370 | $2.899 | 0.91 |
+
+**读者侧总花费(本批两跑合计)= $5.800**
