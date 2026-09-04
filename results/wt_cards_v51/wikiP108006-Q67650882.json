@@ -1,0 +1,138 @@
+{
+ "uid": "wikiP108006-Q67650882",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108006-Q67650882/s3#r1",
+   "source_span": "I officially started today as a postdoctoral researcher at the Institute of Physics, Johannes Gutenberg-University Mainz",
+   "entity": "user",
+   "slot": "job",
+   "value": "postdoctoral researcher at the Institute of Physics, Johannes Gutenberg-University Mainz",
+   "stated_date": "2014-07-14",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108006-Q67650882/s3#r0",
+   "source_span": "the movers dropped my boxes off yesterday and I basically slept on a mattress on the floor",
+   "entity": "user",
+   "slot": "moving_status",
+   "value": "recently moved, sleeping on mattress on floor",
+   "stated_date": "2014-07-13",
+   "slot_class": "other:moving status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108006-Q67650882/s13#r0",
+   "source_span": "I've been doing a quick 10-15 minute yoga practice every morning",
+   "entity": "user",
+   "slot": "habit",
+   "value": "does 10-15 minute yoga practice every morning",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108006-Q67650882/s13#r0",
+   "source_span": "I started taking yoga classes at a new studio in my neighborhood about 6 weeks ago",
+   "entity": "user",
+   "slot": "membership",
+   "value": "takes yoga classes at a new studio in neighborhood",
+   "stated_date": "2016-10-04",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108006-Q67650882/s13#r4",
+   "source_span": "especially the 7 am class on Fridays",
+   "entity": "user",
+   "slot": "habit",
+   "value": "attends 7am Vinyasa flow yoga class on Fridays",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108006-Q67650882/s16#r0",
+   "source_span": "I officially started at the Institute of High Energy Physics today",
+   "entity": "user",
+   "slot": "job",
+   "value": "employed at the Institute of High Energy Physics",
+   "stated_date": "2016-12-16",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108006-Q67650882/s16#r1",
+   "source_span": "the radiator in the flat? It's been clanking all night",
+   "entity": "user",
+   "slot": "housing_issue",
+   "value": "radiator clanking in flat",
+   "stated_date": "",
+   "slot_class": "other:housing issue",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108006-Q67650882/s18#r4",
+   "source_span": "do you think I should get my engagement ring resized? I've been feeling like it's a bit loose lately",
+   "entity": "user",
+   "slot": "personal_item",
+   "value": "has an engagement ring that feels loose",
+   "stated_date": "",
+   "slot_class": "other:personal item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108006-Q67650882/s23#r0",
+   "source_span": "I'm training for a triathlon on June 19th",
+   "entity": "user",
+   "slot": "plan",
+   "value": "training for a triathlon on June 19th",
+   "stated_date": "2018-06-19",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108006-Q67650882/s23#r0",
+   "source_span": "during the charity marathon on April 17th where I got a personal best time of 55 minutes and 22 seconds",
+   "entity": "user",
+   "slot": "achievement",
+   "value": "personal best time of 55:22 in charity marathon",
+   "stated_date": "2018-04-17",
+   "slot_class": "other:achievement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108006-Q67650882/s30#r0",
+   "source_span": "today I officially started at CERN",
+   "entity": "user",
+   "slot": "job",
+   "value": "employed at CERN",
+   "stated_date": "2019-04-01",
+   "slot_class": "position",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2175,
+ "usage_out": 1238,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 17,
+  "total": 162,
+  "user_turns": 102
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

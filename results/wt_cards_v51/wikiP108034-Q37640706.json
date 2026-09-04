@@ -1,0 +1,105 @@
+{
+ "uid": "wikiP108034-Q37640706",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108034-Q37640706/s2#r0",
+   "source_span": "first official day as a research associate at Thomas Jefferson University",
+   "entity": "user",
+   "slot": "job_title_employer",
+   "value": "research associate at Thomas Jefferson University",
+   "stated_date": "1990-08-15",
+   "slot_class": "employer",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108034-Q37640706/s10#r0",
+   "source_span": "I just moved into a new apartment",
+   "entity": "user",
+   "slot": "residence_event",
+   "value": "moved into a new apartment",
+   "stated_date": "1994-09-02",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108034-Q37640706/s10#r0",
+   "source_span": "I've been using the Giant Eagle app to order groceries online and pick them up at the store",
+   "entity": "user",
+   "slot": "grocery_app",
+   "value": "Giant Eagle app",
+   "stated_date": "",
+   "slot_class": "other:grocery app",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108034-Q37640706/s10#r4",
+   "source_span": "I'm actually living in an apartment complex near the new Target store that just opened up about 3 weeks ago.",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "apartment complex near the new Target store",
+   "stated_date": "1994-09-02",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108034-Q37640706/s13#r0",
+   "source_span": "I officially start as faculty at Wayne State University School of Medicine today",
+   "entity": "user",
+   "slot": "job_title_employer",
+   "value": "faculty at Wayne State University School of Medicine",
+   "stated_date": "1995-08-01",
+   "slot_class": "employer",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108034-Q37640706/s18#r2",
+   "source_span": "My current computer is about 5 years old, so I'm not entirely sure about the exact specs, but I think it's a Windows operating system.",
+   "entity": "user",
+   "slot": "computer_device",
+   "value": "Windows computer, about 5 years old",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108034-Q37640706/s21#r4",
+   "source_span": "I've been enjoying the independence of my new studio apartment in Harajuku - it's been a month now",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "studio apartment in Harajuku, Tokyo",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108034-Q37640706/s31#r0",
+   "source_span": "I've officially started as Director of Bioinformatics at Geisinger Health",
+   "entity": "user",
+   "slot": "job_title_employer",
+   "value": "Director of Bioinformatics at Geisinger Health",
+   "stated_date": "2009-06-01",
+   "slot_class": "employer",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2496,
+ "usage_out": 915,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 18,
+  "total": 162,
+  "user_turns": 102
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

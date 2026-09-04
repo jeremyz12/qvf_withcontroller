@@ -1,0 +1,94 @@
+{
+ "uid": "wikiP54033-Q43019831",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54033-Q43019831/s0#r1",
+   "source_span": "as of today I'm officially riding for Team IBT-BH Carl Ras",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Team IBT-BH Carl Ras",
+   "stated_date": "2019-01-01",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54033-Q43019831/s4#r4",
+   "source_span": "I'm actually a museum member",
+   "entity": "user",
+   "slot": "museum_membership",
+   "value": "museum member",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54033-Q43019831/s8#r1",
+   "source_span": "it's official today — Waoo is my new team",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Waoo",
+   "stated_date": "2019-05-21",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54033-Q43019831/s10#r0",
+   "source_span": "I've been jogging daily with my new Nike Air Zoom Pegasus 38 shoes",
+   "entity": "user",
+   "slot": "running_shoes",
+   "value": "Nike Air Zoom Pegasus 38",
+   "stated_date": "",
+   "slot_class": "other:running shoes",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54033-Q43019831/s10#r2",
+   "source_span": "I'm actually a casual cyclist, I just like to ride my bike to work a couple of times a week",
+   "entity": "user",
+   "slot": "cycling_habit",
+   "value": "casual cyclist, rides bike to work a couple of times a week",
+   "stated_date": "",
+   "slot_class": "other:cycling habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54033-Q43019831/s17#r0",
+   "source_span": "I've officially signed with Team ColoQuick, jersey in hand and everything",
+   "entity": "user",
+   "slot": "cycling_team",
+   "value": "Team ColoQuick",
+   "stated_date": "2020",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54033-Q43019831/s30#r2",
+   "source_span": "my new weekly Bible study group that I start attending today, where we're going through the Book of Luke",
+   "entity": "user",
+   "slot": "bible_study_group",
+   "value": "weekly Bible study group studying Book of Luke",
+   "stated_date": "2020-10-13",
+   "slot_class": "other:bible study group",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2908,
+ "usage_out": 768,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 22,
+  "total": 162,
+  "user_turns": 102
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

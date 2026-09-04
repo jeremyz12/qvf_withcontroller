@@ -1,0 +1,248 @@
+{
+ "uid": "wikiP108031-Q42869895",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108031-Q42869895/s0#r0",
+   "source_span": "I've officially started at Karlsruhe Institute of Technology this year",
+   "entity": "user",
+   "slot": "employer_or_school",
+   "value": "Karlsruhe Institute of Technology",
+   "stated_date": "1996",
+   "slot_class": "employer",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108031-Q42869895/s9#r0",
+   "source_span": "Officially started at the University of Hong Kong today",
+   "entity": "user",
+   "slot": "employer_or_school",
+   "value": "University of Hong Kong",
+   "stated_date": "2000",
+   "slot_class": "employer",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108031-Q42869895/s9#r2",
+   "source_span": "my Octopus card is nearly empty and I keep forgetting to top it up before the morning rush",
+   "entity": "user",
+   "slot": "transit_card_status",
+   "value": "Octopus card nearly empty",
+   "stated_date": "2000",
+   "slot_class": "other:transit card status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108031-Q42869895/s9#r3",
+   "source_span": "I promised my mother I'd call her Sunday evening",
+   "entity": "user",
+   "slot": "planned_commitment",
+   "value": "call mother Sunday evening",
+   "stated_date": "2000",
+   "slot_class": "other:planned commitment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108031-Q42869895/s17#r0",
+   "source_span": "I'm working on my Master's thesis, and I just completed a draft of my literature review chapter today",
+   "entity": "user",
+   "slot": "academic_status",
+   "value": "working on Master's thesis, completed literature review chapter draft",
+   "stated_date": "2003-12-23",
+   "slot_class": "other:academic status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108031-Q42869895/s17#r2",
+   "source_span": "I'm interested in learning more about machine learning applications in environmental research, especially in biodiversity studies",
+   "entity": "user",
+   "slot": "research_interest",
+   "value": "machine learning applications in environmental research, biodiversity studies",
+   "stated_date": "",
+   "slot_class": "other:research interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108031-Q42869895/s18#r0",
+   "source_span": "we've been doing it every Sunday evening for the past six weeks",
+   "entity": "user",
+   "slot": "habit",
+   "value": "plays Settlers of Catan with family every Sunday evening for past six weeks",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108031-Q42869895/s18#r2",
+   "source_span": "I've also learned a new game called Azul recently. I've even played it three times in a row with my friends.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "recently learned Azul, played three times with friends",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108031-Q42869895/s19#r0",
+   "source_span": "I recently attended a workshop on the topic and was surprised by some of the statistics.",
+   "entity": "user",
+   "slot": "recent_activity",
+   "value": "attended workshop on gender equality in the workplace",
+   "stated_date": "",
+   "slot_class": "other:recent activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108031-Q42869895/s19#r0",
+   "source_span": "I've also been tracking my own gender expression and presentation over the past few weeks",
+   "entity": "user",
+   "slot": "personal_tracking",
+   "value": "tracking own gender expression and presentation over past few weeks",
+   "stated_date": "",
+   "slot_class": "other:personal tracking",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108031-Q42869895/s21#r2",
+   "source_span": "I'd like to focus on my current projects, which include wrapping up the Johnson account, onboarding my new team, and mentoring Alex.",
+   "entity": "user",
+   "slot": "work_projects",
+   "value": "wrapping up Johnson account, onboarding new team, mentoring Alex",
+   "stated_date": "",
+   "slot_class": "other:work projects",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP108031-Q42869895/s21#r2",
+   "source_span": "The deadline for wrapping up the Johnson account is in two weeks",
+   "entity": "user",
+   "slot": "deadline",
+   "value": "Johnson account deadline in two weeks",
+   "stated_date": "2005-10-10",
+   "slot_class": "other:deadline",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "wikiP108031-Q42869895/s26#r0",
+   "source_span": "on Saturday morning, I did some household chores, which was a good start to getting back on track",
+   "entity": "user",
+   "slot": "recent_activity",
+   "value": "did household chores on Saturday morning",
+   "stated_date": "",
+   "slot_class": "other:recent activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "wikiP108031-Q42869895/s29#r2",
+   "source_span": "I also stocked up on hay when it was on sale, so I've got 20 bales in storage now",
+   "entity": "user",
+   "slot": "inventory",
+   "value": "20 bales of hay in storage",
+   "stated_date": "",
+   "slot_class": "other:inventory",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "wikiP108031-Q42869895/s29#r4",
+   "source_span": "Can I also add a section to track my fencing repairs and maintenance? I've got a few sections that need fixing",
+   "entity": "user",
+   "slot": "property_maintenance",
+   "value": "fencing sections need fixing",
+   "stated_date": "",
+   "slot_class": "other:property maintenance",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "wikiP108031-Q42869895/s31#r2",
+   "source_span": "I live in the city",
+   "entity": "user",
+   "slot": "residence",
+   "value": "lives in the city",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "wikiP108031-Q42869895/s31#r2",
+   "source_span": "I'm more inclined towards fiction and mystery",
+   "entity": "user",
+   "slot": "reading_preference",
+   "value": "fiction and mystery",
+   "stated_date": "",
+   "slot_class": "other:reading preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "wikiP108031-Q42869895/s31#r4",
+   "source_span": "I attended a book reading by a local author at a bookstore last week",
+   "entity": "user",
+   "slot": "recent_activity",
+   "value": "attended book reading by local author at bookstore last week",
+   "stated_date": "",
+   "slot_class": "other:recent activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "wikiP108031-Q42869895/s32#r0",
+   "source_span": "I officially started at Hong Kong Baptist University today",
+   "entity": "user",
+   "slot": "employer_or_school",
+   "value": "Hong Kong Baptist University",
+   "stated_date": "2014-08-01",
+   "slot_class": "employer",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "wikiP108031-Q42869895/s32#r2",
+   "source_span": "The HR person gave me a stack of forms about the medical scheme and MPF stuff.",
+   "entity": "user",
+   "slot": "work_onboarding_task",
+   "value": "forms about medical scheme and MPF pending",
+   "stated_date": "2014-08-01",
+   "slot_class": "other:work onboarding task",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "wikiP108031-Q42869895/s32#r3",
+   "source_span": "my Octopus card is almost empty and I keep forgetting",
+   "entity": "user",
+   "slot": "transit_card_status",
+   "value": "Octopus card almost empty",
+   "stated_date": "2014-08-01",
+   "slot_class": "other:transit card status",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2334,
+ "usage_out": 2306,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 19,
+  "total": 162,
+  "user_turns": 102
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

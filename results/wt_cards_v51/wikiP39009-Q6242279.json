@@ -1,0 +1,149 @@
+{
+ "uid": "wikiP39009-Q6242279",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP39009-Q6242279/s1#r0",
+   "source_span": "I'm a member of the 45th Parliament of the United Kingdom, representing Bradford West",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 45th Parliament of the United Kingdom, representing Bradford West",
+   "stated_date": "1970-06-18",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP39009-Q6242279/s3#r0",
+   "source_span": "I'm moving to the US soon to start my Master's program at UC Berkeley",
+   "entity": "user",
+   "slot": "education_plan",
+   "value": "moving to US to start Master's program at UC Berkeley",
+   "stated_date": "",
+   "slot_class": "other:education plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP39009-Q6242279/s9#r0",
+   "source_span": "I've taken 7 flights in the last 9 weeks",
+   "entity": "user",
+   "slot": "travel_frequency",
+   "value": "7 flights in the last 9 weeks",
+   "stated_date": "",
+   "slot_class": "other:travel frequency",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP39009-Q6242279/s9#r2",
+   "source_span": "I'm leaning towards the Chase Sapphire Preferred Card",
+   "entity": "user",
+   "slot": "credit_card_preference",
+   "value": "leaning towards Chase Sapphire Preferred Card",
+   "stated_date": "",
+   "slot_class": "other:credit card preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP39009-Q6242279/s10#r1",
+   "source_span": "I'm a member of the 48th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 48th Parliament of the United Kingdom",
+   "stated_date": "1979-05-03",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP39009-Q6242279/s12#r0",
+   "source_span": "I've mostly given up on the local buses for getting across town",
+   "entity": "user",
+   "slot": "commute_habit",
+   "value": "stopped using local buses, prefers subway for commute",
+   "stated_date": "",
+   "slot_class": "other:commute habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP39009-Q6242279/s15#r1",
+   "source_span": "I'm officially a member of the 49th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 49th Parliament of the United Kingdom",
+   "stated_date": "1983-06-09",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP39009-Q6242279/s18#r0",
+   "source_span": "I recently participated in a charity 5K run/walk on April 15th",
+   "entity": "user",
+   "slot": "charity_activity",
+   "value": "participated in charity 5K run/walk on April 15th",
+   "stated_date": "1985-04-15",
+   "slot_class": "other:charity activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP39009-Q6242279/s21#r2",
+   "source_span": "I'm a member of the 50th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 50th Parliament of the United Kingdom",
+   "stated_date": "1987-06-11",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP39009-Q6242279/s27#r1",
+   "source_span": "I'm officially a member of the 51st Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 51st Parliament of the United Kingdom",
+   "stated_date": "1992-04-09",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP39009-Q6242279/s33#r1",
+   "source_span": "I'm returned as a member of the 52nd Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 52nd Parliament of the United Kingdom",
+   "stated_date": "1997-05-01",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP39009-Q6242279/s36#r1",
+   "source_span": "I'm officially a member of the 53rd Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "parliament_membership",
+   "value": "member of the 53rd Parliament of the United Kingdom",
+   "stated_date": "2001-06-07",
+   "slot_class": "position",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 1833,
+ "usage_out": 1409,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 14,
+  "total": 178,
+  "user_turns": 118
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

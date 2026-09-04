@@ -168,7 +168,9 @@ def main():
                 recs[i]["entailed"] = bool(v.entailed)
                 recs[i]["entail_reason"] = v.reason
                 tot_in += ui; tot_out += uo
-        kept = [r for r in recs if r["entailed"] and r["assertion_type"] in KEEP]
+        # 采用规则(批 47 §3):只看断言类型,不看 entailed 标志 —— entailed 在
+        # "TotalEnergies is my new team" 上用了外部知识误判,类型过滤零误伤。
+        kept = [r for r in recs if r["assertion_type"] in KEEP]
         from collections import Counter
         types = Counter(r["assertion_type"] for r in recs)
         log["stores"][uid] = {"n": len(recs), "kept": len(kept), "types": dict(types)}
