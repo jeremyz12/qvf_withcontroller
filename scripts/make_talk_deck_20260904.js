@@ -263,7 +263,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
   ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 1.9, 2.0, 2.4, 2.8], fontSize: 9.5, rowH: 0.56 });
   bullets(s, [
     "Five readers on the same 140 questions: the ledger beats top-10 retrieval by \u2265 15 pp for every reader; against full context it wins for haiku (+23.6) and a local qwen3:14b (+17.9), ties for Gemini 3.6 Flash (\u22120.7) and for gpt-5-mini after fixing its output cap (\u22124.3, n.s.). The stronger the reader on full context, the smaller the ledger's edge. Full text + protocol on Sonnet 5: 96.4 = plain full text 97.1 = ledger 95.0.",
-    "Write side: Sonnet-built cards give 133/133 gold rows but 92.9 / 92.1; the assertion-type filter lifts to 93.6 / 95.0; a second extraction pass reaches 140/140 gold rows. Extraction is nondeterministic (two passes overlap 2\u201333% of cards) and repeat runs of six arms show run-to-run sd \u2264 1.6 pp (batch 46c).",
+    "Write side: Sonnet-built cards give 133/133 gold rows but 92.9 / 92.1; the assertion-type filter lifts to 93.6 / 95.0; a second extraction pass reaches 140/140 gold rows. Scaled to all 144 chains (batch 46d) the frozen configuration cuts missing gold rows 71 → 14 and lifts the compiled ceiling 85.9 → 92.5, yet the haiku reader scores 89.8 / 90.2 vs 89.3 on the haiku-built store (p = 0.80): ledger content is not this reader's bottleneck. Extraction is nondeterministic (two passes overlap 2\u201333% of cards) and repeat runs of six arms show run-to-run sd \u2264 1.6 pp (batch 46c).",
     "Claim, restated: the ledger is necessary when the reader is not frontier-class, or the store exceeds the context window, or cost is bound \u2014 any one of the three. Otherwise it is a cheaper, auditable layer, not a more accurate one.",
   ], { x: 0.6, y: 5.0, w: 12.1, h: 2.0, fontSize: 10.5 });
   footer(s);
@@ -311,8 +311,9 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
   const rows = [["Arm", "Accuracy", "\u0394 vs direct", "In tok / q", "Out tok / q", "$ / q", "Median latency"],
     ["Direct read (top-10 retrieval)", "47.32", "\u2014", "878", "86", "$0.00131", "1.55 s"], ["1 Select", "66.25", "+18.9", "2,169", "108", "$0.00271", "5.50 s"], ["2 Certify", "66.79", "+19.5", "2,346", "112", "$0.00291", "5.46 s"], ["3 Compile", "79.46", "+32.1", "2,268", "98", "$0.00276", "5.28 s"],
     [{ text: "4 Ledger + protocol (QVF)", options: { bold: true } }, { text: "89.29", options: { bold: true } }, { text: "+42.0", options: { bold: true } }, "2,937", "476", "$0.00532", "4.84 s"],
+    ["4 QVF, frozen Sonnet-built store v48f (batch 46d, mean of 2 runs)", "90.00", "+42.7", "2,753", "485", "$0.00518", "5.77 s"],
     ["QVF, owner-gate store", "86.25", "+38.9", "2,106", "464", "$0.00443", "4.77 s"], ["Full text + protocol", "86.61", "+39.3", "13,921", "454", "$0.01619", "7.84 s"], ["Full text, plain (archived wording)", "54.46", "+7.1", "13,672", "136", "$0.01435", "5.46 s"], ["Unstructured summary", "57.68", "+10.4", "2,451", "91", "$0.00291", "4.88 s"]];
-  table(s, rows, { x: 0.6, y: 1.6, w: 12.1, colW: [3.3, 1.3, 1.4, 1.5, 1.5, 1.4, 1.7], fontSize: 11, rowH: 0.4 });
+  table(s, rows, { x: 0.6, y: 1.6, w: 12.1, colW: [3.3, 1.3, 1.4, 1.5, 1.5, 1.4, 1.7], fontSize: 10.5, rowH: 0.37 });
   s.addText("Per question type (direct \u2192 QVF): change_count 35.4 \u2192 85.4, count_before 42.4 \u2192 86.8, longest_tenure 29.7 \u2192 90.6, first_vs_last 79.9 \u2192 94.4. Counting types are where the direct reader fails and where the ledger pays; first_vs_last is answerable by retrieval alone. Three validity types (v2.0 archive): current value +8.3, point-in-time +59.0, historical aggregation +34.0.", { x: 0.6, y: 5.85, w: 12.1, h: 1.1, fontFace: BFONT, fontSize: 10.5, color: INK, margin: 0 });
   footer(s);
 }
@@ -377,13 +378,13 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
     "Scope is three conditions (non-frontier reader, or store beyond the context window, or cost-bound). With a strong reader on a 14K store the whole memory in the prompt is as good or better; the ledger is then a cheaper, auditable layer.",
     "Render-matched controls show ~88% of the ledger's gain over plain full text is layout + trajectory protocol (cards-only 85.0, raw quotes 85.4, ledger 89.3 on 14K; cards-only 70.0 vs projection 61.7 vs raw quotes 55.8 on 104K). Write-time cards earn their place through coverage without retrieval, de-duplication and auditability, not most of the accuracy.",
     "External arenas: 2 positive, several ties, several negative; not a universal memory method.",
-    "Synthetic dialogue; assistant turns stored truncated; human agreement fair (\u03b1 0.45 / 0.30); the v2.5 human review is in progress; write-side extraction is nondeterministic (two passes overlap 2\u201333%); reader run-to-run sd \u2264 1.6 pp; the 104K strong-reader advantage of the projection is per-question significant but not at store level.",
+    "Synthetic dialogue; assistant turns stored truncated; human agreement fair (\u03b1 0.45 / 0.30); the v2.5 human review is in progress; write-side extraction is nondeterministic (two passes overlap 2\u201333%); reader run-to-run sd \u2264 1.6 pp; the 104K strong-reader advantage of the projection is per-question significant but not at store level; write-side gains measured on the 36-chain sample (+4 to +8) did not reproduce on all 144 chains (+0.7, n.s.).",
   ], { x: 0.6, y: 1.95, w: 6.0, h: 4.9, fontSize: 11.5 });
   s.addText("Next steps", { x: 7.0, y: 1.5, w: 5.7, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
     "Finish the v2.5 human evaluation (author, then senior reviewers) and report agreement against the machine review.",
     "Card builder schema regression fixed (batch 46e: root cause was a default flag since Aug 13; the new builder back-fills slot_class / owner, regression test 3/3); retire the derived store in the next full build.",
-    "Frozen write-side configuration (Sonnet extractor + assertion-type filter + gold-free second pass) on all 144 chains, 560 questions run twice, paired against the haiku store (batch 46d, running); then more 104K stores so the strong-reader store-level CI closes.",
+    "Batch 46d done: the frozen write-side configuration on all 144 chains improves the ledger (missing gold rows 71 → 14, ceiling 85.9 → 92.5, tokens −6%) but not haiku accuracy (90.0 vs 89.3, p = 0.80); next is a certify-aware render path, then more 104K stores so the strong-reader store-level CI closes.",
     "Paper: \u00a71 claim restated as \u2018validity = f(memory \u00d7 query)\u2019 with the boundary sentence; \u00a72 ancestors (TAC-KBP temporal slot filling, temporal databases) and the 22 newly read neighbours; \u00a78 limitations as the three-condition scope.",
   ], { x: 7.0, y: 1.95, w: 5.7, h: 4.9, fontSize: 11.5 });
   footer(s);
