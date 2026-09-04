@@ -1,0 +1,131 @@
+# Batch 40 score — 104K-token L2 stores x strong reader (claude-sonnet-5, max_tokens=4000, no temperature)
+# corpus data/wikistate_long_L2_b33.json | questions data/wsc_long_L1_questions.jsonl (120 = 30 uid x 4 qtypes)
+# judge qvf.judge.ClaudeJudge (claude-opus-5, frozen)
+
+## 0. Row ledger / completeness
+
+| arm | source rows | deduped | dup rows | qid symdiff vs the 120 | non-end_turn stop | truncated-empty (no judge match) |
+|---|---|---|---|---|---|---|
+| projection (slot)@sonnet5 | 120 | 120 | 0 | 0 | 6 | - |
+| ledger (QVF full)@sonnet5 | 120 | 120 | 0 | 0 | 9 | - |
+| dense_top100@sonnet5 | 120 | 120 | 0 | 0 | 0 | - |
+| plainctx (full context)@sonnet5 | 82 | 82 | 0 | 38 | 15 | - |
+INCOMPLETE arms (n != 120, likely a budget stop — reported as-is per prereg, not extrapolated): {'plainctx (full context)@sonnet5': 82}
+
+## 1. Headline (accuracy with Wilson 95% CI)
+
+| arm | n | acc % | Wilson 95% | mean in tok | mean out tok | reader $/q | reader $ total | median latency s |
+|---|---|---|---|---|---|---|---|---|
+| projection (slot)@sonnet5 | 120 | 74.17 | [65.7, 81.2] | 11546 | 1152 | $0.0346 | $4.15 | 7.41 |
+| ledger (QVF full)@sonnet5 | 120 | 73.33 | [64.8, 80.4] | 27178 | 1402 | $0.0684 | $8.21 | 10.78 |
+| dense_top100@sonnet5 | 120 | 67.50 | [58.7, 75.2] | 11609 | 573 | $0.0289 | $3.47 | 4.81 |
+| plainctx (full context)@sonnet5 | 82 | 54.88 | [44.1, 65.2] | 141960 | 1843 | $0.3023 | $24.79 | 14.59 |
+
+dense_top100 anchor coverage: all=90.6% as-of=91.3% (locate-fail=0 of tot=480/as-of=471)
+
+## 2. Accuracy by question type (% correct; n up to 30 each)
+
+| arm | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| projection (slot)@sonnet5 | 73.3 | 66.7 | 80.0 | 76.7 |
+| ledger (QVF full)@sonnet5 | 63.3 | 80.0 | 73.3 | 76.7 |
+| dense_top100@sonnet5 | 43.3 | 53.3 | 86.7 | 86.7 |
+| plainctx (full context)@sonnet5 | 47.6 | 47.6 | 60.0 | 65.0 |
+
+## 3. Paired McNemar — every pair among the four b40 arms (same overlapping qids)
+
+### projection (slot)@sonnet5 vs ledger (QVF full)@sonnet5
+  n=120 q / 30 stores | delta=-0.83pp  b/c=9/8  McNemar p=1
+### projection (slot)@sonnet5 vs dense_top100@sonnet5
+  n=120 q / 30 stores | delta=-6.67pp  b/c=19/11  McNemar p=0.2005
+### projection (slot)@sonnet5 vs plainctx (full context)@sonnet5
+  n=82 q / 21 stores | delta=-17.07pp  b/c=24/10  McNemar p=0.02431
+### ledger (QVF full)@sonnet5 vs dense_top100@sonnet5
+  n=120 q / 30 stores | delta=-5.83pp  b/c=23/16  McNemar p=0.3368
+### ledger (QVF full)@sonnet5 vs plainctx (full context)@sonnet5
+  n=82 q / 21 stores | delta=-14.63pp  b/c=24/12  McNemar p=0.06525
+### dense_top100@sonnet5 vs plainctx (full context)@sonnet5
+  n=82 q / 21 stores | delta=-10.98pp  b/c=22/13  McNemar p=0.1755
+
+
+## 4. Store-level cluster bootstrap — H2/H3 headline comparisons
+
+**H2: projection vs full context (plainctx)**
+### projection (slot)@sonnet5 vs plainctx (full context)@sonnet5
+  n=82 q / 21 stores | delta=+17.07pp  b/c=10/24  McNemar p=0.02431
+  store sign test 9W/5L/7T p=0.424 | cluster boot 95% CI [-3.57,+38.75]pp (N=4000, seed=40)
+
+**H3: top100 vs projection**
+### dense_top100@sonnet5 vs projection (slot)@sonnet5
+  n=120 q / 30 stores | delta=-6.67pp  b/c=19/11  McNemar p=0.2005
+  store sign test 7W/13L/10T p=0.2632 | cluster boot 95% CI [-17.50,+4.17]pp (N=4000, seed=40)
+
+(reference) projection vs QVF full ledger, same reader
+### projection (slot)@sonnet5 vs ledger (QVF full)@sonnet5
+  n=120 q / 30 stores | delta=+0.83pp  b/c=8/9  McNemar p=1
+  store sign test 6W/5L/19T p=1 | cluster boot 95% CI [-5.83,+7.50]pp (N=4000, seed=40)
+
+(reference) QVF full ledger vs full context, same reader
+### ledger (QVF full)@sonnet5 vs plainctx (full context)@sonnet5
+  n=82 q / 21 stores | delta=+14.63pp  b/c=12/24  McNemar p=0.06525
+  store sign test 7W/5L/9T p=0.7744 | cluster boot 95% CI [-3.75,+34.52]pp (N=4000, seed=40)
+
+(reference) top100 vs QVF full ledger, same reader
+### dense_top100@sonnet5 vs ledger (QVF full)@sonnet5
+  n=120 q / 30 stores | delta=-5.83pp  b/c=23/16  McNemar p=0.3368
+  store sign test 7W/13L/10T p=0.2632 | cluster boot 95% CI [-18.33,+6.67]pp (N=4000, seed=40)
+
+
+## 5. Cost ledger (measured tokens, this batch only)
+
+| arm | reader in | reader out | reader $ ($2/$10) | judge in | judge out | judge $ (opus-5 $5/$25) |
+|---|---|---|---|---|---|---|
+| projection (slot)@sonnet5 | 1385544 | 138212 | $4.153 | 14461 | 7235 | $0.253 |
+| ledger (QVF full)@sonnet5 | 3261400 | 168233 | $8.205 | 13973 | 7132 | $0.248 |
+| dense_top100@sonnet5 | 1393107 | 68765 | $3.474 | 27861 | 7192 | $0.319 |
+| plainctx (full context)@sonnet5 | 11640736 | 151113 | $24.793 | 25912 | 5952 | $0.278 |
+| **TOTAL** | 17680787 | 526323 | $40.625 | 82207 | 27511 | $1.099 |
+
+## 6. Truncation diagnostics (stop_reason != end_turn, max_tokens=4000 budget)
+
+| arm | n | truncated | truncated % | mean in tok (truncated) | mean in tok (not truncated) | acc on truncated % | acc on rest % |
+|---|---|---|---|---|---|---|---|
+| projection (slot)@sonnet5 | 120 | 6 | 5.0 | 31317 | 10506 | 16.7 | 77.2 |
+| ledger (QVF full)@sonnet5 | 120 | 9 | 7.5 | 29173 | 27017 | 22.2 | 77.5 |
+| dense_top100@sonnet5 | 120 | 0 | 0.0 | 0 | 11609 | nan | 67.5 |
+| plainctx (full context)@sonnet5 | 82 | 15 | 18.3 | 142035 | 141943 | 6.7 | 65.7 |
+
+## 7. Archived reference — 104K x haiku (batch 33-D / 39, $0, not rerun)
+
+| arm | n | acc % |
+|---|---|---|
+| ledger (QVF full)@haiku(104K) | 120 | 54.17 |
+| projection (slot)@haiku(104K) | 120 | 61.67 |
+| fulltext(fullplain)@haiku(104K) | 120 | 7.50 |
+| dense_top100@haiku(104K) | 120 | 38.33 |
+
+## 8. Archived reference — 14K / L0 (batch 36, different question sample & store set, $0, not rerun — sample-composition caveat applies, see verdict)
+
+| arm | n | acc % |
+|---|---|---|
+| plainctx@haiku(14K,mt800) | 140 | 70.00 |
+| plainctx@sonnet5(14K,mt800) | 140 | 87.86 |
+| plainctx@sonnet5(14K,mt4000 截断校正) | 140 | 97.14 |
+
+## 9. Four-cell table (scale x reader), headline full-context arm per cell
+
+| | haiku-4.5 | sonnet-5 |
+|---|---|---|
+| 14K (L0) | 70.0% (n=140, plainctx mt800) | 97.1% (n=140, plainctx mt4000 corrected) |
+| 104K (L2) | 7.5% (n=120, fullplain=PLAIN_PROMPT) | 54.9% (n=82, plainctx mt4000) |
+
+Caveat: the 14K row uses the `plainctx` prompt (realistic wording, no length cap) on a different 140-q / different-store sample (`results/b35_questions_sample36.jsonl`); the 104K-haiku cell uses `fullplain`=`PLAIN_PROMPT` ("reply with only the answer") on the 30-store L2 sample. Only the sonnet-5 column (14K plainctx -> 104K plainctx, same prompt) is a clean same-prompt scale comparison; the haiku row and the cross-row comparisons mix prompt variants and sample composition.
+
+## 10. Per-store correct-count distribution (of 4 questions each)
+
+| arm | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+| projection (slot)@sonnet5 | 3 | 1 | 4 | 8 | 14 |
+| ledger (QVF full)@sonnet5 | 1 | 3 | 5 | 9 | 12 |
+| dense_top100@sonnet5 | 2 | 1 | 9 | 10 | 8 |
+| plainctx (full context)@sonnet5 | 6 | 1 | 4 | 4 | 6 |

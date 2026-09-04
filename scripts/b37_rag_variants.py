@@ -78,10 +78,27 @@ from qvf.retrieval import (BM25Retriever, MemoryItem,  # noqa: E402
                            OpenAIDenseRetriever, _tokenize)
 from ext_direct_arm import (READER_SYSTEM, _memories, _query_date,  # noqa: E402
                             _retriever_cls, reader_content)
-from lb_reader_arm import call_reader  # noqa: E402
+# 批 40:改从 lb_reader_arm_b36b 取 call_reader(原 lb_reader_arm.call_reader
+# 的严格超集——加了 max_tokens 参数与"仅 haiku 发 temperature"的显式判断;
+# 对 haiku 走同一 anthropic 分支、同样不传 max_tokens 之外的任何新参数,
+# 批 37/39 的默认行为逐字节不变)。
+from lb_reader_arm_b36b import call_reader  # noqa: E402
 
-READER = "anthropic:claude-haiku-4-5"
+READER = "anthropic:claude-haiku-4-5"          # 默认值不变;--reader 可覆盖
+READER_MAX_TOKENS = 800                          # 默认值不变;--max-tokens 可覆盖
 EMB_MODEL = "text-embedding-3-small"
+
+# 读者侧现价($/百万 token),与 scripts/b36_plain_fullctx.py 同表(批 40 起
+# 打印真实读者花费,不再写死 haiku 单价)。
+PRICES = {"claude-haiku-4-5": (1.0, 5.0), "claude-sonnet-5": (2.0, 10.0)}
+DEFAULT_PRICE = (3.0, 15.0)
+
+
+def price_of(model: str):
+    for k, v in PRICES.items():
+        if model.startswith(k):
+            return v
+    return DEFAULT_PRICE
 DATA = "data/wikistate_full_ALL_v24.json"
 QUESTIONS = "results/b35_questions_sample36.jsonl"
 CACHE_TURN = ROOT / "results" / "b37_emb_turns.npz"
@@ -454,7 +471,15 @@ def main() -> int:
                     help="轮次级嵌入缓存 npz 路径")
     ap.add_argument("--emb-cache-sess", default=str(CACHE_SESS),
                     help="会话级嵌入缓存 npz 路径;传空串则不建/不加载")
+    ap.add_argument("--reader", default=READER,
+                    help="anthropic:<model>;默认 claude-haiku-4-5(原行为不变)")
+    ap.add_argument("--max-tokens", type=int, default=READER_MAX_TOKENS,
+                    help="读者 max_tokens;默认 800(原行为不变)。sonnet-5 "
+                         "默认开思考,同一预算同时封顶思考与可见文本,批 40 "
+                         "起对 sonnet-5 一律传 4000")
     a = ap.parse_args()
+    globals()["READER"] = a.reader
+    reader_model = a.reader.split(":", 1)[1]
 
     backend = os.environ.get("QVF_EMBED_BACKEND", "")
     if backend != "openai":
@@ -511,10 +536,11 @@ def main() -> int:
         t_retr = time.time() - tr0
         user = reader_content(q["question"], got,
                               _query_date(entries[uid], q["question"]))
-        raw, ti, to, lat = "", 0, 0, 0.0
+        raw, ti, to, lat, stop = "", 0, 0, 0.0, ""
         for attempt in range(3):
             try:
-                raw, ti, to, lat = call_reader(READER, READER_SYSTEM, user)
+                raw, ti, to, lat, stop = call_reader(READER, READER_SYSTEM,
+                                                      user, a.max_tokens)
                 break
             except Exception as e:                           # noqa: BLE001
                 _log(f"[{qid}] reader retry {attempt}: {type(e).__name__}: "
@@ -538,7 +564,9 @@ def main() -> int:
             "n_retrieved": len(got),
             "retrieved_memory_ids": [m.memory_id for m in got],
             "retrieval_latency_s": round(t_retr, 2),
-            "reader_model": "claude-haiku-4-5",
+            "reader_model": reader_model,
+            "reader_max_tokens": a.max_tokens,
+            "stop_reason": stop,
         }
         row.update(extra)
         with _write_lock:
@@ -559,13 +587,15 @@ def main() -> int:
         list(ex.map(work, todo))
     fh.close()
     n, ok = counter["n"], counter["ok"]
-    reader_cost = (_USAGE["reader_in"] + _USAGE["retr_in"]) / 1e6 * 1.0 + \
-                  (_USAGE["reader_out"] + _USAGE["retr_out"]) / 1e6 * 5.0
+    pin, pout = price_of(reader_model)
+    reader_cost = (_USAGE["reader_in"] + _USAGE["retr_in"]) / 1e6 * pin + \
+                  (_USAGE["reader_out"] + _USAGE["retr_out"]) / 1e6 * pout
     _log(f"B37 {a.variant} DONE: {ok}/{n} = {ok / max(1, n) * 100:.1f}% | "
          f"reader in {_USAGE['reader_in']} out {_USAGE['reader_out']} | "
          f"retrieval in {_USAGE['retr_in']} out {_USAGE['retr_out']} | "
          f"judge in {_USAGE['judge_in']} out {_USAGE['judge_out']} | "
-         f"haiku-side $ {reader_cost:.3f} | wall {time.time() - t_start:.0f}s")
+         f"reader-side({reader_model}) $ {reader_cost:.3f} | "
+         f"wall {time.time() - t_start:.0f}s")
     return 0
 
 
