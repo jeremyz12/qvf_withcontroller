@@ -1,0 +1,124 @@
+# Batch 46b score -- write-time cards at 104K scale (render-only / render-raw vs archived projection/ledger/RAG/fulltext)
+# corpus data/wikistate_long_L2_b33.json | questions data/wsc_long_L1_questions.jsonl (30 stores x 4 qtypes = 120 q)
+# reader claude-haiku-4-5 (max_tokens 800, temperature 0) | judge qvf.judge.ClaudeJudge (claude-opus-5, frozen)
+# cards: results/wt_cards_b33_L2 (20 stores) + results/wt_cards_b27_L2 (10 stores), read-only, same store as batch 33-D/39/40
+# archived reference arms: results/opt_batch39_verdict.md headline table (not rerun)
+
+## 0. Row ledger
+
+| arm | rows loaded | qid symdiff vs the 120 | status |
+|---|---|---|---|
+| projection (archived, 61.7) | 120 | 0 | PASS(subset) |
+| ledger (archived, 54.2) | 120 | 0 | PASS(subset) |
+| dense_top100 (archived, 38.3) | 120 | 0 | PASS(subset) |
+| haiku fulltext (archived, 7.5) | 120 | 0 | PASS(subset) |
+| render-only | 120 | 0 | PASS(exact 120) |
+| render-raw | 120 | 0 | PASS(exact 120) |
+
+## 1. Headline accuracy (Wilson 95% CI) + cost/tokens/rendered rows
+
+| arm | n | acc % | Wilson 95% | mean rendered_rows | mean in tok | mean out tok | reader $/q | judge $/q | median latency s |
+|---|---|---|---|---|---|---|---|---|---|
+| projection (archived, 61.7) | 120 | 61.67 | [52.7, 69.9] | n/a | 8800 | 518 | $0.0114 | $0.0000 | 5.67 |
+| ledger (archived, 54.2) | 120 | 54.17 | [45.3, 62.8] | n/a | 20855 | 546 | $0.0236 | $0.0000 | 6.25 |
+| dense_top100 (archived, 38.3) | 120 | 38.33 | [30.1, 47.3] | n/a | 8903 | 105 | $0.0094 | $0.0040 | 2.14 |
+| haiku fulltext (archived, 7.5) | 120 | 7.50 | [4.0, 13.6] | n/a | 103780 | 340 | $0.1055 | $0.0000 | 5.53 |
+| render-only | 120 | 66.67 | [57.8, 74.5] | 5.57 | 552 | 495 | $0.0030 | $0.0017 | 5.15 |
+| render-raw | 120 | 55.83 | [46.9, 64.4] | 44.80 | 3849 | 576 | $0.0067 | $0.0020 | 6.29 |
+
+## 2. Accuracy by question type (%% correct; n=30 each)
+
+| arm | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| projection (archived, 61.7) | 63.3 | 56.7 | 63.3 | 63.3 |
+| ledger (archived, 54.2) | 50.0 | 46.7 | 56.7 | 63.3 |
+| dense_top100 (archived, 38.3) | 26.7 | 23.3 | 73.3 | 30.0 |
+| haiku fulltext (archived, 7.5) | 6.7 | 3.3 | 13.3 | 6.7 |
+| render-only | 70.0 | 63.3 | 63.3 | 70.0 |
+| render-raw | 30.0 | 43.3 | 73.3 | 76.7 |
+
+## 3. Selection-tier / capping breakdown (render-only / render-raw)
+
+### render-only
+  alias-kw                 n=20   acc=10.0%
+  chain-crosswalk          n=52   acc=78.8%
+  literal-slot             n=48   acc=77.1%
+
+### render-raw
+  keyword-hit              n=120  acc=55.8%
+  rows dropped for budget cap: 0/120 questions capped, total rows dropped=0
+
+
+## 4. Paired comparisons (render-only / render-raw vs each other + vs archived arms), 30-store cluster bootstrap
+
+### render-only vs render-raw
+  n=120 q / 30 stores | delta=+10.83pp  b/c=20/33  McNemar p=0.09837
+  store sign test 15W/7L/8T p=0.1338 | cluster boot 95% CI [-5.00,+25.83]pp (N=10000, seed=20260904)
+
+### render-only vs projection 61.7
+  n=120 q / 30 stores | delta=+5.00pp  b/c=8/14  McNemar p=0.2863
+  store sign test 10W/4L/16T p=0.1796 | cluster boot 95% CI [-5.83,+15.00]pp (N=10000, seed=20260904)
+
+### render-only vs ledger 54.2
+  n=120 q / 30 stores | delta=+12.50pp  b/c=13/28  McNemar p=0.02753
+  store sign test 12W/6L/12T p=0.2379 | cluster boot 95% CI [-0.83,+26.67]pp (N=10000, seed=20260904)
+
+### render-raw vs projection 61.7
+  n=120 q / 30 stores | delta=-5.83pp  b/c=27/20  McNemar p=0.3817
+  store sign test 8W/10L/12T p=0.8145 | cluster boot 95% CI [-18.33,+6.67]pp (N=10000, seed=20260904)
+
+### render-raw vs ledger 54.2
+  n=120 q / 30 stores | delta=+1.67pp  b/c=20/22  McNemar p=0.8776
+  store sign test 9W/8L/13T p=1 | cluster boot 95% CI [-8.33,+11.67]pp (N=10000, seed=20260904)
+
+### render-only vs dense_top100 38.3
+  n=120 q / 30 stores | delta=+28.33pp  b/c=12/46  McNemar p=8.22e-06
+  store sign test 21W/5L/4T p=0.002494 | cluster boot 95% CI [+15.83,+40.83]pp (N=10000, seed=20260904)
+
+### render-raw vs dense_top100 38.3
+  n=120 q / 30 stores | delta=+17.50pp  b/c=11/32  McNemar p=0.001914
+  store sign test 17W/2L/11T p=0.0007286 | cluster boot 95% CI [+6.67,+27.50]pp (N=10000, seed=20260904)
+
+### render-only vs haiku fulltext 7.5
+  n=120 q / 30 stores | delta=+59.17pp  b/c=2/73  McNemar p=1.509e-19
+  store sign test 25W/0L/5T p=5.96e-08 | cluster boot 95% CI [+45.83,+72.50]pp (N=10000, seed=20260904)
+
+### render-raw vs haiku fulltext 7.5
+  n=120 q / 30 stores | delta=+48.33pp  b/c=3/61  McNemar p=4.743e-15
+  store sign test 24W/1L/5T p=1.55e-06 | cluster boot 95% CI [+35.83,+60.00]pp (N=10000, seed=20260904)
+
+
+## 5. Cost ledger (measured tokens, this batch's two new arms only)
+
+| arm | reader in | reader out | reader $ ($1/$5) | judge in | judge out | judge $ (opus-5 $5/$25) |
+|---|---|---|---|---|---|---|
+| render-only | 66184 | 59429 | $0.363 | 13227 | 5671 | $0.208 |
+| render-raw | 461912 | 69178 | $0.808 | 13731 | 6851 | $0.240 |
+| **TOTAL** | 528096 | 128607 | $1.171 | 26958 | 12522 | $0.448 |
+
+Reader spend cap was $6 (judge separate); actual reader spend = $1.171 (19.5% of cap).
+
+## 6. Hypothesis verdicts (thresholds fixed in prereg, not adjusted post hoc)
+
+acc(render-only)=66.67  acc(render-raw)=55.83  [archived] projection=61.67  ledger=54.17
+
+H1 (render-raw collapses at 104K): projection(61.67) - acc(render-raw)(55.83) = +5.84pp vs threshold >=+15pp -> REJECTED
+
+H2 (render-raw rows+tokens blow up):
+  token sub-test: mean(render-raw in tok)=3849 vs 2x8800=17600 -> ratio=0.44x -> REJECTED
+  rows sub-test:  mean(render-raw rows)=44.80 vs 2x mean(render-only rows)=5.57 (=11.13) -> ratio=8.05x -> CONFIRMED
+  H2 overall (both sub-tests must hold): REJECTED
+
+H3 (render-only stays within 5pp of full ledger at scale): |acc(render-only)(66.67) - ledger(54.17)| = 12.50pp vs threshold <=5pp -> REJECTED
+  [context] render-only vs projection(61.67): +5.00pp (not the H3 comparator, reported per prereg note on the L2 ranking reversal)
+
+## 7. Per-store correct-count distribution (of 4 questions each)
+
+| arm | 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|---|
+| projection (archived, 61.7) | 3 | 4 | 8 | 6 | 9 |
+| ledger (archived, 54.2) | 5 | 6 | 4 | 9 | 6 |
+| dense_top100 (archived, 38.3) | 5 | 9 | 12 | 3 | 1 |
+| haiku fulltext (archived, 7.5) | 25 | 2 | 2 | 1 | 0 |
+| render-only | 4 | 4 | 3 | 6 | 13 |
+| render-raw | 4 | 3 | 10 | 8 | 5 |
