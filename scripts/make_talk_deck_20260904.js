@@ -198,7 +198,7 @@ stepSlide("Step 3 \u00b7 Compile: sort, merge, count \u2014 by code, not by the 
    "With a strong reader the compile step matters less (Sonnet 5 on full context 97.1) \u2014 the reader can count itself; with a 104K store it cannot (54.9 vs projection 74.2)."],
   ["PAL, ICML 2023 (2211.10435): let a program execute the arithmetic step.", "Faith and Fate, NeurIPS 2023 (2305.18654): transformers fail on chained multi-step aggregation.", "Test of Time, ICLR 2025 (2406.09170): ordering and counting over timelines is weak even when facts are given."]);
 
-stepSlide("Step 4 \u00b7 Ledger + protocol: show the table, list the trajectory, then answer", "Failure source removed: skipping \u2014 answering from intuition instead of the whole trajectory",
+stepSlide("Step 4 \u00b7 Ledger + protocol: list the trajectory, then answer", "Failure source removed: skipping \u2014 answering from intuition instead of the whole trajectory",
   { h: "Before: what the reader used to see", lines: [
     "Either 14K tokens of chat in narrative order (full text), or 10 retrieved turns with session dates (top-10), and a question.",
     "Weak readers jump to a plausible number (\u201c2\u201d or \u201c4\u201d) without enumerating the states." ] },
@@ -353,7 +353,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
 // ---------- 20 WikiState: reviewers, fixes, human evaluation ----------
 {
   const s = pres.addSlide(); n++;
-  title(s, "WikiState: what reviewers found, what we fixed, and where evaluation stands", "Human review rounds on the display version; machine review of every release; latest version now under human evaluation");
+  title(s, "WikiState: reviewer findings, fixes, and evaluation status", "Human review rounds on the display version; machine review of every release; latest version now under human evaluation");
   table(s, [
     ["Round", "Who", "Coverage", "Found", "What changed"],
     ["Round 1 (v2.0 display)", "author (all 149) \u00b7 senior1 (a reviewer I recruited, 85) \u00b7 senior2 (a reviewer recruited by my lab senior, 84)", "149 items = 144 chains + 5 planted errors", "senior2 7 errors / 1 unsure; senior1 5 errors; agreement \u03b1 0.45 (0.30 excl. planted); error rate est. 6\u20137%", "v2.1\u2013v2.4: four cleaning passes (247 contaminating sentences, \u22120.42%), gold-contamination erratum, 16 near-tie questions removed"],
