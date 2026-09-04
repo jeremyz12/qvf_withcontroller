@@ -175,6 +175,18 @@ def build_prompt(a, q, entries, led, retr):
     elif a.arm == "fullplain":
         sys_p = ""
         user = PLAIN_PROMPT.format(question=q["question"], transcript=led[uid])
+    elif a.arm == "smw":
+        # 批 46a 新增(全部原件零改动之外的唯一新分支):full text
+        # (render_transcript,同 fullplain)+ F.1 两段式状态追踪协议
+        # (SMW_PROMPT,同 smoc 用的模板)——批 33-A 管这个组合叫 "smw"
+        # (results/b33A_smw.jsonl,只跑过 haiku;逐字核对
+        # scripts/repro_batch3.py: prompt_tpl["smw"]=SMW_PROMPT,
+        # transcript 落在 CARD_ARMS/PERQ_ARMS 之外的 else 分支即
+        # render_transcript)。没有任何一个既有 arm 是这个组合:fullplain
+        # 用 render_transcript 但配 PLAIN_PROMPT;smoc 用 SMW_PROMPT 但配
+        # render_card_ledger(账目,不是全文)。
+        sys_p = ""
+        user = SMW_PROMPT.format(question=q["question"], transcript=led[uid])
     else:
         got = retr[uid].retrieve(q["question"], top_k=10)
         sys_p = READER_SYSTEM
@@ -187,7 +199,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--reader", required=True)
     ap.add_argument("--arm", choices=["smoc", "direct", "fullplain",
-                                      "closedbook", "ledgerplain"],
+                                      "closedbook", "ledgerplain", "smw"],
                     required=True)
     ap.add_argument("--questions", required=True)
     ap.add_argument("--data", default="data/wikistate_full_ALL.json")
@@ -224,7 +236,7 @@ def main() -> int:
     if a.arm in ("smoc", "ledgerplain"):
         for u in uids:
             led[u] = render_card_ledger(u, entries[u], cards_dir=a.cards_dir)
-    elif a.arm == "fullplain":
+    elif a.arm in ("fullplain", "smw"):
         for u in uids:
             led[u] = render_transcript(entries[u].get("sessions", []))
     elif a.arm == "direct":
@@ -283,7 +295,8 @@ def main() -> int:
                     print("retry %d [%s]: %s" % (attempt, q["qid"], err),
                           flush=True)
                     time.sleep(4)
-            pred, dev = (parse_answer(raw) if a.arm == "smoc" else (raw, False))
+            pred, dev = (parse_answer(raw) if a.arm in ("smoc", "smw")
+                        else (raw, False))
             v = judge.judge(q["question"], str(q["gold"]), pred, q.get("qtype"))
             row = {
                 "question_id": q["qid"], "mode": "%s:%s" % (a.arm, a.reader),
