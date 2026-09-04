@@ -1,0 +1,161 @@
+{
+ "uid": "memops-B10_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B10_update/s0#r2",
+   "source_span": "working from home",
+   "entity": "user",
+   "slot": "work_arrangement",
+   "value": "works from home",
+   "stated_date": "",
+   "slot_class": "other:work arrangement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B10_update/s1#r2",
+   "source_span": "I love visiting Jackson Square during Mardi Gras.",
+   "entity": "user",
+   "slot": "habit_tradition",
+   "value": "visits Jackson Square during Mardi Gras",
+   "stated_date": "",
+   "slot_class": "other:habit tradition",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B10_update/s10#r10",
+   "source_span": "I've been using Duolingo for a few weeks now",
+   "entity": "user",
+   "slot": "app_used",
+   "value": "Duolingo",
+   "stated_date": "",
+   "slot_class": "other:app used",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "I got her registered at Dr. Patel's clinic on Elm Street under my last name, Chen.",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "Chen",
+   "stated_date": "",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "I got her registered at Dr. Patel's clinic on Elm Street under my last name, Chen.",
+   "entity": "user",
+   "slot": "pet_vet_clinic",
+   "value": "Dr. Patel's clinic on Elm Street",
+   "stated_date": "",
+   "slot_class": "other:pet vet clinic",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "Hey, I wanted to tell you about my kitten Mochi's vet visit.",
+   "entity": "user",
+   "slot": "pet_name",
+   "value": "Mochi",
+   "stated_date": "",
+   "slot_class": "other:pet name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "Her first checkup was on April 8th at Dr. Patel's clinic on Elm Street, and they recorded her weight at 1.2 kg.",
+   "entity": "pet_Mochi",
+   "slot": "first_checkup_date",
+   "value": "April 8th",
+   "stated_date": "04-08",
+   "slot_class": "other:first checkup date",
+   "owner": "pet_Mochi"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "they recorded her weight at 1.2 kg",
+   "entity": "pet_Mochi",
+   "slot": "weight",
+   "value": "1.2 kg",
+   "stated_date": "",
+   "slot_class": "other:weight",
+   "owner": "pet_Mochi"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "She's a calico, mostly white with orange and black patches on her face.",
+   "entity": "pet_Mochi",
+   "slot": "appearance",
+   "value": "calico, mostly white with orange and black patches on her face",
+   "stated_date": "",
+   "slot_class": "other:appearance",
+   "owner": "pet_Mochi"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B10_update/s46#r2",
+   "source_span": "The insurance company is PetGuard Plus",
+   "entity": "user",
+   "slot": "pet_insurance_provider",
+   "value": "PetGuard Plus",
+   "stated_date": "",
+   "slot_class": "other:pet insurance provider",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B10_update/s46#r2",
+   "source_span": "I'll put Dr. Patel's clinic on Elm Street.",
+   "entity": "user",
+   "slot": "pet_vet_clinic",
+   "value": "Dr. Patel's clinic on Elm Street",
+   "stated_date": "",
+   "slot_class": "other:pet vet clinic",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B10_update/s46#r2",
+   "source_span": "Sara actually mentioned she uses the same insurer for Biscuit, so she walked me through the form a bit.",
+   "entity": "user_friend_Sara",
+   "slot": "pet_name",
+   "value": "Biscuit",
+   "stated_date": "",
+   "slot_class": "other:pet name",
+   "owner": "user_friend_Sara"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B10_update/s46#r2",
+   "source_span": "Sara actually mentioned she uses the same insurer for Biscuit",
+   "entity": "user_friend_Sara",
+   "slot": "pet_insurance_provider",
+   "value": "PetGuard Plus",
+   "stated_date": "",
+   "slot_class": "other:pet insurance provider",
+   "owner": "user_friend_Sara"
+  }
+ ],
+ "usage_in": 3871,
+ "usage_out": 1248,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 30,
+  "total": 544,
+  "user_turns": 544,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

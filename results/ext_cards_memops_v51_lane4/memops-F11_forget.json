@@ -1,0 +1,139 @@
+{
+ "uid": "memops-F11_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F11_forget/s0#r4",
+   "source_span": "I'll definitely aim for at least three swims a week",
+   "entity": "user",
+   "slot": "exercise_habit",
+   "value": "swims at least three times a week",
+   "stated_date": "",
+   "slot_class": "other:exercise habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F11_forget/s11#r4",
+   "source_span": "I've definitely become more open-minded after moving to a different state for college.",
+   "entity": "user",
+   "slot": "residence_history",
+   "value": "moved to a different state for college",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F11_forget/s11#r14",
+   "source_span": "Yeah, in mid-April I added more money. I added $2,500 to the account in mid-April and put all of it into BND, the Vanguard bond ETF.",
+   "entity": "user",
+   "slot": "investment_contribution",
+   "value": "added $2,500 to Fidelity account in mid-April, invested in BND",
+   "stated_date": "2025-04",
+   "slot_class": "other:investment contribution",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F11_forget/s11#r14",
+   "source_span": "So that brought my total contributions up from the original $15,000 to $17,500 total invested.",
+   "entity": "user",
+   "slot": "investment_total_contributions",
+   "value": "$17,500 total invested (originally $15,000)",
+   "stated_date": "",
+   "slot_class": "other:investment total contributions",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F11_forget/s13#r7",
+   "source_span": "So he opened a Fidelity account in January with $12,000 before switching to Schwab.",
+   "entity": "Dave",
+   "slot": "investment_account_history",
+   "value": "opened Fidelity account in January with $12,000 before switching to Schwab",
+   "stated_date": "2025-01",
+   "slot_class": "other:investment account history",
+   "owner": "Dave"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F11_forget/s19#r16",
+   "source_span": "For now my allocation is still the 55/18/15/12 split I told you about.",
+   "entity": "user",
+   "slot": "portfolio_allocation",
+   "value": "55% US equities / 18% international equities / 15% bonds / 12% cash",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F11_forget/s19#r16",
+   "source_span": "Maybe I'll shift from 15% bonds to something like 20% bonds eventually, but I haven't done it yet—just a thought for now.",
+   "entity": "user",
+   "slot": "portfolio_allocation_planned_change",
+   "value": "considering shifting from 15% to 20% bonds, not yet executed",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F11_forget/s19#r17",
+   "source_span": "Confirmed—your current portfolio allocation on record is 55% US equities (VTI), 18% international equities (VXUS), 15% bonds (BND), and approximately 12% cash/money market.",
+   "entity": "user",
+   "slot": "portfolio_allocation",
+   "value": "55% VTI, 18% VXUS, 15% BND, ~12% cash/money market",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F11_forget/s26#r9",
+   "source_span": "Your total out-of-pocket contributions to the Fidelity brokerage account are $17,500: the initial $15,000 deposit on March 3rd plus the additional $2,500 you added in mid-April, which went entirely into BND.",
+   "entity": "user",
+   "slot": "investment_total_contributions",
+   "value": "$17,500 total: $15,000 on March 3rd + $2,500 in mid-April into BND",
+   "stated_date": "2025-03-03",
+   "slot_class": "other:investment total contributions",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F11_forget/s26#r12",
+   "source_span": "the tariff-related dip in early April was about 6% over roughly one week",
+   "entity": "user",
+   "slot": "portfolio_event",
+   "value": "tariff-related dip of about 6% over roughly one week in early April",
+   "stated_date": "2025-04",
+   "slot_class": "other:portfolio event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F11_forget/s26#r12",
+   "source_span": "To recap what I need you to remember: my Fidelity account details, the $17,500 in total contributions, my four holdings and their allocation percentages, Angela's 529 recommendation, and the early April dip as an emotional benchmark. And the REIT thing is gone—don't track that anymore.",
+   "entity": "user",
+   "slot": "memory_tracking_instruction",
+   "value": "remember Fidelity account details, $17,500 contributions, four holdings allocation, Angela's 529 recommendation, early April dip; stop tracking REIT",
+   "stated_date": "",
+   "slot_class": "other:memory tracking instruction",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3319,
+ "usage_out": 1473,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

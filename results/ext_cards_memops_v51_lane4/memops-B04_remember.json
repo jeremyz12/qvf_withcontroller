@@ -1,0 +1,227 @@
+{
+ "uid": "memops-B04_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B04_remember/s8#r7",
+   "source_span": "B04's current confirmed location remains the 6th floor of Building 2",
+   "entity": "B04",
+   "slot": "location",
+   "value": "6th floor of Building 2",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B04_remember/s16#r8",
+   "source_span": "Kevin's transfer to B04 was effective January 15th",
+   "entity": "Kevin Chen",
+   "slot": "transfer_to_B04_date",
+   "value": "January 15th",
+   "stated_date": "2024-01-15",
+   "slot_class": "other:transfer to b04 date",
+   "owner": "Kevin Chen"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B04_remember/s16#r8",
+   "source_span": "my colleague Mei, who handles HR paperwork",
+   "entity": "Mei",
+   "slot": "role",
+   "value": "handles HR paperwork",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Mei"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B04_remember/s16#r10",
+   "source_span": "B04 is located on the 6th floor of Building 2",
+   "entity": "B04",
+   "slot": "location",
+   "value": "6th floor of Building 2",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B04_remember/s16#r10",
+   "source_span": "They moved there after the office renovation last year",
+   "entity": "B04",
+   "slot": "moved_after_renovation",
+   "value": "last year",
+   "stated_date": "",
+   "slot_class": "other:moved after renovation",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B04_remember/s16#r12",
+   "source_span": "the quarterly inventory reconciliation report that B04 sends us is typically due on the last business day of each quarter",
+   "entity": "B04",
+   "slot": "report_due_date",
+   "value": "last business day of each quarter",
+   "stated_date": "",
+   "slot_class": "other:report due date",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B04_remember/s16#r12",
+   "source_span": "My own finance submission is due five business days after that",
+   "entity": "user",
+   "slot": "finance_submission_due",
+   "value": "five business days after B04's quarterly report deadline",
+   "stated_date": "",
+   "slot_class": "other:finance submission due",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B04_remember/s17#r6",
+   "source_span": "Kevin Liu just transferred into C07 — Procurement Services",
+   "entity": "Kevin Liu",
+   "slot": "transfer_to_department",
+   "value": "C07 — Procurement Services",
+   "stated_date": "",
+   "slot_class": "other:transfer to department",
+   "owner": "Kevin Liu"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B04_remember/s17#r6",
+   "source_span": "He's a different Kevin from Kevin Chen in B04",
+   "entity": "Kevin Chen",
+   "slot": "department",
+   "value": "B04",
+   "stated_date": "",
+   "slot_class": "other:department",
+   "owner": "Kevin Chen"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B04_remember/s18#r1",
+   "source_span": "C07 added 5 new hires last quarter compared to B04's 3",
+   "entity": "C07",
+   "slot": "new_hires_last_quarter",
+   "value": "5",
+   "stated_date": "",
+   "slot_class": "other:new hires last quarter",
+   "owner": "C07"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B04_remember/s18#r1",
+   "source_span": "C07 added 5 new hires last quarter compared to B04's 3",
+   "entity": "B04",
+   "slot": "new_hires_last_quarter",
+   "value": "3",
+   "stated_date": "",
+   "slot_class": "other:new hires last quarter",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B04_remember/s28#r0",
+   "source_span": "B04 expanded by three new hires last quarter",
+   "entity": "B04",
+   "slot": "new_hires_last_quarter",
+   "value": "three",
+   "stated_date": "",
+   "slot_class": "other:new hires last quarter",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B04_remember/s28#r0",
+   "source_span": "those three additions brought them to their current headcount",
+   "entity": "B04",
+   "slot": "headcount_growth_reason",
+   "value": "three new hires brought current headcount",
+   "stated_date": "",
+   "slot_class": "other:headcount growth reason",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B04_remember/s28#r1",
+   "source_span": "lines up with the current headcount of 14 that Kevin mentioned",
+   "entity": "B04",
+   "slot": "headcount",
+   "value": "14",
+   "stated_date": "",
+   "slot_class": "other:headcount",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-B04_remember/s28#r1",
+   "source_span": "B04 was previously shown as having 11 people under a manager named Raymond Xu",
+   "entity": "B04",
+   "slot": "previous_headcount",
+   "value": "11",
+   "stated_date": "",
+   "slot_class": "other:previous headcount",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-B04_remember/s28#r1",
+   "source_span": "a manager named Raymond Xu",
+   "entity": "B04",
+   "slot": "previous_manager",
+   "value": "Raymond Xu",
+   "stated_date": "",
+   "slot_class": "other:previous manager",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-B04_remember/s28#r3",
+   "source_span": "Linda Zhao is the manager you've always dealt with",
+   "entity": "B04",
+   "slot": "manager",
+   "value": "Linda Zhao",
+   "stated_date": "",
+   "slot_class": "other:manager",
+   "owner": "B04"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-B04_remember/s28#r4",
+   "source_span": "Kevin leads a sub-team focused on vendor logistics coordination within B04",
+   "entity": "Kevin Chen",
+   "slot": "role",
+   "value": "leads a sub-team focused on vendor logistics coordination within B04",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Kevin Chen"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-B04_remember/s28#r4",
+   "source_span": "He's managing a few of those new hires and handling vendor relationships, shipment scheduling, and some compliance documentation",
+   "entity": "Kevin Chen",
+   "slot": "responsibilities",
+   "value": "managing new hires, vendor relationships, shipment scheduling, compliance documentation",
+   "stated_date": "",
+   "slot_class": "other:responsibilities",
+   "owner": "Kevin Chen"
+  }
+ ],
+ "usage_in": 3462,
+ "usage_out": 1745,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 24,
+  "total": 608,
+  "user_turns": 608,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

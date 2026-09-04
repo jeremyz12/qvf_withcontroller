@@ -1,0 +1,150 @@
+{
+ "uid": "wikiP54020-Q98594955",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54020-Q98594955/s0#r1",
+   "source_span": "I've signed with Cykling Odense, so that's my new team from now on",
+   "entity": "user",
+   "slot": "team",
+   "value": "Cykling Odense",
+   "stated_date": "2010",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54020-Q98594955/s2#r2",
+   "source_span": "I'm currently in week 4 of my 6-week baking class",
+   "entity": "user",
+   "slot": "activity",
+   "value": "taking a baking class",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:activity"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54020-Q98594955/s4#r2",
+   "source_span": "I wake up at 7:30 AM and go to bed at 11:30 PM.",
+   "entity": "user",
+   "slot": "sleep_schedule",
+   "value": "wakes at 7:30 AM, sleeps at 11:30 PM",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:sleep schedule"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54020-Q98594955/s4#r2",
+   "source_span": "My work hours are from 9:00 AM to 5:30 PM.",
+   "entity": "user",
+   "slot": "work_hours",
+   "value": "9:00 AM to 5:30 PM",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:work hours"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54020-Q98594955/s7#r1",
+   "source_span": "I've signed with Hedensted Cykelklub, so that's my new team from now on",
+   "entity": "user",
+   "slot": "team",
+   "value": "Hedensted Cykelklub",
+   "stated_date": "2013",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54020-Q98594955/s12#r0",
+   "source_span": "I'm riding for Horsens Amatør Cykleklub now, that's my new team",
+   "entity": "user",
+   "slot": "team",
+   "value": "Horsens Amatør Cykleklub",
+   "stated_date": "2015",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54020-Q98594955/s13#r0",
+   "source_span": "I'm thinking of taking online courses to further my education and skills.",
+   "entity": "user",
+   "slot": "activity",
+   "value": "taking online courses to further education",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:activity"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP54020-Q98594955/s13#r2",
+   "source_span": "My niece is going to UC Berkeley in the fall, by the way.",
+   "entity": "niece",
+   "slot": "university",
+   "value": "UC Berkeley",
+   "stated_date": "",
+   "owner": "niece",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP54020-Q98594955/s13#r4",
+   "source_span": "I think I'll start with DataCamp's Data Visualization with Python.",
+   "entity": "user",
+   "slot": "course",
+   "value": "Data Visualization with Python on DataCamp",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:course"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP54020-Q98594955/s17#r1",
+   "source_span": "I'm riding for Team Kvickly Odder Junior now, so can you save that in my profile?",
+   "entity": "user",
+   "slot": "team",
+   "value": "Team Kvickly Odder Junior",
+   "stated_date": "2017",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP54020-Q98594955/s26#r0",
+   "source_span": "I've officially signed on with Team ColoQuick",
+   "entity": "user",
+   "slot": "team",
+   "value": "Team ColoQuick",
+   "stated_date": "2021",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP54020-Q98594955/s33#r1",
+   "source_span": "I'm riding for Airtox-Carl Ras from today.",
+   "entity": "user",
+   "slot": "team",
+   "value": "Airtox-Carl Ras",
+   "stated_date": "2024",
+   "owner": "user",
+   "slot_class": "team"
+  }
+ ],
+ "usage_in": 2193,
+ "usage_out": 1389,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 17,
+  "total": 174,
+  "user_turns": 114,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

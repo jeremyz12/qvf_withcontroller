@@ -1,0 +1,106 @@
+{
+ "uid": "wikiP551008-Q29918442",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP551008-Q29918442/s0#r0",
+   "source_span": "I just moved to San Francisco and this apartment is mine",
+   "entity": "user",
+   "slot": "residence",
+   "value": "San Francisco",
+   "stated_date": "2006",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP551008-Q29918442/s10#r4",
+   "source_span": "I just completed my master's thesis in computer science last week",
+   "entity": "user",
+   "slot": "education",
+   "value": "master's thesis in computer science completed",
+   "stated_date": "2010-12",
+   "owner": "user",
+   "slot_class": "other:education"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP551008-Q29918442/s13#r0",
+   "source_span": "I just got a promotion to senior account manager",
+   "entity": "user",
+   "slot": "position",
+   "value": "senior account manager",
+   "stated_date": "2012-07",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP551008-Q29918442/s13#r2",
+   "source_span": "I got the promotion three weeks after the interview with the VP of Marketing",
+   "entity": "user",
+   "slot": "position",
+   "value": "promotion (senior account manager)",
+   "stated_date": "2012-07",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP551008-Q29918442/s13#r4",
+   "source_span": "I'll definitely keep those tips in mind as I settle into my new role",
+   "entity": "user",
+   "slot": "position",
+   "value": "new role (senior account manager)",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP551008-Q29918442/s23#r0",
+   "source_span": "I just moved into my new place in Mountain View",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Mountain View",
+   "stated_date": "2017",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP551008-Q29918442/s30#r1",
+   "source_span": "I've moved to Berlin, so update whatever address book you keep in that head of yours",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Berlin",
+   "stated_date": "2020",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP551008-Q29918442/s31#r0",
+   "source_span": "I got my brown loafers polished on January 8th",
+   "entity": "user",
+   "slot": "footwear",
+   "value": "brown loafers",
+   "stated_date": "2020-01-08",
+   "owner": "user",
+   "slot_class": "other:footwear"
+  }
+ ],
+ "usage_in": 2404,
+ "usage_out": 895,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 19,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

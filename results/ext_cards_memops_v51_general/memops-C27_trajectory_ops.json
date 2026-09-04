@@ -1,0 +1,194 @@
+{
+ "uid": "memops-C27_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C27_trajectory_ops/s10#r10",
+   "source_span": "I'm excited to try out Tandem and practice my Spanish with a native speaker.",
+   "entity": "user",
+   "slot": "language_learning",
+   "value": "learning Spanish using Tandem app",
+   "stated_date": "",
+   "slot_class": "other:language learning",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r6",
+   "source_span": "So I called Greenfield Medical Center on Elm Street a while back and they originally gave me a March 20th slot for my annual physical with Dr. Lena Park.",
+   "entity": "user",
+   "slot": "medical_appointment",
+   "value": "annual physical originally scheduled March 20th with Dr. Lena Park at Greenfield Medical Center Elm Street",
+   "stated_date": "2024-03-20",
+   "slot_class": "other:medical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r6",
+   "source_span": "She's been my primary care physician for a couple years now.",
+   "entity": "user",
+   "slot": "primary_care_physician",
+   "value": "Dr. Lena Park",
+   "stated_date": "",
+   "slot_class": "other:primary care physician",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r8",
+   "source_span": "My blood type is A-negative, I finally confirmed it from my old records.",
+   "entity": "user",
+   "slot": "blood_type",
+   "value": "A-negative",
+   "stated_date": "",
+   "slot_class": "other:blood type",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r8",
+   "source_span": "My wife Sarah had her physical done around mid-February and her cholesterol was slightly elevated.",
+   "entity": "user",
+   "slot": "spouse",
+   "value": "Sarah",
+   "stated_date": "2024-02",
+   "slot_class": "relationship",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r8",
+   "source_span": "her cholesterol was slightly elevated",
+   "entity": "Sarah",
+   "slot": "cholesterol",
+   "value": "slightly elevated",
+   "stated_date": "2024-02",
+   "slot_class": "other:cholesterol",
+   "owner": "Sarah"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r7",
+   "source_span": "I've updated your annual physical appointment to April 17th, Thursday, at 9:30 AM with Dr. Lena Park at Greenfield Medical Center on Elm Street.",
+   "entity": "user",
+   "slot": "medical_appointment",
+   "value": "annual physical rescheduled to April 17th, 9:30 AM with Dr. Lena Park at Greenfield Medical Center Elm Street",
+   "stated_date": "2024-04-17",
+   "slot_class": "other:medical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r7",
+   "source_span": "This is now the confirmed date after the original March 20th and the rescheduled April 3rd both fell through.",
+   "entity": "user",
+   "slot": "medical_appointment_history",
+   "value": "physical was rescheduled from March 20th to April 3rd (fell through) to April 17th",
+   "stated_date": "",
+   "slot_class": "other:medical appointment history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r8",
+   "source_span": "my dad was diagnosed with type 2 diabetes in January",
+   "entity": "user's dad",
+   "slot": "medical_condition",
+   "value": "diagnosed with type 2 diabetes",
+   "stated_date": "2024-01",
+   "slot_class": "other:medical condition",
+   "owner": "user's dad"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r10",
+   "source_span": "the dermatologist referral from last year's physical is fully resolved. I went to Dr. Huang back in November and the mole was benign",
+   "entity": "user",
+   "slot": "medical_history",
+   "value": "dermatologist referral resolved - saw Dr. Huang in November, mole was benign",
+   "stated_date": "2023-11",
+   "slot_class": "other:medical history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r12",
+   "source_span": "I tend to schedule all my medical appointments in the mornings because I feel sharper and more present earlier in the day.",
+   "entity": "user",
+   "slot": "appointment_preference",
+   "value": "prefers morning medical appointments",
+   "stated_date": "",
+   "slot_class": "other:appointment preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C27_trajectory_ops/s39#r8",
+   "source_span": "Sarah's February physical and I noticed her appointment was listed at the downtown branch on 4th Avenue with a Dr. Patel, not Dr. Park.",
+   "entity": "Sarah",
+   "slot": "physician",
+   "value": "sees Dr. Patel at downtown 4th Avenue branch of Greenfield Medical Center",
+   "stated_date": "2024-02",
+   "slot_class": "other:physician",
+   "owner": "Sarah"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C27_trajectory_ops/s35#r7",
+   "source_span": "that's the same location you switched away from",
+   "entity": "user",
+   "slot": "clinic_switch",
+   "value": "switched away from downtown 4th Avenue Greenfield Medical Center branch to Elm Street branch",
+   "stated_date": "",
+   "slot_class": "other:clinic switch",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C27_trajectory_ops/s42#r8",
+   "source_span": "when I rescheduled after the Denver trip, they actually offered me April 2nd first but I couldn't do a Wednesday because of my standing team meeting. That's why I ended up with April 3rd instead.",
+   "entity": "user",
+   "slot": "medical_appointment_history",
+   "value": "rescheduled after Denver trip; declined April 2nd (Wednesday) due to standing team meeting, chose April 3rd instead",
+   "stated_date": "2024-04-03",
+   "slot_class": "other:medical appointment history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C27_trajectory_ops/s42#r8",
+   "source_span": "I couldn't do a Wednesday because of my standing team meeting",
+   "entity": "user",
+   "slot": "recurring_commitment",
+   "value": "has a standing team meeting on Wednesdays",
+   "stated_date": "",
+   "slot_class": "other:recurring commitment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C27_trajectory_ops/s49#r2",
+   "source_span": "my dad actually had his diabetes follow-up on March 19th at his endocrinologist's office. He said they adjusted his metformin dosage.",
+   "entity": "user's dad",
+   "slot": "medical_treatment",
+   "value": "diabetes follow-up March 19th, metformin dosage adjusted",
+   "stated_date": "2024-03-19",
+   "slot_class": "other:medical treatment",
+   "owner": "user's dad"
+  }
+ ],
+ "usage_in": 12738,
+ "usage_out": 2180,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 66,
+  "total": 568,
+  "user_turns": 568,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

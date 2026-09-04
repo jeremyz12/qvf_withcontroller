@@ -1,0 +1,106 @@
+{
+ "uid": "wikiP108047-Q46421078",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108047-Q46421078/s0#r0",
+   "source_span": "I officially started as a postdoctoral researcher at University of California, Berkeley",
+   "entity": "user",
+   "slot": "position",
+   "value": "postdoctoral researcher",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108047-Q46421078/s0#r0",
+   "source_span": "I officially started as a postdoctoral researcher at University of California, Berkeley",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of California, Berkeley",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108047-Q46421078/s9#r0",
+   "source_span": "I officially signed on with Oregon State University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Oregon State University",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108047-Q46421078/s16#r0",
+   "source_span": "I got my new Fitbit Charge 4 fitness tracker about 6 weeks ago",
+   "entity": "user",
+   "slot": "device",
+   "value": "Fitbit Charge 4",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108047-Q46421078/s29#r1",
+   "source_span": "as of today I'm officially on faculty with the University of Minnesota System",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Minnesota System",
+   "stated_date": "2010-01-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108047-Q46421078/s29#r1",
+   "source_span": "as of today I'm officially on faculty with the University of Minnesota System",
+   "entity": "user",
+   "slot": "position",
+   "value": "faculty",
+   "stated_date": "2010-01-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108047-Q46421078/s24#r0",
+   "source_span": "I've been attending yoga studio classes at least three to four times a week",
+   "entity": "user",
+   "slot": "habit",
+   "value": "yoga studio classes 3-4 times a week",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:habit"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108047-Q46421078/s16#r4",
+   "source_span": "like you suggested. Do you think I could try to do 15 minutes of stretching exercises every morning to help with my flexibility and circulation?",
+   "entity": "user",
+   "slot": "habit",
+   "value": "15 minutes of stretching exercises every morning",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:habit"
+  }
+ ],
+ "usage_in": 2272,
+ "usage_out": 916,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 17,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

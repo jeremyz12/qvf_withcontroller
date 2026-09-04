@@ -1,0 +1,184 @@
+{
+ "uid": "memops-E14_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-E14_forget/s7#r14",
+   "source_span": "I've been wondering if my dermatologist might bump me up to nightly starting in June",
+   "entity": "user",
+   "slot": "retinoid_schedule_plan",
+   "value": "considering nightly retinoid starting June (not yet confirmed)",
+   "stated_date": "2024-06",
+   "slot_class": "other:retinoid schedule plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-E14_forget/s8#r6",
+   "source_span": "I take my dog Biscuit to a training class with a trainer named Greg. The sessions are biweekly on Saturdays, and we started in early March.",
+   "entity": "user",
+   "slot": "dog_training_schedule",
+   "value": "Biscuit's training with Greg, biweekly on Saturdays, started early March",
+   "stated_date": "2024-03",
+   "slot_class": "other:dog training schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-E14_forget/s24#r10",
+   "source_span": "I just set up auto-pay for my rent. It's due on the 1st of every month, so the payment goes out monthly on the 1st.",
+   "entity": "user",
+   "slot": "rent_autopay_schedule",
+   "value": "monthly on the 1st",
+   "stated_date": "",
+   "slot_class": "other:rent autopay schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-E14_forget/s24#r11",
+   "source_span": "Your updated schedule list now includes: retinoid every other night, Biscuit's biweekly Saturday training, vitamin D weekly on Sundays, and rent auto-pay monthly on the 1st.",
+   "entity": "user",
+   "slot": "retinoid_schedule",
+   "value": "every other night",
+   "stated_date": "",
+   "slot_class": "other:retinoid schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-E14_forget/s24#r11",
+   "source_span": "Your updated schedule list now includes: retinoid every other night, Biscuit's biweekly Saturday training, vitamin D weekly on Sundays, and rent auto-pay monthly on the 1st.",
+   "entity": "user",
+   "slot": "vitamin_d_schedule",
+   "value": "weekly on Sundays",
+   "stated_date": "",
+   "slot_class": "other:vitamin d schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-E14_forget/s24#r12",
+   "source_span": "I really enjoy my biweekly book club much more than the weekly one I tried last year",
+   "entity": "user",
+   "slot": "book_club_schedule",
+   "value": "biweekly book club",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user",
+   "value_raw": "biweekly book club (currently)"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-E14_forget/s24#r12",
+   "source_span": "my car only needs an oil change every 5,000 miles instead of the old 3,000-mile standard",
+   "entity": "user",
+   "slot": "car_oil_change_interval",
+   "value": "every 5,000 miles",
+   "stated_date": "",
+   "slot_class": "other:car oil change interval",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-E14_forget/s24#r14",
+   "source_span": "We actually finished Biscuit's training cycle in mid-April. There's no reason to track that schedule anymore, so please go ahead and remove the dog training class info from your memory.",
+   "entity": "user",
+   "slot": "dog_training_schedule",
+   "value": "completed mid-April, no longer tracked",
+   "stated_date": "2024-04",
+   "slot_class": "other:dog training schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-E14_forget/s24#r14",
+   "source_span": "Everything else — the retinoid, the vitamin D, and the rent auto-pay — those should all stay.",
+   "entity": "user",
+   "slot": "active_schedules",
+   "value": "retinoid, vitamin D, rent auto-pay remain active",
+   "stated_date": "",
+   "slot_class": "other:active schedules",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-E14_forget/s25#r16",
+   "source_span": "I definitely confirmed with my current landlord that it's monthly on the 1st.",
+   "entity": "user",
+   "slot": "rent_autopay_schedule",
+   "value": "monthly on the 1st, confirmed with current landlord",
+   "stated_date": "",
+   "slot_class": "other:rent autopay schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-E14_forget/s25#r19",
+   "source_span": "Your three active schedules are locked in: retinoid every other night starting March 3rd, vitamin D 50,000 IU weekly on Sundays, and rent auto-pay monthly on the 1st.",
+   "entity": "user",
+   "slot": "retinoid_schedule",
+   "value": "every other night, starting March 3rd",
+   "stated_date": "2024-03-03",
+   "slot_class": "other:retinoid schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-E14_forget/s25#r19",
+   "source_span": "Your three active schedules are locked in: retinoid every other night starting March 3rd, vitamin D 50,000 IU weekly on Sundays, and rent auto-pay monthly on the 1st.",
+   "entity": "user",
+   "slot": "vitamin_d_schedule",
+   "value": "50,000 IU weekly on Sundays",
+   "stated_date": "",
+   "slot_class": "other:vitamin d schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-E14_forget/s27#r14",
+   "source_span": "Turns out the old lease from my previous apartment says rent was due biweekly on the 1st and 15th.",
+   "entity": "user",
+   "slot": "previous_rent_schedule",
+   "value": "biweekly on the 1st and 15th (previous apartment, not current)",
+   "stated_date": "",
+   "slot_class": "other:previous rent schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-E14_forget/s27#r15",
+   "source_span": "Your current rent auto-pay record remains unchanged: monthly on the 1st, as confirmed with your current landlord.",
+   "entity": "user",
+   "slot": "rent_autopay_schedule",
+   "value": "monthly on the 1st",
+   "stated_date": "",
+   "slot_class": "other:rent autopay schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-E14_forget/s47#r10",
+   "source_span": "I think I'll go for the Chelsea Boot or the Chukka Boot, as they seem perfect for my style.",
+   "entity": "user",
+   "slot": "shoe_preference",
+   "value": "Chelsea Boot or Chukka Boot",
+   "stated_date": "",
+   "slot_class": "other:shoe preference",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4081,
+ "usage_out": 1878,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 25,
+  "total": 528,
+  "user_turns": 528,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

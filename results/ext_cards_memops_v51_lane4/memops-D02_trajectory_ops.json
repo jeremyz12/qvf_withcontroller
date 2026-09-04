@@ -1,0 +1,40 @@
+{
+ "uid": "memops-D02_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D02_trajectory_ops/s11#r8",
+   "source_span": "I'm excited to go hiking in Tangier now.",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Planning to go hiking in Tangier",
+   "stated_date": "",
+   "slot_class": "other:travel plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D02_trajectory_ops/s15#r4",
+   "source_span": "I've been thinking about starting a family soon",
+   "entity": "user",
+   "slot": "life_plan",
+   "value": "Thinking about starting a family soon",
+   "stated_date": "",
+   "slot_class": "other:life plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3430,
+ "usage_out": 202,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 23,
+  "total": 546,
+  "user_turns": 546,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

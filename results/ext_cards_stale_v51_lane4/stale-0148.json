@@ -1,0 +1,205 @@
+{
+ "uid": "stale-0148",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0148/s2#r2",
+   "source_span": "I actually just received my new one on February 15th with my new last name, Johnson",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "Johnson",
+   "stated_date": "2022-02-15",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0148/s6#r11",
+   "source_span": "I've been doing some cycling and swimming to cross-train and reduce the impact on my joints.",
+   "entity": "user",
+   "slot": "exercise_activities",
+   "value": "cycling and swimming for cross-training",
+   "stated_date": "",
+   "slot_class": "other:exercise activities",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0148/s6#r11",
+   "source_span": "I've also been working on my swimming technique to improve my efficiency in the water.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "improving swimming technique",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0148/s8#r11",
+   "source_span": "you've been averaging around $100-120 per week on groceries for the past month or so",
+   "entity": "user",
+   "slot": "grocery_spending",
+   "value": "$100-120 per week",
+   "stated_date": "",
+   "slot_class": "other:grocery spending",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0148/s8#r11",
+   "source_span": "you've been tracking your receipts from various stores, including Walmart, Trader Joe's, Instacart, and Costco",
+   "entity": "user",
+   "slot": "grocery_stores",
+   "value": "Walmart, Trader Joe's, Instacart, and Costco",
+   "stated_date": "",
+   "slot_class": "other:grocery stores",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0148/s14#r0",
+   "source_span": "I'm still on a high from winning a game of Scattergories with my family on New Year's Eve - I won by a landslide",
+   "entity": "user",
+   "slot": "recent_achievement",
+   "value": "won Scattergories with family on New Year's Eve",
+   "stated_date": "",
+   "slot_class": "other:recent achievement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0148/s14#r0",
+   "source_span": "I've recently gotten into them and I'm loving the challenge.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "word-based board games",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0148/s28#r6",
+   "source_span": "on Mondays, Wednesdays, and Fridays, I'll need to adjust the schedule since I'll be going to the gym after work and getting home at 6:30 pm",
+   "entity": "user",
+   "slot": "gym_schedule",
+   "value": "gym after work on Mondays, Wednesdays, Fridays, home at 6:30 pm",
+   "stated_date": "",
+   "slot_class": "other:gym schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0148/s28#r10",
+   "source_span": "it's better to stick with Tuesdays for grocery shopping",
+   "entity": "user",
+   "slot": "grocery_shopping_day",
+   "value": "Tuesdays",
+   "stated_date": "",
+   "slot_class": "other:grocery shopping day",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0148/s29#r9",
+   "source_span": "Watching YouTube tutorials, like Sculpting with Sarah, can be a great way to stay inspired and learn new techniques.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "sculpting, watches 'Sculpting with Sarah' tutorials",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0148/s30#r0",
+   "source_span": "my friend Mike mentioned that he's thinking of making a change to his living location, which would allow him to be closer to his friends and family",
+   "entity": "user_friend_Mike",
+   "slot": "relocation_plan",
+   "value": "considering moving closer to friends and family",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user_friend_Mike"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0148/s34#r0",
+   "source_span": "I usually take the 7:30 AM bus from my neighborhood to downtown, and that takes around 30 minutes.",
+   "entity": "user",
+   "slot": "commute",
+   "value": "7:30 AM bus from neighborhood to downtown, ~30 minutes",
+   "stated_date": "",
+   "slot_class": "other:commute",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0148/s34#r2",
+   "source_span": "I usually start work at 8:15 AM and have a 1-hour lunch break from 12:30 PM to 1:30 PM.",
+   "entity": "user",
+   "slot": "work_schedule",
+   "value": "starts work at 8:15 AM, lunch break 12:30-1:30 PM",
+   "stated_date": "",
+   "slot_class": "other:work schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0148/s34#r6",
+   "source_span": "I work in the downtown area, and I'm open to trying new cuisines.",
+   "entity": "user",
+   "slot": "work_location",
+   "value": "downtown area",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0148/s38#r6",
+   "source_span": "when I started using the hashtag #newjobalert on Twitter and LinkedIn after I got hired at my current company on February 15th",
+   "entity": "user",
+   "slot": "job_start_date",
+   "value": "hired at current company",
+   "stated_date": "2025-02-15",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0148/s39#r6",
+   "source_span": "I was rooting for the Chiefs, so it was awesome to see them win.",
+   "entity": "user",
+   "slot": "sports_team_preference",
+   "value": "Kansas City Chiefs fan",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0148/s46#r10",
+   "source_span": "I've had good experiences with hotels that have a loyalty program, and I've had two recent stays where my loyalty program membership was beneficial - two of them were actually for business trips.",
+   "entity": "user",
+   "slot": "hotel_loyalty_membership",
+   "value": "has hotel loyalty program membership, used on two recent business trip stays",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 8268,
+ "usage_out": 1839,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 29,
+  "total": 596,
+  "user_turns": 596,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -55,6 +55,21 @@ QUERIES = {
         "As of this week my home address changed",
     ],
 }
+# 通用记忆的 Stage 1 查询集(批 49):四个金标类之外补 schema 其余类目与"泛化状态变更"线索。
+# 用于检验两阶段抽取是否只对 WikiState 的四类特调(QVF_CARD_STAGE1_QUERIES=general)。
+QUERIES_GENERAL = dict(QUERIES)
+QUERIES_GENERAL.update({
+    "device": ["I got a new phone, laptop, tablet or camera", "I switched to a different device or upgraded my gadget", "My new car, bike or vehicle arrived"],
+    "location": ["I am currently travelling and staying somewhere else", "I am at a different place right now, away from home", "I'm visiting another city this week"],
+    "relationship": ["I started or ended a relationship, got engaged, married or divorced", "My partner and I broke up", "I have a new partner now"],
+    "provider": ["I switched my subscription, bank, insurer, phone plan or internet provider", "I cancelled a service and signed up with another company", "I changed my gym membership or streaming plan"],
+    "health": ["My diet, medication or health situation changed", "I stopped eating something or started a new routine", "The doctor changed my treatment"],
+    "habit": ["I no longer do what I used to do every day", "I picked up a new hobby or dropped an old one", "My daily routine or commute changed"],
+    "education": ["I enrolled in a course, school or degree programme", "I graduated or left my studies", "I started learning something new formally"],
+    "pet_family": ["We adopted a pet or a pet passed away", "A family member moved in or out", "We had a baby"],
+    "finance": ["I bought or sold a house, car or a big item", "My salary, rent or loan situation changed", "I started saving or investing differently"],
+    "generic_change": ["Update: things have changed since I last mentioned this", "Actually that is no longer the case, now it is different", "I used to, but these days I do something else", "As of now my situation is different from before", "I switched, changed, stopped or started something recently", "Correction to what I said earlier"],
+})
 KS = [3, 5, 8, 12, 20, 40]
 
 

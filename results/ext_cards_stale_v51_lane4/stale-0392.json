@@ -1,0 +1,205 @@
+{
+ "uid": "stale-0392",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0392/s1#r0",
+   "source_span": "donating $50 to the local Toys for Tots program",
+   "entity": "user",
+   "slot": "charity_donation",
+   "value": "$50 to Toys for Tots",
+   "stated_date": "",
+   "slot_class": "other:charity donation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0392/s1#r0",
+   "source_span": "organizing a toy drive at my office over the holiday season",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "organized a toy drive at office over holiday season",
+   "stated_date": "",
+   "slot_class": "other:volunteer activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0392/s1#r4",
+   "source_span": "I'm actually also interested in finding volunteer opportunities at local schools.",
+   "entity": "user",
+   "slot": "volunteer_interest",
+   "value": "volunteering at local schools",
+   "stated_date": "",
+   "slot_class": "other:volunteer interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0392/s1#r6",
+   "source_span": "I'm thinking of volunteering at a local school, possibly helping out with a literacy program.",
+   "entity": "user",
+   "slot": "volunteer_interest",
+   "value": "volunteering at a local school with a literacy program",
+   "stated_date": "",
+   "slot_class": "other:volunteer interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0392/s15#r8",
+   "source_span": "I've been thinking about getting a dance studio membership to take more classes and improve my skills.",
+   "entity": "user",
+   "slot": "membership_interest",
+   "value": "dance studio membership",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0392/s15#r8",
+   "source_span": "I think it'll be a great way to practice my salsa moves, socialize with friends, and just have a blast.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "salsa dancing",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0392/s20#r0",
+   "source_span": "I'm trying to update my online profiles with my new name, Avery.",
+   "entity": "user",
+   "slot": "name",
+   "value": "Avery",
+   "stated_date": "",
+   "slot_class": "other:name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0392/s20#r0",
+   "source_span": "I finally submitted the paperwork on August 10th, so I'm just waiting for the official confirmation now.",
+   "entity": "user",
+   "slot": "legal_name_change_status",
+   "value": "submitted paperwork, awaiting confirmation",
+   "stated_date": "2025-08-10",
+   "slot_class": "other:legal name change status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0392/s20#r2",
+   "source_span": "I've managed to update my LinkedIn profile, thanks for the help.",
+   "entity": "user",
+   "slot": "linkedin_profile_update",
+   "value": "updated LinkedIn profile with new name",
+   "stated_date": "",
+   "slot_class": "other:linkedin profile update",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0392/s20#r4",
+   "source_span": "I also need to update my email address to match my new name.",
+   "entity": "user",
+   "slot": "email_update_plan",
+   "value": "plans to update email address to match new name",
+   "stated_date": "",
+   "slot_class": "other:email update plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0392/s20#r4",
+   "source_span": "I should do it this weekend.",
+   "entity": "user",
+   "slot": "email_update_timing",
+   "value": "planned this weekend",
+   "stated_date": "",
+   "slot_class": "other:email update timing",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0392/s20#r6",
+   "source_span": "I'm planning to update my bank account information as well.",
+   "entity": "user",
+   "slot": "bank_update_plan",
+   "value": "plans to update bank account name",
+   "stated_date": "",
+   "slot_class": "other:bank update plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0392/s20#r8",
+   "source_span": "I'm planning to visit the bank next week to update my account information.",
+   "entity": "user",
+   "slot": "bank_visit_plan",
+   "value": "planned bank visit next week",
+   "stated_date": "",
+   "slot_class": "other:bank visit plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0392/s29#r0",
+   "source_span": "I've recently gotten into them and I'm loving the challenge.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "word-based board games",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0392/s29#r0",
+   "source_span": "last weekend, I introduced my friends to Codenames and we had a blast playing it at our monthly game night",
+   "entity": "user",
+   "slot": "activity",
+   "value": "plays Codenames at monthly game night",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0392/s34#r4",
+   "source_span": "Ever since I started that morning running club, my phone’s been buzzing to life the second I step outside",
+   "entity": "user",
+   "slot": "activity",
+   "value": "member of a morning running club",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0392/s40#r10",
+   "source_span": "Do you have any tips on how to break in my new Adidas sneakers?",
+   "entity": "user",
+   "slot": "possession",
+   "value": "new Adidas sneakers",
+   "stated_date": "",
+   "slot_class": "other:possession",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6946,
+ "usage_out": 1633,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 22,
+  "total": 590,
+  "user_turns": 590,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

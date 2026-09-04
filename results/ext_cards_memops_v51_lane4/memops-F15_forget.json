@@ -1,0 +1,84 @@
+{
+ "uid": "memops-F15_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F15_forget/s8#r6",
+   "source_span": "I had an intake appointment with a new primary care doctor on March 5th",
+   "entity": "user",
+   "slot": "medical_appointment",
+   "value": "intake appointment with new primary care doctor",
+   "stated_date": "03-05",
+   "slot_class": "other:medical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F15_forget/s8#r6",
+   "source_span": "my maternal grandfather was diagnosed with type 2 diabetes when he was around 52",
+   "entity": "user",
+   "slot": "family_medical_history",
+   "value": "maternal grandfather diagnosed with type 2 diabetes at age 52",
+   "stated_date": "",
+   "slot_class": "other:family medical history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F15_forget/s8#r6",
+   "source_span": "I'm in my late thirties now",
+   "entity": "user",
+   "slot": "age_range",
+   "value": "late thirties",
+   "stated_date": "",
+   "slot_class": "other:age range",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F15_forget/s37#r8",
+   "source_span": "I live in a landlocked area",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "landlocked area",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F15_forget/s44#r14",
+   "source_span": "my coworker mentioned that her aunt was diagnosed with breast cancer last year and had a mastectomy",
+   "entity": "user",
+   "slot": "coworker_family_medical_info",
+   "value": "coworker's aunt diagnosed with breast cancer and had mastectomy",
+   "stated_date": "",
+   "slot_class": "other:coworker family medical info",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F15_forget/s19#r4",
+   "source_span": "I struggle with sticking to my schedule when unexpected events happen, like my child getting sick",
+   "entity": "user",
+   "slot": "parental_status",
+   "value": "has a child",
+   "stated_date": "",
+   "slot_class": "other:parental status",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 5471,
+ "usage_out": 590,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 29,
+  "total": 516,
+  "user_turns": 516,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

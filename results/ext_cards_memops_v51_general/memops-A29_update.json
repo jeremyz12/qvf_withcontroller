@@ -1,0 +1,216 @@
+{
+ "uid": "memops-A29_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A29_update/s12#r6",
+   "source_span": "I wanted to talk about this Portuguese writing course I just signed up for. It's through a platform called WriteInPT. I enrolled on May 8th and it's an eight-week program. The instructor is Professor Cláudia Mendes.",
+   "entity": "user",
+   "slot": "course_enrollment",
+   "value": "WriteInPT Portuguese writing course, 8-week program, enrolled May 8th, instructor Professor Cláudia Mendes",
+   "stated_date": "2024-05-08",
+   "slot_class": "other:course enrollment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A29_update/s12#r6",
+   "source_span": "I specifically chose a course focused on Brazilian Portuguese because I have zero interest in European Portuguese grammar drills",
+   "entity": "user",
+   "slot": "course_focus",
+   "value": "Brazilian Portuguese (not European Portuguese)",
+   "stated_date": "",
+   "slot_class": "other:course focus",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A29_update/s12#r8",
+   "source_span": "before the course started I took the vocabulary placement test for the WriteInPT course and scored 74 out of 100",
+   "entity": "user",
+   "slot": "placement_test_score_initial_claim",
+   "value": "74 out of 100",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A29_update/s12#r8",
+   "source_span": "I grew up speaking Brazilian Portuguese at home in São Paulo until I was about eleven, so it was deeply ingrained.",
+   "entity": "user",
+   "slot": "childhood_language_background",
+   "value": "grew up speaking Brazilian Portuguese at home in São Paulo until about age eleven",
+   "stated_date": "",
+   "slot_class": "other:childhood language background",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A29_update/s12#r8",
+   "source_span": "living in the US for so long, things slip",
+   "entity": "user",
+   "slot": "residence",
+   "value": "living in the US",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A29_update/s12#r12",
+   "source_span": "my actual score was 72, not 74",
+   "entity": "user",
+   "slot": "placement_test_score_corrected",
+   "value": "72 out of 100",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A29_update/s13#r2",
+   "source_span": "remember my cousin Renata in Lisbon? She actually signed up for the WriteInPT course too, the same one I'm taking. Renata told me she scored 73 out of 100 on the WriteInPT vocabulary placement test.",
+   "entity": "user",
+   "slot": "cousin_info",
+   "value": "cousin Renata lives in Lisbon, enrolled in same WriteInPT course, scored 73/100 on placement test",
+   "stated_date": "",
+   "slot_class": "other:cousin info",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A29_update/s47#r10",
+   "source_span": "I started doing weekly Sunday calls with my grandmother in São Paulo back in late February, right after Carnaval.",
+   "entity": "user",
+   "slot": "grandmother_calls",
+   "value": "weekly Sunday calls with grandmother in São Paulo, started late February after Carnaval",
+   "stated_date": "2024-02",
+   "slot_class": "other:grandmother calls",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A29_update/s47#r10",
+   "source_span": "She doesn't speak any English at all, so the entire conversation is always in Portuguese. We talk every Sunday around 2 PM her time.",
+   "entity": "user",
+   "slot": "grandmother_calls_detail",
+   "value": "grandmother speaks no English; calls happen every Sunday around 2 PM her time, conducted in Portuguese",
+   "stated_date": "",
+   "slot_class": "other:grandmother calls detail",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A29_update/s47#r15",
+   "source_span": "going from 72 down to 68 because of a recalculation on the idiomatic expressions section",
+   "entity": "user",
+   "slot": "placement_test_score_revised",
+   "value": "68 out of 100 (recalculated due to idiomatic expressions section error)",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A29_update/s48#r2",
+   "source_span": "So I had my second WriteInPT class this week and it went well. Professor Cláudia had us do a free-writing exercise about a childhood memory, and I wrote about Carnaval in São Paulo when I was eight or nine.",
+   "entity": "user",
+   "slot": "course_progress",
+   "value": "attended second WriteInPT class; wrote free-writing exercise about childhood Carnaval memory in São Paulo at age 8-9",
+   "stated_date": "",
+   "slot_class": "other:course progress",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A29_update/s48#r4",
+   "source_span": "She said my descriptive vocabulary was strong but I need to work on verb conjugation consistency — I apparently slipped between present and past tense a few times without realizing.",
+   "entity": "user",
+   "slot": "course_feedback",
+   "value": "strong descriptive vocabulary; needs to work on verb conjugation/tense consistency",
+   "stated_date": "",
+   "slot_class": "other:course feedback",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A29_update/s48#r6",
+   "source_span": "Professor Cláudia said there might be another adjustment because some students appealed, and if the appeal goes through my score would go back up to 72.",
+   "entity": "user",
+   "slot": "placement_test_score_pending_appeal",
+   "value": "possible score adjustment back to 72 pending appeal review",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A29_update/s48#r8",
+   "source_span": "my mom mentioned last week she's been mixing up Portuguese and English more than usual — she called a garfo a fork mid-sentence while talking to my aunt and didn't even notice. She's been in the US over twenty years so I guess that's expected.",
+   "entity": "user",
+   "slot": "family_info_mother",
+   "value": "mother has been living in the US over twenty years; mixes Portuguese and English",
+   "stated_date": "",
+   "slot_class": "other:family info mother",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A29_update/s48#r8",
+   "source_span": "The eight-week course runs from May 8th so it should wrap up around early July.",
+   "entity": "user",
+   "slot": "course_end_estimate",
+   "value": "WriteInPT course expected to wrap up around early July",
+   "stated_date": "2024-05-08",
+   "slot_class": "other:course end estimate",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A29_update/s49#r4",
+   "source_span": "I've definitely noticed an increase in my own use of fitness apps and home workout equipment since the pandemic started.",
+   "entity": "user",
+   "slot": "fitness_habit",
+   "value": "increased use of fitness apps and home workout equipment since pandemic started",
+   "stated_date": "",
+   "slot_class": "other:fitness habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A29_update/s45#r12",
+   "source_span": "I'll start looking for a well-reviewed jeweler in my area.",
+   "entity": "user",
+   "slot": "plan",
+   "value": "plans to look for a well-reviewed jeweler in their area",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-A29_update/s10#r6",
+   "source_span": "when I first told you about my placement score, I almost thought I remembered it being 75 at first, but that wasn't right either.",
+   "entity": "user",
+   "slot": "placement_test_score_misremembered",
+   "value": "briefly misremembered placement score as 75",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 10619,
+ "usage_out": 2338,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 75,
+  "total": 536,
+  "user_turns": 536,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

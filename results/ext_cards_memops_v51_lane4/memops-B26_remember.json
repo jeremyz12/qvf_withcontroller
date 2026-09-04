@@ -1,0 +1,84 @@
+{
+ "uid": "memops-B26_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B26_remember/s22#r18",
+   "source_span": "Daniel has been living in Austin since 2016",
+   "entity": "Daniel",
+   "slot": "residence",
+   "value": "Austin",
+   "stated_date": "2016",
+   "slot_class": "residence",
+   "owner": "Daniel"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B26_remember/s31#r0",
+   "source_span": "my colleague Chloe just moved to Portland to join a tech startup",
+   "entity": "Chloe",
+   "slot": "residence",
+   "value": "Portland",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B26_remember/s31#r0",
+   "source_span": "She's been in fintech for years and finally made the jump to an early-stage company",
+   "entity": "Chloe",
+   "slot": "job_industry_history",
+   "value": "fintech, moved to early-stage tech startup",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B26_remember/s32#r14",
+   "source_span": "Chloe moved to Portland and started a new job at a nonprofit there",
+   "entity": "Chloe",
+   "slot": "job",
+   "value": "works at a nonprofit in Portland",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B26_remember/s32#r14",
+   "source_span": "She'd been pretty miserable at her old company in Denver",
+   "entity": "Chloe",
+   "slot": "previous_residence",
+   "value": "Denver",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B26_remember/s44#r10",
+   "source_span": "Daniel almost moved to Houston instead of Austin back in 2016. He had a job offer there too but chose Austin because of the tech scene.",
+   "entity": "Daniel",
+   "slot": "relocation_decision_2016",
+   "value": "chose Austin over Houston job offer due to tech scene",
+   "stated_date": "2016",
+   "slot_class": "location",
+   "owner": "Daniel"
+  }
+ ],
+ "usage_in": 2996,
+ "usage_out": 624,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 550,
+  "user_turns": 550,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

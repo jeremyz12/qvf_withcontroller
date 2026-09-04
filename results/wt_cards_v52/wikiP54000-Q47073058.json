@@ -1,0 +1,139 @@
+{
+ "uid": "wikiP54000-Q47073058",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP54000-Q47073058/s0#r0",
+   "source_span": "I just signed with GT Krush RebelLease, so that's my new team for the season",
+   "entity": "user",
+   "slot": "team",
+   "value": "GT Krush RebelLease",
+   "stated_date": "2016",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP54000-Q47073058/s6#r2",
+   "source_span": "I actually just received my new one on February 15th with my new last name, Johnson",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "Johnson",
+   "stated_date": "2017-02-15",
+   "owner": "user",
+   "slot_class": "other:last name"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP54000-Q47073058/s19#r1",
+   "source_span": "I've officially signed with Doltcini-Van Eyck-Proximus",
+   "entity": "user",
+   "slot": "team",
+   "value": "Doltcini-Van Eyck-Proximus",
+   "stated_date": "2020",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP54000-Q47073058/s25#r0",
+   "source_span": "I recently got rid of the old hutch in the dining room and replaced it with a smaller sideboard",
+   "entity": "user",
+   "slot": "dining_room_furniture",
+   "value": "replaced old hutch with smaller sideboard",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:dining room furniture"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP54000-Q47073058/s26#r2",
+   "source_span": "I'd say I'm a beginner in swimming, but I've been attending masters swimming sessions at the community pool every Wednesday evening since mid-January",
+   "entity": "user",
+   "slot": "swimming_habit",
+   "value": "attends masters swimming sessions at community pool every Wednesday evening since mid-January",
+   "stated_date": "2021-01",
+   "owner": "user",
+   "slot_class": "other:swimming habit"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP54000-Q47073058/s26#r2",
+   "source_span": "I've got some experience from the charity cycling event \"Pedal for a Purpose\" in February, where I completed 30 miles in 2 hours and 15 minutes",
+   "entity": "user",
+   "slot": "cycling_experience",
+   "value": "completed 30 miles in 2 hours and 15 minutes at 'Pedal for a Purpose' charity cycling event in February",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:cycling experience"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP54000-Q47073058/s27#r0",
+   "source_span": "I've been involved with a local group and noticed that our leadership team is predominantly male, with only 2 women out of 7 members",
+   "entity": "user",
+   "slot": "volunteer_group_leadership",
+   "value": "leadership team predominantly male, 2 women out of 7 members",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:volunteer group leadership"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP54000-Q47073058/s28#r1",
+   "source_span": "today's officially my first day riding for the Citymesh-Customm Pro Cycling Team",
+   "entity": "user",
+   "slot": "team",
+   "value": "Citymesh-Customm Pro Cycling Team",
+   "stated_date": "2022",
+   "owner": "user",
+   "slot_class": "team"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP54000-Q47073058/s28#r2",
+   "source_span": "Kit fitting went fine, the shoulders are a bit snug but they say it stretches.",
+   "entity": "user",
+   "slot": "kit_fitting_status",
+   "value": "kit fitting done, shoulders snug but expected to stretch",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:kit fitting status"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP54000-Q47073058/s31#r0",
+   "source_span": "I had to spend an entire Saturday afternoon in early March gathering all the necessary papers and filling out application forms to get it changed",
+   "entity": "user",
+   "slot": "name_change_process",
+   "value": "spent Saturday afternoon in early March gathering papers and filling forms to change name",
+   "stated_date": "2022-03",
+   "owner": "user",
+   "slot_class": "other:name change process"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP54000-Q47073058/s31#r4",
+   "source_span": "I will create a new email address with my new name and set up email forwarding from my old email address to my new one",
+   "entity": "user",
+   "slot": "email_migration_plan",
+   "value": "creating new email with new name and forwarding old email to new one",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:email migration plan"
+  }
+ ],
+ "usage_in": 2043,
+ "usage_out": 1583,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 15,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

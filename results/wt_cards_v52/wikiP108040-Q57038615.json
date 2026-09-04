@@ -1,0 +1,150 @@
+{
+ "uid": "wikiP108040-Q57038615",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108040-Q57038615/s3#r0",
+   "source_span": "I officially started at Henry Ford Hospital this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Henry Ford Hospital",
+   "stated_date": "1988-07",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108040-Q57038615/s8#r1",
+   "source_span": "I've started at the Leonard M. Miller School of Medicine this month",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Leonard M. Miller School of Medicine",
+   "stated_date": "1989-07",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108040-Q57038615/s19#r0",
+   "source_span": "I officially started this month as a research fellow at the National Cancer Institute",
+   "entity": "user",
+   "slot": "position",
+   "value": "research fellow",
+   "stated_date": "1992-04",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108040-Q57038615/s19#r0",
+   "source_span": "I officially started this month as a research fellow at the National Cancer Institute",
+   "entity": "user",
+   "slot": "employer",
+   "value": "National Cancer Institute",
+   "stated_date": "1992-04",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108040-Q57038615/s31#r0",
+   "source_span": "I officially started this month as a clinical investigator at the National Institute of Allergy and Infectious Diseases",
+   "entity": "user",
+   "slot": "position",
+   "value": "clinical investigator",
+   "stated_date": "1995-07",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108040-Q57038615/s31#r0",
+   "source_span": "I officially started this month as a clinical investigator at the National Institute of Allergy and Infectious Diseases",
+   "entity": "user",
+   "slot": "employer",
+   "value": "National Institute of Allergy and Infectious Diseases",
+   "stated_date": "1995-07",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108040-Q57038615/s31#r1",
+   "source_span": "the Bethesda apartment has zero furniture besides a mattress and a lamp",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Bethesda apartment",
+   "stated_date": "1995-07",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108040-Q57038615/s7#r4",
+   "source_span": "I've actually been using sumac and za'atar in my cooking lately",
+   "entity": "user",
+   "slot": "diet",
+   "value": "cooking with sumac and za'atar, adding za'atar to scrambled eggs and roasted vegetables",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108040-Q57038615/s24#r2",
+   "source_span": "I'm also considering replacing my old Asics Gel-Kayano trainers, which have been with me since college.",
+   "entity": "user",
+   "slot": "footwear",
+   "value": "owns Asics Gel-Kayano trainers since college",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:footwear"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108040-Q57038615/s25#r2",
+   "source_span": "I just got rid of my old coffee table and replaced it with a new one from IKEA",
+   "entity": "user",
+   "slot": "furniture",
+   "value": "new IKEA coffee table",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:furniture"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108040-Q57038615/s20#r4",
+   "source_span": "I've also been using a branded hashtag #FitWithSarah on all of my fitness-related posts",
+   "entity": "user",
+   "slot": "social_media_handle",
+   "value": "#FitWithSarah",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social media handle"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP108040-Q57038615/s33#r4",
+   "source_span": "I've been trying to stay motivated by tracking my progress using a fitness app",
+   "entity": "user",
+   "slot": "fitness_tracking",
+   "value": "uses a fitness app to track step count, goal 10,000 steps/day",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:fitness tracking"
+  }
+ ],
+ "usage_in": 2731,
+ "usage_out": 1528,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 166,
+  "user_turns": 106,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

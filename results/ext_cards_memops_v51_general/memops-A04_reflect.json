@@ -1,0 +1,227 @@
+{
+ "uid": "memops-A04_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A04_reflect/s0#r2",
+   "source_span": "I moved here February 3rd",
+   "entity": "user",
+   "slot": "residence_city",
+   "value": "Portland",
+   "stated_date": "2024-02-03",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "I'm also on SE Division Street near 26th",
+   "entity": "user",
+   "slot": "residence_address",
+   "value": "SE Division Street near 26th, Portland",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "my lease here runs through January 31st of next year",
+   "entity": "user",
+   "slot": "lease_end_date",
+   "value": "January 31st of next year",
+   "stated_date": "",
+   "slot_class": "other:lease end date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "I'll check out People's Co-op this weekend",
+   "entity": "user",
+   "slot": "planned_activity",
+   "value": "check out People's Co-op",
+   "stated_date": "",
+   "slot_class": "other:planned activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A04_reflect/s1#r4",
+   "source_span": "I think I'll try the free WiFi first and switch to the paid service if needed.",
+   "entity": "user",
+   "slot": "wifi_plan",
+   "value": "trying free WiFi first, may switch to paid service",
+   "stated_date": "",
+   "slot_class": "other:wifi plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "I explored the Hawthorne district last week. I went to the smaller Powell's location on Hawthorne, not the big downtown one. I liked it way better.",
+   "entity": "user",
+   "slot": "favorite_bookstore",
+   "value": "Powell's Hawthorne location (smaller store)",
+   "stated_date": "",
+   "slot_class": "other:favorite bookstore",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "my friend Nadia is the one who got me to look at the Division Street area. She works at OHSU up on the hill. She moved to Portland about a year before me.",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Nadia - works at OHSU, moved to Portland ~1 year before user, recommended Division Street area",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A04_reflect/s6#r8",
+   "source_span": "One of Nadia's coworkers from OHSU goes to the PSU market every Saturday too",
+   "entity": "user",
+   "slot": "market_habit",
+   "value": "goes to PSU market every Saturday",
+   "stated_date": "",
+   "slot_class": "other:market habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A04_reflect/s11#r5",
+   "source_span": "Your issue with the grocery stores is about the over-packaging and unrecognizable ingredients, not the cost.",
+   "entity": "user",
+   "slot": "grocery_preference",
+   "value": "dislikes over-packaging and unrecognizable ingredients in grocery stores",
+   "stated_date": "",
+   "slot_class": "other:grocery preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A04_reflect/s13#r4",
+   "source_span": "Between the farmers market, the garden plot, and hopefully People's Co-op, I think I can mostly avoid the big grocery chains.",
+   "entity": "user",
+   "slot": "food_sourcing_strategy",
+   "value": "farmers market, garden plot, and People's Co-op to avoid big grocery chains",
+   "stated_date": "",
+   "slot_class": "other:food sourcing strategy",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A04_reflect/s13#r6",
+   "source_span": "I might also look into a CSA box — community supported agriculture. A couple of the vendors at the PSU market mentioned they do weekly boxes. That could fill in the gaps between what I grow and what I buy at the market. I haven't signed up yet, but it's on my radar.",
+   "entity": "user",
+   "slot": "csa_box_plan",
+   "value": "considering CSA box from PSU market vendors, not yet signed up",
+   "stated_date": "",
+   "slot_class": "other:csa box plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A04_reflect/s14#r3",
+   "source_span": "Your basil, lettuce, and radishes on plot 14 are a simpler, lower-maintenance approach, which fits your style.",
+   "entity": "user",
+   "slot": "garden_plot",
+   "value": "plot 14 - grows basil, lettuce, and radishes",
+   "stated_date": "",
+   "slot_class": "other:garden plot",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A04_reflect/s18#r4",
+   "source_span": "I think I'll try going for a walk during my next break.",
+   "entity": "user",
+   "slot": "break_activity_plan",
+   "value": "going for a walk during breaks",
+   "stated_date": "",
+   "slot_class": "other:break activity plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A04_reflect/s18#r6",
+   "source_span": "I'll also try doing some light stretches during my short breaks.",
+   "entity": "user",
+   "slot": "break_activity_plan",
+   "value": "doing light stretches during short breaks",
+   "stated_date": "",
+   "slot_class": "other:break activity plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A04_reflect/s21#r2",
+   "source_span": "I have a black tie event next week and wasn't sure what to wear.",
+   "entity": "user",
+   "slot": "upcoming_event",
+   "value": "black tie event next week",
+   "stated_date": "",
+   "slot_class": "other:upcoming event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A04_reflect/s23#r4",
+   "source_span": "I think I'll try incorporating the Pomodoro Technique into my schedule.",
+   "entity": "user",
+   "slot": "productivity_technique",
+   "value": "trying Pomodoro Technique",
+   "stated_date": "",
+   "slot_class": "other:productivity technique",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A04_reflect/s35#r8",
+   "source_span": "I'm going to try my best to quit smoking and live a healthier life.",
+   "entity": "user",
+   "slot": "health_goal",
+   "value": "trying to quit smoking",
+   "stated_date": "",
+   "slot_class": "other:health goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-A04_reflect/s42#r6",
+   "source_span": "I'm also thinking of switching to a natural shampoo.",
+   "entity": "user",
+   "slot": "personal_care_plan",
+   "value": "considering switching to natural shampoo",
+   "stated_date": "",
+   "slot_class": "other:personal care plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-A04_reflect/s4#r16",
+   "source_span": "I think I'll start with one of the free options and see how it goes.",
+   "entity": "user",
+   "slot": "security_app_plan",
+   "value": "starting with free security app option for Instagram",
+   "stated_date": "",
+   "slot_class": "other:security app plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 9362,
+ "usage_out": 2133,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 65,
+  "total": 550,
+  "user_turns": 550,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

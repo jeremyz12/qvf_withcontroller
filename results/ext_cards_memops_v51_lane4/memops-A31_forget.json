@@ -1,0 +1,139 @@
+{
+ "uid": "memops-A31_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A31_forget/s1#r4",
+   "source_span": "My current phone number is 512-847-3291.",
+   "entity": "user",
+   "slot": "phone_number",
+   "value": "512-847-3291",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A31_forget/s1#r4",
+   "source_span": "It's a Texas area code, which I love — feels like a proper fresh start after leaving Illinois.",
+   "entity": "user",
+   "slot": "previous_location",
+   "value": "Illinois",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A31_forget/s1#r6",
+   "source_span": "I switched to this carrier around February 3rd when I moved to Austin.",
+   "entity": "user",
+   "slot": "carrier_switch_date",
+   "value": "February 3rd",
+   "stated_date": "2024-02-03",
+   "slot_class": "other:carrier switch date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A31_forget/s1#r6",
+   "source_span": "That's when I got the 512 number.",
+   "entity": "user",
+   "slot": "phone_number_activation_date",
+   "value": "February 3rd",
+   "stated_date": "2024-02-03",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A31_forget/s1#r6",
+   "source_span": "Before that I had a 630 area code from Illinois, but that line is completely dead now — I ported it out and canceled it.",
+   "entity": "user",
+   "slot": "old_phone_number",
+   "value": "630 area code (Illinois), canceled",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A31_forget/s1#r8",
+   "source_span": "I set up two-factor authentication on my bank account using the 512 number around February 26th or 27th.",
+   "entity": "user",
+   "slot": "bank_2fa_setup_date",
+   "value": "February 26th or 27th",
+   "stated_date": "2024-02-26",
+   "slot_class": "other:bank 2fa setup date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A31_forget/s12#r11",
+   "source_span": "you registered your number 512-847-3291 at Dr. Patel's clinic on South Lamar around mid-March, shortly before your first appointment there on March 18th",
+   "entity": "user",
+   "slot": "clinic_registration",
+   "value": "registered phone number at Dr. Patel's clinic on South Lamar, mid-March",
+   "stated_date": "2024-03",
+   "slot_class": "other:clinic registration",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A31_forget/s12#r11",
+   "source_span": "first appointment there on March 18th",
+   "entity": "user",
+   "slot": "clinic_appointment_date",
+   "value": "March 18th",
+   "stated_date": "2024-03-18",
+   "slot_class": "other:clinic appointment date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A31_forget/s16#r7",
+   "source_span": "Done — I've removed all information about the gas station rewards app incident, including the signup date, the spam calls, and the uninstall.",
+   "entity": "user",
+   "slot": "gas_station_app_incident",
+   "value": "removed from records",
+   "stated_date": "",
+   "slot_class": "other:gas station app incident",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A31_forget/s16#r7",
+   "source_span": "your current number 512-847-3291, the February 3rd carrier switch, the bank 2FA setup from late February, Dr. Patel's clinic registration from mid-March, and your preference for texts over calls",
+   "entity": "user",
+   "slot": "communication_preference",
+   "value": "prefers texts over calls",
+   "stated_date": "",
+   "slot_class": "other:communication preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A31_forget/s12#r14",
+   "source_span": "my friend Derek still tries to text my old Illinois number sometimes",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Derek, still texts old Illinois number",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3866,
+ "usage_out": 1185,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 516,
+  "user_turns": 516,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

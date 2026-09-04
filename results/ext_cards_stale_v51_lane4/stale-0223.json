@@ -1,0 +1,238 @@
+{
+ "uid": "stale-0223",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0223/s7#r0",
+   "source_span": "I’m apartment hunting",
+   "entity": "user",
+   "slot": "housing_status",
+   "value": "apartment hunting",
+   "stated_date": "2024-10-13",
+   "slot_class": "other:housing status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0223/s7#r0",
+   "source_span": "I’ve set a hard limit on my daily travel, so I’m only looking at places within a forty-minute drive of work",
+   "entity": "user",
+   "slot": "apartment_search_constraint",
+   "value": "looking at places within a forty-minute drive of work",
+   "stated_date": "2024-10-13",
+   "slot_class": "other:apartment search constraint",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0223/s20#r0",
+   "source_span": "I just finished a charity 5K run three weeks ago with a personal best time of 27 minutes and 12 seconds",
+   "entity": "user",
+   "slot": "running_personal_best_5k",
+   "value": "27 minutes and 12 seconds",
+   "stated_date": "2024-11-23",
+   "slot_class": "other:running personal best 5k",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0223/s23#r6",
+   "source_span": "Before playing The Last of Us Part II, I was playing Destiny 2 on my Xbox Series X. I had reached level 1300 and completed the latest season's raid.",
+   "entity": "user",
+   "slot": "gaming_progress_destiny2",
+   "value": "reached level 1300 and completed latest season's raid, playing on Xbox Series X",
+   "stated_date": "",
+   "slot_class": "other:gaming progress destiny2",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0223/s23#r7",
+   "source_span": "**The Last of Us Part II** (PS5) - Currently on Chapter 7",
+   "entity": "user",
+   "slot": "gaming_progress_tlou2",
+   "value": "Currently on Chapter 7, playing on PS5",
+   "stated_date": "",
+   "slot_class": "other:gaming progress tlou2",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0223/s27#r0",
+   "source_span": "I've been feeling a bit isolated since I moved to my new apartment three months ago",
+   "entity": "user",
+   "slot": "residence_move",
+   "value": "moved to new apartment",
+   "stated_date": "2024-10",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0223/s27#r2",
+   "source_span": "I think I will check out Meetup.com and look for photography groups, since I've been attending a weekly meetup for photography enthusiasts.",
+   "entity": "user",
+   "slot": "hobby_group",
+   "value": "attending a weekly photography meetup group",
+   "stated_date": "2025-01-09",
+   "slot_class": "other:hobby group",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0223/s30#r2",
+   "source_span": "I'm actually looking forward to discussing gratitude more in my new weekly Bible study group that I start attending today, where we're going through the Book of Luke.",
+   "entity": "user",
+   "slot": "bible_study_group",
+   "value": "started attending weekly Bible study group going through Book of Luke",
+   "stated_date": "2025-01-24",
+   "slot_class": "other:bible study group",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0223/s31#r10",
+   "source_span": "I attended a full-day conference on entrepreneurship at a downtown hotel in November, where I networked with a lot of interesting people and got some valuable advice from the keynote speakers,",
+   "entity": "user",
+   "slot": "conference_attended",
+   "value": "attended full-day entrepreneurship conference at downtown hotel",
+   "stated_date": "2024-11",
+   "slot_class": "other:conference attended",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0223/s35#r2",
+   "source_span": "Ever since the neurologist put me on that new seizure medication, the DMV flagged my license as temporarily suspended",
+   "entity": "user",
+   "slot": "medical_condition",
+   "value": "on new seizure medication prescribed by neurologist",
+   "stated_date": "",
+   "slot_class": "other:medical condition",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0223/s35#r2",
+   "source_span": "the DMV flagged my license as temporarily suspended—I’m juggling rides and delivery drop-offs until the paperwork clears",
+   "entity": "user",
+   "slot": "license_status",
+   "value": "temporarily suspended by DMV",
+   "stated_date": "",
+   "slot_class": "other:license status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0223/s37#r11",
+   "source_span": "it's great to hear that Rachel and Alex are doing well, and it's even more special that Alex has been welcomed into your family with open arms",
+   "entity": "user",
+   "slot": "family_relationship",
+   "value": "Rachel's partner Alex welcomed into family",
+   "stated_date": "",
+   "slot_class": "relationship",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0223/s38#r0",
+   "source_span": "I just got back from Foot Locker and scored those sneakers I've been eyeing during their end-of-season sale - 30% off was a steal!",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "bought sneakers at Foot Locker, 30% off end-of-season sale",
+   "stated_date": "2025-02-16",
+   "slot_class": "other:recent purchase",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0223/s38#r4",
+   "source_span": "I've been wearing those discounted sneakers from Foot Locker almost every day since I got them",
+   "entity": "user",
+   "slot": "habit",
+   "value": "wearing discounted Foot Locker sneakers almost every day",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0223/s39#r4",
+   "source_span": "I've been trying to post more regularly on Instagram, but sometimes I get sidetracked by scrolling through my feed.",
+   "entity": "user",
+   "slot": "social_media_habit",
+   "value": "trying to post more regularly on Instagram",
+   "stated_date": "",
+   "slot_class": "other:social media habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0223/s39#r4",
+   "source_span": "I've been getting more engagement on my posts lately",
+   "entity": "user",
+   "slot": "social_media_engagement",
+   "value": "getting more engagement on Instagram posts lately",
+   "stated_date": "",
+   "slot_class": "other:social media engagement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0223/s41#r2",
+   "source_span": "I'm mainly into blues and indie-folk, and I'm looking to add more depth and complexity to my sound.",
+   "entity": "user",
+   "slot": "music_genre_preference",
+   "value": "blues and indie-folk",
+   "stated_date": "",
+   "slot_class": "other:music genre preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0223/s41#r2",
+   "source_span": "I've been experimenting with different tones on my new amp, and I'm really liking the flexibility it offers.",
+   "entity": "user",
+   "slot": "music_equipment",
+   "value": "new amp",
+   "stated_date": "",
+   "slot_class": "other:music equipment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "stale-0223/s42#r0",
+   "source_span": "I just gave a nice plant and a welcoming card to my neighbor who recently moved in, which I got from the gift shop down the street for around $20",
+   "entity": "user",
+   "slot": "recent_gift_given",
+   "value": "gave plant and welcoming card to new neighbor, from local gift shop, ~$20",
+   "stated_date": "2025-02-20",
+   "slot_class": "other:recent gift given",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "stale-0223/s44#r10",
+   "source_span": "I've always been fascinated by the intricate mechanisms of clocks and watches.",
+   "entity": "user",
+   "slot": "hobby_interest",
+   "value": "fascinated by clocks and watches mechanisms",
+   "stated_date": "",
+   "slot_class": "other:hobby interest",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6621,
+ "usage_out": 2389,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 594,
+  "user_turns": 594,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

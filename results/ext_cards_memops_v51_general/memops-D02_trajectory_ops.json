@@ -1,0 +1,172 @@
+{
+ "uid": "memops-D02_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D02_trajectory_ops/s3#r2",
+   "source_span": "my Fedora 39 setup is too stable to risk right now",
+   "entity": "user",
+   "slot": "os",
+   "value": "Fedora 39",
+   "stated_date": "",
+   "slot_class": "other:os",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D02_trajectory_ops/s5#r4",
+   "source_span": "My machine is a ThinkPad X1 Carbon Gen 11, the 14-inch model with an i7-1365U and 32 gigs of RAM. I got it on February 10th this year.",
+   "entity": "user",
+   "slot": "laptop_model",
+   "value": "ThinkPad X1 Carbon Gen 11, 14-inch, i7-1365U, 32GB RAM",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D02_trajectory_ops/s5#r4",
+   "source_span": "I got it on February 10th this year.",
+   "entity": "user",
+   "slot": "laptop_purchase_date",
+   "value": "February 10th (this year)",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D02_trajectory_ops/s5#r7",
+   "source_span": "1 TB SSD for storage, a matte display running at 2560×1440 resolution, and a travel-friendly weight of roughly 1.12 kg",
+   "entity": "user",
+   "slot": "laptop_storage",
+   "value": "1 TB SSD",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D02_trajectory_ops/s5#r7",
+   "source_span": "a matte display running at 2560×1440 resolution",
+   "entity": "user",
+   "slot": "laptop_display",
+   "value": "matte, 2560x1440 resolution",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D02_trajectory_ops/s5#r7",
+   "source_span": "a travel-friendly weight of roughly 1.12 kg",
+   "entity": "user",
+   "slot": "laptop_weight",
+   "value": "roughly 1.12 kg",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D02_trajectory_ops/s23#r0",
+   "source_span": "A few weeks ago — late March I think — I noticed the battery was draining way faster than usual.",
+   "entity": "user",
+   "slot": "laptop_issue",
+   "value": "battery draining faster than usual due to Lenovo Vantage background process",
+   "stated_date": "2024-03",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-D02_trajectory_ops/s23#r2",
+   "source_span": "after I disabled a couple of those Vantage services, things went back to normal",
+   "entity": "user",
+   "slot": "laptop_issue_resolution",
+   "value": "disabled Vantage services, battery drain stopped",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-D02_trajectory_ops/s23#r2",
+   "source_span": "the resolution is actually 2560 by 1600, not 1440. I had it wrong in my head for a while.",
+   "entity": "user",
+   "slot": "laptop_display",
+   "value": "2560x1600 (corrected from 2560x1440)",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-D02_trajectory_ops/s23#r3",
+   "source_span": "Your updated display spec is now 2560×1600 matte.",
+   "entity": "user",
+   "slot": "laptop_display",
+   "value": "2560x1600 matte",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-D02_trajectory_ops/s23#r6",
+   "source_span": "I've been thinking about whether I should upgrade to Fedora 40 when it comes out. The current Fedora 39 setup has been stable and I don't want to break anything",
+   "entity": "user",
+   "slot": "os",
+   "value": "Fedora 39 (considering Fedora 40 upgrade)",
+   "stated_date": "",
+   "slot_class": "other:os",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-D02_trajectory_ops/s34#r14",
+   "source_span": "I ran xrandr on Fedora and it clearly reports 2560x1600, so Priya's info was wrong for my panel.",
+   "entity": "user",
+   "slot": "laptop_display",
+   "value": "confirmed 2560x1600 via xrandr on Fedora",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-D02_trajectory_ops/s34#r14",
+   "source_span": "I'll keep 2560 by 1600 as the native resolution in my scaling script and move on.",
+   "entity": "user",
+   "slot": "laptop_display",
+   "value": "2560x1600 native resolution used in scaling script",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-D02_trajectory_ops/s45#r0",
+   "source_span": "Not that it matters for me since I just got my Gen 11.",
+   "entity": "user",
+   "slot": "laptop_model",
+   "value": "just got ThinkPad X1 Carbon Gen 11",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 11016,
+ "usage_out": 1676,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 73,
+  "total": 546,
+  "user_turns": 546,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

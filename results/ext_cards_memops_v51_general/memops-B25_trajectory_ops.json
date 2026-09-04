@@ -1,0 +1,183 @@
+{
+ "uid": "memops-B25_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B25_trajectory_ops/s2#r7",
+   "source_span": "Lily's swimming lessons are at the Greenfield Aquatic Center, every Tuesday and Thursday from 4:30 to 5:15 PM, in Coach Rivera's intermediate lane. That's been running since mid-January.",
+   "entity": "Lily",
+   "slot": "swimming_schedule",
+   "value": "Tuesday and Thursday 4:30-5:15 PM at Greenfield Aquatic Center, Coach Rivera",
+   "stated_date": "2025-01",
+   "slot_class": "other:swimming schedule",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B25_trajectory_ops/s2#r7",
+   "source_span": "robotics on the first and third Fridays",
+   "entity": "Lily",
+   "slot": "robotics_schedule",
+   "value": "first and third Fridays",
+   "stated_date": "",
+   "slot_class": "other:robotics schedule",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B25_trajectory_ops/s7#r0",
+   "source_span": "starting April 1st, the Tuesday swimming slot moves to 5:00 to 5:45 PM. Thursday stays the same at 4:30 to 5:15 PM.",
+   "entity": "Lily",
+   "slot": "swimming_schedule",
+   "value": "Tuesday 5:00-5:45 PM (from April 1st), Thursday 4:30-5:15 PM unchanged",
+   "stated_date": "2025-04-01",
+   "slot_class": "other:swimming schedule",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B25_trajectory_ops/s7#r2",
+   "source_span": "starting in April the robotics club is switching to every Friday instead of every other Friday, same time slot 3:15 to 4:30",
+   "entity": "Lily",
+   "slot": "robotics_schedule",
+   "value": "every Friday 3:15-4:30 PM starting April",
+   "stated_date": "2025-04",
+   "slot_class": "other:robotics schedule",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B25_trajectory_ops/s7#r3",
+   "source_span": "Saturdays — art class 10:00–11:30 AM.",
+   "entity": "Lily",
+   "slot": "art_class_schedule",
+   "value": "Saturdays 10:00-11:30 AM",
+   "stated_date": "",
+   "slot_class": "other:art class schedule",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B25_trajectory_ops/s7#r6",
+   "source_span": "We actually dropped Lily's Wednesday piano lessons with Mrs. Chen at the end of February.",
+   "entity": "Lily",
+   "slot": "piano_lessons",
+   "value": "dropped Wednesday piano lessons with Mrs. Chen (end of February)",
+   "stated_date": "2025-02",
+   "slot_class": "other:piano lessons",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B25_trajectory_ops/s7#r6",
+   "source_span": "There's a youth climbing program at Summit Gym starting in April on Saturday afternoons. I like that it's individual and not team-based. I haven't signed her up yet, but I'm seriously considering it.",
+   "entity": "Lily",
+   "slot": "potential_activity",
+   "value": "considering youth climbing program at Summit Gym, Saturday afternoons starting April (not signed up yet)",
+   "stated_date": "2025-04",
+   "slot_class": "other:potential activity",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B25_trajectory_ops/s22#r10",
+   "source_span": "it's definitely been an adjustment working from home full-time",
+   "entity": "user",
+   "slot": "work_arrangement",
+   "value": "working from home full-time",
+   "stated_date": "",
+   "slot_class": "other:work arrangement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B25_trajectory_ops/s32#r4",
+   "source_span": "The robotics coach sent a note home saying they're looking at moving the club to Wednesdays 3:15 to 4:30 starting in May because of gym scheduling conflicts on Fridays. Nothing is confirmed yet",
+   "entity": "Lily",
+   "slot": "robotics_schedule_change_proposal",
+   "value": "possible move to Wednesdays 3:15-4:30 starting May (unconfirmed)",
+   "stated_date": "2025-05",
+   "slot_class": "other:robotics schedule change proposal",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B25_trajectory_ops/s35#r4",
+   "source_span": "another mom in the robotics group chat said she heard it might be Wednesdays 3:00–4:15 PM starting May, but she also said she's not sure if that's accurate.",
+   "entity": "Lily",
+   "slot": "robotics_schedule_rumor",
+   "value": "rumored Wednesdays 3:00-4:15 PM starting May (unconfirmed)",
+   "stated_date": "2025-05",
+   "slot_class": "other:robotics schedule rumor",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B25_trajectory_ops/s43#r0",
+   "source_span": "Now that it's every week, we've lost that little tradition.",
+   "entity": "Lily",
+   "slot": "robotics_schedule",
+   "value": "robotics now every week (Friday)",
+   "stated_date": "",
+   "slot_class": "other:robotics schedule",
+   "owner": "Lily"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B25_trajectory_ops/s36#r6",
+   "source_span": "I'll start with 5 minutes per session and work my way up from there.",
+   "entity": "user",
+   "slot": "meditation_practice",
+   "value": "starting with 5 minutes per session, increasing over time",
+   "stated_date": "",
+   "slot_class": "other:meditation practice",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B25_trajectory_ops/s36#r8",
+   "source_span": "I've been having trouble falling asleep at night and staying focused during the day",
+   "entity": "user",
+   "slot": "health_issue",
+   "value": "trouble falling asleep at night and staying focused during the day",
+   "stated_date": "",
+   "slot_class": "other:health issue",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B25_trajectory_ops/s46#r4",
+   "source_span": "I've been thinking about switching to a credit union.",
+   "entity": "user",
+   "slot": "banking_plan",
+   "value": "considering switching to a credit union",
+   "stated_date": "",
+   "slot_class": "other:banking plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-B25_trajectory_ops/s48#r10",
+   "source_span": "I think I'll look into joining a public speaking group and a social club to practice my communication skills outside of work.",
+   "entity": "user",
+   "slot": "planned_activity",
+   "value": "planning to join a public speaking group and a social club",
+   "stated_date": "",
+   "slot_class": "other:planned activity",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 10862,
+ "usage_out": 2043,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 71,
+  "total": 564,
+  "user_turns": 564,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

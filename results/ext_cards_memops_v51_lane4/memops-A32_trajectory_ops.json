@@ -1,0 +1,128 @@
+{
+ "uid": "memops-A32_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A32_trajectory_ops/s0#r1",
+   "source_span": "your main personal email as marcus.holloway@gmail.com, which you've been using since around 2014",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "marcus.holloway@gmail.com",
+   "stated_date": "2014",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r10",
+   "source_span": "It's actually marcus.t.holloway@gmail.com with a middle initial T.",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "marcus.t.holloway@gmail.com",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r10",
+   "source_span": "The version without the T is some random person in Ohio.",
+   "entity": "user",
+   "slot": "note_email_mixup",
+   "value": "marcus.holloway@gmail.com belongs to unrelated person in Ohio",
+   "stated_date": "",
+   "slot_class": "other:note email mixup",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r11",
+   "source_span": "I've updated your primary personal email to marcus.t.holloway@gmail.com—with the middle initial T included.",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "marcus.t.holloway@gmail.com",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A32_trajectory_ops/s8#r4",
+   "source_span": "my brother Kevin finally switched his primary email to marcus.holloway@yahoo.com after the whole phishing incident with his old Yahoo address",
+   "entity": "Kevin (user's brother)",
+   "slot": "personal_email",
+   "value": "marcus.holloway@yahoo.com",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "Kevin (user's brother)"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r12",
+   "source_span": "My friend Danielle has been pushing me really hard to switch to ProtonMail for privacy reasons. She switched her own primary email to ProtonMail a few weeks ago",
+   "entity": "Danielle (user's friend)",
+   "slot": "personal_email_provider",
+   "value": "ProtonMail",
+   "stated_date": "",
+   "slot_class": "other:personal email provider",
+   "owner": "Danielle (user's friend)"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r14",
+   "source_span": "Danielle helped me set up a ProtonMail account yesterday, marcus.t.holloway@protonmail.com. She confirmed I'll be switching my primary email to that one by end of month.",
+   "entity": "user",
+   "slot": "new_email_planned",
+   "value": "marcus.t.holloway@protonmail.com",
+   "stated_date": "",
+   "slot_class": "other:new email planned",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r15",
+   "source_span": "the plan is to make it your primary personal email by end of month",
+   "entity": "user",
+   "slot": "email_transition_plan",
+   "value": "switch primary email to marcus.t.holloway@protonmail.com by end of month",
+   "stated_date": "",
+   "slot_class": "other:email transition plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A32_trajectory_ops/s42#r10",
+   "source_span": "I actually started taking classes before the pandemic hit, but had to stop.",
+   "entity": "user",
+   "slot": "dance_classes_history",
+   "value": "started dance classes before the pandemic, then stopped",
+   "stated_date": "",
+   "slot_class": "other:dance classes history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A32_trajectory_ops/s49#r4",
+   "source_span": "I love trying out new dance styles and challenging myself physically.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "trying out new dance styles",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3874,
+ "usage_out": 1231,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 25,
+  "total": 562,
+  "user_turns": 562,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

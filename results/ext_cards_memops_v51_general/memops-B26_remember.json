@@ -1,0 +1,216 @@
+{
+ "uid": "memops-B26_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B26_remember/s8#r2",
+   "source_span": "Where I live, many people have pets and consider them to be part of their family.",
+   "entity": "user",
+   "slot": "local_culture_note",
+   "value": "pets are considered part of the family where user lives",
+   "stated_date": "",
+   "slot_class": "other:local culture note",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B26_remember/s7#r8",
+   "source_span": "I've been wanting to learn some programming, but I've been putting it off.",
+   "entity": "user",
+   "slot": "learning_goal",
+   "value": "wants to learn programming",
+   "stated_date": "",
+   "slot_class": "other:learning goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B26_remember/s10#r8",
+   "source_span": "I had a great experience practicing mindful eating with a colorful salad!",
+   "entity": "user",
+   "slot": "habit",
+   "value": "practicing mindful eating",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B26_remember/s11#r2",
+   "source_span": "I'll definitely talk to my doctor about my concerns and see what they recommend.",
+   "entity": "user",
+   "slot": "plan",
+   "value": "plans to talk to doctor about intimate health concerns",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B26_remember/s20#r8",
+   "source_span": "I'm going to try implementing these strategies in my workplace starting from today.",
+   "entity": "user",
+   "slot": "role",
+   "value": "Director General implementing collaboration strategies at workplace",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B26_remember/s22#r18",
+   "source_span": "Daniel has been living in Austin since 2016.",
+   "entity": "Daniel",
+   "slot": "residence",
+   "value": "Austin",
+   "stated_date": "2016",
+   "slot_class": "residence",
+   "owner": "Daniel"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B26_remember/s22#r15",
+   "source_span": "That tracks with Daniel being born in 1988.",
+   "entity": "Daniel",
+   "slot": "birth_year",
+   "value": "1988",
+   "stated_date": "1988",
+   "slot_class": "other:birth year",
+   "owner": "Daniel"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B26_remember/s23#r8",
+   "source_span": "I need to figure out when to book flights for the fall.",
+   "entity": "user",
+   "slot": "plan",
+   "value": "needs to book flights for fall travel related to Daniel's family",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B26_remember/s25#r8",
+   "source_span": "I always feel a bit nervous during job interviews.",
+   "entity": "user",
+   "slot": "trait",
+   "value": "feels nervous during job interviews",
+   "stated_date": "",
+   "slot_class": "other:trait",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B26_remember/s25#r12",
+   "source_span": "I'm feeling more prepared for my job search now.",
+   "entity": "user",
+   "slot": "activity",
+   "value": "currently job searching",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B26_remember/s31#r0",
+   "source_span": "my colleague Chloe just moved to Portland to join a tech startup.",
+   "entity": "Chloe",
+   "slot": "residence",
+   "value": "Portland",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B26_remember/s31#r0",
+   "source_span": "She's been in fintech for years and finally made the jump to an early-stage company.",
+   "entity": "Chloe",
+   "slot": "job_history",
+   "value": "was in fintech for years, moved to early-stage tech startup",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B26_remember/s32#r13",
+   "source_span": "congratulations to Daniel and his wife! Their second child due in late September",
+   "entity": "Daniel",
+   "slot": "family_event",
+   "value": "expecting second child due late September",
+   "stated_date": "2024-09",
+   "slot_class": "other:family event",
+   "owner": "Daniel"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B26_remember/s32#r14",
+   "source_span": "Chloe moved to Portland and started a new job at a nonprofit there.",
+   "entity": "Chloe",
+   "slot": "job",
+   "value": "works at a nonprofit in Portland",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-B26_remember/s32#r14",
+   "source_span": "She'd been pretty miserable at her old company in Denver",
+   "entity": "Chloe",
+   "slot": "job_history",
+   "value": "previously worked at a company in Denver, was unhappy there",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Chloe"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-B26_remember/s44#r10",
+   "source_span": "Daniel almost moved to Houston instead of Austin back in 2016. He had a job offer there too but chose Austin because of the tech scene.",
+   "entity": "Daniel",
+   "slot": "relocation_history",
+   "value": "chose Austin over Houston job offer in 2016 due to tech scene",
+   "stated_date": "2016",
+   "slot_class": "location",
+   "owner": "Daniel"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-B26_remember/s45#r10",
+   "source_span": "Daniel is definitely 1988. Two years older than me, not three.",
+   "entity": "Daniel",
+   "slot": "birth_year",
+   "value": "1988",
+   "stated_date": "1988",
+   "slot_class": "other:birth year",
+   "owner": "Daniel"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-B26_remember/s45#r12",
+   "source_span": "we need to work around Daniel's wife's due date in late September since that's a big window to avoid.",
+   "entity": "Daniel",
+   "slot": "family_event",
+   "value": "wife's due date in late September",
+   "stated_date": "2024-09",
+   "slot_class": "other:family event",
+   "owner": "Daniel"
+  }
+ ],
+ "usage_in": 12335,
+ "usage_out": 1807,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 77,
+  "total": 550,
+  "user_turns": 550,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

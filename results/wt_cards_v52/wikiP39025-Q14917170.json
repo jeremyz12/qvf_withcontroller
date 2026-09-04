@@ -1,0 +1,150 @@
+{
+ "uid": "wikiP39025-Q14917170",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP39025-Q14917170/s3#r2",
+   "source_span": "as of today I'm officially a Member of the Parliament of Catalonia",
+   "entity": "user",
+   "slot": "position",
+   "value": "Member of the Parliament of Catalonia",
+   "stated_date": "1988-06-16",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP39025-Q14917170/s12#r2",
+   "source_span": "I've got a Toyota 86.",
+   "entity": "user",
+   "slot": "car",
+   "value": "Toyota 86",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:car"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP39025-Q14917170/s12#r2",
+   "source_span": "I'm located in the city where the local speedway is",
+   "entity": "user",
+   "slot": "location",
+   "value": "city with local speedway",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP39025-Q14917170/s23#r0",
+   "source_span": "as of today I'm officially a member of the Senate of Spain",
+   "entity": "user",
+   "slot": "position",
+   "value": "Member of the Senate of Spain",
+   "stated_date": "1992-04-29",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP39025-Q14917170/s23#r0",
+   "source_span": "I'll be shuttling between Barcelona and Madrid more than I'd like",
+   "entity": "user",
+   "slot": "location",
+   "value": "shuttling between Barcelona and Madrid",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP39025-Q14917170/s23#r1",
+   "source_span": "my wife reminded me we've got dinner with her brother on Friday",
+   "entity": "user",
+   "slot": "relationship",
+   "value": "married (has a wife)",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP39025-Q14917170/s30#r0",
+   "source_span": "as of today I'm officially a Member of the Congress of Deputies",
+   "entity": "user",
+   "slot": "position",
+   "value": "Member of the Congress of Deputies",
+   "stated_date": "1993-06-21",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP39025-Q14917170/s30#r1",
+   "source_span": "the shiny navy one that Rosa hates",
+   "entity": "user",
+   "slot": "relationship",
+   "value": "Rosa (wife)",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP39025-Q14917170/s24#r4",
+   "source_span": "I'm based in the San Francisco Bay Area.",
+   "entity": "user",
+   "slot": "residence",
+   "value": "San Francisco Bay Area",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP39025-Q14917170/s29#r2",
+   "source_span": "I actually start my day pretty early, 7:30 am on weekdays",
+   "entity": "user",
+   "slot": "schedule",
+   "value": "starts day at 7:30 am on weekdays",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:schedule"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP39025-Q14917170/s16#r0",
+   "source_span": "just completed the \"Run for Hunger\" 5K charity event where I ran for 32 m",
+   "entity": "user",
+   "slot": "activity",
+   "value": "completed Run for Hunger 5K charity event",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:activity"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP39025-Q14917170/s15#r0",
+   "source_span": "I attended Sunday mass at St. Mary's Church yesterday",
+   "entity": "user",
+   "slot": "religion",
+   "value": "attends St. Mary's Church",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:religion"
+  }
+ ],
+ "usage_in": 2850,
+ "usage_out": 1390,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

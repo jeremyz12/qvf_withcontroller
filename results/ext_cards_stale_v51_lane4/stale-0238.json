@@ -1,0 +1,150 @@
+{
+ "uid": "stale-0238",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0238/s2#r2",
+   "source_span": "I got those new curtains, and they're really making a big difference in the room. They're light gray",
+   "entity": "user",
+   "slot": "home_decor_curtains",
+   "value": "light gray curtains",
+   "stated_date": "2023-03",
+   "slot_class": "other:home decor curtains",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0238/s2#r2",
+   "source_span": "this white and gray abstract art painting my sister got me for my birthday - you know, the one I finally hung up last weekend?",
+   "entity": "user",
+   "slot": "home_decor_art",
+   "value": "white and gray abstract art painting from sister, hung up last weekend",
+   "stated_date": "",
+   "slot_class": "other:home decor art",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0238/s4#r1",
+   "source_span": "I’ve held my card with the electrical workers’ union since last year.",
+   "entity": "user",
+   "slot": "union_membership",
+   "value": "electrical workers' union card holder since last year",
+   "stated_date": "2022",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0238/s10#r6",
+   "source_span": "I recently tried rock climbing for the first time three weeks ago, and I loved it.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "tried rock climbing for the first time, loved it",
+   "stated_date": "2023-09",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0238/s12#r6",
+   "source_span": "I think I'll go with creating a subcategory under \"Theme\" for Art Deco.",
+   "entity": "user",
+   "slot": "postcard_collection_organization",
+   "value": "created subcategory under 'Theme' for Art Deco postcards",
+   "stated_date": "",
+   "slot_class": "other:postcard collection organization",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0238/s23#r10",
+   "source_span": "I'm the eldest of three siblings",
+   "entity": "user",
+   "slot": "birth_order",
+   "value": "eldest of three siblings",
+   "stated_date": "",
+   "slot_class": "other:birth order",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0238/s30#r2",
+   "source_span": "I've actually participated in a few charity runs recently, including a 5K charity run for cancer research last Sunday, which was a lot of fun.",
+   "entity": "user",
+   "slot": "charity_activity",
+   "value": "participated in 5K charity run for cancer research last Sunday",
+   "stated_date": "",
+   "slot_class": "other:charity activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0238/s30#r4",
+   "source_span": "I actually completed a charity bike ride last month, which was a lot of fun. It was organized by a local cycling club and covered a 20-mile route along the coastal trail.",
+   "entity": "user",
+   "slot": "charity_activity",
+   "value": "completed 20-mile charity bike ride along coastal trail, organized by local cycling club",
+   "stated_date": "2024-09",
+   "slot_class": "other:charity activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0238/s32#r1",
+   "source_span": "that's awesome that Emily enjoyed the yoga class with you on Wednesday!",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "attended yoga class with friend Emily on Wednesday",
+   "stated_date": "",
+   "slot_class": "other:fitness activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0238/s32#r1",
+   "source_span": "Inviting John to the Zumba class on Fridays could be a great idea",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "attends Zumba class on Fridays, considering inviting coworker John",
+   "stated_date": "",
+   "slot_class": "other:fitness activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0238/s34#r6",
+   "source_span": "I had to swing by the courthouse this morning to sign the final papers—my name’s officially changed now",
+   "entity": "user",
+   "slot": "name_change_status",
+   "value": "officially changed legal name (signed final papers at courthouse)",
+   "stated_date": "2024-12-16",
+   "slot_class": "other:name change status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0238/s40#r10",
+   "source_span": "I actually swapped out the lampshade for a new one I picked up at IKEA last weekend, which has a more modern design and lets more light through.",
+   "entity": "user",
+   "slot": "home_decor_lampshade",
+   "value": "new modern IKEA lampshade, lets more light through, replaced old one last weekend",
+   "stated_date": "",
+   "slot_class": "other:home decor lampshade",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4676,
+ "usage_out": 1394,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 24,
+  "total": 594,
+  "user_turns": 594,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

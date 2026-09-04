@@ -1,0 +1,216 @@
+{
+ "uid": "stale-0335",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0335/s0#r2",
+   "source_span": "I actually just volunteered at the Local Artists Fair last weekend",
+   "entity": "user",
+   "slot": "volunteer_activity",
+   "value": "Volunteered at Local Artists Fair",
+   "stated_date": "2024-06-06",
+   "slot_class": "other:volunteer activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0335/s1#r2",
+   "source_span": "I'm located in the city where my local comedy club is, and I'm looking for comedy open mic nights.",
+   "entity": "user",
+   "slot": "comedy_interest",
+   "value": "Interested in comedy open mic nights near local comedy club",
+   "stated_date": "",
+   "slot_class": "other:comedy interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0335/s4#r0",
+   "source_span": "I've been using a lot more frequently than usual over the past month, mainly because my best friend moved abroad and we chat every other day",
+   "entity": "user",
+   "slot": "messaging_habit",
+   "value": "Uses WhatsApp frequently to chat with best friend who moved abroad",
+   "stated_date": "2024-06",
+   "slot_class": "other:messaging habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0335/s15#r10",
+   "source_span": "I'd like to explore the idea of partnering with local fitness studios or gyms in Chicago further.",
+   "entity": "user",
+   "slot": "business_location",
+   "value": "Fitness app business targeting Chicago",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0335/s16#r4",
+   "source_span": "He loves his new bed!",
+   "entity": "user_pet_or_family",
+   "slot": "new_item",
+   "value": "New bed for 'him' (pet/child)",
+   "stated_date": "",
+   "slot_class": "other:new item",
+   "owner": "user_pet_or_family"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0335/s19#r2",
+   "source_span": "I think I've been doing a better job of engaging with my followers, responding to comments and messages, and posting more regularly across all my social media platforms.",
+   "entity": "user",
+   "slot": "social_media_habit",
+   "value": "Engaging more with followers and posting regularly across social media",
+   "stated_date": "",
+   "slot_class": "other:social media habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0335/s19#r4",
+   "source_span": "I've also been more active on Twitter, and I've seen an uptick in engagement.",
+   "entity": "user",
+   "slot": "social_media_habit",
+   "value": "More active on Twitter with increased engagement",
+   "stated_date": "",
+   "slot_class": "other:social media habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0335/s24#r8",
+   "source_span": "We've had some issues with our mortgage broker, Mike, going on vacation without warning us, but thankfully, Rachel, our real estate agent, was able to recommend a reliable replacement.",
+   "entity": "user",
+   "slot": "mortgage_broker",
+   "value": "Mike (mortgage broker, went on vacation, replaced)",
+   "stated_date": "",
+   "slot_class": "other:mortgage broker",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0335/s24#r8",
+   "source_span": "Rachel, our real estate agent, was able to recommend a reliable replacement",
+   "entity": "user",
+   "slot": "real_estate_agent",
+   "value": "Rachel (real estate agent)",
+   "stated_date": "",
+   "slot_class": "other:real estate agent",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0335/s24#r8",
+   "source_span": "I just want to confirm that we've got all our ducks in a row for the closing meeting.",
+   "entity": "user",
+   "slot": "home_purchase_status",
+   "value": "Preparing for closing meeting on home purchase",
+   "stated_date": "",
+   "slot_class": "other:home purchase status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0335/s26#r2",
+   "source_span": "I'm in the tech industry, specifically in software development.",
+   "entity": "user",
+   "slot": "industry",
+   "value": "Tech industry, software development",
+   "stated_date": "",
+   "slot_class": "other:industry",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0335/s28#r2",
+   "source_span": "I've been doing some charity fitness challenges lately, and it's been a great way to stay motivated.",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "Doing charity fitness challenges",
+   "stated_date": "",
+   "slot_class": "other:fitness activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0335/s28#r4",
+   "source_span": "I was thinking of doing another charity run soon, maybe a 10K or even a half marathon.",
+   "entity": "user",
+   "slot": "fitness_plan",
+   "value": "Planning to do a charity run (10K or half marathon)",
+   "stated_date": "",
+   "slot_class": "other:fitness plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0335/s32#r2",
+   "source_span": "I'm still getting used to the new place—there's a hot plate and a mini-fridge, but the lease is strict about anything that throws off smoke",
+   "entity": "user",
+   "slot": "residence",
+   "value": "New place with hot plate and mini-fridge, lease restricts smoke-producing cooking",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0335/s38#r8",
+   "source_span": "I actually remember that I've attended 8 out of 12 salsa classes in the past month, missing only 4 due to work commitments.",
+   "entity": "user",
+   "slot": "dance_habit",
+   "value": "Attended 8 of 12 salsa classes in past month, missed 4 due to work",
+   "stated_date": "",
+   "slot_class": "other:dance habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0335/s38#r8",
+   "source_span": "I'm actually planning to visit my family in California soon, I booked my tickets today and I'm set to fly out on April 15th.",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Flying to California to visit family on April 15th",
+   "stated_date": "2025-04-15",
+   "slot_class": "other:travel plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0335/s42#r4",
+   "source_span": "I was thinking of attending more social dance events like the one I went to last weekend.",
+   "entity": "user",
+   "slot": "dance_habit",
+   "value": "Planning to attend more social dance events (salsa/bachata)",
+   "stated_date": "",
+   "slot_class": "other:dance habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0335/s47#r10",
+   "source_span": "I think I'll try to stick to my new schedule and see how it goes.",
+   "entity": "user",
+   "slot": "habit_plan",
+   "value": "Trying to stick to a new schedule",
+   "stated_date": "",
+   "slot_class": "other:habit plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 8352,
+ "usage_out": 2040,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 27,
+  "total": 596,
+  "user_turns": 596,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

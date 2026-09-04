@@ -1,0 +1,227 @@
+{
+ "uid": "stale-0159",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0159/s2#r8",
+   "source_span": "I've got a pretty eclectic style",
+   "entity": "user",
+   "slot": "style_preference",
+   "value": "eclectic style",
+   "stated_date": "",
+   "slot_class": "other:style preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0159/s4#r0",
+   "source_span": "I've been riding 20-30 miles three times a week",
+   "entity": "user",
+   "slot": "cycling_habit",
+   "value": "riding 20-30 miles three times a week",
+   "stated_date": "",
+   "slot_class": "other:cycling habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0159/s4#r0",
+   "source_span": "I had a great day on the soccer field yesterday - scored a hat-trick, including the game-winner in the final minute, to lead my team to a 5-4 victory in our weekly pick-up game",
+   "entity": "user",
+   "slot": "sports_activity",
+   "value": "plays in a weekly pick-up soccer game",
+   "stated_date": "",
+   "slot_class": "other:sports activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0159/s13#r10",
+   "source_span": "I've finished 15 episodes of Crash Course's World History series",
+   "entity": "user",
+   "slot": "learning_activity",
+   "value": "finished 15 episodes of Crash Course's World History series",
+   "stated_date": "",
+   "slot_class": "other:learning activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0159/s17#r0",
+   "source_span": "I've got a big challenge coming up at the gym next month - it's an 8-week program where we'll be tracking our progress and competing against each other in teams.",
+   "entity": "user",
+   "slot": "fitness_challenge",
+   "value": "8-week gym team challenge starting next month",
+   "stated_date": "",
+   "slot_class": "other:fitness challenge",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0159/s19#r4",
+   "source_span": "I just got a new Kindle for my birthday last month",
+   "entity": "user",
+   "slot": "device_owned",
+   "value": "new Kindle",
+   "stated_date": "2023-03",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0159/s19#r4",
+   "source_span": "I've even set up a cozy reading nook in my new apartment",
+   "entity": "user",
+   "slot": "residence",
+   "value": "new apartment",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0159/s20#r11",
+   "source_span": "| [3 weeks ago] | 2018 Toyota Corolla | Oil change and tire rotation | Oil change and tire rotation at dealership | $30 | 40,000 | 45,000 |",
+   "entity": "user",
+   "slot": "vehicle_owned",
+   "value": "2018 Toyota Corolla",
+   "stated_date": "",
+   "slot_class": "other:vehicle owned",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0159/s20#r11",
+   "source_span": "| [2 weeks ago] | 2015 Honda Civic | Oxygen sensor replacement and brake pad replacement | Replaced faulty oxygen sensor and brake pads at mechanic | $250 | 70,000 |  |",
+   "entity": "user",
+   "slot": "vehicle_owned",
+   "value": "2015 Honda Civic",
+   "stated_date": "",
+   "slot_class": "other:vehicle owned",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0159/s20#r11",
+   "source_span": "| [Current Date] | Trek FX 2 | Brake adjustment | Adjusted brakes at local bike shop | N/A | 500 |  |",
+   "entity": "user",
+   "slot": "vehicle_owned",
+   "value": "Trek FX 2 bicycle",
+   "stated_date": "",
+   "slot_class": "other:vehicle owned",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0159/s27#r0",
+   "source_span": "I've recently started taking dance classes on Friday evenings in early March",
+   "entity": "user",
+   "slot": "activity_schedule",
+   "value": "dance classes on Friday evenings",
+   "stated_date": "2023-03",
+   "slot_class": "other:activity schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0159/s27#r6",
+   "source_span": "I started taking yoga classes in mid-February, and now I've started taking dance classes on Friday evenings in early March",
+   "entity": "user",
+   "slot": "activity_schedule",
+   "value": "yoga classes",
+   "stated_date": "2023-02",
+   "slot_class": "other:activity schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0159/s30#r2",
+   "source_span": "Given my 5 years of experience at the company and recent completion of a data analytics course",
+   "entity": "user",
+   "slot": "job_tenure",
+   "value": "5 years of experience at the company",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0159/s30#r2",
+   "source_span": "recent completion of a data analytics course",
+   "entity": "user",
+   "slot": "education",
+   "value": "completed a data analytics course",
+   "stated_date": "",
+   "slot_class": "other:education",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0159/s30#r10",
+   "source_span": "I've been with my current company for 5 years now",
+   "entity": "user",
+   "slot": "job_tenure",
+   "value": "5 years at current company",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0159/s30#r10",
+   "source_span": "I'm particularly interested in machine learning and AI, as I believe these areas have huge potential for driving business growth and improving decision-making.",
+   "entity": "user",
+   "slot": "interest",
+   "value": "machine learning and AI",
+   "stated_date": "",
+   "slot_class": "other:interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0159/s40#r0",
+   "source_span": "I won $50 from a small betting pool back in March, correctly predicting three out of four Final Four teams.",
+   "entity": "user",
+   "slot": "event_result",
+   "value": "won $50 from March Madness betting pool",
+   "stated_date": "2024-03",
+   "slot_class": "other:event result",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0159/s44#r4",
+   "source_span": "I replaced the LED bulb in my bedside lamp a few weeks ago",
+   "entity": "user",
+   "slot": "home_improvement",
+   "value": "replaced LED bulb in bedside lamp",
+   "stated_date": "",
+   "slot_class": "other:home improvement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "stale-0159/s44#r6",
+   "source_span": "I was actually thinking of getting some floor lamps for my bedroom to create a cozy reading nook.",
+   "entity": "user",
+   "slot": "home_improvement_plan",
+   "value": "getting floor lamps for bedroom reading nook",
+   "stated_date": "",
+   "slot_class": "other:home improvement plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 7895,
+ "usage_out": 1956,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 592,
+  "user_turns": 592,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

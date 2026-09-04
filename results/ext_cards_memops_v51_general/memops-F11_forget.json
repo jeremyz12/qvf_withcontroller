@@ -1,0 +1,216 @@
+{
+ "uid": "memops-F11_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F11_forget/s0#r4",
+   "source_span": "I'll definitely aim for at least three swims a week and try out these techniques.",
+   "entity": "user",
+   "slot": "exercise_habit",
+   "value": "swims at least three times a week",
+   "stated_date": "",
+   "slot_class": "other:exercise habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F11_forget/s11#r10",
+   "source_span": "I opened a brokerage account with Fidelity on March 3rd and deposited $15,000 as my initial funding.",
+   "entity": "user",
+   "slot": "brokerage_account",
+   "value": "Fidelity account opened March 3rd with $15,000 initial deposit",
+   "stated_date": "03-03",
+   "slot_class": "other:brokerage account",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F11_forget/s11#r13",
+   "source_span": "you allocated $9,000 to VTI (Vanguard Total Stock Market ETF) for broad US equity exposure, $3,000 to VXUS (Vanguard Total International Stock ETF) for international diversification, and $3,000 sitting in the Fidelity money market fund as a cash buffer",
+   "entity": "user",
+   "slot": "initial_allocation",
+   "value": "$9,000 VTI, $3,000 VXUS, $3,000 money market",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F11_forget/s11#r14",
+   "source_span": "I added $2,500 to the account in mid-April and put all of it into BND, the Vanguard bond ETF.",
+   "entity": "user",
+   "slot": "additional_investment",
+   "value": "$2,500 added mid-April, all into BND",
+   "stated_date": "04",
+   "slot_class": "other:additional investment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F11_forget/s11#r14",
+   "source_span": "that brought my total contributions up from the original $15,000 to $17,500 total invested",
+   "entity": "user",
+   "slot": "total_contributions",
+   "value": "$17,500 total invested",
+   "stated_date": "",
+   "slot_class": "other:total contributions",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F11_forget/s13#r6",
+   "source_span": "He mentioned he actually opened his Fidelity account back in January with a $12,000 initial deposit before he transferred everything over to Schwab.",
+   "entity": "Dave",
+   "slot": "brokerage_account",
+   "value": "opened Fidelity account in January with $12,000, later transferred to Schwab",
+   "stated_date": "01",
+   "slot_class": "other:brokerage account",
+   "owner": "Dave"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F11_forget/s17#r6",
+   "source_span": "I still only put in the $2,500 like I told you",
+   "entity": "user",
+   "slot": "additional_investment",
+   "value": "confirmed $2,500 added, not $5,000",
+   "stated_date": "",
+   "slot_class": "other:additional investment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F11_forget/s18#r4",
+   "source_span": "She told me he put $10,000 in VTI, $4,000 in VXUS, and kept $2,000 in the money market.",
+   "entity": "Marcus",
+   "slot": "brokerage_allocation",
+   "value": "$10,000 VTI, $4,000 VXUS, $2,000 money market",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "Marcus"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F11_forget/s19#r12",
+   "source_span": "my sister Angela set up a 529 plan for her daughter back in February and I recommended the age-based portfolio option since her daughter is only 3",
+   "entity": "Angela",
+   "slot": "529_plan",
+   "value": "set up 529 plan for daughter, age-based portfolio option recommended, daughter is 3",
+   "stated_date": "02",
+   "slot_class": "other:529 plan",
+   "owner": "Angela"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F11_forget/s19#r16",
+   "source_span": "my allocation is still the 55/18/15/12 split I told you about",
+   "entity": "user",
+   "slot": "portfolio_allocation",
+   "value": "55% US equities / 18% international / 15% bonds / 12% cash",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F11_forget/s19#r17",
+   "source_span": "your current portfolio allocation on record is 55% US equities (VTI), 18% international equities (VXUS), 15% bonds (BND), and approximately 12% cash/money market",
+   "entity": "user",
+   "slot": "portfolio_allocation",
+   "value": "55% VTI, 18% VXUS, 15% BND, 12% cash/money market",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-F11_forget/s26#r6",
+   "source_span": "he's got like 40% of his portfolio in individual tech stocks—NVIDIA, AMD, Microsoft. He said he's also got about 10% in VNQ actually, the REIT fund.",
+   "entity": "Dave",
+   "slot": "brokerage_allocation",
+   "value": "40% individual tech stocks (NVIDIA, AMD, Microsoft), 10% VNQ REIT fund on Schwab",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "Dave"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-F11_forget/s26#r8",
+   "source_span": "I put in $15,000 initially and then the additional $2,500 later. So my total out-of-pocket contributions should be $17,500",
+   "entity": "user",
+   "slot": "total_contributions",
+   "value": "$17,500 total out-of-pocket contributions",
+   "stated_date": "",
+   "slot_class": "other:total contributions",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F11_forget/s26#r12",
+   "source_span": "the tariff-related dip in early April was about 6% over roughly one week",
+   "entity": "user",
+   "slot": "portfolio_event",
+   "value": "early April tariff-related dip of about 6% over one week",
+   "stated_date": "04",
+   "slot_class": "other:portfolio event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-F11_forget/s26#r12",
+   "source_span": "the REIT thing is gone—don't track that anymore",
+   "entity": "user",
+   "slot": "tracking_preference",
+   "value": "REIT (VNQ) consideration removed from tracking",
+   "stated_date": "",
+   "slot_class": "other:tracking preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-F11_forget/s26#r13",
+   "source_span": "Fidelity brokerage account opened March 3rd with $15,000 initial deposit, plus $2,500 added in mid-April, totaling $17,500 in contributions.",
+   "entity": "user",
+   "slot": "brokerage_account",
+   "value": "Fidelity account, $15,000 initial + $2,500 mid-April = $17,500 total contributions",
+   "stated_date": "03-03",
+   "slot_class": "other:brokerage account",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-F11_forget/s26#r13",
+   "source_span": "Four active holdings: VTI (55% US equities), VXUS (18% international equities), BND (15% bonds), and money market fund (~12% cash).",
+   "entity": "user",
+   "slot": "portfolio_allocation",
+   "value": "VTI 55%, VXUS 18%, BND 15%, money market ~12%",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-F11_forget/s11#r4",
+   "source_span": "I've definitely become more open-minded after moving to a different state for college.",
+   "entity": "user",
+   "slot": "life_event",
+   "value": "moved to a different state for college",
+   "stated_date": "",
+   "slot_class": "other:life event",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 11705,
+ "usage_out": 2389,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 75,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

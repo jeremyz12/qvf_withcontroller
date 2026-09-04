@@ -1,0 +1,150 @@
+{
+ "uid": "memops-C01_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C01_update/s21#r11",
+   "source_span": "I've noted your preference for the Elm Street hardware store over big box stores like Home Depot",
+   "entity": "user",
+   "slot": "preferred_hardware_store",
+   "value": "Elm Street hardware store",
+   "stated_date": "",
+   "slot_class": "other:preferred hardware store",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C01_update/s21#r11",
+   "source_span": "Here's a preliminary checklist for Saturday, May 10th",
+   "entity": "user",
+   "slot": "planned_fan_install_date",
+   "value": "Saturday, May 10th",
+   "stated_date": "",
+   "slot_class": "other:planned fan install date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C01_update/s21#r11",
+   "source_span": "Install the new Panasonic WhisperCeiling FV-0811VF5 per the included instructions.",
+   "entity": "user",
+   "slot": "new_exhaust_fan_model",
+   "value": "Panasonic WhisperCeiling FV-0811VF5",
+   "stated_date": "",
+   "slot_class": "other:new exhaust fan model",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C01_update/s37#r6",
+   "source_span": "my coworker Raj was telling me he got quoted $230 from some other handyman service for a similar fan swap at his place",
+   "entity": "user",
+   "slot": "coworker_name",
+   "value": "Raj",
+   "stated_date": "",
+   "slot_class": "other:coworker name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C01_update/s37#r6",
+   "source_span": "I'm still planning on doing it myself Saturday.",
+   "entity": "user",
+   "slot": "fan_install_plan",
+   "value": "doing it himself on Saturday",
+   "stated_date": "",
+   "slot_class": "other:fan install plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C01_update/s37#r6",
+   "source_span": "the fan is still sitting in its box in my hallway, and I've got Saturday May 10th marked for the install",
+   "entity": "user",
+   "slot": "planned_fan_install_date",
+   "value": "Saturday May 10th",
+   "stated_date": "",
+   "slot_class": "other:planned fan install date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C01_update/s37#r6",
+   "source_span": "I'll grab supplies from Elm Street on Thursday or Friday.",
+   "entity": "user",
+   "slot": "supply_pickup_plan",
+   "value": "grab supplies from Elm Street on Thursday or Friday",
+   "stated_date": "",
+   "slot_class": "other:supply pickup plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C01_update/s44#r4",
+   "source_span": "I think I'll start by researching organizations in my area that focus on environmental conservation.",
+   "entity": "user",
+   "slot": "volunteering_interest",
+   "value": "environmental conservation",
+   "stated_date": "",
+   "slot_class": "other:volunteering interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C01_update/s44#r8",
+   "source_span": "I think I will start by reaching out to the local chapter of the Sierra Club to see how I can get involved.",
+   "entity": "user",
+   "slot": "volunteering_organization",
+   "value": "local chapter of the Sierra Club",
+   "stated_date": "",
+   "slot_class": "other:volunteering organization",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C01_update/s7#r4",
+   "source_span": "I have a hard time sticking to a healthy diet and exercising regularly.",
+   "entity": "user",
+   "slot": "health_habit_challenge",
+   "value": "difficulty sticking to healthy diet and regular exercise",
+   "stated_date": "",
+   "slot_class": "other:health habit challenge",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C01_update/s7#r6",
+   "source_span": "I get bored easily with traditional workouts.",
+   "entity": "user",
+   "slot": "exercise_preference",
+   "value": "gets bored easily with traditional workouts",
+   "stated_date": "",
+   "slot_class": "other:exercise preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C01_update/s38#r8",
+   "source_span": "I'm really excited to try incorporating yoga into my daily routine, but I'm a bit intimidated by the idea of going to a yoga studio.",
+   "entity": "user",
+   "slot": "yoga_plan",
+   "value": "incorporating yoga into daily routine, prefers home practice over studio",
+   "stated_date": "",
+   "slot_class": "other:yoga plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6335,
+ "usage_out": 1311,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 27,
+  "total": 556,
+  "user_turns": 556,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

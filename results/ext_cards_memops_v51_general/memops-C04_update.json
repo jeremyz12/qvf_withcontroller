@@ -1,0 +1,194 @@
+{
+ "uid": "memops-C04_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C04_update/s1#r10",
+   "source_span": "My follow-up with Dr. Liu Wenjie at Zhongshan Hospital gastroenterology is currently set for April 28th, Monday, 9:30 AM",
+   "entity": "user",
+   "slot": "gastro_followup_appointment",
+   "value": "April 28th, Monday, 9:30 AM with Dr. Liu Wenjie, Zhongshan Hospital gastroenterology",
+   "stated_date": "",
+   "slot_class": "other:gastro followup appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C04_update/s1#r10",
+   "source_span": "I already rescheduled once before because of a work trip",
+   "entity": "user",
+   "slot": "gastro_followup_reschedule_history",
+   "value": "Rescheduled once before due to a work trip",
+   "stated_date": "",
+   "slot_class": "other:gastro followup reschedule history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C04_update/s1#r14",
+   "source_span": "I just called the hospital and moved the follow-up to May 5th, Monday, same 9:30 AM slot, same doctor, same department.",
+   "entity": "user",
+   "slot": "gastro_followup_appointment",
+   "value": "May 5th, Monday, 9:30 AM with Dr. Liu Wenjie, Zhongshan Hospital gastroenterology",
+   "stated_date": "",
+   "slot_class": "other:gastro followup appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C04_update/s1#r14",
+   "source_span": "I always try to get morning slots because afternoons at hospitals are just chaotic and draining.",
+   "entity": "user",
+   "slot": "appointment_preference",
+   "value": "Prefers morning hospital appointment slots",
+   "stated_date": "",
+   "slot_class": "other:appointment preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C04_update/s8#r2",
+   "source_span": "my ENT visit with Dr. He Mingyu at Zhongshan Hospital on April 8th went well — she prescribed a nasal spray for my sinus congestion",
+   "entity": "user",
+   "slot": "ent_visit",
+   "value": "Saw Dr. He Mingyu at Zhongshan Hospital ENT on April 8th for sinus congestion; prescribed nasal spray",
+   "stated_date": "2024-04-08",
+   "slot_class": "other:ent visit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C04_update/s8#r2",
+   "source_span": "No follow-up needed for that unless symptoms persist.",
+   "entity": "user",
+   "slot": "ent_followup_status",
+   "value": "No follow-up needed unless symptoms persist",
+   "stated_date": "",
+   "slot_class": "other:ent followup status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C04_update/s8#r4",
+   "source_span": "The new date is May 12th, Monday, 9:30 AM. Dr. Liu's office confirmed it this morning.",
+   "entity": "user",
+   "slot": "gastro_followup_appointment",
+   "value": "May 12th, Monday, 9:30 AM with Dr. Liu Wenjie, gastroenterology, Zhongshan Hospital",
+   "stated_date": "",
+   "slot_class": "other:gastro followup appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C04_update/s8#r4",
+   "source_span": "I had a conflict on May 5th that I couldn't move.",
+   "entity": "user",
+   "slot": "gastro_followup_reschedule_reason",
+   "value": "Conflict on May 5th prevented keeping that appointment",
+   "stated_date": "",
+   "slot_class": "other:gastro followup reschedule reason",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C04_update/s8#r7",
+   "source_span": "your endoscopy in mid-March at Zhongshan Hospital (Building 2, 4th floor) showed mild chronic gastritis",
+   "entity": "user",
+   "slot": "medical_condition",
+   "value": "Mild chronic gastritis, diagnosed via endoscopy in mid-March at Zhongshan Hospital (Building 2, 4th floor)",
+   "stated_date": "2024-03",
+   "slot_class": "other:medical condition",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C04_update/s8#r8",
+   "source_span": "I used to see a Dr. Tan at Ruijin Hospital for stomach issues, but I stopped going there last year.",
+   "entity": "user",
+   "slot": "former_provider",
+   "value": "Formerly saw Dr. Tan at Ruijin Hospital for stomach issues, stopped last year",
+   "stated_date": "",
+   "slot_class": "other:former provider",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C04_update/s8#r8",
+   "source_span": "That's completely done — no need to track anything related to Dr. Tan or Ruijin Hospital.",
+   "entity": "user",
+   "slot": "former_provider_status",
+   "value": "No longer tracking Dr. Tan or Ruijin Hospital",
+   "stated_date": "",
+   "slot_class": "other:former provider status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C04_update/s36#r2",
+   "source_span": "I go to the gym a few times a week and try to stay active",
+   "entity": "user",
+   "slot": "exercise_habit",
+   "value": "Goes to the gym a few times a week and stays active",
+   "stated_date": "",
+   "slot_class": "other:exercise habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C04_update/s47#r8",
+   "source_span": "Dr. Liu's assistant just messaged me saying there might be a schedule change and the appointment could be pushed to May 19th, Monday, 9:30 AM.",
+   "entity": "user",
+   "slot": "gastro_followup_appointment_pending_change",
+   "value": "Possible new date May 19th, Monday, 9:30 AM (unconfirmed) with Dr. Liu",
+   "stated_date": "",
+   "slot_class": "other:gastro followup appointment pending change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C04_update/s47#r8",
+   "source_span": "I haven't confirmed anything yet — I'm waiting to hear back whether that's definite or if they can keep me on the 12th.",
+   "entity": "user",
+   "slot": "gastro_followup_appointment_status",
+   "value": "Awaiting confirmation on whether appointment stays on May 12th or moves to May 19th",
+   "stated_date": "",
+   "slot_class": "other:gastro followup appointment status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C04_update/s47#r10",
+   "source_span": "I'll push back on the change.",
+   "entity": "user",
+   "slot": "gastro_followup_user_decision",
+   "value": "Decided to push back against the proposed schedule change to May 19th",
+   "stated_date": "",
+   "slot_class": "other:gastro followup user decision",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C04_update/s47#r10",
+   "source_span": "I get really worked up before hospital visits.",
+   "entity": "user",
+   "slot": "health_anxiety",
+   "value": "Experiences pre-appointment anxiety before hospital visits",
+   "stated_date": "",
+   "slot_class": "other:health anxiety",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 15046,
+ "usage_out": 2129,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 77,
+  "total": 492,
+  "user_turns": 492,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

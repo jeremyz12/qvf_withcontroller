@@ -1,0 +1,128 @@
+{
+ "uid": "memops-A33_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A33_remember/s3#r8",
+   "source_span": "I live in an area with a high wildfire risk",
+   "entity": "user",
+   "slot": "residence_risk",
+   "value": "lives in a high wildfire risk area",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A33_remember/s7#r8",
+   "source_span": "I'm going to start my job search soon",
+   "entity": "user",
+   "slot": "job_status",
+   "value": "starting job search soon",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A33_remember/s27#r0",
+   "source_span": "I went to my annual checkup on March 12th, and the nurse measured me carefully",
+   "entity": "user",
+   "slot": "annual_checkup_date",
+   "value": "March 12th",
+   "stated_date": "03-12",
+   "slot_class": "other:annual checkup date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A33_remember/s27#r0",
+   "source_span": "my confirmed height as of March 12th is 5'11\"",
+   "entity": "user",
+   "slot": "height_confirmed",
+   "value": "5'11\"",
+   "stated_date": "03-12",
+   "slot_class": "other:height confirmed",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A33_remember/s29#r4",
+   "source_span": "I measured myself at home first thing in the morning and got 5'11¼\"",
+   "entity": "user",
+   "slot": "height_morning_selfmeasured",
+   "value": "5'11¼\"",
+   "stated_date": "",
+   "slot_class": "other:height morning selfmeasured",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "Your mom went from 5'4½\" down to 5'4\" after losing half an inch.",
+   "entity": "user's mom",
+   "slot": "height",
+   "value": "5'4\" (previously 5'4½\")",
+   "stated_date": "",
+   "slot_class": "other:height",
+   "owner": "user's mom"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "Kevin's actual height is 5'8½\".",
+   "entity": "Kevin",
+   "slot": "height",
+   "value": "5'8½\"",
+   "stated_date": "",
+   "slot_class": "other:height",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "You prefer minimal flat-sole sneakers like your Vans Old Skools",
+   "entity": "user",
+   "slot": "shoe_preference",
+   "value": "prefers minimal flat-sole sneakers like Vans Old Skools",
+   "stated_date": "",
+   "slot_class": "other:shoe preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "you like fitted slim-fit clothing over baggy styles",
+   "entity": "user",
+   "slot": "clothing_preference",
+   "value": "prefers fitted slim-fit clothing over baggy styles",
+   "stated_date": "",
+   "slot_class": "other:clothing preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A33_remember/s34#r13",
+   "source_span": "With your slim-fit style preferences and those flat-sole Vans",
+   "entity": "user",
+   "slot": "clothing_preference",
+   "value": "slim-fit style preferences with flat-sole Vans",
+   "stated_date": "",
+   "slot_class": "other:clothing preference",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3782,
+ "usage_out": 1018,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 22,
+  "total": 552,
+  "user_turns": 552,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

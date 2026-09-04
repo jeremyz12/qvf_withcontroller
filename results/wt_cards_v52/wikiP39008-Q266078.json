@@ -1,0 +1,161 @@
+{
+ "uid": "wikiP39008-Q266078",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP39008-Q266078/s2#r2",
+   "source_span": "I'm now a member of the 55th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "position",
+   "value": "member of the 55th Parliament of the United Kingdom",
+   "stated_date": "2010",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP39008-Q266078/s18#r2",
+   "source_span": "I'm a member of the 56th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "position",
+   "value": "member of the 56th Parliament of the United Kingdom",
+   "stated_date": "2015",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP39008-Q266078/s25#r1",
+   "source_span": "I'm now a member of the 57th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "position",
+   "value": "member of the 57th Parliament of the United Kingdom",
+   "stated_date": "2017",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP39008-Q266078/s32#r2",
+   "source_span": "I'm returned as a member of the 58th Parliament of the United Kingdom",
+   "entity": "user",
+   "slot": "position",
+   "value": "member of the 58th Parliament of the United Kingdom",
+   "stated_date": "2019",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP39008-Q266078/s8#r0",
+   "source_span": "my cousin's wife Rachel came over to help us with the cleaning recently",
+   "entity": "Rachel",
+   "slot": "relationship",
+   "value": "cousin's wife",
+   "stated_date": "",
+   "owner": "Rachel",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP39008-Q266078/s10#r0",
+   "source_span": "I just got back from Outer Banks in North Carolina last week",
+   "entity": "user",
+   "slot": "recent_trip",
+   "value": "Outer Banks, North Carolina",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:recent trip"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP39008-Q266078/s13#r0",
+   "source_span": "I've been quite active in volunteering lately, like at that bake sale on March 25th where I helped set up stalls and sold goods for the Cancer Support Group",
+   "entity": "user",
+   "slot": "volunteering",
+   "value": "volunteered at Cancer Support Group bake sale",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:volunteering"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP39008-Q266078/s13#r2",
+   "source_span": "I recently participated in the \"Walk for Hunger\" event on April 15th",
+   "entity": "user",
+   "slot": "volunteering",
+   "value": "participated in Walk for Hunger event",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:volunteering"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP39008-Q266078/s20#r2",
+   "source_span": "I think I'll start with Asana, since I've heard good things about it.",
+   "entity": "user",
+   "slot": "tool",
+   "value": "Asana",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:tool"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP39008-Q266078/s22#r4",
+   "source_span": "I'm actually thinking of posting about my progress on Instagram again",
+   "entity": "user",
+   "slot": "social_media",
+   "value": "Instagram",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:social media"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP39008-Q266078/s24#r2",
+   "source_span": "I'm in the 92101 zip code.",
+   "entity": "user",
+   "slot": "location",
+   "value": "92101 zip code",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP39008-Q266078/s24#r2",
+   "source_span": "I actually got into painting after taking a weekend art class at a local studio back in April",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "painting",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:hobby"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "wikiP39008-Q266078/s33#r4",
+   "source_span": "I just completed my master's thesis in computer science last week",
+   "entity": "user",
+   "slot": "education",
+   "value": "master's thesis in computer science",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:education"
+  }
+ ],
+ "usage_in": 2221,
+ "usage_out": 1557,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 17,
+  "total": 166,
+  "user_turns": 106,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,106 @@
+{
+ "uid": "wikiP108011-Q42430132",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108011-Q42430132/s0#r1",
+   "source_span": "today's officially my first day as a lecturer in mathematics at the University of Manchester",
+   "entity": "user",
+   "slot": "position",
+   "value": "lecturer in mathematics",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108011-Q42430132/s0#r1",
+   "source_span": "today's officially my first day as a lecturer in mathematics at the University of Manchester",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Manchester",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108011-Q42430132/s13#r0",
+   "source_span": "I've just started at Shell as of this morning",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Shell",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108011-Q42430132/s19#r0",
+   "source_span": "I recently started subscribing to The New Yorker magazine about three months ago",
+   "entity": "user",
+   "slot": "magazine_subscription",
+   "value": "The New Yorker",
+   "stated_date": "1978-05",
+   "owner": "user",
+   "slot_class": "other:magazine subscription"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108011-Q42430132/s20#r2",
+   "source_span": "I've got a Toyota 86",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Toyota 86",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:vehicle"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108011-Q42430132/s31#r0",
+   "source_span": "I've officially joined the Indian Institute of Petroleum as of this morning, so please file that as my current employer",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Indian Institute of Petroleum",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108011-Q42430132/s31#r1",
+   "source_span": "The flat in Dehradun still smells of fresh paint",
+   "entity": "user",
+   "slot": "residence",
+   "value": "flat in Dehradun",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108011-Q42430132/s32#r4",
+   "source_span": "my friend Rachel, the science teacher",
+   "entity": "Rachel",
+   "slot": "position",
+   "value": "science teacher",
+   "stated_date": "",
+   "owner": "Rachel",
+   "slot_class": "position"
+  }
+ ],
+ "usage_in": 2753,
+ "usage_out": 855,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

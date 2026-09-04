@@ -1,0 +1,172 @@
+{
+ "uid": "memops-F08_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F08_update/s0#r8",
+   "source_span": "I picked up a package from the InPost locker on Greenfield Ave around March 3rd and the pickup code was 7724",
+   "entity": "user",
+   "slot": "inpost_pickup_code",
+   "value": "7724",
+   "stated_date": "2024-03-03",
+   "slot_class": "other:inpost pickup code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F08_update/s0#r8",
+   "source_span": "I always use the Greenfield Ave locker, not the one by the train station",
+   "entity": "user",
+   "slot": "locker_preference",
+   "value": "Greenfield Ave locker",
+   "stated_date": "",
+   "slot_class": "other:locker preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F08_update/s10#r2",
+   "source_span": "my apartment number is 149",
+   "entity": "user",
+   "slot": "apartment_number",
+   "value": "149",
+   "stated_date": "",
+   "slot_class": "other:apartment number",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F08_update/s10#r2",
+   "source_span": "I use that as my anchor for remembering three-digit codes because I can just reverse it or rearrange the digits",
+   "entity": "user",
+   "slot": "mnemonic_technique",
+   "value": "uses apartment number 149 reversed/rearranged as anchor for remembering three-digit codes",
+   "stated_date": "",
+   "slot_class": "other:mnemonic technique",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F08_update/s10#r4",
+   "source_span": "the pickup code was actually 943, not 941. The last two digits were 43, not 41.",
+   "entity": "user",
+   "slot": "doordash_pickup_code",
+   "value": "943",
+   "stated_date": "",
+   "slot_class": "other:doordash pickup code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F08_update/s10#r4",
+   "source_span": "The app clearly shows 943 for that Thai order.",
+   "entity": "user",
+   "slot": "doordash_order_item",
+   "value": "Thai order",
+   "stated_date": "",
+   "slot_class": "other:doordash order item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F08_update/s29#r6",
+   "source_span": "My friend Derek had a temporary gate code for his condo complex back in February. It was 5590, but he's since changed it",
+   "entity": "Derek",
+   "slot": "condo_gate_code",
+   "value": "5590 (expired, changed)",
+   "stated_date": "2024-02",
+   "slot_class": "other:condo gate code",
+   "owner": "Derek"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F08_update/s29#r7",
+   "source_span": "Your active tracked codes remain: InPost Greenfield Ave 7724, DoorDash Thai 943, mom's pharmacy 3058, and Target click-and-collect 4821.",
+   "entity": "user",
+   "slot": "mom_pharmacy_code",
+   "value": "3058",
+   "stated_date": "",
+   "slot_class": "other:mom pharmacy code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F08_update/s29#r7",
+   "source_span": "Your active tracked codes remain: InPost Greenfield Ave 7724, DoorDash Thai 943, mom's pharmacy 3058, and Target click-and-collect 4821.",
+   "entity": "user",
+   "slot": "target_click_and_collect_code",
+   "value": "4821",
+   "stated_date": "",
+   "slot_class": "other:target click and collect code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F08_update/s15#r10",
+   "source_span": "I think I might try some of these attachment parenting practices with my new baby.",
+   "entity": "user",
+   "slot": "parenting_plan",
+   "value": "planning to try attachment parenting practices with new baby",
+   "stated_date": "",
+   "slot_class": "other:parenting plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F08_update/s34#r6",
+   "source_span": "I'm really looking forward to checking out the cosplay scene at New York Comic-Con.",
+   "entity": "user",
+   "slot": "event_plan",
+   "value": "planning to attend New York Comic-Con, interested in cosplay scene",
+   "stated_date": "",
+   "slot_class": "other:event plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-F08_update/s36#r6",
+   "source_span": "I think I'll start my search with my local government's labor department",
+   "entity": "user",
+   "slot": "job_search_plan",
+   "value": "starting apprenticeship search with local government's labor department",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-F08_update/s36#r8",
+   "source_span": "I'm a bit nervous about starting an apprenticeship because I don't have much experience in the field.",
+   "entity": "user",
+   "slot": "career_plan",
+   "value": "starting an apprenticeship, has little experience in the field",
+   "stated_date": "",
+   "slot_class": "other:career plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F08_update/s2#r4",
+   "source_span": "I think I might try acupuncture or aromatherapy next.",
+   "entity": "user",
+   "slot": "wellness_plan",
+   "value": "considering trying acupuncture or aromatherapy",
+   "stated_date": "",
+   "slot_class": "other:wellness plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4121,
+ "usage_out": 1462,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 24,
+  "total": 538,
+  "user_turns": 538,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

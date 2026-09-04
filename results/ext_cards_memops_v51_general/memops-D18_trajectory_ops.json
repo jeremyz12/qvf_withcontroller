@@ -1,0 +1,238 @@
+{
+ "uid": "memops-D18_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D18_trajectory_ops/s2#r2",
+   "source_span": "I've been feeling a bit anxious about my job lately, with all the uncertainty in the economy",
+   "entity": "user",
+   "slot": "emotional_state",
+   "value": "anxious about job due to economic uncertainty",
+   "stated_date": "",
+   "slot_class": "other:emotional state",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D18_trajectory_ops/s2#r4",
+   "source_span": "I've started updating my resume and browsing job boards just in case",
+   "entity": "user",
+   "slot": "job_search_activity",
+   "value": "updating resume and browsing job boards",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D18_trajectory_ops/s9#r8",
+   "source_span": "I think I might look into freelance writing or social media management.",
+   "entity": "user",
+   "slot": "career_interest",
+   "value": "freelance writing or social media management",
+   "stated_date": "",
+   "slot_class": "other:career interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D18_trajectory_ops/s23#r8",
+   "source_span": "I found a skydiving center nearby and booked a session!",
+   "entity": "user",
+   "slot": "planned_activity",
+   "value": "booked a skydiving session",
+   "stated_date": "",
+   "slot_class": "other:planned activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r6",
+   "source_span": "On my phone I switched to Gboard as my default input method around March 3rd this year.",
+   "entity": "user",
+   "slot": "phone_keyboard_app",
+   "value": "Gboard",
+   "stated_date": "2024-03-03",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r6",
+   "source_span": "I'd been using SwiftKey before that for over a year, but it became unbearably laggy after an update and I was really frustrated about losing all my customized autocorrect entries.",
+   "entity": "user",
+   "slot": "previous_phone_keyboard_app",
+   "value": "SwiftKey",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r11",
+   "source_span": "the dark gray theme and disabled emoji suggestions bar remain unchanged on Gboard",
+   "entity": "user",
+   "slot": "gboard_theme",
+   "value": "dark gray theme",
+   "stated_date": "",
+   "slot_class": "other:gboard theme",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r11",
+   "source_span": "disabled emoji suggestions bar",
+   "entity": "user",
+   "slot": "gboard_emoji_bar",
+   "value": "disabled",
+   "stated_date": "",
+   "slot_class": "other:gboard emoji bar",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r11",
+   "source_span": "for your laptop, you're using the default Windows IME with a US International keyboard layout set on April 1st, primarily for typing accented Spanish characters",
+   "entity": "user",
+   "slot": "laptop_keyboard_setup",
+   "value": "Windows IME, US International layout",
+   "stated_date": "2024-04-01",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r12",
+   "source_span": "I bumped the keyboard height up to tall around mid-March because I kept hitting the wrong keys with my big thumbs.",
+   "entity": "user",
+   "slot": "gboard_keyboard_height",
+   "value": "tall",
+   "stated_date": "2024-03",
+   "slot_class": "other:gboard keyboard height",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-D18_trajectory_ops/s35#r5",
+   "source_span": "about a week ago you switched the Gboard keyboard height back from tall to medium",
+   "entity": "user",
+   "slot": "gboard_keyboard_height",
+   "value": "medium",
+   "stated_date": "",
+   "slot_class": "other:gboard keyboard height",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-D18_trajectory_ops/s35#r5",
+   "source_span": "Your current complete phone setup is: Gboard with medium keyboard height, dark gray theme, emoji bar disabled, English and Japanese input languages.",
+   "entity": "user",
+   "slot": "gboard_input_languages",
+   "value": "English and Japanese",
+   "stated_date": "",
+   "slot_class": "other:gboard input languages",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-D18_trajectory_ops/s35#r6",
+   "source_span": "I had voice input enabled in Gboard for a while but I disabled it maybe three weeks ago.",
+   "entity": "user",
+   "slot": "gboard_voice_input",
+   "value": "disabled",
+   "stated_date": "",
+   "slot_class": "other:gboard voice input",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-D18_trajectory_ops/s38#r6",
+   "source_span": "I think I'll go with Coursera since I've heard good things about it.",
+   "entity": "user",
+   "slot": "online_learning_platform",
+   "value": "Coursera",
+   "stated_date": "",
+   "slot_class": "other:online learning platform",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-D18_trajectory_ops/s38#r8",
+   "source_span": "I think I'll start with the Intro to Data Analysis with Python course.",
+   "entity": "user",
+   "slot": "online_course",
+   "value": "Intro to Data Analysis with Python",
+   "stated_date": "",
+   "slot_class": "other:online course",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r12",
+   "source_span": "My coworker David just showed me that Gboard has an extra-tall setting now and I'm planning to switch to that by the end of this week.",
+   "entity": "user",
+   "slot": "gboard_planned_height_change",
+   "value": "planning to switch to extra-tall setting",
+   "stated_date": "",
+   "slot_class": "other:gboard planned height change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "my US International layout on the laptop was set up on April 1st and my Thursday Spanish exchanges with Elena happen weekly",
+   "entity": "user",
+   "slot": "laptop_keyboard_setup_date",
+   "value": "US International layout set up April 1st",
+   "stated_date": "2024-04-01",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "my Thursday Spanish exchanges with Elena happen weekly",
+   "entity": "user",
+   "slot": "recurring_activity",
+   "value": "weekly Thursday Spanish exchanges with Elena",
+   "stated_date": "",
+   "slot_class": "other:recurring activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "my phone is on Gboard, I like my settings clean and minimal, and I don't want any apps or prompts to trick me into switching away from Gboard",
+   "entity": "user",
+   "slot": "phone_keyboard_app",
+   "value": "Gboard",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-D18_trajectory_ops/s45#r6",
+   "source_span": "I tried setting time limits for social media, but I always end up going over them.",
+   "entity": "user",
+   "slot": "social_media_habit",
+   "value": "struggles to stick to social media time limits",
+   "stated_date": "",
+   "slot_class": "other:social media habit",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 11186,
+ "usage_out": 2190,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 73,
+  "total": 540,
+  "user_turns": 540,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

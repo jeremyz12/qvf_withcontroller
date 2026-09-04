@@ -1,0 +1,194 @@
+{
+ "uid": "stale-0281",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0281/s9#r6",
+   "source_span": "receiving an update about my promotion from Rachel on May 1st",
+   "entity": "user",
+   "slot": "promotion_update_date",
+   "value": "May 1st",
+   "stated_date": "",
+   "slot_class": "other:promotion update date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0281/s9#r8",
+   "source_span": "The update from Rachel on May 1st was about my promotion to Senior Marketing Specialist, and it was a confirmation that the company's leadership team had approved it.",
+   "entity": "user",
+   "slot": "promotion_title",
+   "value": "Senior Marketing Specialist",
+   "stated_date": "",
+   "slot_class": "other:promotion title",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0281/s9#r10",
+   "source_span": "the promotion was effective June 1st",
+   "entity": "user",
+   "slot": "promotion_effective_date",
+   "value": "June 1st",
+   "stated_date": "",
+   "slot_class": "other:promotion effective date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0281/s28#r0",
+   "source_span": "I recently rearranged the furniture, which has made a huge difference, and I also mounted a new TV on the wall.",
+   "entity": "user",
+   "slot": "living_room_update",
+   "value": "rearranged furniture and mounted a new TV on the wall",
+   "stated_date": "",
+   "slot_class": "other:living room update",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0281/s28#r0",
+   "source_span": "I hosted a get-together for the playoffs two weeks ago, and it was a big event.",
+   "entity": "user",
+   "slot": "past_event",
+   "value": "hosted a get-together for the playoffs two weeks ago",
+   "stated_date": "",
+   "slot_class": "other:past event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0281/s31#r0",
+   "source_span": "I'm planning to visit my friend in her new city this summer.",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "planning to visit friend in her new city this summer",
+   "stated_date": "",
+   "slot_class": "other:travel plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0281/s31#r0",
+   "source_span": "this new location is outside of my current country",
+   "entity": "user",
+   "slot": "friend_location",
+   "value": "outside of user's current country",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0281/s32#r0",
+   "source_span": "I just got back from my fifth tennis lesson and I'm loving the improvement in my serves.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "taking tennis lessons, completed fifth lesson",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0281/s32#r2",
+   "source_span": "I'm thinking of entering a local tennis tournament next month.",
+   "entity": "user",
+   "slot": "plan",
+   "value": "planning to enter a local tennis tournament next month",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0281/s32#r6",
+   "source_span": "I've been thinking about getting a tennis ball machine to practice my shots at home",
+   "entity": "user",
+   "slot": "plan",
+   "value": "considering getting a tennis ball machine",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0281/s39#r0",
+   "source_span": "I just got a promotion to senior software engineer",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "senior software engineer",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0281/s39#r0",
+   "source_span": "the promotion came with a nice 15% salary increase, which is a significant bump up from my previous salary",
+   "entity": "user",
+   "slot": "salary_change",
+   "value": "15% salary increase",
+   "stated_date": "",
+   "slot_class": "other:salary change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0281/s41#r0",
+   "source_span": "I just joined a new book club group called \"Page Turners\" last week, where we discuss our favorite novels and share recommendations.",
+   "entity": "user",
+   "slot": "membership",
+   "value": "book club: Page Turners",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0281/s48#r0",
+   "source_span": "I officially changed my name from Emily Patricia Wilson to Emily Rose Thompson on February 10th",
+   "entity": "user",
+   "slot": "name",
+   "value": "Emily Rose Thompson",
+   "stated_date": "2025-02-10",
+   "slot_class": "other:name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0281/s48#r0",
+   "source_span": "I recently changed my name and I'm not sure how to update it on the platform.",
+   "entity": "user",
+   "slot": "linkedin_update_needed",
+   "value": "needs to update name on LinkedIn",
+   "stated_date": "",
+   "slot_class": "other:linkedin update needed",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0281/s48#r2",
+   "source_span": "I'm also thinking of updating my email address to match my new name.",
+   "entity": "user",
+   "slot": "email_update_plan",
+   "value": "plans to update email address to match new name",
+   "stated_date": "",
+   "slot_class": "other:email update plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6884,
+ "usage_out": 1725,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 23,
+  "total": 592,
+  "user_turns": 592,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

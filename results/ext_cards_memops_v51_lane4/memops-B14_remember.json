@@ -1,0 +1,106 @@
+{
+ "uid": "memops-B14_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B14_remember/s36#r6",
+   "source_span": "We've been doing regular dinners since early March this year, starting around March 8th",
+   "entity": "user",
+   "slot": "habit",
+   "value": "regular dinners with a group, trying different restaurants, since March 8th",
+   "stated_date": "2023-03-08",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B14_remember/s48#r8",
+   "source_span": "I'm looking to move to Partick.",
+   "entity": "user",
+   "slot": "planned_residence",
+   "value": "Partick",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B14_remember/s48#r12",
+   "source_span": "I'll definitely check those places out when I move to Partick.",
+   "entity": "user",
+   "slot": "planned_residence",
+   "value": "Partick",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B14_remember/s16#r4",
+   "source_span": "I hate going to the gym",
+   "entity": "user",
+   "slot": "preference_dislike",
+   "value": "going to the gym",
+   "stated_date": "",
+   "slot_class": "other:preference dislike",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B14_remember/s16#r6",
+   "source_span": "I really love nature and hiking, but I live in a city with limited nature trails.",
+   "entity": "user",
+   "slot": "preference_like",
+   "value": "nature and hiking",
+   "stated_date": "",
+   "slot_class": "other:preference like",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B14_remember/s16#r6",
+   "source_span": "I live in a city with limited nature trails",
+   "entity": "user",
+   "slot": "residence",
+   "value": "a city with limited nature trails",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B14_remember/s11#r4",
+   "source_span": "I'm excited to start learning more about cryptocurrency and hopefully make some smart investments.",
+   "entity": "user",
+   "slot": "interest",
+   "value": "learning about cryptocurrency and investing",
+   "stated_date": "",
+   "slot_class": "other:interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B14_remember/s15#r4",
+   "source_span": "I feel more confident about my investments now.",
+   "entity": "user",
+   "slot": "interest",
+   "value": "investing (feels more confident now)",
+   "stated_date": "",
+   "slot_class": "other:interest",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 5001,
+ "usage_out": 741,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 28,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

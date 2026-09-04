@@ -1,0 +1,227 @@
+{
+ "uid": "memops-A32_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A32_trajectory_ops/s0#r1",
+   "source_span": "main personal email as marcus.holloway@gmail.com, which you've been using since around 2014",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "marcus.holloway@gmail.com",
+   "stated_date": "2014",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A32_trajectory_ops/s0#r4",
+   "source_span": "got locked out of my Gmail on April 2 because of a suspicious login from Southeast Asia",
+   "entity": "user",
+   "slot": "gmail_lockout_event",
+   "value": "locked out of Gmail on April 2 due to suspicious login from Southeast Asia",
+   "stated_date": "04-02",
+   "slot_class": "other:gmail lockout event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A32_trajectory_ops/s0#r4",
+   "source_span": "I finally turned on two-factor authentication",
+   "entity": "user",
+   "slot": "gmail_two_factor_auth",
+   "value": "enabled",
+   "stated_date": "",
+   "slot_class": "other:gmail two factor auth",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A32_trajectory_ops/s0#r4",
+   "source_span": "the recovery phone number tied to my Gmail ends in 4738. That's my current cell.",
+   "entity": "user",
+   "slot": "gmail_recovery_phone_last4",
+   "value": "4738",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A32_trajectory_ops/s0#r6",
+   "source_span": "My brother Kevin also got phished through his Yahoo email last week and someone tried accessing his PayPal.",
+   "entity": "Kevin",
+   "slot": "phishing_incident",
+   "value": "phished through Yahoo email, PayPal access attempted",
+   "stated_date": "",
+   "slot_class": "other:phishing incident",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r10",
+   "source_span": "It's actually marcus.t.holloway@gmail.com with a middle initial T.",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "marcus.t.holloway@gmail.com",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r16",
+   "source_span": "I enabled two-factor on April 2 right after the lockout",
+   "entity": "user",
+   "slot": "gmail_two_factor_enabled_date",
+   "value": "April 2",
+   "stated_date": "04-02",
+   "slot_class": "other:gmail two factor enabled date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r17",
+   "source_span": "you completed a major inbox cleanup on March 16th bringing unread count from about 4,000 down to 200",
+   "entity": "user",
+   "slot": "gmail_inbox_cleanup",
+   "value": "cleaned up inbox from ~4,000 unread to 200 on March 16th",
+   "stated_date": "03-16",
+   "slot_class": "other:gmail inbox cleanup",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A32_trajectory_ops/s6#r17",
+   "source_span": "the unused Outlook secondary email is disregarded",
+   "entity": "user",
+   "slot": "secondary_email_status",
+   "value": "unused Outlook secondary email disregarded",
+   "stated_date": "",
+   "slot_class": "other:secondary email status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A32_trajectory_ops/s8#r4",
+   "source_span": "my brother Kevin finally switched his primary email to marcus.holloway@yahoo.com after the whole phishing incident with his old Yahoo address",
+   "entity": "Kevin",
+   "slot": "primary_email",
+   "value": "marcus.holloway@yahoo.com",
+   "stated_date": "",
+   "slot_class": "other:primary email",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A32_trajectory_ops/s37#r3",
+   "source_span": "the person in Ohio not only has marcus.holloway@gmail.com but apparently also has marcus.t.holloway@outlook.com listed publicly",
+   "entity": "Ohio person",
+   "slot": "email_addresses",
+   "value": "marcus.holloway@gmail.com, marcus.t.holloway@outlook.com",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "Ohio person"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r12",
+   "source_span": "My friend Danielle has been pushing me really hard to switch to ProtonMail for privacy reasons. She switched her own primary email to ProtonMail a few weeks ago",
+   "entity": "Danielle",
+   "slot": "primary_email_provider",
+   "value": "ProtonMail",
+   "stated_date": "",
+   "slot_class": "other:primary email provider",
+   "owner": "Danielle"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r14",
+   "source_span": "Danielle helped me set up a ProtonMail account yesterday, marcus.t.holloway@protonmail.com",
+   "entity": "user",
+   "slot": "protonmail_account",
+   "value": "marcus.t.holloway@protonmail.com",
+   "stated_date": "",
+   "slot_class": "other:protonmail account",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r14",
+   "source_span": "I'll be switching my primary email to that one by end of month",
+   "entity": "user",
+   "slot": "planned_primary_email_switch",
+   "value": "planned switch to marcus.t.holloway@protonmail.com by end of month",
+   "stated_date": "",
+   "slot_class": "other:planned primary email switch",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A32_trajectory_ops/s39#r18",
+   "source_span": "I decided I'm not switching to ProtonMail after all. Too many accounts are linked to marcus.t.holloway@gmail.com and I just renewed two-factor on it. So my primary email is still marcus.t.holloway@gmail.com.",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "marcus.t.holloway@gmail.com",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A32_trajectory_ops/s41#r10",
+   "source_span": "Danielle is now suggesting I try Tutanota instead, marcus.t.holloway@tutanota.com. She actually went ahead and reserved the address for me.",
+   "entity": "user",
+   "slot": "tutanota_reserved_email",
+   "value": "marcus.t.holloway@tutanota.com (reserved by Danielle, not adopted)",
+   "stated_date": "",
+   "slot_class": "other:tutanota reserved email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A32_trajectory_ops/s41#r10",
+   "source_span": "I told her I appreciate the effort but I'm absolutely not switching. My Gmail is staying as my primary, period.",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "Gmail remains primary email",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-A32_trajectory_ops/s42#r10",
+   "source_span": "I actually started taking classes before the pandemic hit, but had to stop.",
+   "entity": "user",
+   "slot": "hobby_dance_history",
+   "value": "started Argentine tango classes before the pandemic, then stopped",
+   "stated_date": "",
+   "slot_class": "other:hobby dance history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-A32_trajectory_ops/s48#r6",
+   "source_span": "It has the middle initial T in it.",
+   "entity": "user",
+   "slot": "personal_email",
+   "value": "email includes middle initial T (marcus.t.holloway@gmail.com)",
+   "stated_date": "",
+   "slot_class": "other:personal email",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 10949,
+ "usage_out": 2390,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 73,
+  "total": 562,
+  "user_turns": 562,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

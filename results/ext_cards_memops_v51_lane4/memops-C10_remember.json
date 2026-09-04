@@ -1,0 +1,73 @@
+{
+ "uid": "memops-C10_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C10_remember/s20#r6",
+   "source_span": "I've been sticking to the 5:30 AM routine and it's been working really well. I managed to push through two more Becker modules this past week.",
+   "entity": "user",
+   "slot": "study_routine",
+   "value": "5:30 AM study routine using Becker modules",
+   "stated_date": "",
+   "slot_class": "other:study routine",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C10_remember/s20#r6",
+   "source_span": "I'm feeling more confident about the governmental accounting material after drilling it with Ninja questions.",
+   "entity": "user",
+   "slot": "study_material",
+   "value": "Uses Ninja questions to drill governmental accounting material",
+   "stated_date": "",
+   "slot_class": "other:study material",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C10_remember/s20#r8",
+   "source_span": "I'll probably keep it through June since my exam is June 7th and I want access right up until then.",
+   "entity": "user",
+   "slot": "exam_date",
+   "value": "CPA exam scheduled for June 7th",
+   "stated_date": "",
+   "slot_class": "other:exam date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C10_remember/s20#r8",
+   "source_span": "After that I'll cancel and resubscribe later when I start another section.",
+   "entity": "user",
+   "slot": "subscription_plan",
+   "value": "Plans to cancel subscription after exam and resubscribe later for next section",
+   "stated_date": "",
+   "slot_class": "other:subscription plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C10_remember/s20#r8",
+   "source_span": "I want to be smart about the costs since this whole CPA journey adds up fast.",
+   "entity": "user",
+   "slot": "goal",
+   "value": "Studying for CPA exam",
+   "stated_date": "",
+   "slot_class": "other:goal",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 5027,
+ "usage_out": 558,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 27,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

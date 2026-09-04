@@ -1,0 +1,128 @@
+{
+ "uid": "memops-D20_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D20_remember/s5#r9",
+   "source_span": "Your book club's May selection is Project Hail Mary by Andy Weir, not The Martian.",
+   "entity": "user",
+   "slot": "book_club_may_selection",
+   "value": "Project Hail Mary by Andy Weir",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D20_remember/s7#r4",
+   "source_span": "I signed up for a book club at the library on April 20th",
+   "entity": "user",
+   "slot": "book_club_join_date",
+   "value": "April 20th",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D20_remember/s7#r6",
+   "source_span": "my friend Dan recommended Annihilation by Jeff VanderMeer to me",
+   "entity": "user",
+   "slot": "friend_recommendation",
+   "value": "Dan recommended Annihilation by Jeff VanderMeer",
+   "stated_date": "",
+   "slot_class": "other:friend recommendation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D20_remember/s7#r6",
+   "source_span": "I bought my own copy from a used bookstore on Elm Street and read it in about two days.",
+   "entity": "user",
+   "slot": "book_purchase",
+   "value": "bought Annihilation from a used bookstore on Elm Street, read it in about two days",
+   "stated_date": "",
+   "slot_class": "other:book purchase",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D20_remember/s17#r10",
+   "source_span": "it's my friend's birthday next week and I really want to get her something special",
+   "entity": "user",
+   "slot": "upcoming_event",
+   "value": "friend's birthday next week",
+   "stated_date": "",
+   "slot_class": "other:upcoming event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D20_remember/s29#r0",
+   "source_span": "my sister actually joined a different book club at her local library back on March 15th",
+   "entity": "user's sister",
+   "slot": "book_club_join_date",
+   "value": "March 15th",
+   "stated_date": "2024-03-15",
+   "slot_class": "team",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D20_remember/s29#r1",
+   "source_span": "Her club started on March 15th at her local library, which is a separate group from yours.",
+   "entity": "user's sister",
+   "slot": "book_club_location",
+   "value": "her local library",
+   "stated_date": "2024-03-15",
+   "slot_class": "location",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-D20_remember/s29#r1",
+   "source_span": "Your library book club join date is April 20th",
+   "entity": "user",
+   "slot": "book_club_join_date",
+   "value": "April 20th",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-D20_remember/s31#r2",
+   "source_span": "Her club meets every week on Saturdays at 2 PM, which is way more frequent than mine.",
+   "entity": "user's sister",
+   "slot": "book_club_meeting_schedule",
+   "value": "every week on Saturdays at 2 PM",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-D20_remember/s33#r9",
+   "source_span": "I have that you joined on April 20th and that the meetings are every two weeks on Sundays at 3 PM.",
+   "entity": "user",
+   "slot": "book_club_meeting_schedule",
+   "value": "every two weeks on Sundays at 3 PM",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 10310,
+ "usage_out": 1154,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 73,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

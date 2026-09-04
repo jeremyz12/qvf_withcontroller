@@ -1,0 +1,293 @@
+{
+ "uid": "memops-B14_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B14_remember/s2#r3",
+   "source_span": "Mia was in Seattle until 2021 and Kevin was in Portland until 2022",
+   "entity": "Mia",
+   "slot": "past_residence",
+   "value": "Seattle until 2021",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "Mia"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B14_remember/s2#r3",
+   "source_span": "Mia was in Seattle until 2021 and Kevin was in Portland until 2022",
+   "entity": "Kevin",
+   "slot": "past_residence",
+   "value": "Portland until 2022",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B14_remember/s4#r6",
+   "source_span": "Kevin stopped eating eggs about two years ago",
+   "entity": "Kevin",
+   "slot": "dietary_restriction",
+   "value": "avoids eggs",
+   "stated_date": "",
+   "slot_class": "other:dietary restriction",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B14_remember/s4#r6",
+   "source_span": "His girlfriend Mia told me it was a gradual change",
+   "entity": "Kevin",
+   "slot": "girlfriend",
+   "value": "Mia",
+   "stated_date": "",
+   "slot_class": "relationship",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B14_remember/s5#r11",
+   "source_span": "Kevin still avoids all dairy as far as you've told me",
+   "entity": "Kevin",
+   "slot": "dietary_restriction",
+   "value": "avoids dairy",
+   "stated_date": "",
+   "slot_class": "other:dietary restriction",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B14_remember/s5#r11",
+   "source_span": "her dairy-free phase was a personal choice she's now reversed",
+   "entity": "Mia",
+   "slot": "dietary_restriction",
+   "value": "no longer dairy-free (reversed)",
+   "stated_date": "",
+   "slot_class": "other:dietary restriction",
+   "owner": "Mia"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B14_remember/s8#r6",
+   "source_span": "I'll talk to my doctor soon and get more information on how to manage my bee allergy",
+   "entity": "user",
+   "slot": "allergy",
+   "value": "bee allergy",
+   "stated_date": "",
+   "slot_class": "other:allergy",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B14_remember/s13#r4",
+   "source_span": "Lisa mentioned that her brother stopped eating eggs last month due to an allergy diagnosis",
+   "entity": "Lisa's brother",
+   "slot": "dietary_restriction",
+   "value": "avoids eggs (allergy diagnosis)",
+   "stated_date": "",
+   "slot_class": "other:dietary restriction",
+   "owner": "Lisa's brother"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B14_remember/s36#r6",
+   "source_span": "We've been doing regular dinners since early March this year, starting around March 8th",
+   "entity": "user",
+   "slot": "dining_habit",
+   "value": "regular dinners with Kevin since March 8th",
+   "stated_date": "",
+   "slot_class": "other:dining habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B14_remember/s36#r7",
+   "source_span": "your coworker Lisa follows a pescatarian diet and her favorite spot is that sushi place on Oak Street",
+   "entity": "Lisa",
+   "slot": "dietary_restriction",
+   "value": "pescatarian",
+   "stated_date": "",
+   "slot_class": "other:dietary restriction",
+   "owner": "Lisa"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B14_remember/s36#r7",
+   "source_span": "your coworker Lisa follows a pescatarian diet and her favorite spot is that sushi place on Oak Street",
+   "entity": "Lisa",
+   "slot": "job_relation",
+   "value": "user's coworker",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Lisa"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B14_remember/s36#r7",
+   "source_span": "her favorite spot is that sushi place on Oak Street",
+   "entity": "Lisa",
+   "slot": "favorite_restaurant",
+   "value": "sushi place on Oak Street",
+   "stated_date": "",
+   "slot_class": "other:favorite restaurant",
+   "owner": "Lisa"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B14_remember/s32#r8",
+   "source_span": "I've used Slack before",
+   "entity": "user",
+   "slot": "tool_used",
+   "value": "Slack",
+   "stated_date": "",
+   "slot_class": "other:tool used",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B14_remember/s32#r10",
+   "source_span": "I've actually heard some good things about Loom. I'm going to check it out and see if it could be useful for my team.",
+   "entity": "user",
+   "slot": "tool_considering",
+   "value": "Loom",
+   "stated_date": "",
+   "slot_class": "other:tool considering",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-B14_remember/s34#r0",
+   "source_span": "I was thinking about what makes Kevin different from other people I know with dietary restrictions.",
+   "entity": "user",
+   "slot": "acquaintance",
+   "value": "Kevin (has dietary restrictions)",
+   "stated_date": "",
+   "slot_class": "other:acquaintance",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-B14_remember/s34#r6",
+   "source_span": "I have a habit of switching between my phone, laptop, and tablet",
+   "entity": "user",
+   "slot": "devices",
+   "value": "phone, laptop, tablet",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-B14_remember/s16#r4",
+   "source_span": "I hate going to the gym",
+   "entity": "user",
+   "slot": "exercise_preference",
+   "value": "dislikes gym",
+   "stated_date": "",
+   "slot_class": "other:exercise preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-B14_remember/s16#r6",
+   "source_span": "I really love nature and hiking, but I live in a city with limited nature trails",
+   "entity": "user",
+   "slot": "residence",
+   "value": "city with limited nature trails",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-B14_remember/s16#r6",
+   "source_span": "I really love nature and hiking, but I live in a city with limited nature trails",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "nature and hiking",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-B14_remember/s48#r8",
+   "source_span": "I'm looking to move to Partick",
+   "entity": "user",
+   "slot": "planned_move",
+   "value": "Partick",
+   "stated_date": "",
+   "slot_class": "other:planned move",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-B14_remember/s11#r4",
+   "source_span": "I'm excited to start learning more about cryptocurrency and hopefully make some smart investments.",
+   "entity": "user",
+   "slot": "interest",
+   "value": "cryptocurrency investing",
+   "stated_date": "",
+   "slot_class": "other:interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "memops-B14_remember/s15#r2",
+   "source_span": "I think diversification and maintaining a long-term perspective makes sense for me.",
+   "entity": "user",
+   "slot": "investment_strategy",
+   "value": "diversification and long-term perspective",
+   "stated_date": "",
+   "slot_class": "other:investment strategy",
+   "owner": "user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "memops-B14_remember/s14#r4",
+   "source_span": "I think next time I'll invite my friend who's also really into art to come with me to the museum.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "visiting museums / interested in art",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "memops-B14_remember/s38#r10",
+   "source_span": "Thanks for all the tips on optimizing my gaming PC and internet connection!",
+   "entity": "user",
+   "slot": "devices",
+   "value": "gaming PC",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "memops-B14_remember/s44#r8",
+   "source_span": "I'm definitely going to try incorporating more mindfulness into my workday, especially taking mindful breaks.",
+   "entity": "user",
+   "slot": "habit",
+   "value": "practicing mindfulness at work",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 13833,
+ "usage_out": 2476,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 82,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

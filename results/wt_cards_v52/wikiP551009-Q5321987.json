@@ -1,0 +1,128 @@
+{
+ "uid": "wikiP551009-Q5321987",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP551009-Q5321987/s0#r0",
+   "source_span": "we've taken up residence at Frampton on Severn as of today",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Frampton on Severn",
+   "stated_date": "1872",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP551009-Q5321987/s3#r2",
+   "source_span": "I recently upgraded my laptop's RAM from 8GB to 16GB, which cost me $120",
+   "entity": "user",
+   "slot": "device_upgrade",
+   "value": "laptop RAM upgraded from 8GB to 16GB",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP551009-Q5321987/s6#r0",
+   "source_span": "I'm moving to the US soon to start my Master's program at UC Berkeley",
+   "entity": "user",
+   "slot": "position",
+   "value": "Master's student",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP551009-Q5321987/s6#r0",
+   "source_span": "start my Master's program at UC Berkeley",
+   "entity": "user",
+   "slot": "employer",
+   "value": "UC Berkeley",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP551009-Q5321987/s6#r2",
+   "source_span": "I'm glad I got accepted into UC Berkeley for the fall semester 2023",
+   "entity": "user",
+   "slot": "employer",
+   "value": "UC Berkeley",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP551009-Q5321987/s19#r0",
+   "source_span": "I recently updated my title to \"Content Creator\" instead of \"Freelance Writer\"",
+   "entity": "user",
+   "slot": "position",
+   "value": "Content Creator",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP551009-Q5321987/s22#r0",
+   "source_span": "I've mostly given up on the local buses for getting across town, simply because the subway schedules are much more consistent",
+   "entity": "user",
+   "slot": "commute_mode",
+   "value": "subway instead of buses",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:commute mode"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP551009-Q5321987/s25#r0",
+   "source_span": "as of today I've taken up residence in Birmingham",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Birmingham",
+   "stated_date": "1885",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP551009-Q5321987/s28#r1",
+   "source_span": "London is now my new residence",
+   "entity": "user",
+   "slot": "residence",
+   "value": "London",
+   "stated_date": "1887",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP551009-Q5321987/s32#r0",
+   "source_span": "as of today Pudsey is my new residence",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Pudsey",
+   "stated_date": "1890",
+   "owner": "user",
+   "slot_class": "residence"
+  }
+ ],
+ "usage_in": 2302,
+ "usage_out": 1136,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 17,
+  "total": 165,
+  "user_turns": 105,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

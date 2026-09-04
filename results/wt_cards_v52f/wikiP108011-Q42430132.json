@@ -1,0 +1,110 @@
+{
+ "uid": "wikiP108011-Q42430132",
+ "usage_in": 2753,
+ "usage_out": 855,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 21,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1,
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108011-Q42430132/s0#r1",
+   "source_span": "today's officially my first day as a lecturer in mathematics at the University of Manchester",
+   "entity": "user",
+   "slot": "position",
+   "value": "lecturer in mathematics",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'today's officially my first day as a lecturer in mathematics at the University of Manchester', indicating they have just begun this position."
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108011-Q42430132/s0#r1",
+   "source_span": "today's officially my first day as a lecturer in mathematics at the University of Manchester",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of Manchester",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'today's officially my first day as a lecturer in mathematics at the University of Manchester', indicating they have just begun employment there."
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108011-Q42430132/s13#r0",
+   "source_span": "I've just started at Shell as of this morning",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Shell",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker explicitly states 'I've just started at Shell as of this morning', indicating a new employment position that began today."
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108011-Q42430132/s19#r0",
+   "source_span": "I recently started subscribing to The New Yorker magazine about three months ago",
+   "entity": "user",
+   "slot": "magazine_subscription",
+   "value": "The New Yorker",
+   "stated_date": "1978-05",
+   "owner": "user",
+   "slot_class": "other:magazine subscription",
+   "assertion_type": "unjudged",
+   "entailed": true,
+   "entail_reason": ""
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108011-Q42430132/s20#r2",
+   "source_span": "I've got a Toyota 86",
+   "entity": "user",
+   "slot": "vehicle",
+   "value": "Toyota 86",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:vehicle",
+   "assertion_type": "unjudged",
+   "entailed": true,
+   "entail_reason": ""
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108011-Q42430132/s31#r0",
+   "source_span": "I've officially joined the Indian Institute of Petroleum as of this morning, so please file that as my current employer",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Indian Institute of Petroleum",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'I've officially joined the Indian Institute of Petroleum as of this morning' and explicitly requests it be filed as 'my current employer'."
+  }
+ ],
+ "derived_from": "D:\\ZZL_cluade\\results\\wt_cards_v52",
+ "src_sha256": "c65c21b1c6bfec9be15682b62feee41ce5c0af1c52d19920425eb47f9606b1ad",
+ "entail_model": "claude-haiku-4-5",
+ "entail_keep": [
+  "start",
+  "unclear",
+  "unjudged"
+ ]
+}

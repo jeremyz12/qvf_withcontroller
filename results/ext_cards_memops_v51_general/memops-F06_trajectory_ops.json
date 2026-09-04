@@ -1,0 +1,282 @@
+{
+ "uid": "memops-F06_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r4",
+   "source_span": "my breakup with Rachel on April 12th",
+   "entity": "user",
+   "slot": "relationship_status",
+   "value": "broke up with Rachel",
+   "stated_date": "2024-04-12",
+   "slot_class": "relationship",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r4",
+   "source_span": "I started therapy with Dr. Okafor on May 1st.",
+   "entity": "user",
+   "slot": "therapist",
+   "value": "Dr. Okafor",
+   "stated_date": "2024-05-01",
+   "slot_class": "other:therapist",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r4",
+   "source_span": "My sessions are every other Wednesday at 2pm.",
+   "entity": "user",
+   "slot": "therapy_schedule",
+   "value": "every other Wednesday at 2pm",
+   "stated_date": "",
+   "slot_class": "other:therapy schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r4",
+   "source_span": "Rachel and I were together two years and three months",
+   "entity": "user",
+   "slot": "relationship_duration_with_rachel",
+   "value": "two years and three months",
+   "stated_date": "",
+   "slot_class": "relationship",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r6",
+   "source_span": "I called in sick on April 15th and 16th",
+   "entity": "user",
+   "slot": "sick_leave",
+   "value": "called in sick April 15th and 16th",
+   "stated_date": "2024-04-15",
+   "slot_class": "other:sick leave",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r6",
+   "source_span": "I've been doing these evening walks along the river trail near my apartment, usually around 8 or 9pm with no music, just listening to the water.",
+   "entity": "user",
+   "slot": "habit_evening_walks",
+   "value": "evening walks along the river trail near apartment, ~8-9pm, no music",
+   "stated_date": "",
+   "slot_class": "other:habit evening walks",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r8",
+   "source_span": "My sister Maya checks in on me regularly.",
+   "entity": "user",
+   "slot": "family_support",
+   "value": "sister Maya checks in regularly",
+   "stated_date": "",
+   "slot_class": "other:family support",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F06_trajectory_ops/s1#r8",
+   "source_span": "I'm at about six weeks now",
+   "entity": "user",
+   "slot": "time_since_breakup",
+   "value": "about six weeks",
+   "stated_date": "",
+   "slot_class": "other:time since breakup",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r0",
+   "source_span": "Dr. Okafor and I decided to switch to weekly sessions instead of every other week. So now it's every Wednesday at 2pm.",
+   "entity": "user",
+   "slot": "therapy_schedule",
+   "value": "every Wednesday at 2pm (weekly)",
+   "stated_date": "",
+   "slot_class": "other:therapy schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r2",
+   "source_span": "my lease renewal deadline is June 30th.",
+   "entity": "user",
+   "slot": "lease_deadline",
+   "value": "June 30th",
+   "stated_date": "",
+   "slot_class": "other:lease deadline",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r2",
+   "source_span": "I was originally planning to move in with Rachel",
+   "entity": "user",
+   "slot": "housing_plan_former",
+   "value": "planned to move in with Rachel",
+   "stated_date": "",
+   "slot_class": "other:housing plan former",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r4",
+   "source_span": "The rent is manageable but tight.",
+   "entity": "user",
+   "slot": "rent_affordability",
+   "value": "manageable but tight",
+   "stated_date": "",
+   "slot_class": "other:rent affordability",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r4",
+   "source_span": "my friend Kevin telling me that Rachel is already seeing someone new — some guy from her office",
+   "entity": "user",
+   "slot": "news_about_rachel",
+   "value": "Rachel seeing someone new from her office (told by friend Kevin)",
+   "stated_date": "",
+   "slot_class": "other:news about rachel",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r6",
+   "source_span": "I went to a bookstore last weekend and spent about two hours just browsing by myself. I picked up a poetry collection and a book on Japanese ceramics.",
+   "entity": "user",
+   "slot": "habit_bookstore_visit",
+   "value": "visited bookstore alone, browsed for two hours, bought poetry collection and book on Japanese ceramics",
+   "stated_date": "",
+   "slot_class": "other:habit bookstore visit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-F06_trajectory_ops/s15#r6",
+   "source_span": "the argument Rachel and I had on April 8th about moving in together was really the beginning of the end.",
+   "entity": "user",
+   "slot": "relationship_event",
+   "value": "argument with Rachel about moving in together",
+   "stated_date": "2024-04-08",
+   "slot_class": "relationship",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-F06_trajectory_ops/s5#r10",
+   "source_span": "I think I'll try out YogaGlo and see how it goes.",
+   "entity": "user",
+   "slot": "yoga_provider",
+   "value": "YogaGlo",
+   "stated_date": "",
+   "slot_class": "other:yoga provider",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-F06_trajectory_ops/s5#r12",
+   "source_span": "I checked out YogaGlo and they do offer a 7-day free trial!",
+   "entity": "user",
+   "slot": "yoga_provider_trial",
+   "value": "YogaGlo 7-day free trial",
+   "stated_date": "",
+   "slot_class": "other:yoga provider trial",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-F06_trajectory_ops/s10#r6",
+   "source_span": "I'll start with swimming and see how it goes.",
+   "entity": "user",
+   "slot": "exercise_activity",
+   "value": "swimming",
+   "stated_date": "",
+   "slot_class": "other:exercise activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-F06_trajectory_ops/s33#r8",
+   "source_span": "I've been keeping up with the cooking — made another batch of miso soup yesterday and tried a new pickled radish recipe.",
+   "entity": "user",
+   "slot": "habit_cooking",
+   "value": "evening cooking, made miso soup and pickled radish recipe",
+   "stated_date": "",
+   "slot_class": "other:habit cooking",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-F06_trajectory_ops/s33#r10",
+   "source_span": "Actually we moved to weekly a while back, not biweekly anymore.",
+   "entity": "user",
+   "slot": "therapy_schedule",
+   "value": "weekly (confirmed, not biweekly)",
+   "stated_date": "",
+   "slot_class": "other:therapy schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-F06_trajectory_ops/s33#r10",
+   "source_span": "Dr. Okafor's office called and said she's moving all Wednesday clients to Thursdays at the same time starting next month. So it'll be every Thursday at 2pm.",
+   "entity": "user",
+   "slot": "therapy_schedule_change_proposed",
+   "value": "proposed move to every Thursday at 2pm starting next month",
+   "stated_date": "",
+   "slot_class": "other:therapy schedule change proposed",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "memops-F06_trajectory_ops/s33#r12",
+   "source_span": "the Thursday move isn't happening after all. We're staying with every Wednesday at 2pm.",
+   "entity": "user",
+   "slot": "therapy_schedule",
+   "value": "every Wednesday at 2pm (confirmed final)",
+   "stated_date": "",
+   "slot_class": "other:therapy schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "memops-F06_trajectory_ops/s33#r14",
+   "source_span": "I'm leaning toward staying in my current apartment since it's near the river trail and I've built these routines around the neighborhood.",
+   "entity": "user",
+   "slot": "housing_decision_leaning",
+   "value": "leaning toward staying in current apartment",
+   "stated_date": "",
+   "slot_class": "other:housing decision leaning",
+   "owner": "user"
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "memops-F06_trajectory_ops/s45#r9",
+   "source_span": "Hearing that Rachel is in therapy every other Friday at 3pm",
+   "entity": "Rachel",
+   "slot": "therapy_schedule",
+   "value": "every other Friday at 3pm",
+   "stated_date": "",
+   "slot_class": "other:therapy schedule",
+   "owner": "Rachel"
+  }
+ ],
+ "usage_in": 9149,
+ "usage_out": 2712,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 60,
+  "total": 528,
+  "user_turns": 528,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

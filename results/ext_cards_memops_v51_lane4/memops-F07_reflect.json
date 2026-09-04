@@ -1,0 +1,183 @@
+{
+ "uid": "memops-F07_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F07_reflect/s11#r4",
+   "source_span": "My next appointment with Dr. Huang is May 20th at 2:30 p.m.",
+   "entity": "user",
+   "slot": "appointment_dr_huang",
+   "value": "May 20th at 2:30 p.m.",
+   "stated_date": "",
+   "slot_class": "other:appointment dr huang",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F07_reflect/s11#r4",
+   "source_span": "I missed the last one because I wrote down the wrong time and got hit with a $75 cancellation fee.",
+   "entity": "user",
+   "slot": "missed_appointment_fee",
+   "value": "$75 cancellation fee for missed Dr. Huang appointment",
+   "stated_date": "",
+   "slot_class": "other:missed appointment fee",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F07_reflect/s10#r7",
+   "source_span": "your appointment with Dr. Huang on May 20th at 3:00 p.m. at Riverside Behavioral Health Clinic",
+   "entity": "user",
+   "slot": "appointment_dr_huang",
+   "value": "May 20th at 3:00 p.m. at Riverside Behavioral Health Clinic",
+   "stated_date": "",
+   "slot_class": "other:appointment dr huang",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F07_reflect/s42#r8",
+   "source_span": "Dr. Huang's office called today and said they're thinking of moving my May 20th appointment to 3:45 p.m. instead because she has a scheduling conflict.",
+   "entity": "user",
+   "slot": "appointment_dr_huang_pending_change",
+   "value": "possible move to 3:45 p.m. on May 20th, pending confirmation by Friday",
+   "stated_date": "",
+   "slot_class": "other:appointment dr huang pending change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F07_reflect/s42#r8",
+   "source_span": "For now I'm still planning on 2:30 p.m. until I hear otherwise.",
+   "entity": "user",
+   "slot": "appointment_dr_huang",
+   "value": "currently planning on 2:30 p.m. (pending confirmation)",
+   "stated_date": "",
+   "slot_class": "other:appointment dr huang",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F07_reflect/s12#r6",
+   "source_span": "I'm excited to start training my puppy and watching him grow into a well-behaved dog.",
+   "entity": "user",
+   "slot": "pet",
+   "value": "has a puppy, starting training",
+   "stated_date": "",
+   "slot_class": "other:pet",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F07_reflect/s33#r8",
+   "source_span": "I journal by hand in a plain notebook, usually at night.",
+   "entity": "user",
+   "slot": "journaling_method",
+   "value": "journals by hand in a plain notebook, usually at night",
+   "stated_date": "",
+   "slot_class": "other:journaling method",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F07_reflect/s33#r8",
+   "source_span": "I tried doing it on my laptop once but the screen felt too stimulating when I was trying to wind down. Pen and paper is the only way for me.",
+   "entity": "user",
+   "slot": "journaling_preference",
+   "value": "prefers pen and paper over laptop for journaling due to screen stimulation",
+   "stated_date": "",
+   "slot_class": "other:journaling preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F07_reflect/s33#r8",
+   "source_span": "It was mostly the work thing — the team reorganization. I wasn't laid off, but moving to a brand new project with strangers triggered this heavy dread that lasted about a week.",
+   "entity": "user",
+   "slot": "work_situation",
+   "value": "team reorganization; moved to a new project with new people, causing dread for about a week; not laid off",
+   "stated_date": "",
+   "slot_class": "other:work situation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F07_reflect/s34#r2",
+   "source_span": "My coworker — the one I went on that walk with — she told me she journals on a tablet with a stylus at night because it feels like handwriting but she gets cloud backup. She was trying to convince me to switch to that setup.",
+   "entity": "user_coworker",
+   "slot": "journaling_method",
+   "value": "journals on a tablet with a stylus at night, gets cloud backup",
+   "stated_date": "",
+   "slot_class": "other:journaling method",
+   "owner": "user_coworker"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F07_reflect/s40#r4",
+   "source_span": "I thought about going to the farmers market this Saturday — it's outdoors, sunny, always packed with people.",
+   "entity": "user",
+   "slot": "upcoming_plan",
+   "value": "considering going to the farmers market this Saturday (outdoors, sunny, crowded)",
+   "stated_date": "",
+   "slot_class": "other:upcoming plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-F07_reflect/s42#r2",
+   "source_span": "My coworker invited me to a group fitness class at a gym with loud music and flashing screens, and I just knew immediately it wasn't for me. I suggested we go for a walk instead and she was fine with it.",
+   "entity": "user",
+   "slot": "stimulation_preference",
+   "value": "avoids loud, high-stimulation gym environments; prefers walks instead",
+   "stated_date": "",
+   "slot_class": "other:stimulation preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-F07_reflect/s42#r6",
+   "source_span": "I've been journaling more consistently this past week. Almost every night.",
+   "entity": "user",
+   "slot": "journaling_frequency",
+   "value": "journaling almost every night this past week",
+   "stated_date": "",
+   "slot_class": "other:journaling frequency",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F07_reflect/s42#r6",
+   "source_span": "I think the combination of the walks, the journaling, and the meditation is really starting to add up. My sleep has been much better.",
+   "entity": "user",
+   "slot": "wellbeing_routine",
+   "value": "combination of walks, journaling, and meditation; sleep has improved",
+   "stated_date": "",
+   "slot_class": "other:wellbeing routine",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-F07_reflect/s42#r8",
+   "source_span": "I prefer these calm, one-on-one conversations where I can think through things slowly. Group chats or fast-paced threads stress me out.",
+   "entity": "user",
+   "slot": "communication_preference",
+   "value": "prefers calm, one-on-one conversations; group chats/fast-paced threads stress him/her out",
+   "stated_date": "",
+   "slot_class": "other:communication preference",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 5058,
+ "usage_out": 1981,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 25,
+  "total": 544,
+  "user_turns": 544,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

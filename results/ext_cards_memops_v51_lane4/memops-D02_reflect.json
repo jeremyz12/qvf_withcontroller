@@ -1,0 +1,40 @@
+{
+ "uid": "memops-D02_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D02_reflect/s17#r12",
+   "source_span": "I've been daily-driving a ThinkPad X1 Carbon Gen 11 since February 10th",
+   "entity": "user",
+   "slot": "laptop",
+   "value": "ThinkPad X1 Carbon Gen 11",
+   "stated_date": "02-10",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D02_reflect/s17#r12",
+   "source_span": "I ordered it on the 8th and it arrived two days later",
+   "entity": "user",
+   "slot": "laptop_order_date",
+   "value": "ordered on the 8th, arrived two days later",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3247,
+ "usage_out": 230,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 23,
+  "total": 574,
+  "user_turns": 574,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

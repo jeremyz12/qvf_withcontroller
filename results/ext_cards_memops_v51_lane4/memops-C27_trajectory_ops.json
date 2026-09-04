@@ -1,0 +1,139 @@
+{
+ "uid": "memops-C27_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C27_trajectory_ops/s26#r4",
+   "source_span": "I'm also thinking of volunteering at a local LGBTQ+ organization.",
+   "entity": "user",
+   "slot": "volunteering_interest",
+   "value": "local LGBTQ+ organization",
+   "stated_date": "",
+   "slot_class": "other:volunteering interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C27_trajectory_ops/s26#r8",
+   "source_span": "I'm excited to apply and go through the training process.",
+   "entity": "user",
+   "slot": "activity_status",
+   "value": "applying for volunteer training process",
+   "stated_date": "",
+   "slot_class": "other:activity status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C27_trajectory_ops/s29#r2",
+   "source_span": "I've been considering a career change for a while now",
+   "entity": "user",
+   "slot": "career_status",
+   "value": "considering a career change",
+   "stated_date": "",
+   "slot_class": "other:career status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C27_trajectory_ops/s29#r6",
+   "source_span": "Do you have any tips for balancing the demands of job searching with my current job?",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "currently employed while job searching",
+   "stated_date": "",
+   "slot_class": "other:employment status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r6",
+   "source_span": "I called Greenfield Medical Center on Elm Street a while back and they originally gave me a March 20th slot for my annual physical with Dr. Lena Park.",
+   "entity": "user",
+   "slot": "medical_provider",
+   "value": "Greenfield Medical Center on Elm Street",
+   "stated_date": "2024-03-20",
+   "slot_class": "other:medical provider",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C27_trajectory_ops/s36#r6",
+   "source_span": "She's been my primary care physician for a couple years now.",
+   "entity": "user",
+   "slot": "primary_care_physician",
+   "value": "Dr. Lena Park",
+   "stated_date": "",
+   "slot_class": "other:primary care physician",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r8",
+   "source_span": "I got a text reminder from the office to fill out the pre-visit questionnaire online before April 17th.",
+   "entity": "user",
+   "slot": "medical_appointment_task",
+   "value": "fill out pre-visit questionnaire before April 17th",
+   "stated_date": "",
+   "slot_class": "other:medical appointment task",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C27_trajectory_ops/s37#r8",
+   "source_span": "my dad was diagnosed with type 2 diabetes in January",
+   "entity": "user's father",
+   "slot": "medical_condition",
+   "value": "type 2 diabetes",
+   "stated_date": "2024-01",
+   "slot_class": "other:medical condition",
+   "owner": "user's father"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C27_trajectory_ops/s42#r8",
+   "source_span": "when I rescheduled after the Denver trip, they actually offered me April 2nd first but I couldn't do a Wednesday because of my standing team meeting. That's why I ended up with April 3rd instead.",
+   "entity": "user",
+   "slot": "medical_appointment_date",
+   "value": "April 3rd",
+   "stated_date": "2024-04-03",
+   "slot_class": "other:medical appointment date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C27_trajectory_ops/s42#r8",
+   "source_span": "I couldn't do a Wednesday because of my standing team meeting",
+   "entity": "user",
+   "slot": "recurring_commitment",
+   "value": "standing team meeting on Wednesdays",
+   "stated_date": "",
+   "slot_class": "other:recurring commitment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C27_trajectory_ops/s45#r8",
+   "source_span": "If April 17th falls through and they push to the 24th, I don't even know what I'll do.",
+   "entity": "user",
+   "slot": "medical_appointment_reschedule_risk",
+   "value": "possible reschedule to April 24th",
+   "stated_date": "2024-04-24",
+   "slot_class": "other:medical appointment reschedule risk",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4329,
+ "usage_out": 1285,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 20,
+  "total": 568,
+  "user_turns": 568,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

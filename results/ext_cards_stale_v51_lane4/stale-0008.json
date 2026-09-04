@@ -1,0 +1,260 @@
+{
+ "uid": "stale-0008",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0008/s14#r4",
+   "source_span": "I usually have a team meeting on Mondays to discuss our project progress",
+   "entity": "user",
+   "slot": "recurring_commitment",
+   "value": "team meeting on Mondays to discuss project progress",
+   "stated_date": "",
+   "slot_class": "other:recurring commitment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0008/s18#r0",
+   "source_span": "I just finished a volleyball league with my colleagues that ran every Thursday from August 25th to October 13th",
+   "entity": "user",
+   "slot": "past_activity",
+   "value": "volleyball league with colleagues, Thursdays, August 25 to October 13",
+   "stated_date": "",
+   "slot_class": "other:past activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0008/s18#r2",
+   "source_span": "I'm in 94105.",
+   "entity": "user",
+   "slot": "location_zip",
+   "value": "94105",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0008/s18#r2",
+   "source_span": "Weekday evenings work best for me, preferably Thursdays since I've gotten used to that routine.",
+   "entity": "user",
+   "slot": "preferred_schedule",
+   "value": "weekday evenings, preferably Thursdays",
+   "stated_date": "",
+   "slot_class": "other:preferred schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0008/s18#r4",
+   "source_span": "I think I'll look into the Co-ed Indoor Volleyball league with the San Francisco Recreation and Parks Department.",
+   "entity": "user",
+   "slot": "planned_league",
+   "value": "Co-ed Indoor Volleyball league with San Francisco Recreation and Parks Department",
+   "stated_date": "",
+   "slot_class": "other:planned league",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0008/s18#r4",
+   "source_span": "I've played volleyball with my colleagues for 8 weeks, and we won 5 out of our 8 games",
+   "entity": "user",
+   "slot": "past_activity_result",
+   "value": "won 5 of 8 games in colleagues' volleyball league (8 weeks)",
+   "stated_date": "",
+   "slot_class": "other:past activity result",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0008/s18#r6",
+   "source_span": "I think I'll register for the Co-ed Indoor Volleyball league with the San Francisco Recreation and Parks Department.",
+   "entity": "user",
+   "slot": "registration_plan",
+   "value": "registering for Co-ed Indoor Volleyball league with SF Recreation and Parks Department",
+   "stated_date": "",
+   "slot_class": "other:registration plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0008/s21#r0",
+   "source_span": "I just got back from a live Yankees game at Yankee Stadium about a month ago",
+   "entity": "user",
+   "slot": "recent_event",
+   "value": "attended live Yankees game at Yankee Stadium about a month ago",
+   "stated_date": "",
+   "slot_class": "other:recent event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0008/s21#r0",
+   "source_span": "I'm looking for some recommendations on good sports bars in NYC to catch a game with friends.",
+   "entity": "user",
+   "slot": "location_city",
+   "value": "NYC",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0008/s23#r10",
+   "source_span": "I'm thinking of implementing a weekly review of my cleaning tasks to make sure I'm staying on top of everything.",
+   "entity": "user",
+   "slot": "habit_plan",
+   "value": "planning weekly review of cleaning tasks",
+   "stated_date": "",
+   "slot_class": "other:habit plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0008/s25#r10",
+   "source_span": "I completed the wings of my F-15E model kit on March 1st, and now I'm moving on to the decals and weathering effects.",
+   "entity": "user",
+   "slot": "hobby_progress",
+   "value": "completed wings of F-15E model kit; moving to decals and weathering",
+   "stated_date": "2025-03-01",
+   "slot_class": "other:hobby progress",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0008/s27#r0",
+   "source_span": "I'm trying to get organized for the summer. Can you help me set reminders for my upcoming art events and exhibitions?",
+   "entity": "user",
+   "slot": "interest",
+   "value": "attends art events and exhibitions",
+   "stated_date": "",
+   "slot_class": "other:interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0008/s27#r5",
+   "source_span": "I'm glad you're thinking of catching up with your friend Rachel!",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Rachel",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0008/s29#r0",
+   "source_span": "I rearranged the furniture recently and now the table lamp isn't enough to light up the room in the evenings.",
+   "entity": "user",
+   "slot": "home_issue",
+   "value": "rearranged living room furniture; table lamp insufficient lighting in evenings",
+   "stated_date": "",
+   "slot_class": "other:home issue",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0008/s29#r0",
+   "source_span": "I'm thinking of getting a floor lamp, but I'm not sure where to put it.",
+   "entity": "user",
+   "slot": "purchase_plan",
+   "value": "considering buying a floor lamp",
+   "stated_date": "",
+   "slot_class": "other:purchase plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0008/s29#r0",
+   "source_span": "I had a power outage in my house about a month ago, and it made me realize how important good lighting is.",
+   "entity": "user",
+   "slot": "recent_event",
+   "value": "had a power outage at home about a month ago",
+   "stated_date": "",
+   "slot_class": "other:recent event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0008/s37#r8",
+   "source_span": "are there any low-cost fixes you'd prioritize for a rental?",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "lives in a rental apartment",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0008/s38#r6",
+   "source_span": "I've been considering upgrading my home security system, and I just realized that I've been meaning to review the footage from my current cameras.",
+   "entity": "user",
+   "slot": "device_owned",
+   "value": "current home security cameras",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "stale-0008/s38#r6",
+   "source_span": "I've been using my smart TV's voice control feature a lot lately, especially when searching for movies or changing channels.",
+   "entity": "user",
+   "slot": "device_owned",
+   "value": "smart TV with voice control feature",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "stale-0008/s44#r0",
+   "source_span": "I'm planning to post a new fitness video on Instagram and TikTok",
+   "entity": "user",
+   "slot": "social_media_platforms",
+   "value": "Instagram and TikTok",
+   "stated_date": "",
+   "slot_class": "other:social media platforms",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "stale-0008/s48#r0",
+   "source_span": "I'm looking to get involved in more charity events in my community.",
+   "entity": "user",
+   "slot": "interest",
+   "value": "involved in community charity events",
+   "stated_date": "",
+   "slot_class": "other:interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "stale-0008/s48#r0",
+   "source_span": "I've been involved in several charity events recently and I'm proud to say that they raised a combined total of $177,000 from individual team efforts, silent auctions, and sponsorships through events like the Walk for Hunger, Charity Dog Wash, Gala for a Cure, Bike-a-Thon, charity bake sale, Run for the Environment, and Charity Golf Tournament.",
+   "entity": "user",
+   "slot": "charity_activity",
+   "value": "raised $177,000 combined through Walk for Hunger, Charity Dog Wash, Gala for a Cure, Bike-a-Thon, charity bake sale, Run for the Environment, Charity Golf Tournament",
+   "stated_date": "",
+   "slot_class": "other:charity activity",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 9305,
+ "usage_out": 2537,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 29,
+  "total": 592,
+  "user_turns": 592,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

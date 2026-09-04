@@ -1,0 +1,139 @@
+{
+ "uid": "memops-D20_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D20_remember/s7#r4",
+   "source_span": "I signed up for a book club at the library on April 20th",
+   "entity": "user",
+   "slot": "book_club_join_date",
+   "value": "April 20th",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D20_remember/s29#r0",
+   "source_span": "my sister actually joined a different book club at her local library back on March 15th",
+   "entity": "user's sister",
+   "slot": "book_club_join_date",
+   "value": "March 15th",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D20_remember/s29#r0",
+   "source_span": "She's been going for over a month now.",
+   "entity": "user's sister",
+   "slot": "book_club_duration",
+   "value": "over a month",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D20_remember/s29#r1",
+   "source_span": "Her club started on March 15th at her local library, which is a separate group from yours.",
+   "entity": "user's sister",
+   "slot": "book_club_start_date",
+   "value": "March 15th",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D20_remember/s29#r1",
+   "source_span": "Your library book club join date is April 20th",
+   "entity": "user",
+   "slot": "book_club_join_date",
+   "value": "April 20th",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D20_remember/s31#r2",
+   "source_span": "Her club meets every week on Saturdays at 2 PM",
+   "entity": "user's sister",
+   "slot": "book_club_schedule",
+   "value": "every week on Saturdays at 2 PM",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user's sister"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D20_remember/s33#r9",
+   "source_span": "I have that you joined on April 20th and that the meetings are every two weeks on Sundays at 3 PM.",
+   "entity": "user",
+   "slot": "book_club_schedule",
+   "value": "every two weeks on Sundays at 3 PM",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-D20_remember/s13#r6",
+   "source_span": "I'm definitely going to make plans to attend an IndyCar event soon.",
+   "entity": "user",
+   "slot": "planned_activity",
+   "value": "attend an IndyCar event soon",
+   "stated_date": "",
+   "slot_class": "other:planned activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-D20_remember/s30#r14",
+   "source_span": "I'm also trying to increase my flexibility.",
+   "entity": "user",
+   "slot": "fitness_goal",
+   "value": "increase flexibility",
+   "stated_date": "",
+   "slot_class": "other:fitness goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-D20_remember/s35#r6",
+   "source_span": "I'm trying to balance my studies with work",
+   "entity": "user",
+   "slot": "activity",
+   "value": "balancing studies with work",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-D20_remember/s39#r4",
+   "source_span": "I'll definitely try out some case studies with my study group.",
+   "entity": "user",
+   "slot": "group_membership",
+   "value": "study group",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3155,
+ "usage_out": 1037,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 22,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

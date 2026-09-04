@@ -1,0 +1,95 @@
+{
+ "uid": "memops-D16_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D16_remember/s13#r10",
+   "source_span": "I want to have a few more months of consistent data from the Garmin to show her at the next visit.",
+   "entity": "user",
+   "slot": "device",
+   "value": "Garmin",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D16_remember/s36#r8",
+   "source_span": "I'm also trying to be more eco-friendly.",
+   "entity": "user",
+   "slot": "lifestyle_goal",
+   "value": "trying to be more eco-friendly",
+   "stated_date": "",
+   "slot_class": "other:lifestyle goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D16_remember/s40#r4",
+   "source_span": "I'm excited to start incorporating kettlebells into my routine.",
+   "entity": "user",
+   "slot": "fitness_activity",
+   "value": "incorporating kettlebells into workout routine",
+   "stated_date": "",
+   "slot_class": "other:fitness activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D16_remember/s46#r4",
+   "source_span": "I need some direction, otherwise what's the point of interning?",
+   "entity": "user",
+   "slot": "role",
+   "value": "intern",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D16_remember/s10#r12",
+   "source_span": "Do you have any tips for staying safe when traveling for work?",
+   "entity": "user",
+   "slot": "work_activity",
+   "value": "travels for work",
+   "stated_date": "",
+   "slot_class": "other:work activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D16_remember/s20#r8",
+   "source_span": "maybe I'll surprise myself and end up pursuing a career in sound production",
+   "entity": "user",
+   "slot": "career_interest",
+   "value": "considering a career in sound production",
+   "stated_date": "",
+   "slot_class": "other:career interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D16_remember/s2#r13",
+   "source_span": "Best of luck with your research!",
+   "entity": "user",
+   "slot": "research_field",
+   "value": "precision agriculture research",
+   "stated_date": "",
+   "slot_class": "other:research field",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6491,
+ "usage_out": 605,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 30,
+  "total": 540,
+  "user_turns": 540,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

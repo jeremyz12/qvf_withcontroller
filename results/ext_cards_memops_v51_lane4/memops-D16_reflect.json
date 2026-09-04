@@ -1,0 +1,62 @@
+{
+ "uid": "memops-D16_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D16_reflect/s10#r4",
+   "source_span": "I'm excited to try out a deep tissue massage after my next workout.",
+   "entity": "user",
+   "slot": "habit",
+   "value": "works out regularly, plans to try deep tissue massage after next workout",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D16_reflect/s48#r10",
+   "source_span": "in the first week of April there was a firmware update on the Fenix that messed up my sleep tracking",
+   "entity": "user",
+   "slot": "device",
+   "value": "owns a Garmin Fenix watch",
+   "stated_date": "2024-04",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D16_reflect/s48#r10",
+   "source_span": "I specifically chose this watch for health tracking accuracy",
+   "entity": "user",
+   "slot": "device_purpose",
+   "value": "chose Fenix watch for health tracking accuracy",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D16_reflect/s49#r2",
+   "source_span": "I am from the United States.",
+   "entity": "user",
+   "slot": "nationality",
+   "value": "United States",
+   "stated_date": "",
+   "slot_class": "other:nationality",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3208,
+ "usage_out": 384,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 536,
+  "user_turns": 536,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

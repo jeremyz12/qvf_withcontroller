@@ -1,0 +1,249 @@
+{
+ "uid": "memops-A31_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A31_forget/s1#r4",
+   "source_span": "My current phone number is 512-847-3291.",
+   "entity": "user",
+   "slot": "phone_number",
+   "value": "512-847-3291",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A31_forget/s1#r4",
+   "source_span": "It's a Texas area code, which I love — feels like a proper fresh start after leaving Illinois.",
+   "entity": "user",
+   "slot": "former_residence",
+   "value": "Illinois",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A31_forget/s1#r6",
+   "source_span": "I switched to this carrier around February 3rd when I moved to Austin.",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Austin",
+   "stated_date": "2023-02-03",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A31_forget/s1#r6",
+   "source_span": "I switched to this carrier around February 3rd when I moved to Austin.",
+   "entity": "user",
+   "slot": "carrier_switch_date",
+   "value": "February 3rd",
+   "stated_date": "2023-02-03",
+   "slot_class": "other:carrier switch date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A31_forget/s1#r6",
+   "source_span": "Before that I had a 630 area code from Illinois, but that line is completely dead now — I ported it out and canceled it.",
+   "entity": "user",
+   "slot": "old_phone_number",
+   "value": "630 area code (Illinois), canceled",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A31_forget/s1#r8",
+   "source_span": "I set up two-factor authentication on my bank account using the 512 number around February 26th or 27th.",
+   "entity": "user",
+   "slot": "bank_2fa_setup_date",
+   "value": "February 26th or 27th",
+   "stated_date": "2023-02-26",
+   "slot_class": "other:bank 2fa setup date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A31_forget/s1#r11",
+   "source_span": "I've noted your communication preference: texts over calls.",
+   "entity": "user",
+   "slot": "communication_preference",
+   "value": "texts over calls",
+   "stated_date": "",
+   "slot_class": "other:communication preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A31_forget/s1#r14",
+   "source_span": "I've always wanted to go to Norway, so the Bergen Railway definitely sounds like something I would love.",
+   "entity": "user",
+   "slot": "travel_interest",
+   "value": "wants to visit Norway / interested in Bergen Railway",
+   "stated_date": "",
+   "slot_class": "other:travel interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A31_forget/s3#r2",
+   "source_span": "I was talking to Derek about phone security and he mentioned he set up two-factor on his bank account back in January using his 630 number.",
+   "entity": "Derek",
+   "slot": "bank_2fa_setup_date",
+   "value": "January, using 630 number",
+   "stated_date": "2023-01",
+   "slot_class": "other:bank 2fa setup date",
+   "owner": "Derek"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A31_forget/s12#r10",
+   "source_span": "I gave my number to Dr. Patel's clinic on South Lamar around mid-March, a couple days before my first appointment on March 18th. I wrote 512-847-3291 on their intake form.",
+   "entity": "user",
+   "slot": "dentist_registration",
+   "value": "registered 512-847-3291 at Dr. Patel's clinic, South Lamar, mid-March before March 18th appointment",
+   "stated_date": "2023-03",
+   "slot_class": "other:dentist registration",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A31_forget/s12#r12",
+   "source_span": "there was a gas station rewards app I signed up for on March 1st that probably sold my number and caused the spam calls",
+   "entity": "user",
+   "slot": "gas_station_app_signup",
+   "value": "signed up March 1st, caused spam calls",
+   "stated_date": "2023-03-01",
+   "slot_class": "other:gas station app signup",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A31_forget/s12#r16",
+   "source_span": "My sister Claire apparently switched to T-Mobile recently with a 737 area code, sometime in March.",
+   "entity": "Claire",
+   "slot": "carrier",
+   "value": "T-Mobile, 737 area code, switched in March",
+   "stated_date": "2023-03",
+   "slot_class": "other:carrier",
+   "owner": "Claire"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A31_forget/s14#r1",
+   "source_span": "Good to know Claire pinned down her switch date as March 12th with a 737 area code on T-Mobile.",
+   "entity": "Claire",
+   "slot": "carrier_switch_date",
+   "value": "March 12th",
+   "stated_date": "2023-03-12",
+   "slot_class": "other:carrier switch date",
+   "owner": "Claire"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A31_forget/s15#r4",
+   "source_span": "I think I'll try the standing desk converter first since it seems like the most affordable option.",
+   "entity": "user",
+   "slot": "purchase_plan",
+   "value": "standing desk converter",
+   "stated_date": "",
+   "slot_class": "other:purchase plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A31_forget/s16#r6",
+   "source_span": "Please forget the gas station rewards app detail entirely.",
+   "entity": "user",
+   "slot": "gas_station_app_signup",
+   "value": "deleted / forgotten by request",
+   "stated_date": "",
+   "slot_class": "other:gas station app signup",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A31_forget/s16#r11",
+   "source_span": "your primary phone number is 512-847-3291, activated February 3rd in Austin",
+   "entity": "user",
+   "slot": "phone_number",
+   "value": "512-847-3291, activated February 3rd in Austin",
+   "stated_date": "2023-02-03",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A31_forget/s16#r11",
+   "source_span": "your bank two-factor authentication is linked to that number, set up around February 26th-27th",
+   "entity": "user",
+   "slot": "bank_2fa_setup_date",
+   "value": "February 26th-27th",
+   "stated_date": "2023-02-26",
+   "slot_class": "other:bank 2fa setup date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-A31_forget/s16#r11",
+   "source_span": "Dr. Patel's clinic on South Lamar has your number on file from mid-March before your March 18th appointment",
+   "entity": "user",
+   "slot": "dentist_registration",
+   "value": "Dr. Patel's clinic, South Lamar, from mid-March before March 18th appointment",
+   "stated_date": "2023-03",
+   "slot_class": "other:dentist registration",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-A31_forget/s16#r11",
+   "source_span": "you prefer texts over phone calls",
+   "entity": "user",
+   "slot": "communication_preference",
+   "value": "texts over phone calls",
+   "stated_date": "",
+   "slot_class": "other:communication preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-A31_forget/s17#r5",
+   "source_span": "Your correct number is 512-847-3291.",
+   "entity": "user",
+   "slot": "phone_number",
+   "value": "512-847-3291",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-A31_forget/s18#r3",
+   "source_span": "Dr. Patel's clinic on South Lamar is still your dentist with your number registered.",
+   "entity": "user",
+   "slot": "dentist",
+   "value": "Dr. Patel's clinic, South Lamar",
+   "stated_date": "",
+   "slot_class": "other:dentist",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 11715,
+ "usage_out": 2287,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 67,
+  "total": 516,
+  "user_turns": 516,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

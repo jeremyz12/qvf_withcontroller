@@ -1,0 +1,293 @@
+{
+ "uid": "memops-C01_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C01_forget/s5#r2",
+   "source_span": "I'll start practicing mindful gratitude journaling at least three times a week and see how it goes.",
+   "entity": "user",
+   "slot": "habit",
+   "value": "practicing mindful gratitude journaling at least three times a week",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C01_forget/s5#r4",
+   "source_span": "I've started my gratitude journal and it feels great.",
+   "entity": "user",
+   "slot": "habit",
+   "value": "started a gratitude journal",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C01_forget/s4#r6",
+   "source_span": "I have three siblings and I am still introverted.",
+   "entity": "user",
+   "slot": "siblings",
+   "value": "three siblings",
+   "stated_date": "",
+   "slot_class": "other:siblings",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C01_forget/s4#r6",
+   "source_span": "I have three siblings and I am still introverted.",
+   "entity": "user",
+   "slot": "personality",
+   "value": "introverted",
+   "stated_date": "",
+   "slot_class": "other:personality",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C01_forget/s26#r0",
+   "source_span": "My bathroom exhaust fan has been making a terrible grinding noise since late February.",
+   "entity": "user",
+   "slot": "home_issue",
+   "value": "bathroom exhaust fan making grinding noise",
+   "stated_date": "2024-02",
+   "slot_class": "other:home issue",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C01_forget/s26#r0",
+   "source_span": "I got a quote from BrightFix Home Services for the bathroom exhaust fan replacement. They quoted me $240 for parts and labor.",
+   "entity": "user",
+   "slot": "repair_quote",
+   "value": "BrightFix Home Services quoted $240 for bathroom exhaust fan replacement",
+   "stated_date": "",
+   "slot_class": "other:repair quote",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C01_forget/s26#r0",
+   "source_span": "I called them on March 12th.",
+   "entity": "user",
+   "slot": "repair_contact_date",
+   "value": "called BrightFix on March 12th",
+   "stated_date": "2024-03-12",
+   "slot_class": "other:repair contact date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C01_forget/s26#r2",
+   "source_span": "my neighbor Dave recommended his cousin for the job — the cousin does small electrical work on the side.",
+   "entity": "user",
+   "slot": "repair_lead",
+   "value": "Dave's cousin (possibly Marco or Miguel) recommended for electrical side work",
+   "stated_date": "",
+   "slot_class": "other:repair lead",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C01_forget/s26#r2",
+   "source_span": "I got really slammed with a work deadline around March 25th and couldn't deal with scheduling anything during that stretch.",
+   "entity": "user",
+   "slot": "work_deadline",
+   "value": "work deadline around March 25th",
+   "stated_date": "2024-03-25",
+   "slot_class": "other:work deadline",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C01_forget/s26#r6",
+   "source_span": "my friend Leah mentioned she had a similar fan installed at her place and her contractor finished in about 45 minutes.",
+   "entity": "user",
+   "slot": "friend_info",
+   "value": "friend Leah had similar fan installed, contractor took about 45 minutes",
+   "stated_date": "",
+   "slot_class": "other:friend info",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C01_forget/s26#r6",
+   "source_span": "I replaced my bedroom ceiling fan last year because even a faint motor whir was driving me crazy.",
+   "entity": "user",
+   "slot": "past_repair",
+   "value": "replaced bedroom ceiling fan last year due to noise sensitivity",
+   "stated_date": "",
+   "slot_class": "other:past repair",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C01_forget/s29#r8",
+   "source_span": "He mentioned he needs to pick up foil duct tape and a can of spray foam insulation from the Elm Street hardware store for some attic ductwork he's sealing up this weekend.",
+   "entity": "Dave",
+   "slot": "plan",
+   "value": "needs foil duct tape and spray foam insulation from Elm Street hardware store for attic ductwork",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "Dave"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C01_forget/s31#r8",
+   "source_span": "I still need to pick up duct tape and a tube of silicone sealant before Saturday. I'm going to the small hardware store on Elm Street for those.",
+   "entity": "user",
+   "slot": "shopping_plan",
+   "value": "needs duct tape and silicone sealant from Elm Street hardware store before Saturday",
+   "stated_date": "",
+   "slot_class": "other:shopping plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C01_forget/s31#r8",
+   "source_span": "I really don't want to go back to Home Depot. Big box stores just feel overwhelming to me — I'd rather pop into a smaller shop where I can find things quickly and get out without the sensory overload.",
+   "entity": "user",
+   "slot": "preference",
+   "value": "prefers small hardware shops over big box stores like Home Depot due to sensory overload",
+   "stated_date": "",
+   "slot_class": "other:preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C01_forget/s31#r10",
+   "source_span": "You can forget the BrightFix quote entirely. I'm doing this myself now, so I don't need that $240 figure stored anymore. Same goes for Dave's cousin — that whole lead is no longer relevant since I bought the fan and I'm handling installation on my own.",
+   "entity": "user",
+   "slot": "plan_update",
+   "value": "decided to self-install fan, forget BrightFix quote and Dave's cousin lead, already bought the fan",
+   "stated_date": "",
+   "slot_class": "other:plan update",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C01_forget/s31#r11",
+   "source_span": "you have the Panasonic WhisperCeiling FV-0811VF5 ready to go, you're picking up duct tape and silicone sealant from the Elm Street hardware store, and installation day is Saturday, May 10th.",
+   "entity": "user",
+   "slot": "fan_model",
+   "value": "Panasonic WhisperCeiling FV-0811VF5",
+   "stated_date": "",
+   "slot_class": "other:fan model",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-C01_forget/s31#r11",
+   "source_span": "installation day is Saturday, May 10th.",
+   "entity": "user",
+   "slot": "installation_date",
+   "value": "Saturday, May 10th",
+   "stated_date": "2024-05-10",
+   "slot_class": "other:installation date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-C01_forget/s33#r6",
+   "source_span": "I originally thought about doing it on Sunday, May 4th, but that weekend I have a family brunch that'll eat up most of the day. So that's why I pushed it to the 10th instead.",
+   "entity": "user",
+   "slot": "schedule_conflict",
+   "value": "family brunch on May 4th weekend, rescheduled installation to May 10th",
+   "stated_date": "2024-05-04",
+   "slot_class": "other:schedule conflict",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-C01_forget/s47#r12",
+   "source_span": "the reason I asked you to forget it since I'm doing the install myself.",
+   "entity": "user",
+   "slot": "plan_confirmation",
+   "value": "confirmed BrightFix quote of $240 forgotten, doing install himself",
+   "stated_date": "",
+   "slot_class": "other:plan confirmation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-C01_forget/s47#r14",
+   "source_span": "I'm thinking tomorrow afternoon. The Elm Street shop closes at six on weekdays, so I'll swing by around four.",
+   "entity": "user",
+   "slot": "shopping_plan",
+   "value": "plans to visit Elm Street hardware store around 4pm tomorrow afternoon",
+   "stated_date": "",
+   "slot_class": "other:shopping plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-C01_forget/s47#r14",
+   "source_span": "That gives me plenty of time to grab the duct tape, silicone sealant, and voltage tester without rushing.",
+   "entity": "user",
+   "slot": "shopping_list",
+   "value": "duct tape, silicone sealant, and voltage tester",
+   "stated_date": "",
+   "slot_class": "other:shopping list",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "memops-C01_forget/s47#r14",
+   "source_span": "I also want to browse their selection of wire nuts just in case the ones that come with the fan aren't the right gauge.",
+   "entity": "user",
+   "slot": "shopping_list",
+   "value": "considering wire nuts in case fan's included ones are wrong gauge",
+   "stated_date": "",
+   "slot_class": "other:shopping list",
+   "owner": "user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "memops-C01_forget/s47#r16",
+   "source_span": "my coworker James was telling me today that he just had his kitchen exhaust fan replaced by some company called AirPro Services for $195.",
+   "entity": "James",
+   "slot": "repair_info",
+   "value": "kitchen exhaust fan replaced by AirPro Services for $195",
+   "stated_date": "",
+   "slot_class": "other:repair info",
+   "owner": "James"
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "memops-C01_forget/s47#r16",
+   "source_span": "the whole reason I went DIY was partly to save money and partly because I liked the idea of being self-reliant on this kind of thing.",
+   "entity": "user",
+   "slot": "motivation",
+   "value": "chose DIY fan installation to save money and be self-reliant",
+   "stated_date": "",
+   "slot_class": "other:motivation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r25",
+   "source_memory_id": "memops-C01_forget/s47#r16",
+   "source_span": "Just remind me on Friday about the Elm Street supply run and the breaker labeling, and I'll be ready to rock on Saturday.",
+   "entity": "user",
+   "slot": "reminder_request",
+   "value": "wants reminder on Friday about Elm Street supply run and breaker labeling before Saturday installation",
+   "stated_date": "",
+   "slot_class": "other:reminder request",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 9738,
+ "usage_out": 3050,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 71,
+  "total": 532,
+  "user_turns": 532,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

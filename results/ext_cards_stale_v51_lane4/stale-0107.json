@@ -1,0 +1,282 @@
+{
+ "uid": "stale-0107",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0107/s1#r2",
+   "source_span": "I've been involved in computer science research, specifically in the area of deep learning.",
+   "entity": "user",
+   "slot": "research_field",
+   "value": "deep learning (computer science research)",
+   "stated_date": "",
+   "slot_class": "other:research field",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0107/s1#r2",
+   "source_span": "I completed my master's thesis in CS, which took me about half a year to finish.",
+   "entity": "user",
+   "slot": "education",
+   "value": "Completed master's thesis in CS (took about half a year)",
+   "stated_date": "",
+   "slot_class": "other:education",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0107/s1#r2",
+   "source_span": "It was a great experience that helped me develop strong skills in Python and TensorFlow.",
+   "entity": "user",
+   "slot": "skills",
+   "value": "Python and TensorFlow",
+   "stated_date": "",
+   "slot_class": "other:skills",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0107/s1#r8",
+   "source_span": "I've been applying to Ph.D. programs in Computer Science and have already received an interview invitation from the University of California, Berkeley, and a research talk invitation from the University of Toronto.",
+   "entity": "user",
+   "slot": "phd_application_status",
+   "value": "Applying to Ph.D. programs in Computer Science; interview invitation from UC Berkeley; research talk invitation from University of Toronto",
+   "stated_date": "",
+   "slot_class": "other:phd application status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0107/s2#r2",
+   "source_span": "I'm a Digital Marketing Specialist, and my top tasks include managing our social media presence, creating and scheduling posts, analyzing engagement metrics, and collaborating with our design team to develop visual content.",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Digital Marketing Specialist",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0107/s2#r2",
+   "source_span": "There's a team meeting on Wednesday at 2 pm, and I usually have a weekly call with our design team on Fridays at 10 am.",
+   "entity": "user",
+   "slot": "work_schedule",
+   "value": "Team meeting Wednesday 2pm; weekly design team call Fridays 10am",
+   "stated_date": "",
+   "slot_class": "other:work schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0107/s2#r2",
+   "source_span": "I'm planning to take 3 days off next week, from Wednesday to Friday.",
+   "entity": "user",
+   "slot": "time_off_plan",
+   "value": "3 days off next week, Wednesday to Friday",
+   "stated_date": "",
+   "slot_class": "other:time off plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0107/s2#r8",
+   "source_span": "I'm interested in potentially transitioning into a more specialized role, such as a Content Marketing Strategist or a Digital Marketing Consultant.",
+   "entity": "user",
+   "slot": "career_goal",
+   "value": "Transition into Content Marketing Strategist or Digital Marketing Consultant role",
+   "stated_date": "",
+   "slot_class": "other:career goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0107/s3#r2",
+   "source_span": "We rented a house in Tahoe City with a beautiful view of the lake.",
+   "entity": "user",
+   "slot": "trip",
+   "value": "Rented a house in Tahoe City with lake view",
+   "stated_date": "",
+   "slot_class": "other:trip",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0107/s3#r2",
+   "source_span": "I've been using a new GPS app on my phone that helped us navigate the scenic routes, which was really helpful.",
+   "entity": "user",
+   "slot": "app_usage",
+   "value": "New GPS app on phone",
+   "stated_date": "",
+   "slot_class": "other:app usage",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0107/s8#r10",
+   "source_span": "I'm excited to start my journey on Coursera and learn more about sustainable development, data science, and artificial intelligence.",
+   "entity": "user",
+   "slot": "online_course_plan",
+   "value": "Starting Coursera courses on sustainable development, data science, and artificial intelligence",
+   "stated_date": "",
+   "slot_class": "other:online course plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0107/s20#r2",
+   "source_span": "I just replaced my kitchen light fixtures with new ones that are much brighter and modern-looking, it made a huge difference.",
+   "entity": "user",
+   "slot": "home_improvement",
+   "value": "Replaced kitchen light fixtures with brighter, modern ones",
+   "stated_date": "",
+   "slot_class": "other:home improvement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0107/s20#r2",
+   "source_span": "Now, I'm thinking of adding an island or peninsula to create a social hub",
+   "entity": "user",
+   "slot": "home_improvement_plan",
+   "value": "Considering adding kitchen island or peninsula",
+   "stated_date": "",
+   "slot_class": "other:home improvement plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0107/s21#r10",
+   "source_span": "I also signed up for a monthly subscription to a meal kit service on February 15th, which has been convenient but also adds to my online spending.",
+   "entity": "user",
+   "slot": "subscription",
+   "value": "Monthly meal kit service subscription",
+   "stated_date": "2023-02-15",
+   "slot_class": "other:subscription",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0107/s23#r8",
+   "source_span": "I need to find a good car wash near my new place and get it done this weekend.",
+   "entity": "user",
+   "slot": "residence_status",
+   "value": "Recently moved to a new place",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0107/s24#r0",
+   "source_span": "I've been doing yoga at the community center three times a week, and recently tried a new Pilates class at the gym near my work during my lunch break, which I loved.",
+   "entity": "user",
+   "slot": "exercise_habit",
+   "value": "Yoga at community center 3x/week; Pilates class at gym near work during lunch break",
+   "stated_date": "",
+   "slot_class": "other:exercise habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0107/s24#r6",
+   "source_span": "I'm considering trying out a spin class or a boot camp class soon.",
+   "entity": "user",
+   "slot": "exercise_plan",
+   "value": "Considering spin class or boot camp class",
+   "stated_date": "",
+   "slot_class": "other:exercise plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0107/s24#r8",
+   "source_span": "I've been tracking my progress on my fitness tracker, and I've noticed that I've increased my average daily step count by about 2,000 steps since I started taking these classes.",
+   "entity": "user",
+   "slot": "fitness_tracking",
+   "value": "Uses fitness tracker; increased average daily step count by ~2,000 steps",
+   "stated_date": "",
+   "slot_class": "other:fitness tracking",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "stale-0107/s24#r10",
+   "source_span": "I'm thinking of getting a fitness buddy to help keep me motivated and accountable.",
+   "entity": "user",
+   "slot": "fitness_plan",
+   "value": "Considering getting a fitness buddy",
+   "stated_date": "",
+   "slot_class": "other:fitness plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "stale-0107/s33#r9",
+   "source_span": "I've been doing a mix of exercises targeting my core, glutes, and legs, like squats, lunges, and deadlifts.",
+   "entity": "assistant_roleplay_user",
+   "slot": "exercise_routine",
+   "value": "Squats, lunges, deadlifts targeting core, glutes, legs",
+   "stated_date": "",
+   "slot_class": "other:exercise routine",
+   "owner": "assistant_roleplay_user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "stale-0107/s33#r9",
+   "source_span": "I've actually been thinking about training for a half-marathon.",
+   "entity": "assistant_roleplay_user",
+   "slot": "fitness_goal",
+   "value": "Training for a half-marathon",
+   "stated_date": "",
+   "slot_class": "other:fitness goal",
+   "owner": "assistant_roleplay_user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "stale-0107/s33#r9",
+   "source_span": "I've started doing some longer runs on the weekends to build up my endurance, and I'm planning to start a formal training program in a few weeks.",
+   "entity": "assistant_roleplay_user",
+   "slot": "training_plan",
+   "value": "Doing longer weekend runs; planning formal half-marathon training program in a few weeks",
+   "stated_date": "",
+   "slot_class": "other:training plan",
+   "owner": "assistant_roleplay_user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "stale-0107/s37#r0",
+   "source_span": "I just rearranged my living room and moved my collection of vintage posters to a more prominent spot, and it's really lifted the mood of the room.",
+   "entity": "user",
+   "slot": "home_decor",
+   "value": "Rearranged living room; moved vintage poster collection to prominent spot",
+   "stated_date": "",
+   "slot_class": "other:home decor",
+   "owner": "user"
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "stale-0107/s37#r0",
+   "source_span": "I'm looking for some inspiration for my next pottery class.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "Takes pottery classes",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 7774,
+ "usage_out": 2713,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 29,
+  "total": 596,
+  "user_turns": 596,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

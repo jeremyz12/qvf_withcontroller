@@ -1,0 +1,117 @@
+{
+ "uid": "wikiP108041-Q39272929",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108041-Q39272929/s4#r0",
+   "source_span": "I've just started at the International Agency for Research on Cancer",
+   "entity": "user",
+   "slot": "employer",
+   "value": "International Agency for Research on Cancer",
+   "stated_date": "1995-11-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108041-Q39272929/s6#r2",
+   "source_span": "I'm located in 95123",
+   "entity": "user",
+   "slot": "location",
+   "value": "95123",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108041-Q39272929/s19#r0",
+   "source_span": "I've officially started today as a researcher at the Armand-Frappier Santé Biotechnologie Research Centre",
+   "entity": "user",
+   "slot": "position",
+   "value": "researcher",
+   "stated_date": "1999-07-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108041-Q39272929/s19#r0",
+   "source_span": "I've officially started today as a researcher at the Armand-Frappier Santé Biotechnologie Research Centre",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Armand-Frappier Santé Biotechnologie Research Centre",
+   "stated_date": "1999-07-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108041-Q39272929/s30#r0",
+   "source_span": "I've officially started at the London School of Hygiene and Tropical Medicine today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "London School of Hygiene and Tropical Medicine",
+   "stated_date": "2002-07-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108041-Q39272929/s27#r0",
+   "source_span": "I start playing tennis with a friend every Friday afternoon today",
+   "entity": "user",
+   "slot": "habit",
+   "value": "plays tennis with a friend every Friday afternoon",
+   "stated_date": "2001-07-16",
+   "owner": "user",
+   "slot_class": "other:habit"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108041-Q39272929/s6#r0",
+   "source_span": "I just got a new swim cap and goggles from Speedo yesterday",
+   "entity": "user",
+   "slot": "equipment",
+   "value": "new swim cap and goggles from Speedo",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:equipment"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108041-Q39272929/s22#r0",
+   "source_span": "I've been traveling quite a bit lately, and as of now, I've stayed a total of 27 nights in hotels",
+   "entity": "user",
+   "slot": "travel_stat",
+   "value": "27 nights in hotels total",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:travel stat"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108041-Q39272929/s15#r0",
+   "source_span": "I'm planning to buy a new pair of leggings soon to replace my old Adidas ones",
+   "entity": "user",
+   "slot": "apparel",
+   "value": "old Adidas leggings, planning replacement",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:apparel"
+  }
+ ],
+ "usage_in": 2644,
+ "usage_out": 1134,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 20,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

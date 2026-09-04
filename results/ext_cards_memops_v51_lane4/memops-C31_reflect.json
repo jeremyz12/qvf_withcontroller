@@ -1,0 +1,150 @@
+{
+ "uid": "memops-C31_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C31_reflect/s21#r2",
+   "source_span": "I do her nail trims at home myself when I can",
+   "entity": "user",
+   "slot": "pet_grooming_habit",
+   "value": "does cat's nail trims at home",
+   "stated_date": "",
+   "slot_class": "other:pet grooming habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C31_reflect/s21#r2",
+   "source_span": "I did one back in mid-February and it went surprisingly well, just the two of us in the living room",
+   "entity": "user",
+   "slot": "pet_grooming_event",
+   "value": "did nail trim in living room in mid-February",
+   "stated_date": "2024-02",
+   "slot_class": "other:pet grooming event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C31_reflect/s23#r0",
+   "source_span": "I saw an ad for a mobile cat grooming service that comes to your house.",
+   "entity": "user",
+   "slot": "observation",
+   "value": "saw ad for mobile cat grooming service",
+   "stated_date": "",
+   "slot_class": "other:observation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C31_reflect/s26#r6",
+   "source_span": "I think I'll start with reducing my energy consumption at home by turning off lights and unplugging appliances when they're not in use.",
+   "entity": "user",
+   "slot": "planned_action",
+   "value": "plans to reduce home energy consumption by turning off lights and unplugging appliances",
+   "stated_date": "",
+   "slot_class": "other:planned action",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C31_reflect/s24#r2",
+   "source_span": "I find it hard to take breaks during work hours because I feel guilty about not being productive.",
+   "entity": "user",
+   "slot": "work_habit",
+   "value": "finds it hard to take breaks during work hours due to guilt about productivity",
+   "stated_date": "",
+   "slot_class": "other:work habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C31_reflect/s42#r4",
+   "source_span": "My team is doing just fine without any team-building programs.",
+   "entity": "user",
+   "slot": "management_stance",
+   "value": "believes team-building programs are unnecessary for their team",
+   "stated_date": "",
+   "slot_class": "other:management stance",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C31_reflect/s42#r6",
+   "source_span": "I know my team better than anyone else.",
+   "entity": "user",
+   "slot": "role",
+   "value": "manages a team",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C31_reflect/s31#r4",
+   "source_span": "I've been in some workplaces where trust was almost non-existent and it was a nightmare.",
+   "entity": "user",
+   "slot": "work_experience",
+   "value": "has worked in workplaces with low trust between employees and management",
+   "stated_date": "",
+   "slot_class": "other:work experience",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C31_reflect/s34#r6",
+   "source_span": "I'll definitely be more careful with what I share online from now on.",
+   "entity": "user",
+   "slot": "online_habit_change",
+   "value": "plans to be more careful about what is shared online",
+   "stated_date": "",
+   "slot_class": "other:online habit change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C31_reflect/s34#r8",
+   "source_span": "I'll definitely be more aware of my online activity now.",
+   "entity": "user",
+   "slot": "online_habit_change",
+   "value": "plans to be more aware of own online activity",
+   "stated_date": "",
+   "slot_class": "other:online habit change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C31_reflect/s10#r4",
+   "source_span": "I don't have time to invest in employee retention initiatives.",
+   "entity": "user",
+   "slot": "management_stance",
+   "value": "does not invest in employee retention initiatives, focuses on profits and rehiring",
+   "stated_date": "",
+   "slot_class": "other:management stance",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C31_reflect/s10#r6",
+   "source_span": "I will stick to my strategy of just hiring new employees when the old ones leave.",
+   "entity": "user",
+   "slot": "management_strategy",
+   "value": "strategy of hiring new employees when old ones leave rather than investing in retention",
+   "stated_date": "",
+   "slot_class": "other:management strategy",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4997,
+ "usage_out": 1211,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 28,
+  "total": 536,
+  "user_turns": 536,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

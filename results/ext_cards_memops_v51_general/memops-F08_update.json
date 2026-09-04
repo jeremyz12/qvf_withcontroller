@@ -1,0 +1,194 @@
+{
+ "uid": "memops-F08_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F08_update/s0#r8",
+   "source_span": "I picked up a package from the InPost locker on Greenfield Ave around March 3rd and the pickup code was 7724",
+   "entity": "user",
+   "slot": "inpost_locker_pickup_code",
+   "value": "7724",
+   "stated_date": "2024-03-03",
+   "slot_class": "other:inpost locker pickup code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F08_update/s0#r8",
+   "source_span": "I always use the Greenfield Ave locker, not the one by the train station",
+   "entity": "user",
+   "slot": "inpost_locker_preference",
+   "value": "Greenfield Ave locker (not train station)",
+   "stated_date": "",
+   "slot_class": "other:inpost locker preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F08_update/s0#r12",
+   "source_span": "it was actually 941, not 914",
+   "entity": "user",
+   "slot": "doordash_thai_pickup_code",
+   "value": "941 (superseded)",
+   "stated_date": "",
+   "slot_class": "other:doordash thai pickup code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F08_update/s0#r12",
+   "source_span": "941 is my apartment number 149 flipped around",
+   "entity": "user",
+   "slot": "apartment_number_mnemonic",
+   "value": "149 reversed = 941",
+   "stated_date": "",
+   "slot_class": "other:apartment number mnemonic",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F08_update/s0#r14",
+   "source_span": "my mom needed help with a pharmacy verification code a couple weeks after the InPost thing, around mid-March. The code they texted her was 3058.",
+   "entity": "user's mom",
+   "slot": "pharmacy_verification_code",
+   "value": "3058",
+   "stated_date": "2024-03",
+   "slot_class": "other:pharmacy verification code",
+   "owner": "user's mom"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F08_update/s9#r8",
+   "source_span": "her pickup code was 942",
+   "entity": "Priya",
+   "slot": "doordash_thai_pickup_code",
+   "value": "942",
+   "stated_date": "",
+   "slot_class": "other:doordash thai pickup code",
+   "owner": "Priya"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F08_update/s10#r2",
+   "source_span": "my apartment number is 149. That's unit 149 in my building.",
+   "entity": "user",
+   "slot": "apartment_number",
+   "value": "149",
+   "stated_date": "",
+   "slot_class": "other:apartment number",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F08_update/s10#r4",
+   "source_span": "the pickup code was actually 943, not 941",
+   "entity": "user",
+   "slot": "doordash_thai_pickup_code",
+   "value": "943",
+   "stated_date": "",
+   "slot_class": "other:doordash thai pickup code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F08_update/s10#r7",
+   "source_span": "I've saved your Target click-and-collect pickup code as 4821.",
+   "entity": "user",
+   "slot": "target_pickup_code",
+   "value": "4821",
+   "stated_date": "",
+   "slot_class": "other:target pickup code",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F08_update/s10#r7",
+   "source_span": "you generally prefer low-friction, low-stimulation pickup processes",
+   "entity": "user",
+   "slot": "pickup_preference",
+   "value": "low-friction, low-stimulation pickup processes",
+   "stated_date": "",
+   "slot_class": "other:pickup preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F08_update/s10#r8",
+   "source_span": "my coworker Jenna was complaining about her gym locker combo resetting every visit. Last Tuesday hers was 2276.",
+   "entity": "Jenna",
+   "slot": "gym_locker_combo",
+   "value": "2276",
+   "stated_date": "",
+   "slot_class": "other:gym locker combo",
+   "owner": "Jenna"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-F08_update/s29#r6",
+   "source_span": "My friend Derek had a temporary gate code for his condo complex back in February. It was 5590, but he's since changed it",
+   "entity": "Derek",
+   "slot": "condo_gate_code",
+   "value": "5590 (expired)",
+   "stated_date": "2024-02",
+   "slot_class": "other:condo gate code",
+   "owner": "Derek"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-F08_update/s29#r8",
+   "source_span": "I really dislike the timed ones — like when my bank sends a six-digit two-factor code that expires in 30 seconds. Last time it was 882471",
+   "entity": "user",
+   "slot": "bank_2fa_code_example",
+   "value": "882471",
+   "stated_date": "",
+   "slot_class": "other:bank 2fa code example",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F08_update/s29#r8",
+   "source_span": "I much prefer push notifications where I just tap approve",
+   "entity": "user",
+   "slot": "2fa_preference",
+   "value": "push notifications with tap-to-approve",
+   "stated_date": "",
+   "slot_class": "other:2fa preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-F08_update/s29#r10",
+   "source_span": "There's a chance the Thai pickup code was 947 — that's what shows for the most recent Thai order on my screen right now.",
+   "entity": "user",
+   "slot": "doordash_thai_pickup_code_uncertain",
+   "value": "947 (unverified)",
+   "stated_date": "",
+   "slot_class": "other:doordash thai pickup code uncertain",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-F08_update/s33#r2",
+   "source_span": "Let's just stick with 943 as confirmed until I actually sort out whether 947 is the same order or not.",
+   "entity": "user",
+   "slot": "doordash_thai_pickup_code",
+   "value": "943 (confirmed)",
+   "stated_date": "",
+   "slot_class": "other:doordash thai pickup code",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 12591,
+ "usage_out": 1676,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 78,
+  "total": 538,
+  "user_turns": 538,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,73 @@
+{
+ "uid": "memops-C05_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C05_update/s13#r4",
+   "source_span": "I just changed the return flight again—moved it to May 28th",
+   "entity": "user",
+   "slot": "trip_return_flight_date",
+   "value": "May 28th",
+   "stated_date": "",
+   "slot_class": "other:trip return flight date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C05_update/s13#r4",
+   "source_span": "That gives us a full ten days on the ground, May 18th through May 28th",
+   "entity": "user",
+   "slot": "trip_dates",
+   "value": "May 18th through May 28th",
+   "stated_date": "",
+   "slot_class": "other:trip dates",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C05_update/s13#r4",
+   "source_span": "My partner got two extra days off work approved, so we're extending",
+   "entity": "user",
+   "slot": "partner_status",
+   "value": "got two extra days off work approved",
+   "stated_date": "",
+   "slot_class": "relationship",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C05_update/s13#r6",
+   "source_span": "I looked into a side trip to the Faroe Islands earlier, but the logistics were a nightmare and the inter-island flights were weirdly expensive, so I dropped that idea entirely. It's just Iceland now.",
+   "entity": "user",
+   "slot": "trip_destination_plan",
+   "value": "Faroe Islands side trip dropped; trip is just Iceland now",
+   "stated_date": "",
+   "slot_class": "other:trip destination plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C05_update/s49#r9",
+   "source_span": "your original May 25th booking was the starting point before all the changes",
+   "entity": "user",
+   "slot": "trip_original_return_date",
+   "value": "May 25th",
+   "stated_date": "",
+   "slot_class": "other:trip original return date",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6845,
+ "usage_out": 538,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 29,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,271 @@
+{
+ "uid": "memops-D18_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D18_trajectory_ops/s2#r2",
+   "source_span": "I've been feeling a bit anxious about my job lately, with all the uncertainty in the economy",
+   "entity": "user",
+   "slot": "job_concern",
+   "value": "anxious about job security due to economic uncertainty",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D18_trajectory_ops/s2#r4",
+   "source_span": "I've started updating my resume and browsing job boards just in case",
+   "entity": "user",
+   "slot": "job_search_activity",
+   "value": "updating resume and browsing job boards",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D18_trajectory_ops/s4#r6",
+   "source_span": "I'll definitely start using a VPN and enable two-factor authentication",
+   "entity": "user",
+   "slot": "security_plan",
+   "value": "plans to use VPN and enable two-factor authentication",
+   "stated_date": "",
+   "slot_class": "other:security plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D18_trajectory_ops/s9#r8",
+   "source_span": "I think I might look into freelance writing or social media management",
+   "entity": "user",
+   "slot": "career_interest",
+   "value": "considering freelance writing or social media management",
+   "stated_date": "",
+   "slot_class": "other:career interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D18_trajectory_ops/s9#r10",
+   "source_span": "I think I'll start working on my portfolio and pitch my services to some potential clients",
+   "entity": "user",
+   "slot": "career_plan",
+   "value": "plans to build portfolio and pitch services to clients",
+   "stated_date": "",
+   "slot_class": "other:career plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D18_trajectory_ops/s23#r8",
+   "source_span": "I found a skydiving center nearby and booked a session!",
+   "entity": "user",
+   "slot": "activity_booking",
+   "value": "booked a skydiving session",
+   "stated_date": "",
+   "slot_class": "other:activity booking",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D18_trajectory_ops/s24#r10",
+   "source_span": "I'm excited to get involved and make a positive impact in my community",
+   "entity": "user",
+   "slot": "volunteering_intent",
+   "value": "plans to volunteer in community",
+   "stated_date": "",
+   "slot_class": "other:volunteering intent",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r12",
+   "source_span": "I bumped the keyboard height up to tall around mid-March because I kept hitting the wrong keys with my big thumbs",
+   "entity": "user",
+   "slot": "phone_keyboard_height",
+   "value": "tall",
+   "stated_date": "2024-03",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r13",
+   "source_span": "Your current phone setup as of that change would be: Gboard with tall keyboard height, dark gray theme, emoji suggestions bar disabled.",
+   "entity": "user",
+   "slot": "phone_keyboard_app",
+   "value": "Gboard",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r13",
+   "source_span": "Gboard with tall keyboard height, dark gray theme, emoji suggestions bar disabled",
+   "entity": "user",
+   "slot": "phone_theme",
+   "value": "dark gray theme",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r13",
+   "source_span": "Gboard with tall keyboard height, dark gray theme, emoji suggestions bar disabled",
+   "entity": "user",
+   "slot": "phone_emoji_bar",
+   "value": "disabled",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-D18_trajectory_ops/s30#r13",
+   "source_span": "the laptop remains Windows IME with US International layout from April 1st",
+   "entity": "user",
+   "slot": "laptop_input_method",
+   "value": "Windows IME with US International layout",
+   "stated_date": "2024-04-01",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-D18_trajectory_ops/s35#r5",
+   "source_span": "about a week ago you switched the Gboard keyboard height back from tall to medium",
+   "entity": "user",
+   "slot": "phone_keyboard_height",
+   "value": "medium",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-D18_trajectory_ops/s35#r5",
+   "source_span": "Your current complete phone setup is: Gboard with medium keyboard height, dark gray theme, emoji bar disabled, English and Japanese input languages.",
+   "entity": "user",
+   "slot": "phone_input_languages",
+   "value": "English and Japanese",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-D18_trajectory_ops/s35#r5",
+   "source_span": "And your laptop remains Windows IME with US International layout.",
+   "entity": "user",
+   "slot": "laptop_input_method",
+   "value": "Windows IME with US International layout",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-D18_trajectory_ops/s38#r12",
+   "source_span": "I'll definitely keep these tips in mind as I start my online learning journey",
+   "entity": "user",
+   "slot": "education_plan",
+   "value": "starting online learning to expand skills",
+   "stated_date": "",
+   "slot_class": "other:education plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r12",
+   "source_span": "My coworker David just showed me that Gboard has an extra-tall setting now and I'm planning to switch to that by the end of this week.",
+   "entity": "user",
+   "slot": "phone_keyboard_height_plan",
+   "value": "planning to switch to extra-tall setting by end of week",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r12",
+   "source_span": "I haven't actually changed it yet because I want to finish a long email draft first",
+   "entity": "user",
+   "slot": "phone_keyboard_height",
+   "value": "not yet changed (still current setting)",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "my US International layout on the laptop was set up on April 1st",
+   "entity": "user",
+   "slot": "laptop_input_method_setup_date",
+   "value": "US International layout set up April 1st",
+   "stated_date": "2024-04-01",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "my Thursday Spanish exchanges with Elena happen weekly",
+   "entity": "user",
+   "slot": "language_exchange",
+   "value": "weekly Spanish exchange with Elena on Thursdays",
+   "stated_date": "",
+   "slot_class": "other:language exchange",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "my phone is on Gboard, I like my settings clean and minimal, and I don't want any apps or prompts to trick me into switching away from Gboard",
+   "entity": "user",
+   "slot": "phone_keyboard_app",
+   "value": "Gboard",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "memops-D18_trajectory_ops/s42#r14",
+   "source_span": "I like my settings clean and minimal",
+   "entity": "user",
+   "slot": "settings_preference",
+   "value": "prefers clean and minimal settings",
+   "stated_date": "",
+   "slot_class": "other:settings preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "memops-D18_trajectory_ops/s45#r8",
+   "source_span": "I'm really interested in finding new hobbies to replace my social media use",
+   "entity": "user",
+   "slot": "hobby_intent",
+   "value": "seeking new hobbies to replace social media use",
+   "stated_date": "",
+   "slot_class": "other:hobby intent",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3070,
+ "usage_out": 2427,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 540,
+  "user_turns": 540,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

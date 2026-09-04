@@ -1,0 +1,282 @@
+{
+ "uid": "stale-0323",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0323/s0#r4",
+   "source_span": "I got my duffel bag back, I think I'll use that instead",
+   "entity": "user",
+   "slot": "packing_item",
+   "value": "duffel bag",
+   "stated_date": "2023-12-21",
+   "slot_class": "other:packing item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0323/s1#r0",
+   "source_span": "I just moved into my new apartment about 3 weeks ago and I'm still furnishing it",
+   "entity": "user",
+   "slot": "residence",
+   "value": "new apartment in Shibuya ward",
+   "stated_date": "2023-12-16",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0323/s3#r0",
+   "source_span": "I've been using Amazon a lot lately, I'd say I make around 3 to 4 online purchases a week, and this has been the case for the past two months",
+   "entity": "user",
+   "slot": "shopping_habit",
+   "value": "3 to 4 online Amazon purchases a week for the past two months",
+   "stated_date": "2023-11-27",
+   "slot_class": "other:shopping habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0323/s12#r8",
+   "source_span": "my portable basketball hoop",
+   "entity": "user",
+   "slot": "owned_item",
+   "value": "portable basketball hoop",
+   "stated_date": "",
+   "slot_class": "other:owned item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0323/s12#r10",
+   "source_span": "I think I'll leave the basketball hoop behind. What about my tennis racket?",
+   "entity": "user",
+   "slot": "owned_item",
+   "value": "tennis racket",
+   "stated_date": "",
+   "slot_class": "other:owned item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0323/s14#r6",
+   "source_span": "I'm not really looking to climb the ladder anymore; I find much more satisfaction in maintaining the systems I know well than navigating the uncertainty of a new position",
+   "entity": "user",
+   "slot": "career_preference",
+   "value": "prefers maintaining known systems over climbing career ladder",
+   "stated_date": "",
+   "slot_class": "other:career preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0323/s27#r2",
+   "source_span": "I'm in the city, 94105.",
+   "entity": "user",
+   "slot": "location_zip",
+   "value": "94105",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0323/s27#r2",
+   "source_span": "I do prefer ones with a cozy atmosphere",
+   "entity": "user",
+   "slot": "coffee_shop_preference",
+   "value": "cozy atmosphere",
+   "stated_date": "",
+   "slot_class": "other:coffee shop preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0323/s27#r2",
+   "source_span": "I'm usually a morning person, so early hours are a plus",
+   "entity": "user",
+   "slot": "habit",
+   "value": "morning person, prefers early hours",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0323/s27#r2",
+   "source_span": "Wi-Fi is a must",
+   "entity": "user",
+   "slot": "coffee_shop_preference",
+   "value": "requires Wi-Fi",
+   "stated_date": "",
+   "slot_class": "other:coffee shop preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0323/s28#r6",
+   "source_span": "I'm also thinking of visiting the Natural History Museum soon.",
+   "entity": "user",
+   "slot": "plan",
+   "value": "visit the Natural History Museum soon",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0323/s29#r8",
+   "source_span": "I'm planning to post another fitness video on TikTok and want to experiment with a new hashtag challenge.",
+   "entity": "user",
+   "slot": "social_media_activity",
+   "value": "posts fitness videos on TikTok",
+   "stated_date": "",
+   "slot_class": "other:social media activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0323/s29#r10",
+   "source_span": "I'd like to participate in the #FitnessChallenge and #GymFlow challenges.",
+   "entity": "user",
+   "slot": "social_media_activity",
+   "value": "participating in #FitnessChallenge and #GymFlow TikTok challenges",
+   "stated_date": "",
+   "slot_class": "other:social media activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0323/s34#r4",
+   "source_span": "I'm really excited for rehearsals to start today, I've been waiting for this for a while. I got the understudy role",
+   "entity": "user",
+   "slot": "role",
+   "value": "understudy role in theater production, rehearsals starting",
+   "stated_date": "2025-02-17",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0323/s34#r4",
+   "source_span": "I think I'll try out The Daily Grind",
+   "entity": "user",
+   "slot": "plan",
+   "value": "try out The Daily Grind coffee shop",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0323/s34#r4",
+   "source_span": "a 3-minute walk to the theater studio is perfect",
+   "entity": "user",
+   "slot": "location_note",
+   "value": "lives/works near a theater studio, 3-minute walk to it",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0323/s36#r6",
+   "source_span": "I keep catching myself sketching out what I’d need to spin up a tiny consulting shop—just me, a laptop, and a short list of clients",
+   "entity": "user",
+   "slot": "career_plan",
+   "value": "considering starting a solo consulting business",
+   "stated_date": "2025-03-14",
+   "slot_class": "other:career plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0323/s43#r0",
+   "source_span": "I've recently started going for bike rides on the weekends and want to explore some new routes.",
+   "entity": "user",
+   "slot": "habit",
+   "value": "recently started weekend bike rides",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "stale-0323/s43#r2",
+   "source_span": "I live in a suburb of a major city, about 20 miles outside of downtown.",
+   "entity": "user",
+   "slot": "residence",
+   "value": "suburb of a major city, about 20 miles outside downtown",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "stale-0323/s43#r2",
+   "source_span": "I'd say I'm a casual rider, just enjoying the fresh air and exercise on the weekends.",
+   "entity": "user",
+   "slot": "cycling_style",
+   "value": "casual rider",
+   "stated_date": "",
+   "slot_class": "other:cycling style",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "stale-0323/s43#r2",
+   "source_span": "I'm willing to travel up to 30 minutes to reach a trail.",
+   "entity": "user",
+   "slot": "travel_preference",
+   "value": "willing to travel up to 30 minutes to reach a bike trail",
+   "stated_date": "",
+   "slot_class": "other:travel preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "stale-0323/s43#r2",
+   "source_span": "I prefer paved trails or smooth dirt paths, nothing too rugged.",
+   "entity": "user",
+   "slot": "trail_preference",
+   "value": "prefers paved trails or smooth dirt paths",
+   "stated_date": "",
+   "slot_class": "other:trail preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "stale-0323/s49#r0",
+   "source_span": "I got a new plant, a beautiful fern, for the living room today",
+   "entity": "user",
+   "slot": "owned_item",
+   "value": "new fern plant for living room",
+   "stated_date": "2025-08-17",
+   "slot_class": "other:owned item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r24",
+   "source_memory_id": "stale-0323/s49#r0",
+   "source_span": "I'm thinking of getting a new coffee table",
+   "entity": "user",
+   "slot": "plan",
+   "value": "considering getting a new coffee table",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 6179,
+ "usage_out": 2440,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 598,
+  "user_turns": 598,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

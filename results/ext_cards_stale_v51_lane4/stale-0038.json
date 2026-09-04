@@ -1,0 +1,217 @@
+{
+ "uid": "stale-0038",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0038/s7#r2",
+   "source_span": "I’m Anglican, so attending services is a consistent part of my routine.",
+   "entity": "user",
+   "slot": "religion",
+   "value": "Anglican",
+   "stated_date": "2023-06-13",
+   "slot_class": "other:religion",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0038/s16#r0",
+   "source_span": "I'm still getting used to introducing myself as Emily Rose - it's only been about two months since I made the switch!",
+   "entity": "user",
+   "slot": "name",
+   "value": "Emily Rose",
+   "stated_date": "2023-08",
+   "slot_class": "other:name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0038/s20#r10",
+   "source_span": "I think I'll try creating a \"Weekly Review\" list and reflection cards to track my progress and reflect on my experiences.",
+   "entity": "user",
+   "slot": "habit",
+   "value": "Weekly Review list and reflection cards for progress tracking",
+   "stated_date": "2023-12-23",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0038/s22#r4",
+   "source_span": "I helped my cousin with her social media campaign for her art exhibition last month.",
+   "entity": "user",
+   "slot": "activity",
+   "value": "helped cousin with social media campaign for art exhibition",
+   "stated_date": "2023-12",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0038/s23#r6",
+   "source_span": "I'm considering pursuing a doctoral degree in the next few years, possibly in a field related to education or organizational behavior.",
+   "entity": "user",
+   "slot": "education_plan",
+   "value": "considering doctoral degree in education or organizational behavior",
+   "stated_date": "2024-01-27",
+   "slot_class": "other:education plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0038/s24#r0",
+   "source_span": "I'm training for a sprint triathlon on April 16th",
+   "entity": "user",
+   "slot": "event_plan",
+   "value": "training for a sprint triathlon on April 16th",
+   "stated_date": "2024-02-03",
+   "slot_class": "other:event plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0038/s24#r0",
+   "source_span": "I've been doing well in my recreational soccer league, we've had a few tough games, but we've managed to bounce back from our 2 losses this season.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "plays in a recreational soccer league",
+   "stated_date": "2024-02-03",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0038/s24#r8",
+   "source_span": "I've been thinking about joining a running club to help stay motivated and accountable. I've found a local club that aligns with my goals and fitness level, and I'm planning to attend their next meetup to check it out.",
+   "entity": "user",
+   "slot": "plan",
+   "value": "planning to join a local running club",
+   "stated_date": "2024-02-03",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0038/s33#r0",
+   "source_span": "Last month I completed my conversion and was formally received into the Catholic Church, so I’ve been getting used to the new rhythm of parish life.",
+   "entity": "user",
+   "slot": "religion",
+   "value": "Catholic (converted, received into Catholic Church)",
+   "stated_date": "2024-05",
+   "slot_class": "other:religion",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0038/s33#r6",
+   "source_span": "my commute makes weekday evenings tight (I usually get home around 6:30)",
+   "entity": "user",
+   "slot": "commute",
+   "value": "gets home around 6:30pm on weekdays",
+   "stated_date": "2024-06-13",
+   "slot_class": "other:commute",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0038/s33#r6",
+   "source_span": "my parish’s weekday Mass is only at 7:00am or 12:10pm",
+   "entity": "user",
+   "slot": "parish_schedule",
+   "value": "weekday Mass at 7:00am or 12:10pm",
+   "stated_date": "2024-06-13",
+   "slot_class": "other:parish schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0038/s35#r2",
+   "source_span": "My friend is living in Paris, France.",
+   "entity": "user",
+   "slot": "friend_location",
+   "value": "friend lives in Paris, France",
+   "stated_date": "2024-07-19",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0038/s35#r2",
+   "source_span": "I'd prefer to fly out of my hometown, which is about an hour's drive from a major international airport.",
+   "entity": "user",
+   "slot": "hometown_travel",
+   "value": "hometown is about an hour's drive from a major international airport",
+   "stated_date": "2024-07-19",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0038/s35#r6",
+   "source_span": "I'd like to explore the option of staying in an apartment through Airbnb.",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "planning to stay in an Airbnb apartment in Paris",
+   "stated_date": "2024-07-19",
+   "slot_class": "other:travel plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0038/s35#r8",
+   "source_span": "I had my weekly video call with my best friend from college this morning",
+   "entity": "user",
+   "slot": "habit",
+   "value": "weekly video call with best friend from college",
+   "stated_date": "2024-07-19",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0038/s35#r8",
+   "source_span": "planning this trip to visit her in Paris",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "planning trip to Paris to visit friend",
+   "stated_date": "2024-07-19",
+   "slot_class": "other:travel plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0038/s44#r6",
+   "source_span": "I joined this recreational volleyball league with some friends from work, and we're currently 2-1 in the standings.",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "joined recreational volleyball league with work friends, team record 2-1",
+   "stated_date": "2024-12-09",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0038/s44#r8",
+   "source_span": "Our team name is \"The Spikers.\"",
+   "entity": "user",
+   "slot": "team_name",
+   "value": "Spikers",
+   "stated_date": "2024-12-09",
+   "slot_class": "team",
+   "owner": "user",
+   "value_raw": "The Spikers"
+  }
+ ],
+ "usage_in": 6732,
+ "usage_out": 2006,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 27,
+  "total": 596,
+  "user_turns": 596,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

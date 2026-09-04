@@ -1,0 +1,173 @@
+{
+ "uid": "wikiP108048-Q38640679",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108048-Q38640679/s6#r1",
+   "source_span": "as of today I'm officially on the faculty at the University of California, Irvine",
+   "entity": "user",
+   "slot": "employer",
+   "value": "University of California, Irvine",
+   "stated_date": "1985-09-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108048-Q38640679/s6#r1",
+   "source_span": "as of today I'm officially on the faculty at the University of California, Irvine",
+   "entity": "user",
+   "slot": "position",
+   "value": "faculty member",
+   "stated_date": "1985-09-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108048-Q38640679/s6#r0",
+   "source_span": "boxes are finally out of the car and the apartment smells like fresh paint and old carpet",
+   "entity": "user",
+   "slot": "residence",
+   "value": "apartment",
+   "stated_date": "1985-09-01",
+   "owner": "user",
+   "slot_class": "residence",
+   "value_raw": "apartment (just moved in)"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108048-Q38640679/s10#r0",
+   "source_span": "my regular church, Holy Trinity",
+   "entity": "user",
+   "slot": "church",
+   "value": "Holy Trinity",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:church"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108048-Q38640679/s12#r0",
+   "source_span": "I have my yoga class at 6:00 PM",
+   "entity": "user",
+   "slot": "habit",
+   "value": "yoga class on Sundays at 6:00 PM",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:habit"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108048-Q38640679/s15#r0",
+   "source_span": "as of today I'm officially on the faculty at Duke University",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Duke University",
+   "stated_date": "1987-03-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108048-Q38640679/s15#r0",
+   "source_span": "as of today I'm officially on the faculty at Duke University",
+   "entity": "user",
+   "slot": "position",
+   "value": "faculty member",
+   "stated_date": "1987-03-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108048-Q38640679/s16#r0",
+   "source_span": "I just changed the color scheme of my living room to a bold blue-gray tone recently",
+   "entity": "user",
+   "slot": "living_room_color",
+   "value": "bold blue-gray",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:living room color"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108048-Q38640679/s26#r0",
+   "source_span": "I've officially joined the RIKEN Brain Science Institute",
+   "entity": "user",
+   "slot": "employer",
+   "value": "RIKEN Brain Science Institute",
+   "stated_date": "1989",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108048-Q38640679/s24#r4",
+   "source_span": "I also wanted to ask about my old gym shoes, the blue Reebok CrossFit shoes. I think I left them in my gym locker",
+   "entity": "user",
+   "slot": "gym_membership",
+   "value": "has a gym locker",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108048-Q38640679/s30#r0",
+   "source_span": "I have a tennis lesson with Coach Thompson today",
+   "entity": "user",
+   "slot": "tennis_coach",
+   "value": "Coach Thompson",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:tennis coach"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP108048-Q38640679/s32#r2",
+   "source_span": "my new weekly Bible study group that I start attending today, where we're going through the Book of Luke",
+   "entity": "user",
+   "slot": "activity",
+   "value": "weekly Bible study group (Book of Luke)",
+   "stated_date": "1989-12-26",
+   "owner": "user",
+   "slot_class": "other:activity"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "wikiP108048-Q38640679/s28#r0",
+   "source_span": "I've missed three sculpting classes so far, which has put me a bit behind on my current project",
+   "entity": "user",
+   "slot": "activity",
+   "value": "sculpting classes",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:activity"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "wikiP108048-Q38640679/s9#r4",
+   "source_span": "the data analysis workshop I attended last month",
+   "entity": "user",
+   "slot": "activity",
+   "value": "data analysis workshop",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:activity"
+  }
+ ],
+ "usage_in": 2996,
+ "usage_out": 1618,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 23,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

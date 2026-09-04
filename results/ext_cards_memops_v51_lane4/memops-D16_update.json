@@ -1,0 +1,216 @@
+{
+ "uid": "memops-D16_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-D16_update/s2#r10",
+   "source_span": "I just made a donation to CanTeen",
+   "entity": "user",
+   "slot": "charity_donation",
+   "value": "CanTeen",
+   "stated_date": "",
+   "slot_class": "other:charity donation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-D16_update/s2#r12",
+   "source_span": "I'm definitely interested in volunteering with CanTeen",
+   "entity": "user",
+   "slot": "volunteer_interest",
+   "value": "CanTeen",
+   "stated_date": "",
+   "slot_class": "other:volunteer interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-D16_update/s26#r10",
+   "source_span": "I'm excited to start planning my trip to Iceland and tackle the Laugavegur Trail.",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "Iceland - Laugavegur Trail",
+   "stated_date": "",
+   "slot_class": "other:travel plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-D16_update/s27#r4",
+   "source_span": "I had no idea it was so easy to disable geotagging. I'll definitely be using that from now on to protect my privacy.",
+   "entity": "user",
+   "slot": "privacy_practice",
+   "value": "disables geotagging",
+   "stated_date": "",
+   "slot_class": "other:privacy practice",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-D16_update/s29#r2",
+   "source_span": "I hope my employer follows through on these steps for my exit interview.",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "leaving employer, has exit interview",
+   "stated_date": "",
+   "slot_class": "other:employment status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-D16_update/s30#r6",
+   "source_span": "Definitely rooting for the Golden Flashes now!",
+   "entity": "user",
+   "slot": "favorite_sports_team",
+   "value": "Golden Flashes",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-D16_update/s31#r4",
+   "source_span": "I'm excited to get involved with the LPGA's initiatives!",
+   "entity": "user",
+   "slot": "hobby_interest",
+   "value": "golf / LPGA programs",
+   "stated_date": "",
+   "slot_class": "other:hobby interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-D16_update/s36#r8",
+   "source_span": "There was a firmware update pushed to my Fenix a few days ago — version 14.07 I think — and it caused some display issues.",
+   "entity": "user",
+   "slot": "device",
+   "value": "Garmin Fenix, firmware version 14.07",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-D16_update/s36#r8",
+   "source_span": "I was really frustrated because I chose this watch specifically for health tracking accuracy.",
+   "entity": "user",
+   "slot": "device_purchase_reason",
+   "value": "chose watch for health tracking accuracy",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-D16_update/s38#r6",
+   "source_span": "I run a small business and I would love to implement employee training programs",
+   "entity": "user",
+   "slot": "occupation",
+   "value": "runs a small business",
+   "stated_date": "",
+   "slot_class": "other:occupation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-D16_update/s43#r11",
+   "source_span": "your current watch face is SolarFace from Connect IQ on your Garmin Fenix 7X Sapphire Solar",
+   "entity": "user",
+   "slot": "device_model",
+   "value": "Garmin Fenix 7X Sapphire Solar",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-D16_update/s43#r11",
+   "source_span": "your current watch face is SolarFace again, restored via the developer's hotfix",
+   "entity": "user",
+   "slot": "watch_face",
+   "value": "SolarFace",
+   "stated_date": "",
+   "slot_class": "other:watch face",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-D16_update/s43#r11",
+   "source_span": "1. Tuesday this week — 5.3 miles | 162 bpm avg HR | (GCT/VO pending)\n2. Thursday this week — 4.8 miles | 158 bpm avg HR | 245 ms GCT | 8.2 cm VO",
+   "entity": "user",
+   "slot": "running_log",
+   "value": "Tuesday 5.3 miles 162bpm; Thursday 4.8 miles 158bpm 245ms GCT 8.2cm VO",
+   "stated_date": "",
+   "slot_class": "other:running log",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-D16_update/s43#r11",
+   "source_span": "1. March 16 — Valley of Fire | 6.0 miles\n2. March 30 — Red Rock Canyon | 14.2 miles (personal best)",
+   "entity": "user",
+   "slot": "hiking_log",
+   "value": "March 16 Valley of Fire 6.0 miles; March 30 Red Rock Canyon 14.2 miles (personal best)",
+   "stated_date": "",
+   "slot_class": "other:hiking log",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-D16_update/s44#r6",
+   "source_span": "I often find it hard to disconnect from work and end up checking my emails even during my time off.",
+   "entity": "user",
+   "slot": "work_habit",
+   "value": "checks emails during time off, struggles with work-life balance",
+   "stated_date": "",
+   "slot_class": "other:work habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-D16_update/s44#r12",
+   "source_span": "It's so frustrating that my boss expects me to be available all the time.",
+   "entity": "user",
+   "slot": "work_situation",
+   "value": "boss expects constant availability",
+   "stated_date": "",
+   "slot_class": "other:work situation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-D16_update/s49#r2",
+   "source_span": "Wait, no — I'm not on DataMax anymore. I switched back to SolarFace, remember? The developer pushed the hotfix and I installed it. My current face is SolarFace, not DataMax.",
+   "entity": "user",
+   "slot": "watch_face",
+   "value": "SolarFace",
+   "stated_date": "",
+   "slot_class": "other:watch face",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-D16_update/s49#r2",
+   "source_span": "SolarFace shows time, date, battery, and steps.",
+   "entity": "user",
+   "slot": "watch_face_layout",
+   "value": "time, date, battery, steps",
+   "stated_date": "",
+   "slot_class": "other:watch face layout",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4584,
+ "usage_out": 1894,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 27,
+  "total": 564,
+  "user_turns": 564,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,227 @@
+{
+ "uid": "memops-C05_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C05_update/s3#r2",
+   "source_span": "my sister is coming back from her Portugal trip on May 28th too",
+   "entity": "user_sister",
+   "slot": "travel_trip",
+   "value": "Portugal trip returning May 28th",
+   "stated_date": "2024-05-28",
+   "slot_class": "other:travel trip",
+   "owner": "user_sister"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C05_update/s4#r8",
+   "source_span": "Dana told me that Dana's colleague extended her Iceland trip to May 30th because she found cheap last-minute accommodation in Akureyri",
+   "entity": "dana_colleague",
+   "slot": "travel_trip",
+   "value": "extended Iceland trip to May 30th, cheap accommodation in Akureyri",
+   "stated_date": "2024-05-30",
+   "slot_class": "other:travel trip",
+   "owner": "dana_colleague"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C05_update/s5#r8",
+   "source_span": "The booking reference is IKXR47.",
+   "entity": "user",
+   "slot": "booking_reference",
+   "value": "IKXR47",
+   "stated_date": "",
+   "slot_class": "other:booking reference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C05_update/s5#r8",
+   "source_span": "for accommodations I settled on a small guesthouse near Vik called Black Beach Guesthouse. It only has six rooms",
+   "entity": "user",
+   "slot": "accommodation",
+   "value": "Black Beach Guesthouse, near Vik, 6 rooms",
+   "stated_date": "",
+   "slot_class": "other:accommodation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C05_update/s5#r12",
+   "source_span": "I'm aiming for about $3,200 total for both of us, not counting the flights since those are already paid.",
+   "entity": "user",
+   "slot": "trip_budget",
+   "value": "$3,200 total for two people, excluding flights",
+   "stated_date": "",
+   "slot_class": "other:trip budget",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C05_update/s5#r12",
+   "source_span": "I'm drawn to simple local restaurants—fresh fish, lamb stew, that kind of thing. Not interested in trendy New Nordic tasting menus at all.",
+   "entity": "user",
+   "slot": "food_preference",
+   "value": "prefers simple local restaurants (fresh fish, lamb stew); dislikes trendy New Nordic tasting menus",
+   "stated_date": "",
+   "slot_class": "other:food preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C05_update/s11#r10",
+   "source_span": "My partner mentioned that Raj got back from Tromsø on May 26th.",
+   "entity": "raj",
+   "slot": "travel_trip",
+   "value": "returned from Tromsø on May 26th, connecting through Keflavík",
+   "stated_date": "2024-05-26",
+   "slot_class": "other:travel trip",
+   "owner": "raj"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C05_update/s13#r2",
+   "source_span": "My friend Dana, who's been to like 30 countries, told me the Golden Circle tour is overrated and too touristy. She said the Westfjords are way better if you want actual quiet.",
+   "entity": "dana",
+   "slot": "travel_advice",
+   "value": "has visited ~30 countries; recommends Westfjords over Golden Circle tour",
+   "stated_date": "",
+   "slot_class": "other:travel advice",
+   "owner": "dana"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C05_update/s13#r2",
+   "source_span": "I trust her judgment on travel stuff, so I'm considering adding a Westfjords day or two.",
+   "entity": "user",
+   "slot": "trip_plan",
+   "value": "considering adding a Westfjords day or two to Iceland trip",
+   "stated_date": "",
+   "slot_class": "other:trip plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C05_update/s13#r4",
+   "source_span": "I just changed the return flight again—moved it to May 28th. My partner got two extra days off work approved, so we're extending. That gives us a full ten days on the ground, May 18th through May 28th.",
+   "entity": "user",
+   "slot": "trip_dates",
+   "value": "Iceland trip May 18th through May 28th (return moved to May 28th)",
+   "stated_date": "2024-05-18",
+   "slot_class": "other:trip dates",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C05_update/s13#r6",
+   "source_span": "I looked into a side trip to the Faroe Islands earlier, but the logistics were a nightmare and the inter-island flights were weirdly expensive, so I dropped that idea entirely. It's just Iceland now.",
+   "entity": "user",
+   "slot": "trip_plan",
+   "value": "dropped Faroe Islands side trip idea; trip is Iceland only",
+   "stated_date": "",
+   "slot_class": "other:trip plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C05_update/s13#r8",
+   "source_span": "Not yet on the itinerary—I still need to sort out travel insurance.",
+   "entity": "user",
+   "slot": "trip_todo",
+   "value": "still needs to sort out travel insurance for Iceland trip",
+   "stated_date": "",
+   "slot_class": "other:trip todo",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C05_update/s13#r8",
+   "source_span": "his coworker Raj just came back from Tromsø and said late May still has decent Northern Lights chances at high latitudes",
+   "entity": "raj",
+   "slot": "travel_report",
+   "value": "said late May still has decent Northern Lights chances at high latitudes after Tromsø trip",
+   "stated_date": "",
+   "slot_class": "other:travel report",
+   "owner": "raj"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C05_update/s17#r4",
+   "source_span": "I once had an issue with my internet service provider and the agent I spoke to kept interrupting me.",
+   "entity": "user",
+   "slot": "customer_service_experience",
+   "value": "had a frustrating issue with internet service provider agent who kept interrupting",
+   "stated_date": "",
+   "slot_class": "other:customer service experience",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C05_update/s17#r6",
+   "source_span": "they resolved the issue and even gave me a discount for the inconvenience caused.",
+   "entity": "user",
+   "slot": "customer_service_experience",
+   "value": "ISP resolved the issue and gave a discount for inconvenience",
+   "stated_date": "",
+   "slot_class": "other:customer service experience",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C05_update/s47#r4",
+   "source_span": "With ten days and the car rental, I think we'll be right around $3,200 if we're careful. The guesthouse near Vik is about $130 per night, and I found a decent car rental deal for about $65 per day through a local company.",
+   "entity": "user",
+   "slot": "trip_budget_detail",
+   "value": "guesthouse ~$130/night, car rental ~$65/day through local company",
+   "stated_date": "",
+   "slot_class": "other:trip budget detail",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-C05_update/s47#r6",
+   "source_span": "Icelandair confirmed we can push the return all the way to May 30th for only a $40 fee.",
+   "entity": "user",
+   "slot": "trip_dates",
+   "value": "return pushed to May 30th for $40 fee via Icelandair",
+   "stated_date": "2024-05-30",
+   "slot_class": "other:trip dates",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-C05_update/s47#r6",
+   "source_span": "we might extend again to May 30th, which would give us twelve days total.",
+   "entity": "user",
+   "slot": "trip_dates",
+   "value": "considering extending Iceland trip to 12 days total, return May 30th",
+   "stated_date": "2024-05-30",
+   "slot_class": "other:trip dates",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-C05_update/s49#r9",
+   "source_span": "your original May 25th booking was the starting point before all the changes.",
+   "entity": "user",
+   "slot": "trip_dates",
+   "value": "original return booking was May 25th before changes",
+   "stated_date": "2024-05-25",
+   "slot_class": "other:trip dates",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 12323,
+ "usage_out": 2432,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 75,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

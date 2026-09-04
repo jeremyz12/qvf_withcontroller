@@ -1,0 +1,183 @@
+{
+ "uid": "memops-E13_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-E13_update/s1#r0",
+   "source_span": "My actual last name is McAllister, capital M, capital A, two L's.",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "McAllister",
+   "stated_date": "",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-E13_update/s1#r0",
+   "source_span": "This is Dr. Huang's office, the one on Elm Street near the library.",
+   "entity": "user",
+   "slot": "dentist",
+   "value": "Dr. Huang, office on Elm Street near the library",
+   "stated_date": "",
+   "slot_class": "other:dentist",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-E13_update/s4#r12",
+   "source_span": "my next cleaning at Dr. Huang's is scheduled for June 12th at 2:30 PM",
+   "entity": "user",
+   "slot": "dentist_appointment",
+   "value": "June 12th at 2:30 PM at Dr. Huang's office",
+   "stated_date": "2024-06-12",
+   "slot_class": "other:dentist appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-E13_update/s4#r15",
+   "source_span": "Dr. Huang's office now has your name as McAllister, correctly spelled.",
+   "entity": "user",
+   "slot": "name_on_record_dentist",
+   "value": "McAllister (correctly spelled)",
+   "stated_date": "",
+   "slot_class": "other:name on record dentist",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-E13_update/s33#r4",
+   "source_span": "The portal does show McAllister, which is great.",
+   "entity": "user",
+   "slot": "name_on_patient_portal",
+   "value": "McAllister",
+   "stated_date": "",
+   "slot_class": "other:name on patient portal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-E13_update/s33#r8",
+   "source_span": "The office manager told me their new software automatically formats Scottish surnames, so it will probably show as \"Mcallister\" going forward in their portal.",
+   "entity": "user",
+   "slot": "pending_name_change_dentist",
+   "value": "office software may auto-format name to \"Mcallister\"",
+   "stated_date": "",
+   "slot_class": "other:pending name change dentist",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-E13_update/s33#r10",
+   "source_span": "My correct last name is McAllister, and that's what Dr. Huang's office currently has confirmed in their system as of my last successful call.",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "McAllister",
+   "stated_date": "",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-E13_update/s33#r10",
+   "source_span": "I've been thinking about getting another custom item, maybe a leather portfolio with my name embossed on it. I found a local shop that does hand-stamping",
+   "entity": "user",
+   "slot": "planned_purchase",
+   "value": "leather portfolio with embossed name, from local hand-stamping shop",
+   "stated_date": "",
+   "slot_class": "other:planned purchase",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-E13_update/s22#r4",
+   "source_span": "I think I'm going to check out the Brooks and Asics options for my high-arched feet.",
+   "entity": "user",
+   "slot": "foot_condition",
+   "value": "high-arched feet",
+   "stated_date": "",
+   "slot_class": "other:foot condition",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-E13_update/s23#r2",
+   "source_span": "I'm really nervous about my upcoming presentation, but I'll definitely try to put them into practice.",
+   "entity": "user",
+   "slot": "upcoming_event",
+   "value": "upcoming presentation (feeling nervous)",
+   "stated_date": "",
+   "slot_class": "other:upcoming event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-E13_update/s10#r8",
+   "source_span": "I think it's great that the University of Sheffield is taking steps to promote sustainability",
+   "entity": "user",
+   "slot": "topic_of_interest",
+   "value": "University of Sheffield sustainability initiatives",
+   "stated_date": "",
+   "slot_class": "other:topic of interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-E13_update/s12#r10",
+   "source_span": "I'm excited to start learning about audio engineering and hopefully, I'll be able to record my own music soon!",
+   "entity": "user",
+   "slot": "hobby_plan",
+   "value": "learning audio engineering to record own music",
+   "stated_date": "",
+   "slot_class": "other:hobby plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-E13_update/s17#r4",
+   "source_span": "I recently had the chance to provide feedback and it was great to see my employer taking it seriously and making changes based on it.",
+   "entity": "user",
+   "slot": "employment_status",
+   "value": "currently employed, gave feedback to employer",
+   "stated_date": "",
+   "slot_class": "other:employment status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-E13_update/s20#r4",
+   "source_span": "I can't wait to suggest them to my team.",
+   "entity": "user",
+   "slot": "work_role",
+   "value": "has a team to suggest activities to",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-E13_update/s35#r4",
+   "source_span": "I think I'll start by researching on Zillow and attending some investment seminars.",
+   "entity": "user",
+   "slot": "investment_plan",
+   "value": "researching real estate on Zillow and attending investment seminars",
+   "stated_date": "",
+   "slot_class": "other:investment plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2920,
+ "usage_out": 1647,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 23,
+  "total": 538,
+  "user_turns": 538,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

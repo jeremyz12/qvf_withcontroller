@@ -249,6 +249,27 @@ class CatalogExtractionSlim(BaseModel):
     )
 
 
+class SlimRecordKeys(SlimRecord):
+    """SLIM + KEYS(QVF_CARD_SLIM=1 且 QVF_CARD_KEYS=1):精简契约再加两个规范键,
+    让模型按闭集把 employer 与 position 分成两张卡(批 49 发现 SLIM 无 KEYS 时
+    模型把"postdoc at X"整句塞进一张 job 卡,强读者 count_before 从 89 掉到 69)。"""
+    owner: str = Field(
+        default="",
+        description="Who this state belongs to: 'user' when the text speaks in the first person, "
+                    "otherwise the person's name exactly as the text names them.")
+    slot_class: str = Field(
+        default="",
+        description="Normalized attribute category, EXACTLY one of: position | employer | team | "
+                    "residence | device | location | relationship | other:<short-noun>. A sentence "
+                    "like 'I started as a postdoc at X' yields TWO records: position (postdoc) and employer (X).")
+
+
+class CatalogExtractionSlimKeys(BaseModel):
+    records: List[SlimRecordKeys] = Field(
+        description="Every personal-state fact found in the memories."
+    )
+
+
 CATALOG_PROMPT = """\
 You are a memory cataloger for a personal AI assistant. You will be given ALL
 memory rounds of one user's history (each with memory_id, date, text). Catalog
@@ -503,7 +524,9 @@ def _stage1_filter(payload: List[dict], k: int) -> Tuple[List[dict], dict]:
     """两阶段抽取 Stage 1:嵌入式候选定位(与 scripts/b47_embed_localizer.py 同查询、同模型)。
     返回 (候选轮次 payload 子集(保持原序), 统计)。助手轮不参与打分也不进入候选。"""
     import numpy as np
-    from scripts.b47_embed_localizer import QUERIES, embed
+    from scripts.b47_embed_localizer import QUERIES, QUERIES_GENERAL, embed
+    if os.environ.get("QVF_CARD_STAGE1_QUERIES", "").strip().lower() == "general":
+        QUERIES = QUERIES_GENERAL  # 批 49:通用查询集(15 类),默认仍为四个金标类
     from openai import OpenAI
     client = OpenAI()
     user_idx = [i for i, p in enumerate(payload)
@@ -518,7 +541,7 @@ def _stage1_filter(payload: List[dict], k: int) -> Tuple[List[dict], dict]:
         for j in np.argsort(-sc)[:k]:
             keep.add(user_idx[int(j)])
     sub = [p for i, p in enumerate(payload) if i in keep]
-    return sub, {"stage1_k": k, "kept": len(sub), "total": len(payload), "user_turns": len(user_idx)}
+    return sub, {"stage1_k": k, "kept": len(sub), "total": len(payload), "user_turns": len(user_idx), "queries": os.environ.get("QVF_CARD_STAGE1_QUERIES", "lane4") or "lane4"}
 
 
 def write_phase(data_path: str, limit_items: int = 0,
@@ -597,7 +620,7 @@ def write_phase(data_path: str, limit_items: int = 0,
                              "text": _catalog_prompt(),
                              "cache_control": {"type": "ephemeral"}}],
                     messages=[{"role": "user", "content": _user}],
-                    output_format=CatalogExtractionSlim if _CARD_SLIM else CatalogExtraction,
+                    output_format=(CatalogExtractionSlimKeys if _CARD_KEYS else CatalogExtractionSlim) if _CARD_SLIM else CatalogExtraction,
                     **_kw,
                 )
                 cat = resp.parsed_output

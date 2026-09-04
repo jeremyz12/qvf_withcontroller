@@ -1,0 +1,183 @@
+{
+ "uid": "memops-B03_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B03_reflect/s2#r0",
+   "source_span": "David Keane is a Senior Technical Lead on the product integration team I joined back on March 4th.",
+   "entity": "David Keane",
+   "slot": "job_title",
+   "value": "Senior Technical Lead",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "David Keane"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B03_reflect/s2#r0",
+   "source_span": "David Keane is a Senior Technical Lead on the product integration team I joined back on March 4th.",
+   "entity": "user",
+   "slot": "team_join_date",
+   "value": "product integration team, joined March 4th",
+   "stated_date": "03-04",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B03_reflect/s2#r2",
+   "source_span": "Priya Mukherjee walked me through all the onboarding docs. She's a Systems Analyst II.",
+   "entity": "Priya Mukherjee",
+   "slot": "job_title",
+   "value": "Systems Analyst II",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Priya Mukherjee"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B03_reflect/s2#r3",
+   "source_span": "Priya Mukherjee, Systems Analyst II, reports to David Keane",
+   "entity": "Priya Mukherjee",
+   "slot": "reports_to",
+   "value": "David Keane",
+   "stated_date": "",
+   "slot_class": "other:reports to",
+   "owner": "Priya Mukherjee"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B03_reflect/s2#r6",
+   "source_span": "around mid-April, April 11th specifically, there was a cross-team sync and I found out Priya was being moved to a different project under a new manager",
+   "entity": "Priya Mukherjee",
+   "slot": "project_change",
+   "value": "moved to a different project under a new manager",
+   "stated_date": "04-11",
+   "slot_class": "other:project change",
+   "owner": "Priya Mukherjee"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B03_reflect/s14#r8",
+   "source_span": "I think I'm going to go with the Garmin Forerunner 945 since I'm a serious swimmer looking to improve my performance.",
+   "entity": "user",
+   "slot": "device",
+   "value": "Garmin Forerunner 945",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B03_reflect/s14#r8",
+   "source_span": "since I'm a serious swimmer looking to improve my performance",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "serious swimmer",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B03_reflect/s30#r16",
+   "source_span": "Tom Aldridge got promoted from Director of Engineering to VP of Engineering. That was the reorg announcement in late March.",
+   "entity": "Tom Aldridge",
+   "slot": "job_title",
+   "value": "VP of Engineering",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Tom Aldridge"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B03_reflect/s30#r16",
+   "source_span": "He's David's manager.",
+   "entity": "Tom Aldridge",
+   "slot": "manages",
+   "value": "David Keane",
+   "stated_date": "",
+   "slot_class": "other:manages",
+   "owner": "Tom Aldridge"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B03_reflect/s30#r16",
+   "source_span": "a new person joined our team around mid-April — Rachel Simmons, Junior Developer.",
+   "entity": "Rachel Simmons",
+   "slot": "job_title",
+   "value": "Junior Developer",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "Rachel Simmons"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B03_reflect/s30#r16",
+   "source_span": "My friend Marcus on the design team mentioned she came from an internship at the same company",
+   "entity": "Marcus",
+   "slot": "team",
+   "value": "design team",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "Marcus"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B03_reflect/s30#r16",
+   "source_span": "My friend Marcus on the design team mentioned she came from an internship at the same company",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Marcus",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B03_reflect/s43#r8",
+   "source_span": "his current title is definitely Senior Technical Lead",
+   "entity": "David Keane",
+   "slot": "job_title",
+   "value": "Senior Technical Lead",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "David Keane"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B03_reflect/s46#r0",
+   "source_span": "With David taking on the interim team lead stuff, I briefly considered switching to 30-minute one-on-ones to accommodate the interim team lead transition.",
+   "entity": "David Keane",
+   "slot": "role_change",
+   "value": "taking on interim team lead role",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "David Keane"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-B03_reflect/s12#r4",
+   "source_span": "As a resident of Phoenix, what are some advantages and disadvantages",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Phoenix",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 3552,
+ "usage_out": 1592,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 20,
+  "total": 540,
+  "user_turns": 540,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

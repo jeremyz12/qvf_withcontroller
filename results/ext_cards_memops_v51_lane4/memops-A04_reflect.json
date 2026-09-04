@@ -1,0 +1,117 @@
+{
+ "uid": "memops-A04_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A04_reflect/s0#r2",
+   "source_span": "I moved here February 3rd",
+   "entity": "user",
+   "slot": "residence_city",
+   "value": "Portland",
+   "stated_date": "2024-02-03",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "I'm also on SE Division Street near 26th",
+   "entity": "user",
+   "slot": "residence_address",
+   "value": "SE Division Street near 26th",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "my lease here runs through January 31st of next year",
+   "entity": "user",
+   "slot": "lease_end_date",
+   "value": "January 31st of next year",
+   "stated_date": "",
+   "slot_class": "other:lease end date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "I explored the Hawthorne district last week. I went to the smaller Powell's location on Hawthorne, not the big downtown one. I liked it way better.",
+   "entity": "user",
+   "slot": "favorite_bookstore",
+   "value": "Powell's Hawthorne location",
+   "stated_date": "",
+   "slot_class": "other:favorite bookstore",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "my friend Nadia is the one who got me to look at the Division Street area. She works at OHSU up on the hill. She moved to Portland about a year before me.",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Nadia, works at OHSU, moved to Portland about a year before user",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A04_reflect/s13#r6",
+   "source_span": "I might also look into a CSA box — community supported agriculture.",
+   "entity": "user",
+   "slot": "food_plan_consideration",
+   "value": "considering CSA box subscription",
+   "stated_date": "",
+   "slot_class": "other:food plan consideration",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A04_reflect/s13#r6",
+   "source_span": "A couple of the vendors at the PSU market mentioned they do weekly boxes.",
+   "entity": "user",
+   "slot": "market_visited",
+   "value": "PSU market",
+   "stated_date": "",
+   "slot_class": "other:market visited",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "I'll check out People's Co-op this weekend.",
+   "entity": "user",
+   "slot": "planned_grocery_visit",
+   "value": "People's Co-op",
+   "stated_date": "",
+   "slot_class": "other:planned grocery visit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A04_reflect/s3#r12",
+   "source_span": "I've been thinking about whether I should try anything different at Heart Coffee or just stick with my usual.",
+   "entity": "user",
+   "slot": "coffee_shop",
+   "value": "Heart Coffee",
+   "stated_date": "",
+   "slot_class": "other:coffee shop",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4650,
+ "usage_out": 934,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 550,
+  "user_turns": 550,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

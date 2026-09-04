@@ -1,0 +1,205 @@
+{
+ "uid": "memops-C10_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C10_trajectory_ops/s35#r2",
+   "source_span": "I completely stopped going to the library around March 28th and switched to studying at home full time.",
+   "entity": "user",
+   "slot": "study_location",
+   "value": "home",
+   "stated_date": "2024-03-28",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C10_trajectory_ops/s35#r3",
+   "source_span": "Since you're combining the quiet home environment with your 5:30 AM start",
+   "entity": "user",
+   "slot": "study_start_time",
+   "value": "5:30 AM",
+   "stated_date": "",
+   "slot_class": "other:study start time",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C10_trajectory_ops/s44#r10",
+   "source_span": "My government accounting scores on Ninja MCQs jumped from about 60% to 72% which feels like real improvement.",
+   "entity": "user",
+   "slot": "ninja_mcq_score_government_accounting",
+   "value": "72% (up from 60%)",
+   "stated_date": "",
+   "slot_class": "other:ninja mcq score government accounting",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C10_trajectory_ops/s44#r10",
+   "source_span": "I still have some confusion around fiduciary funds but the governmental fund types are clicking now.",
+   "entity": "user",
+   "slot": "study_topic_status",
+   "value": "confused about fiduciary funds, governmental fund types clicking",
+   "stated_date": "",
+   "slot_class": "other:study topic status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C10_trajectory_ops/s44#r14",
+   "source_span": "I visited the co-working space today and it's way too expensive, forty dollars a day. I'm sticking with studying at home.",
+   "entity": "user",
+   "slot": "study_location",
+   "value": "home (rejected co-working space, $40/day)",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C10_trajectory_ops/s44#r14",
+   "source_span": "my apartment is perfectly quiet at 5:30 in the morning and I've been productive here for over a month now.",
+   "entity": "user",
+   "slot": "residence",
+   "value": "apartment",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C10_trajectory_ops/s45#r1",
+   "source_span": "With her exam on June 14th, she has a bit more runway than you do",
+   "entity": "Maria",
+   "slot": "exam_date",
+   "value": "June 14th",
+   "stated_date": "2024-06-14",
+   "slot_class": "other:exam date",
+   "owner": "Maria"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C10_trajectory_ops/s46#r3",
+   "source_span": "The WeWork on Fifth Street at twenty-five dollars a day is definitely more reasonable than the forty-dollar-a-day place he originally found",
+   "entity": "Kevin",
+   "slot": "study_location",
+   "value": "WeWork on Fifth Street ($25/day)",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C10_trajectory_ops/s46#r4",
+   "source_span": "I'm glad I figured out my situation already — no more location changes for me before June 7th.",
+   "entity": "user",
+   "slot": "exam_date",
+   "value": "June 7th",
+   "stated_date": "2024-06-07",
+   "slot_class": "other:exam date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C10_trajectory_ops/s47#r2",
+   "source_span": "I briefly thought about using the office conference room after hours for studying but I decided against it.",
+   "entity": "user",
+   "slot": "study_location_considered_and_rejected",
+   "value": "office conference room after hours",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C10_trajectory_ops/s47#r2",
+   "source_span": "my morning routine at my place is working perfectly so there's no reason to change anything.",
+   "entity": "user",
+   "slot": "study_location",
+   "value": "own place (morning routine)",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C10_trajectory_ops/s48#r6",
+   "source_span": "Kevin actually tried booking the campus study rooms before he settled on the downtown branch.",
+   "entity": "Kevin",
+   "slot": "study_location_history",
+   "value": "tried campus study rooms, then downtown branch library",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C10_trajectory_ops/s17#r0",
+   "source_span": "he switched from the university library to the public library downtown branch for his AUD studying",
+   "entity": "Kevin",
+   "slot": "study_location",
+   "value": "public library downtown branch",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C10_trajectory_ops/s17#r0",
+   "source_span": "he switched from the university library to the public library downtown branch for his AUD studying",
+   "entity": "Kevin",
+   "slot": "exam_section",
+   "value": "AUD",
+   "stated_date": "",
+   "slot_class": "other:exam section",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C10_trajectory_ops/s44#r6",
+   "source_span": "I think I'll check out Animal Crossing and Minecraft.",
+   "entity": "user",
+   "slot": "interested_games",
+   "value": "Animal Crossing, Minecraft",
+   "stated_date": "",
+   "slot_class": "other:interested games",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C10_trajectory_ops/s22#r6",
+   "source_span": "I think I'll try signing up for a salsa class and maybe share my thoughts in our next team meeting.",
+   "entity": "user",
+   "slot": "planned_activity",
+   "value": "sign up for salsa class",
+   "stated_date": "",
+   "slot_class": "other:planned activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-C10_trajectory_ops/s17#r6",
+   "source_span": "I think I'll give yoga and acupuncture a try.",
+   "entity": "user",
+   "slot": "planned_activity",
+   "value": "try yoga and acupuncture",
+   "stated_date": "",
+   "slot_class": "other:planned activity",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4379,
+ "usage_out": 2017,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 24,
+  "total": 550,
+  "user_turns": 550,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

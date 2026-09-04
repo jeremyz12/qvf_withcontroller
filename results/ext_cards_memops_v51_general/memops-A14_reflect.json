@@ -1,0 +1,205 @@
+{
+ "uid": "memops-A14_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A14_reflect/s15#r11",
+   "source_span": "Your Montevideo experience was very positive — you spent a long weekend there and loved how naturally you could communicate using Portunhol without any struggle.",
+   "entity": "user",
+   "slot": "travel_experience",
+   "value": "Spent a long weekend in Montevideo, communicated naturally using Portunhol",
+   "stated_date": "",
+   "slot_class": "other:travel experience",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A14_reflect/s16#r12",
+   "source_span": "I went to Lisbon last November and it felt so natural, like I could just relax and speak Portuguese without switching mental gears.",
+   "entity": "user",
+   "slot": "travel_experience",
+   "value": "Visited Lisbon, felt natural speaking Portuguese without mental switching",
+   "stated_date": "2024-11",
+   "slot_class": "other:travel experience",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A14_reflect/s16#r12",
+   "source_span": "That trip really reinforced my desire to get the Portuguese citizenship sorted out.",
+   "entity": "user",
+   "slot": "citizenship_goal",
+   "value": "Wants to obtain Portuguese citizenship",
+   "stated_date": "",
+   "slot_class": "other:citizenship goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A14_reflect/s16#r13",
+   "source_span": "I've noted your positive experience in Lisbon last November and how it connects to your citizenship goals.",
+   "entity": "user",
+   "slot": "citizenship_goal",
+   "value": "Portuguese citizenship goal connected to positive Lisbon trip experience",
+   "stated_date": "2024-11",
+   "slot_class": "other:citizenship goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A14_reflect/s18#r10",
+   "source_span": "when I'm filling out travel forms I really only want to visit places where I can get by in Portuguese or Spanish.",
+   "entity": "user",
+   "slot": "travel_preference",
+   "value": "Prefers to travel to places where Portuguese or Spanish is spoken",
+   "stated_date": "",
+   "slot_class": "other:travel preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A14_reflect/s18#r10",
+   "source_span": "My colleague Mariana just got her Spanish citizenship finalized after two years",
+   "entity": "Mariana",
+   "slot": "citizenship_status",
+   "value": "Got Spanish citizenship finalized after two years",
+   "stated_date": "",
+   "slot_class": "other:citizenship status",
+   "owner": "Mariana"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A14_reflect/s19#r7",
+   "source_span": "Your correct passport number is HG284193.",
+   "entity": "user",
+   "slot": "passport_number",
+   "value": "HG284193",
+   "stated_date": "",
+   "slot_class": "other:passport number",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A14_reflect/s20#r3",
+   "source_span": "Rafael's application (PT-2025-04471) through ancestry from Braga is going through the same Portuguese citizenship process",
+   "entity": "Rafael",
+   "slot": "citizenship_application",
+   "value": "Application PT-2025-04471 through ancestry from Braga, Portuguese citizenship process",
+   "stated_date": "",
+   "slot_class": "other:citizenship application",
+   "owner": "Rafael"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A14_reflect/s20#r3",
+   "source_span": "Your reference number remains PT-2025-04417.",
+   "entity": "user",
+   "slot": "citizenship_application_reference",
+   "value": "PT-2025-04417",
+   "stated_date": "",
+   "slot_class": "other:citizenship application reference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A14_reflect/s35#r6",
+   "source_span": "I've downloaded Headspace and I'm excited to try it out.",
+   "entity": "user",
+   "slot": "app_usage",
+   "value": "Downloaded Headspace meditation app",
+   "stated_date": "",
+   "slot_class": "other:app usage",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A14_reflect/s26#r2",
+   "source_span": "I've been drinking a lot of electrolyte-enhanced sports drinks lately",
+   "entity": "user",
+   "slot": "habit",
+   "value": "Drinking a lot of electrolyte-enhanced sports drinks",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A14_reflect/s29#r4",
+   "source_span": "I've noticed that Uber and Lyft have been promoting bikes and scooters in my city more lately.",
+   "entity": "user",
+   "slot": "observation",
+   "value": "Notices Uber and Lyft promoting bikes and scooters in their city",
+   "stated_date": "",
+   "slot_class": "other:observation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A14_reflect/s29#r6",
+   "source_span": "I might even consider getting one myself instead of relying on my car all the time.",
+   "entity": "user",
+   "slot": "transportation",
+   "value": "Currently relies on car; considering getting an electric bike or scooter",
+   "stated_date": "",
+   "slot_class": "other:transportation",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A14_reflect/s40#r4",
+   "source_span": "I think I will try using Trello to keep myself organized during my career transition.",
+   "entity": "user",
+   "slot": "career_status",
+   "value": "In career transition; plans to use Trello for organization",
+   "stated_date": "",
+   "slot_class": "other:career status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A14_reflect/s44#r10",
+   "source_span": "I'm so rooted in Lusophone and Latin spaces that stepping outside them feels genuinely uncomfortable, not just inconvenient.",
+   "entity": "user",
+   "slot": "cultural_identity",
+   "value": "Feels rooted in Lusophone and Latin cultural spaces; discomfort stepping outside them (e.g. re: Germany)",
+   "stated_date": "",
+   "slot_class": "other:cultural identity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A14_reflect/s45#r9",
+   "source_span": "Her Spanish citizenship application (reference ES-2023-08821) went through ancestry via her paternal grandfather from Galicia",
+   "entity": "Mariana",
+   "slot": "citizenship_application",
+   "value": "Spanish citizenship application reference ES-2023-08821, via ancestry from paternal grandfather in Galicia",
+   "stated_date": "",
+   "slot_class": "other:citizenship application",
+   "owner": "Mariana"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A14_reflect/s45#r9",
+   "source_span": "Your application (PT-2025-04417) is still pending through a different country and consulate",
+   "entity": "user",
+   "slot": "citizenship_application_status",
+   "value": "Portuguese citizenship application PT-2025-04417 still pending",
+   "stated_date": "",
+   "slot_class": "other:citizenship application status",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 15344,
+ "usage_out": 2063,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 75,
+  "total": 524,
+  "user_turns": 524,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

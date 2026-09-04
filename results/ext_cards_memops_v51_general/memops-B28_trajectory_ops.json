@@ -1,0 +1,128 @@
+{
+ "uid": "memops-B28_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B28_trajectory_ops/s5#r3",
+   "source_span": "your primary care doctor is Dr. Anita Sharma at Greenfield Medical Group on Elm Street, and that she's been your PCP since approximately early 2023",
+   "entity": "user",
+   "slot": "primary_care_physician",
+   "value": "Dr. Anita Sharma at Greenfield Medical Group on Elm Street",
+   "stated_date": "2023",
+   "slot_class": "other:primary care physician",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B28_trajectory_ops/s17#r0",
+   "source_span": "she ended up moving her physical to October 10 with Dr. Liu at Bayside Health",
+   "entity": "Sarah",
+   "slot": "physical_appointment",
+   "value": "October 10 with Dr. Liu at Bayside Health",
+   "stated_date": "",
+   "slot_class": "other:physical appointment",
+   "owner": "Sarah"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B28_trajectory_ops/s18#r14",
+   "source_span": "I got my vaccination records faxed to my employer last Friday — the receptionist Maria at Greenfield handled that for me.",
+   "entity": "user",
+   "slot": "vaccination_records_status",
+   "value": "faxed to employer by Maria at Greenfield Medical Group",
+   "stated_date": "",
+   "slot_class": "other:vaccination records status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B28_trajectory_ops/s18#r16",
+   "source_span": "I called Dr. Sharma's office and moved my annual physical from July 15 to October 8.",
+   "entity": "user",
+   "slot": "annual_physical_appointment",
+   "value": "October 8 with Dr. Sharma (moved from July 15)",
+   "stated_date": "",
+   "slot_class": "other:annual physical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r2",
+   "source_span": "My first appointment with them is set for June 10.",
+   "entity": "user",
+   "slot": "endocrinology_appointment",
+   "value": "June 10",
+   "stated_date": "",
+   "slot_class": "other:endocrinology appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r2",
+   "source_span": "I also asked Greenfield to confirm the referral and Maria said it went through fine, they just had a backlog on their end.",
+   "entity": "user",
+   "slot": "endocrinology_referral_status",
+   "value": "confirmed through Greenfield Medical Group, referral went through",
+   "stated_date": "",
+   "slot_class": "other:endocrinology referral status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r6",
+   "source_span": "I noticed a form from 2022 that still listed Dr. Robert Engel as my primary care physician. That's completely outdated — I haven't seen him since 2022 and I'm fully transferred to Dr. Sharma now.",
+   "entity": "user",
+   "slot": "former_primary_care_physician",
+   "value": "Dr. Robert Engel (outdated, not seen since 2022)",
+   "stated_date": "2022",
+   "slot_class": "other:former primary care physician",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r8",
+   "source_span": "I actually called back and confirmed October 8 after all. November 12 falls during my work conference so that won't work.",
+   "entity": "user",
+   "slot": "annual_physical_appointment",
+   "value": "October 8 with Dr. Sharma (confirmed, not November 12 due to work conference)",
+   "stated_date": "",
+   "slot_class": "other:annual physical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r9",
+   "source_span": "since it was initiated by Dr. Sharma's office after your April 28 visit, it should already be tied to Greenfield.",
+   "entity": "user",
+   "slot": "medical_visit_date",
+   "value": "visit with Dr. Sharma's office on April 28",
+   "stated_date": "2024-04-28",
+   "slot_class": "other:medical visit date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B28_trajectory_ops/s41#r12",
+   "source_span": "I think I'll try the ComfyMed Posture Corrector Clavicle Support Brace.",
+   "entity": "user",
+   "slot": "posture_device",
+   "value": "ComfyMed Posture Corrector Clavicle Support Brace",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 12055,
+ "usage_out": 1425,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 79,
+  "total": 556,
+  "user_turns": 556,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

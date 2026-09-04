@@ -1,0 +1,238 @@
+{
+ "uid": "memops-C10_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C10_remember/s6#r6",
+   "source_span": "my Becker progress for FAR is at 58% as of yesterday, May 3rd",
+   "entity": "user",
+   "slot": "cpa_far_becker_progress",
+   "value": "58%",
+   "stated_date": "2023-05-03",
+   "slot_class": "other:cpa far becker progress",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C10_remember/s6#r6",
+   "source_span": "I've been waking up at 5:30 AM most days since the beginning of April to get in about two hours of studying before work",
+   "entity": "user",
+   "slot": "study_routine",
+   "value": "waking at 5:30 AM to study ~2 hours before work",
+   "stated_date": "2023-04",
+   "slot_class": "other:study routine",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C10_remember/s6#r8",
+   "source_span": "I had originally planned to sit for REG in August too, but I dropped that idea entirely.",
+   "entity": "user",
+   "slot": "cpa_reg_august_plan",
+   "value": "canceled/dropped",
+   "stated_date": "",
+   "slot_class": "other:cpa reg august plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C10_remember/s6#r8",
+   "source_span": "So the August REG plan is completely off the table.",
+   "entity": "user",
+   "slot": "cpa_reg_august_plan",
+   "value": "off the table",
+   "stated_date": "",
+   "slot_class": "other:cpa reg august plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C10_remember/s12#r6",
+   "source_span": "Lisa is only at 43% as of May 1st on Becker",
+   "entity": "Lisa",
+   "slot": "cpa_far_becker_progress",
+   "value": "43%",
+   "stated_date": "2023-05-01",
+   "slot_class": "other:cpa far becker progress",
+   "owner": "Lisa"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C10_remember/s12#r6",
+   "source_span": "her June 21st date",
+   "entity": "Lisa",
+   "slot": "cpa_exam_date",
+   "value": "June 21st",
+   "stated_date": "",
+   "slot_class": "other:cpa exam date",
+   "owner": "Lisa"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C10_remember/s13#r5",
+   "source_span": "The Ninja CPA MCQ bank at $57 per month is one of the most cost-effective supplements out there",
+   "entity": "user",
+   "slot": "ninja_cpa_subscription_price",
+   "value": "$57 per month",
+   "stated_date": "",
+   "slot_class": "other:ninja cpa subscription price",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C10_remember/s13#r5",
+   "source_span": "Since you started it on April 20th, you've had about two weeks with it so far.",
+   "entity": "user",
+   "slot": "ninja_cpa_subscription_start_date",
+   "value": "April 20th",
+   "stated_date": "2023-04-20",
+   "slot_class": "other:ninja cpa subscription start date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C10_remember/s13#r5",
+   "source_span": "keeping Becker for your structured progression through the remaining 42% of content",
+   "entity": "user",
+   "slot": "cpa_far_becker_remaining_content",
+   "value": "42%",
+   "stated_date": "",
+   "slot_class": "other:cpa far becker remaining content",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C10_remember/s13#r6",
+   "source_span": "I've been keeping a simple spreadsheet where I log each practice set with the date, the topic focus, and my score.",
+   "entity": "user",
+   "slot": "study_tracking_method",
+   "value": "spreadsheet logging practice sets, topic, and score",
+   "stated_date": "",
+   "slot_class": "other:study tracking method",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C10_remember/s13#r6",
+   "source_span": "Governmental accounting and lease modifications are my two weakest areas right now — I'm scoring below 60% on those consistently.",
+   "entity": "user",
+   "slot": "cpa_weak_areas",
+   "value": "governmental accounting and lease modifications (below 60%)",
+   "stated_date": "",
+   "slot_class": "other:cpa weak areas",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C10_remember/s13#r6",
+   "source_span": "Everything else is closer to 70% or above.",
+   "entity": "user",
+   "slot": "cpa_other_areas_score",
+   "value": "closer to 70% or above",
+   "stated_date": "",
+   "slot_class": "other:cpa other areas score",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C10_remember/s18#r10",
+   "source_span": "I was browsing the CPA subreddit and saw a thread about Ninja CPA pricing differences.",
+   "entity": "user",
+   "slot": "activity",
+   "value": "browsing CPA subreddit about Ninja CPA pricing",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C10_remember/s18#r12",
+   "source_span": "I'm not going to mess with my own subscription right now though — I don't want to risk any disruption this close to my exam.",
+   "entity": "user",
+   "slot": "ninja_cpa_subscription_decision",
+   "value": "keeping subscription unchanged before exam",
+   "stated_date": "",
+   "slot_class": "other:ninja cpa subscription decision",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C10_remember/s20#r6",
+   "source_span": "I've been sticking to the 5:30 AM routine and it's been working really well.",
+   "entity": "user",
+   "slot": "study_routine",
+   "value": "sticking to 5:30 AM study routine",
+   "stated_date": "",
+   "slot_class": "other:study routine",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C10_remember/s20#r6",
+   "source_span": "I managed to push through two more Becker modules this past week.",
+   "entity": "user",
+   "slot": "cpa_far_becker_progress_update",
+   "value": "completed two more Becker modules this past week",
+   "stated_date": "",
+   "slot_class": "other:cpa far becker progress update",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-C10_remember/s20#r7",
+   "source_span": "puts you on a good trajectory toward that May 24th completion target",
+   "entity": "user",
+   "slot": "cpa_far_completion_target",
+   "value": "May 24th",
+   "stated_date": "",
+   "slot_class": "other:cpa far completion target",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-C10_remember/s20#r7",
+   "source_span": "Kevin's Ninja subscription, for instance, was listed at $67 per month in one forum post about AUD prep bundles.",
+   "entity": "Kevin",
+   "slot": "ninja_cpa_subscription_price",
+   "value": "$67 per month (AUD prep bundle)",
+   "stated_date": "",
+   "slot_class": "other:ninja cpa subscription price",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-C10_remember/s20#r8",
+   "source_span": "I'll probably keep it through June since my exam is June 7th and I want access right up until then.",
+   "entity": "user",
+   "slot": "cpa_exam_date",
+   "value": "June 7th",
+   "stated_date": "",
+   "slot_class": "other:cpa exam date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-C10_remember/s20#r8",
+   "source_span": "After that I'll cancel and resubscribe later when I start another section.",
+   "entity": "user",
+   "slot": "ninja_cpa_subscription_decision",
+   "value": "cancel after exam, resubscribe later for next section",
+   "stated_date": "",
+   "slot_class": "other:ninja cpa subscription decision",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 14479,
+ "usage_out": 2179,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 83,
+  "total": 534,
+  "user_turns": 534,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

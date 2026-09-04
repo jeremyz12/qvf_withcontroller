@@ -1,0 +1,271 @@
+{
+ "uid": "memops-C31_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C31_reflect/s2#r8",
+   "source_span": "I've actually been meaning to visit the Smithsonian National Museum of African American History and Culture for a while now.",
+   "entity": "user",
+   "slot": "museum_bucket_list",
+   "value": "Smithsonian National Museum of African American History and Culture",
+   "stated_date": "",
+   "slot_class": "other:museum bucket list",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C31_reflect/s10#r4",
+   "source_span": "I don't have time to invest in employee retention initiatives. I need to focus on the bottom line and making profits. Plus, I can always just hire new employees when the old ones leave.",
+   "entity": "user",
+   "slot": "business_strategy_stance",
+   "value": "opposes employee retention initiatives, prefers hiring new employees over old ones leaving",
+   "stated_date": "",
+   "slot_class": "other:business strategy stance",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C31_reflect/s42#r4",
+   "source_span": "My team is doing just fine without any team-building programs.",
+   "entity": "user",
+   "slot": "team_building_stance",
+   "value": "opposes team-building programs for their team",
+   "stated_date": "",
+   "slot_class": "team",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C31_reflect/s20#r4",
+   "source_span": "I took her to Pampered Paws on March 15th for a full groom — bath, nail trim, ear cleaning.",
+   "entity": "Mochi",
+   "slot": "grooming_appointment",
+   "value": "full groom at Pampered Paws on March 15th",
+   "stated_date": "03-15",
+   "slot_class": "other:grooming appointment",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C31_reflect/s20#r4",
+   "source_span": "I specifically asked them not to use any scented shampoo because Mochi gets really unsettled by strong smells.",
+   "entity": "Mochi",
+   "slot": "grooming_preference",
+   "value": "no scented shampoo, unsettled by strong smells",
+   "stated_date": "",
+   "slot_class": "other:grooming preference",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C31_reflect/s20#r4",
+   "source_span": "They ended up using an unscented oat-based shampoo instead, which was so much better.",
+   "entity": "Mochi",
+   "slot": "grooming_shampoo",
+   "value": "unscented oat-based shampoo",
+   "stated_date": "",
+   "slot_class": "other:grooming shampoo",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C31_reflect/s20#r10",
+   "source_span": "Before Pampered Paws I tried one other place — I don't even remember the name now — but that one time I tried a busier grooming place with dogs barking everywhere, it was honestly terrible for both of us.",
+   "entity": "Mochi",
+   "slot": "previous_grooming_experience",
+   "value": "bad experience at busy grooming place with dogs, before Pampered Paws",
+   "stated_date": "",
+   "slot_class": "other:previous grooming experience",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C31_reflect/s21#r0",
+   "source_span": "I switched Mochi to Milbemax for deworming because the tablets are smaller and she fights me less.",
+   "entity": "Mochi",
+   "slot": "deworming_medication",
+   "value": "Milbemax",
+   "stated_date": "",
+   "slot_class": "other:deworming medication",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C31_reflect/s21#r0",
+   "source_span": "She was on Drontal before, but those were these huge chalky pills that were a nightmare to give her.",
+   "entity": "Mochi",
+   "slot": "previous_deworming_medication",
+   "value": "Drontal",
+   "stated_date": "",
+   "slot_class": "other:previous deworming medication",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C31_reflect/s21#r0",
+   "source_span": "My friend Sara recommended Milbemax after her vet suggested it for her two cats",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Sara recommended Milbemax, has two cats",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C31_reflect/s21#r2",
+   "source_span": "I do her nail trims at home myself when I can.",
+   "entity": "user",
+   "slot": "nail_trim_habit",
+   "value": "does Mochi's nail trims at home",
+   "stated_date": "",
+   "slot_class": "other:nail trim habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C31_reflect/s21#r2",
+   "source_span": "I did one back in mid-February and it went surprisingly well, just the two of us in the living room.",
+   "entity": "Mochi",
+   "slot": "nail_trim_event",
+   "value": "home nail trim in mid-February, went well",
+   "stated_date": "02",
+   "slot_class": "other:nail trim event",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C31_reflect/s21#r6",
+   "source_span": "her rabies booster was on March 3rd at Greenfield Veterinary Clinic, Dr. Patel administered it.",
+   "entity": "Mochi",
+   "slot": "rabies_vaccination",
+   "value": "rabies booster on March 3rd at Greenfield Veterinary Clinic by Dr. Patel",
+   "stated_date": "03-03",
+   "slot_class": "other:rabies vaccination",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C31_reflect/s21#r6",
+   "source_span": "The next rabies shot is due in March next year.",
+   "entity": "Mochi",
+   "slot": "rabies_vaccination_due",
+   "value": "next rabies shot due March next year",
+   "stated_date": "",
+   "slot_class": "other:rabies vaccination due",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C31_reflect/s21#r6",
+   "source_span": "I also got her the FVRCP vaccine a couple days later, around March 5th or 6th.",
+   "entity": "Mochi",
+   "slot": "fvrcp_vaccination",
+   "value": "FVRCP vaccine around March 5th-6th",
+   "stated_date": "03",
+   "slot_class": "other:fvrcp vaccination",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-C31_reflect/s21#r6",
+   "source_span": "Mochi's next deworming with Milbemax is due around May 14th",
+   "entity": "Mochi",
+   "slot": "deworming_due",
+   "value": "next Milbemax deworming due around May 14th",
+   "stated_date": "05-14",
+   "slot_class": "other:deworming due",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-C31_reflect/s21#r6",
+   "source_span": "I want to ask Dr. Patel about adding flea prevention at the same time.",
+   "entity": "user",
+   "slot": "pet_care_plan",
+   "value": "plans to ask Dr. Patel about flea prevention for Mochi",
+   "stated_date": "",
+   "slot_class": "other:pet care plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-C31_reflect/s23#r0",
+   "source_span": "I saw an ad for a mobile cat grooming service that comes to your house.",
+   "entity": "user",
+   "slot": "grooming_consideration",
+   "value": "considered mobile cat grooming service",
+   "stated_date": "",
+   "slot_class": "other:grooming consideration",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-C31_reflect/s40#r8",
+   "source_span": "I ended up taking Mochi in to Pampered Paws earlier than planned — on April 8th instead of April 12th — because she got into something sticky in the garage.",
+   "entity": "Mochi",
+   "slot": "grooming_appointment",
+   "value": "full groom at Pampered Paws on April 8th (rescheduled from April 12th) due to sticky substance",
+   "stated_date": "04-08",
+   "slot_class": "other:grooming appointment",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-C31_reflect/s40#r8",
+   "source_span": "The original April 12th booking was cancelled.",
+   "entity": "Mochi",
+   "slot": "grooming_appointment_cancelled",
+   "value": "April 12th booking cancelled",
+   "stated_date": "04-12",
+   "slot_class": "other:grooming appointment cancelled",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-C31_reflect/s40#r14",
+   "source_span": "The unscented oat-based shampoo has been perfect, and Mochi's already so relaxed at Pampered Paws without any added fragrance.",
+   "entity": "Mochi",
+   "slot": "grooming_shampoo",
+   "value": "unscented oat-based shampoo works well, preferred",
+   "stated_date": "",
+   "slot_class": "other:grooming shampoo",
+   "owner": "Mochi"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "memops-C31_reflect/s22#r8",
+   "source_span": "I was chatting with Sara the other day about grooming. She has a totally different approach than me.",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Sara has different grooming approach than user",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r23",
+   "source_memory_id": "memops-C31_reflect/s39#r3",
+   "source_span": "At least Tom found Bark & Bubbles and you found Pampered Paws — both seem to work much better for your respective pets.",
+   "entity": "user",
+   "slot": "grooming_provider",
+   "value": "Pampered Paws works well for Mochi",
+   "stated_date": "",
+   "slot_class": "other:grooming provider",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 14356,
+ "usage_out": 2681,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 83,
+  "total": 536,
+  "user_turns": 536,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

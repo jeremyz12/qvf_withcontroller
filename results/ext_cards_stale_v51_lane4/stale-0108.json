@@ -1,0 +1,238 @@
+{
+ "uid": "stale-0108",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0108/s0#r4",
+   "source_span": "The city is New York. My parents live in Manhattan",
+   "entity": "user",
+   "slot": "city",
+   "value": "New York",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0108/s0#r4",
+   "source_span": "My parents live in Manhattan",
+   "entity": "user",
+   "slot": "parents_location",
+   "value": "Manhattan",
+   "stated_date": "",
+   "slot_class": "location",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0108/s13#r0",
+   "source_span": "I'm working on my thesis and I'm currently in the writing phase.",
+   "entity": "user",
+   "slot": "activity",
+   "value": "writing thesis",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0108/s13#r0",
+   "source_span": "I just finished collecting data on April 25th",
+   "entity": "user",
+   "slot": "thesis_data_collection_completed",
+   "value": "April 25th",
+   "stated_date": "2024-04-25",
+   "slot_class": "other:thesis data collection completed",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0108/s16#r10",
+   "source_span": "Since I have some experience with painting",
+   "entity": "user",
+   "slot": "skill",
+   "value": "painting experience",
+   "stated_date": "",
+   "slot_class": "other:skill",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0108/s19#r0",
+   "source_span": "I just got a new dress from Zara yesterday when I was at the mall with my friends",
+   "entity": "user",
+   "slot": "recent_purchase",
+   "value": "new dress from Zara",
+   "stated_date": "",
+   "slot_class": "other:recent purchase",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0108/s26#r0",
+   "source_span": "I've noticed my followers have been increasing steadily, and I gained 12 new followers the week before last",
+   "entity": "user",
+   "slot": "instagram_followers_gained",
+   "value": "12 new followers the week before last",
+   "stated_date": "",
+   "slot_class": "other:instagram followers gained",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0108/s26#r8",
+   "source_span": "I've also been thinking about collaborating with other accounts in my niche to reach new audiences.",
+   "entity": "user",
+   "slot": "social_media_niche",
+   "value": "social media marketing",
+   "stated_date": "",
+   "slot_class": "other:social media niche",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0108/s31#r0",
+   "source_span": "I just rearranged the furniture in the living room to create more space for the new coffee table",
+   "entity": "user",
+   "slot": "home_furniture_change",
+   "value": "rearranged living room furniture, new coffee table",
+   "stated_date": "",
+   "slot_class": "other:home furniture change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0108/s31#r2",
+   "source_span": "My living room is pretty modern, with a wooden coffee table and metal legs that I just got from West Elm.",
+   "entity": "user",
+   "slot": "living_room_style",
+   "value": "modern, wooden coffee table with metal legs from West Elm",
+   "stated_date": "",
+   "slot_class": "other:living room style",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0108/s31#r2",
+   "source_span": "The couch is a neutral beige color",
+   "entity": "user",
+   "slot": "couch_color",
+   "value": "neutral beige",
+   "stated_date": "",
+   "slot_class": "other:couch color",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0108/s31#r2",
+   "source_span": "Budget-wise, I'm thinking around $50-$75 per pillow.",
+   "entity": "user",
+   "slot": "pillow_budget",
+   "value": "$50-$75 per pillow",
+   "stated_date": "",
+   "slot_class": "other:pillow budget",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0108/s34#r2",
+   "source_span": "I’m still getting used to how quiet the house is since I moved into my new place—no dog to take out first thing in the morning anymore.",
+   "entity": "user",
+   "slot": "residence_change",
+   "value": "moved into new place, no longer has dog",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0108/s39#r0",
+   "source_span": "I'm trying to plan a sports-themed party for my friend's birthday",
+   "entity": "user",
+   "slot": "upcoming_event",
+   "value": "planning sports-themed birthday party for friend",
+   "stated_date": "",
+   "slot_class": "other:upcoming event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0108/s39#r4",
+   "source_span": "I remember watching the Super Bowl with my friends at Tom's place two months ago",
+   "entity": "user",
+   "slot": "past_event",
+   "value": "watched Super Bowl with friends at Tom's place",
+   "stated_date": "",
+   "slot_class": "other:past event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0108/s40#r2",
+   "source_span": "I live in the city, about 10 miles away from my previous place.",
+   "entity": "user",
+   "slot": "residence_change",
+   "value": "lives in city, 10 miles from previous place",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "stale-0108/s40#r2",
+   "source_span": "I've been taking the bus to work, which takes around 35 minutes.",
+   "entity": "user",
+   "slot": "commute_method",
+   "value": "bus to work, 35 minutes",
+   "stated_date": "",
+   "slot_class": "other:commute method",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "stale-0108/s40#r2",
+   "source_span": "I'm thinking of a commuter bike, something that can handle daily rides in the city.",
+   "entity": "user",
+   "slot": "bike_preference",
+   "value": "commuter bike for daily city rides",
+   "stated_date": "",
+   "slot_class": "other:bike preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "stale-0108/s45#r10",
+   "source_span": "I just finished reading the latest bestseller by John Grisham",
+   "entity": "user",
+   "slot": "recent_reading",
+   "value": "finished latest bestseller by John Grisham",
+   "stated_date": "",
+   "slot_class": "other:recent reading",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "stale-0108/s45#r10",
+   "source_span": "attended a meetup organized by a group last week, where we discussed the book",
+   "entity": "user",
+   "slot": "recent_activity",
+   "value": "attended book club meetup last week",
+   "stated_date": "",
+   "slot_class": "other:recent activity",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 7691,
+ "usage_out": 1917,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 30,
+  "total": 592,
+  "user_turns": 592,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

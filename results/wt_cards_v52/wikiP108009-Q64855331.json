@@ -1,0 +1,205 @@
+{
+ "uid": "wikiP108009-Q64855331",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP108009-Q64855331/s1#r0",
+   "source_span": "I just got a new bike helmet recently, which I bought on March 10th - it's a blue and white Bell helmet, and I got a good deal on it with a 10% student discount",
+   "entity": "user",
+   "slot": "bike_helmet",
+   "value": "blue and white Bell helmet",
+   "stated_date": "2006-03-10",
+   "owner": "user",
+   "slot_class": "other:bike helmet"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP108009-Q64855331/s2#r0",
+   "source_span": "I've taken 7 flights in the last 9 weeks, and I've also been taking the train more frequently for shorter trips, like visiting my sister regularly",
+   "entity": "user",
+   "slot": "travel_frequency",
+   "value": "7 flights in last 9 weeks; frequent train trips to visit sister",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:travel frequency"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP108009-Q64855331/s2#r2",
+   "source_span": "I'm leaning towards the Chase Sapphire Preferred Card",
+   "entity": "user",
+   "slot": "credit_card",
+   "value": "Chase Sapphire Preferred Card (considering)",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:credit card"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP108009-Q64855331/s3#r0",
+   "source_span": "I'm a postdoc at Simon Fraser University as of today",
+   "entity": "user",
+   "slot": "position",
+   "value": "postdoc",
+   "stated_date": "2006-08-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP108009-Q64855331/s3#r0",
+   "source_span": "I'm a postdoc at Simon Fraser University as of today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Simon Fraser University",
+   "stated_date": "2006-08-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP108009-Q64855331/s3#r2",
+   "source_span": "my suitcase is still half unpacked and the apartment has zero cooking utensils",
+   "entity": "user",
+   "slot": "household_items",
+   "value": "apartment lacking cooking utensils, needs rice, dal, pan, mugs, kettle, umbrella",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:household items"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP108009-Q64855331/s11#r0",
+   "source_span": "I'm moving to the US soon to start my Master's program at UC Berkeley",
+   "entity": "user",
+   "slot": "position",
+   "value": "Master's program student",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP108009-Q64855331/s11#r0",
+   "source_span": "I'm moving to the US soon to start my Master's program at UC Berkeley",
+   "entity": "user",
+   "slot": "employer",
+   "value": "UC Berkeley",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP108009-Q64855331/s11#r2",
+   "source_span": "I'm glad I got accepted into UC Berkeley for the fall semester 2023",
+   "entity": "user",
+   "slot": "admission",
+   "value": "accepted into UC Berkeley, fall semester 2023",
+   "stated_date": "2023",
+   "owner": "user",
+   "slot_class": "other:admission"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP108009-Q64855331/s17#r1",
+   "source_span": "I'm starting as a postdoc at Karlsruhe Institute of Technology",
+   "entity": "user",
+   "slot": "position",
+   "value": "postdoc",
+   "stated_date": "2010-01-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP108009-Q64855331/s17#r1",
+   "source_span": "I'm starting as a postdoc at Karlsruhe Institute of Technology",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Karlsruhe Institute of Technology",
+   "stated_date": "2010-01-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "wikiP108009-Q64855331/s19#r2",
+   "source_span": "I recently upgraded my laptop's RAM from 8GB to 16GB, which cost me $120",
+   "entity": "user",
+   "slot": "laptop_ram",
+   "value": "upgraded from 8GB to 16GB",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "device"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "wikiP108009-Q64855331/s29#r0",
+   "source_span": "I recently participated in a charity 5K run/walk on April 15th",
+   "entity": "user",
+   "slot": "charity_event",
+   "value": "charity 5K run/walk",
+   "stated_date": "2013-04-15",
+   "owner": "user",
+   "slot_class": "other:charity event"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "wikiP108009-Q64855331/s29#r4",
+   "source_span": "I recently attended a charity gala on April 22nd for the local children's hospital",
+   "entity": "user",
+   "slot": "charity_event",
+   "value": "charity gala for local children's hospital",
+   "stated_date": "2013-04-22",
+   "owner": "user",
+   "slot_class": "other:charity event"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "wikiP108009-Q64855331/s30#r0",
+   "source_span": "I officially started as a Senior Lecturer at Universiti Malaya today",
+   "entity": "user",
+   "slot": "position",
+   "value": "Senior Lecturer",
+   "stated_date": "2013-08-01",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "wikiP108009-Q64855331/s30#r0",
+   "source_span": "I officially started as a Senior Lecturer at Universiti Malaya today",
+   "entity": "user",
+   "slot": "employer",
+   "value": "Universiti Malaya",
+   "stated_date": "2013-08-01",
+   "owner": "user",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "wikiP108009-Q64855331/s30#r2",
+   "source_span": "Half my books are still in boxes and the kitchen has exactly one pan",
+   "entity": "user",
+   "slot": "household_items",
+   "value": "apartment with books in boxes, one pan, internet connection issues",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:household items"
+  }
+ ],
+ "usage_in": 2432,
+ "usage_out": 2193,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 18,
+  "total": 162,
+  "user_turns": 102,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

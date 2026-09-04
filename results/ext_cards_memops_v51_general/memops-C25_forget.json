@@ -1,0 +1,183 @@
+{
+ "uid": "memops-C25_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C25_forget/s0#r10",
+   "source_span": "Joon just confirmed his C25 submission ID is #4718",
+   "entity": "Joon",
+   "slot": "c25_submission_id",
+   "value": "#4718",
+   "stated_date": "",
+   "slot_class": "other:c25 submission id",
+   "owner": "Joon"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C25_forget/s1#r8",
+   "source_span": "Our final submission ID for the C25 portal is #4782",
+   "entity": "user",
+   "slot": "c25_submission_id",
+   "value": "#4782",
+   "stated_date": "",
+   "slot_class": "other:c25 submission id",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C25_forget/s3#r3",
+   "source_span": "Joon and Dr. Marcus Chen are collaborating on a C25 main track paper focused on adversarial robustness",
+   "entity": "Joon",
+   "slot": "c25_collaboration",
+   "value": "collaborating with Dr. Marcus Chen on a C25 main track paper on adversarial robustness",
+   "stated_date": "",
+   "slot_class": "other:c25 collaboration",
+   "owner": "Joon"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C25_forget/s3#r3",
+   "source_span": "your paper with Dr. Elena Vasquez",
+   "entity": "user",
+   "slot": "c25_coauthor",
+   "value": "Dr. Elena Vasquez",
+   "stated_date": "",
+   "slot_class": "other:c25 coauthor",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C25_forget/s42#r8",
+   "source_span": "I also had an internal work report that was due February 9 and I submitted it on time",
+   "entity": "user",
+   "slot": "internal_work_report_due_date",
+   "value": "February 9",
+   "stated_date": "2025-02-09",
+   "slot_class": "other:internal work report due date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C25_forget/s43#r4",
+   "source_span": "Please forget about that internal work report I mentioned, the one due February 9.",
+   "entity": "user",
+   "slot": "internal_work_report_status",
+   "value": "requested to forget/remove tracking of internal work report due February 9",
+   "stated_date": "",
+   "slot_class": "other:internal work report status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "I've removed the internal work report (due February 9) from my records.",
+   "entity": "assistant",
+   "slot": "internal_work_report_status",
+   "value": "removed internal work report (due February 9) from records",
+   "stated_date": "",
+   "slot_class": "other:internal work report status",
+   "owner": "assistant"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "submission ID #4782, co-author Dr. Elena Vasquez, paper title \"Adaptive Threshold Mechanisms in Low-Resource Classification Pipelines,\" main track page limit of 10 pages excluding references, and the rebuttal phase opening May 6",
+   "entity": "user",
+   "slot": "c25_submission_id",
+   "value": "#4782",
+   "stated_date": "",
+   "slot_class": "other:c25 submission id",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "co-author Dr. Elena Vasquez",
+   "entity": "user",
+   "slot": "c25_coauthor",
+   "value": "Dr. Elena Vasquez",
+   "stated_date": "",
+   "slot_class": "other:c25 coauthor",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "paper title \"Adaptive Threshold Mechanisms in Low-Resource Classification Pipelines,\"",
+   "entity": "user",
+   "slot": "c25_paper_title",
+   "value": "Adaptive Threshold Mechanisms in Low-Resource Classification Pipelines",
+   "stated_date": "",
+   "slot_class": "other:c25 paper title",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "main track page limit of 10 pages excluding references",
+   "entity": "user",
+   "slot": "c25_page_limit",
+   "value": "10 pages excluding references",
+   "stated_date": "",
+   "slot_class": "other:c25 page limit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "the rebuttal phase opening May 6",
+   "entity": "user",
+   "slot": "c25_rebuttal_date",
+   "value": "May 6",
+   "stated_date": "2025-05-06",
+   "slot_class": "other:c25 rebuttal date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C25_forget/s44#r1",
+   "source_span": "it stays at May 6 as you originally noted from the official timeline",
+   "entity": "user",
+   "slot": "c25_rebuttal_date",
+   "value": "May 6",
+   "stated_date": "2025-05-06",
+   "slot_class": "other:c25 rebuttal date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-C25_forget/s16#r2",
+   "source_span": "I'm fairly new to bodyweight workouts, so I'll start with 2 sets of 10 reps for each exercise",
+   "entity": "user",
+   "slot": "workout_routine",
+   "value": "new to bodyweight workouts, starting with 2 sets of 10 reps per exercise",
+   "stated_date": "",
+   "slot_class": "other:workout routine",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-C25_forget/s11#r4",
+   "source_span": "I think I'll start by volunteering at the local animal shelter.",
+   "entity": "user",
+   "slot": "volunteering_activity",
+   "value": "volunteering at local animal shelter",
+   "stated_date": "",
+   "slot_class": "other:volunteering activity",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 11781,
+ "usage_out": 1589,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 82,
+  "total": 578,
+  "user_turns": 578,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

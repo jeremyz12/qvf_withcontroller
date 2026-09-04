@@ -1,0 +1,194 @@
+{
+ "uid": "stale-0079",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "stale-0079/s2#r0",
+   "source_span": "I just closed the deal on my new house in the suburbs last week, on February 20th",
+   "entity": "user",
+   "slot": "residence",
+   "value": "new house in the suburbs",
+   "stated_date": "2024-02-20",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "stale-0079/s2#r0",
+   "source_span": "I'm planning to make some changes to the backyard, including adding a patio and outdoor kitchen",
+   "entity": "user",
+   "slot": "home_renovation_plan",
+   "value": "adding a patio and outdoor kitchen",
+   "stated_date": "",
+   "slot_class": "other:home renovation plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "stale-0079/s2#r8",
+   "source_span": "I'm planning to renovate my indoor kitchen as well, and I've already gotten a rough estimate of the project timeline from the contractor. He said it'll take around 6-8 weeks",
+   "entity": "user",
+   "slot": "home_renovation_plan",
+   "value": "renovating indoor kitchen, estimated 6-8 weeks",
+   "stated_date": "",
+   "slot_class": "other:home renovation plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "stale-0079/s4#r2",
+   "source_span": "I've been doing yoga at the community center on Mondays and Wednesdays",
+   "entity": "user",
+   "slot": "habit_yoga_schedule",
+   "value": "yoga at the community center on Mondays and Wednesdays",
+   "stated_date": "",
+   "slot_class": "other:habit yoga schedule",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "stale-0079/s8#r4",
+   "source_span": "I've been really enjoying my kickboxing classes at the new gym in my neighborhood",
+   "entity": "user",
+   "slot": "habit_fitness",
+   "value": "kickboxing classes at a new gym in the neighborhood",
+   "stated_date": "",
+   "slot_class": "other:habit fitness",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "stale-0079/s8#r6",
+   "source_span": "I'm planning to sign up for a triathlon training program that starts in July",
+   "entity": "user",
+   "slot": "fitness_plan",
+   "value": "triathlon training program starting in July",
+   "stated_date": "",
+   "slot_class": "other:fitness plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "stale-0079/s9#r0",
+   "source_span": "I'm working on my thesis and I'm currently in the writing phase",
+   "entity": "user",
+   "slot": "academic_status",
+   "value": "working on thesis, in writing phase",
+   "stated_date": "",
+   "slot_class": "other:academic status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "stale-0079/s9#r0",
+   "source_span": "I just finished collecting data on April 25th",
+   "entity": "user",
+   "slot": "academic_milestone",
+   "value": "finished collecting data",
+   "stated_date": "2024-04-25",
+   "slot_class": "other:academic milestone",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "stale-0079/s21#r0",
+   "source_span": "I'm planning to celebrate my new role as Senior Marketing Manager at Smith & Co.",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "Senior Marketing Manager at Smith & Co.",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "stale-0079/s24#r0",
+   "source_span": "I just installed smart bulbs in my bedroom today",
+   "entity": "user",
+   "slot": "home_device",
+   "value": "smart bulbs installed in bedroom",
+   "stated_date": "2024-12-13",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "stale-0079/s24#r2",
+   "source_span": "the new lamp I got from IKEA a few weeks ago",
+   "entity": "user",
+   "slot": "home_device",
+   "value": "new lamp from IKEA",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "stale-0079/s24#r8",
+   "source_span": "I think a floor lamp could work well for my living room",
+   "entity": "user",
+   "slot": "home_plan",
+   "value": "planning to get a floor lamp for living room",
+   "stated_date": "",
+   "slot_class": "other:home plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "stale-0079/s31#r0",
+   "source_span": "I've been enjoying the flexibility of working from home one day a week",
+   "entity": "user",
+   "slot": "work_arrangement",
+   "value": "works from home one day a week",
+   "stated_date": "",
+   "slot_class": "other:work arrangement",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "stale-0079/s49#r10",
+   "source_span": "I mentioned I started writing short stories again about three weeks ago",
+   "entity": "user",
+   "slot": "hobby",
+   "value": "started writing short stories again",
+   "stated_date": "",
+   "slot_class": "other:hobby",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "stale-0079/s43#r10",
+   "source_span": "What about my points at Page & Co.?",
+   "entity": "user",
+   "slot": "loyalty_membership",
+   "value": "has points/loyalty membership at Page & Co.",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "stale-0079/s0#r0",
+   "source_span": "I recently attended a full-day conference on entrepreneurship at a downtown hotel in November",
+   "entity": "user",
+   "slot": "event_attended",
+   "value": "attended full-day entrepreneurship conference at a downtown hotel",
+   "stated_date": "2023-11",
+   "slot_class": "other:event attended",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 7007,
+ "usage_out": 1649,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 26,
+  "total": 590,
+  "user_turns": 590,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

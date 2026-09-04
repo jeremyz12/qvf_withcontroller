@@ -1,0 +1,249 @@
+{
+ "uid": "memops-E13_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-E13_update/s1#r0",
+   "source_span": "My actual last name is McAllister, capital M, capital A, two L's.",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "McAllister",
+   "stated_date": "",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-E13_update/s1#r0",
+   "source_span": "This is Dr. Huang's office, the one on Elm Street near the library.",
+   "entity": "user",
+   "slot": "dentist",
+   "value": "Dr. Huang, office on Elm Street near the library",
+   "stated_date": "",
+   "slot_class": "other:dentist",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-E13_update/s1#r0",
+   "source_span": "I got an email from my dentist confirming my next cleaning, and the name on the appointment is \"McAlister\"—they dropped an L.",
+   "entity": "user",
+   "slot": "dentist_record_name_error",
+   "value": "McAlister (missing an L)",
+   "stated_date": "",
+   "slot_class": "other:dentist record name error",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-E13_update/s1#r2",
+   "source_span": "my friend Danielle had a similar issue—her apartment lease spelled her name \"Daniele\" with one L instead of two.",
+   "entity": "user",
+   "slot": "friend",
+   "value": "Danielle, had a lease name misspelling issue (\"Daniele\")",
+   "stated_date": "",
+   "slot_class": "other:friend",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-E13_update/s1#r4",
+   "source_span": "I called Dr. Huang's office this morning and they said they updated it to \"MacAllister\" in their system.",
+   "entity": "user",
+   "slot": "dentist_record_name_error",
+   "value": "MacAllister (wrong prefix, after first correction attempt)",
+   "stated_date": "",
+   "slot_class": "other:dentist record name error",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-E13_update/s4#r12",
+   "source_span": "my next cleaning at Dr. Huang's is scheduled for June 12th at 2:30 PM",
+   "entity": "user",
+   "slot": "dentist_appointment",
+   "value": "June 12th at 2:30 PM at Dr. Huang's",
+   "stated_date": "",
+   "slot_class": "other:dentist appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-E13_update/s4#r12",
+   "source_span": "I don't want a repeat of the forty-minute phone call I had with the insurance company back in March.",
+   "entity": "user",
+   "slot": "insurance_call_incident",
+   "value": "40-minute call with insurance company due to name error",
+   "stated_date": "2024-03",
+   "slot_class": "other:insurance call incident",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-E13_update/s4#r15",
+   "source_span": "I've updated my records: Dr. Huang's office now has your name as McAllister, correctly spelled.",
+   "entity": "user",
+   "slot": "dentist_record_name_status",
+   "value": "McAllister correctly spelled (confirmed by receptionist)",
+   "stated_date": "",
+   "slot_class": "other:dentist record name status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-E13_update/s22#r4",
+   "source_span": "I think I'm going to check out the Brooks and Asics options for my high-arched feet.",
+   "entity": "user",
+   "slot": "foot_type",
+   "value": "high-arched feet",
+   "stated_date": "",
+   "slot_class": "other:foot type",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-E13_update/s22#r4",
+   "source_span": "I think I'm going to check out the Brooks and Asics options for my high-arched feet.",
+   "entity": "user",
+   "slot": "shoe_brand_consideration",
+   "value": "Brooks and Asics",
+   "stated_date": "",
+   "slot_class": "other:shoe brand consideration",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-E13_update/s33#r4",
+   "source_span": "The portal does show McAllister, which is great.",
+   "entity": "user",
+   "slot": "dentist_record_name_status",
+   "value": "Patient portal shows McAllister correctly",
+   "stated_date": "",
+   "slot_class": "other:dentist record name status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-E13_update/s33#r6",
+   "source_span": "So the receptionist mentioned that another patient named McAlester—completely different spelling, E-S-T-E-R at the end—also has an appointment that same week.",
+   "entity": "user",
+   "slot": "other_patient_name_confusion",
+   "value": "Another patient named McAlester has appointment same week (June 11th)",
+   "stated_date": "",
+   "slot_class": "other:other patient name confusion",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-E13_update/s33#r8",
+   "source_span": "The office manager told me their new software automatically formats Scottish surnames, so it will probably show as \"Mcallister\" going forward in their portal.",
+   "entity": "user",
+   "slot": "dentist_software_change_notice",
+   "value": "New software may auto-format surname to \"Mcallister\"",
+   "stated_date": "",
+   "slot_class": "other:dentist software change notice",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-E13_update/s33#r10",
+   "source_span": "I've been thinking about getting another custom item, maybe a leather portfolio with my name embossed on it.",
+   "entity": "user",
+   "slot": "planned_purchase",
+   "value": "leather portfolio with name embossed, hand-stamping shop",
+   "stated_date": "",
+   "slot_class": "other:planned purchase",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-E13_update/s33#r10",
+   "source_span": "My correct last name is McAllister, and that's what Dr. Huang's office currently has confirmed in their system as of my last successful call.",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "McAllister",
+   "stated_date": "",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-E13_update/s36#r4",
+   "source_span": "Yeah, I think I'll stick to more traditional investments for now. Investing in cryptocurrency seems like a risky venture.",
+   "entity": "user",
+   "slot": "investment_preference",
+   "value": "prefers traditional investments over cryptocurrency",
+   "stated_date": "",
+   "slot_class": "other:investment preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-E13_update/s36#r6",
+   "source_span": "Yeah, I've been looking into some mutual funds and index funds.",
+   "entity": "user",
+   "slot": "investment_interest",
+   "value": "mutual funds and index funds",
+   "stated_date": "",
+   "slot_class": "other:investment interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-E13_update/s39#r6",
+   "source_span": "I'm excited to try out Lime for their electric vehicles.",
+   "entity": "user",
+   "slot": "transportation_interest",
+   "value": "planning to try Lime electric vehicles",
+   "stated_date": "",
+   "slot_class": "other:transportation interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-E13_update/s45#r4",
+   "source_span": "I'll definitely look into renting an electric scooter for my daily commute.",
+   "entity": "user",
+   "slot": "commute_plan",
+   "value": "considering renting electric scooter for daily commute",
+   "stated_date": "",
+   "slot_class": "other:commute plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-E13_update/s46#r8",
+   "source_span": "I remember when I first got a cell phone, it was a huge brick and could only make calls.",
+   "entity": "user",
+   "slot": "past_device",
+   "value": "first cell phone was a large brick phone that could only make calls",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-E13_update/s17#r4",
+   "source_span": "I recently had the chance to provide feedback and it was great to see my employer taking it seriously and making changes based on it.",
+   "entity": "user",
+   "slot": "work_feedback_experience",
+   "value": "recently gave feedback to employer, taken seriously",
+   "stated_date": "",
+   "slot_class": "other:work feedback experience",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 10051,
+ "usage_out": 2398,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 69,
+  "total": 538,
+  "user_turns": 538,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,161 @@
+{
+ "uid": "memops-C29_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C29_reflect/s1#r2",
+   "source_span": "I've been feeling really tired and unmotivated lately, so maybe I need to set some better boundaries and prioritize self-care.",
+   "entity": "user",
+   "slot": "emotional_state",
+   "value": "feeling tired and unmotivated, wants to set boundaries and prioritize self-care",
+   "stated_date": "",
+   "slot_class": "other:emotional state",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C29_reflect/s2#r4",
+   "source_span": "I'll make sure to practice and prepare so that I can project confidence during my next job interview.",
+   "entity": "user",
+   "slot": "job_search_activity",
+   "value": "has an upcoming job interview and plans to practice and prepare",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C29_reflect/s4#r8",
+   "source_span": "I've been more cautious ever since.",
+   "entity": "user",
+   "slot": "online_safety_habit",
+   "value": "has become more cautious online since a wake-up call incident",
+   "stated_date": "",
+   "slot_class": "other:online safety habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C29_reflect/s9#r4",
+   "source_span": "I think I'll reach out to my school's Community Engagement Coordinator to see how I can help out.",
+   "entity": "user",
+   "slot": "volunteering_plan",
+   "value": "plans to reach out to school's Community Engagement Coordinator to help with community engagement",
+   "stated_date": "",
+   "slot_class": "other:volunteering plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C29_reflect/s9#r8",
+   "source_span": "I think I'll start by finding something I'm passionate about and setting a realistic goal for myself.",
+   "entity": "user",
+   "slot": "volunteering_plan",
+   "value": "plans to find something they're passionate about and set a realistic goal for community involvement",
+   "stated_date": "",
+   "slot_class": "other:volunteering plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C29_reflect/s9#r10",
+   "source_span": "I'm a bit nervous about volunteering for the first time.",
+   "entity": "user",
+   "slot": "volunteering_status",
+   "value": "nervous about volunteering for the first time",
+   "stated_date": "",
+   "slot_class": "other:volunteering status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C29_reflect/s21#r0",
+   "source_span": "How can one effectively demonstrate and market their transferable skills to potential employers in a different industry?",
+   "entity": "user",
+   "slot": "career_transition",
+   "value": "exploring how to market transferable skills to employers in a different industry",
+   "stated_date": "",
+   "slot_class": "other:career transition",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C29_reflect/s21#r10",
+   "source_span": "I feel much more confident about showcasing my transferable skills now.",
+   "entity": "user",
+   "slot": "job_search_confidence",
+   "value": "feels more confident about showcasing transferable skills",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C29_reflect/s23#r10",
+   "source_span": "Can you give me some examples of the practical skills and real-world experience programs offered by the university?",
+   "entity": "user",
+   "slot": "education_interest",
+   "value": "interested in practical skills and real-world experience programs offered by a university",
+   "stated_date": "",
+   "slot_class": "other:education interest",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C29_reflect/s25#r4",
+   "source_span": "I think I'll give it a try and see if having an accountability partner or mentor can really help me achieve my goals.",
+   "entity": "user",
+   "slot": "self_improvement_plan",
+   "value": "plans to try finding an accountability partner or mentor to help achieve goals",
+   "stated_date": "",
+   "slot_class": "other:self improvement plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C29_reflect/s25#r8",
+   "source_span": "I'm excited to get started and find an accountability partner or mentor.",
+   "entity": "user",
+   "slot": "self_improvement_plan",
+   "value": "excited to find an accountability partner or mentor",
+   "stated_date": "",
+   "slot_class": "other:self improvement plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C29_reflect/s26#r8",
+   "source_span": "I think I'll try journaling as a new hobby!",
+   "entity": "user",
+   "slot": "hobby_plan",
+   "value": "plans to try journaling as a new hobby",
+   "stated_date": "",
+   "slot_class": "other:hobby plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-C29_reflect/s32#r12",
+   "source_span": "I'm excited to get involved with the community organization I found!",
+   "entity": "user",
+   "slot": "volunteering_status",
+   "value": "found a community organization and excited to get involved as a volunteer",
+   "stated_date": "",
+   "slot_class": "other:volunteering status",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2505,
+ "usage_out": 1391,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 24,
+  "total": 574,
+  "user_turns": 574,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,260 @@
+{
+ "uid": "memops-A33_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A33_remember/s3#r8",
+   "source_span": "I live in an area with a high wildfire risk",
+   "entity": "user",
+   "slot": "residence_risk",
+   "value": "lives in an area with high wildfire risk",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A33_remember/s27#r0",
+   "source_span": "I went to my annual checkup on March 12th, and the nurse measured me carefully — twice, actually. Please remember this: my confirmed height as of March 12th is 5'11\".",
+   "entity": "user",
+   "slot": "height",
+   "value": "5'11\"",
+   "stated_date": "2024-03-12",
+   "slot_class": "other:height",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A33_remember/s29#r4",
+   "source_span": "I measured myself at home first thing in the morning and got 5'11¼\".",
+   "entity": "user",
+   "slot": "height_morning_self_measured",
+   "value": "5'11¼\"",
+   "stated_date": "",
+   "slot_class": "other:height morning self measured",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A33_remember/s27#r4",
+   "source_span": "my mom is 5'4\" now, she lost about half an inch according to her doctor",
+   "entity": "user's mom",
+   "slot": "height",
+   "value": "5'4\"",
+   "stated_date": "",
+   "slot_class": "other:height",
+   "owner": "user's mom"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A33_remember/s34#r9",
+   "source_span": "your mom's previous height was 5'4½\" before the recent shrinkage",
+   "entity": "user's mom",
+   "slot": "previous_height",
+   "value": "5'4½\"",
+   "stated_date": "",
+   "slot_class": "other:previous height",
+   "owner": "user's mom"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "Kevin's actual height is 5'8½\".",
+   "entity": "Kevin",
+   "slot": "height",
+   "value": "5'8½\"",
+   "stated_date": "",
+   "slot_class": "other:height",
+   "owner": "Kevin"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "You prefer minimal flat-sole sneakers like your Vans Old Skools",
+   "entity": "user",
+   "slot": "shoe_preference",
+   "value": "minimal flat-sole sneakers like Vans Old Skools",
+   "stated_date": "",
+   "slot_class": "other:shoe preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A33_remember/s34#r15",
+   "source_span": "you like fitted slim-fit clothing over baggy styles",
+   "entity": "user",
+   "slot": "clothing_style_preference",
+   "value": "fitted slim-fit clothing over baggy styles",
+   "stated_date": "",
+   "slot_class": "other:clothing style preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A33_remember/s34#r13",
+   "source_span": "With your slim-fit style preferences and those flat-sole Vans, you're clearly someone who values authenticity over padding things.",
+   "entity": "user",
+   "slot": "shoe_preference",
+   "value": "flat-sole Vans",
+   "stated_date": "",
+   "slot_class": "other:shoe preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A33_remember/s34#r14",
+   "source_span": "I was also thinking about getting some basketball shoes. I'll probably look for something with decent ankle support but still relatively low-profile.",
+   "entity": "user",
+   "slot": "basketball_shoe_preference",
+   "value": "low-profile shoes with ankle support, not bulky",
+   "stated_date": "",
+   "slot_class": "other:basketball shoe preference",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A33_remember/s34#r12",
+   "source_span": "Yeah, 5'11\" is what I'll put down.",
+   "entity": "user",
+   "slot": "basketball_league_form_height",
+   "value": "5'11\"",
+   "stated_date": "",
+   "slot_class": "other:basketball league form height",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A33_remember/s32#r4",
+   "source_span": "I need to figure out what to wear for the basketball league.",
+   "entity": "user",
+   "slot": "activity",
+   "value": "participates in basketball league",
+   "stated_date": "",
+   "slot_class": "other:activity",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A33_remember/s9#r6",
+   "source_span": "I think I'll give TurboTax Self-Employed a try.",
+   "entity": "user",
+   "slot": "tax_software",
+   "value": "TurboTax Self-Employed",
+   "stated_date": "",
+   "slot_class": "other:tax software",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A33_remember/s9#r6",
+   "source_span": "Do you have any tips for organizing my expenses throughout the year to make tax season easier?",
+   "entity": "user",
+   "slot": "employment_type",
+   "value": "self-employed",
+   "stated_date": "",
+   "slot_class": "other:employment type",
+   "owner": "user"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A33_remember/s10#r4",
+   "source_span": "I've been buying more vintage pieces lately myself",
+   "entity": "user",
+   "slot": "habit",
+   "value": "buys vintage clothing",
+   "stated_date": "",
+   "slot_class": "other:habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A33_remember/s7#r8",
+   "source_span": "I'm going to start my job search soon",
+   "entity": "user",
+   "slot": "job_search_status",
+   "value": "planning to start job search soon",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A33_remember/s7#r10",
+   "source_span": "Do you have any other tips for maintaining work-life balance once I start my job?",
+   "entity": "user",
+   "slot": "job_status",
+   "value": "about to start a new job",
+   "stated_date": "",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-A33_remember/s4#r6",
+   "source_span": "I'll make sure to put these tips into practice when I go in for my next job interview.",
+   "entity": "user",
+   "slot": "upcoming_event",
+   "value": "has an upcoming job interview",
+   "stated_date": "",
+   "slot_class": "other:upcoming event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-A33_remember/s14#r4",
+   "source_span": "I just wanted to try some natural remedies before going to the doctor.",
+   "entity": "user",
+   "slot": "health_approach",
+   "value": "trying natural remedies before seeing a doctor",
+   "stated_date": "",
+   "slot_class": "other:health approach",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-A33_remember/s30#r2",
+   "source_span": "I've been thinking of trying meditation to help with my anxiety.",
+   "entity": "user",
+   "slot": "health_condition",
+   "value": "has anxiety",
+   "stated_date": "",
+   "slot_class": "other:health condition",
+   "owner": "user"
+  },
+  {
+   "record_id": "r21",
+   "source_memory_id": "memops-A33_remember/s11#r2",
+   "source_span": "I really struggle with finding time to exercise during the workday.",
+   "entity": "user",
+   "slot": "exercise_challenge",
+   "value": "struggles to find time to exercise during workday",
+   "stated_date": "",
+   "slot_class": "other:exercise challenge",
+   "owner": "user"
+  },
+  {
+   "record_id": "r22",
+   "source_memory_id": "memops-A33_remember/s12#r4",
+   "source_span": "I have trouble staying motivated to work out consistently.",
+   "entity": "user",
+   "slot": "exercise_challenge",
+   "value": "trouble staying motivated to work out consistently",
+   "stated_date": "",
+   "slot_class": "other:exercise challenge",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 13820,
+ "usage_out": 2079,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 78,
+  "total": 552,
+  "user_turns": 552,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

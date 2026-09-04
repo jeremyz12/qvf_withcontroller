@@ -1,0 +1,95 @@
+{
+ "uid": "memops-B28_trajectory_ops",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B28_trajectory_ops/s18#r14",
+   "source_span": "I got my vaccination records faxed to my employer last Friday — the receptionist Maria at Greenfield handled that for me.",
+   "entity": "user",
+   "slot": "vaccination_records_faxed_by",
+   "value": "Maria, receptionist at Greenfield Medical Group, faxed vaccination records to employer",
+   "stated_date": "",
+   "slot_class": "other:vaccination records faxed by",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B28_trajectory_ops/s18#r16",
+   "source_span": "I called Dr. Sharma's office and moved my annual physical from July 15 to October 8.",
+   "entity": "user",
+   "slot": "annual_physical_appointment",
+   "value": "October 8, moved from July 15, with Dr. Sharma's office",
+   "stated_date": "",
+   "slot_class": "other:annual physical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r6",
+   "source_span": "a form from 2022 that still listed Dr. Robert Engel as my primary care physician. That's completely outdated — I haven't seen him since 2022 and I'm fully transferred to Dr. Sharma now.",
+   "entity": "user",
+   "slot": "primary_care_physician_history",
+   "value": "Dr. Robert Engel was former PCP until 2022, now fully transferred to Dr. Sharma",
+   "stated_date": "2022",
+   "slot_class": "other:primary care physician history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r7",
+   "source_span": "you fully transferred to Dr. Sharma in early 2023 and haven't seen Dr. Engel since 2022",
+   "entity": "user",
+   "slot": "primary_care_physician",
+   "value": "Dr. Anita Sharma at Greenfield Medical Group on Elm Street",
+   "stated_date": "2023-01",
+   "slot_class": "other:primary care physician",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r8",
+   "source_span": "I actually called back and confirmed October 8 after all. November 12 falls during my work conference so that won't work.",
+   "entity": "user",
+   "slot": "annual_physical_appointment",
+   "value": "Confirmed October 8 (November 12 rejected due to work conference)",
+   "stated_date": "",
+   "slot_class": "other:annual physical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B28_trajectory_ops/s40#r8",
+   "source_span": "Maria said Dr. Sharma will actually be back by October 8 — the conference ends October 5.",
+   "entity": "user",
+   "slot": "work_conference_dates",
+   "value": "Work conference ends October 5",
+   "stated_date": "",
+   "slot_class": "other:work conference dates",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B28_trajectory_ops/s41#r12",
+   "source_span": "I think I'll try the ComfyMed Posture Corrector Clavicle Support Brace.",
+   "entity": "user",
+   "slot": "posture_brace_product",
+   "value": "ComfyMed Posture Corrector Clavicle Support Brace",
+   "stated_date": "",
+   "slot_class": "other:posture brace product",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 4156,
+ "usage_out": 953,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 27,
+  "total": 556,
+  "user_turns": 556,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

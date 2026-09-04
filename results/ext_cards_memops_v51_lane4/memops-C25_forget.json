@@ -1,0 +1,150 @@
+{
+ "uid": "memops-C25_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-C25_forget/s0#r10",
+   "source_span": "Joon just confirmed his C25 submission ID is #4718",
+   "entity": "Joon",
+   "slot": "c25_submission_id",
+   "value": "#4718",
+   "stated_date": "",
+   "slot_class": "other:c25 submission id",
+   "owner": "Joon"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-C25_forget/s1#r8",
+   "source_span": "Our final submission ID for the C25 portal is #4782.",
+   "entity": "user",
+   "slot": "c25_submission_id",
+   "value": "#4782",
+   "stated_date": "",
+   "slot_class": "other:c25 submission id",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-C25_forget/s2#r2",
+   "source_span": "I was talking to another colleague, Priya, about C25. She's also submitting but to a different track.",
+   "entity": "Priya",
+   "slot": "c25_track",
+   "value": "different track from user",
+   "stated_date": "",
+   "slot_class": "other:c25 track",
+   "owner": "Priya"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-C25_forget/s11#r4",
+   "source_span": "I think I'll start by volunteering at the local animal shelter.",
+   "entity": "user",
+   "slot": "volunteering_plan",
+   "value": "volunteering at the local animal shelter",
+   "stated_date": "",
+   "slot_class": "other:volunteering plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-C25_forget/s30#r6",
+   "source_span": "I'm definitely going to apply for one and hope for the best!",
+   "entity": "user",
+   "slot": "plan",
+   "value": "apply for a Blue Peter badge",
+   "stated_date": "",
+   "slot_class": "other:plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "Your remaining C25 details are all intact: submission ID #4782, co-author Dr. Elena Vasquez, paper title \"Adaptive Threshold Mechanisms in Low-Resource Classification Pipelines,\" main track page limit of 10 pages excluding references, and the rebuttal phase opening May 6.",
+   "entity": "user",
+   "slot": "c25_submission_id",
+   "value": "#4782",
+   "stated_date": "",
+   "slot_class": "other:c25 submission id",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "co-author Dr. Elena Vasquez",
+   "entity": "user",
+   "slot": "c25_coauthor",
+   "value": "Dr. Elena Vasquez",
+   "stated_date": "",
+   "slot_class": "other:c25 coauthor",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "paper title \"Adaptive Threshold Mechanisms in Low-Resource Classification Pipelines,\"",
+   "entity": "user",
+   "slot": "c25_paper_title",
+   "value": "Adaptive Threshold Mechanisms in Low-Resource Classification Pipelines",
+   "stated_date": "",
+   "slot_class": "other:c25 paper title",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "main track page limit of 10 pages excluding references",
+   "entity": "user",
+   "slot": "c25_page_limit",
+   "value": "10 pages excluding references",
+   "stated_date": "",
+   "slot_class": "other:c25 page limit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "the rebuttal phase opening May 6",
+   "entity": "user",
+   "slot": "c25_rebuttal_date",
+   "value": "May 6",
+   "stated_date": "05-06",
+   "slot_class": "other:c25 rebuttal date",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-C25_forget/s43#r5",
+   "source_span": "I've removed the internal work report (due February 9) from my records.",
+   "entity": "user",
+   "slot": "removed_item",
+   "value": "internal work report (due February 9)",
+   "stated_date": "02-09",
+   "slot_class": "other:removed item",
+   "owner": "user"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-C25_forget/s44#r1",
+   "source_span": "it stays at May 6 as you originally noted from the official timeline.",
+   "entity": "user",
+   "slot": "c25_rebuttal_date",
+   "value": "May 6",
+   "stated_date": "05-06",
+   "slot_class": "other:c25 rebuttal date",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2873,
+ "usage_out": 1220,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 23,
+  "total": 578,
+  "user_turns": 578,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

@@ -1,0 +1,238 @@
+{
+ "uid": "memops-F15_forget",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-F15_forget/s8#r6",
+   "source_span": "I had an intake appointment with a new primary care doctor on March 5th",
+   "entity": "user",
+   "slot": "medical_appointment",
+   "value": "intake appointment with new primary care doctor",
+   "stated_date": "03-05",
+   "slot_class": "other:medical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F15_forget/s8#r6",
+   "source_span": "my maternal grandfather was diagnosed with type 2 diabetes when he was around 52",
+   "entity": "user_maternal_grandfather",
+   "slot": "medical_history",
+   "value": "diagnosed with type 2 diabetes around age 52",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_maternal_grandfather"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-F15_forget/s8#r6",
+   "source_span": "I'm in my late thirties now",
+   "entity": "user",
+   "slot": "age_range",
+   "value": "late thirties",
+   "stated_date": "",
+   "slot_class": "other:age range",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-F15_forget/s8#r8",
+   "source_span": "my Aunt Linda on my mom's side was diagnosed with breast cancer about three years ago. She had a lumpectomy and chemo and she's doing okay now",
+   "entity": "user_aunt_linda",
+   "slot": "medical_history",
+   "value": "diagnosed with breast cancer about three years ago, treated with lumpectomy and chemo, currently doing okay",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_aunt_linda"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F15_forget/s8#r10",
+   "source_span": "my dad's been on statins for high cholesterol since he was 48. He's 67 now",
+   "entity": "user_father",
+   "slot": "medical_history",
+   "value": "on statins for high cholesterol since age 48, currently 67",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_father"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-F15_forget/s7#r3",
+   "source_span": "Jake's maternal grandmother's osteoporosis diagnosed in her early seventies",
+   "entity": "jake_maternal_grandmother",
+   "slot": "medical_history",
+   "value": "osteoporosis diagnosed in her early seventies",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "jake_maternal_grandmother"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F15_forget/s7#r3",
+   "source_span": "your maternal grandmother's osteoporosis diagnosed in her late sixties",
+   "entity": "user_maternal_grandmother",
+   "slot": "medical_history",
+   "value": "osteoporosis diagnosed in her late sixties",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_maternal_grandmother"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-F15_forget/s46#r3",
+   "source_span": "your paternal uncle had a benign polyp removed during a routine colonoscopy, and there was no colon cancer diagnosis on your dad's side of the family",
+   "entity": "user_paternal_uncle",
+   "slot": "medical_history",
+   "value": "benign polyp removed during routine colonoscopy; no colon cancer on paternal side",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_paternal_uncle"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-F15_forget/s46#r6",
+   "source_span": "I also asked my mom if there's any history of autoimmune conditions on her side, and she said no, not that she's aware of",
+   "entity": "user_maternal_side",
+   "slot": "medical_history",
+   "value": "no known autoimmune conditions",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_maternal_side"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-F15_forget/s46#r6",
+   "source_span": "My next appointment with my primary care doctor is in about six weeks",
+   "entity": "user",
+   "slot": "medical_appointment",
+   "value": "next primary care appointment in about six weeks",
+   "stated_date": "",
+   "slot_class": "other:medical appointment",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-F15_forget/s48#r12",
+   "source_span": "My cousin Jake on my mom's side found out he carries one copy of the BRCA1 variant. His genetic counselor told him sometime in April, around the 18th I think.",
+   "entity": "jake",
+   "slot": "medical_history",
+   "value": "carries one copy of BRCA1 variant, informed around April 18th",
+   "stated_date": "04-18",
+   "slot_class": "other:medical history",
+   "owner": "jake"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-F15_forget/s48#r14",
+   "source_span": "I've been eating more carefully since all this health stuff came up. I've been making these big salads with lots of raw vegetables and I genuinely enjoy them. And I picked up a turmeric-ginger tea that I've been drinking almost every evening.",
+   "entity": "user",
+   "slot": "diet_habit",
+   "value": "eats big raw vegetable salads and drinks turmeric-ginger tea almost every evening",
+   "stated_date": "",
+   "slot_class": "other:diet habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-F15_forget/s48#r14",
+   "source_span": "Walking outside does help me process things though, it always has.",
+   "entity": "user",
+   "slot": "coping_habit",
+   "value": "walks outside to process difficult emotions",
+   "stated_date": "",
+   "slot_class": "other:coping habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F15_forget/s48#r18",
+   "source_span": "My dad's side feels pretty well mapped now with his cholesterol and his mom's stroke.",
+   "entity": "user_paternal_grandmother",
+   "slot": "medical_history",
+   "value": "had a stroke",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_paternal_grandmother"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-F15_forget/s48#r19",
+   "source_span": "your paternal grandmother's stroke at 71 with possible hypertension still pending confirmation from your dad",
+   "entity": "user_paternal_grandmother",
+   "slot": "medical_history",
+   "value": "stroke at age 71, possible hypertension pending confirmation",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "user_paternal_grandmother"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-F15_forget/s44#r14",
+   "source_span": "her aunt was diagnosed with breast cancer last year and had a mastectomy",
+   "entity": "coworker_aunt",
+   "slot": "medical_history",
+   "value": "diagnosed with breast cancer last year, had a mastectomy",
+   "stated_date": "",
+   "slot_class": "other:medical history",
+   "owner": "coworker_aunt"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-F15_forget/s37#r8",
+   "source_span": "I live in a landlocked area",
+   "entity": "user",
+   "slot": "residence_type",
+   "value": "landlocked area",
+   "stated_date": "",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-F15_forget/s19#r4",
+   "source_span": "I struggle with sticking to my schedule when unexpected events happen, like my child getting sick.",
+   "entity": "user",
+   "slot": "family",
+   "value": "has a child",
+   "stated_date": "",
+   "slot_class": "other:family",
+   "owner": "user"
+  },
+  {
+   "record_id": "r19",
+   "source_memory_id": "memops-F15_forget/s6#r6",
+   "source_span": "I really struggle with negative self-talk",
+   "entity": "user",
+   "slot": "mental_health_habit",
+   "value": "struggles with negative self-talk",
+   "stated_date": "",
+   "slot_class": "other:mental health habit",
+   "owner": "user"
+  },
+  {
+   "record_id": "r20",
+   "source_memory_id": "memops-F15_forget/s46#r12",
+   "source_span": "I'll definitely try making my own sourdough starter now.",
+   "entity": "user",
+   "slot": "hobby_plan",
+   "value": "plans to make own sourdough starter",
+   "stated_date": "",
+   "slot_class": "other:hobby plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 12507,
+ "usage_out": 2339,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 73,
+  "total": 516,
+  "user_turns": 516,
+  "queries": "general"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}

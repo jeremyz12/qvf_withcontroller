@@ -1,0 +1,117 @@
+{
+ "uid": "memops-A14_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A14_reflect/s16#r12",
+   "source_span": "I went to Lisbon last November and it felt so natural, like I could just relax and speak Portuguese without switching mental gears",
+   "entity": "user",
+   "slot": "travel_history",
+   "value": "Went to Lisbon, Portugal last November",
+   "stated_date": "",
+   "slot_class": "other:travel history",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A14_reflect/s16#r12",
+   "source_span": "That trip really reinforced my desire to get the Portuguese citizenship sorted out.",
+   "entity": "user",
+   "slot": "citizenship_goal",
+   "value": "Wants to pursue Portuguese citizenship",
+   "stated_date": "",
+   "slot_class": "other:citizenship goal",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A14_reflect/s19#r7",
+   "source_span": "Your correct passport number is HG284193.",
+   "entity": "user",
+   "slot": "passport_number",
+   "value": "HG284193",
+   "stated_date": "",
+   "slot_class": "other:passport number",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A14_reflect/s19#r7",
+   "source_span": "the old form template still lists passport number HG284913 — that's definitely not your current number",
+   "entity": "user",
+   "slot": "old_passport_number",
+   "value": "HG284913",
+   "stated_date": "",
+   "slot_class": "other:old passport number",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A14_reflect/s23#r6",
+   "source_span": "I'm still unsure about whether I should rent or buy, though.",
+   "entity": "user",
+   "slot": "housing_decision",
+   "value": "Undecided between renting or buying a property",
+   "stated_date": "",
+   "slot_class": "other:housing decision",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A14_reflect/s40#r4",
+   "source_span": "I think I will try using Trello to keep myself organized during my career transition.",
+   "entity": "user",
+   "slot": "career_transition_tool",
+   "value": "Using Trello to stay organized during career transition",
+   "stated_date": "",
+   "slot_class": "other:career transition tool",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A14_reflect/s40#r4",
+   "source_span": "during my career transition",
+   "entity": "user",
+   "slot": "career_status",
+   "value": "In the process of a career transition",
+   "stated_date": "",
+   "slot_class": "other:career status",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A14_reflect/s49#r10",
+   "source_span": "I'm excited to start volunteering and contributing to the community!",
+   "entity": "user",
+   "slot": "volunteering_plan",
+   "value": "Plans to start volunteering and contributing to the community",
+   "stated_date": "",
+   "slot_class": "other:volunteering plan",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A14_reflect/s13#r6",
+   "source_span": "I'll definitely look into joining an advocacy group.",
+   "entity": "user",
+   "slot": "civic_engagement_plan",
+   "value": "Plans to look into joining an advocacy group",
+   "stated_date": "",
+   "slot_class": "other:civic engagement plan",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 5614,
+ "usage_out": 909,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 24,
+  "total": 524,
+  "user_turns": 524,
+  "queries": "lane4"
+ },
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 1
+}
