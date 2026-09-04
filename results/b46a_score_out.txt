@@ -1,0 +1,104 @@
+# Batch 46a score — three declared-gap closures
+
+======================================================================
+## Gap 1 — batch 40 104K plainctx@sonnet5: 120/120 completion + mt8000 rerun of the originally-capped rows (16: 15 flagged pre-run + 1 more found among the 38 newly-run questions)
+
+row counts: projection=120 ledger=120 top100=120 plainctx(as-run,mt4000)=120 plainctx(corrected,mt8000-for-15)=120
+
+### 1a. The 16 originally-capped rows (15 flagged pre-run + 1 more discovered among the 38 newly-run questions, same failure mode, fixed for consistency): as-run (mt4000) vs mt8000 rerun
+
+| qid | mt4000 stop | mt4000 correct | mt8000 stop | mt8000 out_tok | mt8000 correct |
+|---|---|---|---|---|---|
+| wikiP108006-Q67650882_v2cb | max_tokens | True | end_turn | 3742 | False |
+| wikiP108016-Q57079433_v2cc | max_tokens | False | end_turn | 4916 | True |
+| wikiP108046-Q37831543_v2cc | max_tokens | False | max_tokens | 8000 | False |
+| wikiP108046-Q37831543_v2fl | max_tokens | False | end_turn | 4359 | False |
+| wikiP39002-Q5573006_v2cb | max_tokens | False | end_turn | 1624 | True |
+| wikiP39002-Q5573006_v2lt | max_tokens | False | end_turn | 3455 | False |
+| wikiP39005-Q333007_v2cc | max_tokens | False | end_turn | 970 | True |
+| wikiP39005-Q333007_v2lt | max_tokens | False | end_turn | 1625 | False |
+| wikiP39010-Q16190712_v2cb | max_tokens | False | end_turn | 4916 | True |
+| wikiP39012-Q6767617_v2cb | max_tokens | False | end_turn | 2429 | False |
+| wikiP39013-Q592596_v2cc | max_tokens | False | end_turn | 865 | False |
+| wikiP39022-Q8013107_v2cb | max_tokens | False | end_turn | 3114 | True |
+| wikiP39033-Q5331705_v2lt | max_tokens | False | end_turn | 2176 | False |
+| wikiP39034-Q11803195_v2lt | max_tokens | False | end_turn | 2004 | True |
+| wikiP39043-Q13391423_v2cc | max_tokens | False | end_turn | 6677 | True |
+| wikiP39043-Q13391423_v2lt | max_tokens | False | end_turn | 3052 | True |
+
+still hits a token cap at mt8000: 1/16 | flips wrong->right: 8/16
+
+### 1b. Headline table — 120/120 (no more budget-stop), plainctx using the mt8000-corrected 16
+
+| arm | n | acc % | Wilson 95% | mean in tok | mean out tok | reader $/q | reader $ total |
+|---|---|---|---|---|---|---|---|
+| projection (slot)@sonnet5 | 120 | 74.17 | [65.7, 81.2] | 11546 | 1152 | $0.0346 | $4.15 |
+| ledger (QVF full)@sonnet5 | 120 | 73.33 | [64.8, 80.4] | 27178 | 1402 | $0.0684 | $8.21 |
+| dense_top100@sonnet5 | 120 | 67.50 | [58.7, 75.2] | 11609 | 573 | $0.0289 | $3.47 |
+| plainctx (full context, mt4000-as-run)@sonnet5 | 120 | 60.00 | [51.1, 68.3] | 141880 | 1580 | $0.2996 | $35.95 |
+| plainctx (full context, mt8000-corrected)@sonnet5 | 120 | 65.83 | [57.0, 73.7] | 141880 | 1497 | $0.2987 | $35.85 |
+
+### 1c. Paired McNemar + store-level cluster bootstrap — H2 headline (120/120, corrected plainctx)
+
+### projection vs plainctx(corrected, 120/120)
+  n=120 q / 30 stores | delta=+8.33pp  b/c=19/29  McNemar p=0.1934
+  store sign test 12W/9L/9T p=0.6636 | cluster boot 95% CI [-9.17,+25.83]pp (N=4000, seed=40)
+
+### [for contrast] projection vs plainctx(as-run mt4000, 120/120, capped rows still counted wrong-as-scored)
+  n=120 q / 30 stores | delta=+14.17pp  b/c=14/31  McNemar p=0.01609
+  store sign test 13W/9L/8T p=0.5235 | cluster boot 95% CI [-0.83,+30.00]pp (N=4000, seed=40)
+
+(reference) ledger(QVF full) vs plainctx(corrected)
+### ledger vs plainctx(corrected)
+  n=120 q / 30 stores | delta=+7.50pp  b/c=23/32  McNemar p=0.2806
+  store sign test 10W/9L/11T p=1 | cluster boot 95% CI [-8.33,+24.17]pp (N=4000, seed=40)
+
+(reference) dense_top100 vs plainctx(corrected)
+### dense_top100 vs plainctx(corrected)
+  n=120 q / 30 stores | delta=+1.67pp  b/c=24/26  McNemar p=0.8877
+  store sign test 10W/14L/6T p=0.5413 | cluster boot 95% CI [-15.00,+18.33]pp (N=4000, seed=40)
+
+======================================================================
+## Gap 2 — batch 43 gpt-5-mini ledger (smoc v47skf): 4-row rerun at max_completion_tokens=16000
+
+| version | n | acc % | notes |
+|---|---|---|---|
+| ledger (smoc v47skf), capped-as-run | 140 | 85.00 | 4/140 empty answers on longest_tenure, stop=length at max_completion_tokens=4000 |
+| ledger (smoc v47skf), corrected (4 rows rerun @ 16000) | 140 | 87.86 | all 4 rerun rows: stop=stop, non-empty, judged correct |
+| full-context (plainctx), unaffected reference | 140 | 92.14 | unchanged, not part of this rerun |
+
+ledger - full_context gap: capped-as-run -7.14pp -> corrected -4.29pp
+### ledger(corrected) vs full-context(plainctx), gpt-5-mini
+  n=140 q / 36 stores | delta=-4.29pp  b/c=15/9  McNemar p=0.3075
+
+rerun-only reader cost: in=7829 out=16833 $0.0356 (max_completion_tokens=16000, same SMW_PROMPT, same cards_dir=results/wt_cards_v47skf)
+
+======================================================================
+## Gap 3 — smw (full text + F.1 protocol) @ claude-sonnet-5, first run, 140 questions
+
+row counts: smw@sonnet5=140/140 | plainctx@sonnet5(14K,mt4000-corrected)=140/140 | smoc(v47skf)@sonnet5=140/140 | smw@haiku(ref)=140/140
+
+| arm | n | acc % | mean in tok | mean out tok | reader $/q | reader $ total | non-end_turn stop |
+|---|---|---|---|---|---|---|---|
+| smw@sonnet5 (full text + F.1, NEW) | 140 | 96.43 | 18896 | 736 | $0.0452 | $6.32 | 0 |
+| plainctx@sonnet5 (14K, mt4000-corrected) | 140 | 97.14 | 18549 | 469 | $0.0418 | $5.85 | 0 |
+| smoc(v47skf)@sonnet5 (ledger) | 140 | 95.00 | 2878 | 701 | $0.0128 | $1.79 | 0 |
+| smw@haiku (batch 33-A, reference) | 140 | 92.86 | 13817 | 441 | $0.0320 | $4.49 | 0 |
+
+### Paired McNemar — smw@sonnet5 vs the two reference arms (same 140 q)
+
+### smw@sonnet5 vs plainctx@sonnet5(14K,mt4000-corrected)
+  n=140 q / 36 stores | delta=-0.71pp  b/c=2/1  McNemar p=1
+
+### smw@sonnet5 vs smoc(v47skf)@sonnet5(ledger)
+  n=140 q / 36 stores | delta=+1.43pp  b/c=3/5  McNemar p=0.7266
+
+### [reference] smw@sonnet5 vs smw@haiku (cross-reader, same protocol/prompt/corpus/questions)
+  n=140 q / 36 stores | delta=+3.57pp  b/c=3/8  McNemar p=0.2266
+
+## Grand total new reader spend, this batch (46a)
+
+gap1 (38 missing @ mt4000 + 15 capped rerun @ mt8000): $16.240
+gap2 (4-row gpt-5-mini rerun @ 16000): $0.0356
+gap3 (smw@sonnet5, 140 q): $6.322
+TOTAL new reader spend (this batch, judge excluded): $22.597
