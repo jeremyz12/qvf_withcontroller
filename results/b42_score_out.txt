@@ -1,0 +1,113 @@
+======================================================================
+新 40 链(批 42 保留集 2)单臂
+======================================================================
+
+### new40:smoc
+  n=160 chains=40 acc=90.62  Wilson 95% CI [85.11,94.24]  40链簇自助 95% CI [85.00,95.62]
+    change_count    36/40 =  90.00
+    count_before    34/40 =  85.00
+    first_vs_last   40/40 = 100.00
+    longest_tenure  35/40 =  87.50
+  reader tokens in=477,532 out=76,350  cost $0.6874  avg latency 5.60s
+  judge tokens in=16,813 out=6,225  cost $0.2397 (实测)
+
+### new40:direct
+  n=160 chains=40 acc=50.62  Wilson 95% CI [42.95,58.27]  40链簇自助 95% CI [43.12,58.13]
+    change_count    11/40 =  27.50
+    count_before    19/40 =  47.50
+    first_vs_last   35/40 =  87.50
+    longest_tenure  16/40 =  40.00
+  reader tokens in=138,434 out=13,620  cost $0.1652  avg latency 1.73s
+  judge tokens in=31,496 out=12,550  cost $0.4712 (实测)
+
+### new40:plainctx
+  n=160 chains=40 acc=72.50  Wilson 95% CI [65.11,78.83]  40链簇自助 95% CI [64.38,80.00]
+    change_count    21/40 =  52.50
+    count_before    35/40 =  87.50
+    first_vs_last   37/40 =  92.50
+    longest_tenure  23/40 =  57.50
+  reader tokens in=2,180,308 out=30,448  cost $1.8660  avg latency 3.05s
+  judge tokens in=53,156 out=11,843  cost $0.5619 (实测)
+
+### new40 smoc − direct(结构总价,H1)
+  n_items=160 n_chains=40
+  Δ=+40.00pp  b=6/c=70  McNemar p=6.31e-15
+  链级符号检验 34W/2L/4T  p=1.94e-08
+  40链簇自助 95% CI [+31.25,+48.12]pp
+
+### new40 smoc − plainctx
+  n_items=160 n_chains=40
+  Δ=+18.12pp  b=11/c=40  McNemar p=5.7e-05
+  链级符号检验 24W/4L/12T  p=0.00018
+  40链簇自助 95% CI [+8.12,+27.50]pp
+
+### new40 plainctx − direct
+  n_items=160 n_chains=40
+  Δ=+21.88pp  b=14/c=49  McNemar p=1.11e-05
+  链级符号检验 27W/4L/9T  p=3.4e-05
+  40链簇自助 95% CI [+12.50,+30.63]pp
+
+======================================================================
+既有 40 链保留集 v1(批 33-C,复算供池化用)
+======================================================================
+
+### old40:smoc
+  n=160 chains=40 acc=95.00  Wilson 95% CI [90.44,97.44]  40链簇自助 95% CI [90.00,98.75]
+    change_count    39/40 =  97.50
+    count_before    38/40 =  95.00
+    first_vs_last   40/40 = 100.00
+    longest_tenure  35/40 =  87.50
+  reader tokens in=498,872 out=73,111  cost $0.6915  avg latency 4.83s
+
+### old40:direct
+  n=160 chains=40 acc=51.88  Wilson 95% CI [44.18,59.48]  40链簇自助 95% CI [44.38,59.38]
+    change_count    12/40 =  30.00
+    count_before    15/40 =  37.50
+    first_vs_last   36/40 =  90.00
+    longest_tenure  20/40 =  50.00
+  reader tokens in=138,991 out=13,230  cost $0.1641  avg latency 1.67s
+
+### old40:fullplain
+  n=160 chains=40 acc=71.88  Wilson 95% CI [64.46,78.27]  40链簇自助 95% CI [66.25,77.50]
+    change_count    20/40 =  50.00
+    count_before    33/40 =  82.50
+    first_vs_last   38/40 =  95.00
+    longest_tenure  24/40 =  60.00
+  reader tokens in=2,179,228 out=23,432  cost $1.8371  avg latency 2.62s
+
+======================================================================
+池化 80 链(既有 40 + 批 42 新 40;仅 smoc/direct,H2)
+======================================================================
+
+### pooled80:smoc
+  n=320 chains=80 acc=92.81  Wilson 95% CI [89.45,95.16]  80链簇自助 95% CI [89.06,95.94]
+    change_count    75/80 =  93.75
+    count_before    72/80 =  90.00
+    first_vs_last   80/80 = 100.00
+    longest_tenure  70/80 =  87.50
+  reader tokens in=976,404 out=149,461  cost $1.3790  avg latency 5.22s
+  judge tokens in=16,813 out=6,225  cost $0.2397 (实测)
+
+### pooled80:direct
+  n=320 chains=80 acc=51.25  Wilson 95% CI [45.79,56.68]  80链簇自助 95% CI [45.94,56.25]
+    change_count    23/80 =  28.75
+    count_before    34/80 =  42.50
+    first_vs_last   71/80 =  88.75
+    longest_tenure  36/80 =  45.00
+  reader tokens in=277,425 out=26,850  cost $0.3293  avg latency 1.70s
+  judge tokens in=31,496 out=12,550  cost $0.4712 (实测)
+
+### pooled80 smoc − direct(H2 头条)
+  n_items=320 n_chains=80
+  Δ=+41.56pp  b=10/c=143  McNemar p=2.7e-31
+  链级符号检验 68W/3L/9T  p=5.06e-17
+  80链簇自助 95% CI [+35.62,+47.50]pp
+
+H1(新 40 链 smoc−direct ≥+30pp 且簇 CI 下界>0): Δ=+40.00pp CI=[31.25, 48.125] -> PASS
+
+H2(池化 80 链头条与主场 41.49pp 相差≤5pp): Δ=+41.56pp (簇CI=[35.625, 47.5]) 目标区间=[36.49,46.49] -> PASS
+
+H3(新 40 链 plainctx 介于 direct/smoc 之间): direct=50.62 plainctx=72.50 smoc=90.62 -> 点估PASS(plainctx CI 与 direct CI 重叠=False, 与 smoc CI 重叠=False)
+
+批 42 读者侧总成本(建店成本另在 verdict 记账): $2.7187
+批 42 判官侧总成本(实测): $1.2728

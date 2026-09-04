@@ -1,0 +1,434 @@
+{
+ "new40": {
+  "arms": [
+   {
+    "label": "new40:smoc",
+    "n": 160,
+    "acc": 90.625,
+    "wilson_ci": [
+     85.10867768996387,
+     94.23625058222096
+    ],
+    "cluster_ci": [
+     85.0,
+     95.625
+    ],
+    "n_clusters": 40,
+    "by_type": {
+     "change_count": [
+      36,
+      40
+     ],
+     "count_before": [
+      34,
+      40
+     ],
+     "longest_tenure": [
+      35,
+      40
+     ],
+     "first_vs_last": [
+      40,
+      40
+     ]
+    },
+    "tok_in": 477532,
+    "tok_out": 76350,
+    "cost_usd": 0.6874256000000001,
+    "judge_tok_in": 16813,
+    "judge_tok_out": 6225,
+    "judge_cost_usd": 0.23969,
+    "latency_mean": 5.597125
+   },
+   {
+    "label": "new40:direct",
+    "n": 160,
+    "acc": 50.625,
+    "wilson_ci": [
+     42.95471712509928,
+     58.26597407908818
+    ],
+    "cluster_ci": [
+     43.125,
+     58.12500000000001
+    ],
+    "n_clusters": 40,
+    "by_type": {
+     "change_count": [
+      11,
+      40
+     ],
+     "count_before": [
+      19,
+      40
+     ],
+     "longest_tenure": [
+      16,
+      40
+     ],
+     "first_vs_last": [
+      35,
+      40
+     ]
+    },
+    "tok_in": 138434,
+    "tok_out": 13620,
+    "cost_usd": 0.16522720000000002,
+    "judge_tok_in": 31496,
+    "judge_tok_out": 12550,
+    "judge_cost_usd": 0.47123000000000004,
+    "latency_mean": 1.7333124999999998
+   },
+   {
+    "label": "new40:plainctx",
+    "n": 160,
+    "acc": 72.5,
+    "wilson_ci": [
+     65.1149022400604,
+     78.82998111068811
+    ],
+    "cluster_ci": [
+     64.375,
+     80.0
+    ],
+    "n_clusters": 40,
+    "by_type": {
+     "first_vs_last": [
+      37,
+      40
+     ],
+     "count_before": [
+      35,
+      40
+     ],
+     "change_count": [
+      21,
+      40
+     ],
+     "longest_tenure": [
+      23,
+      40
+     ]
+    },
+    "tok_in": 2180308,
+    "tok_out": 30448,
+    "cost_usd": 1.8660384,
+    "judge_tok_in": 53156,
+    "judge_tok_out": 11843,
+    "judge_cost_usd": 0.561855,
+    "latency_mean": 3.0469375
+   }
+  ],
+  "contrasts": [
+   {
+    "label": "new40 smoc − direct(结构总价,H1)",
+    "delta": 40.0,
+    "b": 6,
+    "c": 70,
+    "p": 6.3117184695685895e-15,
+    "ci": [
+     31.25,
+     48.125
+    ],
+    "n_items": 160,
+    "n_clusters": 40,
+    "chain_sign": [
+     34,
+     2,
+     4
+    ],
+    "chain_p": 1.941225491464138e-08
+   },
+   {
+    "label": "new40 smoc − plainctx",
+    "delta": 18.125,
+    "b": 11,
+    "c": 40,
+    "p": 5.703811637403078e-05,
+    "ci": [
+     8.125,
+     27.500000000000004
+    ],
+    "n_items": 160,
+    "n_clusters": 40,
+    "chain_sign": [
+     24,
+     4,
+     12
+    ],
+    "chain_p": 0.00017999112606048584
+   },
+   {
+    "label": "new40 plainctx − direct",
+    "delta": 21.875,
+    "b": 14,
+    "c": 49,
+    "p": 1.112302300044902e-05,
+    "ci": [
+     12.5,
+     30.625000000000004
+    ],
+    "n_items": 160,
+    "n_clusters": 40,
+    "chain_sign": [
+     27,
+     4,
+     9
+    ],
+    "chain_p": 3.39532271027565e-05
+   }
+  ]
+ },
+ "pooled80": {
+  "arms": [
+   {
+    "label": "pooled80:smoc",
+    "n": 320,
+    "acc": 92.8125,
+    "wilson_ci": [
+     89.44607694264552,
+     95.16318882185169
+    ],
+    "cluster_ci": [
+     89.0625,
+     95.9375
+    ],
+    "n_clusters": 80,
+    "by_type": {
+     "change_count": [
+      75,
+      80
+     ],
+     "count_before": [
+      72,
+      80
+     ],
+     "longest_tenure": [
+      70,
+      80
+     ],
+     "first_vs_last": [
+      80,
+      80
+     ]
+    },
+    "tok_in": 976404,
+    "tok_out": 149461,
+    "cost_usd": 1.3789672000000002,
+    "judge_tok_in": 16813,
+    "judge_tok_out": 6225,
+    "judge_cost_usd": 0.23969,
+    "latency_mean": 5.21590625
+   },
+   {
+    "label": "pooled80:direct",
+    "n": 320,
+    "acc": 51.24999999999999,
+    "wilson_ci": [
+     45.79107784299985,
+     56.67926568297086
+    ],
+    "cluster_ci": [
+     45.9375,
+     56.25
+    ],
+    "n_clusters": 80,
+    "by_type": {
+     "change_count": [
+      23,
+      80
+     ],
+     "count_before": [
+      34,
+      80
+     ],
+     "longest_tenure": [
+      36,
+      80
+     ],
+     "first_vs_last": [
+      71,
+      80
+     ]
+    },
+    "tok_in": 277425,
+    "tok_out": 26850,
+    "cost_usd": 0.32933999999999997,
+    "judge_tok_in": 31496,
+    "judge_tok_out": 12550,
+    "judge_cost_usd": 0.47123000000000004,
+    "latency_mean": 1.70075
+   }
+  ],
+  "contrasts": [
+   {
+    "label": "pooled80 smoc − direct(H2 头条)",
+    "delta": 41.5625,
+    "b": 10,
+    "c": 143,
+    "p": 2.698577465882623e-31,
+    "ci": [
+     35.625,
+     47.5
+    ],
+    "n_items": 320,
+    "n_clusters": 80,
+    "chain_sign": [
+     68,
+     3,
+     9
+    ],
+    "chain_p": 5.057803134644878e-17
+   }
+  ]
+ },
+ "old40_reload": {
+  "smoc": {
+   "label": "old40:smoc",
+   "n": 160,
+   "acc": 95.0,
+   "wilson_ci": [
+    90.4447957015184,
+    97.44497099997864
+   ],
+   "cluster_ci": [
+    90.0,
+    98.75
+   ],
+   "n_clusters": 40,
+   "by_type": {
+    "change_count": [
+     39,
+     40
+    ],
+    "count_before": [
+     38,
+     40
+    ],
+    "longest_tenure": [
+     35,
+     40
+    ],
+    "first_vs_last": [
+     40,
+     40
+    ]
+   },
+   "tok_in": 498872,
+   "tok_out": 73111,
+   "cost_usd": 0.6915416,
+   "judge_tok_in": 0,
+   "judge_tok_out": 0,
+   "judge_cost_usd": 0.0,
+   "latency_mean": 4.834687499999999
+  },
+  "direct": {
+   "label": "old40:direct",
+   "n": 160,
+   "acc": 51.87500000000001,
+   "wilson_ci": [
+    44.1800830487905,
+    59.481990563771895
+   ],
+   "cluster_ci": [
+    44.375,
+    59.375
+   ],
+   "n_clusters": 40,
+   "by_type": {
+    "change_count": [
+     12,
+     40
+    ],
+    "count_before": [
+     15,
+     40
+    ],
+    "longest_tenure": [
+     20,
+     40
+    ],
+    "first_vs_last": [
+     36,
+     40
+    ]
+   },
+   "tok_in": 138991,
+   "tok_out": 13230,
+   "cost_usd": 0.1641128,
+   "judge_tok_in": 0,
+   "judge_tok_out": 0,
+   "judge_cost_usd": 0.0,
+   "latency_mean": 1.6681875000000002
+  },
+  "fullplain": {
+   "label": "old40:fullplain",
+   "n": 160,
+   "acc": 71.875,
+   "wilson_ci": [
+    64.4584094736341,
+    78.26578267292696
+   ],
+   "cluster_ci": [
+    66.25,
+    77.5
+   ],
+   "n_clusters": 40,
+   "by_type": {
+    "change_count": [
+     20,
+     40
+    ],
+    "count_before": [
+     33,
+     40
+    ],
+    "longest_tenure": [
+     24,
+     40
+    ],
+    "first_vs_last": [
+     38,
+     40
+    ]
+   },
+   "tok_in": 2179228,
+   "tok_out": 23432,
+   "cost_usd": 1.8371104000000003,
+   "judge_tok_in": 0,
+   "judge_tok_out": 0,
+   "judge_cost_usd": 0.0,
+   "latency_mean": 2.61775
+  }
+ },
+ "hypotheses": {
+  "H1": {
+   "criterion": "new40 smoc-direct delta>=+30pp AND cluster CI lower>0",
+   "delta": 40.0,
+   "ci": [
+    31.25,
+    48.125
+   ],
+   "pass": true
+  },
+  "H2": {
+   "criterion": "pooled80 smoc-direct delta within +-5pp of 41.49 i.e. in [36.49,46.49]",
+   "delta": 41.5625,
+   "ci": [
+    35.625,
+    47.5
+   ],
+   "main_field_delta": 41.49,
+   "pass": true
+  },
+  "H3": {
+   "criterion": "new40 plainctx point estimate between direct and smoc",
+   "direct_acc": 50.625,
+   "plainctx_acc": 72.5,
+   "smoc_acc": 90.625,
+   "point_estimate_between": true,
+   "plainctx_ci_overlaps_direct": false,
+   "plainctx_ci_overlaps_smoc": false
+  }
+ }
+}
