@@ -1,0 +1,113 @@
+{
+ "uid": "wikiP551000-Q19845625",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP551000-Q19845625/s1#r0",
+   "source_span": "as of today I'm officially living in the Netherlands again",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Netherlands",
+   "stated_date": "1991-01-20",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP551000-Q19845625/s11#r0",
+   "source_span": "I recently got rid of the old hutch in the dining room and replaced it with a smaller sideboard",
+   "entity": "user",
+   "slot": "furniture_change",
+   "value": "replaced dining room hutch with a smaller sideboard",
+   "stated_date": "",
+   "slot_class": "other:furniture change",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP551000-Q19845625/s20#r2",
+   "source_span": "I've been attending masters swimming sessions at the community pool every Wednesday evening since mid-January",
+   "entity": "user",
+   "slot": "habit_swimming",
+   "value": "attends masters swimming sessions at community pool every Wednesday evening since mid-January",
+   "stated_date": "",
+   "slot_class": "other:habit swimming",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP551000-Q19845625/s20#r2",
+   "source_span": "I've got some experience from the charity cycling event \"Pedal for a Purpose\" in February, where I completed 30 miles in 2 hours and 15 minutes",
+   "entity": "user",
+   "slot": "cycling_event",
+   "value": "completed 30 miles in 2 hours 15 minutes at 'Pedal for a Purpose' charity cycling event in February",
+   "stated_date": "2000-02",
+   "slot_class": "other:cycling event",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP551000-Q19845625/s26#r2",
+   "source_span": "I actually just received my new one on February 15th with my new last name, Johnson",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "Johnson",
+   "stated_date": "2003-02-15",
+   "slot_class": "other:last name",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP551000-Q19845625/s27#r0",
+   "source_span": "I've officially moved to France as of this month",
+   "entity": "user",
+   "slot": "residence",
+   "value": "France",
+   "stated_date": "2004-03",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP551000-Q19845625/s28#r0",
+   "source_span": "I had to spend an entire Saturday afternoon in early March gathering all the necessary papers and filling out application forms to get it changed",
+   "entity": "user",
+   "slot": "name_change_process",
+   "value": "spent a Saturday afternoon in early March gathering papers and filling out forms to change name",
+   "stated_date": "2004-03",
+   "slot_class": "other:name change process",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP551000-Q19845625/s31#r0",
+   "source_span": "Officially moved: the United Kingdom is my new residence as of this month.",
+   "entity": "user",
+   "slot": "residence",
+   "value": "United Kingdom",
+   "stated_date": "2007-03",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP551000-Q19845625/s31#r2",
+   "source_span": "do you know if I can get my old Dutch phone number to forward texts?",
+   "entity": "user",
+   "slot": "phone_number_origin",
+   "value": "has an old Dutch phone number",
+   "stated_date": "",
+   "slot_class": "device",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2001,
+ "usage_out": 1059,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 15,
+  "total": 162,
+  "user_turns": 102
+ }
+}

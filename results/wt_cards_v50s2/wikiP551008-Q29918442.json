@@ -1,0 +1,135 @@
+{
+ "uid": "wikiP551008-Q29918442",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "wikiP551008-Q29918442/s0#r0",
+   "source_span": "I just moved to San Francisco and this apartment is mine",
+   "entity": "user",
+   "slot": "residence",
+   "value": "San Francisco",
+   "stated_date": "2006",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "wikiP551008-Q29918442/s10#r4",
+   "source_span": "I just completed my master's thesis in computer science last week",
+   "entity": "user",
+   "slot": "education",
+   "value": "completed master's thesis in computer science",
+   "stated_date": "2010-12",
+   "slot_class": "other:education",
+   "owner": "user"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "wikiP551008-Q29918442/s13#r0",
+   "source_span": "I just got a promotion to senior account manager",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "senior account manager",
+   "stated_date": "2012-07",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "wikiP551008-Q29918442/s13#r2",
+   "source_span": "I got the promotion three weeks after the interview with the VP of Marketing",
+   "entity": "user",
+   "slot": "job_title",
+   "value": "promoted to senior account manager",
+   "stated_date": "2012-07",
+   "slot_class": "position",
+   "owner": "user"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "wikiP551008-Q29918442/s13#r2",
+   "source_span": "I think I'll start with Asana",
+   "entity": "user",
+   "slot": "project_management_tool",
+   "value": "Asana",
+   "stated_date": "2012-07",
+   "slot_class": "other:project management tool",
+   "owner": "user"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "wikiP551008-Q29918442/s19#r0",
+   "source_span": "I helped set up stalls and sold goods for the Cancer Support Group",
+   "entity": "user",
+   "slot": "volunteering",
+   "value": "volunteered at bake sale for Cancer Support Group",
+   "stated_date": "2015-03-25",
+   "slot_class": "other:volunteering",
+   "owner": "user"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "wikiP551008-Q29918442/s19#r2",
+   "source_span": "I recently participated in the \"Walk for Hunger\" event on April 15th",
+   "entity": "user",
+   "slot": "volunteering",
+   "value": "participated in Walk for Hunger event",
+   "stated_date": "2015-04-15",
+   "slot_class": "other:volunteering",
+   "owner": "user"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "wikiP551008-Q29918442/s23#r0",
+   "source_span": "I just moved into my new place in Mountain View",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Mountain View",
+   "stated_date": "2017",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "wikiP551008-Q29918442/s25#r4",
+   "source_span": "I'm actually thinking of posting about my progress on Instagram again",
+   "entity": "user",
+   "slot": "social_media",
+   "value": "uses Instagram for fitness progress",
+   "stated_date": "2017-11",
+   "slot_class": "other:social media",
+   "owner": "user"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "wikiP551008-Q29918442/s30#r1",
+   "source_span": "I've moved to Berlin",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Berlin",
+   "stated_date": "2020",
+   "slot_class": "residence",
+   "owner": "user"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "wikiP551008-Q29918442/s31#r0",
+   "source_span": "I got my brown loafers polished on January 8th",
+   "entity": "user",
+   "slot": "personal_item_care",
+   "value": "brown loafers polished",
+   "stated_date": "2020-01-08",
+   "slot_class": "other:personal item care",
+   "owner": "user"
+  }
+ ],
+ "usage_in": 2404,
+ "usage_out": 1092,
+ "schema": "slim",
+ "stage1": {
+  "stage1_k": 8,
+  "kept": 19,
+  "total": 162,
+  "user_turns": 102
+ }
+}

@@ -32,6 +32,7 @@ W3 原型:写入时抽取(write-time extraction)+ 读取时纯代码裁决。
 from __future__ import annotations
 
 import argparse
+import hashlib
 import collections as _collections
 import json
 import os
@@ -128,6 +129,28 @@ _CARD_ABS_DATE = int(os.environ.get("QVF_CARD_ABS_DATE", "0") or 0)
 #   results/wt_cards 有 2 个 0 卡文件各烧掉约 142k input token,且都在
 #   results/wtqvf3_lmetr.jsonl 里被当作 mode="wt_qvf" 计了分。
 _CARD_RENUMBER = int(os.environ.get("QVF_CARD_RENUMBER", "0") or 0)
+# QVF_CARD_SLIM=1(批 47-B,评审意见修复):精简卡片契约 —— 只抽
+# record_id / source_memory_id / source_span / entity / slot / value /
+# stated_date 七个字段;claim、slot_cardinality、temporal_relation、
+# relation_target_record_ids、condition、implies_stale_slots 不再让模型生成
+# (账目路径 render_card_ledger / complex_query_arm 从不读这些字段;
+# 它们占卡片字符 42%)。提示词去掉规则 3(关系标注),其余规则逐字不变。
+# 默认 0:提示词、schema、调用逐字节等同旗标引入前。
+_CARD_SLIM = int(os.environ.get("QVF_CARD_SLIM", "0") or 0)
+# QVF_CARD_THINKING=off(与 scripts/wt_qvf_prototype_b38.py 同名旗标):给建卡调用
+# 显式传 thinking={"type": "disabled"}。sonnet-5 默认会思考,输出 token 翻三倍并
+# 逼近 max_tokens 上限;未设置时不传该键,调用逐字节等同旗标引入前。
+_CARD_THINKING = os.environ.get("QVF_CARD_THINKING", "").strip().lower()
+# QVF_CARD_STAGE1_K=<k>(批 47-C,两阶段抽取的 Stage 1):建卡前先用 OpenAI
+# text-embedding-3-small 对本店全部用户轮次打分(四个槽位类各若干"状态开始"释义,
+# 取最大余弦),每类取 top-k 轮次、四类取并集作为候选,只把候选轮次交给抽取器。
+# 离线实测(scripts/b47_embed_localizer.py):k=8 时 542 条金标锚句召回 100%,
+# 保留 17% 的轮次。默认 0 = 关,建卡输入逐字节不变。
+_CARD_STAGE1_K = int(os.environ.get("QVF_CARD_STAGE1_K", "0") or 0)
+# QVF_CARD_VALNORM=1(批 47-B):落盘前对 value 做槽位类感知的规范化
+# (employer/team 去尾部括注与公司后缀、residence 去尾部括注、去前置 the;
+# position 不动)。原值保留在 value_raw。零 LLM,只改本地记录。默认 0。
+_CARD_VALNORM = int(os.environ.get("QVF_CARD_VALNORM", "0") or 0)
 _CARD_VERIFY_SPAN = int(os.environ.get("QVF_CARD_VERIFY_SPAN", "0") or 0)
 _CARD_FAIL_LOUD = int(os.environ.get("QVF_CARD_FAIL_LOUD", "0") or 0)
 
@@ -202,6 +225,30 @@ class CatalogExtraction(BaseModel):
     )
 
 
+class SlimRecord(BaseModel):
+    """批 47-B 精简契约:只保留账目路径真正消费的七个字段。"""
+    record_id: str = Field(description="Unique id for this record, e.g. 'r1'.")
+    source_memory_id: str = Field(
+        description="memory_id of the memory round this record comes from.")
+    source_span: str = Field(
+        description="VERBATIM contiguous substring of that memory's text stating the fact. "
+                    "Copy exactly — any paraphrase invalidates the record.")
+    entity: str = Field(description="Entity of the fact, e.g. 'user'.")
+    slot: str = Field(description="Slot name; use the same slot name for the same attribute across records.")
+    value: str = Field(description="The slot value stated by this span.")
+    stated_date: str = Field(
+        default="",
+        description="When the TEXT ITSELF states when this state began or held, copy it "
+                    "as YYYY, YYYY-MM or YYYY-MM-DD (for ranges use the START). "
+                    "Empty if the text states no date.")
+
+
+class CatalogExtractionSlim(BaseModel):
+    records: List[SlimRecord] = Field(
+        description="Every personal-state fact found in the memories."
+    )
+
+
 CATALOG_PROMPT = """\
 You are a memory cataloger for a personal AI assistant. You will be given ALL
 memory rounds of one user's history (each with memory_id, date, text). Catalog
@@ -222,6 +269,29 @@ Rules:
 5. Skip small talk with no state content. Do not invent facts.
 """
 
+
+# SLIM(QVF_CARD_SLIM=1 时启用):去掉规则 3(temporal_relation 标注),
+# 其余规则逐字不变并重新编号;规则文本由 CATALOG_PROMPT 机械派生。
+def _slim_prompt(base: str) -> str:
+    lines = base.split("\n")
+    out, skip, n = [], False, 0
+    for ln in lines:
+        m = re.match(r"^(\d)\. ", ln)
+        if m:
+            skip = (m.group(1) == "3")
+            if skip:
+                continue
+            n += 1
+            ln = f"{n}. " + ln[3:]
+        elif skip and ln.startswith("   "):
+            continue
+        else:
+            skip = False
+        out.append(ln)
+    return "\n".join(out)
+
+
+CATALOG_PROMPT_SLIM = _slim_prompt(CATALOG_PROMPT)
 
 # V4(QVF_CARD_KEYS=1 时启用):在原提示词之上追加 owner/slot_class 两条
 # 规范键指令;规则 1-5(含 source_span 逐字子串契约)逐字不动。
@@ -397,6 +467,8 @@ def _catalog_prompt() -> str:
     不变);KEYS/TAGS/STRICT/V5 各自独立门控,可叠加。V5 追加在所有其他
     旗标之后,不改动其之前的任何字节。"""
     base = CATALOG_PROMPT_V4 if _CARD_KEYS else CATALOG_PROMPT
+    if _CARD_SLIM:
+        base = _slim_prompt(CATALOG_PROMPT_V4) if _CARD_KEYS else CATALOG_PROMPT_SLIM
     if _CARD_TAGS == 1:
         base = base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
     elif _CARD_TAGS >= 2:
@@ -427,6 +499,28 @@ def _client():
     return anthropic.Anthropic()
 
 
+def _stage1_filter(payload: List[dict], k: int) -> Tuple[List[dict], dict]:
+    """两阶段抽取 Stage 1:嵌入式候选定位(与 scripts/b47_embed_localizer.py 同查询、同模型)。
+    返回 (候选轮次 payload 子集(保持原序), 统计)。助手轮不参与打分也不进入候选。"""
+    import numpy as np
+    from scripts.b47_embed_localizer import QUERIES, embed
+    from openai import OpenAI
+    client = OpenAI()
+    user_idx = [i for i, p in enumerate(payload)
+                if not str(p.get("text", "")).startswith("{'role': 'assistant'")]
+    if not user_idx:
+        return payload, {"stage1_k": k, "kept": len(payload), "total": len(payload)}
+    V = embed(client, [payload[i]["text"] for i in user_idx])
+    keep = set()
+    for cls, qs in QUERIES.items():
+        Q = embed(client, qs)
+        sc = (V @ Q.T).max(axis=1)
+        for j in np.argsort(-sc)[:k]:
+            keep.add(user_idx[int(j)])
+    sub = [p for i, p in enumerate(payload) if i in keep]
+    return sub, {"stage1_k": k, "kept": len(sub), "total": len(payload), "user_turns": len(user_idx)}
+
+
 def write_phase(data_path: str, limit_items: int = 0,
                 uids: Optional[List[str]] = None):
     CARDS_DIR.mkdir(parents=True, exist_ok=True)
@@ -451,6 +545,9 @@ def write_phase(data_path: str, limit_items: int = 0,
         payload = [{"memory_id": m.memory_id,
                     "date": (m.metadata or {}).get("session_date", ""),
                     "text": m.content} for m in inst.memories]
+        _stage1_stats = None
+        if _CARD_STAGE1_K:
+            payload, _stage1_stats = _stage1_filter(payload, _CARD_STAGE1_K)
         # 超长条目分批建卡(≈写入时逐会话入库的真实形态):按字符预算切块,
         # 各批独立抽取后合并卡片;memory_id 全局唯一,关系边指向不受影响。
         # 卡片密度极高的内容(如逐行事实库)可用环境变量调小批预算。
@@ -489,6 +586,8 @@ def write_phase(data_path: str, limit_items: int = 0,
                 if _CARD_TEMP0:  # 默认 1:传 temperature=0.0;QVF_CARD_TEMP0=0
                                   # 时不传该键,调用逐字节等同旗标引入前(复现历史结果用)
                     _kw["temperature"] = 0.0
+                if _CARD_THINKING == "off":
+                    _kw["thinking"] = {"type": "disabled"}
                 _user = ("EXISTING STATE CARDS (from earlier sessions):\n"
                          + digest + "\n\n" if digest else "") + \
                     "MEMORY ROUNDS (JSON):\n" + json.dumps(batch, ensure_ascii=False)
@@ -498,7 +597,7 @@ def write_phase(data_path: str, limit_items: int = 0,
                              "text": _catalog_prompt(),
                              "cache_control": {"type": "ephemeral"}}],
                     messages=[{"role": "user", "content": _user}],
-                    output_format=CatalogExtraction,
+                    output_format=CatalogExtractionSlim if _CARD_SLIM else CatalogExtraction,
                     **_kw,
                 )
                 cat = resp.parsed_output
@@ -591,6 +690,8 @@ def write_phase(data_path: str, limit_items: int = 0,
         # 不是一个可关的实验分支)。发给 LLM 的提示词/调用参数在此之前
         # 完全不变;这一步只对本地已收到的 records 做纯代码后处理。
         _apply_card_keys(recs)
+        if _CARD_VALNORM:
+            _apply_valnorm(recs)
         tot_in += item_in
         tot_out += item_out
         _extra = {}
@@ -605,6 +706,12 @@ def write_phase(data_path: str, limit_items: int = 0,
             if _CARD_VERIFY_SPAN >= 3:
                 _extra["span_repaired"] = _span_repaired
                 _extra["span_ambiguous"] = _span_ambig
+        if _CARD_SLIM:
+            _extra["schema"] = "slim"
+        if _stage1_stats:
+            _extra["stage1"] = _stage1_stats
+        if _CARD_VALNORM:
+            _extra["valnorm"] = True
         if _CARD_FAIL_LOUD:
             _extra["failed_batches"] = _failed_batches
             _extra["n_batches"] = len(batches)
@@ -733,6 +840,63 @@ def _apply_card_keys(recs: List[dict]) -> List[dict]:
         r["slot_class"] = cls
         r["owner"] = (r.get("entity") or "").strip()
     return recs
+
+
+_VN_PAREN = re.compile(r"\s*\([^)]*\)\s*$")
+_VN_CORP = re.compile(r"[,\s]+(llc|inc\.?|ltd\.?|corp\.?|corporation|limited|gmbh|plc)\b\.?$", re.I)
+
+
+def canon_value(slot_class: str, value: str) -> str:
+    """批 47-B 值规范化(槽位类感知、确定性、零 LLM)。
+    employer/team:去尾部括注(职务/身份说明)与公司后缀,去前置 the;
+    residence:去尾部括注;其余槽位(含 position)原样返回。"""
+    v = str(value or "").strip()
+    cls = (slot_class or "").split(":")[0]
+    if cls in ("employer", "team", "residence"):
+        v2 = _VN_PAREN.sub("", v)
+        if cls != "residence":
+            v2 = _VN_CORP.sub("", v2)
+        v2 = re.sub(r"^(the)\s+", "", v2, flags=re.I).strip()
+        return v2 or v
+    return v
+
+
+def _apply_valnorm(recs: List[dict]) -> int:
+    """就地规范化 value;改动过的记录保留 value_raw。返回改动数。"""
+    n = 0
+    for r in recs:
+        raw = str(r.get("value") or "")
+        nv_ = canon_value(r.get("slot_class") or classify_slot(r.get("slot", ""))[0], raw)
+        if nv_ != raw.strip():
+            r["value_raw"] = raw
+            r["value"] = nv_
+            n += 1
+    return n
+
+
+def valnorm_store(src: Path, dst: Path) -> dict:
+    """派生店:把 src 每张卡的 value 规范化后写到 dst(src 只读;dst 带溯源)。"""
+    if not src.is_dir():
+        raise FileNotFoundError(f"valnorm source store not found: {src}")
+    if dst.exists() and any(dst.glob("*.json")):
+        raise FileExistsError(f"refusing to overwrite non-empty store: {dst}")
+    dst.mkdir(parents=True, exist_ok=True)
+    h = hashlib.sha256()
+    files = sorted(src.glob("*.json"))
+    for f in files:
+        h.update(f.name.encode()); h.update(f.read_bytes())
+    sha = h.hexdigest()
+    n_files = n_recs = n_changed = 0
+    for f in files:
+        j = json.loads(f.read_text(encoding="utf-8"))
+        recs = j.get("records", [])
+        n_changed += _apply_valnorm(recs)
+        n_recs += len(recs); n_files += 1
+        j["valnorm"] = True
+        j["derived_from"] = str(src)
+        j["src_sha256"] = sha
+        (dst / f.name).write_text(json.dumps(j, ensure_ascii=False, indent=1), encoding="utf-8")
+    return {"n_files": n_files, "n_records": n_recs, "changed": n_changed, "src_sha256": sha, "dst": str(dst)}
 
 
 def backfill_store(src: Path, dst: Path) -> dict:
@@ -1028,7 +1192,7 @@ def read_phase(data_path: str, out_path: str, limit_items: int = 0,
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--phase", choices=["write", "read", "backfill"], required=True)
+    ap.add_argument("--phase", choices=["write", "read", "backfill", "valnorm"], required=True)
     ap.add_argument("--data", default=r"D:\ZZL_cluade\data\stale_chain_full.json")
     ap.add_argument("--out", default=r"results\wtqvf_chain_h45.jsonl")
     ap.add_argument("--items", type=int, default=0)
@@ -1050,6 +1214,12 @@ def main():
     if a.phase == "write":
         uid_list = [u for u in (a.uids or "").split(",") if u] or None
         write_phase(a.data, a.items, uid_list)
+    elif a.phase == "valnorm":
+        if not a.src or not a.dst:
+            ap.error("--phase valnorm requires --src and --dst")
+        stats = valnorm_store(Path(a.src), Path(a.dst))
+        print(f"files={stats['n_files']} records={stats['n_records']} changed={stats['changed']} src_sha256={stats['src_sha256'][:12]}")
+        print(f"wrote {stats['dst']}")
     elif a.phase == "backfill":
         if not a.src or not a.dst:
             ap.error("--phase backfill requires --src and --dst")
