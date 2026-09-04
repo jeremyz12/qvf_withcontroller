@@ -1,0 +1,141 @@
+# Batch 45 score: OpenAI-family (gpt-5-mini) re-judge vs archived Claude-family (opus-5) judge
+
+Pre-registration: results/opt_batch45_prereg.md
+
+## 0. Row-count / qid-set integrity
+
+| arm | orig rows | rejudge rows | qid symdiff | fallback_gpt |
+|---|---|---|---|---|
+| direct | 576 | 576 | 0 | 0 |
+| smoc_v45 | 576 | 576 | 0 | 0 |
+| smw | 576 | 576 | 0 | 0 |
+| smwplain | 576 | 576 | 0 | 0 |
+
+## 1. Per-arm accuracy under each judge (n=576 each)
+
+| arm | claude acc | gpt acc | delta (gpt-claude) |
+|---|---|---|---|
+| direct | 47.57 | 37.50 | -10.07 |
+| smoc_v45 | 89.06 | 86.11 | -2.95 |
+| smw | 85.59 | 81.94 | -3.65 |
+| smwplain | 53.47 | 49.48 | -3.99 |
+
+## 2. Per-row agreement and Cohen's kappa
+
+| arm | agree | n | agreement% | kappa |
+|---|---|---|---|---|
+| direct | 512 | 576 | 88.89% | 0.775 |
+| smoc_v45 | 559 | 576 | 97.05% | 0.865 |
+| smw | 555 | 576 | 96.35% | 0.866 |
+| smwplain | 551 | 576 | 95.66% | 0.913 |
+
+## 3. Disagreement counts by direction + 10 examples per arm
+
+### direct
+claude=correct & gpt=incorrect: 61  |  claude=incorrect & gpt=correct: 3
+
+| question_id | qtype | claude_correct | gpt_correct | gold | answer(trunc) | claude_reason(trunc) | gpt_reason(trunc) |
+|---|---|---|---|---|---|---|---|
+| wikiP108001-Q53458422_v2cc | change_count | True | False | 2 | Based on our past conversations, you've changed employers **2 times**: first fro | The response states 2 employer changes, matching the gold answer, despite somewh | Model states two transitions but describes only one explicit move (postdoc to Zu |
+| wikiP108007-Q59456157_v2cb | count_before | True | False | 2 | Based on the conversation excerpts, you had **2 different employer values** befo | The model states 2 different employer values, matching the gold answer. | The model lists an employer starting 2004-07-01 which is after 2005-04-01 range  |
+| wikiP108008-Q53283502_v2lt | longest_tenure | True | False | CERN | Based on our conversation history, you've held your position at CERN the longest | The model identifies CERN as the longest-held employer, matching the gold answer | The model states CERN is longest but gives start years that imply Tsinghua (2013 |
+| wikiP108011-Q42430132_v2fl | first_vs_last | True | False | first: University of Manchester; most re | Based on our past conversations, your first employer was the University of Manch | The response correctly identifies both the first employer (University of Manches | The model added incorrect specific dates not present in the gold answer; althoug |
+| wikiP108011-Q42430132_v2cb | count_before | True | False | 3 | Based on our conversation history, you had **3 different employers** before 1984 | The response states 3 different employers, matching the gold answer. | Model included an employer starting 1984-07-01 which is within timeframe but the |
+| wikiP108045-Q53103362_v2cc | change_count | False | True | 1 | Based on our past conversations, you've changed employers **2 times**: first fro | The model's stated answer is 2 employer changes, which contradicts the gold answ | Model ultimately states 1 change up to 2005-04-02 (despite mentioning 2 total),  |
+| wikiP108047-Q46421078_v2cc | change_count | False | True | 1 | Based on our past conversations, you've changed employers **2 times**: first fro | The model's primary stated answer is 2 employer changes, which contradicts the g | Although the model initially states 2 changes, it clarifies counting up to 2007  |
+| wikiP54017-Q41674744_v2fl | first_vs_last | False | True | first: LV Brandenburg; most recent: Team | Your first team was LKT Team Brandenburg (you joined in 2015), and your most rec | The gold first team is LV Brandenburg, but the model named LKT Team Brandenburg, | The model names the same first team (LV Brandenburg as LKT Team Brandenburg) and |
+
+### smoc_v45
+claude=correct & gpt=incorrect: 17  |  claude=incorrect & gpt=correct: 0
+
+| question_id | qtype | claude_correct | gpt_correct | gold | answer(trunc) | claude_reason(trunc) | gpt_reason(trunc) |
+|---|---|---|---|---|---|---|---|
+| wikiP108002-Q57686589_v2lt | longest_tenure | True | False | Instituto de Física de Cantabria | Instituto de Física de Cantabria (held for approximately 6 years and 11 months,  | The response names the same employer as the gold answer, Instituto de F	textasci | Model's tenure dates (Oct 2007–Sep 2014, ~6y11m) contradict the instruction that |
+| wikiP108029-Q28320577_v2lt | longest_tenure | True | False | University of Oxford | University of Oxford (held for 9 years, from June 1997 to June 2006) | The response identifies University of Oxford, matching the gold answer. | Model's dates (June 1997 to June 2006, 9 years) contradict the question note tha |
+| wikiP39005-Q333007_v2lt | longest_tenure | True | False | member of the 50th Parliament of the Uni | 50th Parliament of the United Kingdom | The response identifies the 50th Parliament of the United Kingdom, matching the  | The gold answer specifies the role 'member of the 50th Parliament of the United  |
+| wikiP39009-Q6242279_v2fl | first_vs_last | True | False | first: member of the 45th Parliament of  | Your first position was member of the 45th Parliament, Bradford West (1970), and | The response identifies the first position as member of the 45th Parliament and  | Model added 'Bradford West (1970)' not in gold and omitted 'of the United Kingdo |
+| wikiP39012-Q6767617_v2lt | longest_tenure | True | False | member of the 51st Parliament of the Uni | Member of the 51st Parliament of the United Kingdom (held from 1992-04-09 to 199 | The model identifies the same position as the gold answer, member of the 51st Pa | Model's tenure dates (1992-04-09 to 1997-05-01) total ~5 years and 22 days, but  |
+
+### smw
+claude=correct & gpt=incorrect: 21  |  claude=incorrect & gpt=correct: 0
+
+| question_id | qtype | claude_correct | gpt_correct | gold | answer(trunc) | claude_reason(trunc) | gpt_reason(trunc) |
+|---|---|---|---|---|---|---|---|
+| wikiP108009-Q64855331_v2lt | longest_tenure | True | False | Karlsruhe Institute of Technology | **Karlsruhe Institute of Technology** (held for approximately 3 years and 7 mont | The response names Karlsruhe Institute of Technology, matching the gold answer. | Model lists Karlsruhe Institute of Technology but gives dates/tenure (~3y7m) tha |
+| wikiP39003-Q6248447_v2lt | longest_tenure | True | False | member of the First Chamber | First Chamber | The response identifies the First Chamber position, matching the gold answer 'me | Model response 'First Chamber' omits 'member of the' phrasing from the gold answ |
+| wikiP39009-Q6242279_v2lt | longest_tenure | True | False | member of the 53rd Parliament of the Uni | The 53rd Parliament of the United Kingdom (held since 2001-06-07, currently ongo | The model identifies the same position as the gold answer, membership in the 53r | Model states only the Parliament name and start date but omits explicitly saying |
+| wikiP39012-Q6767617_v2lt | longest_tenure | True | False | member of the 51st Parliament of the Uni | The 51st Parliament of the United Kingdom (held from 1992-04-09 to 1997-05-01, l | The model identifies membership in the 51st Parliament of the United Kingdom as  | The gold answer is 'member of the 51st Parliament of the United Kingdom' but the |
+| wikiP39012-Q6767617_v2fl | first_vs_last | True | False | first: member of the 49th Parliament of  | Your first position was Member of Parliament for Stoke-on-Trent Central (49th Pa | The response correctly identifies the first position as member of the 49th Parli | The gold first/most recent are 'member of the 49th Parliament' and 'member of th |
+
+### smwplain
+claude=correct & gpt=incorrect: 24  |  claude=incorrect & gpt=correct: 1
+
+| question_id | qtype | claude_correct | gpt_correct | gold | answer(trunc) | claude_reason(trunc) | gpt_reason(trunc) |
+|---|---|---|---|---|---|---|---|
+| wikiP108004-Q54196276_v2fl | first_vs_last | True | False | first: Princeton University; most recent | **Answer: I cannot definitively answer this question based on the transcript pro | Despite hedging, the response identifies Princeton University as the earliest em | The gold answer states first Princeton and most recent University of Osaka, but  |
+| wikiP108006-Q67650882_v2lt | longest_tenure | True | False | Institute of Physics, Johannes Gutenberg | Since you currently hold the postdoctoral researcher position at Johannes Gutenb | The model identifies Johannes Gutenberg-University Mainz as the longest-held emp | Model named only Johannes Gutenberg-University Mainz but omitted the Institute o |
+| wikiP108007-Q59456157_v2cc | change_count | True | False | 2 | - Laboratoire d'Annecy-le-Vieux de Physique Théorique → Syracuse University (2nd | The response indicates the final transition as the "2nd change," conveying a tot | The model lists one transition but labels it as the '2nd change' and fails to re |
+| wikiP108016-Q57079433_v2fl | first_vs_last | True | False | first: University of Barcelona; most rec | Note: The conversation shows you worked at the University of Barcelona, then mov | The response identifies the University of Barcelona as the first employer and th | The model incorrectly lists the National Center for Scientific Research as an in |
+| wikiP108022-Q53509286_v2fl | first_vs_last | True | False | first: Carnegie Mellon University; most  | However, there is no mention of any employer before Carnegie Mellon University,  | The response names Northern Illinois University as the most recent employer and  | The model failed to assert the first employer (Carnegie Mellon University) and i |
+| wikiP39030-Q6265172_v2lt | longest_tenure | False | True | member of the 19th Parliament of the Uni | Therefore, **Member of Parliament** is the position you held the longest. | The gold answer specifies a particular tenure (member of the 19th Parliament), w | The model's answer matches the gold: it identifies the longest-held position as  |
+
+## 4. Per-question-type agreement
+
+| arm | qtype | n | agreement% |
+|---|---|---|---|
+| direct | change_count | 144 | 88.19% |
+| direct | count_before | 144 | 89.58% |
+| direct | first_vs_last | 144 | 95.83% |
+| direct | longest_tenure | 144 | 81.94% |
+| smoc_v45 | change_count | 144 | 100.00% |
+| smoc_v45 | count_before | 144 | 100.00% |
+| smoc_v45 | first_vs_last | 144 | 96.53% |
+| smoc_v45 | longest_tenure | 144 | 91.67% |
+| smw | change_count | 144 | 99.31% |
+| smw | count_before | 144 | 99.31% |
+| smw | first_vs_last | 144 | 97.92% |
+| smw | longest_tenure | 144 | 88.89% |
+| smwplain | change_count | 144 | 97.92% |
+| smwplain | count_before | 144 | 97.92% |
+| smwplain | first_vs_last | 144 | 94.44% |
+| smwplain | longest_tenure | 144 | 92.36% |
+
+## 5. Re-judged ladder deltas under gpt judge (McNemar exact sign test)
+
+### smoc_v45 - direct  (gpt judge)
+  n=576 | direct acc=37.50 | smoc_v45 acc=86.11 | delta=+48.61pp  b/c=17/297  McNemar p=3.22e-67
+
+### smw - smwplain  (gpt judge)
+  n=576 | smwplain acc=49.48 | smw acc=81.94 | delta=+32.47pp  b/c=26/213  McNemar p=1.07e-37
+
+### smoc_v45 - smw  (gpt judge)
+  n=576 | smw acc=81.94 | smoc_v45 acc=86.11 | delta=+4.17pp  b/c=55/79  McNemar p=0.0465
+
+## 6. H1-H3 pre-registered outcomes
+
+### H1: per-row agreement >= 90% per arm
+  direct: 88.89% -> FAIL
+  smoc_v45: 97.05% -> PASS
+  smw: 96.35% -> PASS
+  smwplain: 95.66% -> PASS
+  H1 overall: FAIL
+
+### H2: smoc-direct delta under gpt judge within +-5pp of Claude-judge headline (+41.49pp)
+  gpt-judge delta = +48.61pp | |delta - 41.49| = 7.12pp -> FAIL
+
+### H3: no arm's accuracy moves by more than 5pp (gpt vs claude judge, same rows)
+  direct: claude=47.57 gpt=37.50 move=10.07pp -> FAIL
+  smoc_v45: claude=89.06 gpt=86.11 move=2.95pp -> PASS
+  smw: claude=85.59 gpt=81.94 move=3.65pp -> PASS
+  smwplain: claude=53.47 gpt=49.48 move=3.99pp -> PASS
+  H3 overall: FAIL
+
+## 7. Cost (gpt-5-mini judge, $0.25/M in $2.00/M out)
+
+| arm | in tok | out tok | $ |
+|---|---|---|---|
+| direct | 273092 | 28011 | $0.1243 |
+| smoc_v45 | 235274 | 22705 | $0.1042 |
+| smw | 235667 | 23134 | $0.1052 |
+| smwplain | 242779 | 24681 | $0.1101 |
+| **total** | 986812 | 98531 | **$0.4438** |
