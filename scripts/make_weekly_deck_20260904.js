@@ -145,6 +145,38 @@ let n = 0;
   s.addText("Scores for v2.2 / v2.3 / v2.4 are statistically indistinguishable (saturation); v2.5 rerun pending.", { x: 8.1, y: 4.5, w: 4.6, h: 0.7, fontFace: BFONT, fontSize: 10.5, color: MUTED, margin: 0 });
   footer(s, n);
 }
+
+// ---------- 4a WikiState at a glance ----------
+{
+  const s = pres.addSlide(); n++;
+  title(s, "WikiState v2.5 at a glance \u2014 and what only it tests", "Scale on the left; the distinctiveness matrix on the right (attributes verified from full-text reads of each benchmark)");
+  table(s, [
+    ["Scale (v2.5)", ""],
+    ["State chains (persona \u00d7 slot)", "144: employer 51 \u00b7 position 44 \u00b7 team 38 \u00b7 residence 11"],
+    ["Gold state rows", "542 (3\u20138 per chain, median 3; 25 chains with \u2265 5 states)"],
+    ["Sessions / turns", "4,854 sessions (542 chain + 4,312 filler), 23,696 turns; \u2248 14K tokens per store"],
+    ["Time span", "chains span 1\u201390 years (median 10.2); dates 1423\u20132024"],
+    ["Questions", "560 aggregation (change_count 144 \u00b7 count_before 144 \u00b7 first_vs_last 144 \u00b7 longest_tenure 128) + 576 validity probes (current / false premise / point-in-time / trajectory)"],
+    ["Holdout", "80 chains / 320 q, zero QID overlap (two independent draws)"],
+    ["Scale track", "30 stores of \u2248 104K tokens, 120 q"],
+    ["Verification", "542/542 anchors verbatim (machine); 2 \u00d7 149-item machine reviews 0/144 flags; human \u03b1 0.45 (0.30 excl. planted)"],
+  ], { x: 0.6, y: 1.55, w: 5.3, colW: [1.6, 3.7], fontSize: 9.5, rowH: 0.5 });
+  table(s, [
+    ["Benchmark", "Real KB chain", "Dates", "\u2265 3 states / slot", "Point-in-time Q", "Chain aggregation Q", "Superseded value = gold"],
+    [{ text: "WikiState v2.5", options: { bold: true } }, "\u2713", "\u2713", "\u2713", "\u2713", "\u2713", "\u2713"],
+    ["StateMemBench 2608.19652", "\u2717 (program)", "\u2717", "partial", "\u2717", "\u2717", "\u2717 (drift = error)"],
+    ["MemTrace 2606.17328", "\u2717", "\u2717", "partial", "\u2717", "\u2717", "\u2713 (historical Q)"],
+    ["Ground Truth First 2607.21962", "\u2717 (script)", "\u2713", "partial", "partial", "\u2717", "partial"],
+    ["MemOps 2607.12893", "\u2717", "\u2717", "partial", "\u2717", "\u2717", "partial"],
+    ["Memora / HorizonBench / DynamicMem", "\u2717", "\u2713", "\u2713 / \u2717 / partial", "\u2717", "\u2717", "\u2717 (old = error)"],
+    ["TimelineQA 2023", "\u2717 (templates)", "\u2713", "partial", "partial", "\u2713", "\u2717 (no supersession)"],
+    ["STALE / MemConflict", "\u2717", "partial", "\u2717", "\u2717 / partial", "\u2717", "\u2717 / partial"],
+    ["LongMemEval / LoCoMo", "\u2717", "\u2713", "\u2717", "\u2717", "\u2717", "\u2717"],
+    ["Temporal Wiki / ChronoScope", "snapshots / parametric", "\u2713", "partial / \u2717", "\u2713", "\u2717", "partial / \u2717"],
+  ], { x: 6.1, y: 1.55, w: 6.6, colW: [2.2, 0.85, 0.55, 0.8, 0.7, 0.75, 0.75], fontSize: 8.5, rowH: 0.42 });
+  s.addText("Only WikiState has all three of point-in-time questions, chain-aggregation questions, and a superseded value as the gold answer \u2014 together these define query-conditioned validity: the same memory is wrong for \u201cnow\u201d and right for \u201c2009\u201d or \u201chow many times\u201d. Boundaries stated with it: LLM-rendered dialogue, assistant turns stored truncated, filler anachronisms (1,014, not touching gold), residence under-represented (11 chains), main field reused during development (holdout matches within 0.07 pp).", { x: 0.6, y: 6.15, w: 12.1, h: 0.85, fontFace: BFONT, fontSize: 10, color: INK, margin: 0 });
+  footer(s, n);
+}
 // ---------- 5 change 2: review infrastructure ----------
 {
   const s = pres.addSlide(); n++;
