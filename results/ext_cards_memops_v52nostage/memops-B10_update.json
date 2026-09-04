@@ -1,0 +1,253 @@
+{
+ "uid": "memops-B10_update",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "I got her registered at Dr. Patel's clinic on Elm Street under my last name, Chen",
+   "entity": "user",
+   "slot": "veterinary_clinic",
+   "value": "Dr. Patel's clinic on Elm Street",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:veterinary clinic"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B10_update/s19#r2",
+   "source_span": "Her first checkup was on April 8th at Dr. Patel's clinic on Elm Street, and they recorded her weight at 1.2 kg",
+   "entity": "Mochi",
+   "slot": "weight",
+   "value": "1.2 kg",
+   "stated_date": "2024-04-08",
+   "owner": "Mochi",
+   "slot_class": "other:weight"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B10_update/s19#r3",
+   "source_span": "She's a calico, mostly white with orange and black patches on her face",
+   "entity": "Mochi",
+   "slot": "appearance",
+   "value": "calico, mostly white with orange and black patches on her face",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:appearance"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B10_update/s19#r4",
+   "source_span": "The vet recommended a kitten food brand called NutriPaws, the indoor kitten formula",
+   "entity": "Mochi",
+   "slot": "food",
+   "value": "NutriPaws indoor kitten formula",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:food"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B10_update/s19#r6",
+   "source_span": "It says 1.4 kg, not 1.2. I must have misremembered. Please use 1.4 kg",
+   "entity": "Mochi",
+   "slot": "weight",
+   "value": "1.4 kg",
+   "stated_date": "2024-04-08",
+   "owner": "Mochi",
+   "slot_class": "other:weight"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B10_update/s19#r8",
+   "source_span": "My roommate Sara has a golden retriever named Biscuit, and she takes him to the same clinic",
+   "entity": "Sara",
+   "slot": "pet_name",
+   "value": "Biscuit",
+   "stated_date": "",
+   "owner": "Sara",
+   "slot_class": "other:pet name"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B10_update/s19#r8",
+   "source_span": "My roommate Sara has a golden retriever named Biscuit",
+   "entity": "Biscuit",
+   "slot": "breed",
+   "value": "golden retriever",
+   "stated_date": "",
+   "owner": "Biscuit",
+   "slot_class": "other:breed"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B10_update/s19#r8",
+   "source_span": "Mochi and Biscuit are still getting used to each other",
+   "entity": "user",
+   "slot": "household_composition",
+   "value": "lives with roommate Sara and her golden retriever Biscuit",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "position"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B10_update/s40#r6",
+   "source_span": "Mochi's next scheduled vaccination is on June 10th. Dr. Patel said it's for her FVRCP booster",
+   "entity": "Mochi",
+   "slot": "vaccination_schedule",
+   "value": "FVRCP booster on June 10th",
+   "stated_date": "2024-06-10",
+   "owner": "Mochi",
+   "slot_class": "other:vaccination schedule"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B10_update/s40#r8",
+   "source_span": "I took Mochi in for a follow-up weigh-in last week and she's now at 1.9 kg",
+   "entity": "Mochi",
+   "slot": "weight",
+   "value": "1.9 kg",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:weight"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B10_update/s40#r10",
+   "source_span": "Mochi has started responding to her name when I call her",
+   "entity": "Mochi",
+   "slot": "behavior",
+   "value": "responds to her name by flicking ears and trotting over",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:behavior"
+  },
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B10_update/s43#r2",
+   "source_span": "I'm planning on traveling soon",
+   "entity": "user",
+   "slot": "travel_plan",
+   "value": "planning a trip",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:travel plan"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B10_update/s46#r0",
+   "source_span": "Mochi's current recorded weight",
+   "entity": "Mochi",
+   "slot": "weight",
+   "value": "1.9 kg",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:weight"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B10_update/s46#r2",
+   "source_span": "Dr. Patel's clinic on Elm Street",
+   "entity": "Mochi",
+   "slot": "veterinarian",
+   "value": "Dr. Patel's clinic on Elm Street",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:veterinarian"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B10_update/s46#r2",
+   "source_span": "PetGuard Plus",
+   "entity": "Mochi",
+   "slot": "pet_insurance",
+   "value": "PetGuard Plus",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:pet insurance"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B10_update/s46#r3",
+   "source_span": "your last name, Chen",
+   "entity": "user",
+   "slot": "last_name",
+   "value": "Chen",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:last name"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B10_update/s46#r4",
+   "source_span": "another weigh-in next Tuesday",
+   "entity": "Mochi",
+   "slot": "scheduled_vet_visit",
+   "value": "weigh-in next Tuesday",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:scheduled vet visit"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B10_update/s46#r4",
+   "source_span": "she'll probably be around 2.3 kg by then",
+   "entity": "Mochi",
+   "slot": "projected_weight",
+   "value": "2.3 kg",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:projected weight"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B10_update/s46#r7",
+   "source_span": "NutriPaws formula",
+   "entity": "Mochi",
+   "slot": "diet",
+   "value": "NutriPaws indoor kitten formula",
+   "stated_date": "",
+   "owner": "Mochi",
+   "slot_class": "other:diet"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B10_update/s46#r7",
+   "source_span": "FVRCP booster scheduled for June 10th",
+   "entity": "Mochi",
+   "slot": "scheduled_vaccination",
+   "value": "FVRCP booster",
+   "stated_date": "2024-06-10",
+   "owner": "Mochi",
+   "slot_class": "other:scheduled vaccination"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B10_update/s47#r10",
+   "source_span": "my coworker Lisa",
+   "entity": "Lisa",
+   "slot": "relationship",
+   "value": "coworker",
+   "stated_date": "",
+   "owner": "Lisa",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B10_update/s47#r10",
+   "source_span": "Lisa just got a calico kitten she named Dumpling",
+   "entity": "Lisa",
+   "slot": "pet",
+   "value": "calico kitten named Dumpling",
+   "stated_date": "",
+   "owner": "Lisa",
+   "slot_class": "other:pet"
+  }
+ ],
+ "usage_in": 92372,
+ "usage_out": 2327,
+ "schema": "slim",
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 2
+}

@@ -1,0 +1,209 @@
+{
+ "uid": "memops-B14_remember",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B14_remember/s2#r2",
+   "source_span": "Kevin's girlfriend Mia lived in Seattle until 2021 before moving to be closer to Kevin.",
+   "entity": "Mia",
+   "slot": "residence",
+   "value": "Seattle",
+   "stated_date": "2021",
+   "owner": "Mia",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B14_remember/s2#r3",
+   "source_span": "Kevin was in Portland until 2022",
+   "entity": "Kevin",
+   "slot": "residence",
+   "value": "Portland",
+   "stated_date": "2022",
+   "owner": "Kevin",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B14_remember/s3#r0",
+   "source_span": "Mia loves seafood and orders shrimp dishes whenever they go to Thai restaurants.",
+   "entity": "Mia",
+   "slot": "food_preference",
+   "value": "seafood, shrimp dishes",
+   "stated_date": "",
+   "owner": "Mia",
+   "slot_class": "other:food preference"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-B14_remember/s4#r4",
+   "source_span": "Kevin doesn't eat any dairy at all. It's been that way for a while now.",
+   "entity": "Kevin",
+   "slot": "dietary_restriction",
+   "value": "no dairy",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:dietary restriction"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-B14_remember/s4#r6",
+   "source_span": "Kevin stopped eating eggs about two years ago.",
+   "entity": "Kevin",
+   "slot": "dietary_restriction",
+   "value": "no eggs",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:dietary restriction"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-B14_remember/s5#r10",
+   "source_span": "Mia mentioned she recently started eating dairy again after being dairy-free for years. She said she missed cheese too much.",
+   "entity": "Mia",
+   "slot": "dietary_restriction",
+   "value": "dairy (resumed)",
+   "stated_date": "",
+   "owner": "Mia",
+   "slot_class": "other:dietary restriction"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-B14_remember/s6#r2",
+   "source_span": "I thought about going vegetarian myself after seeing how Kevin eats, but I decided I couldn't give up steak.",
+   "entity": "user",
+   "slot": "dietary_preference",
+   "value": "eats meat, including steak",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:dietary preference"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-B14_remember/s12#r2",
+   "source_span": "Kevin's girlfriend Mia lived in Seattle until 2021 before moving to be closer to Kevin. She said Seattle had a great food scene too, but different from Portland's.",
+   "entity": "Mia",
+   "slot": "residence_history",
+   "value": "Seattle until 2021, then moved to be closer to Kevin",
+   "stated_date": "2021",
+   "owner": "Mia",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-B14_remember/s12#r14",
+   "source_span": "Kevin avoids seafood too. I found that out when he asked them to leave out the shrimp paste and fish sauce at a Thai restaurant.",
+   "entity": "Kevin",
+   "slot": "dietary_restriction",
+   "value": "no seafood, no fish sauce, no shrimp paste",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:dietary restriction"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-B14_remember/s12#r16",
+   "source_span": "Kevin lived in Portland until 2022. He mentioned that cold sesame noodles reminded him of a spot he used to go to there. He seems to have a real fondness for that style of food — noodle dishes, tofu preparations, things like that. Portland apparently had great options for his way of eating.",
+   "entity": "Kevin",
+   "slot": "residence_history",
+   "value": "Portland until 2022",
+   "stated_date": "2022",
+   "owner": "Kevin",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-B14_remember/s12#r16",
+   "source_span": "He seems to have a real fondness for that style of food — noodle dishes, tofu preparations, things like that.",
+   "entity": "Kevin",
+   "slot": "food_preference",
+   "value": "noodle dishes, tofu preparations, plant-based food",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:food preference"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-B14_remember/s12#r18",
+   "source_span": "Kevin asked them to make the mapo tofu without the ground pork. He doesn't eat meat either.",
+   "entity": "Kevin",
+   "slot": "dietary_restriction",
+   "value": "no meat",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:dietary restriction"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-B14_remember/s12#r20",
+   "source_span": "Mia said Kevin used to avoid gluten for a while, but that phase is completely over. He's eating bread and noodles again with no issues.",
+   "entity": "Kevin",
+   "slot": "dietary_restriction_history",
+   "value": "gluten avoidance (past, no longer followed)",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:dietary restriction history"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B14_remember/s36#r4",
+   "source_span": "Kevin genuinely loves plant-based food. He gets excited about tofu dishes and always gravitates toward grain bowls and roasted vegetable plates.",
+   "entity": "Kevin",
+   "slot": "food_preference",
+   "value": "plant-based food, tofu dishes, grain bowls, roasted vegetables",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:food preference"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-B14_remember/s36#r6",
+   "source_span": "We've been doing regular dinners together more often lately. We've been getting dinner together more often lately, starting around March 8th.",
+   "entity": "user",
+   "slot": "relationship_activity",
+   "value": "regular dinners with Kevin since early March",
+   "stated_date": "2024-03-08",
+   "owner": "user",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-B14_remember/s13#r4",
+   "source_span": "Lisa mentioned that her brother stopped eating eggs last month due to an allergy diagnosis.",
+   "entity": "Lisa's brother",
+   "slot": "dietary_restriction",
+   "value": "no eggs (due to allergy)",
+   "stated_date": "",
+   "owner": "Lisa's brother",
+   "slot_class": "other:dietary restriction"
+  },
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-B14_remember/s48#r8",
+   "source_span": "I'm looking to move to Partick",
+   "entity": "user",
+   "slot": "planned_residence",
+   "value": "Partick",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B14_remember/s48#r10",
+   "source_span": "I'll definitely check those places out when I move to Partick",
+   "entity": "user",
+   "slot": "planned_residence",
+   "value": "Partick",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  }
+ ],
+ "usage_in": 95727,
+ "usage_out": 2068,
+ "schema": "slim",
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 2
+}

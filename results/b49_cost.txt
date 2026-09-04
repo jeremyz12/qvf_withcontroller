@@ -1,0 +1,26 @@
+# 批 49 成本(按 usage 字段与挂牌价:sonnet-5 $2/$10,haiku-4.5 $1/$5 per M)
+build wt_cards_v51L (30 stores)                              $0.99
+build ext_cards_stale_v51_lane4 (40 stores)                  $1.42
+build ext_cards_stale_v51_general (40 stores)                $3.78
+build ext_cards_memops_v51_lane4 (40 stores)                 $0.82
+build ext_cards_memops_v51_general (40 stores)               $1.89
+build wt_cards_v52 (144 stores)                              $3.54
+build wt_cards_v53s (36 stores)                              $3.48
+build ext_cards_stale_v52nostage (20 stores)                 $5.43
+build ext_cards_memops_v52nostage (20 stores)                $2.19
+entail b49L                                                  $0.27
+entail b49v52                                                $1.03
+entail b49v53s                                               $0.31
+reader b48_smoc_v51f_sonnet5.jsonl (140 q)                   $1.39
+reader b49_smoc_v52f_haiku_run1.jsonl (560 q)                $1.83
+reader b49_smoc_v52f_haiku_run2.jsonl (560 q)                $1.84
+reader b49_smoc_v52f_sonnet5.jsonl (140 q)                   $1.40
+reader b49_smoc_v53sf_haiku.jsonl (140 q)                    $0.60
+reader b49_ledger_L2_v51Lf_haiku.jsonl (120 q)               $0.47
+reader b49_slot_L2_v51Lf_haiku.jsonl (120 q)                 $0.38
+reader b49_ledger_L2_v51Lf_sonnet5.jsonl (120 q)             $1.55
+reader b49_slot_L2_v51Lf_sonnet5.jsonl (120 q)               $1.29
+subtotal                                                     $35.90
+arena readers + judges (6 runs, haiku, est.)                 $1.50
+embeddings (est.)                                            $0.30
+TOTAL (est.)                                                 $37.70

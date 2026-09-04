@@ -1,0 +1,231 @@
+{
+ "uid": "memops-A04_reflect",
+ "records": [
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A04_reflect/s0#r2",
+   "source_span": "I moved here February 3rd",
+   "entity": "user",
+   "slot": "move_date",
+   "value": "February 3rd",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:move date"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A04_reflect/s0#r2",
+   "source_span": "I moved here February 3rd",
+   "entity": "user",
+   "slot": "residence",
+   "value": "Portland",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-A04_reflect/s0#r4",
+   "source_span": "I've been going to Heart Coffee almost every morning since I moved",
+   "entity": "user",
+   "slot": "coffee_habit",
+   "value": "Heart Coffee, pour-over, no syrups",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:coffee habit"
+  },
+  {
+   "record_id": "r4",
+   "source_memory_id": "memops-A04_reflect/s0#r6",
+   "source_span": "I really miss the farmers markets in Tucson where you'd just get a bunch of tomatoes in a paper bag",
+   "entity": "user",
+   "slot": "food_sourcing_preference",
+   "value": "farmers markets, minimal packaging, simple ingredients",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:food sourcing preference"
+  },
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "my apartment is closer to 26th",
+   "entity": "user",
+   "slot": "residence_location",
+   "value": "SE Division Street near 26th, Portland",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r6",
+   "source_memory_id": "memops-A04_reflect/s0#r8",
+   "source_span": "my lease here runs through January 31st of next year",
+   "entity": "user",
+   "slot": "lease_end_date",
+   "value": "January 31st",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:lease end date"
+  },
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-A04_reflect/s2#r0",
+   "source_span": "Nadia and I went out to dinner last night on Division Street",
+   "entity": "Nadia",
+   "slot": "relationship",
+   "value": "friend",
+   "stated_date": "",
+   "owner": "Nadia",
+   "slot_class": "relationship"
+  },
+  {
+   "record_id": "r8",
+   "source_memory_id": "memops-A04_reflect/s2#r0",
+   "source_span": "She picked the restaurant. Nadia is really into the artisanal food scene here",
+   "entity": "Nadia",
+   "slot": "food_preference",
+   "value": "artisanal food, complex seasonal flavor pairings, fancy restaurants",
+   "stated_date": "",
+   "owner": "Nadia",
+   "slot_class": "other:food preference"
+  },
+  {
+   "record_id": "r9",
+   "source_memory_id": "memops-A04_reflect/s4#r0",
+   "source_span": "I went to the PSU Farmers Market on April 12th",
+   "entity": "user",
+   "slot": "farmers_market_visit",
+   "value": "PSU Farmers Market",
+   "stated_date": "2024-04-12",
+   "owner": "user",
+   "slot_class": "other:farmers market visit"
+  },
+  {
+   "record_id": "r10",
+   "source_memory_id": "memops-A04_reflect/s4#r2",
+   "source_span": "my community garden plot is number 14 at Ladybug Community Garden",
+   "entity": "user",
+   "slot": "garden_plot",
+   "value": "plot 14, Ladybug Community Garden",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:garden plot"
+  },
+  {
+   "record_id": "r11",
+   "source_memory_id": "memops-A04_reflect/s4#r2",
+   "source_span": "I'm planning to grow basil, lettuce, and radishes",
+   "entity": "user",
+   "slot": "garden_plants",
+   "value": "basil, lettuce, radishes",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:garden plants"
+  },
+  {
+   "record_id": "r12",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "I explored the Hawthorne district last week. I went to the smaller Powell's location on Hawthorne",
+   "entity": "user",
+   "slot": "location_preference",
+   "value": "Hawthorne district, smaller Powell's location",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r13",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "my friend Nadia is the one who got me to look at the Division Street area. She works at OHSU up on the hill. She moved to Portland about a year before me",
+   "entity": "Nadia",
+   "slot": "employer",
+   "value": "OHSU",
+   "stated_date": "",
+   "owner": "Nadia",
+   "slot_class": "employer"
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-A04_reflect/s4#r6",
+   "source_span": "She moved to Portland about a year before me",
+   "entity": "Nadia",
+   "slot": "residence",
+   "value": "Portland",
+   "stated_date": "",
+   "owner": "Nadia",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-A04_reflect/s6#r8",
+   "source_span": "One of Nadia's coworkers from OHSU goes to the PSU market every Saturday too",
+   "entity": "Nadia",
+   "slot": "coworker_location",
+   "value": "OHSU",
+   "stated_date": "",
+   "owner": "Nadia",
+   "slot_class": "location"
+  },
+  {
+   "record_id": "r16",
+   "source_memory_id": "memops-A04_reflect/s13#r7",
+   "source_span": "I noticed that your old Tucson zip code 85719 is still listed as the shipping address",
+   "entity": "user",
+   "slot": "former_residence",
+   "value": "Tucson, zip code 85719",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "residence"
+  },
+  {
+   "record_id": "r17",
+   "source_memory_id": "memops-A04_reflect/s13#r10",
+   "source_span": "A friend of mine who works at a specialty food shop told me they're going to start carrying high-end flavored olive oils and truffle-infused sauces, and she's convinced I'll love them",
+   "entity": "user",
+   "slot": "friend_recommendation",
+   "value": "specialty food shop, flavored olive oils, truffle-infused sauces",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:friend recommendation"
+  },
+  {
+   "record_id": "r18",
+   "source_memory_id": "memops-A04_reflect/s14#r2",
+   "source_span": "I was at the garden this morning watering my plot. My neighbor at Ladybug has plot 12 and she's growing tomatoes, peppers, and kale",
+   "entity": "user",
+   "slot": "garden_neighbor",
+   "value": "plot 12, grows tomatoes peppers kale",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:garden neighbor"
+  },
+  {
+   "record_id": "r1",
+   "source_memory_id": "memops-A04_reflect/s48#r8",
+   "source_span": "I own a small business myself",
+   "entity": "user",
+   "slot": "business_ownership",
+   "value": "small business owner",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:business ownership"
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-A04_reflect/s48#r8",
+   "source_span": "I've been looking for ways to retain more customers",
+   "entity": "user",
+   "slot": "business_focus",
+   "value": "customer retention",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:business focus"
+  }
+ ],
+ "usage_in": 87064,
+ "usage_out": 2119,
+ "schema": "slim",
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 2
+}
