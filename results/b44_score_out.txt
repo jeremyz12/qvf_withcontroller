@@ -1,0 +1,111 @@
+# Batch 44 score — render-matched control vs smoc/smw/smwplain (reader claude-haiku-4-5 / judge = 33-A)
+
+## 0. Row counts + qid-set check vs data/wsc_s5_v25.jsonl (560)
+
+| arm | rows loaded | symdiff vs 560 | status |
+|---|---|---|---|
+| smoc | 560 | n/a(supset) | PASS(subset) |
+| smw | 560 | n/a(supset) | PASS(subset) |
+| smwplain | 560 | n/a(supset) | PASS(subset) |
+| direct | 560 | n/a(supset) | PASS(subset) |
+| renderonly | 560 | 0 | PASS |
+| renderraw | 560 | 0 | PASS |
+
+## 1. Headline accuracy (560 q)
+
+| arm | n | accuracy |
+|---|---|---|
+| smoc | 560 | 89.29 |
+| smw | 560 | 86.61 |
+| smwplain | 560 | 54.46 |
+| direct | 560 | 47.32 |
+| renderonly | 560 | 85.00 |
+| renderraw | 560 | 85.36 |
+
+## 2. Cost / tokens / rendered rows
+
+| arm | mean in tok | mean out tok | mean rendered_rows | median latency s |
+|---|---|---|---|---|
+| smoc | 2937 | 476 | n/a | 4.84 |
+| smw | 13921 | 454 | n/a | 7.84 |
+| smwplain | 13672 | 136 | n/a | 5.46 |
+| direct | 878 | 86 | n/a | 1.55 |
+| renderonly | 557 | 470 | 5.75 | 4.94 |
+| renderraw | 880 | 503 | 8.11 | 5.26 |
+
+## 3. Per question type
+
+| arm | change_count | count_before | first_vs_last | longest_tenure |
+|---|---|---|---|---|
+| smoc | 85.4 | 86.8 | 94.4 | 90.6 |
+| smw | 64.6 | 91.0 | 99.3 | 92.2 |
+| smwplain | 31.9 | 67.4 | 75.7 | 41.4 |
+| direct | 35.4 | 42.4 | 79.9 | 29.7 |
+| renderonly | 82.6 | 79.9 | 91.0 | 86.7 |
+| renderraw | 66.0 | 84.7 | 98.6 | 93.0 |
+
+## 4. Selection-tier breakdown (renderonly / renderraw)
+
+### renderonly
+  alias-kw         n=18   acc=72.2%
+  chain-crosswalk  n=298  acc=88.3%
+  fallback-full    n=20   acc=80.0%
+  literal-slot     n=224  acc=82.1%
+
+### renderraw
+  keyword-hit      n=560  acc=85.4%
+
+
+## 5. Paired comparisons (task-specified four pairs + auxiliary)
+
+### smoc vs render-only
+  n=560 ti / 144 lian | delta=-4.29pp  b/c=45/21  McNemar p=0.00427
+  chain sign test 16W/32L/96T p=0.0293 | cluster boot 95% CI [-7.83,-0.89]pp
+
+### render-only vs smwplain
+  n=560 ti / 144 lian | delta=+30.54pp  b/c=37/208  McNemar p=4.46e-30
+  chain sign test 105W/16L/23T p=3.16e-17 | cluster boot 95% CI [+24.46,+36.49]pp
+
+### render-only vs smw
+  n=560 ti / 144 lian | delta=-1.61pp  b/c=64/55  McNemar p=0.463
+  chain sign test 38W/38L/68T p=1 | cluster boot 95% CI [-6.23,+3.02]pp
+
+### render-raw vs smwplain
+  n=560 ti / 144 lian | delta=+30.89pp  b/c=25/198  McNemar p=1.38e-34
+  chain sign test 110W/6L/28T p=7.55e-26 | cluster boot 95% CI [+26.20,+35.59]pp
+
+### [aux] smoc vs render-raw
+  n=560 ti / 144 lian | delta=-3.93pp  b/c=61/39  McNemar p=0.0352
+  chain sign test 22W/41L/81T p=0.0226 | cluster boot 95% CI [-8.17,+0.36]pp
+
+### [aux] render-only vs render-raw
+  n=560 ti / 144 lian | delta=+0.36pp  b/c=58/60  McNemar p=0.927
+  chain sign test 40W/41L/63T p=1 | cluster boot 95% CI [-4.48,+5.18]pp
+
+### [aux] smoc vs smwplain (total gap)
+  n=560 ti / 144 lian | delta=+34.82pp  b/c=27/222  McNemar p=2.66e-39
+  chain sign test 114W/7L/23T p=5.05e-26 | cluster boot 95% CI [+29.68,+39.96]pp
+
+
+## 6. Decomposition: layout share vs mechanism share
+
+overall (560 q):
+  acc(smwplain)=54.46  acc(render-only)=85.00  acc(smoc)=89.29
+  layout share (render-only - smwplain)   = +30.54pp
+  mechanism share (smoc - render-only)     = +4.29pp
+  total (smoc - smwplain)                  = +34.82pp (check: layout+mech = +34.82pp)
+  [context] acc(render-raw)=85.36  acc(smw)=86.61
+
+per question type:
+| qtype | smwplain | render-raw | render-only | smoc | layout(ro-swp) | mechanism(smoc-ro) | total(smoc-swp) |
+|---|---|---|---|---|---|---|---|
+| change_count | 31.9 | 66.0 | 82.6 | 85.4 | +50.7 | +2.8 | +53.5 |
+| count_before | 67.4 | 84.7 | 79.9 | 86.8 | +12.5 | +6.9 | +19.4 |
+| first_vs_last | 75.7 | 98.6 | 91.0 | 94.4 | +15.3 | +3.5 | +18.8 |
+| longest_tenure | 41.4 | 93.0 | 86.7 | 90.6 | +45.3 | +3.9 | +49.2 |
+
+## 7. Hypothesis verdicts (thresholds fixed in prereg, not adjusted post hoc)
+
+H1 (mechanism share exists): acc(smoc)-acc(render-only) = +4.29pp vs threshold >=+5pp -> REJECTED
+H2 (layout share exists): acc(render-only)-acc(smwplain) = +30.54pp vs threshold >=+10pp -> CONFIRMED
+H3 (mechanism gap concentrated in change_count/count_before): mean(change_count,count_before)=+4.86pp vs mean(first_vs_last,longest_tenure)=+3.69pp, diff=+1.17pp vs threshold >=+5pp -> REJECTED
