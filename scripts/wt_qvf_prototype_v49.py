@@ -270,6 +270,36 @@ class CatalogExtractionSlimKeys(BaseModel):
     )
 
 
+class SlimRecordKeys2(SlimRecordKeys):
+    """QVF_CARD_SLIM=2(批 50,通用版契约):精简契约 + 规范键 + 两个可选字段。
+    ended:文本明确结束一个状态且没有新值(quit / canceled / no longer / stopped);
+    condition:值只在明确条件下成立(at work / on weekends ...)。批 49 在 STALE 上
+    发现删掉这两个字段有代价(dim3 −20),在 WikiState / MemOps 上无用。"""
+    ended: bool = Field(
+        default=False,
+        description="true ONLY when the text explicitly ENDS this state with no new value "
+                    "(quit, canceled, no longer, stopped, moved out); value is then the state that ended.")
+    condition: str = Field(
+        default="",
+        description="If this value holds only under an explicit condition or context "
+                    "(at work, on weekends, when traveling ...), state it briefly; empty otherwise.")
+
+
+class CatalogExtractionSlimKeys2(BaseModel):
+    records: List[SlimRecordKeys2] = Field(
+        description="Every personal-state fact found in the memories."
+    )
+
+
+_SLIM2_RULES = """8. ended: set true ONLY when the text explicitly ENDS a state with no new value
+   ("I quit the gym", "canceled that subscription", "no longer ..."); the
+   record's value is the state that ended. Otherwise false.
+9. condition: when a value explicitly holds only in a context ("my work
+   address", "on weekends I stay at ..."), record that context briefly;
+   empty string otherwise.
+"""
+
+
 CATALOG_PROMPT = """\
 You are a memory cataloger for a personal AI assistant. You will be given ALL
 memory rounds of one user's history (each with memory_id, date, text). Catalog
@@ -490,6 +520,11 @@ def _catalog_prompt() -> str:
     base = CATALOG_PROMPT_V4 if _CARD_KEYS else CATALOG_PROMPT
     if _CARD_SLIM:
         base = _slim_prompt(CATALOG_PROMPT_V4) if _CARD_KEYS else CATALOG_PROMPT_SLIM
+        if _CARD_SLIM >= 2:
+            # 通用版契约:补 ended / condition 两条规则,编号接在现有规则之后
+            n_rules = len(re.findall(r"^\d\. ", base, flags=re.M))
+            rules = _SLIM2_RULES.replace("8. ", f"{n_rules + 1}. ", 1).replace("9. ", f"{n_rules + 2}. ", 1)
+            base = base + rules
     if _CARD_TAGS == 1:
         base = base + _CATALOG_TAGS_RULE.format(n=8 if _CARD_KEYS else 6)
     elif _CARD_TAGS >= 2:
@@ -620,7 +655,7 @@ def write_phase(data_path: str, limit_items: int = 0,
                              "text": _catalog_prompt(),
                              "cache_control": {"type": "ephemeral"}}],
                     messages=[{"role": "user", "content": _user}],
-                    output_format=(CatalogExtractionSlimKeys if _CARD_KEYS else CatalogExtractionSlim) if _CARD_SLIM else CatalogExtraction,
+                    output_format=(CatalogExtractionSlimKeys2 if (_CARD_SLIM >= 2 and _CARD_KEYS) else CatalogExtractionSlimKeys if _CARD_KEYS else CatalogExtractionSlim) if _CARD_SLIM else CatalogExtraction,
                     **_kw,
                 )
                 cat = resp.parsed_output

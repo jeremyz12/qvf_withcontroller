@@ -122,6 +122,20 @@ def render_transcript(sessions, shuffle_uid: str = "") -> str:
     return out[-TAIL_GUARD:] if len(out) > TAIL_GUARD else out
 
 
+def _val_flags(r: dict) -> str:
+    """批 50:QVF_LEDGER_FLAGS=1 时把通用版契约的 ended / condition 渲染进值;默认关,
+    旧账目逐字节不变。"""
+    v = str(r.get("value", "?"))
+    if os.environ.get("QVF_LEDGER_FLAGS", "") != "1":
+        return v
+    if r.get("ended"):
+        v = "ENDED: " + v
+    c = (r.get("condition") or "").strip()
+    if c:
+        v = f"{v} (only: {c})"
+    return v
+
+
 def render_card_ledger(uid: str, entry: dict, cards_dir: str = "",
                        shuffle: bool = False) -> str:
     """smoc 臂:卡片账目替代原文 transcript。日期经 _mem_dates 映射
@@ -161,7 +175,7 @@ def render_card_ledger(uid: str, entry: dict, cards_dir: str = "",
                 else:
                     span = (r.get("source_span") or "")[:120]
                     lines.append(f'[entry {n}] {date} | {r.get("slot", "?")}: '
-                                 f'{r.get("value", "?")} — "{span}"')
+                                 f'{_val_flags(r)} — "{span}"')
             if rest:
                 from collections import Counter
                 cnt = Counter((r.get("slot") or "?") for _, r in rest)
@@ -175,7 +189,7 @@ def render_card_ledger(uid: str, entry: dict, cards_dir: str = "",
     for n, (d, r) in enumerate(rows, 1):
         span = (r.get("source_span") or "")[:120]
         lines.append(f'[entry {n}] {d if d != "9999" else "undated"} | '
-                     f'{r.get("slot", "?")}: {r.get("value", "?")} — "{span}"')
+                     f'{r.get("slot", "?")}: {_val_flags(r)} — "{span}"')
     return "\n".join(lines)
 
 
@@ -234,7 +248,7 @@ def render_ledger_plus(uid: str, entry: dict, t_q: str,
         span = (r.get("source_span") or "")[:120]
         tail = f'  [role: {role_of.get(i, "?")}]' if roles else ""
         lines.append(f'[entry {n}] {d} | {r.get("slot", "?")}: '
-                     f'{r.get("value", "?")} — "{span}"{tail}')
+                     f'{_val_flags(r)} — "{span}"{tail}')
     if calc:
         lines.append("")
         lines.append("[computed slot summaries — derived by code from the "

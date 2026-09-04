@@ -36,7 +36,7 @@ ROOT = Path(r"D:\ZZL_cluade")
 MODEL = os.environ.get("QVF_ENTAIL_MODEL", "claude-haiku-4-5")
 PRICE_IN, PRICE_OUT = 1.0, 5.0  # $/M, haiku-4.5 list price
 
-KEEP = {"start", "unclear", "unjudged"}  # 与 38-E 同语义:plan/task/other_person/restate 丢;新增 hypothetical/ended 丢;restate 的去留由离线评分另行比较(_ent 店保留全部标签)
+KEEP = {"start", "unclear", "unjudged", "ended"}  # 批 50 起保留 ended(状态结束卡只标记不丢,STALE 类考场需要);与 38-E 同语义:plan/task/other_person/restate 丢;新增 hypothetical/ended 丢;restate 的去留由离线评分另行比较(_ent 店保留全部标签)
 
 SYSTEM = """You are auditing ONE extracted memory card against the sentence it was taken from.
 A card claims that the SPEAKER (first person, "I") holds a personal state: slot = value
