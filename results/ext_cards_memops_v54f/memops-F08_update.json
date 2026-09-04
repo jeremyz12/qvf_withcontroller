@@ -1,0 +1,52 @@
+{
+ "uid": "memops-F08_update",
+ "usage_in": 96923,
+ "usage_out": 1969,
+ "schema": "slim",
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 2,
+ "records": [
+  {
+   "record_id": "r5",
+   "source_memory_id": "memops-F08_update/s0#r15",
+   "source_span": "I'd had a rough day at work and took it out on her",
+   "entity": "user",
+   "slot": "work_stress",
+   "value": "had a rough day at work",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:work stress",
+   "ended": false,
+   "condition": "",
+   "assertion_type": "unclear",
+   "entailed": false,
+   "entail_reason": "The source text does not contain the quoted span 'I'd had a rough day at work and took it out on her' — it only paraphrases this as 'being short with a parent after a tough work day,' which is the assistant's interpretation, not the speaker's direct assertion."
+  },
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-F08_update/s47#r0",
+   "source_span": "I think that older order had a code like 912",
+   "entity": "user",
+   "slot": "doorDash_order_code",
+   "value": "912",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:doordash order code",
+   "ended": false,
+   "condition": "older Thai food order",
+   "assertion_type": "unclear",
+   "entailed": false,
+   "entail_reason": "The speaker explicitly expresses uncertainty ('I think', 'honestly I'm not sure') and dismisses the relevance of this order, making it impossible to confirm they actually hold this information as a fact."
+  }
+ ],
+ "derived_from": "D:\\ZZL_cluade\\results\\ext_cards_memops_v54",
+ "src_sha256": "a923719d53b499c84f87536810049e0f1e43397c572843e98ef33c6efc42fd41",
+ "entail_model": "claude-haiku-4-5",
+ "entail_keep": [
+  "ended",
+  "start",
+  "unclear",
+  "unjudged"
+ ]
+}

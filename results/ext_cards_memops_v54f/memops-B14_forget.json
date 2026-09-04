@@ -1,0 +1,68 @@
+{
+ "uid": "memops-B14_forget",
+ "usage_in": 90317,
+ "usage_out": 2575,
+ "schema": "slim",
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 2,
+ "records": [
+  {
+   "record_id": "r2",
+   "source_memory_id": "memops-B14_forget/s5#r4",
+   "source_span": "Kevin lived in Portland until 2022",
+   "entity": "Kevin",
+   "slot": "residence",
+   "value": "Portland",
+   "stated_date": "2022",
+   "owner": "Kevin",
+   "slot_class": "residence",
+   "ended": true,
+   "condition": "",
+   "assertion_type": "unclear",
+   "entailed": false,
+   "entail_reason": "The source text contains no information about Kevin's residence or Portland; it only discusses his dietary restrictions and Mia's helpfulness."
+  },
+  {
+   "record_id": "r3",
+   "source_memory_id": "memops-B14_forget/s5#r4",
+   "source_span": "cold sesame noodles remind him of a spot he used to go to all the time in Portland",
+   "entity": "Kevin",
+   "slot": "favorite_food_memory",
+   "value": "cold sesame noodles from a restaurant in Portland",
+   "stated_date": "",
+   "owner": "Kevin",
+   "slot_class": "other:favorite food memory",
+   "ended": false,
+   "condition": "",
+   "assertion_type": "unclear",
+   "entailed": false,
+   "entail_reason": "The source text does not mention cold sesame noodles, Portland restaurants, or any food memories at all; the card's content does not appear in the provided text."
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-B14_forget/s42#r2",
+   "source_span": "we started doing regular dinners together around early March, and the first one was March 8th at a Thai place on Elm Street",
+   "entity": "user",
+   "slot": "dining_tradition_start",
+   "value": "regular dinners with Kevin starting March 8th",
+   "stated_date": "2024-03-08",
+   "owner": "user",
+   "slot_class": "other:dining tradition start",
+   "ended": false,
+   "condition": "",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'we started doing regular dinners together around early March, and the first one was March 8th at a Thai place on Elm Street,' directly asserting the beginning of this dining tradition."
+  }
+ ],
+ "derived_from": "D:\\ZZL_cluade\\results\\ext_cards_memops_v54",
+ "src_sha256": "a923719d53b499c84f87536810049e0f1e43397c572843e98ef33c6efc42fd41",
+ "entail_model": "claude-haiku-4-5",
+ "entail_keep": [
+  "ended",
+  "start",
+  "unclear",
+  "unjudged"
+ ]
+}

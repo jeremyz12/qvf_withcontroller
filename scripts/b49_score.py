@@ -59,7 +59,10 @@ def part_arenas():
         runs = {"direct (b19)": old_direct, "smoc old cards (b19)": old_smoc,
                 "smoc v51 lane4": f"results/b49_ext_{arena}_smoc_v51_lane4.rejudged.jsonl",
                 "smoc v51 general": f"results/b49_ext_{arena}_smoc_v51_general.rejudged.jsonl",
-                "smoc v52 no-Stage1 (haiku extractor, 20 stores)": f"results/b49_ext_{arena}_smoc_v52nostage.rejudged.jsonl"}
+                "smoc v52 no-Stage1 (haiku extractor, 20 stores)": f"results/b49_ext_{arena}_smoc_v52nostage.rejudged.jsonl",
+                "smoc v54f general contract (ended+condition, entail, 40 stores)": f"results/b50_ext_{arena}_smoc_v54f.rejudged.jsonl",
+                "smoc v54 general contract, NO filter": f"results/b50_ext_{arena}_smoc_v54raw.rejudged.jsonl",
+                "smoc v54f2 general contract, filter on chain-slot classes only": f"results/b50_ext_{arena}_smoc_v54f2.rejudged.jsonl"}
         D = {}
         for name, p in runs.items():
             d, ti, to = load(p, key="arena_judge_pass")
@@ -71,11 +74,11 @@ def part_arenas():
             for k, v in d.items():
                 byd[k.rsplit("-", 1)[-1] if "-" in k else "?"].append(v)
             print("      " + " | ".join(f"{dim} {100*sum(v)/len(v):.0f}" for dim, v in sorted(byd.items())))
-        for x in ("smoc v51 lane4", "smoc v51 general", "smoc v52 no-Stage1 (haiku extractor, 20 stores)"):
+        for x in ("smoc v51 lane4", "smoc v51 general", "smoc v52 no-Stage1 (haiku extractor, 20 stores)", "smoc v54f general contract (ended+condition, entail, 40 stores)", "smoc v54 general contract, NO filter", "smoc v54f2 general contract, filter on chain-slot classes only"):
             if x in D:
                 for y in ("smoc old cards (b19)", "direct (b19)"):
                     compare(x, D[x], y, D[y])
-                if x.startswith("smoc v52") :
+                if x.startswith("smoc v52") or x.startswith("smoc v54f"):
                     sub = set(D[x])
                     for y in ("smoc old cards (b19)", "direct (b19)", "smoc v51 lane4", "smoc v51 general"):
                         if y in D:

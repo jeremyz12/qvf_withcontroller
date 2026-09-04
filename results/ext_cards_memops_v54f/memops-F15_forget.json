@@ -1,0 +1,68 @@
+{
+ "uid": "memops-F15_forget",
+ "usage_in": 82597,
+ "usage_out": 5787,
+ "schema": "slim",
+ "valnorm": true,
+ "failed_batches": 0,
+ "n_batches": 2,
+ "records": [
+  {
+   "record_id": "r7",
+   "source_memory_id": "memops-F15_forget/s16#r2",
+   "source_span": "I think I have combination skin as my T-zone gets oily but the rest of my face feels dry",
+   "entity": "user",
+   "slot": "skin_type",
+   "value": "combination",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:skin type",
+   "ended": false,
+   "condition": "",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'I think I have combination skin' as their current skin type assessment."
+  },
+  {
+   "record_id": "r14",
+   "source_memory_id": "memops-F15_forget/s48#r14",
+   "source_span": "I've been eating more carefully since all this health stuff came up. I've been making these big salads with lots of raw vegetables and I genuinely enjoy them.",
+   "entity": "user",
+   "slot": "diet",
+   "value": "big salads with raw vegetables",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:diet",
+   "ended": false,
+   "condition": "",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'I've been eating more carefully since all this health stuff came up' and 'I've been making these big salads with lots of raw vegetables', indicating a newly begun dietary practice."
+  },
+  {
+   "record_id": "r15",
+   "source_memory_id": "memops-F15_forget/s48#r14",
+   "source_span": "I picked up a turmeric-ginger tea that I've been drinking almost every evening.",
+   "entity": "user",
+   "slot": "beverage_habit",
+   "value": "turmeric-ginger tea",
+   "stated_date": "",
+   "owner": "user",
+   "slot_class": "other:beverage habit",
+   "ended": false,
+   "condition": "almost every evening",
+   "assertion_type": "start",
+   "entailed": true,
+   "entail_reason": "The speaker states 'I picked up a turmeric-ginger tea that I've been drinking almost every evening,' indicating they acquired and have begun this beverage habit."
+  }
+ ],
+ "derived_from": "D:\\ZZL_cluade\\results\\ext_cards_memops_v54",
+ "src_sha256": "a923719d53b499c84f87536810049e0f1e43397c572843e98ef33c6efc42fd41",
+ "entail_model": "claude-haiku-4-5",
+ "entail_keep": [
+  "ended",
+  "start",
+  "unclear",
+  "unjudged"
+ ]
+}

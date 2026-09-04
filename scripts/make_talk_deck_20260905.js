@@ -262,13 +262,14 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
     ["+ Stage 1 with four WikiState slot queries", "95.7 / 94.3", "25.8 (p = 1e-6)", "43.3 (p = 0.004)", "tuned: below direct read on both arenas"],
     ["+ Stage 1 with 15 general queries", "\u2014", "42.5", "50.0", "recovers half; still below full extraction"],
     ["General contract (+ended, +condition) with a store-wide entailment filter", "91.4 (\u22124.3, p = 0.15)", "23.3", "47.5", "filter drops 76\u201378% of cards on generic memories: the \u2018held state\u2019 semantics are WikiState\u2019s"],
-    ["General contract, filter on state-chain slot classes only", "TBD", "TBD", "TBD", "batch 50, running"],
-  ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 2.4, 2.0, 2.0, 2.7], fontSize: 9.5, rowH: 0.5 });
+    ["General contract, no filter", "91.4", "50.0 (−2.5, p = 0.69)", "48.3 (−13.3, p = 0.007)", "the slim contract itself costs 13 pp on STALE; restoring ended / condition did not recover it"],
+    ["General contract, filter on state-chain slot classes only", "91.4", "47.5 (−5.0, p = 0.38)", "47.5 (−14.2, p = 0.014)", "this filter scope is harmless (−0.8 / −2.5 vs no filter)"],
+  ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 2.4, 2.0, 2.0, 2.7], fontSize: 9, rowH: 0.42 });
   bullets(s, [
-    "What travels: the slim contract, the closed-set slot rule with value normalisation, and the entailment filter restricted to state-chain slot classes (position, employer, team, residence, device, location, relationship).",
-    "What does not: any Stage 1 whose queries name the benchmark\u2019s slots, and any filter that assumes every memory is a first-person held state. Both are now default-off and reported as ablations.",
+    "What travels: the closed-set slot rule with value normalisation, and the entailment filter restricted to state-chain slot classes (harmless on all three arenas).",
+    "What does not: the slim contract (−13 pp on STALE, p = 0.007, even with ended / condition restored), any Stage 1 whose queries name the benchmark’s slots, and a store-wide filter. All three are default-off and reported as WikiState-specific ablations.",
     "The senior labmate\u2019s Stage 1 (\u2018cheap model / embedding / rule\u2019 event localisation, slot-agnostic) has not been tested yet; the four-query version was my shortcut, not his suggestion.",
-  ], { x: 0.6, y: 5.75, w: 12.1, h: 1.2, fontSize: 10.5 });
+  ], { x: 0.6, y: 5.55, w: 12.1, h: 1.4, fontSize: 10 });
   footer(s);
 }
 // ---------- 15 main table ----------
@@ -317,7 +318,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
   title(s, "Feedback received (a senior labmate’s code review, Notion) and what changed", "He read the 27 Aug main branch; verified against current code and results; four items changed, two intentionally not");
   table(s, [
     ["His point", "Verdict after checking", "What changed"],
-    ["claim, value_tags, implies_stale_slots, validity species are unused or guesses", "correct for the ledger path (never read; 42% of card characters); the species prompt belongs to the engine path, not the card builder", "slim contract flag; cessation and condition kept as optional fields because STALE needs them"],
+    ["claim, value_tags, implies_stale_slots, validity species are unused or guesses", "correct for the ledger path (never read; 42% of card characters); the species prompt belongs to the engine path, not the card builder", "slim contract flag; lossless on WikiState but −13 pp on STALE even with cessation / condition restored → WikiState-specific option, not the default"],
     ["owner \u2248 entity, meaningless", "based on old code: main stores had no owner field; it matters only under third-person injection (recovers 92% of an 18.4 pp drop)", "kept as a default-off flag"],
     ["One LLM call decides six things; long context misses states; propose two-stage extraction", "misses measured (haiku 71/542 rows, Sonnet 21 \u2192 14); 14K stores are single-batch, so length is not the cause; regex localiser recalls 12.5\u201365%", "embedding Stage 1 built; lossless on WikiState, tuned elsewhere \u2192 default off"],
     ["Verifier checks substring, not entailment (\u2018considered joining Google\u2019)", "correct; it is exactly the batch 38c finding; keyword rules had two false drops", "entailment verifier with his {entailed, type} output; beats keyword rules with zero gold loss"],
@@ -335,12 +336,12 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
   bullets(s, [
     "Scope is three conditions: non-frontier reader, or store beyond the context window, or cost-bound. A strong reader on a 14K store reads the whole memory as well or better (97.1); the ledger is then the cheaper, auditable layer.",
     "About 88% of the ledger\u2019s gain over plain full text is layout + trajectory protocol; write-time cards earn their place through coverage, de-duplication, auditability and cost.",
-    "The tuned Stage 1 and the store-wide entailment filter are reported only as ablations; the general configuration is the one that goes in the method section.",
+    "The slim contract, the tuned Stage 1 and the store-wide entailment filter are reported only as WikiState-specific ablations; the method section gets the closed-set slot rule, value normalisation and the chain-slot entailment filter, which held on all three arenas.",
     "Synthetic dialogue; assistant turns stored truncated; human agreement fair (\u03b1 0.45 / 0.30); v2.5 human review in progress; extraction is nondeterministic; reader run-to-run sd \u2264 1.6 pp.",
   ], { x: 0.6, y: 1.95, w: 6.0, h: 4.9, fontSize: 11.5 });
   s.addText("Next steps", { x: 7.0, y: 1.5, w: 5.7, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
-    "Finish batch 50: the general contract with the filter restricted to state-chain slots on all three arenas; then rebuild the 144-chain main store with the general configuration and re-run the main table.",
+    "Ablate why the slim contract loses 13 pp on STALE (claim, relation fields, closed-set slots: ~$11 each); rebuild the 144-chain main store with the configuration that held on all three arenas and re-run the main table.",
     "Test the senior labmate\u2019s slot-agnostic Stage 1 (cheap model judging \u2018is this turn a state declaration?\u2019) on WikiState and STALE (~$4).",
     "Finish the v2.5 human evaluation (author, then the two senior reviewers) and report agreement against the machine review.",
     "Paper: \u00a71 claim restated as \u2018validity = f(memory \u00d7 query)\u2019; \u00a72 ancestors (TAC-KBP temporal slot filling) and the 22 newly read neighbours; method section = general configuration; \u00a78 limitations = three conditions + what was tuned.",

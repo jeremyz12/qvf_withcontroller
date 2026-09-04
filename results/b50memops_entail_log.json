@@ -1,0 +1,525 @@
+{
+ "src": "D:\\ZZL_cluade\\results\\ext_cards_memops_v54",
+ "src_sha256": "a923719d53b499c84f87536810049e0f1e43397c572843e98ef33c6efc42fd41",
+ "model": "claude-haiku-4-5",
+ "keep": [
+  "ended",
+  "start",
+  "unclear",
+  "unjudged"
+ ],
+ "stores": {
+  "memops-A04_reflect": {
+   "n": 18,
+   "kept": 7,
+   "types": {
+    "start": 6,
+    "ended": 1,
+    "restate": 2,
+    "task": 4,
+    "other_person": 4,
+    "plan": 1
+   }
+  },
+  "memops-A14_reflect": {
+   "n": 44,
+   "kept": 8,
+   "types": {
+    "plan": 7,
+    "unclear": 2,
+    "restate": 13,
+    "start": 6,
+    "other_person": 6,
+    "task": 9,
+    "hypothetical": 1
+   }
+  },
+  "memops-A29_update": {
+   "n": 47,
+   "kept": 8,
+   "types": {
+    "plan": 7,
+    "restate": 9,
+    "unclear": 3,
+    "start": 5,
+    "task": 7,
+    "other_person": 16
+   }
+  },
+  "memops-A31_forget": {
+   "n": 10,
+   "kept": 6,
+   "types": {
+    "start": 4,
+    "ended": 1,
+    "restate": 1,
+    "unclear": 1,
+    "task": 2,
+    "plan": 1
+   }
+  },
+  "memops-A32_trajectory_ops": {
+   "n": 26,
+   "kept": 8,
+   "types": {
+    "start": 4,
+    "task": 3,
+    "other_person": 3,
+    "ended": 2,
+    "unclear": 2,
+    "plan": 6,
+    "restate": 5,
+    "hypothetical": 1
+   }
+  },
+  "memops-A33_remember": {
+   "n": 29,
+   "kept": 5,
+   "types": {
+    "start": 4,
+    "plan": 5,
+    "restate": 9,
+    "other_person": 7,
+    "unclear": 1,
+    "task": 3
+   }
+  },
+  "memops-B03_reflect": {
+   "n": 30,
+   "kept": 6,
+   "types": {
+    "start": 2,
+    "other_person": 16,
+    "unclear": 3,
+    "ended": 1,
+    "restate": 7,
+    "plan": 1
+   }
+  },
+  "memops-B04_remember": {
+   "n": 52,
+   "kept": 8,
+   "types": {
+    "other_person": 26,
+    "restate": 9,
+    "unclear": 5,
+    "task": 2,
+    "start": 3,
+    "plan": 5,
+    "hypothetical": 2
+   }
+  },
+  "memops-B10_update": {
+   "n": 31,
+   "kept": 9,
+   "types": {
+    "start": 4,
+    "other_person": 11,
+    "unclear": 5,
+    "plan": 5,
+    "hypothetical": 1,
+    "restate": 3,
+    "task": 2
+   }
+  },
+  "memops-B14_forget": {
+   "n": 24,
+   "kept": 3,
+   "types": {
+    "other_person": 15,
+    "unclear": 2,
+    "hypothetical": 1,
+    "start": 1,
+    "task": 2,
+    "restate": 2,
+    "plan": 1
+   }
+  },
+  "memops-B14_remember": {
+   "n": 22,
+   "kept": 5,
+   "types": {
+    "other_person": 10,
+    "ended": 3,
+    "unclear": 1,
+    "restate": 4,
+    "plan": 3,
+    "start": 1
+   }
+  },
+  "memops-B25_trajectory_ops": {
+   "n": 25,
+   "kept": 5,
+   "types": {
+    "other_person": 11,
+    "task": 2,
+    "plan": 3,
+    "restate": 3,
+    "ended": 2,
+    "unclear": 3,
+    "hypothetical": 1
+   }
+  },
+  "memops-B26_remember": {
+   "n": 34,
+   "kept": 2,
+   "types": {
+    "other_person": 25,
+    "restate": 5,
+    "start": 1,
+    "unclear": 1,
+    "plan": 2
+   }
+  },
+  "memops-B28_trajectory_ops": {
+   "n": 23,
+   "kept": 7,
+   "types": {
+    "start": 4,
+    "restate": 2,
+    "plan": 5,
+    "task": 2,
+    "other_person": 7,
+    "unclear": 2,
+    "ended": 1
+   }
+  },
+  "memops-C01_forget": {
+   "n": 57,
+   "kept": 8,
+   "types": {
+    "plan": 16,
+    "restate": 18,
+    "start": 6,
+    "other_person": 7,
+    "task": 6,
+    "hypothetical": 2,
+    "unclear": 1,
+    "ended": 1
+   }
+  },
+  "memops-C01_update": {
+   "n": 24,
+   "kept": 8,
+   "types": {
+    "restate": 4,
+    "unclear": 6,
+    "task": 4,
+    "plan": 6,
+    "start": 2,
+    "other_person": 2
+   }
+  },
+  "memops-C04_update": {
+   "n": 27,
+   "kept": 5,
+   "types": {
+    "start": 3,
+    "ended": 2,
+    "restate": 8,
+    "other_person": 10,
+    "task": 3,
+    "plan": 1
+   }
+  },
+  "memops-C05_update": {
+   "n": 36,
+   "kept": 7,
+   "types": {
+    "task": 8,
+    "start": 6,
+    "plan": 3,
+    "restate": 5,
+    "other_person": 12,
+    "hypothetical": 1,
+    "unclear": 1
+   }
+  },
+  "memops-C10_remember": {
+   "n": 30,
+   "kept": 8,
+   "types": {
+    "start": 5,
+    "restate": 8,
+    "ended": 1,
+    "task": 1,
+    "plan": 3,
+    "other_person": 10,
+    "unclear": 2
+   }
+  },
+  "memops-C10_trajectory_ops": {
+   "n": 38,
+   "kept": 20,
+   "types": {
+    "restate": 6,
+    "start": 4,
+    "unclear": 15,
+    "other_person": 7,
+    "ended": 1,
+    "plan": 3,
+    "task": 1,
+    "hypothetical": 1
+   }
+  },
+  "memops-C25_forget": {
+   "n": 35,
+   "kept": 4,
+   "types": {
+    "start": 1,
+    "restate": 11,
+    "task": 6,
+    "other_person": 10,
+    "unclear": 2,
+    "ended": 1,
+    "plan": 4
+   }
+  },
+  "memops-C27_trajectory_ops": {
+   "n": 63,
+   "kept": 8,
+   "types": {
+    "plan": 19,
+    "task": 12,
+    "restate": 13,
+    "unclear": 5,
+    "hypothetical": 1,
+    "start": 2,
+    "other_person": 10,
+    "ended": 1
+   }
+  },
+  "memops-C29_reflect": {
+   "n": 33,
+   "kept": 3,
+   "types": {
+    "restate": 6,
+    "hypothetical": 4,
+    "plan": 7,
+    "task": 5,
+    "unclear": 1,
+    "ended": 2,
+    "other_person": 8
+   }
+  },
+  "memops-C31_reflect": {
+   "n": 44,
+   "kept": 7,
+   "types": {
+    "start": 2,
+    "restate": 9,
+    "plan": 7,
+    "unclear": 3,
+    "task": 8,
+    "ended": 2,
+    "other_person": 13
+   }
+  },
+  "memops-D02_reflect": {
+   "n": 34,
+   "kept": 10,
+   "types": {
+    "start": 7,
+    "restate": 7,
+    "ended": 1,
+    "hypothetical": 2,
+    "other_person": 10,
+    "task": 3,
+    "plan": 2,
+    "unclear": 2
+   }
+  },
+  "memops-D02_trajectory_ops": {
+   "n": 22,
+   "kept": 9,
+   "types": {
+    "start": 7,
+    "task": 7,
+    "ended": 1,
+    "restate": 1,
+    "other_person": 5,
+    "unclear": 1
+   }
+  },
+  "memops-D16_reflect": {
+   "n": 36,
+   "kept": 6,
+   "types": {
+    "start": 3,
+    "ended": 1,
+    "hypothetical": 2,
+    "task": 6,
+    "restate": 14,
+    "other_person": 6,
+    "plan": 2,
+    "unclear": 2
+   }
+  },
+  "memops-D16_remember": {
+   "n": 38,
+   "kept": 10,
+   "types": {
+    "task": 5,
+    "other_person": 11,
+    "start": 6,
+    "ended": 3,
+    "unclear": 1,
+    "restate": 10,
+    "plan": 2
+   }
+  },
+  "memops-D16_update": {
+   "n": 43,
+   "kept": 10,
+   "types": {
+    "other_person": 10,
+    "plan": 7,
+    "restate": 9,
+    "start": 8,
+    "task": 7,
+    "unclear": 2
+   }
+  },
+  "memops-D17_remember": {
+   "n": 19,
+   "kept": 6,
+   "types": {
+    "start": 5,
+    "other_person": 6,
+    "ended": 1,
+    "task": 2,
+    "hypothetical": 1,
+    "plan": 3,
+    "restate": 1
+   }
+  },
+  "memops-D18_trajectory_ops": {
+   "n": 49,
+   "kept": 17,
+   "types": {
+    "unclear": 2,
+    "restate": 12,
+    "task": 4,
+    "other_person": 10,
+    "start": 14,
+    "ended": 1,
+    "plan": 5,
+    "hypothetical": 1
+   }
+  },
+  "memops-D20_remember": {
+   "n": 25,
+   "kept": 5,
+   "types": {
+    "task": 4,
+    "restate": 3,
+    "other_person": 8,
+    "start": 2,
+    "unclear": 3,
+    "plan": 2,
+    "hypothetical": 3
+   }
+  },
+  "memops-D22_forget": {
+   "n": 38,
+   "kept": 7,
+   "types": {
+    "task": 3,
+    "plan": 6,
+    "restate": 17,
+    "other_person": 5,
+    "start": 2,
+    "unclear": 4,
+    "ended": 1
+   }
+  },
+  "memops-E13_update": {
+   "n": 24,
+   "kept": 2,
+   "types": {
+    "restate": 6,
+    "other_person": 7,
+    "task": 4,
+    "start": 1,
+    "plan": 5,
+    "ended": 1
+   }
+  },
+  "memops-E14_forget": {
+   "n": 17,
+   "kept": 6,
+   "types": {
+    "unclear": 2,
+    "restate": 2,
+    "start": 2,
+    "other_person": 6,
+    "ended": 2,
+    "task": 1,
+    "plan": 2
+   }
+  },
+  "memops-F06_trajectory_ops": {
+   "n": 33,
+   "kept": 7,
+   "types": {
+    "start": 4,
+    "ended": 3,
+    "task": 4,
+    "restate": 9,
+    "other_person": 9,
+    "plan": 3,
+    "hypothetical": 1
+   }
+  },
+  "memops-F07_reflect": {
+   "n": 26,
+   "kept": 10,
+   "types": {
+    "unclear": 6,
+    "restate": 7,
+    "start": 4,
+    "task": 2,
+    "other_person": 7
+   }
+  },
+  "memops-F08_update": {
+   "n": 18,
+   "kept": 2,
+   "types": {
+    "restate": 5,
+    "task": 3,
+    "other_person": 7,
+    "unclear": 2,
+    "plan": 1
+   }
+  },
+  "memops-F11_forget": {
+   "n": 34,
+   "kept": 15,
+   "types": {
+    "plan": 7,
+    "start": 3,
+    "other_person": 7,
+    "task": 4,
+    "unclear": 12,
+    "restate": 1
+   }
+  },
+  "memops-F15_forget": {
+   "n": 51,
+   "kept": 3,
+   "types": {
+    "task": 2,
+    "other_person": 25,
+    "restate": 14,
+    "plan": 7,
+    "start": 3
+   }
+  }
+ },
+ "usage": {
+  "in": 1242145,
+  "out": 73307,
+  "usd": 1.60868
+ }
+}

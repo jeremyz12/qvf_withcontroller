@@ -1,0 +1,556 @@
+{
+ "src": "D:\\ZZL_cluade\\results\\ext_cards_stale_v54",
+ "src_sha256": "28b512b9d8ff5777e6fc6c1b8ae450635ee71f9157890bb21ccd57f3bf6a60e1",
+ "model": "claude-haiku-4-5",
+ "keep": [
+  "ended",
+  "start",
+  "unclear",
+  "unjudged"
+ ],
+ "stores": {
+  "stale-0008": {
+   "n": 175,
+   "kept": 46,
+   "types": {
+    "restate": 46,
+    "task": 53,
+    "plan": 23,
+    "start": 24,
+    "ended": 10,
+    "other_person": 6,
+    "unclear": 12,
+    "hypothetical": 1
+   }
+  },
+  "stale-0011": {
+   "n": 136,
+   "kept": 38,
+   "types": {
+    "restate": 34,
+    "task": 35,
+    "start": 24,
+    "unclear": 12,
+    "ended": 2,
+    "plan": 26,
+    "hypothetical": 1,
+    "other_person": 2
+   }
+  },
+  "stale-0022": {
+   "n": 167,
+   "kept": 34,
+   "types": {
+    "task": 60,
+    "restate": 48,
+    "plan": 20,
+    "start": 25,
+    "unclear": 8,
+    "other_person": 3,
+    "ended": 1,
+    "hypothetical": 2
+   }
+  },
+  "stale-0038": {
+   "n": 178,
+   "kept": 39,
+   "types": {
+    "task": 50,
+    "restate": 45,
+    "plan": 39,
+    "start": 24,
+    "other_person": 4,
+    "unclear": 13,
+    "ended": 2,
+    "hypothetical": 1
+   }
+  },
+  "stale-0039": {
+   "n": 165,
+   "kept": 38,
+   "types": {
+    "start": 28,
+    "task": 40,
+    "restate": 39,
+    "plan": 41,
+    "other_person": 5,
+    "unclear": 10,
+    "hypothetical": 2
+   }
+  },
+  "stale-0052": {
+   "n": 149,
+   "kept": 36,
+   "types": {
+    "task": 32,
+    "unclear": 7,
+    "start": 29,
+    "restate": 43,
+    "plan": 24,
+    "other_person": 12,
+    "hypothetical": 2
+   }
+  },
+  "stale-0057": {
+   "n": 122,
+   "kept": 40,
+   "types": {
+    "start": 20,
+    "unclear": 16,
+    "task": 30,
+    "restate": 21,
+    "plan": 23,
+    "ended": 4,
+    "other_person": 6,
+    "hypothetical": 2
+   }
+  },
+  "stale-0061": {
+   "n": 143,
+   "kept": 34,
+   "types": {
+    "plan": 29,
+    "task": 40,
+    "restate": 35,
+    "unclear": 14,
+    "start": 15,
+    "other_person": 3,
+    "ended": 5,
+    "hypothetical": 2
+   }
+  },
+  "stale-0064": {
+   "n": 158,
+   "kept": 47,
+   "types": {
+    "task": 31,
+    "start": 17,
+    "restate": 45,
+    "plan": 26,
+    "unclear": 27,
+    "other_person": 5,
+    "ended": 3,
+    "hypothetical": 4
+   }
+  },
+  "stale-0079": {
+   "n": 123,
+   "kept": 33,
+   "types": {
+    "task": 33,
+    "plan": 28,
+    "start": 17,
+    "restate": 22,
+    "ended": 3,
+    "unclear": 13,
+    "other_person": 5,
+    "hypothetical": 2
+   }
+  },
+  "stale-0107": {
+   "n": 155,
+   "kept": 34,
+   "types": {
+    "task": 37,
+    "start": 25,
+    "restate": 45,
+    "plan": 29,
+    "unclear": 7,
+    "other_person": 9,
+    "ended": 2,
+    "hypothetical": 1
+   }
+  },
+  "stale-0108": {
+   "n": 117,
+   "kept": 28,
+   "types": {
+    "unclear": 7,
+    "task": 50,
+    "start": 17,
+    "restate": 26,
+    "plan": 9,
+    "ended": 4,
+    "hypothetical": 4
+   }
+  },
+  "stale-0144": {
+   "n": 144,
+   "kept": 34,
+   "types": {
+    "task": 48,
+    "restate": 35,
+    "start": 24,
+    "plan": 25,
+    "hypothetical": 1,
+    "unclear": 8,
+    "ended": 2,
+    "other_person": 1
+   }
+  },
+  "stale-0148": {
+   "n": 130,
+   "kept": 25,
+   "types": {
+    "task": 35,
+    "restate": 44,
+    "start": 16,
+    "plan": 16,
+    "unclear": 9,
+    "other_person": 10
+   }
+  },
+  "stale-0159": {
+   "n": 143,
+   "kept": 33,
+   "types": {
+    "plan": 30,
+    "restate": 41,
+    "other_person": 3,
+    "task": 36,
+    "unclear": 12,
+    "start": 21
+   }
+  },
+  "stale-0170": {
+   "n": 116,
+   "kept": 35,
+   "types": {
+    "restate": 30,
+    "plan": 17,
+    "start": 24,
+    "unclear": 6,
+    "task": 25,
+    "other_person": 8,
+    "ended": 5,
+    "hypothetical": 1
+   }
+  },
+  "stale-0177": {
+   "n": 124,
+   "kept": 27,
+   "types": {
+    "restate": 36,
+    "start": 22,
+    "task": 26,
+    "other_person": 6,
+    "plan": 28,
+    "unclear": 2,
+    "hypothetical": 1,
+    "ended": 3
+   }
+  },
+  "stale-0178": {
+   "n": 139,
+   "kept": 32,
+   "types": {
+    "start": 23,
+    "restate": 34,
+    "unclear": 9,
+    "task": 44,
+    "plan": 21,
+    "other_person": 8
+   }
+  },
+  "stale-0189": {
+   "n": 177,
+   "kept": 43,
+   "types": {
+    "restate": 52,
+    "task": 51,
+    "plan": 24,
+    "start": 32,
+    "ended": 4,
+    "other_person": 6,
+    "unclear": 7,
+    "hypothetical": 1
+   }
+  },
+  "stale-0211": {
+   "n": 93,
+   "kept": 23,
+   "types": {
+    "task": 23,
+    "unclear": 5,
+    "restate": 25,
+    "start": 17,
+    "ended": 1,
+    "plan": 10,
+    "other_person": 12
+   }
+  },
+  "stale-0214": {
+   "n": 135,
+   "kept": 31,
+   "types": {
+    "start": 20,
+    "restate": 50,
+    "task": 26,
+    "plan": 22,
+    "other_person": 5,
+    "unclear": 9,
+    "hypothetical": 1,
+    "ended": 2
+   }
+  },
+  "stale-0215": {
+   "n": 132,
+   "kept": 25,
+   "types": {
+    "start": 21,
+    "restate": 35,
+    "plan": 34,
+    "task": 37,
+    "unclear": 4,
+    "other_person": 1
+   }
+  },
+  "stale-0223": {
+   "n": 170,
+   "kept": 44,
+   "types": {
+    "task": 45,
+    "restate": 40,
+    "hypothetical": 2,
+    "other_person": 9,
+    "start": 31,
+    "plan": 30,
+    "unclear": 11,
+    "ended": 2
+   }
+  },
+  "stale-0225": {
+   "n": 117,
+   "kept": 27,
+   "types": {
+    "task": 36,
+    "plan": 10,
+    "start": 18,
+    "restate": 41,
+    "ended": 4,
+    "other_person": 3,
+    "unclear": 5
+   }
+  },
+  "stale-0229": {
+   "n": 137,
+   "kept": 28,
+   "types": {
+    "task": 46,
+    "other_person": 6,
+    "start": 19,
+    "restate": 29,
+    "unclear": 8,
+    "ended": 1,
+    "plan": 26,
+    "hypothetical": 2
+   }
+  },
+  "stale-0238": {
+   "n": 116,
+   "kept": 26,
+   "types": {
+    "start": 16,
+    "restate": 39,
+    "task": 39,
+    "unclear": 9,
+    "plan": 10,
+    "ended": 1,
+    "other_person": 1,
+    "hypothetical": 1
+   }
+  },
+  "stale-0246": {
+   "n": 146,
+   "kept": 34,
+   "types": {
+    "plan": 42,
+    "restate": 28,
+    "task": 34,
+    "other_person": 6,
+    "unclear": 10,
+    "ended": 2,
+    "start": 22,
+    "hypothetical": 2
+   }
+  },
+  "stale-0276": {
+   "n": 157,
+   "kept": 32,
+   "types": {
+    "plan": 32,
+    "restate": 34,
+    "task": 55,
+    "start": 19,
+    "unclear": 10,
+    "other_person": 4,
+    "ended": 3
+   }
+  },
+  "stale-0281": {
+   "n": 151,
+   "kept": 43,
+   "types": {
+    "start": 28,
+    "task": 48,
+    "ended": 4,
+    "restate": 39,
+    "other_person": 2,
+    "unclear": 11,
+    "plan": 19
+   }
+  },
+  "stale-0288": {
+   "n": 141,
+   "kept": 32,
+   "types": {
+    "task": 39,
+    "restate": 37,
+    "unclear": 13,
+    "plan": 27,
+    "other_person": 6,
+    "start": 18,
+    "ended": 1
+   }
+  },
+  "stale-0295": {
+   "n": 140,
+   "kept": 42,
+   "types": {
+    "task": 47,
+    "ended": 1,
+    "plan": 18,
+    "unclear": 11,
+    "start": 30,
+    "restate": 28,
+    "hypothetical": 1,
+    "other_person": 4
+   }
+  },
+  "stale-0310": {
+   "n": 160,
+   "kept": 49,
+   "types": {
+    "restate": 43,
+    "plan": 30,
+    "task": 32,
+    "unclear": 21,
+    "start": 26,
+    "other_person": 6,
+    "ended": 2
+   }
+  },
+  "stale-0315": {
+   "n": 123,
+   "kept": 32,
+   "types": {
+    "restate": 29,
+    "start": 18,
+    "plan": 25,
+    "unclear": 10,
+    "task": 33,
+    "ended": 4,
+    "hypothetical": 1,
+    "other_person": 3
+   }
+  },
+  "stale-0318": {
+   "n": 140,
+   "kept": 28,
+   "types": {
+    "task": 47,
+    "restate": 38,
+    "start": 23,
+    "plan": 21,
+    "unclear": 5,
+    "other_person": 4,
+    "hypothetical": 2
+   }
+  },
+  "stale-0323": {
+   "n": 112,
+   "kept": 28,
+   "types": {
+    "start": 17,
+    "other_person": 1,
+    "task": 37,
+    "restate": 30,
+    "plan": 15,
+    "unclear": 10,
+    "ended": 1,
+    "hypothetical": 1
+   }
+  },
+  "stale-0335": {
+   "n": 209,
+   "kept": 46,
+   "types": {
+    "task": 45,
+    "plan": 54,
+    "unclear": 20,
+    "ended": 2,
+    "restate": 57,
+    "start": 24,
+    "other_person": 7
+   }
+  },
+  "stale-0356": {
+   "n": 135,
+   "kept": 30,
+   "types": {
+    "restate": 42,
+    "plan": 19,
+    "task": 43,
+    "unclear": 8,
+    "start": 21,
+    "other_person": 1,
+    "ended": 1
+   }
+  },
+  "stale-0365": {
+   "n": 161,
+   "kept": 41,
+   "types": {
+    "task": 37,
+    "unclear": 8,
+    "restate": 45,
+    "start": 32,
+    "plan": 24,
+    "other_person": 14,
+    "ended": 1
+   }
+  },
+  "stale-0392": {
+   "n": 154,
+   "kept": 40,
+   "types": {
+    "start": 31,
+    "task": 40,
+    "restate": 44,
+    "plan": 22,
+    "other_person": 5,
+    "unclear": 5,
+    "ended": 4,
+    "hypothetical": 3
+   }
+  },
+  "stale-0395": {
+   "n": 113,
+   "kept": 31,
+   "types": {
+    "restate": 26,
+    "task": 33,
+    "start": 21,
+    "other_person": 4,
+    "plan": 19,
+    "unclear": 6,
+    "ended": 4
+   }
+  }
+ },
+ "usage": {
+  "in": 5347245,
+  "out": 322525,
+  "usd": 6.9598700000000004
+ }
+}
