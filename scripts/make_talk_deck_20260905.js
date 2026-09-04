@@ -315,7 +315,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
 // ---------- 15 feedback received ----------
 {
   const s = pres.addSlide(); n++;
-  title(s, "Feedback received (a senior labmate’s code review, Notion) and what changed", "He read the 27 Aug main branch; verified against current code and results; four items changed, two intentionally not");
+  title(s, "Feedback received and what changed", "A senior labmate’s code review (Notion). He read the 27 Aug main branch; verified against current code and results; four items changed, two intentionally not");
   table(s, [
     ["His point", "Verdict after checking", "What changed"],
     ["claim, value_tags, implies_stale_slots, validity species are unused or guesses", "correct for the ledger path (never read; 42% of card characters); the species prompt belongs to the engine path, not the card builder", "slim contract flag; lossless on WikiState but −13 pp on STALE even with cessation / condition restored → WikiState-specific option, not the default"],
