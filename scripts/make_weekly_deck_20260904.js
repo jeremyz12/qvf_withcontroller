@@ -314,13 +314,13 @@ let n = 0;
     ["14K store \u00b7 weak reader (haiku-4.5)", "70.0 (13.6K tok)", "62.9 (top-50)", "91.4 (2.8K tok)", "+21.4 vs full context, p = 5e-6; 1/2.8 the cost"],
     ["14K store \u00b7 strong reader (Sonnet 5)", "97.1 (18.5K tok)", "70.7 (top-10)", "90.7 (3.7K tok)", "\u22126.4, p = 0.035: the reader does the four sub-tasks itself; only the 2.8\u00d7 cost edge remains"],
     ["104K store \u00b7 weak reader (30 stores / 120 q)", "7.5 (103.8K tok)", "38.3 (top-100, 8.9K tok)", "61.7 projection (8.8K) \u00b7 54.2 full ledger", "+23.3 vs budget-matched top-100, p = 2e-4; retrieval collapses first (top-10 reaches 38.8% of anchors)"],
-    ["104K store \u00b7 strong reader (Sonnet 5, batch 40)", "54.9 (142K tok; n = 82, 18% of calls hit the output cap)", "67.5 (top-100, 11.6K tok)", "74.2 projection (11.5K) \u00b7 73.3 full ledger", "+17.1 vs full context on the same 82 q, p = 0.024 (21-store CI crosses zero: 9 stores unfinished); projection costs 1/9 of full context"],
-  ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 1.9, 2.0, 2.4, 2.8], fontSize: 10.5, rowH: 0.62 });
+    ["104K store · strong reader (Sonnet 5, batch 40)", "54.9 (142K tok; n = 82, 18% capped)", "67.5 (top-100, 11.6K tok)", "74.2 projection (11.5K) · 73.3 full ledger", "+17.1 vs full context on the same 82 q, p = 0.024 (store CI crosses zero, 9 stores unfinished); projection costs 1/9"],
+  ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 1.9, 2.0, 2.4, 2.8], fontSize: 9.5, rowH: 0.56 });
   bullets(s, [
     "The ledger is reader-insensitive (haiku 91.4 \u2192 Sonnet 90.7, p = 1.0) while every other arm gains 18\u201327 pp from the stronger reader: its ceiling is set by card content, not by reading.",
     "Write-side fixes, step by step: Sonnet-built cards 133/133 gold rows but 92.9 / 92.1 (haiku / Sonnet); slot canonicalisation alone 88.6 / 91.4; adding a rule-based assertion-type filter (drop plans, nominations, one-off tasks, restatements; 203 of 1,639 cards, zero gold rows lost) gives 93.6 / 95.0 — gap to full context now −2.1 (p = 0.51). The last 3 questions are one chain whose extraction missed 28 cards. StateMemBench (2608.19652, §3.2) reports the same pattern: 44.4% of failures under oracle retrieval are stale-state answers.",
     "Claim, restated: the ledger is necessary when the reader is not frontier-class, or the store exceeds the context window, or cost is bound \u2014 any one of the three. Otherwise it is a cheaper, auditable layer, not a more accurate one.",
-  ], { x: 0.6, y: 4.75, w: 12.1, h: 2.2, fontSize: 11.5 });
+  ], { x: 0.6, y: 5.0, w: 12.1, h: 2.0, fontSize: 10.5 });
   footer(s, n);
 }
 // ---------- 9 exclusion tests ----------
