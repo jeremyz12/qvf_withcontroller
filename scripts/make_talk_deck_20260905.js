@@ -71,7 +71,7 @@ function stepSlide(stepTitle, sub, before, after, pseudo, evidence, lit) {
   title(s, "Agenda (15 minutes)");
   const items = [
     ["1", "QVF step by step \u2014 why each step removes one failure source", "one real chain, before \u2192 after, evidence  (7 min)"],
-    ["2", "This week: four write-side fixes from the code review, and a generality check", "WikiState 90 \u2192 95; two third-party arenas; what is general and what was tuned  (4 min)"],
+    ["2", "This week: four write-side fixes from a senior labmate’s code review, and a generality check", "WikiState 90 \u2192 95; two third-party arenas; what is general and what was tuned  (4 min)"],
     ["3", "WikiState: scale, what only it tests, review status", "(2 min)"],
     ["4", "Feedback received, what changed, boundaries, next steps", "(2 min)"],
   ];
@@ -233,7 +233,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
 // ---------- 11 this week: write-side fixes ----------
 {
   const s = pres.addSlide(); n++;
-  title(s, "This week: four write-side fixes from the code review", "Batches 47–50. Each fix is a default-off builder flag; stores are never overwritten; every number is a paired comparison on the same questions");
+  title(s, "This week: four write-side fixes from a senior labmate’s code review", "Batches 47–50. Each fix is a default-off builder flag; stores are never overwritten; every number is a paired comparison on the same questions");
   table(s, [
     ["Fix", "What it does", "Evidence", "Verdict"],
     ["Slim card contract", "Stop extracting claim, value_tags, implies_stale_slots, relation fields (42% of card characters; the ledger path never reads them)", "36 chains, Sonnet: gold rows 133/133, extra rows 4 \u2192 2, output tokens \u221233%", "confirmed, lossless"],
@@ -267,7 +267,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
   bullets(s, [
     "What travels: the slim contract, the closed-set slot rule with value normalisation, and the entailment filter restricted to state-chain slot classes (position, employer, team, residence, device, location, relationship).",
     "What does not: any Stage 1 whose queries name the benchmark\u2019s slots, and any filter that assumes every memory is a first-person held state. Both are now default-off and reported as ablations.",
-    "The reviewer\u2019s Stage 1 (\u2018cheap model / embedding / rule\u2019 event localisation, slot-agnostic) has not been tested yet; the four-query version was my shortcut, not the suggestion.",
+    "The senior labmate\u2019s Stage 1 (\u2018cheap model / embedding / rule\u2019 event localisation, slot-agnostic) has not been tested yet; the four-query version was my shortcut, not his suggestion.",
   ], { x: 0.6, y: 5.75, w: 12.1, h: 1.2, fontSize: 10.5 });
   footer(s);
 }
@@ -314,13 +314,13 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
 // ---------- 15 feedback received ----------
 {
   const s = pres.addSlide(); n++;
-  title(s, "Feedback received (code review, Notion) and what changed", "Reviewer read the 27 Aug main branch; verified against current code and results; four items changed, two intentionally not");
+  title(s, "Feedback received (a senior labmate’s code review, Notion) and what changed", "He read the 27 Aug main branch; verified against current code and results; four items changed, two intentionally not");
   table(s, [
-    ["Reviewer\u2019s point", "Verdict after checking", "What changed"],
+    ["His point", "Verdict after checking", "What changed"],
     ["claim, value_tags, implies_stale_slots, validity species are unused or guesses", "correct for the ledger path (never read; 42% of card characters); the species prompt belongs to the engine path, not the card builder", "slim contract flag; cessation and condition kept as optional fields because STALE needs them"],
     ["owner \u2248 entity, meaningless", "based on old code: main stores had no owner field; it matters only under third-person injection (recovers 92% of an 18.4 pp drop)", "kept as a default-off flag"],
     ["One LLM call decides six things; long context misses states; propose two-stage extraction", "misses measured (haiku 71/542 rows, Sonnet 21 \u2192 14); 14K stores are single-batch, so length is not the cause; regex localiser recalls 12.5\u201365%", "embedding Stage 1 built; lossless on WikiState, tuned elsewhere \u2192 default off"],
-    ["Verifier checks substring, not entailment (\u2018considered joining Google\u2019)", "correct; it is exactly the batch 38c finding; keyword rules had two false drops", "entailment verifier with the reviewer\u2019s {entailed, type} output; beats keyword rules with zero gold loss"],
+    ["Verifier checks substring, not entailment (\u2018considered joining Google\u2019)", "correct; it is exactly the batch 38c finding; keyword rules had two false drops", "entailment verifier with his {entailed, type} output; beats keyword rules with zero gold loss"],
     ["Slot canonicalisation only in the prompt; value normalisation too weak", "post-processing alias table already existed; prompt-side canonicalisation did not raise scores; value variants inflate change counts in 6\u201316% of transitions", "closed-set rule + value normaliser; harmless at reader level"],
     ["Relation edges dangle across batches \u2192 updates lost", "misread: the ledger path computes transitions from dates, not relation labels; 14K stores are single-batch", "relation fields dropped with the slim contract"],
   ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.4, 4.6, 4.1], fontSize: 9.5, rowH: 0.7 });
@@ -341,7 +341,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
   s.addText("Next steps", { x: 7.0, y: 1.5, w: 5.7, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
     "Finish batch 50: the general contract with the filter restricted to state-chain slots on all three arenas; then rebuild the 144-chain main store with the general configuration and re-run the main table.",
-    "Test the reviewer\u2019s slot-agnostic Stage 1 (cheap model judging \u2018is this turn a state declaration?\u2019) on WikiState and STALE (~$4).",
+    "Test the senior labmate\u2019s slot-agnostic Stage 1 (cheap model judging \u2018is this turn a state declaration?\u2019) on WikiState and STALE (~$4).",
     "Finish the v2.5 human evaluation (author, then the two senior reviewers) and report agreement against the machine review.",
     "Paper: \u00a71 claim restated as \u2018validity = f(memory \u00d7 query)\u2019; \u00a72 ancestors (TAC-KBP temporal slot filling) and the 22 newly read neighbours; method section = general configuration; \u00a78 limitations = three conditions + what was tuned.",
   ], { x: 7.0, y: 1.95, w: 5.7, h: 4.9, fontSize: 11.5 });
