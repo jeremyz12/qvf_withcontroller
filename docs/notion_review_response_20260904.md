@@ -176,7 +176,7 @@ v20260812 分支已推到 09-04(领先 origin/main 的写侧改动:`scripts/b38e
 
 判决:四项修复里三项通用,一项在我的实现里被特调了。
 
-- 通用的三项(精简 schema、闭集槽位规则 + 值规范化、蕴含过滤):WikiState 36 链 haiku 95.7(v48f 同题 90.0);MemOps 20 店对旧建卡 +1.7(p = 1.0);STALE 20 店对照见判词。
+- 通用的三项(精简 schema、闭集槽位规则 + 值规范化、蕴含过滤):WikiState 36 链 haiku 95.7(v48f 同题 90.0);MemOps 20 店对旧建卡 +1.7(p = 1.0);STALE 20 店 58.3 对旧建卡 66.7(−8.3,p = 0.36),差在 dim3,机制线索是精简契约删掉了 cessation 与 condition 两个字段,而这两个在 STALE 有用。所以评审说"VALIDITY SPECIES 纯猜测、不如删"这一条要修正:cessation 和 condition 在状态取代类考场有用,implies_stale_slots 与 contradiction 仍可删。
 - 两阶段抽取的 Stage 1:评审原话是"cheap model / embedding / rule 做事件定位",不分槽位;我实现成了按四个金标槽位的嵌入查询,这一步是特调。它在 WikiState 上无损且把建店与读时 token 各降九成,在 STALE 从 61.7 掉到 43.3、MemOps 从 52.5 掉到 25.8;换 15 类通用查询只收回一半。结论:Stage 1 默认关,只在"大库 + 领域槽位已知"时开(104K 上弱读者 54.2 → 70.0);评审原话的廉价模型逐句判定版本待测。
 - 144 链全量(带 Stage 1 的 v52f):haiku 两轮 95.36 / 94.82,对 v48f 高 4.6–5.5,p = 1e-4 / 1e-3;sonnet 140 题 92.9,对 v47skf 95.0 不显著(−2.1,p = 0.61)。中途发现精简契约必须配 KEYS 闭集规则,否则模型把职位并入雇主值,强读者掉 6.4。
 
