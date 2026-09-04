@@ -233,7 +233,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
 // ---------- 11 this week: write-side fixes ----------
 {
   const s = pres.addSlide(); n++;
-  title(s, "This week: four write-side fixes from the code review (batches 47\u201350)", "Each fix is a default-off builder flag; stores are never overwritten; every number is a paired comparison on the same questions");
+  title(s, "This week: four write-side fixes from the code review", "Batches 47–50. Each fix is a default-off builder flag; stores are never overwritten; every number is a paired comparison on the same questions");
   table(s, [
     ["Fix", "What it does", "Evidence", "Verdict"],
     ["Slim card contract", "Stop extracting claim, value_tags, implies_stale_slots, relation fields (42% of card characters; the ledger path never reads them)", "36 chains, Sonnet: gold rows 133/133, extra rows 4 \u2192 2, output tokens \u221233%", "confirmed, lossless"],
@@ -253,7 +253,7 @@ const ARMS = [["Direct read (top-10 retrieval)", 47.32], ["1 Select", 66.25], ["
 // ---------- 12 generality check ----------
 {
   const s = pres.addSlide(); n++;
-  title(s, "Is the new configuration tuned to WikiState? Same configuration on two third-party arenas", "Batch 19 fresh samples (40 stores / 120 q each), haiku reader and the arena\u2019s own judge, paired with the old cards built by the same extractor family");
+  title(s, "Is the new configuration tuned to WikiState?", "Same configuration on two third-party arenas: batch 19 fresh samples (40 stores / 120 q each), haiku reader and the arena\u2019s own judge, paired with the old cards built by the same extractor family");
   table(s, [
     ["Configuration", "WikiState (36 chains, 140 q, haiku)", "MemOps (120 q)", "STALE (120 q)", "Reading"],
     ["Direct read (top-10)", "\u2014", "48.3", "46.7", "baseline"],
