@@ -314,7 +314,7 @@ let n = 0;
     ["14K store \u00b7 weak reader (haiku-4.5)", "70.0 (13.6K tok)", "62.9 (top-50)", "91.4 (2.8K tok)", "+21.4 vs full context, p = 5e-6; 1/2.8 the cost"],
     ["14K store \u00b7 strong reader (Sonnet 5)", "97.1 (18.5K tok)", "70.7 (top-10)", "90.7 (3.7K tok)", "\u22126.4, p = 0.035: the reader does the four sub-tasks itself; only the 2.8\u00d7 cost edge remains"],
     ["104K store \u00b7 weak reader (30 stores / 120 q)", "7.5 (103.8K tok)", "38.3 (top-100, 8.9K tok)", "61.7 projection (8.8K) \u00b7 54.2 full ledger", "+23.3 vs budget-matched top-100, p = 2e-4; retrieval collapses first (top-10 reaches 38.8% of anchors)"],
-    ["104K store \u00b7 strong reader", "not run", "not run", "not run", "the decisive missing cell (~$30)"],
+    ["104K store \u00b7 strong reader (Sonnet 5, batch 40)", "54.9 (142K tok; n = 82, 18% of calls hit the output cap)", "67.5 (top-100, 11.6K tok)", "74.2 projection (11.5K) \u00b7 73.3 full ledger", "+17.1 vs full context on the same 82 q, p = 0.024 (21-store CI crosses zero: 9 stores unfinished); projection costs 1/9 of full context"],
   ], { x: 0.6, y: 1.55, w: 12.1, colW: [3.0, 1.9, 2.0, 2.4, 2.8], fontSize: 10.5, rowH: 0.62 });
   bullets(s, [
     "The ledger is reader-insensitive (haiku 91.4 \u2192 Sonnet 90.7, p = 1.0) while every other arm gains 18\u201327 pp from the stronger reader: its ceiling is set by card content, not by reading.",
@@ -395,7 +395,7 @@ let n = 0;
   title(s, "Robustness checks", "Does the gain survive new chains, other readers, and larger stores?");
   table(s, [
     ["Check", "Result", "Reading"],
-    ["Holdout set: 40 new chains / 160 q, zero QID overlap", "QVF 95.0 vs direct 51.9 (+43.1)", "no overfitting to the development chains"],
+    ["Holdout set: 80 chains / 320 q, zero QID overlap (40 added this week, chain-length matched, new seed)", "new 40: QVF 90.6 vs direct 50.6 (+40.0, cluster CI [31.3, 48.1]); pooled 80: +41.56 vs main field +41.49", "no overfitting to the development chains; full-context haiku 72.5 sits between"],
     ["Owner gate at write time (cards only for the persona's own states)", "clean corpus −3.0 to −3.5 (p = 0.04); recovers 92% of an −18.4 third-person attack", "hardening flag, default off"],
     ["Stronger baselines for the direct arm", "bge-reranker 35.1, TempRALM 23.4 (both below direct 47.6)", "the gap is not a weak-retriever artifact"],
     ["Stronger reader: Gemini 3.6 Flash, 14K store", "full text 95.5 > ledger 92.5; protocol +0.35 n.s.; direct 63.4", "structure wins for weak / mid readers and large stores"],
@@ -419,11 +419,12 @@ let n = 0;
     [{ text: "QVF ledger (store v45)", options: { bold: true } }, { text: "91.4", options: { bold: true } }, { text: "90.7", options: { bold: true } }, "2.8K / 3.7K", "$0.015"],
     ["QVF ledger, Sonnet-built cards (v47s)", "92.9", "92.1", "2.6K / 3.5K", "$0.015"],
     [{ text: "QVF ledger, Sonnet-built + assertion-type filter (v47skf)", options: { bold: true } }, { text: "93.6", options: { bold: true } }, { text: "95.0", options: { bold: true } }, "2.5K / 3.4K", "$0.014"],
-  ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.3, 1.2, 3.6, 1.9, 1.1], fontSize: 10, rowH: 0.42 });
+    ["QVF ledger, + second extraction pass, union (v47skf2; ledger = gold 140/140)", "97.1", "93.6", "2.6K / 3.5K", "$0.014"],
+  ], { x: 0.6, y: 1.6, w: 12.1, colW: [4.3, 1.2, 3.6, 1.9, 1.1], fontSize: 9.5, rowH: 0.38 });
   bullets(s, [
     "Prompt wording alone moves a full-context baseline by +11\u201312 pp on identical bytes: the archived \u2018plain full text\u2019 number understated the realistic baseline. The main table's first row must be the plainest full-context call.",
     "Same weak reader: ledger +21.4 over full context (p = 5e-6) at 1/2.8 the input tokens. Same strong reader: the v45 ledger is −6.4 (p = 0.035); with Sonnet-built cards and the assertion-type filter the gap is −2.1 (p = 0.51) at 1/5.4 the input tokens.",
-    "Using top-10 retrieval as the only baseline inflates any memory mechanism by 19\u201337 pp. The +42 headline is therefore reported next to +21 (weak reader) and \u22126 (strong reader), never alone.",
+    "Using top-10 retrieval as the only baseline inflates any memory mechanism by 19\u201337 pp. The +42 headline is therefore reported next to +21 (weak reader) and \u22126 / \u22122 (strong reader), never alone. With the ledger at 140/140 gold rows, reader scores still move 3\u20134 pp between runs (97.1 / 93.6): single 140-q runs cannot separate 93 from 97 \u2014 repeat runs or the full set are needed for such claims.",
   ], { x: 0.6, y: 5.05, w: 12.1, h: 1.9, fontSize: 11.5 });
   footer(s, n);
 }
@@ -442,14 +443,14 @@ let n = 0;
     ["query rewrite / recency prior", "36.4 / 10.7", "64 / 53%"],
   ], { x: 0.6, y: 1.55, w: 4.1, colW: [2.4, 0.9, 0.8], fontSize: 9.5, rowH: 0.34 });
   table(s, [
-    ["104K store: arm", "acc", "in tok"],
-    ["QVF slot projection", "61.7", "8.8K"],
-    ["QVF full ledger", "54.2", "20.9K"],
-    ["dense top-100", "38.3", "8.9K"],
+    ["104K store: arm", "acc haiku / Sonnet 5", "in tok"],
+    ["QVF slot projection", "61.7 / 74.2", "8.8K / 11.5K"],
+    ["QVF full ledger", "54.2 / 73.3", "20.9K / 27.2K"],
+    ["dense top-100", "38.3 / 67.5", "8.9K / 11.6K"],
     ["dense top-50 / rerank", "29.2 / 26.7", "4.5K / 1K+2.9K"],
     ["top-10 direct", "16.7", "1.0K"],
-    ["haiku full text", "7.5", "103.8K"],
-  ], { x: 4.9, y: 1.55, w: 3.6, colW: [2.0, 0.9, 0.7], fontSize: 9.5, rowH: 0.34 });
+    ["full text (plain)", "7.5 / 54.9*", "103.8K / 142K"],
+  ], { x: 4.9, y: 1.55, w: 3.6, colW: [1.7, 1.1, 0.8], fontSize: 9.5, rowH: 0.34 });
   table(s, [
     ["v2.5 sample: system", "acc"],
     ["QVF ledger (v2.5 store / v2.4 store)", "98.3 / 89.7"],
@@ -464,7 +465,7 @@ let n = 0;
   ], { x: 8.7, y: 1.55, w: 4.0, colW: [2.9, 1.1], fontSize: 9.5, rowH: 0.34 });
   bullets(s, [
     "14K: recall is not the bottleneck \u2014 top-50 reaches 99.8% of gold anchors and still fails 37%; the best variant is 28.6 pp below the ledger (p = 5e-10). LLM rerank costs more per question than the ledger and is 30.7 pp worse.",
-    "104K: retrieval collapses first (top-10 sees 38.8% of anchors); at equal token budget the projection beats top-100 by 23.3 pp (p = 2e-4); full text is unusable.",
+    "104K: retrieval collapses first (top-10 sees 38.8% of anchors); at equal token budget the projection beats top-100 by 23.3 pp with haiku (p = 2e-4) and by 6.7 pp with Sonnet 5 (n.s.); full text is unusable for haiku and reaches only 54.9 for Sonnet 5 (*n = 82, budget stop; 18% of calls truncated at the output cap).",
     "Competitors (each independently re-scored and diffed for protocol parity): every system scores below the plain full-context call on the same 58 questions; middle-of-table CIs overlap, no ranking claimed there.",
   ], { x: 0.6, y: 5.2, w: 12.1, h: 1.8, fontSize: 11 });
   footer(s, n);
@@ -516,13 +517,13 @@ let n = 0;
     "Scope is three conditions (non-frontier reader, or store beyond the context window, or cost-bound). With a strong reader on a 14K store the whole memory in the prompt beats the v45 ledger (97.1 vs 90.7, p = 0.035); Sonnet-built cards plus an assertion-type filter reach 95.0 (−2.1 vs full context, n.s.); the residual is one chain's extraction gap.",
     "External arenas: 2 positive, several ties, several negative; the scope is three conditions, not a universal win.",
     "Owner gate costs accuracy on clean text; the '5× cost' and 'ledger constant' claims are withdrawn.",
-    "Human agreement is fair (α ≈ 0.3–0.45); the v2.5 human review has not started; the 560-q table uses the v2.4-corpus store; the partial v2.5-corpus rerun (36 chains) agrees with it within noise.",
+    "Human agreement is fair (\u03b1 \u2248 0.3\u20130.45); the v2.5 human review has not started; the 560-q table uses the v2.4-corpus store; the partial v2.5-corpus rerun (36 chains) agrees with it within noise; write-side extraction is nondeterministic (two passes overlap 2\u201333% of cards) and 140-q reader runs jitter 3\u20134 pp.",
     "Card builder regression (slot_class / owner fields) still patched via a derived store; fix pending.",
   ], { x: 0.6, y: 1.95, w: 6.0, h: 4.9, fontSize: 12.5 });
   s.addText("Next steps", { x: 7.0, y: 1.5, w: 5.7, h: 0.4, fontFace: HFONT, fontSize: 18, bold: true, color: NAVY, margin: 0 });
   bullets(s, [
     "Author review of v2.5 on the author-v25 link (149 items, ~1.5–2 min each); compute agreement against the machine review.",
-    "Run the two missing cells: 104K store with a strong reader (~$30) and a render-matched control (same layout, mechanism off); then a full v2.5-corpus rerun once the human review settles the corpus.",
+    "Running now: render-matched control (layout kept, compile off) and a second-family judge re-judging the main table; finish the 104K full-context arm (38 questions) so the store-level CI closes; then a full v2.5-corpus rerun once the human review settles the corpus.",
     "Fix the card builder schema regression and retire the derived store.",
     "Paper: §2 ancestors (temporal databases, TAC-KBP), §8 limitations as a three-condition scope, datasheet v2.5 with the tenure convention and errata.",
   ], { x: 7.0, y: 1.95, w: 5.7, h: 4.9, fontSize: 12.5 });
