@@ -127,7 +127,10 @@ def main():
     ap.add_argument("--tag", default="b47")
     ap.add_argument("--lane-only", action="store_true", dest="lane_only",
                     help="只审四个金标槽位类(employer/position/team/residence)的卡;其余卡标 unjudged 并保留")
+    ap.add_argument("--chain-slots", action="store_true", dest="chain_slots",
+                    help="批 51:只审 slot_class 属于状态链闭集(position/employer/team/residence/device/location/relationship)的卡;other:* 卡标 unjudged 并保留")
     a = ap.parse_args()
+    CHAIN = {"position", "employer", "team", "residence", "device", "location", "relationship"}
     if a.lane_only:
         sys.path.insert(0, str(ROOT / "scripts"))
         from wt_qvf_prototype_v49 import classify_slot  # noqa: E402
@@ -152,6 +155,9 @@ def main():
         with ThreadPoolExecutor(a.workers) as ex:
             for i, r in enumerate(recs):
                 if a.lane_only and classify_slot(r.get("slot", ""))[0] not in LANE:
+                    r["assertion_type"] = "unjudged"; r["entailed"] = True; r["entail_reason"] = ""
+                    continue
+                if a.chain_slots and (r.get("slot_class") or "other").split(":")[0] not in CHAIN:
                     r["assertion_type"] = "unjudged"; r["entailed"] = True; r["entail_reason"] = ""
                     continue
                 ctx = mt.get(r.get("source_memory_id"), "")
