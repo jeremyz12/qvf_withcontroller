@@ -1,0 +1,512 @@
+{
+ "src": "D:\\ZZL_cluade\\results\\ext_cards_stale_v55",
+ "src_sha256": "54e856f48fd4371b6c16606d432eb91d712f6984465b4ff7c6a2368937974096",
+ "model": "claude-haiku-4-5",
+ "keep": [
+  "ended",
+  "start",
+  "unclear",
+  "unjudged"
+ ],
+ "stores": {
+  "stale-0008": {
+   "n": 140,
+   "kept": 127,
+   "types": {
+    "unjudged": 121,
+    "restate": 7,
+    "task": 4,
+    "other_person": 2,
+    "unclear": 4,
+    "start": 2
+   }
+  },
+  "stale-0011": {
+   "n": 136,
+   "kept": 122,
+   "types": {
+    "unjudged": 114,
+    "task": 7,
+    "restate": 4,
+    "start": 7,
+    "unclear": 1,
+    "plan": 2,
+    "other_person": 1
+   }
+  },
+  "stale-0022": {
+   "n": 136,
+   "kept": 129,
+   "types": {
+    "unjudged": 125,
+    "task": 2,
+    "start": 3,
+    "plan": 5,
+    "unclear": 1
+   }
+  },
+  "stale-0038": {
+   "n": 156,
+   "kept": 150,
+   "types": {
+    "unjudged": 147,
+    "start": 3,
+    "task": 2,
+    "restate": 2,
+    "other_person": 1,
+    "hypothetical": 1
+   }
+  },
+  "stale-0039": {
+   "n": 159,
+   "kept": 155,
+   "types": {
+    "unjudged": 151,
+    "task": 3,
+    "other_person": 1,
+    "start": 3,
+    "ended": 1
+   }
+  },
+  "stale-0052": {
+   "n": 167,
+   "kept": 154,
+   "types": {
+    "unjudged": 149,
+    "start": 4,
+    "task": 3,
+    "unclear": 1,
+    "other_person": 5,
+    "plan": 4,
+    "hypothetical": 1
+   }
+  },
+  "stale-0057": {
+   "n": 135,
+   "kept": 123,
+   "types": {
+    "unjudged": 119,
+    "start": 3,
+    "unclear": 1,
+    "task": 2,
+    "restate": 3,
+    "other_person": 4,
+    "plan": 1,
+    "hypothetical": 2
+   }
+  },
+  "stale-0061": {
+   "n": 141,
+   "kept": 130,
+   "types": {
+    "unjudged": 129,
+    "restate": 7,
+    "other_person": 1,
+    "start": 1,
+    "task": 2,
+    "plan": 1
+   }
+  },
+  "stale-0064": {
+   "n": 173,
+   "kept": 166,
+   "types": {
+    "unjudged": 161,
+    "start": 4,
+    "restate": 2,
+    "plan": 3,
+    "hypothetical": 1,
+    "unclear": 1,
+    "task": 1
+   }
+  },
+  "stale-0079": {
+   "n": 119,
+   "kept": 114,
+   "types": {
+    "unjudged": 108,
+    "start": 3,
+    "restate": 1,
+    "plan": 1,
+    "other_person": 1,
+    "unclear": 3,
+    "task": 2
+   }
+  },
+  "stale-0107": {
+   "n": 141,
+   "kept": 136,
+   "types": {
+    "unjudged": 132,
+    "start": 3,
+    "task": 2,
+    "other_person": 1,
+    "plan": 2,
+    "unclear": 1
+   }
+  },
+  "stale-0108": {
+   "n": 118,
+   "kept": 108,
+   "types": {
+    "unclear": 4,
+    "unjudged": 102,
+    "other_person": 1,
+    "start": 2,
+    "task": 4,
+    "plan": 3,
+    "hypothetical": 2
+   }
+  },
+  "stale-0144": {
+   "n": 200,
+   "kept": 196,
+   "types": {
+    "unjudged": 194,
+    "restate": 1,
+    "plan": 2,
+    "start": 1,
+    "task": 1,
+    "unclear": 1
+   }
+  },
+  "stale-0148": {
+   "n": 171,
+   "kept": 164,
+   "types": {
+    "unjudged": 159,
+    "start": 3,
+    "unclear": 2,
+    "restate": 1,
+    "other_person": 5,
+    "task": 1
+   }
+  },
+  "stale-0159": {
+   "n": 136,
+   "kept": 122,
+   "types": {
+    "plan": 2,
+    "restate": 3,
+    "unjudged": 118,
+    "task": 5,
+    "other_person": 4,
+    "start": 3,
+    "unclear": 1
+   }
+  },
+  "stale-0170": {
+   "n": 124,
+   "kept": 108,
+   "types": {
+    "unjudged": 99,
+    "restate": 8,
+    "start": 8,
+    "task": 1,
+    "plan": 6,
+    "other_person": 1,
+    "ended": 1
+   }
+  },
+  "stale-0177": {
+   "n": 135,
+   "kept": 130,
+   "types": {
+    "restate": 3,
+    "start": 3,
+    "unjudged": 127,
+    "other_person": 1,
+    "plan": 1
+   }
+  },
+  "stale-0178": {
+   "n": 147,
+   "kept": 135,
+   "types": {
+    "unjudged": 129,
+    "restate": 4,
+    "task": 5,
+    "plan": 2,
+    "start": 6,
+    "other_person": 1
+   }
+  },
+  "stale-0189": {
+   "n": 167,
+   "kept": 158,
+   "types": {
+    "unjudged": 148,
+    "task": 2,
+    "start": 7,
+    "ended": 2,
+    "restate": 2,
+    "plan": 2,
+    "other_person": 3,
+    "unclear": 1
+   }
+  },
+  "stale-0211": {
+   "n": 121,
+   "kept": 107,
+   "types": {
+    "task": 4,
+    "unjudged": 99,
+    "start": 7,
+    "plan": 2,
+    "hypothetical": 2,
+    "unclear": 1,
+    "restate": 5,
+    "other_person": 1
+   }
+  },
+  "stale-0214": {
+   "n": 151,
+   "kept": 143,
+   "types": {
+    "unjudged": 141,
+    "start": 1,
+    "task": 5,
+    "plan": 2,
+    "ended": 1,
+    "restate": 1
+   }
+  },
+  "stale-0215": {
+   "n": 129,
+   "kept": 121,
+   "types": {
+    "unjudged": 118,
+    "task": 1,
+    "restate": 3,
+    "start": 3,
+    "plan": 4
+   }
+  },
+  "stale-0223": {
+   "n": 164,
+   "kept": 158,
+   "types": {
+    "unjudged": 154,
+    "other_person": 2,
+    "start": 4,
+    "task": 1,
+    "restate": 3
+   }
+  },
+  "stale-0225": {
+   "n": 137,
+   "kept": 114,
+   "types": {
+    "unjudged": 108,
+    "start": 5,
+    "restate": 18,
+    "unclear": 1,
+    "task": 3,
+    "plan": 1,
+    "other_person": 1
+   }
+  },
+  "stale-0229": {
+   "n": 138,
+   "kept": 124,
+   "types": {
+    "unjudged": 120,
+    "other_person": 2,
+    "restate": 6,
+    "start": 4,
+    "task": 4,
+    "plan": 2
+   }
+  },
+  "stale-0238": {
+   "n": 130,
+   "kept": 126,
+   "types": {
+    "unjudged": 123,
+    "restate": 2,
+    "unclear": 2,
+    "task": 2,
+    "ended": 1
+   }
+  },
+  "stale-0246": {
+   "n": 136,
+   "kept": 131,
+   "types": {
+    "unjudged": 126,
+    "restate": 3,
+    "plan": 2,
+    "start": 3,
+    "ended": 1,
+    "unclear": 1
+   }
+  },
+  "stale-0276": {
+   "n": 165,
+   "kept": 154,
+   "types": {
+    "unjudged": 146,
+    "start": 7,
+    "restate": 3,
+    "task": 5,
+    "plan": 1,
+    "other_person": 1,
+    "ended": 1,
+    "hypothetical": 1
+   }
+  },
+  "stale-0281": {
+   "n": 136,
+   "kept": 119,
+   "types": {
+    "start": 13,
+    "unjudged": 100,
+    "task": 8,
+    "plan": 3,
+    "restate": 6,
+    "unclear": 4,
+    "ended": 2
+   }
+  },
+  "stale-0288": {
+   "n": 132,
+   "kept": 117,
+   "types": {
+    "unjudged": 111,
+    "restate": 7,
+    "task": 4,
+    "start": 5,
+    "other_person": 3,
+    "plan": 1,
+    "unclear": 1
+   }
+  },
+  "stale-0295": {
+   "n": 174,
+   "kept": 162,
+   "types": {
+    "unjudged": 155,
+    "plan": 5,
+    "restate": 3,
+    "start": 6,
+    "task": 2,
+    "unclear": 1,
+    "other_person": 2
+   }
+  },
+  "stale-0310": {
+   "n": 174,
+   "kept": 166,
+   "types": {
+    "unjudged": 163,
+    "restate": 2,
+    "other_person": 2,
+    "task": 3,
+    "plan": 1,
+    "start": 3
+   }
+  },
+  "stale-0315": {
+   "n": 129,
+   "kept": 125,
+   "types": {
+    "unjudged": 118,
+    "start": 5,
+    "unclear": 2,
+    "task": 3,
+    "plan": 1
+   }
+  },
+  "stale-0318": {
+   "n": 134,
+   "kept": 125,
+   "types": {
+    "unjudged": 117,
+    "restate": 4,
+    "unclear": 2,
+    "plan": 2,
+    "task": 3,
+    "start": 6
+   }
+  },
+  "stale-0323": {
+   "n": 126,
+   "kept": 118,
+   "types": {
+    "unjudged": 110,
+    "start": 4,
+    "unclear": 3,
+    "restate": 3,
+    "task": 1,
+    "hypothetical": 2,
+    "plan": 2,
+    "ended": 1
+   }
+  },
+  "stale-0335": {
+   "n": 148,
+   "kept": 138,
+   "types": {
+    "unjudged": 135,
+    "other_person": 2,
+    "restate": 4,
+    "unclear": 2,
+    "hypothetical": 1,
+    "plan": 3,
+    "start": 1
+   }
+  },
+  "stale-0356": {
+   "n": 121,
+   "kept": 104,
+   "types": {
+    "unjudged": 97,
+    "hypothetical": 2,
+    "task": 4,
+    "restate": 6,
+    "start": 6,
+    "unclear": 1,
+    "plan": 5
+   }
+  },
+  "stale-0365": {
+   "n": 143,
+   "kept": 137,
+   "types": {
+    "unjudged": 129,
+    "restate": 2,
+    "start": 6,
+    "unclear": 2,
+    "task": 1,
+    "hypothetical": 1,
+    "plan": 1,
+    "other_person": 1
+   }
+  },
+  "stale-0392": {
+   "n": 145,
+   "kept": 137,
+   "types": {
+    "start": 8,
+    "unjudged": 126,
+    "restate": 6,
+    "unclear": 3,
+    "task": 2
+   }
+  },
+  "stale-0395": {
+   "n": 113,
+   "kept": 111,
+   "types": {
+    "unjudged": 107,
+    "start": 4,
+    "restate": 2
+   }
+  }
+ },
+ "usage": {
+  "in": 569430,
+  "out": 33558,
+  "usd": 0.73722
+ }
+}
